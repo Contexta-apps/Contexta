@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head><script>!function(t,e){var o,n,p,r;e.__SV||(...)}
+<head><!-- POSTHOG -->
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+    var g=t.createElement("script");g.type="text/javascript";g.async=!0;
+    g.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js";
+    var m=t.getElementsByTagName("script")[0];m.parentNode.insertBefore(g,m);
+})(document,window.posthog||[]);
 
-    posthog.init('phc_xK6RKwShdbDfpQqPYFCd7iStXhf8rZuosjuhgsXxFbGo', {
-        api_host: 'https://eu.i.posthog.com',
-        person_profiles: 'identified_only',
-    })
+posthog.init('phc_xxx', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only'
+});
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONTEXTA – Learn languages in the context of dialogues</title>
