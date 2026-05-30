@@ -1,1 +1,16 @@
 
+{
+  "name": "CONTEXTA",
+  "short_name": "CONTEXTA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a2035",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
