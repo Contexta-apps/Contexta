@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  
-<script src="https://eu-assets.i.posthog.com/static/array.js"></script>
-
-<script>
-posthog.init('phc_xK6RKwShdbDfpQqPYFCd7iStXhf8rZuosjuhgsXxFbGo', {
-    api_host: 'https://eu.i.posthog.com',
-    person_profiles: 'always'
-});
-</script>
-
-
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONTEXTA – Learn languages in the context of dialogues</title>
+<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+<link rel="apple-touch-icon" sizes="192x192" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Poppins:wght@500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* ═══════ DESIGN TOKENS ═══════ */
@@ -1491,7 +1481,8 @@ img { max-width: 100%; height: auto; }
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-.topic-btn .arrow { flex-shrink: 0; margin-left: 8px; opacity: .6; font-size: .7rem; }
+.topic-btn .arrow { flex-shrink: 0; margin-left: 8px; opacity: .6; font-size: .7rem; transition: transform .2s; }
+.topic-btn.open .arrow { transform: rotate(180deg); opacity: 1; }
 .topic-btn:hover { border-color: rgba(201,151,58,.5); }
 .topic-btn.active-topic { border-color: var(--gold); color: #fff; }
 #topicBtnLabel {
@@ -1500,7 +1491,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .topic-dropdown {
-  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  position: absolute; bottom: calc(100% + 6px); top: auto; left: 0; right: 0;
   background: var(--navy-lt);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 12px;
@@ -1592,7 +1583,7 @@ img { max-width: 100%; height: auto; }
   .topic-dropdown {
     position: absolute;
     left: 0; right: 0;
-    top: calc(100% + 6px);
+    bottom: calc(100% + 6px); top: auto;
     max-height: 55vh;
     border-radius: 14px;
   }
@@ -5032,6 +5023,27 @@ var intentTimer = null;
 function clearPracticeInput() {
   var el = document.getElementById('practiceInput');
   if (el) { el.value = ''; el.focus(); onIntentInput(el); }
+
+  // Reset roletky Téma
+  selectedTopic = '';
+  var topicBtn = document.getElementById('topicBtn');
+  var topicBtnLabel = document.getElementById('topicBtnLabel');
+  var topicList = document.getElementById('topicList');
+
+  if (topicBtn) {
+    topicBtn.classList.remove('active-topic', 'open');
+  }
+  if (topicBtnLabel) {
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'cz';
+    var defaultLabel = (typeof STRINGS !== 'undefined' && STRINGS[lang] && STRINGS[lang].topicDropDefault)
+      ? STRINGS[lang].topicDropDefault
+      : '— vybrat téma —';
+    topicBtnLabel.textContent = defaultLabel;
+  }
+  if (topicList) {
+    topicList.style.display = 'none';
+    resetTopicTree();
+  }
 }
 function insertToPractice(text) {
   text = (text || '').trim();
@@ -5435,7 +5447,45 @@ function buildTopicDrop() {
 
 function toggleTreeNode(el, e) {
   e.stopPropagation();
+  var wasOpen = el.classList.contains('open');
   el.classList.toggle('open');
+
+  if (!wasOpen) {
+    setTimeout(function() {
+      var list = document.getElementById('topicList');
+      if (!list) return;
+      var isCat = el.classList.contains('tree-cat');
+
+      if (isCat) {
+        // Hlavní téma: scrolluj na jeho začátek, auto-rozbal první sub
+        var subsContainer = el.nextElementSibling;
+        if (subsContainer) {
+          var firstSub = subsContainer.querySelector('.tree-sub');
+          if (firstSub && !firstSub.classList.contains('open')) {
+            firstSub.classList.add('open');
+          }
+        }
+        list.scrollTop = el.offsetTop - 8;
+      } else {
+        // Podtéma (tree-sub): scrolluj tak, aby el byl vidět nahoře
+        // ale se zachováním místa pro sousední subs nad ním
+        var elH = el.offsetHeight;
+        var siblingReserve = elH * 2; // rezerva ~2 položky nad
+        list.scrollTop = Math.max(0, el.offsetTop - siblingReserve);
+      }
+    }, 50);
+  }
+}
+
+function resetTopicTree() {
+  var topicList = document.getElementById('topicList');
+  if (!topicList) return;
+  topicList.querySelectorAll('.tree-cat.open, .tree-sub.open').forEach(function(node) {
+    node.classList.remove('open');
+  });
+  topicList.querySelectorAll('.tree-item.selected').forEach(function(node) {
+    node.classList.remove('selected');
+  });
 }
 
 function toggleTopicDrop(e) {
@@ -5449,6 +5499,8 @@ function toggleTopicDrop(e) {
   var aiList = document.getElementById('aiList');
   if (aiList) { aiList.style.display = 'none'; var _aw=document.getElementById('aiWrap'); if(_aw) _aw.classList.remove('open'); }
   list.style.display = opening ? 'block' : 'none';
+  var topicBtnEl = document.getElementById('topicBtn');
+  if (topicBtnEl) topicBtnEl.classList.toggle('open', opening);
 }
 
 function selectTopic(item, e) {
@@ -5458,6 +5510,7 @@ function selectTopic(item, e) {
   if (btn) btn.textContent = item;
   var topicBtn = document.getElementById('topicBtn');
   if (topicBtn) topicBtn.classList.add('active-topic');
+  if (topicBtn) topicBtn.classList.remove('open');
   var list = document.getElementById('topicList');
   if (list) list.style.display = 'none';
   document.querySelectorAll('.tree-item').forEach(function(el) {
@@ -5517,7 +5570,7 @@ document.addEventListener('click', function(e) {
   if (aiWrapEl && aiListEl && !aiWrapEl.contains(e.target)) { aiListEl.style.display = 'none'; aiWrapEl.classList.remove('open'); var _ar=aiWrapEl.querySelector('.arrow'); if(_ar) _ar.style.transform='rotate(0deg)'; }
   var topicWrap = document.getElementById('topicWrap');
   var topicList = document.getElementById('topicList');
-  if (topicWrap && topicList && !topicWrap.contains(e.target)) topicList.style.display = 'none';
+  if (topicWrap && topicList && !topicWrap.contains(e.target)) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); resetTopicTree(); }
   var verbWrap = document.getElementById('verbWrap');
   var verbDd   = document.getElementById('verbDropList');
   if (verbDd && (!verbWrap || !verbWrap.contains(e.target))) {
@@ -6540,6 +6593,33 @@ function genGenerate() {
   };
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
 
+  var exampleSentencesBlock =
+    '══════════════════════════════════════\n' +
+    '📖 PŘÍKLADOVÉ VĚTY\n' +
+    '══════════════════════════════════════\n' +
+    'Vytvoř 3 samostatné vzorové věty na téma: ' + intent + '.\n' +
+    'JAZYK A (výchozí): ' + fromName + '\n' +
+    'JAZYK B (cílový): ' + toName + '\n' +
+    'ÚROVEŇ: ' + cefrLevel + '\n\n' +
+    'Pravidla:\n' +
+    '- Věty musí odpovídat zadané úrovni.\n' +
+    '- Každá věta musí být jiná.\n' +
+    '- Používej přirozený jazyk a reálné situace.\n' +
+    '- Neuváděj označení úrovně.\n' +
+    '- Nepoužívej číslování ani odrážky.\n' +
+    '- Každou větu napiš PŘESNĚ v tomto formátu — věta v jazyce A na jednom řádku, překlad do jazyka B na samostatném řádku přímo pod ní, mezi dvojicemi jeden prázdný řádek:\n' +
+    '[věta v ' + fromName + ']\n' +
+    '[překlad v ' + toName + ']\n' +
+    '\n' +
+    '[věta v ' + fromName + ']\n' +
+    '[překlad v ' + toName + ']\n' +
+    '\n' +
+    '[věta v ' + fromName + ']\n' +
+    '[překlad v ' + toName + ']\n' +
+    '- Nikdy nespojuj větu a překlad do jednoho řádku.\n' +
+    '- Nepoužívej číslování, odrážky ani žádný další text.\n\n' +
+    'Po příkladových větách vlož jeden prázdný řádek a pokračuj mini dialogy:\n\n';
+
   var prompt =
     'Vytvářej výukové dialogy pro učení jazyků.\n' +
     'Počet dialogů: ' + totalDialogs + '\n' +
@@ -6553,6 +6633,7 @@ function genGenerate() {
     'ÚROVEŇ: ' + cefrLevel + '\n' +
     'STYL: ' + (({'casual':'běžný/casual','formal':'formální/formal','slang':'slang','humor':'humorný/humorous'})[selectedStyle] || selectedStyle) + '\n' +
     cefrGrammar + '\n\n' +
+    exampleSentencesBlock +
     'FORMÁT (dodržuj přesně):\n' +
     '1)\n' +
     dlInfo.exchanges + '\n' +
@@ -6610,6 +6691,17 @@ var _gi = document.getElementById('genIntent');
 if (_gi) _gi.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); genGenerate(); }
 });
+
+// Enter v hlavním poli (#practiceInput) — pouze desktop (zařízení s klávesnicí)
+var _pi = document.getElementById('practiceInput');
+if (_pi && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  _pi.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      genGenerate();
+    }
+  });
+}
 
 // ═══════════════════════════════════════════════════════
 // FRÁZOVÁ SLOVESA — logika pro horní verb dropdown
