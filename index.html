@@ -6620,6 +6620,9 @@ function genGenerate() {
     '- Nepoužívej číslování, odrážky ani žádný další text.\n\n' +
     'Po příkladových větách vlož jeden prázdný řádek a pokračuj mini dialogy:\n\n';
 
+  var fromLabel = (GEN_LABEL[fromLang] || fromLang.toUpperCase()) + ':';
+  var toLabel   = (GEN_LABEL[toLang]   || toLang.toUpperCase())   + ':';
+
   var prompt =
     'Vytvářej výukové dialogy pro učení jazyků.\n' +
     'JAZYK A (výchozí): ' + fromName + '\n' +
@@ -6631,59 +6634,53 @@ function genGenerate() {
     'STYL: ' + (({'casual':'běžný/casual','formal':'formální/formal','slang':'slang','humor':'humorný/humorous'})[selectedStyle] || selectedStyle) + '\n' +
     cefrGrammar + '\n\n' +
 
-    'PŘESNÝ VZOR VÝSTUPU (dodržuj naprosto přesně):\n\n' +
-    'Na úplný začátek napiš pouze jednou: slovo-překlad (překládané slovo a jeho překlad na jednom řádku oddělené pomlčkou).\n' +
-    'Slovo-překlad se NEOPAKUJE u každé sady — je pouze jednou na samém začátku.\n' +
-    'Pak následují číslované sady 1. až ' + totalDialogs + '.\n\n' +
+    'POVINNÁ PRAVIDLA FORMÁTU (striktní):\n' +
+    '- NIKDY nepoužívej názvy jazyků v plné formě.\n' +
+    '- Místo toho používej výhradně tyto fixní štítky: ' + fromLabel + ' a ' + toLabel + '\n' +
+    '- Tyto štítky jsou konstanty a nesmí se měnit.\n\n' +
 
-    'KONKRÉTNÍ PŘÍKLAD celého výstupu:\n\n' +
+    'STRUKTURA VÝSTUPU (dodržuj naprosto přesně):\n\n' +
+    'Na úplný začátek napiš pouze jednou: slovo-překlad (překládané slovo a jeho překlad oddělené pomlčkou).\n\n' +
+    'Pak 3 vzorové věty — každou dvojici na dvou řádcích, mezi dvojicemi jeden prázdný řádek:\n' +
+    fromLabel + ' věta\n' +
+    toLabel + ' překlad\n\n' +
+    'Pak ' + totalDialogs + ' dialogů číslovaných 1. až ' + totalDialogs + '.\n\n' +
+
+    'KONKRÉTNÍ PŘÍKLAD:\n\n' +
     'Stůl-table\n\n' +
+    fromLabel + ' Stůl je vedle okna.\n' +
+    toLabel + ' The table is next to the window.\n\n' +
+    fromLabel + ' Na stole mám knihu a telefon.\n' +
+    toLabel + ' I have a book and a phone on the table.\n\n' +
+    fromLabel + ' Včera jsme koupili nový stůl do kuchyně.\n' +
+    toLabel + ' Yesterday we bought a new table for the kitchen.\n\n' +
     '1.\n' +
-    'Stůl je vedle okna.\n' +
-    'The table is next to the window.\n\n' +
-    'Na stole mám knihu a telefon.\n' +
-    'I have a book and a phone on the table.\n\n' +
-    'Včera jsme koupili nový stůl do kuchyně.\n' +
-    'Yesterday we bought a new table for the kitchen.\n\n' +
-    'a) Kde je stůl?\n' +
-    'b) Je v obývacím pokoji.\n' +
-    'a) Ano, stůl je v obývacím pokoji.\n\n' +
-    'a) Where is the table?\n' +
-    'b) It is in the living room.\n' +
-    'a) Yes, the table is in the living room.\n\n' +
-    'Slovíčka:\n' +
-    'stůl – table\n' +
-    'obývací pokoj – living room\n' +
-    'kde – where\n\n' +
+    fromLabel + '\n' +
+    'a) Kde je kuchyňský stůl?\n' +
+    'b) U okna v kuchyni.\n' +
+    'a) Aha, tam je.\n\n' +
+    toLabel + '\n' +
+    'a) Where is the kitchen table?\n' +
+    'b) By the kitchen window.\n' +
+    'a) Ah, there it is.\n\n' +
     '2.\n' +
     '...\n\n' +
 
-    'PRAVIDLA FORMÁTU (nikdy neporušuj):\n' +
-    '- Slovo-překlad pouze jednou — úplně na začátku před sadou 1.\n' +
-    '- Každou sadu uvoď číslem s tečkou na vlastním řádku: 1. 2. 3. atd.\n' +
-    '- 3 věty: každá věta na vlastním řádku, překlad přímo pod ní, mezi dvojicemi jeden prázdný řádek.\n' +
-    '- Dialog v ' + fromName + ': repliky a) b) a) každá na vlastním řádku.\n' +
-    '- Za dialogem v ' + fromName + ' jeden prázdný řádek.\n' +
-    '- Stejný dialog v ' + toName + ': repliky a) b) a) každá na vlastním řádku.\n' +
-    '- Za dialogem v ' + toName + ' jeden prázdný řádek.\n' +
-    '- Slovíčka: nadpis "Slovíčka:" pak každé slovo na vlastním řádku ve formátu: slovo – překlad.\n' +
-    '- Nikdy nepoužívej tabulky, sloupce, odrážky, pipe znaky (|) ani Markdown.\n' +
-    '- Věta a překlad NESMÍ být na stejném řádku.\n' +
-    '- Dvě repliky dialogu NESMÍ být na stejném řádku.\n\n' +
+    'PRAVIDLA DIALOGŮ:\n' +
+    '- Každý dialog má 3 repliky: a) otázka  b) odpověď  a) přirozená reakce nebo pokračování.\n' +
+    '- Třetí replika a) NESMÍ být jen suché potvrzení. Střídej: "Aha!", "Fakt?", "Opravdu?", "To dává smysl.", "Jasně.", "Zajímavé.", "A co tam dělá?" a podobné.\n' +
+    '- Každý dialog = jiná situace na téma "' + intent + '".\n' +
+    '- ' + toLabel + ' část musí být přirozený ekvivalent, ne doslovný překlad.\n' +
+    '- Dialogy krátké, reálné, přirozené — ne učebnicové.\n\n' +
+
+    'ZÁKAZY:\n' +
+    '- Žádné plné názvy jazyků — pouze štítky ' + fromLabel + ' a ' + toLabel + '\n' +
+    '- Žádné tabulky, sloupce, odrážky, pipe znaky (|), Markdown.\n' +
+    '- Věta a překlad nesmí být na stejném řádku.\n' +
+    '- Dvě repliky nesmí být na stejném řádku.\n\n' +
 
     'Počet dialogů: ' + totalDialogs + '\n' +
-    'Délka dialogů: ' + dlInfo.label + '\n\n' +
-
-
-    'PRAVIDLA OBSAHU:\n' +
-    '- Dialogy musí být přirozené, stručné a vycházet z reálných situací (práce, škola, cestování, každodenní život).\n' +
-    '- Přizpůsob jazyk zadané úrovni, tématu a stylu komunikace.\n' +
-    '- Používej běžnou mluvu a přirozené fráze — ne učebnicové věty.\n' +
-    '- JAZYK B musí být přirozený ekvivalent, ne doslovný překlad.\n' +
-    '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova.\n' +
-    '- Dialogy musí tematicky navazovat na příkladové věty dané sady — stejná situace, stejné prostředí, stejné osoby.\n' +
-    '- Věty i dialog každé sady musí tvořit jeden logický celek — ne náhodné nesouvisející příklady.\n' +
-    '- Každá sada = jiné slovo, jiná situace, žádné opakování.\n';
+    'Délka dialogů: ' + dlInfo.label + '\n';
 
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
