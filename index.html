@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONTEXTA – Learn languages in the context of dialogues</title>
 <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-<link rel="apple-touch-icon" sizes="192x192" href="favicon.png"><link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" sizes="192x192" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Poppins:wght@500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* ═══════ DESIGN TOKENS ═══════ */
@@ -2357,6 +2357,17 @@ img { max-width: 100%; height: auto; }
 .gen-primary-block .gen-intent-examples {
   margin-top: 12px;
 }
+@media (max-width: 767px) {
+  .gen-intent-examples {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .gen-intent-examples::-webkit-scrollbar { display: none; }
+  .gen-ex-chip { flex-shrink: 0; }
+}
 .gen-primary-block .gen-intent-ex-label {
   font-size: .7rem;
   color: rgba(255,255,255,.28);
@@ -2412,8 +2423,9 @@ img { max-width: 100%; height: auto; }
 .prompt-box-toolbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 8px 12px 10px;
+  position: relative;
 }
 .generate-mini {
   width: 34px;
@@ -2434,6 +2446,7 @@ img { max-width: 100%; height: auto; }
   opacity: 0;
   pointer-events: none;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .generate-mini.visible {
   opacity: 1;
@@ -2442,7 +2455,6 @@ img { max-width: 100%; height: auto; }
 .generate-mini:hover  { background: var(--gold-lt); box-shadow: 0 4px 16px rgba(201,151,58,.6); }
 .generate-mini:active { transform: scale(.91); }
 .clear-input {
-  margin-right: auto;
   width: 30px;
   height: 30px;
   border-radius: 0;
@@ -2459,10 +2471,22 @@ img { max-width: 100%; height: auto; }
   touch-action: manipulation;
   transition: color .18s;
   -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
 }
 .clear-input:hover { color: rgba(255,255,255,.9); }
 .clear-input:active { opacity: .7; }
 .clear-input.visible { display: flex; }
+
+.toolbar-ukázka {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  opacity: .6;
+  font-size: .62rem;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
 
 /* ══ CONTEXTA BRAND A ══ */
 .brand-a-hero {
@@ -3133,7 +3157,7 @@ h1[data-t="heroH"] {
     <div class="gen-nav">
       <div class="nav-brand"><div class="nav-dot"></div><span data-t="brand">CONTEXT<span class="brand-a-nav">A</span></span></div>
       <div class="coffee-nav-wrap">
-        <button class="coffee-nav-btn" onclick="toggleCoffeePanel(event)" aria-label="Podpořit">☕ <span data-t="coffeeBtn">Podpořit</span></button>
+        <button class="coffee-nav-btn" onclick="toggleCoffeePanel(event)" aria-label="Podpoř vývoj">☕ <span data-t="coffeeBtn">Podpoř vývoj</span></button>
         <div class="coffee-nav-panel" id="coffeeNavPanel">
           <span class="coffee-emoji">☕</span>
           <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
@@ -3146,7 +3170,7 @@ h1[data-t="heroH"] {
     <!-- ══ HERO HEADER ══ -->
     <div class="gen-hero-header">
       <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
-      <p class="hero-sub" data-t="fBrand">Uč se slova v kontextu dialogů</p>
+      <p class="hero-sub" data-t="fBrand">Jazyková aplikace pro učení se slov v kontextu vět a dialogů.</p>
       <p class="hero-sub-tagline" data-t="heroSubTagline">One word. 10 real conversations.</p>
     </div>
 
@@ -3156,12 +3180,14 @@ h1[data-t="heroH"] {
         <span class="gen-primary-icon">✦</span>
         <label class="gen-primary-label" for="genIntent" data-t="intentLabel" data-translate="intentLabel">Hlavní výraz pro mini-dialogy</label>
       </div>
-      <div class="prompt-box">
+      <div class="prompt-box" style="position:relative;">
         <textarea class="gen-primary-input" id="practiceInput" rows="2"
           placeholder="Type a word or situation…"
           maxlength="400" oninput="onIntentInput(this)"></textarea>
+        <div id="onbDemoOutput" style="display:none;"></div>
         <div class="prompt-box-toolbar">
           <button class="clear-input" id="clearInputBtn" onclick="clearPracticeInput()" title="Smazat">×</button>
+          <button class="gen-ex-chip toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
           <button class="generate-mini" id="generateMiniBtn" onclick="genGenerate()" title="Generovat dialog">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
           </button>
@@ -3308,11 +3334,12 @@ h1[data-t="heroH"] {
     <div class="gen-hint-small" style="text-align:center;font-size:.75rem;color:rgba(255,255,255,.3);padding-top:6px;">
       <span data-translate="genHintSmall">💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter</span>
     </div>
+    <div style="display:none;">
+      <button id="onbReplayBtn" onclick="toggleOnboarding()">Deaktivovat ukázku</button>
+    </div>
 
   </div>
 </section>
-
-
 
 <!-- ══ AI ══ -->
 
@@ -3384,7 +3411,7 @@ const SPEECH = {
 // DIALOGY pro výukovou sekci (každý jazyk = 10 dialogů)
 // ═══════════════════════════════════════════════════════
 const D = {
-  en:[["So, you going on holiday next week?","Yeah, can't wait. I really need a break."],
+  en:[["So, you're going on holiday next week?","Yeah, I can't wait. I really need a break."],
       ["What are you most looking forward to?","Honestly? Just sleeping in and doing nothing."],
       ["How's the new job going?","Good so far. I'm still getting used to it."],
       ["Do the kids want to go back to school?","No way. They're dreading it."],
@@ -3394,7 +3421,7 @@ const D = {
       ["You don't seem very excited.","I'm not. I'm exhausted and not in the mood."],
       ["Should we go out for dinner tonight?","Definitely. I haven't eaten all day."],
       ["Have you seen the trailer for that new film?","Yes! I'm so looking forward to it. Looks amazing."]],
-  cz:[["Tak ty jedete příští týden na dovolenou?","Jo, to se těším. Fakt potřebuju pauzu."],
+  cz:[["Tak ty jedeš příští týden na dovolenou?","Jo, to se těším. Fakt potřebuju pauzu."],
       ["Na co se těšíš nejvíc?","Upřímně? Hlavně na to, že budu spát dlouho a nic nedělat."],
       ["Jak to jde v té nové práci?","Zatím dobře. Ještě si zvykám."],
       ["Děti se těší do školy?","Ani náhodou. Hrůza je z toho."],
@@ -3527,7 +3554,7 @@ cz:{
   aiBtn:"💬 Otevřít AI asistenta", recLabel:"⭐ Doporučeno",
   audioNote:'V ChatGPT si lze zapnout přehrávání hlasem – slyšíte <span class="hl">správnou výslovnost</span>.',
   coffeeH:"Líbí se ti Contexta?",
-  coffeeBtn:"Podpořit",
+  coffeeBtn:"Podpoř vývoj",
   coffeeP:"Pomáhá ti Contexta? Podpoř mě kávou na <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý příspěvek může Contextu posunout dál.",
   footerP:"Vytvořeno pomocí Claude AI (Anthropic) · claude.ai",
   footerSub:"10 jazyků · 3 úrovně · 6 AI platforem",
@@ -3553,7 +3580,7 @@ cz:{
   genBtn:'Otevřít ChatGPT',
   genHint:'💡 ChatGPT se otevře rovnou s promptem — stačí stisknout Enter',
   genErrEmpty:'Zadej slovo nebo frázi.',
-  fBrand:'Uč se slova v kontextu dialogů',
+  fBrand:'Jazyková aplikace pro učení se slov v kontextu vět a dialogů.',
   heroSubTagline:'Jedno slovo. 10 reálných konverzací.',
   examplesLabel:'Příklady:',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCE', extractKeySituace:'SITUACE',
@@ -3612,7 +3639,7 @@ en:{
   aiBtn:"💬 Open an AI assistant", recLabel:"⭐ Recommended",
   audioNote:'In ChatGPT you can enable voice playback – hear <span class="hl">correct pronunciation</span>.',
   coffeeH:"Do you like Contexta?",
-  coffeeBtn:"Support",
+  coffeeBtn:"Support development",
   coffeeP:"Does Contexta help you? Support me with a coffee on <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — every contribution can move Contexta forward.",
   footerP:"Created with Claude AI (Anthropic) · claude.ai",
   footerSub:"10 languages · 3 levels · 6 AI platforms",
@@ -3696,7 +3723,7 @@ de:{
   aiBtn:"💬 KI-Assistenten öffnen", recLabel:"⭐ Empfohlen",
   audioNote:'In ChatGPT kann die Sprachausgabe aktiviert werden – du hörst <span class="hl">die richtige Aussprache</span>.',
   coffeeH:"Gefällt dir Contexta?",
-  coffeeBtn:"Unterstützen",
+  coffeeBtn:"Entwicklung unterstützen",
   coffeeP:"Hilft dir Contexta? Unterstütze mich mit einem Kaffee auf <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — jeder Beitrag kann Contexta weiterbringen.",
   footerP:"Erstellt mit Claude AI (Anthropic) · claude.ai",
   footerSub:"10 Sprachen · 3 Niveaus · 6 KI-Plattformen",
@@ -3776,7 +3803,7 @@ fr:{
   aiBtn:"💬 Ouvrir un assistant IA", recLabel:"⭐ Recommandé",
   audioNote:'Dans ChatGPT, la lecture audio peut être activée – tu entends <span class="hl">la bonne prononciation</span>.',
   coffeeH:"Aimes-tu Contexta ?",
-  coffeeBtn:"Soutenir",
+  coffeeBtn:"Soutenir le développement",
   coffeeP:"Contexta t'aide ? Soutiens-moi avec un café sur <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — chaque contribution peut faire avancer Contexta.",
   footerP:"Créé avec Claude AI (Anthropic) · claude.ai",
   footerSub:"10 langues · 3 niveaux · 6 plateformes IA",
@@ -3853,7 +3880,7 @@ es:{
   aiBtn:"💬 Abrir asistente IA", recLabel:"⭐ Recomendado",
   audioNote:'En ChatGPT se puede activar la reproducción de voz – escuchas <span class="hl">la pronunciación correcta</span>.',
   coffeeH:"¿Te gusta Contexta?",
-  coffeeBtn:"Apoyar",
+  coffeeBtn:"Apoyar el desarrollo",
   coffeeP:"¿Te ayuda Contexta? Apóyame con un café en <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribución puede impulsar Contexta.",
   footerP:"Creado con Claude AI (Anthropic) · claude.ai",
   footerSub:"10 idiomas · 3 niveles · 6 plataformas IA",
@@ -3931,7 +3958,7 @@ it:{
   aiBtn:"💬 Aprire un assistente IA", recLabel:"⭐ Consigliato",
   audioNote:'In ChatGPT è possibile attivare la riproduzione vocale – senti <span class="hl">la pronuncia corretta</span>.',
   coffeeH:"Ti piace Contexta?",
-  coffeeBtn:"Supporta",
+  coffeeBtn:"Supporta lo sviluppo",
   coffeeP:"Contexta ti è utile? Supportami con un caffè su <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — ogni contributo può far avanzare Contexta.",
   footerP:"Creato con Claude AI (Anthropic) · claude.ai",
   footerSub:"10 lingue · 3 livelli · 6 piattaforme IA",
@@ -4009,7 +4036,7 @@ pt:{
   aiBtn:"💬 Abrir assistente IA", recLabel:"⭐ Recomendado",
   audioNote:'No ChatGPT é possível ativar a reprodução de voz – você ouve <span class="hl">a pronúncia correta</span>.',
   coffeeH:"Gostaste do Contexta?",
-  coffeeBtn:"Apoiar",
+  coffeeBtn:"Apoiar o desenvolvimento",
   coffeeP:"O Contexta ajuda-te? Apoia-me com um café no <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribuição pode fazer o Contexta avançar.",
   footerP:"Criado com Claude AI (Anthropic) · claude.ai",
   footerSub:"10 idiomas · 3 níveis · 6 plataformas IA",
@@ -4086,7 +4113,7 @@ pl:{
   aiBtn:"💬 Otwórz asystenta AI", recLabel:"⭐ Polecane",
   audioNote:'W ChatGPT można włączyć odtwarzanie głosowe – słyszysz <span class="hl">właściwą wymowę</span>.',
   coffeeH:"Podoba ci się Contexta?",
-  coffeeBtn:"Wesprzyj",
+  coffeeBtn:"Wesprzyj rozwój",
   coffeeP:"Czy Contexta Ci pomaga? Wesprzyj mnie kawą na <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — każda wpłata może przybliżyć rozwój Contexty.",
   footerP:"Stworzone z Claude AI (Anthropic) · claude.ai",
   footerSub:"10 języków · 3 poziomy · 6 platform AI",
@@ -4164,7 +4191,7 @@ cn:{
   aiBtn:"💬 打开AI助手", recLabel:"⭐ 推荐",
   audioNote:'在ChatGPT中可以开启语音播放 – 听到<span class="hl">正确发音</span>。',
   coffeeH:"你喜欢Contexta吗？",
-  coffeeBtn:"支持",
+  coffeeBtn:"支持开发",
   coffeeP:"Contexta对你有帮助吗？在<a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>上请我喝杯咖啡——每一份支持都能让Contexta更进一步。",
   footerP:"使用Claude AI (Anthropic) · claude.ai创建",
   footerSub:"10种语言 · 3个级别 · 6个AI平台",
@@ -4242,7 +4269,7 @@ jp:{
   aiBtn:"💬 AIアシスタントを開く", recLabel:"⭐ おすすめ",
   audioNote:'ChatGPTでボイス再生をオンにできます – <span class="hl">正しい発音</span>が聞けます。',
   coffeeH:"Contextaはいかがですか？",
-  coffeeBtn:"サポート",
+  coffeeBtn:"開発をサポート",
   coffeeP:"Contextaは役に立っていますか？<a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>でコーヒーをおごってください — あなたのサポートがContextaを前進させます。",
   footerP:"Claude AI (Anthropic) · claude.ai で作成",
   footerSub:"10言語 · 3レベル · 6AIプラットフォーム",
@@ -4320,7 +4347,7 @@ kr:{
   aiBtn:"💬 AI 어시스턴트 열기", recLabel:"⭐ 추천",
   audioNote:'ChatGPT에서 음성 재생을 켤 수 있습니다 – <span class="hl">올바른 발음</span>을 들을 수 있습니다.',
   coffeeH:"Contexta가 마음에 드세요?",
-  coffeeBtn:"후원하기",
+  coffeeBtn:"개발 후원하기",
   coffeeP:"Contexta가 도움이 되나요? <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>에서 커피 한 잔으로 응원해 주세요 — 모든 후원이 Contexta를 발전시킵니다.",
   footerP:"Claude AI (Anthropic) · claude.ai로 제작",
   footerSub:"10개 언어 · 3개 레벨 · 6개 AI 플랫폼",
@@ -4398,7 +4425,7 @@ sk:{
   aiBtn:"💬 Otvoriť AI asistenta", recLabel:"⭐ Odporúčané",
   audioNote:'V ChatGPT si možno zapnúť prehrávanie hlasom – počuješ <span class="hl">správnu výslovnosť</span>.',
   coffeeH:"Páči sa ti Contexta?",
-  coffeeBtn:"Podporiť",
+  coffeeBtn:"Podporiť vývoj",
   coffeeP:"Pomáha ti Contexta? Podpor ma kávou na <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý príspevok môže Contextu posunúť ďalej.",
   footerP:"Vytvorené pomocou Claude AI (Anthropic) · claude.ai",
   footerSub:"10 jazykov · 3 úrovne · 6 AI platforiem",
@@ -4465,7 +4492,7 @@ nl:{
   aiBtn:"💬 AI-assistent openen", recLabel:"⭐ Aanbevolen",
   audioNote:'In ChatGPT kun je spraakweergave inschakelen – je hoort de <span class="hl">juiste uitspraak</span>.',
   coffeeH:"Vind je Contexta goed?",
-  coffeeBtn:"Steun",
+  coffeeBtn:"Ondersteun ontwikkeling",
   coffeeP:"Helpt Contexta je? Steun me met een koffie op <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — elke bijdrage kan Contexta verder helpen.",
   footerP:"Gemaakt met Claude AI (Anthropic) · claude.ai",
   footerSub:"10 talen · 3 niveaus · 6 AI-platforms",
@@ -4532,7 +4559,7 @@ sv:{
   aiBtn:"💬 Öppna AI-assistent", recLabel:"⭐ Rekommenderas",
   audioNote:'I ChatGPT kan du aktivera röstuppspelning – du hör <span class="hl">korrekt uttal</span>.',
   coffeeH:"Gillar du Contexta?",
-  coffeeBtn:"Stöd",
+  coffeeBtn:"Stöd utvecklingen",
   coffeeP:"Hjälper Contexta dig? Stöd mig med ett kaffe på <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — varje bidrag kan föra Contexta framåt.",
   footerP:"Skapad med Claude AI (Anthropic) · claude.ai",
   footerSub:"10 språk · 3 nivåer · 6 AI-plattformar",
@@ -4599,7 +4626,7 @@ ru:{
   aiBtn:"💬 Открыть AI ассистента", recLabel:"⭐ Рекомендуется",
   audioNote:'В ChatGPT можно включить голосовое воспроизведение — <span class="hl">услышишь правильное произношение</span>.',
   coffeeH:"Нравится Contexta?",
-  coffeeBtn:"Поддержать",
+  coffeeBtn:"Поддержать разработку",
   coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
   footerP:"Создано с помощью Claude AI (Anthropic) · claude.ai",
   footerSub:"10 языков · 3 уровня · 6 AI платформ",
@@ -4661,7 +4688,7 @@ tr:{
   aiBtn:"💬 AI asistanı aç", recLabel:"⭐ Önerilen",
   audioNote:'ChatGPT\'de sesli oynatmayı etkinleştirebilirsin – <span class="hl">doğru telaffuzu</span> duyarsın.',
   coffeeH:"Contexta'yı beğendin mi?",
-  coffeeBtn:"Destekle",
+  coffeeBtn:"Geliştirmeyi destekle",
   coffeeP:"Contexta işine yarıyor mu? <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>'de bir kahveyle beni destekle — her katkı Contexta'yı ileriye taşıyabilir.",
   footerP:"Claude AI (Anthropic) · claude.ai ile oluşturuldu",
   footerSub:"10 dil · 3 seviye · 6 AI platformu",
@@ -4781,7 +4808,7 @@ function selectWebLang(code, label, flag, el) {
   // Změna názvu stránky pro angličtinu
   document.title = code === 'en'
     ? 'Learn Languages Through Mini Dialogues'
-    : 'Uč se slova v kontextu dialogů';
+    : 'Jazyková aplikace pro učení se slov v kontextu vět a dialogů.';
 
   applyWebLang();
 }
@@ -5076,8 +5103,7 @@ function onIntentInput(el) {
   var hasText = el.value.length > 0;
   if (btn) btn.classList.toggle('visible', hasText);
   if (mini) {
-    mini.style.display = hasText ? 'flex' : 'none';
-    setTimeout(function(){ if (mini) mini.classList.toggle('visible', hasText); }, 10);
+    mini.classList.toggle('visible', hasText);
   }
   clearTimeout(intentTimer);
   var val = el.value.trim();
@@ -6511,6 +6537,7 @@ function genGenerate() {
 
   var fromLang = getGenFromLang();
   var toLang   = getGenToLang();
+
   var fromName = GEN_NAMES[fromLang] || fromLang;
   var toName   = GEN_NAMES[toLang]   || toLang;
 
@@ -6521,6 +6548,7 @@ function genGenerate() {
     if (intentEl) intentEl.focus();
     return;
   }
+
   document.getElementById('genError').style.display = 'none';
 
   // CEFR-specific grammar guidance
@@ -6552,13 +6580,21 @@ function genGenerate() {
     '  • Isolated translations: Apple = jablko\n' +
     '  • Robotic openers: "Are you looking forward to...?" / "Yes, I am looking forward to it."\n' +
     '  • Textbook stiffness: "I am very pleased to inform you..."\n' +
-    '  • Matching sentence structure in both lines (it sounds unnatural)\n\n' +
+    '  • Matching sentence structure in both lines (it sounds unnatural)\n' +
+    '  • Hollow acknowledgements when someone agrees: "That makes sense.", "I understand.", "I see." — unless the character genuinely wouldn\'t know or is processing new info\n' +
+    '  • Bare "Me too." / "Já také." as a final line — always follow it with a personal note\n\n' +
     '✅ REQUIRED — write like THIS:\n' +
     '  • People interrupt, react, add comments — "Oh really?", "No way.", "Same here."\n' +
     '  • Use contractions: I\'m, don\'t, can\'t, won\'t, it\'s, let\'s\n' +
     '  • Mix question types: "You going?" / "Did you hear?" / "What about...?"\n' +
     '  • Answers are short and real: "Nope.", "Totally.", "Yeah, finally."\n' +
-    '  • Include at least 3 dialogues with a follow-up reaction (surprise, agreement, humor)\n\n' +
+    '  • Include at least 3 dialogues with a follow-up reaction (surprise, agreement, humor)\n' +
+    '  • When a speaker agrees or shares the same experience, add a personal follow-up — not just acknowledgement:\n' +
+    '    ❌ "A: That makes sense. Me too."\n' +
+    '    ✅ "A: Me too. I can barely wake up without it."\n' +
+    '    ❌ "A: Rozumím. Já také."\n' +
+    '    ✅ "A: Já taky. Bez ní se ráno sotva probudím."\n' +
+    '  • Prefer idiomatic, conversational phrasing over literal symmetry — people follow up with a personal remark, emotion or experience, not a rephrasing of what was just said\n\n' +
     'FORMAT for each dialogue — TWO BLOCKS:\n\n' +
     '[' + fromName + ']\n' +
     'Q: [question — casual, like a real person talking]\n' +
@@ -6623,64 +6659,59 @@ function genGenerate() {
   var fromLabel = (GEN_LABEL[fromLang] || fromLang.toUpperCase()) + ':';
   var toLabel   = (GEN_LABEL[toLang]   || toLang.toUpperCase())   + ':';
 
+  // Přeložená forma slova pro fromLabel část — AI dostane hotový fakt
+  var intentInFromLang = intent; // výchozí = zadané slovo
+  // Pokud jazyk A není angličtina a slovo vypadá anglicky (jen ASCII), upozorni AI explicitně
+  var looksEnglish = /^[a-zA-Z\s'-]+$/.test(intent);
+  var fromIsEnglish = (fromLang === 'en');
+  var needsTranslation = looksEnglish && !fromIsEnglish;
+
   var prompt =
-    'Vytvářej výukové dialogy pro učení jazyků.\n' +
-    'JAZYK A (výchozí): ' + fromName + '\n' +
-    'JAZYK B (cílový):  ' + toName + '\n' +
+    'Výukové dialogy. JAZYK A: ' + fromName + ' JAZYK B: ' + toName + '\n' +
     'TÉMA: ' + intent + '\n' +
-    (assistTopic ? 'KONTEXT – Téma: '           + assistTopic + '\n' : '') +
-    (assistVerb  ? 'KONTEXT – Frázové sloveso: ' + assistVerb  + '\n' : '') +
-    'ÚROVEŇ: ' + cefrLevel + '\n' +
-    'STYL: ' + (({'casual':'běžný/casual','formal':'formální/formal','slang':'slang','humor':'humorný/humorous'})[selectedStyle] || selectedStyle) + '\n' +
-    cefrGrammar + '\n\n' +
+    (assistTopic ? 'TÉMA KONTEXT: ' + assistTopic + '\n' : '') +
+    (assistVerb  ? 'FRÁZOVÉ SLOVESO: ' + assistVerb + '\n' : '') +
+    'ÚROVEŇ: ' + cefrLevel + ' STYL: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
-    'POVINNÁ PRAVIDLA FORMÁTU (striktní):\n' +
-    '- NIKDY nepoužívej názvy jazyků v plné formě.\n' +
-    '- Místo toho používej výhradně tyto fixní štítky: ' + fromLabel + ' a ' + toLabel + '\n' +
-    '- Tyto štítky jsou konstanty a nesmí se měnit.\n\n' +
+    'ŠTÍTKY (neměnné): ' + fromLabel + ' a ' + toLabel + '\n\n' +
 
-    'STRUKTURA VÝSTUPU (dodržuj naprosto přesně):\n\n' +
-    'Na úplný začátek napiš pouze jednou: slovo-překlad (překládané slovo a jeho překlad oddělené pomlčkou).\n\n' +
-    'Pak 3 vzorové věty — každou dvojici na dvou řádcích, mezi dvojicemi jeden prázdný řádek:\n' +
+    'VÝSTUP:\n' +
+    '1. Řádek 1: slovo-překlad\n' +
+    '2. Tři vzorové věty (každá dvojice na 2 řádcích, mezi nimi prázdný řádek):\n' +
     fromLabel + ' věta\n' +
     toLabel + ' překlad\n\n' +
-    'Pak ' + totalDialogs + ' dialogů číslovaných 1. až ' + totalDialogs + '.\n\n' +
-
-    'KONKRÉTNÍ PŘÍKLAD:\n\n' +
-    'Stůl-table\n\n' +
-    fromLabel + ' Stůl je vedle okna.\n' +
-    toLabel + ' The table is next to the window.\n\n' +
-    fromLabel + ' Na stole mám knihu a telefon.\n' +
-    toLabel + ' I have a book and a phone on the table.\n\n' +
-    fromLabel + ' Včera jsme koupili nový stůl do kuchyně.\n' +
-    toLabel + ' Yesterday we bought a new table for the kitchen.\n\n' +
+    '3. ' + totalDialogs + ' dialogů (1.–' + totalDialogs + ') v PŘESNĚ tomto formátu:\n\n' +
     '1.\n' +
     fromLabel + '\n' +
-    'a) Kde je kuchyňský stůl?\n' +
-    'b) U okna v kuchyni.\n' +
-    'a) Aha, tam je.\n\n' +
+    'a) ...\n' +
+    'b) ...\n' +
+    'a) ...\n\n' +
     toLabel + '\n' +
-    'a) Where is the kitchen table?\n' +
-    'b) By the kitchen window.\n' +
-    'a) Ah, there it is.\n\n' +
+    'a) ...\n' +
+    'b) ...\n' +
+    'a) ...\n\n' +
     '2.\n' +
-    '...\n\n' +
+    '(atd.)\n\n' +
 
     'PRAVIDLA DIALOGŮ:\n' +
-    '- Každý dialog má 3 repliky: a) otázka  b) odpověď  a) přirozená reakce nebo pokračování.\n' +
-    '- Třetí replika a) NESMÍ být jen suché potvrzení. Střídej: "Aha!", "Fakt?", "Opravdu?", "To dává smysl.", "Jasně.", "Zajímavé.", "A co tam dělá?" a podobné.\n' +
-    '- Každý dialog = jiná situace na téma "' + intent + '".\n' +
-    '- ' + toLabel + ' část musí být přirozený ekvivalent, ne doslovný překlad.\n' +
-    '- Dialogy krátké, reálné, přirozené — ne učebnicové.\n\n' +
+    '- 3 repliky: a) otázka  b) odpověď  a) reakce (ne jen "Aha." nebo "Rozumím.")\n' +
+    '- Každý dialog = jiná situace na téma "' + intent + '"\n' +
+    '- ' + toLabel + ' = přirozený ekvivalent, ne doslovný překlad\n' +
+    '- Krátké, reálné, hovorové\n\n' +
 
-    'ZÁKAZY:\n' +
-    '- Žádné plné názvy jazyků — pouze štítky ' + fromLabel + ' a ' + toLabel + '\n' +
-    '- Žádné tabulky, sloupce, odrážky, pipe znaky (|), Markdown.\n' +
-    '- Věta a překlad nesmí být na stejném řádku.\n' +
-    '- Dvě repliky nesmí být na stejném řádku.\n\n' +
+    (needsTranslation
+      ? '⚠️ SLOVO "' + intent + '" JE ANGLICKÉ — JAZYK A JE ' + fromName.toUpperCase() + ':\n' +
+        '- V ' + fromLabel + ' blocích NIKDY nepiš "' + intent + '" — přelož ho do ' + fromName + ' a používej POUZE tento překlad.\n' +
+        '- V ' + toLabel + ' blocích používej "' + intent + '" (anglicky).\n' +
+        '- Drž se PŘESNĚ tohoto slova — nikdy ne synonyma, podkategorie ani příbuzné výrazy.\n\n'
+      : '- "' + intent + '" může být v jiném jazyce — v ' + fromLabel + ' použij přesný překlad do ' + fromName + ', v ' + toLabel + ' překlad do ' + toName + '\n' +
+        '- Drž se PŘESNĚ tohoto slova — nikdy ne synonyma ani podkategorie.\n\n') +
+
+    'ZÁKAZY: názvy jazyků v plné formě, tabulky, Markdown, pipe znaky (|)\n' +
+    'Věta a překlad nesmí být na stejném řádku.\n\n' +
 
     'Počet dialogů: ' + totalDialogs + '\n' +
-    'Délka dialogů: ' + dlInfo.label + '\n';
+    'Délka: ' + dlInfo.label + '\n';
 
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
@@ -7023,5 +7054,232 @@ function vtGeneratePhrasal(pv) {
 </script>
 </div>
 </div>
+
+<style>
+/* ── Onboarding ── */
+#onbSkip {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 9999;
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  padding: 5px 13px;
+  font-size: .8rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background .2s;
+}
+#onbSkip:hover { background: rgba(255,255,255,.18); }
+
+.onb-highlight {
+  outline: 3px solid #ffe600 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 20px rgba(255,230,0,.9), 0 0 40px rgba(255,230,0,.4) !important;
+  transition: outline .3s ease, box-shadow .3s ease !important;
+}
+
+#onbDemoOutput {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 999;
+  width: 220px;
+}
+.onb-demo-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: .8rem;
+  line-height: 1.6;
+  color: #111;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  animation: onbFadeIn .35s ease;
+  position: relative;
+  width: 220px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.onb-demo-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+.onb-demo-card.onb-fade-out {
+  animation: onbFadeOut .4s ease forwards;
+}
+.onb-demo-prompt {
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255,255,255,.5);
+  font-size: .82rem;
+  animation: onbFadeIn .4s ease;
+}
+@keyframes onbFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes onbFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
+}
+</style>
+
+<script>
+(function () {
+  var SEEN_KEY = 'intro_seen_v2';
+
+  window.addEventListener('load', function () {
+    updateOnbBtn();
+    if (!localStorage.getItem(SEEN_KEY)) startOnboarding(false);
+  });
+
+  window.startOnboarding = function (forced) {
+    // Při forced (replay) smaž klíč aby šlo přehrát znovu
+    if (forced) localStorage.removeItem(SEEN_KEY);
+    if (!forced && localStorage.getItem(SEEN_KEY)) return;
+
+    var input  = document.getElementById('practiceInput');
+    var btn    = document.getElementById('genSendMainBtn');
+    var demoEl = document.getElementById('onbDemoOutput');
+    if (!input || !btn || !demoEl) return;
+
+    // Reset
+    demoEl.style.display = 'none';
+    demoEl.innerHTML = '';
+    removeSkip();
+
+    // Skip tlačítko
+    var skip = document.createElement('button');
+    skip.id = 'onbSkip';
+    skip.textContent = 'Přeskočit';
+    skip.onclick = finishOnboarding;
+    document.body.appendChild(skip);
+
+    // Scroll ke generátoru
+    var sec = document.getElementById('generator');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Krok 1: psaní slova
+    input.value = '';
+    input.focus();
+    var coffeeWords = {
+      en:'Dovolená', cz:'Dovolená', de:'Dovolená', fr:'Dovolená', es:'Dovolená',
+      it:'Dovolená', pl:'Dovolená', sk:'Dovolená', ru:'Dovolená', pt:'Dovolená',
+      cn:'Dovolená', jp:'Dovolená', kr:'Dovolená', nl:'Dovolená', sv:'Dovolená', tr:'Dovolená'
+    };
+    var word = coffeeWords[getGenFromLang()] || coffeeWords['en'];
+    var i = 0;
+    var typing = setInterval(function () {
+      input.value += word[i];
+      i++;
+      if (i >= word.length) {
+        clearInterval(typing);
+        // Krok 2: zvýrazni miniBtn (šipka vpravo dole od inputu)
+        var miniBtn = document.getElementById('generateMiniBtn');
+        if (miniBtn) {
+          miniBtn.classList.add('visible');
+          miniBtn.classList.add('onb-highlight');
+        }
+        setTimeout(function () {
+          if (miniBtn) {
+            miniBtn.classList.remove('onb-highlight');
+            miniBtn.classList.add('visible');
+          }
+          // Krok 3 + 4: zobraz demo výstup
+          showDemo(demoEl);
+          // Krok 5: výzva + focus
+          setTimeout(function () {
+            demoEl.insertAdjacentHTML('beforeend',
+              '<p class="onb-demo-prompt">✏️ Zadejte vlastní slovo a vyzkoušejte to sami…</p>'
+            );
+            input.value = '';
+            input.focus();
+            // Fade-out bubliny před skrytím
+            var card = demoEl.querySelector('.onb-demo-card');
+            if (card) card.classList.add('onb-fade-out');
+            setTimeout(function() {
+              demoEl.style.display = 'none';
+              demoEl.innerHTML = '';
+              // Skryj miniBtn — objeví se znovu až uživatel zadá text
+              var mb = document.getElementById('generateMiniBtn');
+              if (mb) mb.classList.remove('visible');
+              // Krok 6: deaktivace
+              finishOnboarding();
+            }, 400);
+          }, 9600);
+        }, 700);
+      }
+    }, 90);
+  };
+
+  function showDemo(el) {
+    var fromCode = getGenFromLang() || 'cz';
+    var toCode   = getGenToLang()   || 'en';
+    var fromLabel = fromCode.toUpperCase();
+    var toLabel   = toCode.toUpperCase();
+
+    var fromDlg = (D[fromCode] && D[fromCode][0]) ? D[fromCode][0] : null;
+    var toDlg   = (D[toCode]   && D[toCode][0])   ? D[toCode][0]   : null;
+
+    var fromHtml = fromDlg
+      ? 'a) ' + fromDlg[0] + '<br>b) ' + fromDlg[1]
+      : '(ukázka nedostupná)';
+    var toHtml = toDlg
+      ? 'a) ' + toDlg[0] + '<br>b) ' + toDlg[1]
+      : '(preview unavailable)';
+
+    el.style.display = 'block';
+    el.innerHTML =
+      '<div class="onb-demo-card">' +
+        '<strong>' + fromLabel + ':</strong><br>' +
+        fromHtml + '<br><br>' +
+        '<strong>' + toLabel + ':</strong><br>' +
+        toHtml +
+      '</div>';
+  }
+
+  function finishOnboarding() {
+    localStorage.setItem(SEEN_KEY, '1');
+    removeSkip();
+    updateOnbBtn();
+  }
+
+  function updateOnbBtn() {
+    var active = !localStorage.getItem(SEEN_KEY);
+    var chip = document.getElementById('onbChipBtn');
+    if (chip) chip.textContent = active ? '■ Ukázka' : '▶ Ukázka';
+  }
+
+  window.toggleOnboarding = function () {
+    if (localStorage.getItem(SEEN_KEY)) {
+      // Aktivovat — smaž klíč, spusť ukázku
+      localStorage.removeItem(SEEN_KEY);
+      updateOnbBtn();
+      startOnboarding(false);
+    } else {
+      // Deaktivovat — ulož klíč, ukonči případně běžící ukázku
+      finishOnboarding();
+    }
+  };
+
+  // DEV helper: window.resetOnboarding() v konzoli pro reset
+  window.resetOnboarding = function() {
+    localStorage.removeItem(SEEN_KEY);
+    console.log('Onboarding reset. Znovu načti stránku.');
+  };
+
+  function removeSkip() {
+    var s = document.getElementById('onbSkip');
+    if (s) s.remove();
+  }
+})();
+</script>
 </body>
 </html>
