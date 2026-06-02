@@ -1834,7 +1834,7 @@ img { max-width: 100%; height: auto; }
 }
 .gen-intent-input::placeholder { color: rgba(255,255,255,.28); font-size: .88rem; }
 .gen-intent-examples {
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center;
+  display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 10px; align-items: center; justify-content: center;
 }
 .gen-intent-ex-label {
   font-size: .72rem; color: rgba(255,255,255,.35);
@@ -2359,14 +2359,13 @@ img { max-width: 100%; height: auto; }
 }
 @media (max-width: 767px) {
   .gen-intent-examples {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 4px;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+    gap: 7px;
+    padding: 0;
   }
-  .gen-intent-examples::-webkit-scrollbar { display: none; }
-  .gen-ex-chip { flex-shrink: 0; }
+  .gen-ex-chip { flex-shrink: 1; white-space: nowrap; }
 }
 .gen-primary-block .gen-intent-ex-label {
   font-size: .7rem;
@@ -3195,10 +3194,11 @@ h1[data-t="heroH"] {
       </div>
       <div class="gen-intent-examples">
 
-        <button class="gen-ex-chip" data-translate="exChip4" onclick="insertToPractice(this.textContent)">job interview</button>
-        <button class="gen-ex-chip" data-translate="exChip5" onclick="insertToPractice(this.textContent)">check in</button>
-        <button class="gen-ex-chip" data-translate="exChip6" onclick="insertToPractice(this.textContent)">small talk</button>
-        <button class="gen-ex-chip" data-translate="exChip1" onclick="insertToPractice(this.textContent)">objednat jídlo</button>
+        <button class="gen-ex-chip" data-translate="exChip6" onclick="insertToPractice(this.textContent)">Smalltalk</button>
+        <button class="gen-ex-chip" data-translate="exChip1" onclick="insertToPractice(this.textContent)">Jídlo</button>
+        <button class="gen-ex-chip" data-translate="exChip3" onclick="insertToPractice(this.textContent)">Cestování</button>
+        <button class="gen-ex-chip" data-translate="exChip7" onclick="insertToPractice(this.textContent)">Úřady</button>
+        <button class="gen-ex-chip" data-translate="exChip5" onclick="insertToPractice(this.textContent)">Ubytování</button>
       </div>
 
       <!-- TÉMA DROPDOWN -->
@@ -3607,7 +3607,7 @@ cz:{
   genErrEmpty:'Napiš situaci nebo záměr, který chceš procvičit.',
   exChip0:'pracovat v týmu', exChip1:'objednat jídlo',
   exChip2:'vyřešit konflikt', exChip3:'cestování', exChip4:'pracovní pohovor',
-  exChip5:'odbavení', exChip6:'společenský rozhovor',
+  exChip5:'odbavení', exChip6:'společenský rozhovor', exChip7:'úřady',
   extractTitle:'Navržený kontext',
   extractTema:'TÉMA', extractAkce:'AKCE', extractSituace:'SITUACE',
   webLangLabel:'Jazyk webu',
@@ -3665,7 +3665,7 @@ en:{
   genBtn:'Open ChatGPT',
   genHint:'💡 ChatGPT opens with the prompt ready — just press Enter',
   genErrEmpty:'Enter a word or phrase.',
-  fBrand:'Learn language in the context of dialogues',
+  fBrand:'A language app for learning words in the context of sentences and dialogues.',
   heroSubTagline:'One word. 10 real conversations.',
   heroTagline:'Mini dialogues in context · Levels A1–C2 · More than 15 languages · Real-life situations · Natural communication · 10 dialogues per generation',
   examplesLabel:'Examples:',
@@ -3691,7 +3691,7 @@ en:{
   genErrEmpty:'Write a situation or intention you want to practise.',
   exChip0:'working in a team', exChip1:'ordering food',
   exChip2:'resolving a conflict', exChip3:'travelling', exChip4:'job interview',
-  exChip5:'check in', exChip6:'small talk',
+  exChip5:'check in', exChip6:'small talk', exChip7:'official business',
   extractTitle:'Suggested context',
   extractTema:'TOPIC', extractAkce:'ACTION', extractSituace:'SITUATION',
   webLangLabel:'Web language',
@@ -3749,7 +3749,7 @@ de:{
   genBtn:'ChatGPT öffnen',
   genHint:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
   genErrEmpty:'Bitte ein Wort oder eine Phrase eingeben.',
-  fBrand:'Sprachen lernen im Kontext von Dialogen',
+  fBrand:'Eine Sprachlern-App zum Lernen von Wörtern im Kontext von Sätzen und Dialogen.',
   heroSubTagline:'Ein Wort. 10 echte Gespräche.',
   heroTagline:'Mini-Dialoge im Kontext · Niveaus A1–C2 · Mehr als 15 Sprachen · Reale Situationen · Natürliche Kommunikation · 10 Dialoge pro Generierung',
   examplesLabel:'Beispiele:',
@@ -3775,7 +3775,7 @@ de:{
   genErrEmpty:'Bitte eine Situation oder Absicht eingeben.',
   exChip0:'im Team arbeiten', exChip1:'Essen bestellen',
   exChip2:'Konflikt lösen', exChip3:'Reisen', exChip4:'Vorstellungsgespräch',
-  exChip5:'Check-in', exChip6:'Small Talk',
+  exChip5:'Check-in', exChip6:'Small Talk', exChip7:'Behörden',
   extractTitle:'Vorgeschlagener Kontext',
   extractTema:'THEMA', extractAkce:'AKTION', extractSituace:'SITUATION',
   webLangLabel:'Webseitensprache',
@@ -3830,7 +3830,7 @@ fr:{
   genBtn:'Ouvrir ChatGPT',
   genHint:'💡 ChatGPT s\'ouvre avec le prompt — appuyez simplement sur Entrée',
   genErrEmpty:'Entrez un mot ou une phrase.',
-  fBrand:'Apprendre la langue dans le contexte des dialogues',
+  fBrand:'Une application linguistique pour apprendre les mots dans le contexte de phrases et de dialogues.',
   heroSubTagline:'Un mot. 10 vraies conversations.',
   heroTagline:'Mini-dialogues en contexte · Niveaux A1–C2 · Plus de 15 langues · Situations réelles · Communication naturelle · 10 dialogues par génération',
   examplesLabel:'Exemples:',
@@ -3852,7 +3852,7 @@ fr:{
   genErrEmpty2:"Écris une situation ou une intention à pratiquer.",
   exChip0:"travailler en équipe", exChip1:"commander un repas",
   exChip2:"résoudre un conflit", exChip3:"voyager", exChip4:"entretien d'embauche",
-  exChip5:"enregistrement", exChip6:"petite conversation",
+  exChip5:"enregistrement", exChip6:"petite conversation", exChip7:"démarches",
   extractTitle:"Contexte suggéré",
   extractKeyTema:"SUJET", extractKeyAkce:"ACTION", extractKeySituace:"SITUATION",
   webLangLabel:"Langue du site",
@@ -3907,7 +3907,7 @@ es:{
   genBtn:'Abrir ChatGPT',
   genHint:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
   genErrEmpty:'Escribe una palabra o frase.',
-  fBrand:'Aprende o idioma no contexto dos diálogos',
+  fBrand:'Una aplicación de idiomas para aprender palabras en el contexto de frases y diálogos.',
   heroSubTagline:'Una palabra. 10 conversaciones reales.',
   heroTagline:'Mini diálogos em contexto · Níveis A1–C2 · Mais de 15 idiomas · Situações reais · Comunicação natural · 10 diálogos por geração',
   examplesLabel:'Ejemplos:',
@@ -3930,7 +3930,7 @@ es:{
   genErrEmpty2:'Escribe una situación o intención que quieras practicar.',
   exChip0:'trabajar en equipo', exChip1:'pedir comida',
   exChip2:'resolver un conflicto', exChip3:'viajar', exChip4:'entrevista de trabajo',
-  exChip5:'registrarse', exChip6:'charla informal',
+  exChip5:'registrarse', exChip6:'charla informal', exChip7:'trámites',
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
@@ -3985,7 +3985,7 @@ it:{
   genBtn:'Apri ChatGPT',
   genHint:'💡 ChatGPT si apre con il prompt — premi solo Invio',
   genErrEmpty:'Inserisci una parola o frase.',
-  fBrand:'Impara la lingua nel contesto dei dialoghi',
+  fBrand:'Un\'app linguistica per imparare le parole nel contesto di frasi e dialoghi.',
   heroSubTagline:'Una parola. 10 conversazioni reali.',
   heroTagline:'Mini dialoghi in contesto · Livelli A1–C2 · Più di 15 lingue · Situazioni reali · Comunicazione naturale · 10 dialoghi per generazione',
   examplesLabel:'Esempi:',
@@ -4008,7 +4008,7 @@ it:{
   genErrEmpty2:'Scrivi una situazione o intenzione da praticare.',
   exChip0:'lavorare in team', exChip1:'ordinare da mangiare',
   exChip2:'risolvere un conflitto', exChip3:'viaggiare', exChip4:'colloquio di lavoro',
-  exChip5:'fare il check-in', exChip6:'conversazione leggera',
+  exChip5:'fare il check-in', exChip6:'conversazione leggera', exChip7:'pratiche burocratiche',
   extractTitle:'Contesto suggerito',
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
@@ -4063,7 +4063,7 @@ pt:{
   genBtn:'Abrir ChatGPT',
   genHint:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
   genErrEmpty:'Escreva uma palavra ou frase.',
-  fBrand:'Aprende o idioma no contexto dos diálogos',
+  fBrand:'Um aplicativo de idiomas para aprender palavras no contexto de frases e diálogos.',
   heroSubTagline:'Uma palavra. 10 conversas reais.',
   examplesLabel:'Exemplos:',
   intentLabel:'💬 O que você quer praticar?',
@@ -4085,7 +4085,7 @@ pt:{
   genErrEmpty2:'Escreva uma situação ou intenção que deseja praticar.',
   exChip0:'trabalhar em equipe', exChip1:'pedir comida',
   exChip2:'resolver um conflito', exChip3:'viajar', exChip4:'entrevista de emprego',
-  exChip5:'fazer check-in', exChip6:'conversa informal',
+  exChip5:'fazer check-in', exChip6:'conversa informal', exChip7:'repartições',
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
@@ -4140,7 +4140,7 @@ pl:{
   genBtn:'Otwórz ChatGPT',
   genHint:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
   genErrEmpty:'Wpisz słowo lub frazę.',
-  fBrand:'Ucz się języka w kontekście dialogów',
+  fBrand:'Aplikacja językowa do nauki słów w kontekście zdań i dialogów.',
   heroSubTagline:'Jedno słowo. 10 prawdziwych rozmów.',
   heroTagline:'Mini dialogi w kontekście · Poziomy A1–C2 · Ponad 15 języków · Realne sytuacje · Naturalna komunikacja · 10 dialogów na generowanie',
   examplesLabel:'Przykłady:',
@@ -4163,7 +4163,7 @@ pl:{
   genErrEmpty2:'Napisz sytuację lub zamiar, który chcesz ćwiczyć.',
   exChip0:'praca zespołowa', exChip1:'zamawianie jedzenia',
   exChip2:'rozwiązanie konfliktu', exChip3:'podróże', exChip4:'rozmowa kwalifikacyjna',
-  exChip5:'zameldowanie', exChip6:'small talk',
+  exChip5:'zameldowanie', exChip6:'small talk', exChip7:'urzędy',
   extractTitle:'Sugerowany kontekst',
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
@@ -4218,7 +4218,7 @@ cn:{
   genBtn:'打开ChatGPT',
   genHint:'💡 ChatGPT将携带提示词打开 — 只需按Enter',
   genErrEmpty:'请输入单词或短语。',
-  fBrand:'在对话情境中学习语言',
+  fBrand:'一款在句子和对话语境中学习单词的语言应用程序。',
   heroSubTagline:'一个词。10段真实对话。',
   heroTagline:'情境迷你对话 · A1–C2 级别 · 超过15种语言 · 真实场景 · 自然交流 · 每次生成10段对话',
   examplesLabel:'示例：',
@@ -4241,7 +4241,7 @@ cn:{
   genErrEmpty2:'请输入您想练习的情境或意图。',
   exChip0:'团队合作', exChip1:'点餐',
   exChip2:'解决冲突', exChip3:'旅行', exChip4:'工作面试',
-  exChip5:'登记入住', exChip6:'闲聊',
+  exChip5:'登记入住', exChip6:'闲聊', exChip7:'政府办事',
   extractTitle:'建议的背景',
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
@@ -4296,7 +4296,7 @@ jp:{
   genBtn:'ChatGPTを開く',
   genHint:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
   genErrEmpty:'単語またはフレーズを入力してください。',
-  fBrand:'対話のコンテキストで言語を学ぶ',
+  fBrand:'文章や会話の文脈の中で単語を学ぶ語学アプリ。',
   heroSubTagline:'ひとつの単語。10の実際の会話。',
   heroTagline:'コンテキストのミニ会話 · レベルA1–C2 · 15以上の言語 · 実際の場面 · 自然なコミュニケーション · 1回の生成で10の会話',
   examplesLabel:'例：',
@@ -4319,7 +4319,7 @@ jp:{
   genErrEmpty2:'練習したい状況や意図を入力してください。',
   exChip0:'チームで働く', exChip1:'食事を注文する',
   exChip2:'対立を解決する', exChip3:'旅行', exChip4:'就職面接',
-  exChip5:'チェックイン', exChip6:'雑談',
+  exChip5:'チェックイン', exChip6:'雑談', exChip7:'役所',
   extractTitle:'提案されたコンテキスト',
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
@@ -4374,7 +4374,7 @@ kr:{
   genBtn:'ChatGPT 열기',
   genHint:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
   genErrEmpty:'단어 또는 구문을 입력하세요.',
-  fBrand:'대화의 맥락에서 언어를 배우다',
+  fBrand:'문장과 대화의 맥락 속에서 단어를 배우는 언어 학습 앱.',
   heroSubTagline:'단어 하나. 10개의 실제 대화.',
   heroTagline:'맥락 속 미니 대화 · A1–C2 수준 · 15개 이상의 언어 · 실제 상황 · 자연스러운 소통 · 생성당 10개 대화',
   examplesLabel:'예시:',
@@ -4397,7 +4397,7 @@ kr:{
   genErrEmpty2:'연습하고 싶은 상황이나 의도를 입력해 주세요.',
   exChip0:'팀으로 일하기', exChip1:'음식 주문하기',
   exChip2:'갈등 해결하기', exChip3:'여행', exChip4:'취업 면접',
-  exChip5:'체크인', exChip6:'가벼운 대화',
+  exChip5:'체크인', exChip6:'가벼운 대화', exChip7:'관공서',
   extractTitle:'제안된 맥락',
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
@@ -4442,7 +4442,7 @@ sk:{
   genBtn:'Otvoriť ChatGPT',
   genHint:'💡 ChatGPT sa otvorí rovno s promptom — stačí stlačiť Enter',
   genErrEmpty:'Zadaj slovo alebo frázu.',
-  fBrand:'Uč sa jazyk v kontexte dialógov',
+  fBrand:'Jazyková aplikácia na učenie sa slov v kontexte viet a dialógov.',
   heroSubTagline:'Jedno slovo. 10 reálnych konverzácií.',
   heroTagline:'Mini dialógy v kontexte · Úrovne A1–C2 · Viac ako 15 jazykov · Reálne situácie · Prirodzená komunikácia · 10 dialógov v každom generovaní',
   examplesLabel:'Príklady:',
@@ -4464,7 +4464,7 @@ sk:{
   genErrEmpty2:'Napíš situáciu alebo zámer, ktorý chceš precvičiť.',
   exChip0:'pracovať v tíme', exChip1:'objednať jedlo',
   exChip2:'vyriešiť konflikt', exChip3:'cestovanie', exChip4:'pracovný pohovor',
-  exChip5:'odbavenie', exChip6:'spoločenský rozhovor',
+  exChip5:'odbavenie', exChip6:'spoločenský rozhovor', exChip7:'úrady',
   extractTitle:'Navrhovaný kontext',
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
@@ -4509,7 +4509,7 @@ nl:{
   genBtn:'ChatGPT openen',
   genHint:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
   genErrEmpty:'Voer een woord of uitdrukking in.',
-  fBrand:'Leer de taal in de context van dialogen',
+  fBrand:'Een taalapp voor het leren van woorden in de context van zinnen en dialogen.',
   heroSubTagline:'Één woord. 10 echte gesprekken.',
   heroTagline:'Mini-dialogen in context · Niveaus A1–C2 · Meer dan 15 talen · Echte situaties · Natuurlijke communicatie · 10 dialogen per generatie',
   examplesLabel:'Voorbeelden:',
@@ -4531,7 +4531,7 @@ nl:{
   genErrEmpty2:'Schrijf de situatie of intentie die je wilt oefenen.',
   exChip0:'samenwerken', exChip1:'eten bestellen',
   exChip2:'conflict oplossen', exChip3:'reizen', exChip4:'sollicitatiegesprek',
-  exChip5:'inchecken', exChip6:'koetjes en kalfjes',
+  exChip5:'inchecken', exChip6:'koetjes en kalfjes', exChip7:'overheidszaken',
   extractTitle:'Voorgestelde context',
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
@@ -4576,7 +4576,7 @@ sv:{
   genBtn:'Öppna ChatGPT',
   genHint:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
   genErrEmpty:'Ange ett ord eller fras.',
-  fBrand:'Lär dig språket i dialogernas sammanhang',
+  fBrand:'En språkapp för att lära sig ord i sammanhang av meningar och dialoger.',
   heroSubTagline:'Ett ord. 10 riktiga samtal.',
   heroTagline:'Minidialoger i kontext · Nivåer A1–C2 · Fler än 15 språk · Verkliga situationer · Naturlig kommunikation · 10 dialoger per generering',
   examplesLabel:'Exempel:',
@@ -4598,7 +4598,7 @@ sv:{
   genErrEmpty2:'Skriv situationen eller avsikten du vill öva.',
   exChip0:'teamarbete', exChip1:'beställa mat',
   exChip2:'lösa konflikt', exChip3:'resor', exChip4:'jobbintervju',
-  exChip5:'checka in', exChip6:'småprat',
+  exChip5:'checka in', exChip6:'småprat', exChip7:'myndighetskontakt',
   extractTitle:'Föreslagen kontext',
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
@@ -4638,7 +4638,7 @@ ru:{
   genBtn:'Открыть ChatGPT',
   genHint:'💡 ChatGPT откроется с промптом — просто нажми Enter',
   genErrEmpty:'Введи слово или фразу.',
-  fBrand:'Учи язык в контексте диалога',
+  fBrand:'Языковое приложение для изучения слов в контексте предложений и диалогов.',
   heroSubTagline:'Одно слово. 10 реальных диалогов.',
   heroTagline:'Мини-диалоги в контексте · Уровни A1–C2 · Более 15 языков · Реальные ситуации · Естественное общение · 10 диалогов за генерацию',
   examplesLabel:'Примеры:',
@@ -4660,7 +4660,7 @@ ru:{
   genErrEmpty2:'Напиши ситуацию или намерение для практики.',
   exChip0:'командная работа', exChip1:'заказать еду',
   exChip2:'разрешить конфликт', exChip3:'путешествие', exChip4:'собеседование',
-  exChip5:'регистрация', exChip6:'светская беседа',
+  exChip5:'регистрация', exChip6:'светская беседа', exChip7:'госучреждения',
   extractTitle:'Предложенный контекст',
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
@@ -4705,7 +4705,7 @@ tr:{
   genBtn:'ChatGPT\'yi aç',
   genHint:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
   genErrEmpty:'Kelime veya ifade gir.',
-  fBrand:'Dili diyalog bağlamında öğren',
+  fBrand:'Cümle ve diyalog bağlamında kelime öğrenmek için bir dil uygulaması.',
   heroSubTagline:'Bir kelime. 10 gerçek diyalog.',
   heroTagline:'Bağlamda mini diyaloglar · A1–C2 seviyeleri · 15’ten fazla dil · Gerçek durumlar · Doğal iletişim · Her oluşturmada 10 diyalog',
   examplesLabel:'Örnekler:',
@@ -4727,7 +4727,7 @@ tr:{
   genErrEmpty2:'Pratik yapmak istediğin durumu veya niyeti yaz.',
   exChip0:'takım çalışması', exChip1:'yemek sipariş et',
   exChip2:'çatışma çöz', exChip3:'seyahat', exChip4:'iş görüşmesi',
-  exChip5:'giriş yapmak', exChip6:'sohbet',
+  exChip5:'giriş yapmak', exChip6:'sohbet', exChip7:'resmi işlemler',
   extractTitle:'Önerilen bağlam',
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
@@ -5710,6 +5710,7 @@ function selectGenLang(side, code, e) {
       webLang = code;
       setLangBtn(code, lang.label);
       applyWebLang();
+      updateOnbBtn();
     }
   }
 }
@@ -5737,6 +5738,7 @@ function swapLangs() {
     webLang = genFromLangVal;
     setLangBtn(genFromLangVal, lang.label);
     applyWebLang();
+    updateOnbBtn();
   }
 }
 // (syncGenFromLang, onFromLangChange, onToLangChange, swapLangs
@@ -7129,6 +7131,32 @@ function vtGeneratePhrasal(pv) {
   from { opacity: 1; transform: translateY(0); }
   to   { opacity: 0; transform: translateY(-6px); }
 }
+
+/* Mobilní zařízení – posun okna nad klávesnici */
+@media (max-width: 768px) {
+  #onbDemoOutput {
+    top: auto;
+    bottom: calc(50% + 4px);
+  }
+  .onb-demo-card::before {
+    top: auto;
+    bottom: -8px;
+    border-bottom: none;
+    border-top: 8px solid #fff;
+  }
+}
+
+/* PC – větší okno, vodorovný obdélník */
+@media (min-width: 769px) {
+  #onbDemoOutput {
+    width: 640px;
+    top: calc(100% + 8px - 130px);
+  }
+  .onb-demo-card {
+    width: 640px;
+    max-height: 260px;
+  }
+}
 </style>
 
 <script>
@@ -7169,12 +7197,8 @@ function vtGeneratePhrasal(pv) {
     // Krok 1: psaní slova
     input.value = '';
     input.focus();
-    var coffeeWords = {
-      en:'Dovolená', cz:'Dovolená', de:'Dovolená', fr:'Dovolená', es:'Dovolená',
-      it:'Dovolená', pl:'Dovolená', sk:'Dovolená', ru:'Dovolená', pt:'Dovolená',
-      cn:'Dovolená', jp:'Dovolená', kr:'Dovolená', nl:'Dovolená', sv:'Dovolená', tr:'Dovolená'
-    };
-    var word = coffeeWords[getGenFromLang()] || coffeeWords['en'];
+    var fromLangCode = getGenFromLang() || 'cz';
+    var word = (T[fromLangCode] && T[fromLangCode].tag3) || 'Ukázka';
     var i = 0;
     var typing = setInterval(function () {
       input.value += word[i];
@@ -7251,10 +7275,13 @@ function vtGeneratePhrasal(pv) {
     updateOnbBtn();
   }
 
-  function updateOnbBtn() {
+  window.updateOnbBtn = function updateOnbBtn() {
     var active = !localStorage.getItem(SEEN_KEY);
     var chip = document.getElementById('onbChipBtn');
-    if (chip) chip.textContent = active ? '■ Ukázka' : '▶ Ukázka';
+    if (chip) {
+      var label = (T[getGenFromLang()] && T[getGenFromLang()].tag3) || 'Ukázka';
+      chip.textContent = active ? '■ ' + label : '▶ ' + label;
+    }
   }
 
   window.toggleOnboarding = function () {
