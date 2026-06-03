@@ -586,8 +586,9 @@ h2 {
   display: block;
 }
 .dconv-block-sep {
-  border-top: 1px solid var(--border-lt);
-  margin-top: 2px;
+  border-top: 2px solid var(--border);
+  margin-top: 8px;
+  padding-top: 4px;
 }
 .dconv-lang {
   font-family: 'JetBrains Mono', monospace;
@@ -3431,7 +3432,7 @@ const D = {
       ["Nevypadáš moc nadšeně.","Nejsem. Jsem hotovej a nemám na nic náladu."],
       ["Dáme si dnes večer někde jídlo?","Určitě. Dneska jsem ještě nic nejedl."],
       ["Viděls trailer na ten nový film?","Jo! Strašně se na to těším. Vypadá to skvěle."]],
-  de:[["Wohin möchtest du dieses Jahr reisen?","Ich würde gerne nach Italien fahren."],
+  de:[["Freust du dich auf den Urlaub?","Ja, ich freue mich sehr!"],
       ["Worauf freust du dich am meisten?","Ich freue mich auf Weihnachten."],
       ["Freust du dich auf die neue Arbeit?","Ja, sehr."],
       ["Freuen sich die Kinder auf die Schule?","Nein, gar nicht."],
@@ -3441,7 +3442,7 @@ const D = {
       ["Warum freust du dich nicht?","Ich bin müde."],
       ["Freust du dich auf das Abendessen?","Ja, ich bin hungrig."],
       ["Freust du dich auf den neuen Film?","Sehr. Ich schaue ihn heute."]],
-  fr:[["Où aimerais-tu voyager cette année ?","J'adorerais visiter l'Italie."],
+  fr:[["Tu te réjouis des vacances ?","Oui, j'ai vraiment hâte !"],
       ["À quoi tu te réjouis le plus ?","J'attends Noël avec impatience."],
       ["Tu te réjouis du nouveau travail ?","Oui, vraiment."],
       ["Les enfants se réjouissent de l'école ?","Non, pas du tout."],
@@ -3451,7 +3452,7 @@ const D = {
       ["Pourquoi tu ne te réjouis pas ?","Je suis fatigué."],
       ["Tu te réjouis du dîner ?","Oui, j'ai faim."],
       ["Tu te réjouis du nouveau film ?","Beaucoup. Je le regarde aujourd'hui."]],
-  es:[["¿A dónde te gustaría viajar este año?","Me encantaría visitar Italia."],
+  es:[["¿Tienes ganas de las vacaciones?","¡Sí, tengo muchas ganas!"],
       ["¿De qué tienes más ganas?","Tengo ganas de la Navidad."],
       ["¿Tienes ganas del nuevo trabajo?","Sí, mucho."],
       ["¿Los niños tienen ganas de la escuela?","No, para nada."],
@@ -3461,7 +3462,7 @@ const D = {
       ["¿Por qué no tienes ganas?","Estoy cansado."],
       ["¿Tienes ganas de la cena?","Sí, tengo hambre."],
       ["¿Tienes ganas de la nueva película?","Mucho. La veo hoy."]],
-  it:[["Dove vorresti viaggiare quest'anno?","Vorrei visitare l'Italia."],
+  it:[["Non vedi l'ora delle vacanze?","Sì, non vedo l'ora!"],
       ["Cosa aspetti di più?","Non vedo l'ora del Natale."],
       ["Non vedi l'ora del nuovo lavoro?","Sì, molto."],
       ["I bambini aspettano la scuola?","No, per niente."],
@@ -3471,7 +3472,7 @@ const D = {
       ["Perché non aspetti?","Sono stanco."],
       ["Non vedi l'ora della cena?","Sì, ho fame."],
       ["Non vedi l'ora del nuovo film?","Molto. Lo guardo oggi."]],
-  pt:[["Para onde você gostaria de viajar este ano?","Adoraria visitar a Itália."],
+  pt:[["Você está ansioso pelas férias?","Sim, estou muito ansioso!"],
       ["O que você mais aguarda?","Aguardo o Natal com ansiedade."],
       ["Está ansioso pelo novo emprego?","Sim, muito."],
       ["As crianças aguardam a escola?","Não, de jeito nenhum."],
@@ -3481,7 +3482,7 @@ const D = {
       ["Por que não está ansioso?","Estou cansado."],
       ["Está ansioso pelo jantar?","Sim, estou com fome."],
       ["Está ansioso pelo novo filme?","Muito. Vou assistir hoje."]],
-  pl:[["Gdzie chciałbyś podróżować w tym roku?","Chciałbym odwiedzić Włochy."],
+  pl:[["Cieszysz się na wakacje?","Tak, bardzo się cieszę!"],
       ["Na co najbardziej się cieszysz?","Cieszę się na Boże Narodzenie."],
       ["Cieszysz się na nową pracę?","Tak, bardzo."],
       ["Dzieci cieszą się na szkołę?","Nie, wcale."],
@@ -3491,7 +3492,7 @@ const D = {
       ["Dlaczego się nie cieszysz?","Jestem zmęczony."],
       ["Cieszysz się na kolację?","Tak, jestem głodny."],
       ["Cieszysz się na nowy film?","Bardzo. Oglądam go dzisiaj."]],
-  cn:[["你今年想去哪里旅行？","我很想去意大利。"],
+  cn:[["你期待假期吗？","是的，我非常期待！"],
       ["你最期待什么？","我期待圣诞节。"],
       ["你期待新工作吗？","是的，非常期待。"],
       ["孩子们期待上学吗？","不，一点也不。"],
@@ -3501,7 +3502,7 @@ const D = {
       ["为什么你不期待？","我很累。"],
       ["你期待晚餐吗？","是的，我饿了。"],
       ["你期待新电影吗？","很期待。今天就看。"]],
-  jp:[["今年はどこに旅行したいですか？","イタリアに行ってみたいです。"],
+  jp:[["休暇を楽しみにしていますか？","はい、とても楽しみにしています！"],
       ["何を一番楽しみにしていますか？","クリスマスを楽しみにしています。"],
       ["新しい仕事を楽しみにしていますか？","はい、とても。"],
       ["子どもたちは学校を楽しみにしていますか？","いいえ、全然。"],
@@ -3511,7 +3512,7 @@ const D = {
       ["なぜ楽しみにしていないのですか？","疲れています。"],
       ["夕食を楽しみにしていますか？","はい、お腹が空いています。"],
       ["新しい映画を楽しみにしていますか？","とても。今日見ます。"]],
-  kr:[["올해 어디로 여행하고 싶으세요?","이탈리아를 방문하고 싶어요."],
+  kr:[["휴가를 기대하고 있나요?","네, 정말 기대돼요!"],
       ["무엇을 가장 기대하나요?","크리스마스를 기대하고 있어요."],
       ["새 직장을 기대하고 있나요?","네, 많이요."],
       ["아이들이 학교를 기대하나요?","아니요, 전혀요."],
@@ -3547,9 +3548,9 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Ukázka", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
-  dWord:"Cestovat", dMeaning:"= to travel · A1–A2", webLabel:"CZ",
+  dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
   aiBtn:"💬 Otevřít AI asistenta", recLabel:"⭐ Doporučeno",
   audioNote:'V ChatGPT si lze zapnout přehrávání hlasem – slyšíte <span class="hl">správnou výslovnost</span>.',
@@ -3632,9 +3633,9 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Example", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
-  dWord:"Travel", dMeaning:"= to travel · A1–A2", webLabel:"EN",
+  dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
   aiBtn:"💬 Open an AI assistant", recLabel:"⭐ Recommended",
   audioNote:'In ChatGPT you can enable voice playback – hear <span class="hl">correct pronunciation</span>.',
@@ -3716,9 +3717,9 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Beispiel", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
-  dWord:"Reisen", dMeaning:"= reisen · A1–A2", webLabel:"DE",
+  dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
   aiBtn:"💬 KI-Assistenten öffnen", recLabel:"⭐ Empfohlen",
   audioNote:'In ChatGPT kann die Sprachausgabe aktiviert werden – du hörst <span class="hl">die richtige Aussprache</span>.',
@@ -3796,9 +3797,9 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Exemple", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
-  dWord:"Voyager", dMeaning:"= voyager · A1–A2", webLabel:"FR",
+  dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
   aiBtn:"💬 Ouvrir un assistant IA", recLabel:"⭐ Recommandé",
   audioNote:'Dans ChatGPT, la lecture audio peut être activée – tu entends <span class="hl">la bonne prononciation</span>.',
@@ -3873,9 +3874,9 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Ejemplo", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
-  dWord:"Viajar", dMeaning:"= viajar · A1–A2", webLabel:"ES",
+  dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
   aiBtn:"💬 Abrir asistente IA", recLabel:"⭐ Recomendado",
   audioNote:'En ChatGPT se puede activar la reproducción de voz – escuchas <span class="hl">la pronunciación correcta</span>.',
@@ -3951,9 +3952,9 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Esempio", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
-  dWord:"Viaggiare", dMeaning:"= viaggiare · A1–A2", webLabel:"IT",
+  dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
   aiBtn:"💬 Aprire un assistente IA", recLabel:"⭐ Consigliato",
   audioNote:'In ChatGPT è possibile attivare la riproduzione vocale – senti <span class="hl">la pronuncia corretta</span>.',
@@ -4029,9 +4030,9 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Exemplo", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
-  dWord:"Viajar", dMeaning:"= viajar · A1–A2", webLabel:"PT",
+  dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
   aiBtn:"💬 Abrir assistente IA", recLabel:"⭐ Recomendado",
   audioNote:'No ChatGPT é possível ativar a reprodução de voz – você ouve <span class="hl">a pronúncia correta</span>.',
@@ -4106,9 +4107,9 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Przykład", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
-  dWord:"Podróżować", dMeaning:"= podróżować · A1–A2", webLabel:"PL",
+  dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
   aiBtn:"💬 Otwórz asystenta AI", recLabel:"⭐ Polecane",
   audioNote:'W ChatGPT można włączyć odtwarzanie głosowe – słyszysz <span class="hl">właściwą wymowę</span>.',
@@ -4184,9 +4185,9 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"示例", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
-  dWord:"旅行", dMeaning:"= 旅行 · A1–A2", webLabel:"中文",
+  dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
   aiBtn:"💬 打开AI助手", recLabel:"⭐ 推荐",
   audioNote:'在ChatGPT中可以开启语音播放 – 听到<span class="hl">正确发音</span>。',
@@ -4262,9 +4263,9 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"出力例", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
-  dWord:"旅行する", dMeaning:"= 旅行する · A1–A2", webLabel:"JP",
+  dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
   aiBtn:"💬 AIアシスタントを開く", recLabel:"⭐ おすすめ",
   audioNote:'ChatGPTでボイス再生をオンにできます – <span class="hl">正しい発音</span>が聞けます。',
@@ -4340,9 +4341,9 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"출력 예시", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
-  dWord:"여행하다", dMeaning:"= 여행하다 · A1–A2", webLabel:"KR",
+  dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
   aiBtn:"💬 AI 어시스턴트 열기", recLabel:"⭐ 추천",
   audioNote:'ChatGPT에서 음성 재생을 켤 수 있습니다 – <span class="hl">올바른 발음</span>을 들을 수 있습니다.',
@@ -4418,9 +4419,9 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Ukážka", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
-  dWord:"Cestovať", dMeaning:"= cestovať · A1–A2", webLabel:"SK",
+  dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
   aiBtn:"💬 Otvoriť AI asistenta", recLabel:"⭐ Odporúčané",
   audioNote:'V ChatGPT si možno zapnúť prehrávanie hlasom – počuješ <span class="hl">správnu výslovnosť</span>.',
@@ -4485,9 +4486,9 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Voorbeeld", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
-  dWord:"Reizen", dMeaning:"= reizen · A1–A2", webLabel:"NL",
+  dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
   aiBtn:"💬 AI-assistent openen", recLabel:"⭐ Aanbevolen",
   audioNote:'In ChatGPT kun je spraakweergave inschakelen – je hoort de <span class="hl">juiste uitspraak</span>.',
@@ -4552,9 +4553,9 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Exempel", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
-  dWord:"Resa", dMeaning:"= resa · A1–A2", webLabel:"SV",
+  dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
   aiBtn:"💬 Öppna AI-assistent", recLabel:"⭐ Rekommenderas",
   audioNote:'I ChatGPT kan du aktivera röstuppspelning – du hör <span class="hl">korrekt uttal</span>.',
@@ -4619,9 +4620,9 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Пример", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
-  dWord:"Путешествовать", dMeaning:"= путешествовать · A1–A2", webLabel:"RU",
+  dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
   aiBtn:"💬 Открыть AI ассистента", recLabel:"⭐ Рекомендуется",
   audioNote:'В ChatGPT можно включить голосовое воспроизведение — <span class="hl">услышишь правильное произношение</span>.',
@@ -4681,9 +4682,9 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Örnek", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
-  dWord:"Seyahat etmek", dMeaning:"= seyahat etmek · A1–A2", webLabel:"TR",
+  dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
   aiBtn:"💬 AI asistanı aç", recLabel:"⭐ Önerilen",
   audioNote:'ChatGPT\'de sesli oynatmayı etkinleştirebilirsin – <span class="hl">doğru telaffuzu</span> duyarsın.',
@@ -6699,7 +6700,8 @@ function genGenerate() {
     '- 3 repliky: a) otázka  b) odpověď  a) reakce (ne jen "Aha." nebo "Rozumím.")\n' +
     '- Každý dialog = jiná situace na téma "' + intent + '"\n' +
     '- ' + toLabel + ' = přirozený ekvivalent, ne doslovný překlad\n' +
-    '- Krátké, reálné, hovorové\n\n' +
+    '- Krátké, reálné, hovorové\n' +
+    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách, dialozích i příkladech musí být zadané slovo přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku ' + fromLabel + ' použij překlad do ' + fromName + ', v bloku ' + toLabel + ' překlad do ' + toName + '. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n\n' +
 
     (needsTranslation
       ? '⚠️ SLOVO "' + intent + '" JE ANGLICKÉ — JAZYK A JE ' + fromName.toUpperCase() + ':\n' +
@@ -7014,6 +7016,7 @@ function vtGenerate(verb, level) {
     '- Různé situace: práce, cestování, každodenní život.\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova. Použij přirozený ekvivalent v cílovém jazyce.\n' +
+    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
@@ -7046,6 +7049,7 @@ function vtGeneratePhrasal(pv) {
     '- Různé situace: práce, cestování, každodenní život.\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa překládej jako celek — nikdy doslova. Nejprve urči jejich skutečný kontextový význam, pak použij přirozený idiomatický ekvivalent v cílovém jazyce. Nesmí znít jako přeloženo strojově.\n' +
+    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané frázové sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
@@ -7198,7 +7202,7 @@ function vtGeneratePhrasal(pv) {
     input.value = '';
     input.focus();
     var fromLangCode = getGenFromLang() || 'cz';
-    var word = (T[fromLangCode] && T[fromLangCode].dWord) || 'Cestovat';
+    var word = (T[fromLangCode] && T[fromLangCode].tag3) || 'Ukázka';
     var i = 0;
     var typing = setInterval(function () {
       input.value += word[i];
