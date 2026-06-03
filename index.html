@@ -6260,6 +6260,7 @@ var PV_TRANSLATIONS = {
 // Returns translation for current webLang; fallback EN (key) or CZ
 function getVerbTranslation(en) {
   if (!en) return '';
+  en = en.toLowerCase();
   var lang = (typeof webLang !== 'undefined') ? webLang : 'cz';
   if (lang === 'en') return en;
   if (lang === 'cz') return PV_CZ[en] || '';
@@ -6532,7 +6533,7 @@ function selectAI(aiKey, name, cls, el) {
 function genGenerate() {
   // ── Hlavní vstup: záměr ──
   var intentEl = document.getElementById('practiceInput');
-  var intent   = intentEl ? intentEl.value.trim() : '';
+  var intent   = intentEl ? intentEl.value.trim().toLowerCase() : '';
 
   // Asist: sloveso / téma z rozšířeného režimu (volitelné)
   var assistVerb       = selectedVerb       || '';
@@ -6703,7 +6704,8 @@ function genGenerate() {
     '- Každý dialog = jiná situace na téma "' + intent + '"\n' +
     '- ' + toLabel + ' = přirozený ekvivalent, ne doslovný překlad\n' +
     '- Krátké, reálné, hovorové\n' +
-    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách, dialozích i příkladech musí být zadané slovo přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku ' + fromLabel + ' použij překlad do ' + fromName + ', v bloku ' + toLabel + ' překlad do ' + toName + '. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n\n' +
+    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách, dialozích i příkladech musí být zadané slovo přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku ' + fromLabel + ' použij překlad do ' + fromName + ', v bloku ' + toLabel + ' překlad do ' + toName + '. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
+    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n\n' +
 
     (needsTranslation
       ? '⚠️ SLOVO "' + intent + '" JE ANGLICKÉ — JAZYK A JE ' + fromName.toUpperCase() + ':\n' +
@@ -7023,6 +7025,7 @@ function vtGenerate(verb, level) {
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova. Použij přirozený ekvivalent v cílovém jazyce.\n' +
     '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
+    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
@@ -7056,6 +7059,7 @@ function vtGeneratePhrasal(pv) {
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa překládej jako celek — nikdy doslova. Nejprve urči jejich skutečný kontextový význam, pak použij přirozený idiomatický ekvivalent v cílovém jazyce. Nesmí znít jako přeloženo strojově.\n' +
     '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané frázové sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
+    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
