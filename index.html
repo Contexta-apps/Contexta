@@ -6679,7 +6679,9 @@ function genGenerate() {
     'ŠTÍTKY (neměnné): ' + fromLabel + ' a ' + toLabel + '\n\n' +
 
     'VÝSTUP:\n' +
-    '1. Řádek 1: slovo-překlad\n' +
+    '1. Řádek 1 — PŘESNĚ v tomto formátu (každé slovo ve SVÉM jazyce, žádné míchání):\n' +
+    fromLabel + ' [překlad tématu do ' + fromName + '] — ' + toLabel + ' [překlad tématu do ' + toName + ']\n' +
+    '⚠️ Na řádku 1 NESMÍ být žádné slovo z jiného jazyka než je přiřazený blok.\n\n' +
     '2. Tři vzorové věty (každá dvojice na 2 řádcích, mezi nimi prázdný řádek):\n' +
     fromLabel + ' věta\n' +
     toLabel + ' překlad\n\n' +
@@ -6708,8 +6710,12 @@ function genGenerate() {
         '- V ' + fromLabel + ' blocích NIKDY nepiš "' + intent + '" — přelož ho do ' + fromName + ' a používej POUZE tento překlad.\n' +
         '- V ' + toLabel + ' blocích používej "' + intent + '" (anglicky).\n' +
         '- Drž se PŘESNĚ tohoto slova — nikdy ne synonyma, podkategorie ani příbuzné výrazy.\n\n'
-      : '- "' + intent + '" může být v jiném jazyce — v ' + fromLabel + ' použij přesný překlad do ' + fromName + ', v ' + toLabel + ' překlad do ' + toName + '\n' +
-        '- Drž se PŘESNĚ tohoto slova — nikdy ne synonyma ani podkategorie.\n\n') +
+      : '⚠️ STRIKTNÍ JAZYKOVÁ IZOLACE:\n' +
+        '- Téma "' + intent + '" přelož do každého jazyka zvlášť.\n' +
+        '- V bloku ' + fromLabel + ' NIKDY nepoužívej slovo z jiného jazyka než ' + fromName + ' — ani jednou.\n' +
+        '- V bloku ' + toLabel + ' NIKDY nepoužívej slovo z jiného jazyka než ' + toName + ' — ani jednou.\n' +
+        '- Každý blok je izolovaný datový slot. Cross-language leakage (přenos slova z jednoho jazyka do druhého bloku) je chyba a výstup je neplatný.\n' +
+        '- Drž se PŘESNĚ překladu daného jazyka — nikdy ne synonyma ani podkategorie.\n\n') +
 
     'ZÁKAZY: názvy jazyků v plné formě, tabulky, Markdown, pipe znaky (|)\n' +
     'Věta a překlad nesmí být na stejném řádku.\n\n' +
