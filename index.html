@@ -2506,6 +2506,69 @@ img { max-width: 100%; height: auto; }
   border-bottom: none;
 }
 
+/* ── Probíraná slova ── */
+.gen-history-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+}
+.gen-history-label {
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.gen-history-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+}
+.gen-history-chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: .78rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.65);
+  cursor: pointer;
+  transition: all .15s;
+  font-family: 'Inter', sans-serif;
+  min-height: 32px;
+  white-space: nowrap;
+}
+.gen-history-chip:hover {
+  border-color: var(--gold);
+  color: var(--gold-lt);
+  background: rgba(201,151,58,.15);
+}
+.gen-history-clear {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.25);
+  cursor: pointer;
+  font-size: .85rem;
+  padding: 2px 4px;
+  flex-shrink: 0;
+  transition: color .15s;
+  line-height: 1;
+}
+.gen-history-clear:hover { color: rgba(255,255,255,.6); }
+@media (max-width: 767px) {
+  .gen-history-row { padding: 7px 10px; gap: 6px; }
+  .gen-history-chip { font-size: .75rem; padding: 4px 10px; min-height: 30px; }
+}
+
 /* ── gen-topic-inline spacing ── */
 .gen-topic-inline {
   margin-top: 10px;
@@ -3330,7 +3393,7 @@ h1[data-t="heroH"] {
     <div class="gen-hero-header">
       <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
       <p class="hero-sub" data-t="fBrand">Uč se slova v kontextu dialogů</p>
-      <p class="hero-sub-tagline" data-t="heroSubTagline">Jedno slovo. Deset dialogů. Zapamatuješ si ho</p>
+      <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
     </div>
 
     <!-- ══ BLOK 1: HLAVNÍ VÝRAZ — nejdůležitější prvek ══ -->
@@ -3359,6 +3422,13 @@ h1[data-t="heroH"] {
         <button class="gen-ex-chip" data-translate="exChip3" onclick="insertToPractice(this.textContent)">Cestování</button>
         <button class="gen-ex-chip" data-translate="exChip7" onclick="insertToPractice(this.textContent)">Úřady</button>
         <button class="gen-ex-chip" data-translate="exChip5" onclick="insertToPractice(this.textContent)">Ubytování</button>
+      </div>
+
+      <!-- ── Probíraná slova ── -->
+      <div class="gen-history-row" id="genHistoryRow" style="display:none;">
+        <span class="gen-history-label">📚 Probíraná slova</span>
+        <div class="gen-history-chips" id="genHistoryChips"></div>
+        <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
       </div>
 
       <!-- TÉMA DROPDOWN -->
@@ -3773,7 +3843,7 @@ cz:{
   genHint:'💡 ChatGPT se otevře rovnou s promptem — stačí stisknout Enter',
   genErrEmpty:'Zadej slovo nebo frázi.',
   fBrand:'Uč se slova v kontextu dialogů',
-  heroSubTagline:'Jedno slovo. Deset dialogů. Zapamatuješ si ho',
+  heroSubTagline:'Jedno slovo. Deset kontextů. Nezapomeneš.',
   examplesLabel:'Příklady:',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCE', extractKeySituace:'SITUACE',
   intentLabel:'💬 Co chceš procvičit?',
@@ -3861,7 +3931,7 @@ en:{
   genHint:'💡 ChatGPT opens with the prompt ready — just press Enter',
   genErrEmpty:'Enter a word or phrase.',
   fBrand:'Learn words in the context of dialogues',
-  heroSubTagline:'One word. Ten dialogues. You\'ll remember it',
+  heroSubTagline:'One word. Ten contexts. You won\'t forget it.',
   heroTagline:'Mini dialogues in context · Levels A1–C2 · More than 15 languages · Real-life situations · Natural communication · 10 dialogues per generation',
   examplesLabel:'Examples:',
   extractKeyTema:'TOPIC', extractKeyAkce:'ACTION', extractKeySituace:'SITUATION',
@@ -3948,7 +4018,7 @@ de:{
   genHint:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
   genErrEmpty:'Bitte ein Wort oder eine Phrase eingeben.',
   fBrand:'Lerne Wörter im Kontext von Dialogen',
-  heroSubTagline:'Ein Wort. Zehn Dialoge. Du wirst es dir merken',
+  heroSubTagline:'Ein Wort. Zehn Kontexte. Du wirst es nicht vergessen.',
   heroTagline:'Mini-Dialoge im Kontext · Niveaus A1–C2 · Mehr als 15 Sprachen · Reale Situationen · Natürliche Kommunikation · 10 Dialoge pro Generierung',
   examplesLabel:'Beispiele:',
   extractKeyTema:'THEMA', extractKeyAkce:'AKTION', extractKeySituace:'SITUATION',
@@ -4032,7 +4102,7 @@ fr:{
   genHint:'💡 ChatGPT s\'ouvre avec le prompt — appuyez simplement sur Entrée',
   genErrEmpty:'Entrez un mot ou une phrase.',
   fBrand:'Apprends les mots dans le contexte des dialogues',
-  heroSubTagline:'Un mot. Dix dialogues. Tu t\'en souviendras',
+  heroSubTagline:'Un mot. Dix contextes. Tu ne l\'oublieras pas.',
   heroTagline:'Mini-dialogues en contexte · Niveaux A1–C2 · Plus de 15 langues · Situations réelles · Communication naturelle · 10 dialogues par génération',
   examplesLabel:'Exemples:',
   extractKeyTema:'SUJET', extractKeyAkce:'ACTION', extractKeySituace:'SITUATION',
@@ -4115,7 +4185,7 @@ es:{
   genHint:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
   genErrEmpty:'Escribe una palabra o frase.',
   fBrand:'Aprende palabras en el contexto de los diálogos',
-  heroSubTagline:'Una palabra. Diez diálogos. Te la quedarás',
+  heroSubTagline:'Una palabra. Diez contextos. No la olvidarás.',
   heroTagline:'Mini diálogos em contexto · Níveis A1–C2 · Mais de 15 idiomas · Situações reais · Comunicação natural · 10 diálogos por geração',
   examplesLabel:'Ejemplos:',
   intentLabel:'💬 ¿Qué quieres practicar?',
@@ -4196,7 +4266,7 @@ it:{
   genHint:'💡 ChatGPT si apre con il prompt — premi solo Invio',
   genErrEmpty:'Inserisci una parola o frase.',
   fBrand:'Impara le parole nel contesto dei dialoghi',
-  heroSubTagline:'Una parola. Dieci dialoghi. La ricorderai',
+  heroSubTagline:'Una parola. Dieci contesti. Non la dimenticherai.',
   heroTagline:'Mini dialoghi in contesto · Livelli A1–C2 · Più di 15 lingue · Situazioni reali · Comunicazione naturale · 10 dialoghi per generazione',
   examplesLabel:'Esempi:',
   intentLabel:'💬 Cosa vuoi praticare?',
@@ -4277,7 +4347,7 @@ pt:{
   genHint:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
   genErrEmpty:'Escreva uma palavra ou frase.',
   fBrand:'Aprende palavras no contexto dos diálogos',
-  heroSubTagline:'Uma palavra. Dez diálogos. Vais lembrá-la',
+  heroSubTagline:'Uma palavra. Dez contextos. Não vais esquecê-la.',
   examplesLabel:'Exemplos:',
   intentLabel:'💬 O que você quer praticar?',
   intentPlaceholder:'Escreva uma palavra, tema ou ideia – ex. restaurante, viagem, trabalho…',
@@ -4357,7 +4427,7 @@ pl:{
   genHint:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
   genErrEmpty:'Wpisz słowo lub frazę.',
   fBrand:'Ucz się słów w kontekście dialogów',
-  heroSubTagline:'Jedno słowo. Dziesięć dialogów. Zapamiętasz je',
+  heroSubTagline:'Jedno słowo. Dziesięć kontekstów. Nie zapomnisz.',
   heroTagline:'Mini dialogi w kontekście · Poziomy A1–C2 · Ponad 15 języków · Realne sytuacje · Naturalna komunikacja · 10 dialogów na generowanie',
   examplesLabel:'Przykłady:',
   intentLabel:'💬 Co chcesz ćwiczyć?',
@@ -4438,7 +4508,7 @@ cn:{
   genHint:'💡 ChatGPT将携带提示词打开 — 只需按Enter',
   genErrEmpty:'请输入单词或短语。',
   fBrand:'在对话语境中学习单词。',
-  heroSubTagline:'一个词。十段对话。你会记住它的。',
+  heroSubTagline:'一个词。十个语境。你不会忘记。',
   heroTagline:'情境迷你对话 · A1–C2 级别 · 超过15种语言 · 真实场景 · 自然交流 · 每次生成10段对话',
   examplesLabel:'示例：',
   intentLabel:'💬 你想练习什么？',
@@ -4519,7 +4589,7 @@ jp:{
   genHint:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
   genErrEmpty:'単語またはフレーズを入力してください。',
   fBrand:'ダイアログのコンテキストで単語を学ぼう。',
-  heroSubTagline:'ひとつの単語。10のダイアログ。きっと覚えられる。',
+  heroSubTagline:'ひとつの単語。10のコンテキスト。忘れられない。',
   heroTagline:'コンテキストのミニ会話 · レベルA1–C2 · 15以上の言語 · 実際の場面 · 自然なコミュニケーション · 1回の生成で10の会話',
   examplesLabel:'例：',
   intentLabel:'💬 何を練習したいですか？',
@@ -4600,7 +4670,7 @@ kr:{
   genHint:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
   genErrEmpty:'단어 또는 구문을 입력하세요.',
   fBrand:'대화의 맥락 속에서 단어를 배우세요',
-  heroSubTagline:'단어 하나. 열 개의 대화. 기억하게 될 거예요',
+  heroSubTagline:'단어 하나. 열 개의 맥락. 잊지 못할 거예요.',
   heroTagline:'맥락 속 미니 대화 · A1–C2 수준 · 15개 이상의 언어 · 실제 상황 · 자연스러운 소통 · 생성당 10개 대화',
   examplesLabel:'예시:',
   intentLabel:'💬 무엇을 연습하고 싶으신가요?',
@@ -4671,7 +4741,7 @@ sk:{
   genHint:'💡 ChatGPT sa otvorí rovno s promptom — stačí stlačiť Enter',
   genErrEmpty:'Zadaj slovo alebo frázu.',
   fBrand:'Uč sa slová v kontexte dialógov',
-  heroSubTagline:'Jedno slovo. Desať dialógov. Zapamätáš si ho',
+  heroSubTagline:'Jedno slovo. Desať kontextov. Nezabudneš.',
   heroTagline:'Mini dialógy v kontexte · Úrovne A1–C2 · Viac ako 15 jazykov · Reálne situácie · Prirodzená komunikácia · 10 dialógov v každom generovaní',
   examplesLabel:'Príklady:',
   intentLabel:'💬 Čo chceš precvičiť?',
@@ -4741,7 +4811,7 @@ nl:{
   genHint:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
   genErrEmpty:'Voer een woord of uitdrukking in.',
   fBrand:'Leer woorden in de context van dialogen',
-  heroSubTagline:'Één woord. Tien dialogen. Je onthoudt het',
+  heroSubTagline:'Één woord. Tien contexten. Je vergeet het niet.',
   heroTagline:'Mini-dialogen in context · Niveaus A1–C2 · Meer dan 15 talen · Echte situaties · Natuurlijke communicatie · 10 dialogen per generatie',
   examplesLabel:'Voorbeelden:',
   intentLabel:'💬 Wat wil je oefenen?',
@@ -4811,7 +4881,7 @@ sv:{
   genHint:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
   genErrEmpty:'Ange ett ord eller fras.',
   fBrand:'Lär dig ord i dialogernas sammanhang',
-  heroSubTagline:'Ett ord. Tio dialoger. Du kommer ihåg det',
+  heroSubTagline:'Ett ord. Tio sammanhang. Du glömmer det inte.',
   heroTagline:'Minidialoger i kontext · Nivåer A1–C2 · Fler än 15 språk · Verkliga situationer · Naturlig kommunikation · 10 dialoger per generering',
   examplesLabel:'Exempel:',
   intentLabel:'💬 Vad vill du öva?',
@@ -4876,7 +4946,7 @@ ru:{
   genHint:'💡 ChatGPT откроется с промптом — просто нажми Enter',
   genErrEmpty:'Введи слово или фразу.',
   fBrand:'Учи слова в контексте диалогов',
-  heroSubTagline:'Одно слово. Десять диалогов. Ты запомнишь его',
+  heroSubTagline:'Одно слово. Десять контекстов. Ты не забудешь.',
   heroTagline:'Мини-диалоги в контексте · Уровни A1–C2 · Более 15 языков · Реальные ситуации · Естественное общение · 10 диалогов за генерацию',
   examplesLabel:'Примеры:',
   intentLabel:'💬 Что хочешь практиковать?',
@@ -4946,7 +5016,7 @@ tr:{
   genHint:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
   genErrEmpty:'Kelime veya ifade gir.',
   fBrand:'Diyalogların bağlamında kelime öğren',
-  heroSubTagline:'Bir kelime. On diyalog. Onu hatırlarsın',
+  heroSubTagline:'Bir kelime. On bağlam. Unutamazsın.',
   heroTagline:'Bağlamda mini diyaloglar · A1–C2 seviyeleri · 15’ten fazla dil · Gerçek durumlar · Doğal iletişim · Her oluşturmada 10 diyalog',
   examplesLabel:'Örnekler:',
   intentLabel:'💬 Ne pratik yapmak istiyorsun?',
@@ -7309,6 +7379,59 @@ function selectAI(aiKey, name, cls, el) {
   if (arrow2) arrow2.style.transform = 'rotate(0deg)';
 }
 
+// ── Probíraná slova (history) ──────────────────────────────────
+var GEN_HISTORY_KEY = 'gen_history_v1';
+var GEN_HISTORY_MAX = 8;
+
+function genHistoryLoad() {
+  try { return JSON.parse(localStorage.getItem(GEN_HISTORY_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+
+function genHistorySave(list) {
+  try { localStorage.setItem(GEN_HISTORY_KEY, JSON.stringify(list)); }
+  catch(e) {}
+}
+
+function genHistoryAdd(word) {
+  if (!word) return;
+  var list = genHistoryLoad();
+  list = list.filter(function(w){ return w !== word; }); // dedup
+  list.unshift(word);
+  if (list.length > GEN_HISTORY_MAX) list = list.slice(0, GEN_HISTORY_MAX);
+  genHistorySave(list);
+  genHistoryRender();
+}
+
+function genHistoryClear() {
+  genHistorySave([]);
+  genHistoryRender();
+}
+
+function genHistoryRender() {
+  var list = genHistoryLoad();
+  var row  = document.getElementById('genHistoryRow');
+  var wrap = document.getElementById('genHistoryChips');
+  if (!row || !wrap) return;
+  if (!list.length) { row.style.display = 'none'; return; }
+  row.style.display = 'flex';
+  wrap.innerHTML = '';
+  list.forEach(function(word) {
+    var btn = document.createElement('button');
+    btn.className = 'gen-history-chip';
+    btn.textContent = word;
+    btn.onclick = function() {
+      var inp = document.getElementById('practiceInput');
+      if (inp) { inp.value = word; onIntentInput(inp); inp.focus(); }
+    };
+    wrap.appendChild(btn);
+  });
+}
+
+// Init při načtení stránky
+window.addEventListener('DOMContentLoaded', function() { genHistoryRender(); });
+// ────────────────────────────────────────────────────────────────
+
 function genGenerate() {
   // ── Hlavní vstup: záměr ──
   var intentEl = document.getElementById('practiceInput');
@@ -7422,6 +7545,9 @@ function genGenerate() {
     'ÚROVEŇ: ' + cefrLevel + '\n\n' +
     'Pravidla:\n' +
     '- Věty musí odpovídat zadané úrovni.\n' +
+    (selectedGrammar ? '' :
+      '- Sentence 1: Present Simple. Sentence 2: Past Simple. Sentence 3: Future (will).\n' +
+      '- The translation must use the same tense as the original.\n') +
     '- Každá věta musí být jiná.\n' +
     '- Používej přirozený jazyk a reálné situace.\n' +
     '- Neuváděj označení úrovně.\n' +
@@ -7480,6 +7606,9 @@ function genGenerate() {
     '(atd.)\n\n' +
 
     'PRAVIDLA DIALOGŮ:\n' +
+    (selectedGrammar ? '' :
+      '- KRITICKÁ PRAVIDLA ČASŮ: dialogy 1–4 přítomný čas, 5–7 minulý čas, 8–10 budoucí čas. ' +
+      'Překlad zachovává stejný čas jako originál. Odpověď je chybná, pokud chybí minulý nebo budoucí čas.\n') +
     '- 3 repliky: a) otázka  b) odpověď  a) reakce (ne jen "Aha." nebo "Rozumím.")\n' +
     '- Každý dialog = jiná situace na téma "' + intent + '"\n' +
     '- ' + toLabel + ' = přirozený ekvivalent, ne doslovný překlad\n' +
@@ -7514,6 +7643,9 @@ function genGenerate() {
 
     'Počet dialogů: ' + totalDialogs + '\n' +
     'Délka: ' + dlInfo.label + '\n';
+
+  // Uložit do Probíraných slov
+  genHistoryAdd(intent);
 
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
