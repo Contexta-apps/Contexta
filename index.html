@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONTEXTA – Learn languages in the context of dialogues</title>
 <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-<link rel="apple-touch-icon" sizes="192x192" href="favicon.png"><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="192x192" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Poppins:wght@500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* ═══════ DESIGN TOKENS ═══════ */
@@ -1941,6 +1941,154 @@ img { max-width: 100%; height: auto; }
   text-transform: uppercase; letter-spacing: .05em;
 }
 
+/* ── Grammar Block ── */
+.gen-grammar-block {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.gen-grammar-header {
+  display: flex; align-items: center; gap: 9px;
+  padding: 11px 14px;
+  cursor: pointer; user-select: none;
+  background: rgba(255,255,255,.04);
+  transition: background .15s;
+}
+.gen-grammar-header:hover { background: rgba(201,151,58,.1); }
+.gen-grammar-icon { font-size: 1rem; flex-shrink: 0; }
+.gen-grammar-title {
+  font-size: .8rem; font-weight: 700;
+  color: #4FD1C5;
+  flex: 1; letter-spacing: .02em;
+}
+.gen-grammar-badge {
+  font-size: .68rem; font-weight: 700;
+  background: var(--gold); color: var(--navy-dk);
+  border-radius: 12px; padding: 2px 8px;
+  white-space: nowrap; max-width: 160px;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.gen-grammar-hdr-clear {
+  background: none;
+  border: 1px solid rgba(252,129,129,.4);
+  color: #fc8181;
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  font-size: .65rem; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background .15s, color .15s;
+}
+.gen-grammar-hdr-clear:hover { background: rgba(252,129,129,.18); color: #fff; }
+.gen-grammar-arrow {
+  font-size: .6rem; color: var(--gold);
+  transition: transform .2s; flex-shrink: 0;
+}
+.gen-grammar-header.open .gen-grammar-arrow { transform: rotate(180deg); }
+
+.gen-grammar-panel {
+  padding: 12px 14px;
+  background: rgba(0,0,0,.18);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.gen-grammar-hint {
+  font-size: .75rem; color: rgba(255,255,255,.38);
+  margin-bottom: 10px; line-height: 1.5;
+}
+.gen-grammar-search-wrap { margin-bottom: 10px; }
+.gen-grammar-search {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 7px;
+  color: rgba(255,255,255,.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  padding: 7px 12px;
+  outline: none;
+  transition: border-color .2s;
+}
+.gen-grammar-search:focus { border-color: rgba(201,151,58,.5); }
+.gen-grammar-search::placeholder { color: rgba(255,255,255,.25); }
+
+/* Grammar levels */
+.gg-level {
+  margin-bottom: 6px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 7px; overflow: hidden;
+}
+.gg-level-hdr {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; cursor: pointer; user-select: none;
+  background: rgba(255,255,255,.04);
+  transition: background .14s;
+}
+.gg-level-hdr:hover { background: rgba(201,151,58,.09); }
+.gg-badge {
+  font-size: .65rem; font-weight: 800;
+  padding: 2px 8px; border-radius: 12px; letter-spacing: .06em;
+  flex-shrink: 0;
+}
+.gg-b-a1 { background: rgba(100,200,120,.15); color: #7ed99a; border: 1px solid rgba(100,200,120,.3); }
+.gg-b-a2 { background: rgba(80,180,220,.15); color: #7acce8; border: 1px solid rgba(80,180,220,.3); }
+.gg-b-b1 { background: rgba(201,151,58,.15); color: var(--gold-lt); border: 1px solid rgba(201,151,58,.3); }
+.gg-b-b2 { background: rgba(220,140,80,.15); color: #e8a870; border: 1px solid rgba(220,140,80,.3); }
+.gg-b-c1 { background: rgba(200,80,80,.12); color: #e87a7a; border: 1px solid rgba(200,80,80,.25); }
+.gg-level-name { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.6); flex: 1; }
+.gg-arrow { font-size: .55rem; color: rgba(255,255,255,.3); transition: transform .2s; }
+.gg-level.open .gg-arrow { transform: rotate(180deg); }
+.gg-topics { display: none; padding: 4px 6px 6px; }
+.gg-level.open .gg-topics { display: block; }
+
+.gg-topic { margin-bottom: 4px; }
+.gg-topic-hdr {
+  display: flex; align-items: center; gap: 7px;
+  padding: 6px 10px; cursor: pointer; user-select: none;
+  border-radius: 6px; transition: background .14s;
+}
+.gg-topic-hdr:hover { background: rgba(255,255,255,.05); }
+.gg-topic-icon { font-size: .85rem; width: 18px; text-align: center; flex-shrink: 0; }
+.gg-topic-name { font-size: .77rem; font-weight: 500; color: rgba(255,255,255,.55); flex: 1; }
+.gg-t-arrow { font-size: .5rem; color: rgba(255,255,255,.25); transition: transform .2s; }
+.gg-topic.open .gg-t-arrow { transform: rotate(180deg); }
+.gg-items { display: none; padding: 2px 0 4px 28px; }
+.gg-topic.open .gg-items { display: block; }
+
+.gg-item-btn {
+  display: flex; align-items: center; gap: 7px;
+  width: 100%; text-align: left;
+  background: none; border: none;
+  color: rgba(255,255,255,.45);
+  font-family: 'DM Sans', sans-serif; font-size: .76rem;
+  padding: 5px 10px; border-radius: 5px;
+  cursor: pointer; transition: background .14s, color .14s;
+}
+.gg-item-btn:hover { background: rgba(201,151,58,.12); color: var(--gold-lt); }
+.gg-item-btn.selected { background: rgba(201,151,58,.2); color: var(--gold-lt); font-weight: 700; }
+.gg-item-btn::before { content: '→'; color: var(--gold); opacity: .4; font-size: .7rem; }
+.gg-item-btn:hover::before, .gg-item-btn.selected::before { opacity: 1; }
+
+.gen-grammar-selected-row {
+  margin-top: 10px; padding: 8px 12px;
+  background: rgba(201,151,58,.1);
+  border: 1px solid rgba(201,151,58,.25);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.gen-grammar-sel-label {
+  font-size: .77rem; color: var(--gold-lt); font-weight: 600; flex: 1;
+}
+.gen-grammar-clear {
+  background: none; border: none; color: rgba(255,255,255,.35);
+  font-size: .72rem; cursor: pointer; padding: 2px 6px;
+  border-radius: 4px; transition: color .14s, background .14s;
+  white-space: nowrap;
+}
+.gen-grammar-clear:hover { color: #fc8181; background: rgba(252,129,129,.1); }
+
 /* ── Error ── */
 .gen-error {
   display: none; margin-top: 10px; font-size: .8rem; color: #fc8181;
@@ -2330,6 +2478,10 @@ img { max-width: 100%; height: auto; }
   background: rgba(201,151,58,.06);
   padding: 0;
   gap: 0;
+}
+.gen-advanced-wrap .gen-grammar-header {
+  padding-left: 28px;
+  padding-right: 28px;
 }
 
 /* ── Override: gen-error ── */
@@ -3303,6 +3455,27 @@ h1[data-t="heroH"] {
           </div>
         </div>
 
+        <!-- BLOK: ANGLICKÁ GRAMATIKA -->
+        <div class="gen-grammar-block" id="genGrammarBlock">
+          <div class="gen-grammar-header" onclick="toggleGrammarPanel(this)">
+            <span class="gen-grammar-title" data-translate="grammarLabel">Anglická gramatika</span>
+            <span class="gen-grammar-badge" id="grammarBadge" style="display:none"></span>
+            <button class="gen-grammar-hdr-clear" id="grammarHdrClear" style="display:none" onclick="event.stopPropagation();clearGrammar()" title="Zrušit výběr">✕</button>
+            <span class="gen-grammar-arrow">▼</span>
+          </div>
+          <div class="gen-grammar-panel" id="genGrammarPanel" style="display:none">
+            <div class="gen-grammar-hint" data-translate="grammarHint">Vyber gramatický jev — bude zahrnut do kontextu dialogů a vět s vysvětlením.</div>
+            <div class="gen-grammar-search-wrap">
+              <input class="gen-grammar-search" id="grammarSearch" type="text" placeholder="Hledat téma…" oninput="filterGrammar(this.value)">
+            </div>
+            <div class="gen-grammar-menu" id="grammarMenu"></div>
+            <div class="gen-grammar-selected-row" id="grammarSelectedRow" style="display:none">
+              <span class="gen-grammar-sel-label" id="grammarSelectedLabel"></span>
+              <button class="gen-grammar-clear" onclick="clearGrammar()">✕ zrušit</button>
+            </div>
+          </div>
+        </div>
+
       </div><!-- /gen-advanced -->
     </div><!-- /gen-advanced-wrap -->
 
@@ -3548,7 +3721,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -3612,6 +3785,9 @@ cz:{
   extractTitle:'Navržený kontext',
   extractTema:'TÉMA', extractAkce:'AKCE', extractSituace:'SITUACE',
   webLangLabel:'Jazyk webu',
+  grammarLabel:'Anglická gramatika',
+  grammarHint:'Vyber gramatický jev — bude zahrnut do kontextu dialogů a vět s vysvětlením.',
+  grammarSearchPh:'🔍 Hledat téma…',
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -3633,7 +3809,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -3696,6 +3872,9 @@ en:{
   extractTitle:'Suggested context',
   extractTema:'TOPIC', extractAkce:'ACTION', extractSituace:'SITUATION',
   webLangLabel:'Web language',
+  grammarLabel:'English grammar',
+  grammarHint:'Select a grammar topic — it will be included in the context of dialogues and sentences with an explanation.',
+  grammarSearchPh:'🔍 Search topic…',
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -3717,7 +3896,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -3780,6 +3959,9 @@ de:{
   extractTitle:'Vorgeschlagener Kontext',
   extractTema:'THEMA', extractAkce:'AKTION', extractSituace:'SITUATION',
   webLangLabel:'Webseitensprache',
+  grammarLabel:'Englische Grammatik',
+  grammarHint:'Wähle ein Grammatikthema — es wird in den Kontext der Dialoge und Sätze mit Erklärung einbezogen.',
+  grammarSearchPh:'🔍 Thema suchen…',
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -3797,7 +3979,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -3857,9 +4039,15 @@ fr:{
   extractTitle:"Contexte suggéré",
   extractKeyTema:"SUJET", extractKeyAkce:"ACTION", extractKeySituace:"SITUATION",
   webLangLabel:"Langue du site",
+  grammarLabel:'Grammaire anglaise',
+  grammarHint:"Sélectionnez un sujet de grammaire — il sera inclus dans le contexte des dialogues et des phrases avec une explication.",
+  grammarSearchPh:'🔍 Rechercher un sujet…',
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
+  grammarLabel:'Gramática inglesa',
+  grammarHint:'Selecciona un tema gramatical — se incluirá en el contexto de los diálogos y frases con una explicación.',
+  grammarSearchPh:'🔍 Buscar tema…',
   brand:"CONTEXTA", nav1:"Prompts", nav2:"Ejemplo", nav3:"IA", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'Mini diálogos en contexto · Niveles A1–C2 · Más de 15 idiomas · Situaciones reales · Comunicación natural · 10 diálogos por generación',
@@ -3874,7 +4062,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -3938,6 +4126,9 @@ es:{
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
+  grammarLabel:'Grammatica inglese',
+  grammarHint:'Seleziona un argomento grammaticale — verrà incluso nel contesto dei dialoghi e delle frasi con una spiegazione.',
+  grammarSearchPh:'🔍 Cerca argomento…',
   brand:"CONTEXTA", nav1:"Prompt", nav2:"Esempio", nav3:"IA", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Pratica le lingue con i mini-dialoghi IA.</span><span class="dot"></span><span>Inserisci qualsiasi parola o argomento.</span><span class="dot"></span><span>Ottieni mini-dialoghi adattati al tuo livello.</span><span class="dot"></span><span>Impara naturalmente attraverso la conversazione.</span>',
@@ -3952,7 +4143,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -4016,6 +4207,9 @@ it:{
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
+  grammarLabel:'Gramática inglesa',
+  grammarHint:'Seleciona um tópico gramatical — será incluído no contexto dos diálogos e frases com uma explicação.',
+  grammarSearchPh:'🔍 Pesquisar tema…',
   brand:"CONTEXTA", nav1:"Prompts", nav2:"Exemplo", nav3:"IA", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Pratique idiomas com mini-diálogos de IA.</span><span class="dot"></span><span>Insira qualquer palavra ou tema.</span><span class="dot"></span><span>Obtenha mini-diálogos adaptados ao seu nível.</span><span class="dot"></span><span>Aprenda naturalmente através da conversa.</span>',
@@ -4030,7 +4224,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -4093,6 +4287,9 @@ pt:{
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
+  grammarLabel:'Gramatyka angielska',
+  grammarHint:'Wybierz temat gramatyczny — zostanie uwzględniony w kontekście dialogów i zdań z wyjaśnieniem.',
+  grammarSearchPh:'🔍 Szukaj tematu…',
   brand:"CONTEXTA", nav1:"Prompty", nav2:"Przykład", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Ćwicz języki z mini-dialogami AI.</span><span class="dot"></span><span>Wpisz dowolne słowo lub temat.</span><span class="dot"></span><span>Otrzymaj mini-dialogi dostosowane do Twojego poziomu.</span><span class="dot"></span><span>Ucz się naturalnie przez konwersację.</span>',
@@ -4107,7 +4304,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -4171,6 +4368,9 @@ pl:{
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
+  grammarLabel:'英语语法',
+  grammarHint:'选择一个语法主题——它将被纳入对话和例句的上下文中并附有解释。',
+  grammarSearchPh:'🔍 搜索主题…',
   brand:"CONTEXTA", nav1:"提示词", nav2:"示例", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>通过AI迷你对话练习语言。</span><span class="dot"></span><span>输入任何单词或主题。</span><span class="dot"></span><span>获取适合您水平的迷你对话。</span><span class="dot"></span><span>通过对话自然地学习。</span>',
@@ -4185,7 +4385,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -4249,6 +4449,9 @@ cn:{
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
+  grammarLabel:'英文法',
+  grammarHint:'grammarのトピックを選んでください — ダイアログと例文に説明付きで含まれます。',
+  grammarSearchPh:'🔍 トピック検索…',
   brand:"CONTEXTA", nav1:"プロンプト", nav2:"例文", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>AIミニダイアログで語学練習。</span><span class="dot"></span><span>任意の単語またはトピックを入力。</span><span class="dot"></span><span>レベルに合ったミニダイアログを取得。</span><span class="dot"></span><span>会話を通じて自然に学ぼう。</span>',
@@ -4263,7 +4466,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -4327,6 +4530,9 @@ jp:{
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
+  grammarLabel:'영어 문법',
+  grammarHint:'문법 주제를 선택하세요 — 대화와 예문에 설명과 함께 포함됩니다.',
+  grammarSearchPh:'🔍 주제 검색…',
   brand:"CONTEXTA", nav1:"프롬프트", nav2:"예시", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>AI 미니 대화로 언어를 연습하세요.</span><span class="dot"></span><span>단어나 주제를 입력하세요.</span><span class="dot"></span><span>수준에 맞는 미니 대화를 받으세요.</span><span class="dot"></span><span>대화를 통해 자연스럽게 배우세요.</span>',
@@ -4341,7 +4547,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -4405,6 +4611,9 @@ kr:{
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
+  grammarLabel:'Anglická gramatika',
+  grammarHint:'Vyber gramatický jav — bude zahrnutý do kontextu dialógov a viet s vysvetlením.',
+  grammarSearchPh:'🔍 Hľadať tému…',
   brand:"CONTEXTA", nav1:"Prompty", nav2:"Ukážka", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Precvičuj jazyky pomocou AI minidialógov.</span><span class="dot"></span><span>Zadaj ľubovoľné slovo alebo tému.</span><span class="dot"></span><span>Získaj minidialógy prispôsobené tvojej úrovni.</span><span class="dot"></span><span>Uč sa prirodzene cez konverzáciu.</span>',
@@ -4419,7 +4628,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -4472,6 +4681,9 @@ sk:{
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
+  grammarLabel:'Engelse grammatica',
+  grammarHint:'Kies een grammaticaonderwerp — het wordt opgenomen in de context van dialogen en zinnen met een uitleg.',
+  grammarSearchPh:'🔍 Zoek onderwerp…',
   brand:"CONTEXTA", nav1:"Prompts", nav2:"Voorbeeld", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Oefen talen met AI mini-dialogen.</span><span class="dot"></span><span>Voer een woord of onderwerp in.</span><span class="dot"></span><span>Ontvang dialogen die klinken als echte gesprekken.</span><span class="dot"></span><span>Geen schoolboekzinnen. Alleen echte taal.</span>',
@@ -4486,7 +4698,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -4539,6 +4751,9 @@ nl:{
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
+  grammarLabel:'Engelsk grammatik',
+  grammarHint:'Välj ett grammatikämne — det inkluderas i dialogennas och meningarnas kontext med en förklaring.',
+  grammarSearchPh:'🔍 Sök ämne…',
   brand:"CONTEXTA", nav1:"Prompter", nav2:"Exempel", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Öva språk med AI mini-dialoger.</span><span class="dot"></span><span>Ange ett ord eller ämne.</span><span class="dot"></span><span>Få dialoger som låter som riktiga samtal.</span><span class="dot"></span><span>Inga läroboksfras er. Bara naturligt tal.</span>',
@@ -4553,7 +4768,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -4606,6 +4821,9 @@ sv:{
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
+  grammarLabel:'Английская грамматика',
+  grammarHint:'Выберите грамматическую тему — она будет включена в контекст диалогов и предложений с объяснением.',
+  grammarSearchPh:'🔍 Поиск темы…',
   brand:"CONTEXTA", nav1:"Промпты", nav2:"Пример", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>Практикуй язык с AI мини-диалогами.</span><span class="dot"></span><span>Введи любое слово или тему.</span><span class="dot"></span><span>Получи мини-диалоги под свой уровень.</span><span class="dot"></span><span>Учись естественно — через общение.</span>',
@@ -4620,7 +4838,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -4668,6 +4886,9 @@ ru:{
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
+  grammarLabel:'İngilizce dilbilgisi',
+  grammarHint:'Bir dilbilgisi konusu seçin — diyaloglar ve cümlelerin bağlamına açıklamayla birlikte dahil edilecektir.',
+  grammarSearchPh:'🔍 Konu ara…',
   brand:"CONTEXTA", nav1:"Promptlar", nav2:"Örnek", nav3:"AI", nav4:"☕",
   heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
   heroTagline:'<span>AI mini-diyaloglarıyla dil pratik yap.</span><span class="dot"></span><span>Herhangi bir kelime veya konu gir.</span><span class="dot"></span><span>Seviyene uygun mini-diyaloglar al.</span><span class="dot"></span><span>Konuşarak doğal öğren.</span>',
@@ -4682,7 +4903,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -4905,6 +5126,22 @@ function applyWebLang() {
 
   // ── Verb dropdown — přeložit položky podle nového jazyka ──
   buildVerbDrop();
+
+  // ── Grammar menu — vždy rebuild s přeloženými názvy ──
+  buildGrammarMenu(getTranslatedGrammarData());
+
+  // ── Grammar search placeholder ──
+  var gs = document.getElementById('grammarSearch');
+  if (gs) gs.placeholder = t.grammarSearchPh || (T.en && T.en.grammarSearchPh) || '🔍 Search topic…';
+
+  // ── Grammar label + hint fallback pro jazyky bez překladu ──
+  var tEn = T.en || T.cz;
+  document.querySelectorAll('[data-translate]').forEach(function(el) {
+    var k = el.getAttribute('data-translate');
+    if (['grammarLabel','grammarHint'].indexOf(k) >= 0 && t[k] === undefined && tEn[k] !== undefined) {
+      el.textContent = tEn[k];
+    }
+  });
 
   // ── Pokud je již sloveso vybráno, aktualizuj label v dropdownu ──
   if (selectedVerb) {
@@ -5183,8 +5420,532 @@ var genMode = 'word';
 var selectedCEFR = 'A1-A2';
 
 // ═══════════════════════════════════════════════════════
-// TOPIC DROPDOWN  – data + build + toggle + select
+// GRAMMAR SELECTOR – data + build + toggle + select
 // ═══════════════════════════════════════════════════════
+var selectedGrammar = null; // { name, prompt }
+
+// Překlady názvů úrovní, témat a položek (indexy odpovídají GRAMMAR_DATA)
+var GRAMMAR_TRANSLATIONS = {
+  en: {
+    levels: ['A1 — Beginner','A2 — Elementary','B1 — Intermediate','B2 — Upper Intermediate','C1 — Advanced'],
+    topics: [
+      // A1
+      ['Verb BE and HAVE','Articles (a/an/the)','Nouns','Pronouns','Present Simple','Present Continuous','Modal verbs I','Future tense','Word order'],
+      // A2
+      ['Past Simple','Adjectives','Quantifiers','Modal verbs II','Indirect questions'],
+      // B1
+      ['Present Perfect','Conditionals','Infinitive and gerund','Passive voice','Adverbs of degree'],
+      // B2
+      ['Reported speech','Relative clauses','Participles','Modals with perfect infinitive','Emphasis','Sequence of tenses'],
+      // C1
+      ['Verbal aspect','Special sentences','Advanced gerund','Word formation','Sentence reduction','American English']
+    ],
+    items: [
+      // A1 topics
+      [['Verb BE (am/is/are)','Verb HAVE (have/has)','Questions and negatives with BE'],['Indefinite article a/an','Definite article THE'],['Plural nouns','Numbers 1–999','Ordinal numbers'],['Possessive adjectives','Possessive case (\'s)'],['Present Simple','Questions and negatives — Present Simple','Question tags'],['Present Continuous','Present Continuous vs. Simple'],['CAN, MUST, MAY'],['Future tense (WILL)','THERE IS / THERE ARE'],['Word order in a sentence']],
+      // A2 topics
+      [['Past Simple — regular verbs','Irregular verbs — Past Simple','Past Simple negatives','Passive voice (basic)'],['Comparative and superlative adjectives','Adverbs'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY and compounds'],['SHOULD, WOULD, COULD'],['Indirect questions']],
+      // B1 topics
+      [['Present Perfect — form and use','Present Perfect vs. Past Simple','Present Perfect Continuous'],['1st Conditional','2nd Conditional','3rd Conditional'],['Infinitive of purpose','Gerund I — basic use','Object + infinitive'],['Passive voice — all tenses','GOING TO — intention'],['Adverbs of degree']],
+      // B2 topics
+      [['Reported speech — basics','Reported speech — questions and commands'],['Relative pronouns','Defining vs. non-defining relative clauses'],['Participial clauses'],['Modal + have + past participle'],['Cleft sentences','Reflexive pronouns'],['Sequence of tenses','Time clauses']],
+      // C1 topics
+      [['Verbal aspect'],['Wish clauses','Exclamatory sentences'],['Gerund II — advanced use'],['Negative prefixes','Word formation overview'],['Reduced time and cause clauses'],['American vs. British English']]
+    ]
+  },
+  de: {
+    levels: ['A1 — Anfänger','A2 — Grundstufe','B1 — Mittelstufe','B2 — Obere Mittelstufe','C1 — Fortgeschritten'],
+    topics: [
+      ['Verb BE und HAVE','Artikel (a/an/the)','Substantive','Pronomen','Präsens einfach','Verlaufsform Präsens','Modalverben I','Zukunft','Wortstellung'],
+      ['Vergangenheit','Adjektive','Quantifikatoren','Modalverben II','Indirekte Fragen'],
+      ['Present Perfect','Konditionalsätze','Infinitiv und Gerundium','Passiv','Gradpartikeln'],
+      ['Indirekte Rede','Relativsätze','Partizipialkonstruktionen','Modalverben mit Perfektinfinitiv','Emphase','Zeitenfolge'],
+      ['Verbalaspekt','Sondersätze','Gerundium — Fortgeschritten','Wortbildung','Satzkomprimierung','Amerikanisches Englisch']
+    ],
+    items: [
+      [['Verb BE (am/is/are)','Verb HAVE (have/has)','Fragen und Verneinung mit BE'],['Unbestimmter Artikel a/an','Bestimmter Artikel THE'],['Pluralformen','Zahlen 1–999','Ordinalzahlen'],['Possessivpronomen','Possessiv-s (\'s)'],['Präsens einfach','Fragen und Verneinung — Präsens einfach','Bestätigungsfragen'],['Verlaufsform Präsens','Verlaufsform vs. Einfachform'],['CAN, MUST, MAY'],['Zukunft mit WILL','THERE IS / THERE ARE'],['Wortstellung im Satz']],
+      [['Vergangenheit — regelmäßige Verben','Unregelmäßige Verben — Vergangenheit','Verneinung in der Vergangenheit','Passiv (Grundlagen)'],['Komparation der Adjektive','Adverbien'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY und Komposita'],['SHOULD, WOULD, COULD'],['Indirekte Fragen']],
+      [['Present Perfect — Bildung und Verwendung','Present Perfect vs. Vergangenheit','Present Perfect Continuous'],['1. Konditionalsatz','2. Konditionalsatz','3. Konditionalsatz'],['Infinitiv der Absicht','Gerundium I — Grundverwendung','Objekt + Infinitiv'],['Passiv — alle Zeiten','GOING TO — Absicht'],['Gradpartikeln']],
+      [['Indirekte Rede — Grundlagen','Indirekte Rede — Fragen und Befehle'],['Relativpronomen','Einschränkende vs. nicht einschränkende Relativsätze'],['Partizipialkonstruktionen'],['Modal + have + Partizip II'],['Gespaltene Sätze','Reflexivpronomen'],['Zeitenfolge','Temporalsätze']],
+      [['Verbalaspekt'],['Wunschsätze','Ausrufesätze'],['Gerundium II — Fortgeschritten'],['Verneinende Präfixe','Wortbildung — Übersicht'],['Verkürzte Zeit- und Kausalsätze'],['Amerikanisches vs. Britisches Englisch']]
+    ]
+  },
+  fr: {
+    levels: ['A1 — Débutant','A2 — Élémentaire','B1 — Intermédiaire','B2 — Intermédiaire supérieur','C1 — Avancé'],
+    topics: [
+      ['Verbe BE et HAVE','Articles (a/an/the)','Noms','Pronoms','Présent simple','Présent continu','Modaux I','Futur','Ordre des mots'],
+      ['Passé simple','Adjectifs','Quantificateurs','Modaux II','Questions indirectes'],
+      ['Present Perfect','Conditionnels','Infinitif et gérondif','Voix passive','Adverbes de degré'],
+      ['Discours indirect','Propositions relatives','Participes','Modaux + infinitif passé','Emphase','Concordance des temps'],
+      ['Aspect verbal','Phrases spéciales','Gérondif avancé','Formation des mots','Réduction de phrases','Anglais américain']
+    ],
+    items: [
+      [['Verbe BE (am/is/are)','Verbe HAVE (have/has)','Questions et négations avec BE'],['Article indéfini a/an','Article défini THE'],['Pluriel des noms','Nombres 1–999','Nombres ordinaux'],['Adjectifs possessifs','Cas possessif (\'s)'],['Présent simple','Questions et négations — Présent simple','Questions tag'],['Présent continu','Présent continu vs. Présent simple'],['CAN, MUST, MAY'],['Futur avec WILL','THERE IS / THERE ARE'],['Ordre des mots dans la phrase']],
+      [['Passé simple — verbes réguliers','Verbes irréguliers — passé','Négation au passé','Voix passive (bases)'],['Comparatif et superlatif','Adverbes'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY et composés'],['SHOULD, WOULD, COULD'],['Questions indirectes']],
+      [['Present Perfect — formation et usage','Present Perfect vs. Passé simple','Present Perfect Continuous'],['1er conditionnel','2e conditionnel','3e conditionnel'],['Infinitif de but','Gérondif I — usage de base','Objet + infinitif'],['Voix passive — tous les temps','GOING TO — intention'],['Adverbes de degré']],
+      [['Discours indirect — bases','Discours indirect — questions et ordres'],['Pronoms relatifs','Relatives déterminatives vs. explicatives'],['Propositions participiales'],['Modal + have + participe passé'],['Phrases clivées','Pronoms réfléchis'],['Concordance des temps','Propositions temporelles']],
+      [['Aspect verbal'],['Phrases avec WISH','Phrases exclamatives'],['Gérondif II — usage avancé'],['Préfixes négatifs','Formation des mots — vue d\'ensemble'],['Réduction de subordonnées','Anglais américain vs. britannique']]
+    ]
+  },
+  es: {
+    levels: ['A1 — Principiante','A2 — Elemental','B1 — Intermedio','B2 — Intermedio alto','C1 — Avanzado'],
+    topics: [
+      ['Verbo BE y HAVE','Artículos (a/an/the)','Sustantivos','Pronombres','Presente simple','Presente continuo','Verbos modales I','Futuro','Orden de palabras'],
+      ['Pasado simple','Adjetivos','Cuantificadores','Verbos modales II','Preguntas indirectas'],
+      ['Present Perfect','Condicionales','Infinitivo y gerundio','Voz pasiva','Adverbios de grado'],
+      ['Estilo indirecto','Oraciones de relativo','Participios','Modales con infinitivo perfecto','Énfasis','Concordancia de tiempos'],
+      ['Aspecto verbal','Oraciones especiales','Gerundio avanzado','Formación de palabras','Reducción de oraciones','Inglés americano']
+    ],
+    items: [
+      [['Verbo BE (am/is/are)','Verbo HAVE (have/has)','Preguntas y negaciones con BE'],['Artículo indefinido a/an','Artículo definido THE'],['Plural de sustantivos','Números 1–999','Números ordinales'],['Adjetivos posesivos','Caso posesivo (\'s)'],['Presente simple','Preguntas y negaciones — Presente simple','Question tags'],['Presente continuo','Presente continuo vs. simple'],['CAN, MUST, MAY'],['Futuro con WILL','THERE IS / THERE ARE'],['Orden de palabras en la oración']],
+      [['Pasado simple — verbos regulares','Verbos irregulares — pasado','Negaciones en pasado','Voz pasiva (básico)'],['Comparativo y superlativo','Adverbios'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY y compuestos'],['SHOULD, WOULD, COULD'],['Preguntas indirectas']],
+      [['Present Perfect — forma y uso','Present Perfect vs. Pasado simple','Present Perfect Continuous'],['1.er condicional','2.º condicional','3.er condicional'],['Infinitivo de propósito','Gerundio I — uso básico','Objeto + infinitivo'],['Voz pasiva — todos los tiempos','GOING TO — intención'],['Adverbios de grado']],
+      [['Estilo indirecto — bases','Estilo indirecto — preguntas y órdenes'],['Pronombres relativos','Oraciones de relativo especificativas y explicativas'],['Oraciones de participio'],['Modal + have + participio pasado'],['Oraciones hendidas','Pronombres reflexivos'],['Concordancia de tiempos','Oraciones temporales']],
+      [['Aspecto verbal'],['Oraciones con WISH','Oraciones exclamativas'],['Gerundio II — uso avanzado'],['Prefijos negativos','Formación de palabras'],['Reducción de subordinadas','Inglés americano vs. británico']]
+    ]
+  },
+  it: {
+    levels: ['A1 — Principiante','A2 — Elementare','B1 — Intermedio','B2 — Intermedio superiore','C1 — Avanzato'],
+    topics: [
+      ['Verbo BE e HAVE','Articoli (a/an/the)','Sostantivi','Pronomi','Presente semplice','Presente continuo','Verbi modali I','Futuro','Ordine delle parole'],
+      ['Passato semplice','Aggettivi','Quantificatori','Verbi modali II','Domande indirette'],
+      ['Present Perfect','Condizionali','Infinito e gerundio','Forma passiva','Avverbi di grado'],
+      ['Discorso indiretto','Proposizioni relative','Participi','Modali con infinito perfetto','Enfasi','Concordanza dei tempi'],
+      ['Aspetto verbale','Frasi speciali','Gerundio avanzato','Formazione delle parole','Riduzione delle frasi','Inglese americano']
+    ],
+    items: [
+      [['Verbo BE (am/is/are)','Verbo HAVE (have/has)','Domande e negazioni con BE'],['Articolo indeterminativo a/an','Articolo determinativo THE'],['Plurale dei sostantivi','Numeri 1–999','Numeri ordinali'],['Aggettivi possessivi','Caso possessivo (\'s)'],['Presente semplice','Domande e negazioni — Presente semplice','Question tags'],['Presente continuo','Presente continuo vs. semplice'],['CAN, MUST, MAY'],['Futuro con WILL','THERE IS / THERE ARE'],['Ordine delle parole nella frase']],
+      [['Passato semplice — verbi regolari','Verbi irregolari — passato','Negazioni al passato','Forma passiva (base)'],['Comparativo e superlativo','Avverbi'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY e composti'],['SHOULD, WOULD, COULD'],['Domande indirette']],
+      [['Present Perfect — forma e uso','Present Perfect vs. Passato semplice','Present Perfect Continuous'],['1° condizionale','2° condizionale','3° condizionale'],['Infinito di scopo','Gerundio I — uso base','Oggetto + infinito'],['Forma passiva — tutti i tempi','GOING TO — intenzione'],['Avverbi di grado']],
+      [['Discorso indiretto — basi','Discorso indiretto — domande e ordini'],['Pronomi relativi','Relative restrittive e non restrittive'],['Proposizioni participiali'],['Modale + have + participio passato'],['Frasi scisse','Pronomi riflessivi'],['Concordanza dei tempi','Proposizioni temporali']],
+      [['Aspetto verbale'],['Frasi con WISH','Frasi esclamative'],['Gerundio II — uso avanzato'],['Prefissi negativi','Formazione delle parole'],['Riduzione di subordinate','Inglese americano vs. britannico']]
+    ]
+  },
+  pt: {
+    levels: ['A1 — Iniciante','A2 — Elementar','B1 — Intermédio','B2 — Intermédio superior','C1 — Avançado'],
+    topics: [
+      ['Verbo BE e HAVE','Artigos (a/an/the)','Substantivos','Pronomes','Presente simples','Presente contínuo','Verbos modais I','Futuro','Ordem das palavras'],
+      ['Passado simples','Adjetivos','Quantificadores','Verbos modais II','Perguntas indiretas'],
+      ['Present Perfect','Condicionais','Infinitivo e gerúndio','Voz passiva','Advérbios de grau'],
+      ['Discurso indireto','Orações relativas','Particípios','Modais com infinitivo perfeito','Ênfase','Concordância temporal'],
+      ['Aspeto verbal','Frases especiais','Gerúndio avançado','Formação de palavras','Redução de frases','Inglês americano']
+    ],
+    items: [
+      [['Verbo BE (am/is/are)','Verbo HAVE (have/has)','Perguntas e negações com BE'],['Artigo indefinido a/an','Artigo definido THE'],['Plural dos substantivos','Números 1–999','Números ordinais'],['Adjetivos possessivos','Caso possessivo (\'s)'],['Presente simples','Perguntas e negações — Presente simples','Question tags'],['Presente contínuo','Presente contínuo vs. simples'],['CAN, MUST, MAY'],['Futuro com WILL','THERE IS / THERE ARE'],['Ordem das palavras na frase']],
+      [['Passado simples — verbos regulares','Verbos irregulares — passado','Negações no passado','Voz passiva (básico)'],['Comparativo e superlativo','Advérbios'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY e compostos'],['SHOULD, WOULD, COULD'],['Perguntas indiretas']],
+      [['Present Perfect — forma e uso','Present Perfect vs. Passado simples','Present Perfect Continuous'],['1.º condicional','2.º condicional','3.º condicional'],['Infinitivo de propósito','Gerúndio I — uso básico','Objeto + infinitivo'],['Voz passiva — todos os tempos','GOING TO — intenção'],['Advérbios de grau']],
+      [['Discurso indireto — bases','Discurso indireto — perguntas e ordens'],['Pronomes relativos','Orações relativas restritivas e explicativas'],['Orações participiais'],['Modal + have + particípio passado'],['Frases clivadas','Pronomes reflexivos'],['Concordância temporal','Orações temporais']],
+      [['Aspeto verbal'],['Frases com WISH','Frases exclamativas'],['Gerúndio II — uso avançado'],['Prefixos negativos','Formação de palavras'],['Redução de subordinadas','Inglês americano vs. britânico']]
+    ]
+  },
+  pl: {
+    levels: ['A1 — Początkujący','A2 — Podstawowy','B1 — Średniozaawansowany','B2 — Wyższy średniozaawansowany','C1 — Zaawansowany'],
+    topics: [
+      ['Czasownik BE i HAVE','Przedimki (a/an/the)','Rzeczowniki','Zaimki','Czas Present Simple','Czas Present Continuous','Czasowniki modalne I','Czas przyszły','Szyk wyrazów'],
+      ['Czas Past Simple','Przymiotniki','Kwantyfikatory','Czasowniki modalne II','Pytania pośrednie'],
+      ['Present Perfect','Okresy warunkowe','Bezokolicznik i gerundium','Strona bierna','Przysłówki stopnia'],
+      ['Mowa zależna','Zdania względne','Imiesłowy','Czasowniki modalne z bezokolicznikiem Perfect','Nacisk','Następstwo czasów'],
+      ['Aspekt czasownika','Zdania specjalne','Gerundium — zaawansowane','Słowotwórstwo','Redukcja zdań','Angielski amerykański']
+    ],
+    items: [
+      [['Czasownik BE (am/is/are)','Czasownik HAVE (have/has)','Pytania i przeczenia z BE'],['Przedimek nieokreślony a/an','Przedimek określony THE'],['Liczba mnoga rzeczowników','Liczby 1–999','Liczby porządkowe'],['Zaimki dzierżawcze','Dopełniacz saksoński (\'s)'],['Present Simple','Pytania i przeczenia — Present Simple','Question tags'],['Present Continuous','Present Continuous vs. Simple'],['CAN, MUST, MAY'],['Czas przyszły z WILL','THERE IS / THERE ARE'],['Szyk wyrazów w zdaniu']],
+      [['Past Simple — czasowniki regularne','Czasowniki nieregularne — Past Simple','Przeczenia w Past Simple','Strona bierna (podstawy)'],['Stopniowanie przymiotników','Przysłówki'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY i złożenia'],['SHOULD, WOULD, COULD'],['Pytania pośrednie']],
+      [['Present Perfect — budowa i użycie','Present Perfect vs. Past Simple','Present Perfect Continuous'],['1. okres warunkowy','2. okres warunkowy','3. okres warunkowy'],['Bezokolicznik celu','Gerundium I — podstawowe użycie','Dopełnienie + bezokolicznik'],['Strona bierna — wszystkie czasy','GOING TO — zamiar'],['Przysłówki stopnia']],
+      [['Mowa zależna — podstawy','Mowa zależna — pytania i rozkazy'],['Zaimki względne','Zdania względne ograniczające i nieograniczające'],['Zdania imiesłowowe'],['Czasownik modalny + have + imiesłów czasu przeszłego'],['Zdania rozszczepione','Zaimki zwrotne'],['Następstwo czasów','Zdania czasowe']],
+      [['Aspekt czasownika'],['Zdania z WISH','Zdania wykrzyknikowe'],['Gerundium II — zaawansowane użycie'],['Przedrostki przeczące','Słowotwórstwo — przegląd'],['Redukcja zdań podrzędnych','Angielski amerykański vs. brytyjski']]
+    ]
+  },
+  sk: {
+    levels: ['A1 — Začiatočník','A2 — Základná úroveň','B1 — Mierne pokročilý','B2 — Vyššia stredná úroveň','C1 — Pokročilý'],
+    topics: [
+      ['Sloveso BE a HAVE','Členy (a/an/the)','Podstatné mená','Zámená','Prítomný čas jednoduchý','Prítomný čas priebehový','Modálne slovesá I','Budúci čas','Slovosled'],
+      ['Minulý čas','Prídavné mená','Kvantifikátory','Modálne slovesá II','Nepriama otázka'],
+      ['Predprítomný čas','Podmieňovacie vety','Infinitív a gerundium','Trpný rod','Príslovky miery'],
+      ['Nepriama reč','Vzťažné vety','Participium','Modálne slovesá s min. infinitívom','Dôrazové konštrukcie','Súslednosť časov'],
+      ['Slovesný vid','Špeciálne vety','Gerundium — pokročilé','Tvorenie slov','Skracovanie viet','Americká angličtina']
+    ],
+    items: [
+      [['Sloveso BE (am/is/are)','Sloveso HAVE (have/has)','Otázka a zápor s BE'],['Neurčitý člen a/an','Určitý člen THE'],['Množné číslo podstatných mien','Čísla 1–999','Radové číslovky'],['Privlastňovacie zámená','Privlastňovací pád (\'s)'],['Prítomný čas jednoduchý','Otázky a zápory — Prítomný čas jednoduchý','Doplňovacie otázky'],['Prítomný čas priebehový','Priebehový vs. jednoduchý'],['CAN, MUST, MAY'],['Budúci čas s WILL','THERE IS / THERE ARE'],['Slovosled vo vete']],
+      [['Minulý čas — pravidelné slovesá','Nepravidelné slovesá — minulý čas','Zápory v minulom čase','Trpný rod (základy)'],['Stupňovanie prídavných mien','Príslovky'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY a zloženiny'],['SHOULD, WOULD, COULD'],['Nepriame otázky']],
+      [['Predprítomný čas — tvar a použitie','Predprítomný vs. minulý čas','Predprítomný čas priebehový'],['1. podmieňovacia veta','2. podmieňovacia veta','3. podmieňovacia veta'],['Infinitív účelu','Gerundium I — základné použitie','Predmet + infinitív'],['Trpný rod — všetky časy','GOING TO — zámer'],['Príslovky miery']],
+      [['Nepriama reč — základy','Nepriama reč — otázky a rozkazy'],['Vzťažné zámená','Obmedzujúce vs. neobmedzujúce vzťažné vety'],['Participiálne vety'],['Modálne sloveso + have + minulé príčastie'],['Rozštiepené vety','Zvratné zámená'],['Súslednosť časov','Časové vety']],
+      [['Slovesný vid'],['Vety s WISH','Zvolacie vety'],['Gerundium II — pokročilé použitie'],['Záporné predpony','Tvorenie slov — prehľad'],['Skrátené časové a príčinné vety'],['Americká vs. britská angličtina']]
+    ]
+  },
+  nl: {
+    levels: ['A1 — Beginner','A2 — Elementair','B1 — Gemiddeld','B2 — Hoger gemiddeld','C1 — Gevorderd'],
+    topics: [
+      ['Werkwoord BE en HAVE','Lidwoorden (a/an/the)','Zelfstandige naamwoorden','Voornaamwoorden','Tegenwoordige tijd','Tegenwoordige tijd continu','Modale werkwoorden I','Toekomende tijd','Woordvolgorde'],
+      ['Verleden tijd','Bijvoeglijke naamwoorden','Kwantoren','Modale werkwoorden II','Indirecte vragen'],
+      ['Present Perfect','Conditionele zinnen','Infinitief en gerundium','Lijdende vorm','Graadadverbia'],
+      ['Indirecte rede','Betrekkelijke bijzinnen','Deelwoorden','Modale werkwoorden met perfect infinitief','Nadruk','Tijdsvolgorde'],
+      ['Verbaal aspect','Bijzondere zinnen','Gerundium gevorderd','Woordvorming','Zinsinkorting','Amerikaans Engels']
+    ],
+    items: [
+      [['Werkwoord BE (am/is/are)','Werkwoord HAVE (have/has)','Vragen en ontkenningen met BE'],['Onbepaald lidwoord a/an','Bepaald lidwoord THE'],['Meervoud zelfstandige naamwoorden','Nummers 1–999','Rangtelwoorden'],['Bezittelijke voornaamwoorden','Bezitsaanduiding (\'s)'],['Tegenwoordige tijd','Vragen en ontkenningen — tegenwoordige tijd','Bevestigingsvragen'],['Tegenwoordige tijd continu','Continu vs. enkelvoudig'],['CAN, MUST, MAY'],['Toekomende tijd met WILL','THERE IS / THERE ARE'],['Woordvolgorde in de zin']],
+      [['Verleden tijd — regelmatige werkwoorden','Onregelmatige werkwoorden — verleden','Ontkenningen verleden tijd','Lijdende vorm (basis)'],['Vergrotende en overtreffende trap','Bijwoorden'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY en samenstellingen'],['SHOULD, WOULD, COULD'],['Indirecte vragen']],
+      [['Present Perfect — vorm en gebruik','Present Perfect vs. verleden tijd','Present Perfect Continuous'],['1e conditionaal','2e conditionaal','3e conditionaal'],['Infinitief van doel','Gerundium I — basisgebruik','Object + infinitief'],['Lijdende vorm — alle tijden','GOING TO — bedoeling'],['Graadadverbia']],
+      [['Indirecte rede — basis','Indirecte rede — vragen en opdrachten'],['Betrekkelijke voornaamwoorden','Beperkende vs. niet-beperkende betrekkelijke bijzinnen'],['Participiale bijzinnen'],['Modaal + have + voltooid deelwoord'],['Cleft-zinnen','Wederkerende voornaamwoorden'],['Tijdsvolgorde','Tijdsbijzinnen']],
+      [['Verbaal aspect'],['Zinnen met WISH','Uitroepzinnen'],['Gerundium II — gevorderd gebruik'],['Negatieve voorvoegsels','Woordvorming — overzicht'],['Verkorte tijd- en oorzakelijke bijzinnen'],['Amerikaans vs. Brits Engels']]
+    ]
+  },
+  sv: {
+    levels: ['A1 — Nybörjare','A2 — Grundläggande','B1 — Mellannivå','B2 — Övre mellannivå','C1 — Avancerad'],
+    topics: [
+      ['Verbet BE och HAVE','Artiklar (a/an/the)','Substantiv','Pronomen','Presens','Pågående presens','Modala verb I','Futurum','Ordföljd'],
+      ['Preteritum','Adjektiv','Kvantifierare','Modala verb II','Indirekta frågor'],
+      ['Present Perfect','Konditionalis','Infinitiv och gerundium','Passiv form','Gradadverbial'],
+      ['Indirekt tal','Relativsatser','Particip','Modala verb med perfektinfinitiv','Emfas','Tempusföljd'],
+      ['Verbalt aspekt','Speciella satser','Avancerat gerundium','Ordbildning','Satskomprimering','Amerikansk engelska']
+    ],
+    items: [
+      [['Verbet BE (am/is/are)','Verbet HAVE (have/has)','Frågor och negationer med BE'],['Obestämd artikel a/an','Bestämd artikel THE'],['Plural av substantiv','Siffror 1–999','Ordningstal'],['Possessiva pronomen','Genitiv (\'s)'],['Presens','Frågor och negationer — presens','Vädjan'],['Pågående presens','Pågående vs. enkel form'],['CAN, MUST, MAY'],['Futurum med WILL','THERE IS / THERE ARE'],['Ordföljd i meningen']],
+      [['Preteritum — regelbundna verb','Oregelbundna verb — preteritum','Negationer i preteritum','Passiv form (grundläggande)'],['Komparativ och superlativ','Adverbial'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY och sammansättningar'],['SHOULD, WOULD, COULD'],['Indirekta frågor']],
+      [['Present Perfect — form och användning','Present Perfect vs. preteritum','Present Perfect Continuous'],['1:a konditionalis','2:a konditionalis','3:e konditionalis'],['Infinitiv av syfte','Gerundium I — grundläggande användning','Objekt + infinitiv'],['Passiv form — alla tempus','GOING TO — avsikt'],['Gradadverbial']],
+      [['Indirekt tal — grunder','Indirekt tal — frågor och uppmaningar'],['Relativa pronomen','Restriktiva vs. icke-restriktiva relativsatser'],['Participialkonstruktioner'],['Modal + have + perfektparticip'],['Klyvsatser','Reflexiva pronomen'],['Tempusföljd','Tidsadverbialsatser']],
+      [['Verbalt aspekt'],['Satser med WISH','Utropssatser'],['Gerundium II — avancerad användning'],['Negativa prefix','Ordbildning — översikt'],['Förkortade tid- och orsaksatser'],['Amerikansk vs. brittisk engelska']]
+    ]
+  },
+  ru: {
+    levels: ['A1 — Начинающий','A2 — Элементарный','B1 — Средний','B2 — Выше среднего','C1 — Продвинутый'],
+    topics: [
+      ['Глагол BE и HAVE','Артикли (a/an/the)','Существительные','Местоимения','Настоящее простое','Настоящее длительное','Модальные глаголы I','Будущее время','Порядок слов'],
+      ['Прошедшее простое','Прилагательные','Кванторы','Модальные глаголы II','Косвенные вопросы'],
+      ['Present Perfect','Условные предложения','Инфинитив и герундий','Пассивный залог','Наречия степени'],
+      ['Косвенная речь','Придаточные определительные','Причастия','Модальные глаголы с перфектным инфинитивом','Выделение','Последовательность времён'],
+      ['Глагольный вид','Специальные предложения','Герундий — продвинутый','Словообразование','Сокращение предложений','Американский английский']
+    ],
+    items: [
+      [['Глагол BE (am/is/are)','Глагол HAVE (have/has)','Вопросы и отрицания с BE'],['Неопределённый артикль a/an','Определённый артикль THE'],['Множественное число существительных','Числа 1–999','Порядковые числительные'],['Притяжательные местоимения','Притяжательный падеж (\'s)'],['Настоящее простое','Вопросы и отрицания — Настоящее простое','Разделительные вопросы'],['Настоящее длительное','Длительное vs. простое'],['CAN, MUST, MAY'],['Будущее время с WILL','THERE IS / THERE ARE'],['Порядок слов в предложении']],
+      [['Прошедшее простое — правильные глаголы','Неправильные глаголы — прошедшее','Отрицания в прошедшем','Пассивный залог (базовый)'],['Сравнительная и превосходная степень','Наречия'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY и сложные слова'],['SHOULD, WOULD, COULD'],['Косвенные вопросы']],
+      [['Present Perfect — форма и употребление','Present Perfect vs. Прошедшее простое','Present Perfect Continuous'],['1-й условный тип','2-й условный тип','3-й условный тип'],['Инфинитив цели','Герундий I — базовое употребление','Дополнение + инфинитив'],['Пассивный залог — все времена','GOING TO — намерение'],['Наречия степени']],
+      [['Косвенная речь — основы','Косвенная речь — вопросы и приказы'],['Относительные местоимения','Ограничительные и неограничительные придаточные'],['Причастные обороты'],['Модальный глагол + have + причастие прошедшего времени'],['Расщеплённые предложения','Возвратные местоимения'],['Последовательность времён','Временные придаточные']],
+      [['Глагольный вид'],['Предложения с WISH','Восклицательные предложения'],['Герундий II — продвинутое употребление'],['Отрицательные префиксы','Словообразование — обзор'],['Сокращение придаточных','Американский vs. британский английский']]
+    ]
+  },
+  tr: {
+    levels: ['A1 — Başlangıç','A2 — Temel','B1 — Orta','B2 — Orta üstü','C1 — İleri'],
+    topics: [
+      ['BE ve HAVE fiili','Artikeller (a/an/the)','İsimler','Zamirler','Geniş zaman','Şimdiki zaman','Kiplik fiiller I','Gelecek zaman','Sözcük dizimi'],
+      ['Geçmiş zaman','Sıfatlar','Niceleyiciler','Kiplik fiiller II','Dolaylı sorular'],
+      ['Present Perfect','Koşul cümleleri','Mastar ve -ing eki','Edilgen yapı','Derece zarfları'],
+      ['Dolaylı anlatım','Sıfat cümleleri','Ortaçlar','Kiplik fiiller + perfect infinitive','Vurgu','Zaman uyumu'],
+      ['Fiil görünüşü','Özel cümleler','İleri düzey -ing','Sözcük türetme','Cümle kısaltma','Amerikan İngilizcesi']
+    ],
+    items: [
+      [['BE fiili (am/is/are)','HAVE fiili (have/has)','BE ile soru ve olumsuz'],['Belirsiz artikel a/an','Belirli artikel THE'],['İsimlerin çoğulu','Sayılar 1–999','Sıra sayıları'],['İyelik zamirleri','İyelik durumu (\'s)'],['Geniş zaman','Geniş zamanda soru ve olumsuz','Ekli soru'],['Şimdiki zaman','Şimdiki vs. geniş zaman'],['CAN, MUST, MAY'],['WILL ile gelecek','THERE IS / THERE ARE'],['Cümlede sözcük dizimi']],
+      [['Geçmiş zaman — düzenli fiiller','Düzensiz fiiller — geçmiş','Geçmiş zamanda olumsuz','Edilgen yapı (temel)'],['Karşılaştırma ve üstünlük','Zarflar'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY ve bileşikler'],['SHOULD, WOULD, COULD'],['Dolaylı sorular']],
+      [['Present Perfect — biçim ve kullanım','Present Perfect vs. Geçmiş zaman','Present Perfect Continuous'],['1. koşul cümlesi','2. koşul cümlesi','3. koşul cümlesi'],['Amaç mastarı','Gerund I — temel kullanım','Nesne + mastar'],['Edilgen yapı — tüm zamanlar','GOING TO — niyet'],['Derece zarfları']],
+      [['Dolaylı anlatım — temel','Dolaylı anlatım — sorular ve emirler'],['İlgi zamirleri','Kısıtlayıcı ve kısıtlayıcı olmayan sıfat cümleleri'],['Ortaç yapıları'],['Kiplik + have + geçmiş ortaç'],['Yarık cümleler','Dönüşlü zamirler'],['Zaman uyumu','Zaman zarfı cümleleri']],
+      [['Fiil görünüşü'],['WISH cümleleri','Ünlem cümleleri'],['Gerund II — ileri kullanım'],['Olumsuz önekler','Sözcük türetme — genel bakış'],['Kısaltılmış yan cümleler','Amerikan vs. Britanya İngilizcesi']]
+    ]
+  },
+  cn: {
+    levels: ['A1 — 入门级','A2 — 基础级','B1 — 中级','B2 — 中高级','C1 — 高级'],
+    topics: [
+      ['BE和HAVE动词','冠词 (a/an/the)','名词','代词','一般现在时','现在进行时','情态动词 I','将来时','语序'],
+      ['一般过去时','形容词','量词','情态动词 II','间接疑问句'],
+      ['现在完成时','条件句','不定式与动名词','被动语态','程度副词'],
+      ['间接引语','关系从句','分词','情态动词+完成式不定式','强调','时态一致'],
+      ['动词体','特殊句型','高级动名词','构词法','句子简化','美式英语']
+    ],
+    items: [
+      [['BE动词 (am/is/are)','HAVE动词 (have/has)','BE的疑问句和否定句'],['不定冠词 a/an','定冠词 THE'],['名词复数','数字 1–999','序数词'],['物主代词','所有格 (\'s)'],['一般现在时','一般现在时疑问和否定','附加疑问句'],['现在进行时','进行时 vs. 一般时'],['CAN, MUST, MAY'],['WILL将来时','THERE IS / THERE ARE'],['句子语序']],
+      [['一般过去时 — 规则动词','不规则动词 — 过去时','过去时否定','被动语态（基础）'],['形容词比较级和最高级','副词'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY及合成词'],['SHOULD, WOULD, COULD'],['间接疑问句']],
+      [['现在完成时 — 构成与用法','现在完成时 vs. 一般过去时','现在完成进行时'],['第一条件句','第二条件句','第三条件句'],['目的不定式','动名词 I — 基本用法','宾语 + 不定式'],['被动语态 — 所有时态','GOING TO — 意图'],['程度副词']],
+      [['间接引语 — 基础','间接引语 — 疑问句和命令句'],['关系代词','限制性与非限制性关系从句'],['分词结构'],['情态动词 + have + 过去分词'],['强调句','反身代词'],['时态一致','时间从句']],
+      [['动词体'],['WISH句型','感叹句'],['动名词 II — 高级用法'],['否定前缀','构词法概述'],['时间和原因从句的简化'],['美式英语 vs. 英式英语']]
+    ]
+  },
+  jp: {
+    levels: ['A1 — 初級','A2 — 基礎','B1 — 中級','B2 — 中上級','C1 — 上級'],
+    topics: [
+      ['BE動詞とHAVE','冠詞 (a/an/the)','名詞','代名詞','現在形','現在進行形','助動詞 I','未来形','語順'],
+      ['過去形','形容詞','数量詞','助動詞 II','間接疑問文'],
+      ['現在完了形','条件文','不定詞と動名詞','受動態','程度の副詞'],
+      ['間接話法','関係節','分詞','助動詞+完了不定詞','強調','時制の一致'],
+      ['動詞のアスペクト','特殊構文','上級動名詞','語形成','文の短縮','アメリカ英語']
+    ],
+    items: [
+      [['BE動詞 (am/is/are)','HAVE動詞 (have/has)','BEの疑問文と否定文'],['不定冠詞 a/an','定冠詞 THE'],['名詞の複数形','数字 1–999','序数'],['所有代名詞','所有格 (\'s)'],['現在形','現在形の疑問文と否定文','付加疑問文'],['現在進行形','進行形 vs. 単純形'],['CAN, MUST, MAY'],['WILLの未来形','THERE IS / THERE ARE'],['文中の語順']],
+      [['過去形 — 規則動詞','不規則動詞 — 過去形','過去形の否定','受動態（基礎）'],['形容詞の比較','副詞'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANYと複合語'],['SHOULD, WOULD, COULD'],['間接疑問文']],
+      [['現在完了形 — 形と用法','現在完了形 vs. 過去形','現在完了進行形'],['第1条件文','第2条件文','第3条件文'],['目的の不定詞','動名詞 I — 基本用法','目的語 + 不定詞'],['受動態 — すべての時制','GOING TO — 意図'],['程度の副詞']],
+      [['間接話法 — 基礎','間接話法 — 疑問文と命令文'],['関係代名詞','限定的・非限定的関係節'],['分詞構文'],['助動詞 + have + 過去分詞'],['強調構文','再帰代名詞'],['時制の一致','時間の副詞節']],
+      [['動詞のアスペクト'],['WISH構文','感嘆文'],['動名詞 II — 上級用法'],['否定接頭辞','語形成 — 概要'],['時間・原因節の短縮'],['アメリカ英語 vs. イギリス英語']]
+    ]
+  },
+  kr: {
+    levels: ['A1 — 초급','A2 — 기초','B1 — 중급','B2 — 중상급','C1 — 고급'],
+    topics: [
+      ['BE 동사와 HAVE','관사 (a/an/the)','명사','대명사','단순 현재','현재 진행','조동사 I','미래 시제','어순'],
+      ['단순 과거','형용사','수량사','조동사 II','간접 의문문'],
+      ['현재 완료','조건문','부정사와 동명사','수동태','정도 부사'],
+      ['간접 화법','관계절','분사','조동사 + 완료 부정사','강조','시제 일치'],
+      ['동사 상','특수 문장','고급 동명사','조어법','문장 축약','미국식 영어']
+    ],
+    items: [
+      [['BE 동사 (am/is/are)','HAVE 동사 (have/has)','BE의 의문문과 부정문'],['부정관사 a/an','정관사 THE'],['명사의 복수형','숫자 1–999','서수'],['소유 대명사','소유격 (\'s)'],['단순 현재','단순 현재의 의문문과 부정문','부가 의문문'],['현재 진행','진행형 vs. 단순형'],['CAN, MUST, MAY'],['WILL 미래','THERE IS / THERE ARE'],['문장의 어순']],
+      [['단순 과거 — 규칙 동사','불규칙 동사 — 과거','단순 과거 부정','수동태 (기초)'],['형용사 비교급과 최상급','부사'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY와 복합어'],['SHOULD, WOULD, COULD'],['간접 의문문']],
+      [['현재 완료 — 형태와 용법','현재 완료 vs. 단순 과거','현재 완료 진행'],['1형 조건문','2형 조건문','3형 조건문'],['목적 부정사','동명사 I — 기본 용법','목적어 + 부정사'],['수동태 — 모든 시제','GOING TO — 의도'],['정도 부사']],
+      [['간접 화법 — 기초','간접 화법 — 의문문과 명령문'],['관계 대명사','한정적・비한정적 관계절'],['분사 구문'],['조동사 + have + 과거 분사'],['분열문','재귀 대명사'],['시제 일치','시간 부사절']],
+      [['동사 상'],['WISH 구문','감탄문'],['동명사 II — 고급 용법'],['부정 접두사','조어법 — 개요'],['시간・이유절 축약'],['미국식 vs. 영국식 영어']]
+    ]
+  }
+};
+
+// Vrátí přeložená data pro buildGrammarMenu
+function getTranslatedGrammarData() {
+  var lang = (typeof webLang !== 'undefined') ? webLang : 'cz';
+  var tr = GRAMMAR_TRANSLATIONS[lang];
+  if (!tr) return GRAMMAR_DATA; // CZ = default (data jsou česky)
+  return GRAMMAR_DATA.map(function(lvl, li) {
+    return Object.assign({}, lvl, {
+      label: (tr.levels[li] || lvl.label),
+      topics: lvl.topics.map(function(topic, ti) {
+        return Object.assign({}, topic, {
+          name: (tr.topics[li] && tr.topics[li][ti]) ? tr.topics[li][ti] : topic.name,
+          items: topic.items.map(function(item, ii) {
+            var name = (tr.items[li] && tr.items[li][ti] && tr.items[li][ti][ii]) ? tr.items[li][ti][ii] : item.name;
+            return Object.assign({}, item, { name: name });
+          })
+        });
+      })
+    });
+  });
+}
+
+var GRAMMAR_DATA = [
+  { level:'A1', badge:'gg-b-a1', label:'A1 — Začátečník', topics:[
+    { name:'Sloveso BE a HAVE', icon:'🔤', items:[
+      { name:'Sloveso BE (am/is/are)', prompt:'Use the verb BE (am/is/are) naturally in the English sentences and dialogues. At the end add a short grammar note explaining BE for beginners with 3 examples.' },
+      { name:'Sloveso HAVE (have/has)', prompt:'Use the verb HAVE (have/has) naturally in the English sentences and dialogues. At the end add a short grammar note explaining HAVE with 3 examples.' },
+      { name:'Otázka a zápor s BE', prompt:'Include questions and negatives with BE (Is she...? / He isn\'t...) in the English dialogues. At the end add a grammar note on BE questions/negatives with 3 examples.' },
+    ]},
+    { name:'Člen (a/an/the)', icon:'📌', items:[
+      { name:'Neurčitý člen a/an', prompt:'Use articles A and AN correctly in the English sentences and dialogues. At the end add a grammar note explaining when to use A vs AN with 3 examples.' },
+      { name:'Určitý člen THE', prompt:'Use the definite article THE correctly in the English sentences and dialogues. At the end add a grammar note on THE usage with 3 examples.' },
+    ]},
+    { name:'Podstatná jména', icon:'🏷️', items:[
+      { name:'Množné číslo (plurals)', prompt:'Include plural nouns (regular and irregular) in the English sentences and dialogues. At the end add a grammar note on English plurals with 3 examples.' },
+      { name:'Číslovky 1–999', prompt:'Use numbers (cardinal numerals) naturally in the English sentences and dialogues. At the end add a grammar note on English numbers with 3 examples.' },
+      { name:'Řadové číslovky', prompt:'Use ordinal numbers (first, second, third...) in the English sentences and dialogues. At the end add a grammar note on ordinals with 3 examples.' },
+    ]},
+    { name:'Zájmena', icon:'👤', items:[
+      { name:'Přivlastňovací zájmena', prompt:'Use possessive adjectives and pronouns (my/mine, your/yours, etc.) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+      { name:'Přivlastňovací pád (\'s)', prompt:'Use the possessive case (\'s) in the English sentences and dialogues. At the end add a grammar note on \'s vs "of" with 3 examples.' },
+    ]},
+    { name:'Přítomný čas prostý', icon:'⏱️', items:[
+      { name:'Přítomný čas prostý', prompt:'Use Present Simple tense in the English sentences and dialogues. At the end add a grammar note explaining Present Simple (conjugation, uses) with 3 examples.' },
+      { name:'Otázka a zápor — Present Simple', prompt:'Use DO/DOES questions and negatives (don\'t/doesn\'t) in the English dialogues. At the end add a grammar note with 3 examples.' },
+      { name:'Tázací dovětky', prompt:'Include question tags (don\'t you?, isn\'t she?, etc.) in the English dialogues. At the end add a grammar note on question tags with 3 examples.' },
+    ]},
+    { name:'Průběhový přítomný čas', icon:'🔄', items:[
+      { name:'Present Continuous', prompt:'Use Present Continuous tense (am/is/are + -ing) in the English sentences and dialogues. At the end add a grammar note on Present Continuous with 3 examples.' },
+      { name:'Present Continuous vs. Simple', prompt:'Contrast Present Continuous and Present Simple in the English dialogues. At the end add a grammar note explaining the difference with 3 examples.' },
+    ]},
+    { name:'Způsobová slovesa I', icon:'🎛️', items:[
+      { name:'CAN, MUST, MAY', prompt:'Use modal verbs CAN, MUST and MAY in the English sentences and dialogues. At the end add a grammar note explaining each modal with 3 examples.' },
+    ]},
+    { name:'Budoucí čas', icon:'🔮', items:[
+      { name:'Budoucí čas (WILL)', prompt:'Use future tense with WILL in the English sentences and dialogues. At the end add a grammar note on WILL future with 3 examples.' },
+      { name:'THERE IS / THERE ARE', prompt:'Use "there is" and "there are" in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Pořádek slov', icon:'📐', items:[
+      { name:'Pořádek slov ve větě', prompt:'Demonstrate correct English word order (Subject-Verb-Object) in the sentences and dialogues. At the end add a grammar note on English word order with 3 examples.' },
+    ]},
+  ]},
+  { level:'A2', badge:'gg-b-a2', label:'A2 — Základní', topics:[
+    { name:'Minulý čas', icon:'⏪', items:[
+      { name:'Minulý čas pravidelných sloves', prompt:'Use Past Simple with regular verbs (-ed) in the English sentences and dialogues. At the end add a grammar note on regular Past Simple with 3 examples.' },
+      { name:'Nepravidelná slovesa — minulý čas', prompt:'Use common irregular verbs in Past Simple in the English sentences and dialogues. At the end add a grammar note listing key irregular verbs with 3 examples.' },
+      { name:'Zápor v minulém čase', prompt:'Use Past Simple negatives (didn\'t) in the English dialogues. At the end add a grammar note on Past Simple negatives with 3 examples.' },
+      { name:'Trpný rod (základní)', prompt:'Use basic passive voice (was/were + past participle) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Přídavná jména', icon:'🎨', items:[
+      { name:'Stupňování přídavných jmen', prompt:'Use comparative and superlative adjectives in the English sentences and dialogues. At the end add a grammar note on adjective comparison with 3 examples.' },
+      { name:'Příslovce', prompt:'Use adverbs of manner and frequency in the English sentences and dialogues. At the end add a grammar note on English adverbs with 3 examples.' },
+    ]},
+    { name:'Kvantifikátory', icon:'🔢', items:[
+      { name:'MUCH, MANY, LITTLE, FEW', prompt:'Use MUCH, MANY, LITTLE and FEW correctly in the English sentences and dialogues. At the end add a grammar note explaining the difference with 3 examples.' },
+      { name:'EVERY, EACH, BOTH, ALL', prompt:'Use EVERY, EACH, BOTH and ALL in the English sentences and dialogues. At the end add a grammar note on their differences with 3 examples.' },
+      { name:'SOME, ANY a složeniny', prompt:'Use SOME, ANY and their compounds (someone, anything, etc.) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Způsobová slovesa II', icon:'🎛️', items:[
+      { name:'SHOULD, WOULD, COULD', prompt:'Use SHOULD, WOULD and COULD in the English sentences and dialogues. At the end add a grammar note explaining each with 3 examples.' },
+    ]},
+    { name:'Nepřímá otázka', icon:'❓', items:[
+      { name:'Nepřímá otázka', prompt:'Use indirect questions (Could you tell me where...? / I wonder if...) in the English dialogues. At the end add a grammar note on indirect questions with 3 examples.' },
+    ]},
+  ]},
+  { level:'B1', badge:'gg-b-b1', label:'B1 — Středně pokročilý', topics:[
+    { name:'Předpřítomný čas', icon:'🔁', items:[
+      { name:'Present Perfect — tvorba a použití', prompt:'Use Present Perfect (have/has + past participle) naturally in the English sentences and dialogues. At the end add a grammar note on Present Perfect usage with 3 examples.' },
+      { name:'Present Perfect vs. Past Simple', prompt:'Contrast Present Perfect and Past Simple in the English dialogues. At the end add a grammar note explaining the difference with 3 examples.' },
+      { name:'Present Perfect Continuous', prompt:'Use Present Perfect Continuous (have been + -ing) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Podmínkové věty', icon:'💭', items:[
+      { name:'1. typ podmínkových vět', prompt:'Use First Conditional (if + present, will + infinitive) in the English dialogues. At the end add a grammar note on First Conditional with 3 examples.' },
+      { name:'2. typ podmínkových vět', prompt:'Use Second Conditional (if + past, would + infinitive) in the English dialogues. At the end add a grammar note on Second Conditional with 3 examples.' },
+      { name:'3. typ podmínkových vět', prompt:'Use Third Conditional (if + past perfect, would have + past participle) in the English dialogues. At the end add a grammar note on Third Conditional with 3 examples.' },
+    ]},
+    { name:'Infinitiv a gerundium', icon:'🔗', items:[
+      { name:'Účelový infinitiv', prompt:'Use infinitives of purpose (to do sth, in order to) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+      { name:'Gerundium I — základní použití', prompt:'Use gerunds (verb + -ing as noun/object) in the English sentences and dialogues. At the end add a grammar note listing verbs + gerund with 3 examples.' },
+      { name:'Vazba předmětu s infinitivem', prompt:'Use object + infinitive constructions (want sb to do, expect sb to do) in the English dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Trpný rod', icon:'🔄', items:[
+      { name:'Trpný rod — všechny časy', prompt:'Use passive voice in different tenses in the English sentences and dialogues. At the end add a grammar note on the passive with 3 examples.' },
+      { name:'GOING TO — záměr', prompt:'Use GOING TO for plans and intentions in the English sentences and dialogues. Compare with WILL in the grammar note at the end. Give 3 examples.' },
+    ]},
+    { name:'Příslovce míry', icon:'📏', items:[
+      { name:'Příslovce míry', prompt:'Use adverbs of degree (very, quite, rather, fairly, extremely) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+  ]},
+  { level:'B2', badge:'gg-b-b2', label:'B2 — Vyšší středně pokročilý', topics:[
+    { name:'Nepřímá řeč', icon:'💬', items:[
+      { name:'Nepřímá řeč — základy', prompt:'Use reported speech (backshift of tenses) in the English sentences and dialogues. At the end add a grammar note on reported speech with 3 examples.' },
+      { name:'Nepřímá řeč — otázky a rozkazy', prompt:'Use reported questions and commands in the English dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Vztažné věty', icon:'🔗', items:[
+      { name:'Vztažná zájmena', prompt:'Use relative pronouns (who, which, that, whose, whom) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+      { name:'Vztažné věty omezující vs. neomelzující', prompt:'Use both defining and non-defining relative clauses in the English dialogues. At the end add a grammar note explaining the difference with 3 examples.' },
+    ]},
+    { name:'Participium', icon:'🌿', items:[
+      { name:'Participiální vazby', prompt:'Use participial clauses (having done, being done, etc.) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Způsobová slovesa s min. infinitivem', icon:'⚙️', items:[
+      { name:'Modal + have + past participle', prompt:'Use modal perfect constructions (should have done, could have done, must have done) in the English dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Zdůrazňování', icon:'✨', items:[
+      { name:'Zdůrazňovací konstrukce (cleft sentences)', prompt:'Use cleft sentences (It was..., What I need is...) in the English sentences and dialogues. At the end add a grammar note on emphasis with 3 examples.' },
+      { name:'Reflexivní zájmena', prompt:'Use reflexive/emphatic pronouns (myself, yourself, themselves, etc.) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Souslednost časů', icon:'⏳', items:[
+      { name:'Souslednost časů', prompt:'Demonstrate sequence of tenses (backshift in subordinate clauses) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+      { name:'Časové věty', prompt:'Use time clauses (when, while, after, before, until, as soon as) in the English dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+  ]},
+  { level:'C1', badge:'gg-b-c1', label:'C1 — Pokročilý', topics:[
+    { name:'Slovesné vidy', icon:'🎭', items:[
+      { name:'Slovesné vidy (Aspect)', prompt:'Demonstrate verbal aspect contrasts (simple vs continuous vs perfect) in the English sentences and dialogues. At the end add a grammar note on aspect with 3 examples.' },
+    ]},
+    { name:'Speciální věty', icon:'🌀', items:[
+      { name:'Přací věty (Wish)', prompt:'Use WISH clauses (wish + past/past perfect/would) in the English sentences and dialogues. At the end add a grammar note explaining each type with 3 examples.' },
+      { name:'Zvolací věty', prompt:'Use exclamatory sentences (What a...! How...!) in the English dialogues. At the end add a grammar note on exclamations with 3 examples.' },
+    ]},
+    { name:'Gerundium — pokročilé', icon:'🔬', items:[
+      { name:'Gerundium II — pokročilé použití', prompt:'Use advanced gerund forms (perfect gerund, passive gerund, gerund after prepositions) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Slovotvorba', icon:'🔨', items:[
+      { name:'Negativní předpony', prompt:'Use words with negative prefixes (un-, in-, im-, ir-, il-, dis-, non-) in the English sentences and dialogues. At the end add a grammar note on negative prefixes with 3 examples.' },
+      { name:'Přehled tvoření slov', prompt:'Use examples of word formation (prefixes, suffixes, compounding) in the English sentences and dialogues. At the end add a grammar note on word formation with 3 examples.' },
+    ]},
+    { name:'Krácení vět', icon:'✂️', items:[
+      { name:'Krácení časových a příčinných vět', prompt:'Use reduced time and cause clauses (participial and infinitive reductions) in the English sentences and dialogues. At the end add a grammar note with 3 examples.' },
+    ]},
+    { name:'Americká angličtina', icon:'🇺🇸', items:[
+      { name:'Americká vs. britská angličtina', prompt:'Highlight differences between American and British English (vocabulary, spelling) in the sentences and dialogues. At the end add a grammar note on key differences with 3 examples.' },
+    ]},
+  ]},
+];
+
+function buildGrammarMenu(data) {
+  var menu = document.getElementById('grammarMenu');
+  if (!menu) return;
+  menu.innerHTML = '';
+  data.forEach(function(lvl) {
+    var block = document.createElement('div');
+    block.className = 'gg-level';
+    block.innerHTML =
+      '<div class="gg-level-hdr" onclick="this.parentElement.classList.toggle(\'open\')">' +
+        '<span class="gg-badge ' + lvl.badge + '">' + lvl.level + '</span>' +
+        '<span class="gg-level-name">' + lvl.label + '</span>' +
+        '<span class="gg-arrow">▼</span>' +
+      '</div>' +
+      '<div class="gg-topics"></div>';
+    var topicsEl = block.querySelector('.gg-topics');
+    lvl.topics.forEach(function(topic) {
+      var tDiv = document.createElement('div');
+      tDiv.className = 'gg-topic';
+      tDiv.innerHTML =
+        '<div class="gg-topic-hdr" onclick="this.parentElement.classList.toggle(\'open\')">' +
+          '<span class="gg-topic-icon">' + topic.icon + '</span>' +
+          '<span class="gg-topic-name">' + topic.name + '</span>' +
+          '<span class="gg-t-arrow">▼</span>' +
+        '</div>' +
+        '<div class="gg-items"></div>';
+      var itemsEl = tDiv.querySelector('.gg-items');
+      topic.items.forEach(function(item) {
+        var btn = document.createElement('button');
+        btn.className = 'gg-item-btn';
+        btn.textContent = item.name;
+        if (selectedGrammar && selectedGrammar.name === item.name) btn.classList.add('selected');
+        btn.onclick = function() { selectGrammar(item, btn); };
+        itemsEl.appendChild(btn);
+      });
+      topicsEl.appendChild(tDiv);
+    });
+    menu.appendChild(block);
+  });
+}
+
+function filterGrammar(q) {
+  q = (q || '').toLowerCase().trim();
+  var srcData = getTranslatedGrammarData();
+  if (!q) { buildGrammarMenu(srcData); return; }
+  var filtered = srcData.map(function(lvl) {
+    var topics = lvl.topics.map(function(topic) {
+      var items = topic.items.filter(function(item) {
+        return item.name.toLowerCase().includes(q) || topic.name.toLowerCase().includes(q);
+      });
+      return items.length ? Object.assign({}, topic, {items:items}) : null;
+    }).filter(Boolean);
+    return topics.length ? Object.assign({}, lvl, {topics:topics}) : null;
+  }).filter(Boolean);
+  buildGrammarMenu(filtered);
+  // auto-open all when searching
+  document.querySelectorAll('#grammarMenu .gg-level').forEach(function(el) { el.classList.add('open'); });
+  document.querySelectorAll('#grammarMenu .gg-topic').forEach(function(el) { el.classList.add('open'); });
+}
+
+function selectGrammar(item, btn) {
+  selectedGrammar = item;
+  var badge = document.getElementById('grammarBadge');
+  if (badge) { badge.textContent = item.name; badge.style.display = 'inline-block'; }
+  var hdrClear = document.getElementById('grammarHdrClear');
+  if (hdrClear) hdrClear.style.display = 'flex';
+  var row = document.getElementById('grammarSelectedRow');
+  var lbl = document.getElementById('grammarSelectedLabel');
+  if (row) row.style.display = 'flex';
+  if (lbl) lbl.textContent = '📖 ' + item.name;
+  document.querySelectorAll('.gg-item-btn').forEach(function(b) { b.classList.remove('selected'); });
+  if (btn) btn.classList.add('selected');
+}
+
+function clearGrammar() {
+  selectedGrammar = null;
+  var badge = document.getElementById('grammarBadge');
+  if (badge) { badge.textContent = ''; badge.style.display = 'none'; }
+  var hdrClear = document.getElementById('grammarHdrClear');
+  if (hdrClear) hdrClear.style.display = 'none';
+  var row = document.getElementById('grammarSelectedRow');
+  if (row) row.style.display = 'none';
+  document.querySelectorAll('.gg-item-btn').forEach(function(b) { b.classList.remove('selected'); });
+}
+
+function toggleGrammarPanel(hdr) {
+  hdr.classList.toggle('open');
+  var panel = document.getElementById('genGrammarPanel');
+  if (panel) {
+    var isOpen = hdr.classList.contains('open');
+    panel.style.display = isOpen ? 'block' : 'none';
+    if (isOpen) {
+      buildGrammarMenu(getTranslatedGrammarData());
+    }
+  }
+}
+
+
 var selectedTopic = '';
 var selectedTopicLabel = '';
 
@@ -6675,6 +7436,7 @@ function genGenerate() {
     'TÉMA: ' + intent + '\n' +
     (assistTopic ? 'TÉMA KONTEXT: ' + assistTopic + '\n' : '') +
     (assistVerb  ? 'FRÁZOVÉ SLOVESO: ' + assistVerb + '\n' : '') +
+    (selectedGrammar ? 'GRAMATICKÝ JEV: ' + selectedGrammar.name + '\n' : '') +
     'ÚROVEŇ: ' + cefrLevel + ' STYL: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
     'ŠTÍTKY (neměnné): ' + fromLabel + ' a ' + toLabel + '\n\n' +
@@ -6721,6 +7483,16 @@ function genGenerate() {
 
     'ZÁKAZY: názvy jazyků v plné formě, tabulky, Markdown, pipe znaky (|)\n' +
     'Věta a překlad nesmí být na stejném řádku.\n\n' +
+
+    (selectedGrammar
+      ? '📖 GRAMATICKÝ JEV — POVINNÉ ZAPRACOVÁNÍ:\n' +
+        'Téma: ' + selectedGrammar.name + '\n' +
+        'Instrukce pro AI: ' + selectedGrammar.prompt + '\n\n' +
+        'PRAVIDLA GRAMATICKÉ INTEGRACE:\n' +
+        '- Ve vzorových větách i dialozích přirozeně použij tento gramatický jev (v anglické části).\n' +
+        '- Na konci celé odpovědi přidej sekci "📖 GRAMATIKA: ' + selectedGrammar.name + '" s krátkým vysvětlením jevu v ' + fromName + ' (3–5 vět) a 3 dalšími ilustračními příklady.\n' +
+        '- Gramatický jev zahrň jemně a přirozeně — dialogy musí stále znít autenticky.\n\n'
+      : '') +
 
     'Počet dialogů: ' + totalDialogs + '\n' +
     'Délka: ' + dlInfo.label + '\n';
@@ -7212,7 +7984,7 @@ function vtGeneratePhrasal(pv) {
     input.value = '';
     input.focus();
     var fromLangCode = getGenFromLang() || 'cz';
-    var word = (T[fromLangCode] && T[fromLangCode].tag3) || 'Ukázka';
+    var word = (T[fromLangCode] && T[fromLangCode].sampleWord) || 'Cestování';
     var i = 0;
     var typing = setInterval(function () {
       input.value += word[i];
@@ -7293,8 +8065,14 @@ function vtGeneratePhrasal(pv) {
     var active = !localStorage.getItem(SEEN_KEY);
     var chip = document.getElementById('onbChipBtn');
     if (chip) {
-      var label = (T[getGenFromLang()] && T[getGenFromLang()].tag3) || 'Ukázka';
+      var label = (T[getGenFromLang()] && T[getGenFromLang()].sampleBtn) || 'Ukázka';
       chip.textContent = active ? '■ ' + label : '▶ ' + label;
+    }
+    // Aktualizuj ukázkové slovo v chipu exChip3
+    var sampleChip = document.querySelector('[data-translate="exChip3"]');
+    if (sampleChip) {
+      var word = (T[getGenFromLang()] && T[getGenFromLang()].sampleWord) || 'Cestování';
+      sampleChip.textContent = word;
     }
   }
 
