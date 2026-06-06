@@ -190,8 +190,9 @@ body {
 .dropdown-btn .arrow {
   font-size: .6rem; color: var(--gold);
   transition: transform .2s;
+  transform: rotate(180deg);
 }
-.dropdown-wrap.open .arrow { transform: rotate(180deg); }
+.dropdown-wrap.open .arrow { transform: rotate(0deg); }
 
 .dropdown-btn.learn-btn {
   border-color: rgba(43,158,142,.3);
@@ -207,12 +208,13 @@ body {
 .dropdown-list {
   display: none;
   position: absolute;
-  top: calc(100% + 5px);
+  bottom: calc(100% + 5px);
+  top: auto;
   left: 0;
   background: var(--navy);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: var(--r);
-  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  box-shadow: 0 -8px 32px rgba(0,0,0,.35);
   z-index: 9000;
   min-width: 100%;
   overflow-y: auto;
@@ -1255,16 +1257,17 @@ img { max-width: 100%; height: auto; }
 .gen-lang-dd-arrow {
   font-size: .6rem; color: var(--gold); opacity: .7; flex-shrink: 0;
   transition: transform .18s;
+  transform: rotate(180deg);
 }
-.gen-lang-dd-btn.open .gen-lang-dd-arrow { transform: rotate(180deg); }
+.gen-lang-dd-btn.open .gen-lang-dd-arrow { transform: rotate(0deg); }
 
 .gen-lang-dd-list {
   display: none;
-  position: absolute; top: calc(100% + 5px); left: 0; right: 0;
+  position: absolute; bottom: calc(100% + 5px); top: auto; left: 0; right: 0;
   background: #1a2540;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 10px;
-  box-shadow: 0 10px 32px rgba(0,0,0,.55);
+  box-shadow: 0 -10px 32px rgba(0,0,0,.55);
   z-index: 600; overflow: hidden;
   max-height: 280px; overflow-y: auto;
 }
@@ -3619,12 +3622,12 @@ h1[data-t="heroH"] {
 // Roletka 1: jazyk webu (přeloží celou stránku) – English na prvním místě
 const LANG_LIST = [
   {code:'en', label:'English',    flag:'🇬🇧'},
-  {code:'cz', label:'Čeština',     flag:'🇨🇿'},
   {code:'de', label:'Deutsch',    flag:'🇩🇪'},
   {code:'fr', label:'Français',   flag:'🇫🇷'},
   {code:'es', label:'Español',    flag:'🇪🇸'},
   {code:'it', label:'Italiano',   flag:'🇮🇹'},
   {code:'pt', label:'Português',  flag:'🇵🇹'},
+  {code:'cz', label:'Čeština',     flag:'🇨🇿'},
   {code:'pl', label:'Polski',     flag:'🇵🇱'},
   {code:'sk', label:'Slovenčina', flag:'🇸🇰'},
   {code:'nl', label:'Nederlands', flag:'🇳🇱'},
@@ -6482,7 +6485,7 @@ document.addEventListener('click', function(e) {
 // ═══════════════════════════════════════════════════════
 
 // Jazyky dostupné v generátoru (podmnožina LANG_LIST)
-var GEN_LANGS = ['en','cz','de','es','fr','it','pl','sk','ru','pt','cn','jp','kr'];
+var GEN_LANGS = ['en','de','fr','es','it','pt','cz','pl','sk','ru','cn','jp','kr'];
 
 var genFromLangVal = 'cz';
 var genToLangVal   = 'en';
