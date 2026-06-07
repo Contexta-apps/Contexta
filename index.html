@@ -217,6 +217,8 @@ body {
   box-shadow: 0 -8px 32px rgba(0,0,0,.35);
   z-index: 9000;
   min-width: 100%;
+  width: max-content;
+  max-width: min(320px, 90vw);
   overflow-y: auto;
   max-height: 70vh;
   -webkit-overflow-scrolling: touch;
@@ -238,6 +240,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.06);
   list-style: none;
   user-select: none;
+  white-space: nowrap;
 }
 .lang-opt:last-child { border-bottom: none; }
 .lang-opt:hover { background: rgba(201,151,58,.12); color: var(--gold-lt); }
@@ -1251,9 +1254,9 @@ img { max-width: 100%; height: auto; }
 }
 .gen-lang-dd-btn:hover { border-color: rgba(255,255,255,.22); }
 .gen-lang-dd-btn.open  { border-color: var(--gold); background: rgba(255,255,255,.09); }
-.gen-lang-dd-btn-inner { display: flex; align-items: center; gap: 7px; overflow: hidden; }
+.gen-lang-dd-btn-inner { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .gen-lang-dd-flag  { width: 22px; height: 16px; object-fit: cover; border-radius: 2px; flex-shrink: 0; line-height: 1; vertical-align: middle; }
-.gen-lang-dd-name  { overflow: hidden; text-overflow: ellipsis; }
+.gen-lang-dd-name  { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .gen-lang-dd-arrow {
   font-size: .6rem; color: var(--gold); opacity: .7; flex-shrink: 0;
   transition: transform .18s;
@@ -1263,24 +1266,26 @@ img { max-width: 100%; height: auto; }
 
 .gen-lang-dd-list {
   display: none;
-  position: absolute; bottom: calc(100% + 5px); top: auto; left: 0; right: 0;
+  position: absolute; bottom: calc(100% + 5px); top: auto; left: 0;
+  width: max-content; min-width: 100%; max-width: min(360px, 92vw);
   background: #1a2540;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 10px;
   box-shadow: 0 -10px 32px rgba(0,0,0,.55);
-  z-index: 600; overflow: hidden;
-  max-height: 280px; overflow-y: auto;
+  z-index: 600;
+  max-height: 280px; overflow-y: auto; overflow-x: hidden;
 }
 .gen-lang-dd-list::-webkit-scrollbar { width: 3px; }
 .gen-lang-dd-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
-.gen-lang-dd-list.open { display: block; }
+.gen-lang-dd-list.open { display: flex; flex-direction: column; }
 
 .gen-lang-opt {
-  display: flex; align-items: center; gap: 9px;
-  padding: 9px 14px;
+  display: flex; align-items: center; justify-content: flex-start; gap: 9px;
+  width: 100%; padding: 9px 16px;
   font-size: .87rem; font-weight: 500; color: rgba(255,255,255,.78);
   cursor: pointer; transition: background .1s;
   border-top: 1px solid rgba(255,255,255,.04);
+  box-sizing: border-box; white-space: nowrap;
 }
 .gen-lang-opt:first-child { border-top: none; }
 .gen-lang-opt:hover    { background: rgba(255,255,255,.08); color: #fff; }
@@ -1841,8 +1846,17 @@ img { max-width: 100%; height: auto; }
   border-color: var(--gold); background: rgba(201,151,58,.05);
 }
 .gen-intent-input::placeholder { color: rgba(255,255,255,.28); font-size: .88rem; }
+.gen-cta-row {
+  display: flex; justify-content: center; margin-top: 10px; margin-bottom: 6px;
+}
+.gen-cta-row .gen-ex-chip--random {
+  width: 100%; max-width: 100%; text-align: center; justify-content: center;
+}
+@media (min-width: 768px) {
+  .gen-cta-row .gen-ex-chip--random { width: auto; max-width: none; }
+}
 .gen-intent-examples {
-  display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 10px; align-items: center; justify-content: center;
+  display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 0; align-items: center; justify-content: center;
 }
 .gen-intent-ex-label {
   font-size: .72rem; color: rgba(255,255,255,.35);
@@ -1857,9 +1871,41 @@ img { max-width: 100%; height: auto; }
 }
 .gen-ex-chip:hover { border-color: var(--gold); color: var(--gold-lt); background: rgba(201,151,58,.2); }
 
+/* ── ✨ Náhodná inspirace chip ── */
+.gen-ex-chip--random {
+  border-color: rgba(201,151,58,.55);
+  background: linear-gradient(135deg, rgba(201,151,58,.18) 0%, rgba(43,158,142,.12) 100%);
+  color: var(--gold-lt);
+  position: relative;
+  overflow: hidden;
+}
+.gen-ex-chip--random::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.07) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+.gen-ex-chip--random:hover::before { transform: translateX(100%); }
+.gen-ex-chip--random:hover {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(201,151,58,.28) 0%, rgba(43,158,142,.18) 100%);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(201,151,58,.25);
+}
+.gen-ex-chip--random.spin { animation: diceSpin .32s ease; }
+@keyframes diceSpin {
+  0%   { transform: scale(1) rotate(0deg); }
+  40%  { transform: scale(.88) rotate(-12deg); }
+  70%  { transform: scale(1.06) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+
 /* ── AI Extrakce (navržený kontext) ── */
 .gen-ai-extract {
-  margin: 0 0 4px;
+  margin: 0 28px 4px;
   padding: 14px 16px;
   background: rgba(201,151,58,.07);
   border: 1px solid rgba(201,151,58,.22);
@@ -2583,13 +2629,13 @@ img { max-width: 100%; height: auto; }
 }
 @media (max-width: 767px) {
   .gen-intent-examples {
-    flex-wrap: wrap;
-    overflow-x: visible;
+    flex-wrap: nowrap;
+    overflow: visible;
     justify-content: center;
     gap: 7px;
     padding: 0;
   }
-  .gen-ex-chip { flex-shrink: 1; white-space: nowrap; }
+  .gen-ex-chip { flex-shrink: 0; white-space: nowrap; }
 }
 .gen-primary-block .gen-intent-ex-label {
   font-size: .7rem;
@@ -3045,6 +3091,7 @@ h1[data-t="heroH"] {
   .gen-lang-row-inline { padding: 10px 32px; }
   .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 32px; padding-right: 32px; }
   .gen-advanced-wrap .gen-grammar-header { padding-left: 32px; padding-right: 32px; }
+  .gen-ai-extract { margin-left: 32px; margin-right: 32px; }
 
   /* ── Config block: 2-column grid ── */
   .gen-config-block .gen-tuning-row {
@@ -3091,6 +3138,7 @@ h1[data-t="heroH"] {
   .gen-primary-block { padding: 28px 48px 22px; }
   .gen-card .gen-send-row { padding: 18px 48px 26px; }
   .gen-card .gen-error { margin: 0 48px 4px; }
+  .gen-ai-extract { margin-left: 48px; margin-right: 48px; }
 
   /* ── Tuning řádky: inline ── */
   .gen-tuning { flex-direction: row; flex-wrap: wrap; gap: 16px; }
@@ -3418,18 +3466,20 @@ h1[data-t="heroH"] {
           </button>
         </div>
       </div>
+      <div class="gen-cta-row">
+        <button class="gen-ex-chip gen-ex-chip--random" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodná inspirace</button>
+      </div>
       <div class="gen-intent-examples">
-
-        <button class="gen-ex-chip" data-translate="exChip6" onclick="insertToPractice(this.textContent)">Smalltalk</button>
         <button class="gen-ex-chip" data-translate="exChip1" onclick="insertToPractice(this.textContent)">Jídlo</button>
+        <button class="gen-ex-chip" data-translate="exChip8" onclick="insertToPractice(this.textContent)">Zábava</button>
         <button class="gen-ex-chip" data-translate="exChip3" onclick="insertToPractice(this.textContent)">Cestování</button>
-        <button class="gen-ex-chip" data-translate="exChip7" onclick="insertToPractice(this.textContent)">Úřady</button>
-        <button class="gen-ex-chip" data-translate="exChip5" onclick="insertToPractice(this.textContent)">Ubytování</button>
+        <button class="gen-ex-chip" data-translate="exChip9" onclick="insertToPractice(this.textContent)">Fitness</button>
+        <button class="gen-ex-chip" data-translate="exChip10" onclick="insertToPractice(this.textContent)">Studium</button>
       </div>
 
       <!-- ── Probíraná slova ── -->
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
-        <span class="gen-history-label">📚 Probíraná slova</span>
+        <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
         <div class="gen-history-chips" id="genHistoryChips"></div>
         <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
       </div>
@@ -3633,6 +3683,8 @@ const LANG_LIST = [
   {code:'nl', label:'Nederlands', flag:'🇳🇱'},
   {code:'sv', label:'Svenska',    flag:'🇸🇪'},
   {code:'tr', label:'Türkçe',     flag:'🇹🇷'},
+  {code:'uk', label:'Українська', flag:'🇺🇦'},
+  {code:'id', label:'Bahasa Indonesia', flag:'🇮🇩'},
   {code:'ru', label:'Русский',    flag:'🇷🇺'},
   {code:'cn', label:'中文',        flag:'🇨🇳'},
   {code:'jp', label:'日本語',      flag:'🇯🇵'},
@@ -3653,6 +3705,8 @@ var FLAG_URLS = {
   'nl': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f3-1f1f1.svg',
   'sv': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f8-1f1ea.svg',
   'tr': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f9-1f1f7.svg',
+  'uk': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1e6.svg',
+  'id': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ee-1f1e9.svg',
   'ru': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f7-1f1fa.svg',
   'cn': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e8-1f1f3.svg',
   'jp': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ef-1f1f5.svg',
@@ -3669,7 +3723,8 @@ function flagImg(code, cssClass) {
 const SPEECH = {
   cz:'cs-CZ', en:'en-US', de:'de-DE', fr:'fr-FR',
   es:'es-ES', it:'it-IT', pt:'pt-PT', pl:'pl-PL',
-  cn:'zh-CN', jp:'ja-JP', kr:'ko-KR'
+  cn:'zh-CN', jp:'ja-JP', kr:'ko-KR',
+  uk:'uk-UA', id:'id-ID'
 };
 
 // ═══════════════════════════════════════════════════════
@@ -3812,7 +3867,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodná inspirace", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -3873,6 +3928,7 @@ cz:{
   exChip0:'pracovat v týmu', exChip1:'objednat jídlo',
   exChip2:'vyřešit konflikt', exChip3:'cestování', exChip4:'pracovní pohovor',
   exChip5:'odbavení', exChip6:'společenský rozhovor', exChip7:'úřady',
+  exChip8:'zábava', exChip9:'fitness', exChip10:'studium',
   extractTitle:'Navržený kontext',
   extractTema:'TÉMA', extractAkce:'AKCE', extractSituace:'SITUACE',
   webLangLabel:'Jazyk webu',
@@ -3900,7 +3956,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random inspiration", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -3957,9 +4013,10 @@ en:{
   genSendBtn:'▶ Generate Context',
   genHintSmall:'💡 ChatGPT opens with the prompt ready — just press Enter',
   genErrEmpty:'Write a situation or intention you want to practise.',
-  exChip0:'working in a team', exChip1:'ordering food',
-  exChip2:'resolving a conflict', exChip3:'travelling', exChip4:'job interview',
+  exChip0:'working in a team', exChip1:'food',
+  exChip2:'resolving a conflict', exChip3:'travel', exChip4:'job interview',
   exChip5:'check in', exChip6:'small talk', exChip7:'official business',
+  exChip8:'fun', exChip9:'fitness', exChip10:'study',
   extractTitle:'Suggested context',
   extractTema:'TOPIC', extractAkce:'ACTION', extractSituace:'SITUATION',
   webLangLabel:'Web language',
@@ -3987,7 +4044,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufällige Inspiration", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -4044,9 +4101,10 @@ de:{
   genSendBtn:'▶ Kontext generieren',
   genHintSmall:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
   genErrEmpty:'Bitte eine Situation oder Absicht eingeben.',
-  exChip0:'im Team arbeiten', exChip1:'Essen bestellen',
+  exChip0:'im Team arbeiten', exChip1:'Essen',
   exChip2:'Konflikt lösen', exChip3:'Reisen', exChip4:'Vorstellungsgespräch',
   exChip5:'Check-in', exChip6:'Small Talk', exChip7:'Behörden',
+  exChip8:'Spaß', exChip9:'Fitness', exChip10:'Studium',
   extractTitle:'Vorgeschlagener Kontext',
   extractTema:'THEMA', extractAkce:'AKTION', extractSituace:'SITUATION',
   webLangLabel:'Webseitensprache',
@@ -4070,7 +4128,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Inspiration aléatoire", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -4124,9 +4182,10 @@ fr:{
   genSendBtn:"▶ Générer le contexte",
   genHintSmall:"💡 ChatGPT s'ouvre avec le prompt prêt — appuie sur Entrée",
   genErrEmpty2:"Écris une situation ou une intention à pratiquer.",
-  exChip0:"travailler en équipe", exChip1:"commander un repas",
-  exChip2:"résoudre un conflit", exChip3:"voyager", exChip4:"entretien d'embauche",
+  exChip0:"travailler en équipe", exChip1:"repas",
+  exChip2:"résoudre un conflit", exChip3:"voyage", exChip4:"entretien d'embauche",
   exChip5:"enregistrement", exChip6:"petite conversation", exChip7:"démarches",
+  exChip8:"loisirs", exChip9:"fitness", exChip10:"études",
   extractTitle:"Contexte suggéré",
   extractKeyTema:"SUJET", extractKeyAkce:"ACTION", extractKeySituace:"SITUATION",
   webLangLabel:"Langue du site",
@@ -4153,7 +4212,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Inspiración aleatoria", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -4208,9 +4267,10 @@ es:{
   genSendBtn:'▶ Generar contexto',
   genHintSmall:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
   genErrEmpty2:'Escribe una situación o intención que quieras practicar.',
-  exChip0:'trabajar en equipo', exChip1:'pedir comida',
-  exChip2:'resolver un conflicto', exChip3:'viajar', exChip4:'entrevista de trabajo',
+  exChip0:'trabajar en equipo', exChip1:'comida',
+  exChip2:'resolver un conflicto', exChip3:'viaje', exChip4:'entrevista de trabajo',
   exChip5:'registrarse', exChip6:'charla informal', exChip7:'trámites',
+  exChip8:'ocio', exChip9:'fitness', exChip10:'estudios',
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
@@ -4234,7 +4294,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Ispirazione casuale", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -4289,9 +4349,10 @@ it:{
   genSendBtn:'▶ Genera contesto',
   genHintSmall:'💡 ChatGPT si apre con il prompt — premi solo Invio',
   genErrEmpty2:'Scrivi una situazione o intenzione da praticare.',
-  exChip0:'lavorare in team', exChip1:'ordinare da mangiare',
-  exChip2:'risolvere un conflitto', exChip3:'viaggiare', exChip4:'colloquio di lavoro',
+  exChip0:'lavorare in team', exChip1:'cibo',
+  exChip2:'risolvere un conflitto', exChip3:'viaggio', exChip4:'colloquio di lavoro',
   exChip5:'fare il check-in', exChip6:'conversazione leggera', exChip7:'pratiche burocratiche',
+  exChip8:'svago', exChip9:'fitness', exChip10:'studio',
   extractTitle:'Contesto suggerito',
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
@@ -4315,7 +4376,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Inspiração aleatória", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -4369,9 +4430,10 @@ pt:{
   genSendBtn:'▶ Gerar contexto',
   genHintSmall:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
   genErrEmpty2:'Escreva uma situação ou intenção que deseja praticar.',
-  exChip0:'trabalhar em equipe', exChip1:'pedir comida',
-  exChip2:'resolver um conflito', exChip3:'viajar', exChip4:'entrevista de emprego',
+  exChip0:'trabalhar em equipe', exChip1:'comida',
+  exChip2:'resolver um conflito', exChip3:'viagem', exChip4:'entrevista de emprego',
   exChip5:'fazer check-in', exChip6:'conversa informal', exChip7:'repartições',
+  exChip8:'lazer', exChip9:'fitness', exChip10:'estudos',
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
@@ -4395,7 +4457,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowa inspiracja", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -4450,9 +4512,10 @@ pl:{
   genSendBtn:'▶ Wygeneruj kontekst',
   genHintSmall:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
   genErrEmpty2:'Napisz sytuację lub zamiar, który chcesz ćwiczyć.',
-  exChip0:'praca zespołowa', exChip1:'zamawianie jedzenia',
+  exChip0:'praca zespołowa', exChip1:'jedzenie',
   exChip2:'rozwiązanie konfliktu', exChip3:'podróże', exChip4:'rozmowa kwalifikacyjna',
   exChip5:'zameldowanie', exChip6:'small talk', exChip7:'urzędy',
+  exChip8:'rozrywka', exChip9:'fitness', exChip10:'nauka',
   extractTitle:'Sugerowany kontekst',
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
@@ -4476,7 +4539,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机灵感", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -4534,6 +4597,7 @@ cn:{
   exChip0:'团队合作', exChip1:'点餐',
   exChip2:'解决冲突', exChip3:'旅行', exChip4:'工作面试',
   exChip5:'登记入住', exChip6:'闲聊', exChip7:'政府办事',
+  exChip8:'娱乐', exChip9:'健身', exChip10:'学习',
   extractTitle:'建议的背景',
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
@@ -4557,7 +4621,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムなインスピレーション", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -4612,9 +4676,10 @@ jp:{
   genSendBtn:'▶ コンテキストを生成',
   genHintSmall:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
   genErrEmpty2:'練習したい状況や意図を入力してください。',
-  exChip0:'チームで働く', exChip1:'食事を注文する',
+  exChip0:'チームで働く', exChip1:'食事',
   exChip2:'対立を解決する', exChip3:'旅行', exChip4:'就職面接',
   exChip5:'チェックイン', exChip6:'雑談', exChip7:'役所',
+  exChip8:'エンタメ', exChip9:'運動', exChip10:'勉強',
   extractTitle:'提案されたコンテキスト',
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
@@ -4638,7 +4703,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 랜덤 영감", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -4693,9 +4758,10 @@ kr:{
   genSendBtn:'▶ 컨텍스트 생성',
   genHintSmall:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
   genErrEmpty2:'연습하고 싶은 상황이나 의도를 입력해 주세요.',
-  exChip0:'팀으로 일하기', exChip1:'음식 주문하기',
+  exChip0:'팀으로 일하기', exChip1:'음식',
   exChip2:'갈등 해결하기', exChip3:'여행', exChip4:'취업 면접',
   exChip5:'체크인', exChip6:'가벼운 대화', exChip7:'관공서',
+  exChip8:'오락', exChip9:'운동', exChip10:'공부',
   extractTitle:'제안된 맥락',
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
@@ -4719,7 +4785,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodná inšpirácia", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -4763,9 +4829,10 @@ sk:{
   genSendBtn:'▶ Generovať kontext',
   genHintSmall:'💡 ChatGPT sa otvorí s hotovým promptom — stačí stlačiť Enter',
   genErrEmpty2:'Napíš situáciu alebo zámer, ktorý chceš precvičiť.',
-  exChip0:'pracovať v tíme', exChip1:'objednať jedlo',
+  exChip0:'pracovať v tíme', exChip1:'jedlo',
   exChip2:'vyriešiť konflikt', exChip3:'cestovanie', exChip4:'pracovný pohovor',
   exChip5:'odbavenie', exChip6:'spoločenský rozhovor', exChip7:'úrady',
+  exChip8:'zábava', exChip9:'fitness', exChip10:'štúdium',
   extractTitle:'Navrhovaný kontext',
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
@@ -4789,7 +4856,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurige inspiratie", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -4833,9 +4900,10 @@ nl:{
   genSendBtn:'▶ Context genereren',
   genHintSmall:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
   genErrEmpty2:'Schrijf de situatie of intentie die je wilt oefenen.',
-  exChip0:'samenwerken', exChip1:'eten bestellen',
+  exChip0:'samenwerken', exChip1:'eten',
   exChip2:'conflict oplossen', exChip3:'reizen', exChip4:'sollicitatiegesprek',
   exChip5:'inchecken', exChip6:'koetjes en kalfjes', exChip7:'overheidszaken',
+  exChip8:'plezier', exChip9:'fitness', exChip10:'studie',
   extractTitle:'Voorgestelde context',
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
@@ -4859,7 +4927,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässig inspiration", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -4903,9 +4971,10 @@ sv:{
   genSendBtn:'▶ Generera kontext',
   genHintSmall:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
   genErrEmpty2:'Skriv situationen eller avsikten du vill öva.',
-  exChip0:'teamarbete', exChip1:'beställa mat',
+  exChip0:'teamarbete', exChip1:'mat',
   exChip2:'lösa konflikt', exChip3:'resor', exChip4:'jobbintervju',
   exChip5:'checka in', exChip6:'småprat', exChip7:'myndighetskontakt',
+  exChip8:'nöje', exChip9:'fitness', exChip10:'studier',
   extractTitle:'Föreslagen kontext',
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
@@ -4929,7 +4998,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное вдохновение", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -4968,9 +5037,10 @@ ru:{
   genSendBtn:'▶ Создать контекст',
   genHintSmall:'💡 ChatGPT откроется с промптом — просто нажми Enter',
   genErrEmpty2:'Напиши ситуацию или намерение для практики.',
-  exChip0:'командная работа', exChip1:'заказать еду',
-  exChip2:'разрешить конфликт', exChip3:'путешествие', exChip4:'собеседование',
+  exChip0:'командная работа', exChip1:'еда',
+  exChip2:'разрешить конфликт', exChip3:'поездка', exChip4:'собеседование',
   exChip5:'регистрация', exChip6:'светская беседа', exChip7:'госучреждения',
+  exChip8:'досуг', exChip9:'фитнес', exChip10:'учёба',
   extractTitle:'Предложенный контекст',
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
@@ -4994,7 +5064,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele ilham", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -5038,12 +5108,167 @@ tr:{
   genSendBtn:'▶ Bağlam oluştur',
   genHintSmall:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
   genErrEmpty2:'Pratik yapmak istediğin durumu veya niyeti yaz.',
-  exChip0:'takım çalışması', exChip1:'yemek sipariş et',
+  exChip0:'takım çalışması', exChip1:'yemek',
   exChip2:'çatışma çöz', exChip3:'seyahat', exChip4:'iş görüşmesi',
   exChip5:'giriş yapmak', exChip6:'sohbet', exChip7:'resmi işlemler',
+  exChip8:'eğlence', exChip9:'fitness', exChip10:'eğitim',
   extractTitle:'Önerilen bağlam',
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
+},
+uk:{
+  webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
+  brand:"CONTEXTA", nav1:"Промпти", nav2:"Приклад", nav3:"ШІ", nav4:"☕",
+  heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
+  heroTagline:'<span>Практикуй мови з AI міні-діалогами.</span><span class="dot"></span><span>Введи будь-яке слово або тему.</span><span class="dot"></span><span>Отримай діалоги, які звучать як справжня розмова.</span><span class="dot"></span><span>Без підручникових кліше. Тільки жива мова.</span>',
+  motto:"Люди не розмовляють як у підручниках. Діалоги, які ти вивчаєш, мають звучати як справжня розмова.",
+  pill1:"A1–A2 Початківець", pill2:"B1–B2 Середній рівень", pill3:"C1–C2 Просунутий", pill4:"10 мов",
+  btnDemo:"Переглянути приклад →",
+  s1:"Мов", s2:"Діалогів / слово", s3:"Рівні", s4:"AI платформи",
+  tag1:"Про продукт", h1:"Як це працює?",
+  lead1:"Набір промптів для ШІ. Введи слово – отримай 10 природних діалогів мовою сайту та вибраною мовою навчання.",
+  checks:["Завантаж AI-асистента. ChatGPT підтримує голосове відтворення.","Вибери мову, з якої та на яку перекладаєш.","Введи слово, тему, фразовий дієслів або конкретну ситуацію.","Вибери рівень складності.","Налаштуй стиль спілкування: звичайний · формальний · сленг · гумористичний","Натисни на поле генерації тексту і зачекай завантаження в AI-асистенті.","Далі можна продовжувати, вводячи слова в треді AI-асистента."],
+  tag2:"Промпти", h2:"Вибери рівень",
+  lead2:"Після оплати ти отримаєш промпт і вставиш його як перше повідомлення в AI.",
+  lvTabs:["A1–A2 · Початківець","B1–B2 · Середній рівень","C1–C2 · Просунутий"],
+  lvLabels:["Початківець","Середній рівень","Просунутий"],
+  genLevelL:"Вибери рівень",
+  lvLabel0:"Початківець", lvLabel1:"Середній рівень", lvLabel2:"Просунутий",
+  lblVerb:'⚡ Фразові дієслова', lblTopic:'🗂 Тема', editDetails:'⚙ Змінити деталі',
+  lockTitle:"Промпт заблоковано", lockDesc:"Доступ після Pay me coffee.",
+  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове натхнення", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
+  lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
+  dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
+  lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
+  aiBtn:"💬 Відкрити AI-асистента", recLabel:"⭐ Рекомендовано",
+  audioNote:'У ChatGPT можна увімкнути голосове відтворення – чуй <span class="hl">правильну вимову</span>.',
+  coffeeH:"Подобається Contexta?",
+  coffeeBtn:"Підтримати розвиток",
+  coffeeP:"Contexta допомагає тобі? Підтримай мене кавою на <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — кожен внесок може просунути Contexta вперед.",
+  footerP:"Створено за допомогою Claude AI (Anthropic) · claude.ai",
+  footerSub:"10 мов · 3 рівні · 6 AI платформ",
+  nav1:'Промпти', nav3:'ШІ', nav4:'☕',
+  h1:'Як це працює?', h2:'Вибери рівень', h4:'Відкрити AI-асистента',
+  pill2:'B1–B2 Середній рівень', pill3:'C1–C2 Просунутий', pill4:'10 мов',
+  s2:'Діалогів / слово', s3:'Рівні', s4:'AI платформи',
+  recLabel:'⭐ Рекомендовано',
+  lockDesc:'Доступ після Pay me coffee.',
+  genTag:'⚙ Генератор промптів', advancedToggleLabel:'⚙ Розширені налаштування',
+  genH:'Створи діалог у ChatGPT',
+  genLead:'Вибери мови, введи слово — ChatGPT відкриється з готовим промптом.',
+  genLangL:'1️⃣ Мова, з якої перекладаю → на яку перекладаю',
+  genWordL:'2️⃣ Введи слово або фразу',
+  genBtn:'Відкрити ChatGPT',
+  genHint:'💡 ChatGPT відкриється з промптом — просто натисни Enter',
+  genErrEmpty:'Введи слово або фразу.',
+  fBrand:'Вивчай слова в контексті діалогів',
+  heroSubTagline:'Одне слово. Десять контекстів. Не забудеш.',
+  heroTagline:'Міні-діалоги в контексті · Рівні A1–C2 · Більше 15 мов · Реальні ситуації · Природне спілкування · 10 діалогів на генерацію',
+  examplesLabel:'Приклади:',
+  extractKeyTema:'ТЕМА', extractKeyAkce:'ДІЯ', extractKeySituace:'СИТУАЦІЯ',
+  intentLabel:'💬 Що хочеш попрактикувати?',
+  intentPlaceholder:'Напиши слово, тему або думку – напр. ресторан, подорож, робота…',
+  verbSearchPh:'🔍 Шукати фразове дієслово…',
+  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —',
+  lvChip0:'A1–A2', lvChipSub0:'Початківець',
+  lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
+  lvChip2:'C1–C2', lvChipSub2:'Просунутий',
+  styleLabel:'🎭 Стиль',
+  styleNormal:'звичайний', styleFormal:'формальний', styleSlang:'сленг', styleHumor:'гумористичний',
+  langLabel:'🌍 Мова', levelLabel:'📊 Рівень',
+  advCountLabel:'🔢 Кількість діалогів',
+  lengthShort:'Короткі', lengthMedium:'Довші', lengthLong:'Найдовші',
+  advVerbLabel:'⚡ Фразове дієслово (підказка)', advTopicLabel:'🗂 Тема (підказка)',
+  genSendBtn:'▶ Згенерувати контекст',
+  genHintSmall:'💡 ChatGPT відкриється з промптом — просто натисни Enter',
+  genErrEmpty:'Напиши ситуацію або намір, який хочеш попрактикувати.',
+  exChip0:'робота в команді', exChip1:'замовити їжу',
+  exChip2:'вирішити конфлікт', exChip3:'подорожі', exChip4:'співбесіда',
+  exChip5:'реєстрація', exChip6:'світська бесіда', exChip7:'офіційні справи',
+  exChip8:'розваги', exChip9:'фітнес', exChip10:'навчання',
+  extractTitle:'Запропонований контекст',
+  extractTema:'ТЕМА', extractAkce:'ДІЯ', extractSituace:'СИТУАЦІЯ',
+  webLangLabel:'Мова сайту',
+  grammarLabel:'Англійська граматика',
+  grammarHint:'Вибери граматичну тему — вона буде включена в контекст діалогів і речень з поясненням.',
+  grammarSearchPh:'🔍 Шукати тему…',
+},
+id:{
+  webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
+  brand:"CONTEXTA", nav1:"Prompt", nav2:"Contoh", nav3:"AI", nav4:"☕",
+  heroH:'CONTEXT<span class=\"brand-a-hero\">A</span>',
+  heroTagline:'<span>Latih bahasa dengan mini-dialog AI.</span><span class="dot"></span><span>Masukkan kata atau topik apa saja.</span><span class="dot"></span><span>Dapatkan dialog yang terdengar seperti percakapan nyata.</span><span class="dot"></span><span>Tanpa frasa buku teks. Hanya bahasa hidup.</span>',
+  motto:"Orang tidak berbicara seperti buku teks. Dialog yang kamu pelajari harus terdengar seperti percakapan nyata.",
+  pill1:"A1–A2 Pemula", pill2:"B1–B2 Menengah", pill3:"C1–C2 Mahir", pill4:"10 bahasa",
+  btnDemo:"Lihat contoh →",
+  s1:"Bahasa", s2:"Dialog / kata", s3:"Level", s4:"Platform AI",
+  tag1:"Tentang produk", h1:"Bagaimana cara kerjanya?",
+  lead1:"Kumpulan prompt untuk AI. Masukkan kata – dapatkan 10 dialog alami dalam bahasa situs dan bahasa yang dipelajari.",
+  checks:["Unduh asisten AI. ChatGPT mendukung pemutaran suara.","Pilih bahasa asal dan bahasa tujuan.","Masukkan kata, topik, phrasal verb, atau situasi tertentu.","Pilih tingkat kesulitan.","Atur gaya komunikasi: biasa · formal · slang · humor","Klik kolom pembuatan teks dan tunggu hingga dimuat di asisten AI.","Kamu bisa melanjutkan dengan memasukkan kata-kata di thread asisten AI."],
+  tag2:"Prompt", h2:"Pilih level",
+  lead2:"Setelah pembayaran kamu akan mendapatkan prompt dan menempelkannya sebagai pesan pertama ke AI.",
+  lvTabs:["A1–A2 · Pemula","B1–B2 · Menengah","C1–C2 · Mahir"],
+  lvLabels:["Pemula","Menengah","Mahir"],
+  genLevelL:"Pilih level",
+  lvLabel0:"Pemula", lvLabel1:"Menengah", lvLabel2:"Mahir",
+  lblVerb:'⚡ Phrasal verb', lblTopic:'🗂 Topik', editDetails:'⚙ Edit detail',
+  lockTitle:"Prompt terkunci", lockDesc:"Akses setelah Pay me coffee.",
+  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Inspirasi acak", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
+  lead3:"Klik dialog untuk membuka dan memutar audio.",
+  dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
+  lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
+  aiBtn:"💬 Buka asisten AI", recLabel:"⭐ Direkomendasikan",
+  audioNote:'Di ChatGPT kamu dapat mengaktifkan pemutaran suara – dengar <span class="hl">pengucapan yang benar</span>.',
+  coffeeH:"Apakah kamu suka Contexta?",
+  coffeeBtn:"Dukung pengembangan",
+  coffeeP:"Apakah Contexta membantumu? Dukung saya dengan kopi di <a href=\"https://ko-fi.com/VASE_JMENO\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — setiap kontribusi dapat memajukan Contexta.",
+  footerP:"Dibuat dengan Claude AI (Anthropic) · claude.ai",
+  footerSub:"10 bahasa · 3 level · 6 platform AI",
+  nav1:'Prompt', nav3:'AI', nav4:'☕',
+  h1:'Bagaimana cara kerjanya?', h2:'Pilih level', h4:'Buka asisten AI',
+  pill2:'B1–B2 Menengah', pill3:'C1–C2 Mahir', pill4:'10 bahasa',
+  s2:'Dialog / kata', s3:'Level', s4:'Platform AI',
+  recLabel:'⭐ Direkomendasikan',
+  lockDesc:'Akses setelah Pay me coffee.',
+  genTag:'⚙ Generator Prompt', advancedToggleLabel:'⚙ Pengaturan lanjutan',
+  genH:'Buat dialog di ChatGPT',
+  genLead:'Pilih bahasa, masukkan kata — ChatGPT akan terbuka dengan prompt siap pakai.',
+  genLangL:'1️⃣ Bahasa yang kuterjemahkan dari → ke',
+  genWordL:'2️⃣ Masukkan kata atau frasa',
+  genBtn:'Buka ChatGPT',
+  genHint:'💡 ChatGPT akan terbuka dengan prompt — cukup tekan Enter',
+  genErrEmpty:'Masukkan kata atau frasa.',
+  fBrand:'Pelajari kata dalam konteks dialog',
+  heroSubTagline:'Satu kata. Sepuluh konteks. Kamu tidak akan lupa.',
+  heroTagline:'Mini-dialog dalam konteks · Level A1–C2 · Lebih dari 15 bahasa · Situasi nyata · Komunikasi alami · 10 dialog per generasi',
+  examplesLabel:'Contoh:',
+  extractKeyTema:'TOPIK', extractKeyAkce:'AKSI', extractKeySituace:'SITUASI',
+  intentLabel:'💬 Apa yang ingin kamu latih?',
+  intentPlaceholder:'Tulis kata, topik atau ide – mis. restoran, perjalanan, pekerjaan…',
+  verbSearchPh:'🔍 Cari phrasal verb…',
+  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —',
+  lvChip0:'A1–A2', lvChipSub0:'Pemula',
+  lvChip1:'B1–B2', lvChipSub1:'Menengah',
+  lvChip2:'C1–C2', lvChipSub2:'Mahir',
+  styleLabel:'🎭 Gaya',
+  styleNormal:'biasa', styleFormal:'formal', styleSlang:'slang', styleHumor:'humor',
+  langLabel:'🌍 Bahasa', levelLabel:'📊 Level',
+  advCountLabel:'🔢 Jumlah dialog',
+  lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
+  advVerbLabel:'⚡ Phrasal verb (petunjuk)', advTopicLabel:'🗂 Topik (petunjuk)',
+  genSendBtn:'▶ Buat konteks',
+  genHintSmall:'💡 ChatGPT akan terbuka dengan prompt — cukup tekan Enter',
+  genErrEmpty:'Tulis situasi atau niat yang ingin kamu latih.',
+  exChip0:'kerja tim', exChip1:'pesan makanan',
+  exChip2:'selesaikan konflik', exChip3:'perjalanan', exChip4:'wawancara kerja',
+  exChip5:'check-in', exChip6:'obrolan ringan', exChip7:'urusan resmi',
+  exChip8:'hiburan', exChip9:'kebugaran', exChip10:'belajar',
+  extractTitle:'Konteks yang disarankan',
+  extractTema:'TOPIK', extractAkce:'AKSI', extractSituace:'SITUASI',
+  webLangLabel:'Bahasa situs',
+  grammarLabel:'Tata bahasa Inggris',
+  grammarHint:'Pilih topik tata bahasa — akan disertakan dalam konteks dialog dan kalimat dengan penjelasan.',
+  grammarSearchPh:'🔍 Cari topik…',
 }
 }; // end T
 
@@ -5246,6 +5471,39 @@ function applyWebLang() {
       }
     }
   }
+
+  // ── Přizpůsob viditelnost chipů šířce řádku ──
+  requestAnimationFrame(fitChipRow);
+}
+
+// ── Skryj chipy co se nevejdou na řádek (pouze mobil) ──
+function fitChipRow() {
+  if (window.innerWidth >= 768) {
+    // desktop: všechny viditelné
+    document.querySelectorAll('.gen-intent-examples .gen-ex-chip').forEach(function(c) {
+      c.style.display = '';
+    });
+    return;
+  }
+  var row = document.querySelector('.gen-intent-examples');
+  if (!row) return;
+  var chips = Array.from(row.querySelectorAll('.gen-ex-chip'));
+  // reset
+  chips.forEach(function(c) { c.style.display = ''; });
+  var gap = 7;
+  var available = row.offsetWidth;
+  var used = 0;
+  var visible = [];
+  chips.forEach(function(c) {
+    var w = c.offsetWidth;
+    var needed = visible.length === 0 ? w : w + gap;
+    if (used + needed <= available) {
+      used += needed;
+      visible.push(c);
+    } else {
+      c.style.display = 'none';
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════════
@@ -5780,6 +6038,40 @@ var GRAMMAR_TRANSLATIONS = {
       [['현재 완료 — 형태와 용법','현재 완료 vs. 단순 과거','현재 완료 진행'],['1형 조건문','2형 조건문','3형 조건문'],['목적 부정사','동명사 I — 기본 용법','목적어 + 부정사'],['수동태 — 모든 시제','GOING TO — 의도'],['정도 부사']],
       [['간접 화법 — 기초','간접 화법 — 의문문과 명령문'],['관계 대명사','한정적・비한정적 관계절'],['분사 구문'],['조동사 + have + 과거 분사'],['분열문','재귀 대명사'],['시제 일치','시간 부사절']],
       [['동사 상'],['WISH 구문','감탄문'],['동명사 II — 고급 용법'],['부정 접두사','조어법 — 개요'],['시간・이유절 축약'],['미국식 vs. 영국식 영어']]
+    ]
+  },
+  uk: {
+    levels: ['A1 — Початківець','A2 — Елементарний','B1 — Середній','B2 — Вище середнього','C1 — Просунутий'],
+    topics: [
+      ['Дієслово BE і HAVE','Артиклі (a/an/the)','Іменники','Займенники','Present Simple','Present Continuous','Модальні дієслова I','Майбутній час','Порядок слів'],
+      ['Past Simple','Прикметники','Квантифікатори','Модальні дієслова II','Непрямі питання'],
+      ['Present Perfect','Умовні речення','Інфінітив і герундій','Пасивний стан','Прислівники ступеня'],
+      ['Непряма мова','Підрядні речення','Дієприкметники','Модальні + perfect infinitive','Емфаза','Узгодження часів'],
+      ['Вид дієслова','Особливі речення','Герундій — просунутий рівень','Словотвір','Скорочення речень','Американська англійська']
+    ],
+    items: [
+      [['Дієслово BE (am/is/are)','Дієслово HAVE (have/has)','Питання та заперечення з BE'],['Неозначений артикль a/an','Означений артикль THE'],['Множина іменників','Числа 1–999','Порядкові числівники'],['Присвійні прикметники','Присвійний відмінок (\'s)'],['Present Simple','Питання та заперечення — Present Simple','Розділові питання'],['Present Continuous','Present Continuous vs. Simple'],['CAN, MUST, MAY'],['Майбутній час (WILL)','THERE IS / THERE ARE'],['Порядок слів у реченні']],
+      [['Past Simple — правильні дієслова','Неправильні дієслова — Past Simple','Заперечення в Past Simple','Пасивний стан (базовий)'],['Порівняльний і найвищий ступінь прикметників','Прислівники'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY та похідні'],['SHOULD, WOULD, COULD'],['Непрямі питання']],
+      [['Present Perfect — форма та вживання','Present Perfect vs. Past Simple','Present Perfect Continuous'],['1-й умовний тип','2-й умовний тип','3-й умовний тип'],['Інфінітив мети','Герундій I — базове вживання','Додаток + інфінітив'],['Пасивний стан — всі часи','GOING TO — намір'],['Прислівники ступеня']],
+      [['Непряма мова — основи','Непряма мова — питання та накази'],['Відносні займенники','Означальні та неозначальні підрядні речення'],['Дієприкметникові звороти'],['Модальне дієслово + have + past participle'],['Розщеплені речення','Зворотні займенники'],['Узгодження часів','Часові підрядні речення']],
+      [['Вид дієслова'],['Конструкція WISH','Окличні речення'],['Герундій II — просунутий рівень'],['Заперечні префікси','Огляд словотвору'],['Скорочення часових і причинових речень'],['Американська vs. британська англійська']]
+    ]
+  },
+  id: {
+    levels: ['A1 — Pemula','A2 — Dasar','B1 — Menengah','B2 — Menengah Atas','C1 — Mahir'],
+    topics: [
+      ['Kata kerja BE dan HAVE','Artikel (a/an/the)','Kata benda','Kata ganti','Present Simple','Present Continuous','Kata kerja modal I','Waktu mendatang','Urutan kata'],
+      ['Past Simple','Kata sifat','Kuantifier','Kata kerja modal II','Pertanyaan tidak langsung'],
+      ['Present Perfect','Kalimat kondisional','Infinitif dan gerund','Kalimat pasif','Kata keterangan derajat'],
+      ['Kalimat tidak langsung','Klausa relatif','Partisip','Modal + perfect infinitive','Penekanan','Urutan waktu'],
+      ['Aspek verbal','Kalimat khusus','Gerund lanjutan','Pembentukan kata','Penyederhanaan kalimat','Bahasa Inggris Amerika']
+    ],
+    items: [
+      [['Kata kerja BE (am/is/are)','Kata kerja HAVE (have/has)','Pertanyaan dan negasi dengan BE'],['Artikel tidak tentu a/an','Artikel tentu THE'],['Kata benda jamak','Angka 1–999','Angka ordinal'],['Kata sifat posesif','Kasus posesif (\'s)'],['Present Simple','Pertanyaan dan negasi — Present Simple','Question tags'],['Present Continuous','Present Continuous vs. Simple'],['CAN, MUST, MAY'],['Waktu mendatang (WILL)','THERE IS / THERE ARE'],['Urutan kata dalam kalimat']],
+      [['Past Simple — kata kerja beraturan','Kata kerja tidak beraturan — Past Simple','Negasi Past Simple','Kalimat pasif (dasar)'],['Kata sifat komparatif dan superlatif','Kata keterangan'],['MUCH, MANY, LITTLE, FEW','EVERY, EACH, BOTH, ALL','SOME, ANY dan turunannya'],['SHOULD, WOULD, COULD'],['Pertanyaan tidak langsung']],
+      [['Present Perfect — bentuk dan penggunaan','Present Perfect vs. Past Simple','Present Perfect Continuous'],['Kondisional ke-1','Kondisional ke-2','Kondisional ke-3'],['Infinitif tujuan','Gerund I — penggunaan dasar','Objek + infinitif'],['Kalimat pasif — semua kala','GOING TO — niat'],['Kata keterangan derajat']],
+      [['Kalimat tidak langsung — dasar','Kalimat tidak langsung — pertanyaan dan perintah'],['Kata ganti relatif','Klausa relatif penjelas vs. bukan penjelas'],['Klausa partisipal'],['Modal + have + past participle'],['Kalimat cleft','Kata ganti refleksif'],['Urutan waktu','Klausa waktu']],
+      [['Aspek verbal'],['Klausa WISH','Kalimat seru'],['Gerund II — penggunaan lanjutan'],['Prefiks negatif','Ikhtisar pembentukan kata'],['Penyederhanaan klausa waktu dan sebab'],['Bahasa Inggris Amerika vs. Inggris']]
     ]
   }
 };
@@ -6485,7 +6777,7 @@ document.addEventListener('click', function(e) {
 // ═══════════════════════════════════════════════════════
 
 // Jazyky dostupné v generátoru (podmnožina LANG_LIST)
-var GEN_LANGS = ['en','de','fr','es','it','pt','cz','pl','sk','ru','cn','jp','kr'];
+var GEN_LANGS = ['en','de','fr','es','it','pt','cz','pl','sk','uk','id','ru','cn','jp','kr'];
 
 var genFromLangVal = 'cz';
 var genToLangVal   = 'en';
@@ -6883,230 +7175,230 @@ var PV_CZ = {
 // Supported langs: de, fr, es, it, pl, pt, sk, ru, cn, jp, kr
 // ═══════════════════════════════════════════════════════
 var PV_TRANSLATIONS = {
-  'get up':{'de':'aufstehen','fr':'se lever','es':'levantarse','it':'alzarsi','pl':'wstawać','pt':'levantar-se','sk':'vstať','ru':'вставать','cn':'起床','jp':'起きる','kr':'일어나다'},
-  'wake up':{'de':'aufwachen','fr':'se réveiller','es':'despertarse','it':'svegliarsi','pl':'budzić się','pt':'acordar','sk':'zobudiť sa','ru':'просыпаться','cn':'醒来','jp':'目覚める','kr':'일어나다'},
-  'go out':{'de':'ausgehen','fr':'sortir','es':'salir','it':'uscire','pl':'wychodzić','pt':'sair','sk':'ísť von','ru':'выходить','cn':'出去','jp':'出かける','kr':'나가다'},
-  'come back':{'de':'zurückkommen','fr':'revenir','es':'volver','it':'tornare','pl':'wracać','pt':'voltar','sk':'vrátiť sa','ru':'возвращаться','cn':'回来','jp':'戻る','kr':'돌아오다'},
-  'find out':{'de':'herausfinden','fr':'découvrir','es':'averiguar','it':'scoprire','pl':'dowiedzieć się','pt':'descobrir','sk':'zistiť','ru':'узнавать','cn':'发现','jp':'調べる','kr':'알아내다'},
-  'pick up':{'de':'abholen / aufheben','fr':'ramasser / aller chercher','es':'recoger','it':'raccogliere','pl':'podnosić / odbierać','pt':'apanhar / buscar','sk':'zdvihnúť / vyzdvihnúť','ru':'подбирать / забирать','cn':'拿起/接','jp':'拾う/迎える','kr':'집다/데리러가다'},
-  'turn on':{'de':'einschalten','fr':'allumer','es':'encender','it':'accendere','pl':'włączać','pt':'ligar','sk':'zapnúť','ru':'включать','cn':'打开','jp':'つける','kr':'켜다'},
-  'turn off':{'de':'ausschalten','fr':'éteindre','es':'apagar','it':'spegnere','pl':'wyłączać','pt':'desligar','sk':'vypnúť','ru':'выключать','cn':'关闭','jp':'消す','kr':'끄다'},
-  'give up':{'de':'aufgeben','fr':'abandonner','es':'rendirse','it':'arrendersi','pl':'poddawać się','pt':'desistir','sk':'vzdať sa','ru':'сдаваться','cn':'放弃','jp':'あきらめる','kr':'포기하다'},
-  'look for':{'de':'suchen','fr':'chercher','es':'buscar','it':'cercare','pl':'szukać','pt':'procurar','sk':'hľadať','ru':'искать','cn':'寻找','jp':'探す','kr':'찾다'},
-  'put on':{'de':'anziehen / aufsetzen','fr':'mettre / enfiler','es':'ponerse','it':'indossare','pl':'zakładać','pt':'vestir / colocar','sk':'obliecť / nasadiť','ru':'надевать','cn':'穿上/戴上','jp':'着る/かぶる','kr':'입다/쓰다'},
-  'take off':{'de':'ausziehen / abheben','fr':'enlever / décoller','es':'quitarse / despegar','it':'togliersi / decollare','pl':'zdejmować / startować','pt':'tirar / decolar','sk':'vyzliecť / vzlietnuť','ru':'снимать / взлетать','cn':'脱掉/起飞','jp':'脱ぐ/離陸する','kr':'벗다/이륙하다'},
-  'sit down':{'de':'sich setzen','fr':'s\'asseoir','es':'sentarse','it':'sedersi','pl':'siadać','pt':'sentar-se','sk':'sadnúť si','ru':'садиться','cn':'坐下','jp':'座る','kr':'앉다'},
-  'stand up':{'de':'aufstehen','fr':'se lever','es':'ponerse de pie','it':'alzarsi in piedi','pl':'wstawać','pt':'levantar-se','sk':'vstať / postaviť sa','ru':'вставать','cn':'站起来','jp':'立つ','kr':'일어서다'},
-  'come in':{'de':'hereinkommen','fr':'entrer','es':'entrar','it':'entrare','pl':'wchodzić','pt':'entrar','sk':'vojsť / vstúpiť','ru':'входить','cn':'进来','jp':'入る','kr':'들어오다'},
-  'go in':{'de':'hineingehen','fr':'entrer','es':'entrar','it':'entrare','pl':'wchodzić do środka','pt':'entrar','sk':'ísť dovnútra','ru':'заходить','cn':'进去','jp':'中に入る','kr':'들어가다'},
-  'go back':{'de':'zurückgehen','fr':'retourner','es':'volver','it':'tornare indietro','pl':'wracać','pt':'voltar','sk':'ísť späť / vrátiť sa','ru':'возвращаться','cn':'回去','jp':'戻る','kr':'돌아가다'},
-  'come out':{'de':'herauskommen','fr':'sortir','es':'salir','it':'uscire','pl':'wychodzić','pt':'sair','sk':'vyjsť / vyjsť najavo','ru':'выходить','cn':'出来','jp':'出てくる','kr':'나오다'},
-  'set up':{'de':'einrichten / gründen','fr':'mettre en place','es':'establecer / configurar','it':'configurare / fondare','pl':'zakładać / konfigurować','pt':'configurar / fundar','sk':'nastaviť / založiť','ru':'устанавливать','cn':'建立/设置','jp':'設定する','kr':'설정하다'},
-  'break down':{'de':'zusammenbrechen / kaputtgehen','fr':'tomber en panne / craquer','es':'averiarse / derrumbarse','it':'guastarsi / crollare','pl':'zepsuć się / załamać się','pt':'avariar / desfalecer','sk':'pokaziť sa / zrútiť sa','ru':'ломаться / сдавать','cn':'故障/崩溃','jp':'故障する','kr':'고장나다'},
-  'turn up':{'de':'auftauchen / lauter machen','fr':'se pointer / monter le son','es':'aparecer / subir el volumen','it':'presentarsi / alzare il volume','pl':'pojawiać się / zwiększać głośność','pt':'aparecer / aumentar volume','sk':'dostaviť sa / zvýšiť hlasitosť','ru':'появляться / увеличивать звук','cn':'出现/调大音量','jp':'現れる/音量を上げる','kr':'나타나다/볼륨올리다'},
-  'turn down':{'de':'ablehnen / leiser machen','fr':'refuser / baisser le son','es':'rechazar / bajar el volumen','it':'rifiutare / abbassare il volume','pl':'odrzucać / zmniejszać głośność','pt':'recusar / baixar volume','sk':'odmietnuť / stíšiť','ru':'отказываться / убавлять звук','cn':'拒绝/调低音量','jp':'断る/音量を下げる','kr':'거절하다/볼륨내리다'},
-  'try on':{'de':'anprobieren','fr':'essayer','es':'probarse','it':'provarsi','pl':'przymierzać','pt':'experimentar','sk':'vyskúšať (oblečenie)','ru':'примерять','cn':'试穿','jp':'試着する','kr':'입어보다'},
-  'throw away':{'de':'wegwerfen','fr':'jeter','es':'tirar','it':'buttare via','pl':'wyrzucać','pt':'deitar fora','sk':'vyhodiť','ru':'выбрасывать','cn':'扔掉','jp':'捨てる','kr':'버리다'},
-  'run out':{'de':'ausgehen / enden','fr':'manquer / s\'épuiser','es':'agotarse / acabarse','it':'finire / esaurirsi','pl':'kończyć się','pt':'esgotar-se / acabar','sk':'dôjsť / skončiť','ru':'заканчиваться','cn':'用完/结束','jp':'なくなる','kr':'다 떨어지다'},
-  'get out':{'de':'raus / entkommen','fr':'sortir / se tirer','es':'salir / escapar','it':'uscire / scappare','pl':'wychodzić / uciekać','pt':'sair / escapar','sk':'vylézt von / dostať sa preč','ru':'выбираться','cn':'出去/逃脱','jp':'出る/逃げる','kr':'나가다'},
-  'check out':{'de':'auschecken / nachschauen','fr':'partir / vérifier','es':'marcharse / revisar','it':'effettuare il check-out / guardare','pl':'wymeldować się / sprawdzić','pt':'fazer check-out / verificar','sk':'odhlásit sa / prezrieť','ru':'выписываться / проверять','cn':'退房/查看','jp':'チェックアウトする','kr':'체크아웃하다'},
-  'come on':{'de':'komm schon / funktionieren','fr':'allez / marcher','es':'vamos / funcionar','it':'dai / funzionare','pl':'no chodź / działać','pt':'vamos / funcionar','sk':'poď! / fungovať','ru':'ну давай / работать','cn':'快点/起作用','jp':'さあ/動く','kr':'어서/작동하다'},
-  'go on':{'de':'weitermachen / passieren','fr':'continuer / se passer','es':'continuar / pasar','it':'continuare / accadere','pl':'kontynuować / dziać się','pt':'continuar / acontecer','sk':'pokračovať / diať sa','ru':'продолжать / происходить','cn':'继续/发生','jp':'続ける/起こる','kr':'계속하다/일어나다'},
-  'look up':{'de':'nachschlagen / hochschauen','fr':'chercher / lever les yeux','es':'buscar / mirar hacia arriba','it':'cercare / guardare su','pl':'sprawdzać / patrzeć w górę','pt':'procurar / olhar para cima','sk':'vyhľadať / pozrieť sa nahor','ru':'искать / смотреть вверх','cn':'查找/抬头看','jp':'調べる/見上げる','kr':'찾다/올려다보다'},
-  'call back':{'de':'zurückrufen','fr':'rappeler','es':'devolver la llamada','it':'richiamare','pl':'oddzwaniać','pt':'ligar de volta','sk':'zavolať späť','ru':'перезванивать','cn':'回电话','jp':'折り返し電話する','kr':'다시 전화하다'},
-  'log in':{'de':'einloggen','fr':'se connecter','es':'iniciar sesión','it':'accedere','pl':'logować się','pt':'iniciar sessão','sk':'prihlásiť sa','ru':'войти (в систему)','cn':'登录','jp':'ログインする','kr':'로그인하다'},
-  'log out':{'de':'ausloggen','fr':'se déconnecter','es':'cerrar sesión','it':'disconnettersi','pl':'wylogowywać się','pt':'terminar sessão','sk':'odhlásiť sa','ru':'выйти (из системы)','cn':'登出','jp':'ログアウトする','kr':'로그아웃하다'},
-  'move on':{'de':'weitermachen','fr':'passer à autre chose','es':'seguir adelante','it':'andare avanti','pl':'iść dalej','pt':'seguir em frente','sk':'ísť ďalej / prejsť k ďalšiemu','ru':'двигаться дальше','cn':'向前走/继续','jp':'前に進む','kr':'앞으로 나아가다'},
-  'grow up':{'de':'aufwachsen','fr':'grandir','es':'crecer / madurar','it':'crescere','pl':'dorastać','pt':'crescer','sk':'vyrásť / dospieť','ru':'расти / взрослеть','cn':'长大/成熟','jp':'成長する','kr':'자라다'},
-  'hand in':{'de':'abgeben / einreichen','fr':'remettre / déposer','es':'entregar','it':'consegnare','pl':'oddawać / składać','pt':'entregar','sk':'odovzdať','ru':'сдавать / подавать','cn':'提交/交上去','jp':'提出する','kr':'제출하다'},
-  'hand out':{'de':'austeilen / verteilen','fr':'distribuer','es':'distribuir / repartir','it':'distribuire','pl':'rozdawać','pt':'distribuir','sk':'rozdat / rozdávať','ru':'раздавать','cn':'分发','jp':'配る','kr':'나누어주다'},
-  'fill in':{'de':'ausfüllen','fr':'remplir','es':'rellenar','it':'compilare','pl':'wypełniać','pt':'preencher','sk':'vyplniť','ru':'заполнять','cn':'填写','jp':'記入する','kr':'작성하다'},
-  'turn around':{'de':'umdrehen / wenden','fr':'se retourner / inverser','es':'darse vuelta / revertir','it':'girarsi / invertire','pl':'odwrócić się / zmienić sytuację','pt':'virar-se / reverter','sk':'otočiť sa / obrátiť situáciu','ru':'развернуться / изменить','cn':'转身/扭转','jp':'振り返る/方向転換','kr':'돌아서다/전환하다'},
-  'blow up':{'de':'explodieren / aufblasen','fr':'exploser / gonfler','es':'explotar / inflar','it':'esplodere / gonfiare','pl':'wybuchnąć / nadmuchiwać','pt':'explodir / inflar','sk':'vybuchnúť / nafúknuť','ru':'взрываться / надувать','cn':'爆炸/充气','jp':'爆発する/膨らませる','kr':'폭발하다/부풀리다'},
-  'calm down':{'de':'beruhigen','fr':'se calmer','es':'calmarse','it':'calmarsi','pl':'uspokajać się','pt':'acalmar-se','sk':'upokojiť sa','ru':'успокаиваться','cn':'冷静下来','jp':'落ち着く','kr':'진정하다'},
-  'slow down':{'de':'langsamer werden / verlangsamen','fr':'ralentir','es':'reducir la velocidad','it':'rallentare','pl':'zwalniać','pt':'abrandar','sk':'spomaliť','ru':'замедляться','cn':'减速','jp':'ゆっくりする','kr':'속도를 줄이다'},
-  'speed up':{'de':'beschleunigen','fr':'accélérer','es':'acelerar','it':'accelerare','pl':'przyspieszać','pt':'acelerar','sk':'zrýchliť','ru':'ускоряться','cn':'加速','jp':'速める','kr':'속도를 높이다'},
-  'eat out':{'de':'auswärts essen','fr':'manger au restaurant','es':'comer fuera','it':'mangiare fuori','pl':'jeść poza domem','pt':'comer fora','sk':'jesť vonku / v reštaurácii','ru':'есть вне дома','cn':'出去吃饭','jp':'外食する','kr':'외식하다'},
-  'stay up':{'de':'aufbleiben','fr':'rester debout / veiller','es':'quedarse despierto','it':'stare alzato','pl':'nie spać / siedzieć do późna','pt':'ficar acordado','sk':'nespať / byť hore dlho','ru':'не спать / засиживаться','cn':'熬夜/不睡觉','jp':'夜更かしする','kr':'밤새우다'},
-  'get in':{'de':'einsteigen / reinkommen','fr':'monter / entrer','es':'entrar / subir','it':'salire / entrare','pl':'wsiadać / dostawać się do środka','pt':'entrar / subir','sk':'nastúpiť / dostať sa dovnútra','ru':'садиться / попадать внутрь','cn':'上车/进入','jp':'乗る/入る','kr':'타다/들어가다'},
-  'get off':{'de':'aussteigen / abmachen','fr':'descendre / enlever','es':'bajarse / quitar','it':'scendere / togliere','pl':'wysiadać / zdejmować','pt':'descer / tirar','sk':'vystúpiť / sundat','ru':'выходить / снимать','cn':'下车/脱下','jp':'降りる/外す','kr':'내리다/벗다'},
-  'work out':{'de':'trainieren / herausfinden','fr':'faire du sport / résoudre','es':'hacer ejercicio / resolver','it':'allenarsi / risolvere','pl':'ćwiczyć / rozwiązywać','pt':'treinar / resolver','sk':'vyriešiť / cvičiť','ru':'тренироваться / решать','cn':'锻炼/解决','jp':'運動する/解決する','kr':'운동하다/해결하다'},
-  'run out of':{'de':'ausgehen (Vorrat)','fr':'manquer de / être à court de','es':'quedarse sin','it':'rimanere senza','pl':'zabrakło / kończyć się','pt':'ficar sem','sk':'dôjsť / vyčerpať','ru':'заканчиваться (запас)','cn':'用完了某物','jp':'〜を使い切る','kr':'〜이 떨어지다'},
-  'bring up':{'de':'erwähnen / erziehen','fr':'mentionner / élever','es':'mencionar / criar','it':'menzionare / crescere','pl':'wychowywać / wspominać','pt':'mencionar / criar','sk':'vychovať / zmieňiť','ru':'упоминать / воспитывать','cn':'提起/养育','jp':'言及する/育てる','kr':'언급하다/키우다'},
-  'come across':{'de':'begegnen / wirken','fr':'tomber sur / paraître','es':'toparse con / parecer','it':'imbattersi / sembrare','pl':'natknąć się / sprawiać wrażenie','pt':'encontrar / parecer','sk':'naraziť na','ru':'наткнуться / казаться','cn':'偶遇/显得','jp':'出会う/見える','kr':'마주치다/보이다'},
-  'end up':{'de':'am Ende landen','fr':'finir par / se retrouver','es':'acabar / terminar','it':'finire / ritrovarsi','pl':'skończyć','pt':'acabar / ficar','sk':'skončiť','ru':'в конце концов оказаться','cn':'最终落得','jp':'結局〜になる','kr':'결국 ~하게 되다'},
-  'figure out':{'de':'herausfinden / verstehen','fr':'comprendre / trouver','es':'descifrar / entender','it':'capire / trovare','pl':'rozgryźć / rozumieć','pt':'descobrir / perceber','sk':'prísť na / pochopiť','ru':'разобраться / понять','cn':'弄清楚/搞懂','jp':'理解する/解決する','kr':'알아내다/이해하다'},
-  'hang out':{'de':'abhängen / Zeit verbringen','fr':'traîner / passer du temps','es':'pasar el rato','it':'passare il tempo / bighellonare','pl':'wisieć / spędzać czas','pt':'estar / passar tempo','sk':'tráviť čas / poflakovat sa','ru':'тусоваться / проводить время','cn':'闲逛/消磨时间','jp':'ぶらぶらする','kr':'놀다/시간 보내다'},
-  'show up':{'de':'auftauchen / erscheinen','fr':'se pointer / apparaître','es':'aparecer / presentarse','it':'presentarsi / apparire','pl':'pojawiać się','pt':'aparecer / chegar','sk':'ukázať sa / prísť','ru':'появляться / объявляться','cn':'出现/露面','jp':'現れる/やって来る','kr':'나타나다'},
-  'move in':{'de':'einziehen','fr':'emménager','es':'mudarse a','it':'trasferirsi','pl':'wprowadzać się','pt':'mudar para','sk':'nasťahovať sa','ru':'въезжать','cn':'搬进来','jp':'引っ越してくる','kr':'이사오다'},
-  'move out':{'de':'ausziehen','fr':'déménager','es':'mudarse de','it':'trasferirsi fuori','pl':'wyprowadzać się','pt':'mudar-se','sk':'odsťahovať sa','ru':'съезжать','cn':'搬出去','jp':'引っ越す','kr':'이사가다'},
-  'take up':{'de':'anfangen (Hobby) / einnehmen','fr':'commencer / prendre de la place','es':'empezar / ocupar','it':'iniziare / occupare','pl':'zacząć (hobby) / zajmować','pt':'começar / ocupar','sk':'začať (koníčka) / zaberať','ru':'начать (хобби) / занимать','cn':'开始(爱好)/占用','jp':'始める/場所を取る','kr':'시작하다/차지하다'},
-  'give back':{'de':'zurückgeben','fr':'rendre','es':'devolver','it':'restituire','pl':'oddawać','pt':'devolver','sk':'vrátiť (niečo)','ru':'возвращать','cn':'归还','jp':'返す','kr':'돌려주다'},
-  'take back':{'de':'zurücknehmen','fr':'reprendre / retourner','es':'recuperar / devolver','it':'riprendere','pl':'brać z powrotem / zwracać','pt':'recuperar / devolver','sk':'vziať späť / vrátiť','ru':'забирать обратно / возвращать','cn':'取回/收回','jp':'取り返す/返す','kr':'돌려받다'},
-  'cut off':{'de':'abschneiden / unterbrechen','fr':'couper / interrompre','es':'cortar / interrumpir','it':'tagliare / interrompere','pl':'odcinać / przerywać','pt':'cortar / interromper','sk':'prerušiť / odrezať','ru':'прерывать / отрезать','cn':'切断/中断','jp':'切る/中断する','kr':'끊다/방해하다'},
-  'look after':{'de':'sich kümmern um','fr':'s\'occuper de','es':'cuidar de','it':'prendersi cura di','pl':'opiekować się','pt':'cuidar de','sk':'starať sa o','ru':'заботиться о','cn':'照顾','jp':'世話をする','kr':'돌보다'},
-  'deal with':{'de':'umgehen mit / erledigen','fr':'gérer / s\'occuper de','es':'tratar / lidiar con','it':'affrontare / gestire','pl':'radzić sobie z','pt':'lidar com','sk':'zaoberať sa / vyrovnať sa','ru':'справляться / иметь дело с','cn':'处理/应对','jp':'対処する','kr':'다루다/처리하다'},
-  'deal in':{'de':'handeln mit','fr':'faire du commerce de','es':'comerciar con','it':'commerciare in','pl':'handlować','pt':'negociar em','sk':'obchodovať s','ru':'торговать чем-либо','cn':'经营/交易','jp':'取引する','kr':'거래하다'},
-  'call off':{'de':'absagen','fr':'annuler','es':'cancelar','it':'cancellare / annullare','pl':'odwoływać','pt':'cancelar','sk':'zrušiť','ru':'отменять','cn':'取消','jp':'キャンセルする','kr':'취소하다'},
-  'carry on':{'de':'weitermachen','fr':'continuer','es':'seguir / continuar','it':'continuare','pl':'kontynuować','pt':'continuar','sk':'pokračovať','ru':'продолжать','cn':'继续','jp':'続ける','kr':'계속하다'},
-  'go over':{'de':'durchgehen / wiederholen','fr':'revoir / passer en revue','es':'repasar / revisar','it':'rivedere / riesaminare','pl':'przeglądać / powtarzać','pt':'rever / passar','sk':'prejsť / zopakovať','ru':'повторять / просматривать','cn':'复习/回顾','jp':'復習する/確認する','kr':'검토하다/복습하다'},
-  'go through':{'de':'durchmachen / durchgehen','fr':'traverser / vivre','es':'pasar por / vivir','it':'attraversare / vivere','pl':'przejść przez / przeżyć','pt':'passar por','sk':'prejsť si / prežiť','ru':'проходить / пережить','cn':'经历/浏览','jp':'経験する/通過する','kr':'겪다/통과하다'},
-  'look around':{'de':'sich umsehen','fr':'regarder autour / visiter','es':'mirar alrededor / visitar','it':'guardarsi intorno / visitare','pl':'rozglądać się / zwiedzać','pt':'olhar em volta / visitar','sk':'rozhliadnuť sa / prehliadnuť','ru':'оглядываться / осматривать','cn':'环顾/参观','jp':'見回す/見て回る','kr':'둘러보다'},
-  'point out':{'de':'hinweisen / zeigen','fr':'faire remarquer / indiquer','es':'señalar / indicar','it':'indicare / far notare','pl':'wskazywać / zwracać uwagę','pt':'apontar / indicar','sk':'upozorniť na / ukázať','ru':'указывать / обращать внимание','cn':'指出/指明','jp':'指摘する','kr':'지적하다'},
-  'put off':{'de':'verschieben / abschrecken','fr':'reporter / décourager','es':'posponer / desalentar','it':'rimandare / scoraggiare','pl':'odkładać / zniechęcać','pt':'adiar / desanimar','sk':'odložiť / odradiť','ru':'откладывать / отпугивать','cn':'推迟/劝阻','jp':'延期する/嫌がらせる','kr':'미루다/낙담시키다'},
-  'run into':{'de':'zufällig treffen / aufprallen','fr':'tomber sur / percuter','es':'encontrarse con / chocar','it':'incontrare per caso / scontrarsi','pl':'wpaść na / natknąć się','pt':'encontrar por acaso / colidir','sk':'naraziť na / potkat náhodou','ru':'случайно встретить / врезаться','cn':'偶遇/撞上','jp':'ばったり会う/衝突する','kr':'우연히 만나다/충돌하다'},
-  'get along':{'de':'auskommen mit','fr':'s\'entendre avec','es':'llevarse bien con','it':'andare d\'accordo con','pl':'dogadywać się z','pt':'dar-se bem com','sk':'vychádzať si s niekým','ru':'ладить / уживаться','cn':'相处好/合得来','jp':'仲良くやっていく','kr':'잘 지내다'},
-  'get over':{'de':'überwinden / hinwegkommen','fr':'surmonter / se remettre de','es':'superar','it':'superare / riprendersi','pl':'przezwyciężyć / pogodzić się','pt':'superar','sk':'prekonať / prestať trpieť','ru':'преодолевать / оправляться','cn':'克服/恢复过来','jp':'立ち直る','kr':'극복하다'},
-  'make up':{'de':'erfinden / schminken / versöhnen','fr':'inventer / se maquiller / se réconcilier','es':'inventar / maquillarse / reconciliarse','it':'inventare / truccarsi / riconciliarsi','pl':'wymyślać / malować się / godzić się','pt':'inventar / maquilhar / reconciliar','sk':'vymysleť / líčiť sa / usmiriť sa','ru':'придумывать / краситься / мириться','cn':'编造/化妆/和解','jp':'でっち上げる/化粧する/仲直りする','kr':'꾸며내다/화장하다/화해하다'},
-  'set off':{'de':'aufbrechen / auslösen','fr':'partir / déclencher','es':'partir / desencadenar','it':'partire / innescare','pl':'wyruszać / uruchamiać','pt':'partir / desencadear','sk':'vyraziť / spustiť','ru':'отправляться / вызывать','cn':'出发/触发','jp':'出発する/引き起こす','kr':'출발하다/유발하다'},
-  'set out':{'de':'aufbrechen / darlegen','fr':'partir / exposer','es':'partir / plantear','it':'partire / esporre','pl':'wyruszać / przedstawiać','pt':'partir / expor','sk':'vydat sa / zahájit','ru':'отправляться / излагать','cn':'出发/阐述','jp':'出発する/提示する','kr':'출발하다/설명하다'},
-  'stay out':{'de':'draußen bleiben / sich raushalten','fr':'rester dehors / ne pas s\'impliquer','es':'quedarse fuera / no inmiscuirse','it':'restare fuori / non intromettersi','pl':'zostać na zewnątrz / nie wtrącać się','pt':'ficar fora / não se meter','sk':'zostať vonku / nevmešovať sa','ru':'оставаться снаружи / не вмешиваться','cn':'待在外面/不干涉','jp':'外にいる/干渉しない','kr':'밖에 있다/간섭않다'},
-  'take out':{'de':'herausnehmen / ausführen','fr':'sortir / emmener','es':'sacar / llevar a salir','it':'portare fuori / estrarre','pl':'wynosić / wyjmować','pt':'tirar / levar a sair','sk':'vyniesť / vytiahnuť','ru':'выносить / доставать','cn':'取出/带出去','jp':'取り出す/連れ出す','kr':'꺼내다/데리고 나가다'},
-  'put down':{'de':'hinlegen / niedermachen','fr':'poser / critiquer','es':'dejar / criticar','it':'mettere giù / criticare','pl':'odkładać / krytykować','pt':'pousar / criticar','sk':'položiť dole / kritizovať','ru':'класть / критиковать','cn':'放下/批评','jp':'置く/けなす','kr':'놓다/비하하다'},
-  'fill out':{'de':'ausfüllen','fr':'remplir','es':'rellenar','it':'compilare','pl':'wypełniać','pt':'preencher','sk':'vyplniť (formulár)','ru':'заполнять','cn':'填写(表格)','jp':'記入する','kr':'작성하다'},
-  'ask for':{'de':'bitten um','fr':'demander','es':'pedir','it':'chiedere','pl':'prosić o','pt':'pedir','sk':'žiadať o','ru':'просить / запрашивать','cn':'要求/请求','jp':'求める','kr':'요청하다'},
-  'pay back':{'de':'zurückzahlen','fr':'rembourser','es':'devolver (dinero)','it':'restituire (denaro)','pl':'oddawać pieniądze / spłacać','pt':'devolver / pagar','sk':'vrátiť peniaze / splatiť','ru':'возвращать деньги / расплачиваться','cn':'还钱/偿还','jp':'返済する','kr':'갚다'},
-  'hold on':{'de':'warten / festhalten','fr':'attendre / tenir','es':'esperar / aguantar','it':'aspettare / reggere','pl':'czekać / trzymać się','pt':'esperar / aguentar','sk':'počkať / držať sa','ru':'подождать / держаться','cn':'等一下/坚持','jp':'待つ/つかまる','kr':'기다리다/버티다'},
-  'switch on':{'de':'einschalten','fr':'allumer','es':'encender','it':'accendere','pl':'włączać','pt':'ligar','sk':'zapnúť','ru':'включать','cn':'打开开关','jp':'スイッチを入れる','kr':'켜다'},
-  'switch off':{'de':'ausschalten','fr':'éteindre','es':'apagar','it':'spegnere','pl':'wyłączać','pt':'desligar','sk':'vypnúť','ru':'выключать','cn':'关闭开关','jp':'スイッチを切る','kr':'끄다'},
-  'come up with':{'de':'sich ausdenken','fr':'trouver / imaginer','es':'idear / inventar','it':'trovare / inventare','pl':'wymyślać / wpadać na','pt':'inventar / encontrar','sk':'prísť s (nápadom)','ru':'придумывать','cn':'想出/提出','jp':'思いつく','kr':'생각해내다'},
-  'go ahead':{'de':'vorangehen / weitermachen','fr':'aller de l\'avant / continuer','es':'seguir adelante','it':'andare avanti / procedere','pl':'kontynuować / iść naprzód','pt':'prosseguir','sk':'pokračovať / ísť napred','ru':'продолжать / идти вперёд','cn':'继续/先行','jp':'進む/やってみて','kr':'계속하다/먼저 하다'},
-  'look into':{'de':'untersuchen / nachforschen','fr':'examiner / enquêter','es':'investigar / examinar','it':'esaminare / indagare','pl':'badać / sprawdzać','pt':'investigar / examinar','sk':'prošetriť / preskúmať','ru':'расследовать / изучать','cn':'调查/研究','jp':'調査する','kr':'조사하다'},
-  'put up with':{'de':'erdulden / ertragen','fr':'supporter / tolérer','es':'soportar / aguantar','it':'sopportare / tollerare','pl':'tolerować / znosić','pt':'suportar / tolerar','sk':'znášať / tolerovať','ru':'терпеть / мириться','cn':'忍受/容忍','jp':'我慢する','kr':'참다/견디다'},
-  'get away with':{'de':'ungestraft davonkommen','fr':'s\'en tirer sans punition','es':'salirse con la suya','it':'cavarsela / farla franca','pl':'ujść bezkarnie','pt':'sair impune','sk':'vyváznuť bez trestu','ru':'уйти безнаказанным','cn':'逃脱惩罚','jp':'うまくごまかす','kr':'처벌을 피하다'},
-  'bring out':{'de':'herausbringen / betonen','fr':'sortir / mettre en valeur','es':'sacar / resaltar','it':'pubblicare / mettere in risalto','pl':'wydawać / podkreślać','pt':'lançar / ressaltar','sk':'vydať / zdôrazniť','ru':'выпускать / выделять','cn':'推出/凸显','jp':'出す/引き出す','kr':'출시하다/부각시키다'},
-  'call in':{'de':'anrufen / krankmelden','fr':'appeler / se déclarer malade','es':'llamar / notificar enfermedad','it':'chiamare / dichiarare malattia','pl':'dzwonić / zgłaszać chorobę','pt':'ligar / reportar doença','sk':'zavolať / nahlásit nemoc','ru':'позвонить / сообщить о болезни','cn':'打电话/请病假','jp':'電話する/病欠届け','kr':'전화하다/병가신고'},
-  'check in':{'de':'einchecken','fr':'s\'enregistrer / faire le check-in','es':'registrarse / hacer el check-in','it':'fare il check-in','pl':'meldować się','pt':'fazer check-in','sk':'prihlásiť sa / odbavit sa','ru':'регистрироваться','cn':'登记/值机','jp':'チェックインする','kr':'체크인하다'},
-  'drop off':{'de':'abgeben / abliefern','fr':'déposer / s\'endormir','es':'dejar / dormir','it':'lasciare / addormentarsi','pl':'odwozić / zasypiać','pt':'deixar / adormecer','sk':'odviesť / odpadnúť spánkom','ru':'высаживать / засыпать','cn':'送到/睡着了','jp':'降ろす/眠る','kr':'내려주다/깜빡 잠들다'},
-  'drop out':{'de':'aussteigen / abbrechen','fr':'abandonner / décrocher','es':'abandonar / desertar','it':'abbandonare / ritirarsi','pl':'rezygnować / rzucać szkołę','pt':'desistir / abandonar','sk':'vypadnúť / prestať studovať','ru':'бросать / отчисляться','cn':'退出/辍学','jp':'脱落する/中退する','kr':'중도 포기하다'},
-  'hand over':{'de':'übergeben / aushändigen','fr':'remettre / transférer','es':'entregar / ceder','it':'consegnare / cedere','pl':'przekazywać / oddawać','pt':'entregar / ceder','sk':'predať / odovzdať','ru':'передавать','cn':'移交/交出','jp':'引き渡す','kr':'넘기다/인도하다'},
-  'keep on':{'de':'weitermachen / nicht aufgeben','fr':'continuer / ne pas lâcher','es':'seguir / no rendirse','it':'continuare / non mollare','pl':'kontynuować / nie poddawać się','pt':'continuar / não desistir','sk':'pokračovať / nevzdávať','ru':'продолжать / не сдаваться','cn':'继续/坚持','jp':'続ける/あきらめない','kr':'계속하다/포기하지않다'},
-  'let down':{'de':'enttäuschen','fr':'décevoir','es':'decepcionar','it':'deludere','pl':'zawodzić','pt':'decepcionar','sk':'sklamať','ru':'подводить','cn':'让...失望','jp':'がっかりさせる','kr':'실망시키다'},
-  'log on':{'de':'einloggen (Web)','fr':'se connecter (web)','es':'iniciar sesión (web)','it':'accedere (web)','pl':'logować się (web)','pt':'entrar (web)','sk':'prihlásiť sa (na web)','ru':'входить на сайт','cn':'登录(网站)','jp':'ログオンする','kr':'로그온하다'},
-  'log off':{'de':'ausloggen (Web)','fr':'se déconnecter (web)','es':'cerrar sesión (web)','it':'disconnettersi (web)','pl':'wylogowywać się (web)','pt':'terminar sessão (web)','sk':'odhlásiť sa (z webu)','ru':'выходить с сайта','cn':'退出(网站)','jp':'ログオフする','kr':'로그오프하다'},
-  'make out':{'de':'erkennen / behaupten','fr':'distinguer / prétendre','es':'distinguir / pretender','it':'capire / sostenere','pl':'rozpoznawać / twierdzić','pt':'reconhecer / alegar','sk':'tvrdiť / rozpoznať','ru':'различать / утверждать','cn':'辨别/声称','jp':'わかる/主張する','kr':'알아보다/주장하다'},
-  'pass out':{'de':'ohnmächtig werden / verteilen','fr':'s\'évanouir / distribuer','es':'desmayarse / distribuir','it':'svenire / distribuire','pl':'omdleć / rozdawać','pt':'desmaiar / distribuir','sk':'omdliet / rozdať','ru':'терять сознание / раздавать','cn':'昏倒/分发','jp':'気絶する/配る','kr':'기절하다/나누다'},
-  'pull over':{'de':'an den Rand fahren / anhalten','fr':'se ranger / arrêter','es':'hacerse a un lado / parar','it':'accostarsi / fermarsi','pl':'zjechać na bok / zatrzymać','pt':'encostar / parar','sk':'zajet k okraju / zastaviť auto','ru':'съезжать к обочине / останавливаться','cn':'靠边停车','jp':'路肩に止める','kr':'갓길에 세우다'},
-  'run over':{'de':'überfahren / kurz durchgehen','fr':'écraser / passer en revue','es':'atropellar / repasar','it':'investire / rivedere','pl':'potrącić / przeglądać','pt':'atropelar / rever','sk':'prejet / stručne prejsť','ru':'переехать / вкратце пройти','cn':'碾过/简述','jp':'ひく/ざっと確認する','kr':'치다/간략히 검토하다'},
-  'sort out':{'de':'klären / sortieren','fr':'régler / trier','es':'solucionar / ordenar','it':'risolvere / ordinare','pl':'rozwiązywać / sortować','pt':'resolver / organizar','sk':'vyriešiť / roztriediť','ru':'разбираться / сортировать','cn':'解决/整理','jp':'解決する/整理する','kr':'해결하다/정리하다'},
-  'stick to':{'de':'sich halten an','fr':'s\'en tenir à / rester à','es':'atenerse a / ceñirse a','it':'attenersi a / mantenere','pl':'trzymać się (planu)','pt':'manter / cumprir','sk':'držať sa (plánu/slova)','ru':'придерживаться','cn':'坚持/遵守','jp':'〜を守る','kr':'고수하다'},
-  'take over':{'de':'übernehmen','fr':'prendre le relais / reprendre','es':'hacerse cargo / tomar el control','it':'prendere il controllo','pl':'przejmować (kontrolę)','pt':'assumir / tomar o controlo','sk':'prevziať (kontrolu)','ru':'брать на себя / перехватывать','cn':'接管/接手','jp':'引き継ぐ','kr':'인수하다'},
-  'talk over':{'de':'besprechen','fr':'discuter de','es':'discutir / hablar de','it':'discutere / parlare','pl':'omawiać','pt':'discutir / conversar sobre','sk':'prediskutovať','ru':'обсуждать','cn':'讨论/商量','jp':'話し合う','kr':'논의하다'},
-  'think over':{'de':'überdenken / überlegen','fr':'réfléchir à / peser','es':'pensar bien / considerar','it':'riflettere su / valutare','pl':'przemyśleć / rozważyć','pt':'pensar / ponderar','sk':'rozmyslieť si / zvážiť','ru':'обдумывать / взвешивать','cn':'仔细考虑/权衡','jp':'よく考える','kr':'재고하다/심사숙고하다'},
-  'turn back':{'de':'umkehren','fr':'faire demi-tour','es':'dar la vuelta / regresar','it':'tornare indietro','pl':'zawracać','pt':'voltar atrás','sk':'vrátiť sa / obrátiť','ru':'повернуть назад','cn':'回头/返回','jp':'引き返す','kr':'돌아가다'},
-  'wear out':{'de':'abnutzen / erschöpfen','fr':'user / épuiser','es':'gastar / agotar','it':'consumare / esaurire','pl':'zużywać / wyczerpywać','pt':'gastar / esgotar','sk':'opotrebovať / vyčerpať','ru':'изнашивать / изматывать','cn':'磨损/筋疲力尽','jp':'すり減る/疲弊させる','kr':'닳다/기진맥진시키다'},
-  'work on':{'de':'arbeiten an','fr':'travailler sur / améliorer','es':'trabajar en / mejorar','it':'lavorare su / migliorare','pl':'pracować nad / doskonalić','pt':'trabalhar em / melhorar','sk':'pracovať na / zdokonaľovať','ru':'работать над / совершенствовать','cn':'努力改进/致力于','jp':'〜に取り組む','kr':'작업하다/개선하다'},
-  'come along':{'de':'mitkommen','fr':'venir avec / accompagner','es':'venir / acompañar','it':'venire con / accompagnare','pl':'iść razem / dołączać','pt':'vir junto / acompanhar','sk':'prísť s / ísť spolu','ru':'идти вместе / приходить','cn':'一起来/陪同','jp':'一緒に来る','kr':'함께 오다'},
-  'go along':{'de':'mitmachen / zustimmen','fr':'aller avec / être d\'accord','es':'ir junto / estar de acuerdo','it':'andare insieme / essere d\'accordo','pl':'iść razem / zgadzać się','pt':'ir junto / concordar','sk':'súhlasiť / ísť spolu','ru':'идти вместе / соглашаться','cn':'赞同/一起去','jp':'同行する/賛成する','kr':'동의하다/따라가다'},
-  'get back':{'de':'zurückbekommen / zurückkehren','fr':'récupérer / rentrer','es':'recuperar / volver','it':'recuperare / tornare','pl':'odzyskiwać / wracać','pt':'recuperar / regressar','sk':'vrátiť sa / dostať späť','ru':'получать обратно / возвращаться','cn':'取回/回来','jp':'取り戻す/戻る','kr':'되찾다/돌아오다'},
-  'keep up':{'de':'mithalten / Schritt halten','fr':'suivre / maintenir','es':'mantener el ritmo / seguir','it':'stare al passo / mantenere','pl':'dotrzymywać kroku / nie zaostrzać','pt':'manter o ritmo / acompanhar','sk':'udržať tempo / nezaostávať','ru':'успевать / не отставать','cn':'跟上/保持','jp':'ついていく/維持する','kr':'따라가다/유지하다'},
-  'look back':{'de':'zurückblicken','fr':'regarder en arrière','es':'mirar atrás','it':'guardare indietro','pl':'oglądać się za siebie / wspominać','pt':'olhar para trás','sk':'ohliadnuť sa (na minulosť)','ru':'оглядываться назад','cn':'回顾/回头看','jp':'振り返る','kr':'돌아보다'},
-  'look forward to':{'de':'sich freuen auf','fr':'se réjouir de / avoir hâte de','es':'tener ganas de / esperar con interés','it':'non vedere l\'ora di','pl':'cieszyć się na','pt':'aguardar com expectativa','sk':'tešiť sa na','ru':'ожидать с нетерпением','cn':'期待/盼望','jp':'楽しみにする','kr':'기대하다'},
-  'fall apart':{'de':'auseinanderfallen / zerbrechen','fr':'tomber en morceaux / craquer','es':'deshacerse / venirse abajo','it':'andare a pezzi','pl':'rozpadać się','pt':'desintegrar-se','sk':'rozpadnúť sa','ru':'разваливаться','cn':'瓦解/崩溃','jp':'バラバラになる','kr':'무너지다'},
-  'brush up on':{'de':'auffrischen','fr':'réviser / se remettre à niveau','es':'repasar / actualizarse','it':'ripassare / rinfrescare','pl':'odświeżać / przypominać sobie','pt':'rever / actualizar','sk':'oprášiť znalosti','ru':'освежать знания','cn':'温习/更新知识','jp':'復習する','kr':'복습하다'},
-  'come across as':{'de':'wirken wie / erscheinen als','fr':'donner l\'impression de / paraître','es':'dar la impresión de / parecer','it':'sembrare / apparire','pl':'sprawiać wrażenie / uchodzić za','pt':'dar a impressão de / parecer','sk':'pôsobiť dojmem / javiť sa ako','ru':'производить впечатление / казаться','cn':'给人的印象是/显得','jp':'〜という印象を与える','kr':'~처럼 보이다'},
-  'get by':{'de':'durchkommen / überleben','fr':'s\'en sortir / se débrouiller','es':'arreglárselas / sobrevivir','it':'cavarsela / sopravvivere','pl':'dawać sobie radę / jakoś przeżywać','pt':'conseguir / sobreviver','sk':'vyjsť / prežiť / nějak to zvládnout','ru':'справляться / перебиваться','cn':'勉强应付/将就度日','jp':'なんとかやっていく','kr':'어떻게든 해나가다'},
-  'get through':{'de':'durchkommen / abschließen','fr':'passer / terminer','es':'pasar por / terminar','it':'passare / finire','pl':'przebrnąć / połączyć się','pt':'passar / concluir','sk':'dostať sa cez / dokončiť / spojiť','ru':'пробиться / дозвониться / закончить','cn':'通过/完成','jp':'乗り越える/連絡がつく','kr':'통과하다/연결되다'},
-  'go for':{'de':'sich entscheiden für / angreifen','fr':'choisir / viser / attaquer','es':'ir a por / elegir','it':'optare per / attaccare','pl':'wybrać / atakować','pt':'ir para / escolher','sk':'ísť pre / voliť / útočiť','ru':'нападать / выбирать','cn':'争取/选择','jp':'〜をねらう/選ぶ','kr':'도전하다/선택하다'},
-  'go without':{'de':'verzichten auf','fr':'se passer de','es':'prescindir de','it':'fare a meno di','pl':'obejść się bez','pt':'passar sem','sk':'obejsť sa bez','ru':'обходиться без','cn':'没有也行/忍受没有','jp':'〜なしで済ます','kr':'없이 지내다'},
-  'live up to':{'de':'gerecht werden / entsprechen','fr':'être à la hauteur de','es':'estar a la altura de','it':'essere all\'altezza di','pl':'spełniać oczekiwania','pt':'estar à altura de','sk':'dostať očakávaniu','ru':'соответствовать / оправдывать','cn':'符合期望','jp':'〜に応える','kr':'기대에 부응하다'},
-  'look down on':{'de':'herabschauen / verachten','fr':'regarder de haut / mépriser','es':'mirar con desdén / despreciar','it':'guardare dall\'alto / disprezzare','pl':'patrzeć z góry na','pt':'olhar com desdém / desprezar','sk':'dívať sa zvrchu na','ru':'смотреть свысока / презирать','cn':'俯视/轻视','jp':'見下す','kr':'깔보다'},
-  'look up to':{'de':'bewundern / aufschauen zu','fr':'admirer / respecter','es':'admirar / respetar','it':'ammirare / rispettare','pl':'podziwiać / patrzeć z uznaniem','pt':'admirar / respeitar','sk':'vzhliadať k / obdivovať','ru':'восхищаться / уважать','cn':'仰望/钦佩','jp':'尊敬する','kr':'존경하다'},
-  'make do':{'de':'sich begnügen / auskommen','fr':'se contenter de / s\'en sortir avec','es':'arreglárselas / conformarse','it':'accontentarsi / arrangiarsi','pl':'zadowalać się / radzić sobie','pt':'contentar-se / arranjar-se','sk':'vystačiť si s / spokojit sa','ru':'довольствоваться / обходиться','cn':'将就/凑合','jp':'間に合わせる','kr':'임시변통하다'},
-  'miss out on':{'de':'verpassen','fr':'rater / manquer','es':'perderse','it':'perdersi','pl':'tracić szansę / przegapiać','pt':'perder / não aproveitar','sk':'prísť o / zmeškat','ru':'упускать / пропускать','cn':'错过/失去机会','jp':'見逃す/チャンスを逃す','kr':'놓치다'},
-  'move on from':{'de':'loslassen / weitermachen mit','fr':'passer à autre chose / se remettre de','es':'seguir adelante / dejar atrás','it':'andare avanti / lasciarsi alle spalle','pl':'zostawiać za sobą','pt':'seguir em frente / deixar para trás','sk':'prejsť od / nechať za sebou','ru':'двигаться дальше / забывать','cn':'走出/告别','jp':'〜から前進する','kr':'~에서 벗어나 나아가다'},
-  'play down':{'de':'kleinreden / herunterspielen','fr':'minimiser / atténuer','es':'minimizar / restar importancia','it':'sminuire / minimizzare','pl':'bagatelizować / umniejszać','pt':'minimizar','sk':'zlehčovať','ru':'преуменьшать','cn':'淡化/轻描淡写','jp':'軽くあしらう','kr':'대수롭지않게 여기다'},
-  'put forward':{'de':'vorschlagen / vorlegen','fr':'proposer / soumettre','es':'proponer / presentar','it':'proporre / presentare','pl':'proponować / przedstawiać','pt':'propor / apresentar','sk':'navrhnúť / predložiť','ru':'предлагать / выдвигать','cn':'提出/提议','jp':'提案する','kr':'제안하다'},
-  'read up on':{'de':'sich informieren über','fr':'se renseigner sur / étudier','es':'informarse sobre / estudiar','it':'informarsi su / studiare','pl':'zapoznawać się z / studiować','pt':'informar-se sobre / estudar','sk':'nastudovať / prečítať si o','ru':'изучать / знакомиться с темой','cn':'查阅/钻研','jp':'調べる/勉強する','kr':'공부하다/알아보다'},
-  'rule out':{'de':'ausschließen','fr':'exclure / éliminer','es':'descartar','it':'escludere','pl':'wykluczać','pt':'excluir / descartar','sk':'vylúčiť','ru':'исключать','cn':'排除','jp':'除外する','kr':'제외하다'},
-  'stand for':{'de':'stehen für / dulden','fr':'représenter / tolérer','es':'representar / tolerar','it':'rappresentare / tollerare','pl':'stać za / tolerować','pt':'representar / tolerar','sk':'zastupovať / tolerovať / stáť za','ru':'означать / терпеть','cn':'代表/忍受','jp':'意味する/我慢する','kr':'대표하다/참다'},
-  'take in':{'de':'aufnehmen / hereinlegen','fr':'absorber / accueillir / tromper','es':'absorber / acoger / engañar','it':'assorbire / ospitare / ingannare','pl':'przyjmować / wchłaniać / oszukiwać','pt':'absorver / receber / enganar','sk':'vstrebať / prijat / oklamať','ru':'воспринимать / приютить / обмануть','cn':'理解/容纳/欺骗','jp':'理解する/泊める/だます','kr':'이해하다/받아들이다/속이다'},
-  'take on':{'de':'übernehmen (Aufgabe)','fr':'relever un défi / embaucher','es':'asumir / enfrentarse','it':'affrontare / assumere','pl':'podejmować (pracę/wyzwanie)','pt':'assumir / enfrentar','sk':'prijat (prácu/výzvu)','ru':'брать на себя / нанимать','cn':'承担/迎接挑战','jp':'引き受ける','kr':'맡다/도전하다'},
-  'think ahead':{'de':'vorausdenken / planen','fr':'anticiper / planifier','es':'pensar en el futuro / planificar','it':'pensare in anticipo / pianificare','pl':'myśleć naprzód / planować','pt':'pensar no futuro / planear','sk':'mysleť dopredu / plánovať','ru':'думать наперёд / планировать','cn':'未雨绸缪/提前规划','jp':'先を考える/計画する','kr':'미리 생각하다/계획하다'},
-  'warm up':{'de':'aufwärmen / sich aufwärmen','fr':'se réchauffer / s\'échauffer','es':'calentarse / hacer el calentamiento','it':'scaldarsi / riscaldarsi','pl':'rozgrzewać się','pt':'aquecer / fazer o aquecimento','sk':'zahriať sa / rozohriať sa','ru':'разогреваться / подогревать','cn':'热身/预热','jp':'ウォームアップする','kr':'몸 풀다/워밍업하다'},
-  'wind up':{'de':'enden / aufregen / aufziehen','fr':'finir / irriter / remonter','es':'acabar / irritar / dar cuerda','it':'finire / irritare / carica','pl':'kończyć / drażnić / nakręcać','pt':'acabar / irritar / dar corda','sk':'skončiť / utnúť / natiahnuť','ru':'заканчивать / заводить / раздражать','cn':'终结/激怒/上发条','jp':'終わる/イライラさせる','kr':'끝내다/화나게하다'},
-  'work around':{'de':'umgehen / Umweg finden','fr':'contourner / trouver une alternative','es':'evitar / encontrar alternativa','it':'aggirare / trovare un\'alternativa','pl':'obchodzić / znajdować inne rozwiązanie','pt':'contornar / arranjar alternativa','sk':'obejsť / najst iné riešenie','ru':'обходить / находить обходной путь','cn':'绕过/另辟蹊径','jp':'回避策を見つける','kr':'우회하다/해결책 찾다'},
-  'zone out':{'de':'wegdriften / geistesabwesend sein','fr':'déconnecter / être dans la lune','es':'desconectarse / estar en las nubes','it':'scollegarsi / perdere il filo','pl':'odpływać myślami / wyłączać się','pt':'desligar / estar distraído','sk':'odplávať myšlienkami / vypnúť','ru':'витать в облаках / отключаться','cn':'走神/发呆','jp':'ぼんやりする','kr':'멍하다/딴생각하다'},
-  'zero in on':{'de':'sich konzentrieren auf / zielen auf','fr':'se concentrer sur / viser','es':'concentrarse en / apuntar a','it':'concentrarsi su / puntare a','pl':'skupiać się na / celować w','pt':'concentrar-se em / focar','sk':'zamerať sa na / priblížiť sa','ru':'сосредоточиться / прицелиться','cn':'专注于/瞄准','jp':'〜に焦点を当てる','kr':'집중하다/겨냥하다'},
-  'back up':{'de':'sichern / unterstützen / zurücksetzen','fr':'sauvegarder / soutenir / reculer','es':'hacer copia de seguridad / apoyar','it':'fare il backup / supportare','pl':'zrobić kopię / popierać','pt':'fazer backup / apoiar','sk':'zálohovať / podporiť','ru':'резервировать / поддерживать','cn':'备份/支持/倒退','jp':'バックアップする/後退する','kr':'백업하다/지원하다'},
-  'break into':{'de':'einbrechen / plötzlich anfangen','fr':'s\'introduire / éclater en','es':'irrumpir / prorrumpir','it':'irrompere / scoppiare','pl':'włamywać się / nagle zaczynać','pt':'arrombar / explodir','sk':'vlúpat sa / náhle začať','ru':'взламывать / внезапно начать','cn':'闯入/突然开始','jp':'押し入る/突然始める','kr':'침입하다/갑자기 시작하다'},
-  'build up':{'de':'aufbauen / ansammeln / verstärken','fr':'construire / accumuler / renforcer','es':'construir / acumular / reforzar','it':'costruire / accumulare / rafforzare','pl':'budować / gromadzić / wzmaciać','pt':'construir / acumular / reforçar','sk':'budovať / hromadiť / zosilňovať','ru':'накапливать / усиливать / строить','cn':'积累/增强/建立','jp':'積み上げる/強化する','kr':'쌓다/강화하다'},
-  'catch on':{'de':'begreifen / beliebt werden','fr':'comprendre / prendre','es':'entender / ponerse de moda','it':'capire / diffondersi','pl':'rozumieć / chwytać się','pt':'perceber / tornar-se popular','sk':'chytiť sa / pochopiť','ru':'понимать / приживаться','cn':'理解/流行起来','jp':'わかる/流行る','kr':'이해하다/유행하다'},
-  'check up on':{'de':'überprüfen / nachsehen','fr':'vérifier / surveiller','es':'controlar / comprobar','it':'controllare / monitorare','pl':'sprawdzać / doglądać','pt':'verificar / supervisionar','sk':'zkontrolovať / dohliadnuť na','ru':'проверять / следить','cn':'检查/督促','jp':'様子を見る/確認する','kr':'확인하다/점검하다'},
-  'come down to':{'de':'ankommen auf / hinauslaufen auf','fr':'se résumer à / dépendre de','es':'reducirse a / depender de','it':'ridursi a / dipendere da','pl':'sprowadzać się do / zależeć od','pt':'resumir-se a / depender de','sk':'záležať na / sviesť na','ru':'сводиться к / зависеть от','cn':'归结为/取决于','jp':'〜次第だ','kr':'~에 달려 있다'},
-  'cut back on':{'de':'einschränken / reduzieren','fr':'réduire / baisser','es':'recortar / reducir','it':'ridurre / tagliare','pl':'ograniczać / zmniejszać','pt':'reduzir / cortar','sk':'obmedziť / znížiť','ru':'сокращать / урезать','cn':'削减/减少','jp':'削減する/減らす','kr':'줄이다/삭감하다'},
-  'fit in':{'de':'passen / dazugehören','fr':'s\'intégrer / trouver le temps','es':'integrarse / encajar','it':'integrarsi / rientrare','pl':'pasować / wpisywać się','pt':'integrar-se / encaixar','sk':'zapadnúť / stihnúť','ru':'вписываться / успевать','cn':'融入/合适','jp':'うまく合う/溶け込む','kr':'어울리다/맞다'},
-  'get ahead':{'de':'vorankommen / erfolgreich sein','fr':'progresser / réussir','es':'progresar / avanzar','it':'progredire / avanzare','pl':'postępować / udać się','pt':'progredir / ter sucesso','sk':'postúpiť / uspieť','ru':'продвигаться / преуспевать','cn':'取得进步/成功','jp':'前進する/成功する','kr':'앞서나가다/성공하다'},
-  'go under':{'de':'untergehen / Pleite machen','fr':'couler / faire faillite','es':'hundirse / quebrar','it':'affondare / fallire','pl':'tonąć / bankrutować','pt':'afundar / falir','sk':'krachovať / potopiť sa','ru':'тонуть / обанкротиться','cn':'倒闭/下沉','jp':'沈む/倒産する','kr':'가라앉다/파산하다'},
-  'hold back':{'de':'zurückhalten / hemmen','fr':'retenir / freiner','es':'retener / inhibirse','it':'trattenersi / frenare','pl':'powstrzymywać / hamować','pt':'reter / conter','sk':'zdržať / potlačiť','ru':'удерживать / сдерживаться','cn':'阻止/克制','jp':'抑える/引き留める','kr':'막다/억제하다'},
-  'hold up':{'de':'aufhalten / standhalten','fr':'retarder / résister','es':'retrasar / aguantar','it':'ritardare / resistere','pl':'zatrzymywać / wytrzymywać','pt':'atrasar / aguentar','sk':'zadržat / vydržat','ru':'задерживать / держаться','cn':'拖延/坚持住','jp':'遅らせる/耐える','kr':'지연시키다/버티다'},
-  'back out':{'de':'zurückziehen / einen Rückzieher machen','fr':'se retirer / reculer','es':'echarse atrás / retirarse','it':'tirarsi indietro / ritirarsi','pl':'wycofywać się / rezygnować','pt':'recuar / desistir','sk':'couvnúť / stiahnuť sa','ru':'отступать / отказываться','cn':'退缩/退出','jp':'引き下がる/撤退する','kr':'물러서다/취소하다'},
-  'bring about':{'de':'verursachen / herbeiführen','fr':'provoquer / entraîner','es':'causar / provocar','it':'causare / provocare','pl':'powodować / wywoływać','pt':'causar / provocar','sk':'spôsobiť / privodiť','ru':'вызывать / приводить к','cn':'导致/引起','jp':'引き起こす','kr':'야기하다'},
-  'carry out':{'de':'durchführen / ausführen','fr':'effectuer / réaliser','es':'llevar a cabo / realizar','it':'eseguire / realizzare','pl':'przeprowadzać / wykonywać','pt':'realizar / executar','sk':'previesť / uskutočniť','ru':'выполнять / осуществлять','cn':'执行/实施','jp':'実行する','kr':'수행하다'},
-  'catch up':{'de':'aufholen / gleichziehen','fr':'rattraper / se mettre à niveau','es':'ponerse al día / alcanzar','it':'raggiungere / aggiornarsi','pl':'nadrabiać / doganiać','pt':'recuperar / alcançar','sk':'dohnat / dostať sa na rovnakú úroveň','ru':'догонять / наверстать','cn':'赶上/追赶','jp':'追いつく','kr':'따라잡다'},
-  'clear up':{'de':'aufklären / aufräumen','fr':'éclaircir / ranger','es':'aclarar / ordenar','it':'chiarire / riordinare','pl':'wyjaśniać / sprzątać','pt':'esclarecer / arrumar','sk':'vyjasniť / upratať','ru':'проясниться / прибраться','cn':'阐明/整理','jp':'晴れる/片付ける','kr':'해명하다/치우다'},
-  'die down':{'de':'nachlassen / abklingen','fr':'s\'apaiser / se calmer','es':'calmarse / disminuir','it':'calmarsi / diminuire','pl':'uspokajać się / cichać','pt':'acalmar / diminuir','sk':'upokojiť sa / utíchnuť','ru':'утихать / спадать','cn':'平息/减弱','jp':'収まる/静まる','kr':'가라앉다/잠잠해지다'},
-  'draw up':{'de':'aufsetzen / erstellen','fr':'rédiger / dresser','es':'redactar / elaborar','it':'redigere / preparare','pl':'sporządzać / redagować','pt':'redigir / elaborar','sk':'sestaviť / spísať','ru':'составлять','cn':'起草/制定','jp':'作成する','kr':'작성하다/기안하다'},
-  'fall through':{'de':'scheitern / platzen','fr':'échouer / tomber à l\'eau','es':'fracasar / no llegar a nada','it':'fallire / andare in fumo','pl':'nie dojść do skutku / spaść','pt':'falhar / não se concretizar','sk':'nevyjsť / ztroskotať','ru':'срываться / провалиться','cn':'落空/失败','jp':'失敗に終わる','kr':'수포로 돌아가다'},
-  'get around to':{'de':'dazu kommen / Zeit finden','fr':'trouver le temps de / finir par','es':'encontrar tiempo para','it':'trovare il tempo per','pl':'znaleźć czas na / w końcu zrobić','pt':'arranjar tempo para / acabar por','sk':'dostať sa k / nájsť čas na','ru':'дойти до / найти время','cn':'抽空做/终于做到','jp':'〜する時間を作る','kr':'시간을 내다'},
-  'pull off':{'de':'schaffen / hinkriegen','fr':'réussir / s\'en sortir','es':'conseguir / lograrlo','it':'riuscire / farcela','pl':'udawać się / dokonywać','pt':'conseguir / realizar','sk':'zvládnuť / previesť','ru':'удаться / вытащить','cn':'成功做到/完成','jp':'やり遂げる','kr':'해내다'},
-  'talk into':{'de':'überreden zu','fr':'convaincre de / persuader','es':'convencer de','it':'convincere a','pl':'namawiać do / przekonywać','pt':'convencer a','sk':'premluvit (k niečomu)','ru':'уговорить / убедить','cn':'说服做某事','jp':'〜するように説得する','kr':'설득하다'},
-  'talk out of':{'de':'abraten / herausreden aus','fr':'dissuader de','es':'disuadir de','it':'dissuadere da','pl':'odwodzić od','pt':'demover de / convencer a não','sk':'rozmluvit (od niečoho)','ru':'отговорить','cn':'劝阻做某事','jp':'〜しないよう説得する','kr':'~을 못하게 설득하다'},
-  'account for':{'de':'erklären / ausmachen','fr':'expliquer / représenter','es':'explicar / representar','it':'spiegare / rappresentare','pl':'wyjaśniać / stanowić','pt':'explicar / representar','sk':'zodpovedať za / tvoriť časť','ru':'объяснять / составлять','cn':'解释/占(比例)','jp':'説明する/占める','kr':'설명하다/차지하다'},
-  'adhere to':{'de':'sich halten an / einhalten','fr':'adhérer à / respecter','es':'adherirse a / cumplir','it':'aderire a / rispettare','pl':'przestrzegać / trzymać się','pt':'aderir a / cumprir','sk':'dodržovať / pridržovať sa','ru':'придерживаться / соблюдать','cn':'坚持/遵守','jp':'〜を守る','kr':'준수하다/고수하다'},
-  'bank on':{'de':'verlassen auf / zählen auf','fr':'compter sur / miser sur','es':'contar con / apostar por','it':'contare su / fare affidamento su','pl':'polegać na / liczyć na','pt':'contar com / apostar em','sk':'spoliehať na / počítať s','ru':'рассчитывать на / надеяться на','cn':'指望/依靠','jp':'〜をあてにする','kr':'기대다/믿다'},
-  'bear with':{'de':'Geduld haben / durchhalten','fr':'prendre patience / supporter','es':'tener paciencia con','it':'avere pazienza con','pl':'być cierpliwym / wytrwać','pt':'ter paciência / aguentar','sk':'mať trpezlivosť / vydržať s','ru':'терпеть / мириться','cn':'忍耐/耐心对待','jp':'〜に我慢する','kr':'참아주다'},
-  'boil down to':{'de':'im Wesentlichen sein / herauskommen auf','fr':'se résumer à / revenir à','es':'resumirse en / reducirse a','it':'ridursi a / essere fondamentalmente','pl':'sprowadzać się do / być w istocie','pt':'resumir-se a','sk':'sviesť na / byť v podstate o','ru':'сводиться к / означать в конечном счёте','cn':'归根结底是','jp':'要するに〜だ','kr':'결국 ~이다'},
-  'break down into':{'de':'aufteilen in / aufgliedern','fr':'décomposer en / diviser en','es':'dividir en / descomponer','it':'suddividere in / scomporre','pl':'rozkładać na / dzielić','pt':'decompor em / dividir','sk':'rozložiť na / rozčleniť','ru':'разбивать на / разделять','cn':'分解为/细分为','jp':'〜に分解する','kr':'분해하다/세분화하다'},
-  'call upon':{'de':'auffordern / bitten / aufrufen','fr':'faire appel à / appeler','es':'pedir / convocar / apelar','it':'chiedere / convocare','pl':'wzywać / apelować','pt':'apelar / convocar','sk':'vyzvat / apelovat / povolat','ru':'призывать / обращаться','cn':'呼吁/召唤','jp':'呼びかける/頼む','kr':'촉구하다/불러내다'},
-  'carve out':{'de':'sich erarbeiten / herausschnitzen','fr':'se tailler / créer','es':'labrarse / crear','it':'costruirsi / ritagliarsi','pl':'wywalczyć / wygospodarować','pt':'criar / conquistar','sk':'vydobyť si / vyhradiť si','ru':'выгрызать / создавать','cn':'开辟/争取到','jp':'〜を切り開く','kr':'개척하다'},
-  'come to terms with':{'de':'sich abfinden mit / akzeptieren','fr':'accepter / se résigner à','es':'aceptar / resignarse','it':'accettare / venire a patti con','pl':'godzić się z / pogodzić się','pt':'aceitar / conformar-se','sk':'smieriť sa s / vyrovnať sa','ru':'смириться с / принять','cn':'接受/妥协','jp':'〜を受け入れる','kr':'받아들이다/화해하다'},
-  'contend with':{'de':'kämpfen mit / fertig werden mit','fr':'faire face à / lutter contre','es':'hacer frente a / luchar contra','it':'affrontare / lottare contro','pl':'zmagać się z / stawiać czoła','pt':'enfrentar / lidar com','sk':'potýkať sa s / čeliť','ru':'бороться с / справляться','cn':'应对/与…抗争','jp':'〜と格闘する','kr':'맞서 싸우다'},
-  'draw on':{'de':'schöpfen aus / zurückgreifen auf','fr':'puiser dans / s\'appuyer sur','es':'recurrir a / basarse en','it':'attingere a / basarsi su','pl':'czerpać z / korzystać z','pt':'recorrer a / basear-se em','sk':'čerpať z / vychádzať z','ru':'черпать из / опираться на','cn':'借鉴/利用','jp':'〜を活用する','kr':'활용하다'},
-  'ease off':{'de':'nachlassen / lockern','fr':'se détendre / relâcher','es':'aflojar / relajarse','it':'allentare / diminuire','pl':'odpuszczać / zmniejszać','pt':'aliviar / diminuir','sk':'slevit / zmierniť / upokojit sa','ru':'ослаблять / успокаиваться','cn':'放松/减缓','jp':'和らぐ/緩める','kr':'완화하다/줄이다'},
-  'factor in':{'de':'einbeziehen / berücksichtigen','fr':'intégrer / prendre en compte','es':'tener en cuenta / incluir','it':'considerare / tenere conto','pl':'uwzględniać / wliczać','pt':'considerar / incluir','sk':'zohľadniť / zahrnúť do výpočtu','ru':'учитывать / принимать во внимание','cn':'考虑进去/纳入考量','jp':'考慮に入れる','kr':'고려하다'},
-  'fend for':{'de':'für sich sorgen / verteidigen','fr':'se débrouiller / défendre','es':'apañárselas / cuidarse','it':'badare a sé / difendere','pl':'dbać o siebie / bronić','pt':'cuidar de si / defender','sk':'starat sa o seba / obhajovať','ru':'заботиться о себе / защищать','cn':'照顾自己/为…辩护','jp':'自分でやっていく/擁護する','kr':'스스로 돌보다'},
-  'frown upon':{'de':'missbilligen / schief ansehen','fr':'désapprouver / voir d\'un mauvais œil','es':'desaprobar / ver con malos ojos','it':'disapprovare / guardare male','pl':'dezaprobować / patrzeć krzywo','pt':'desaprovar / ver com maus olhos','sk':'odsúdiť / nelibe pozerať','ru':'неодобрять / смотреть косо','cn':'不赞成/皱眉以对','jp':'眉をひそめる/不承認する','kr':'못마땅해하다'},
-  'give in':{'de':'nachgeben / klein beigeben','fr':'céder / se rendre','es':'ceder / rendirse','it':'cedere / arrendersi','pl':'ulegać / poddawać się','pt':'ceder / render-se','sk':'podvolit sa / vzdať sa / odovzdať','ru':'уступать / сдаваться','cn':'屈服/让步','jp':'折れる/諦める','kr':'굴복하다/포기하다'},
-  'hinge on':{'de':'abhängen von','fr':'dépendre de / reposer sur','es':'depender de / girar en torno a','it':'dipendere da / essere determinato da','pl':'zależeć od / opierać się na','pt':'depender de','sk':'závisieť na / záležat na','ru':'зависеть от','cn':'取决于/以...为轴','jp':'〜次第だ/〜にかかっている','kr':'~에 달려 있다'},
-  'iron out':{'de':'bügeln / glätten / lösen','fr':'résoudre / régler','es':'resolver / allanar','it':'risolvere / appianare','pl':'rozwiązywać / wygładzać','pt':'resolver / ultrapassar','sk':'vyriešiť (problémy) / vyrovnať','ru':'решать / сглаживать','cn':'解决(问题)/消除','jp':'解決する/ならす','kr':'해결하다/평탄하게하다'},
-  'latch onto':{'de':'sich anhängen / greifen','fr':'s\'accrocher à / saisir','es':'aferrarse a / conectar con','it':'aggrapparsi a / appigliarsi','pl':'czepiać się / chwytać','pt':'agarrar-se a / fixar-se em','sk':'chytiť sa / prilepiť sa','ru':'хвататься / цепляться','cn':'抓住/粘上','jp':'くっつく/とりつく','kr':'매달리다/포착하다'},
-  'lump together':{'de':'zusammenwerfen / in einen Topf','fr':'regrouper / mettre dans le même sac','es':'meter en el mismo saco','it':'mettere insieme / fare di tutt\'erba un fascio','pl':'wrzucać do jednego worka','pt':'pôr no mesmo saco','sk':'házať do jedného pytle','ru':'смешивать / ставить в один ряд','cn':'混为一谈/一概而论','jp':'一緒くたにする','kr':'한데 묶다'},
-  'mark down':{'de':'preisreduzieren / notieren','fr':'réduire le prix / noter','es':'bajar el precio / anotar','it':'ridurre il prezzo / annotare','pl':'obniżać cenę / notować','pt':'baixar o preço / anotar','sk':'znížiť cenu / poznačiť','ru':'снижать цену / отмечать','cn':'降价/标注','jp':'値下げする/書き留める','kr':'가격내리다/표시하다'},
-  'opt for':{'de':'sich entscheiden für','fr':'opter pour / choisir','es':'optar por / elegir','it':'optare per / scegliere','pl':'decydować się na / wybierać','pt':'optar por / escolher','sk':'zvoliť / rozhodnúť sa pre','ru':'выбирать / останавливаться на','cn':'选择/决定','jp':'〜を選ぶ','kr':'선택하다'},
-  'phase out':{'de':'schrittweise einstellen / auslaufen lassen','fr':'éliminer progressivement / supprimer','es':'eliminar progresivamente / retirar','it':'eliminare gradualmente / sopprimere','pl':'stopniowo wycofywać / likwidować','pt':'eliminar gradualmente / retirar','sk':'postupne ukončiť / vyradiť','ru':'постепенно прекращать / ликвидировать','cn':'逐步淘汰/逐步停止','jp':'段階的に廃止する','kr':'단계적으로 폐지하다'},
-  'play along':{'de':'mitmachen / zustimmen','fr':'jouer le jeu / acquiescer','es':'seguir el juego','it':'stare al gioco / acconsentire','pl':'grać w to / przytakiwać','pt':'entrar no jogo / concordar','sk':'ísť s tým / pritakávať','ru':'подыгрывать / соглашаться','cn':'顺着来/配合','jp':'乗る/合わせる','kr':'따라가다/동의해주다'},
-  'pull through':{'de':'durchkommen / überleben','fr':'s\'en sortir / survivre','es':'salir adelante / sobrevivir','it':'farcela / sopravvivere','pl':'wychodzić z tego / przeżywać','pt':'sobreviver / conseguir','sk':'prežiť / dostať sa cez','ru':'выживать / справляться','cn':'渡过难关/撑过来','jp':'乗り越える/生き延びる','kr':'극복하다/살아남다'},
-  'reason out':{'de':'logisch herleiten / durchdenken','fr':'raisonner / déduire logiquement','es':'razonar / deducir lógicamente','it':'ragionare / dedurre','pl':'dochodzić do / rozumować','pt':'raciocinar / deduzir','sk':'logicky dospieť k / odvysvětliť','ru':'логически прийти к / обосновать','cn':'推理出/逻辑推导','jp':'論理的に導き出す','kr':'추론하다'},
-  'rule in':{'de':'einschließen / als möglich ansehen','fr':'inclure / ne pas exclure','es':'incluir / no descartar','it':'includere / non escludere','pl':'nie wykluczać / włączać jako możliwość','pt':'incluir / não excluir','sk':'nevylúčiť / zahrnúť ako možnosť','ru':'допускать / включать как возможность','cn':'纳入考虑/不排除','jp':'含める/除外しない','kr':'포함시키다/배제않다'},
-  'scale back':{'de':'reduzieren / einschränken','fr':'réduire / diminuer l\'ampleur','es':'reducir / recortar','it':'ridurre / contenere','pl':'ograniczać / zredukować','pt':'reduzir / diminuir','sk':'obmedziť / zredukovať rozsah','ru':'сокращать / уменьшать масштаб','cn':'缩减规模/削减','jp':'縮小する','kr':'축소하다'},
-  'scrape by':{'de':'gerade so durchkommen','fr':'s\'en sortir de justesse / vivoter','es':'apañárselas / vivir con lo justo','it':'cavarsela a malapena','pl':'ledwo wiązać koniec z końcem','pt':'conseguir mal e mal','sk':'sotva vyjsť / nějak sa protlúcť','ru':'кое-как перебиваться','cn':'勉强度日/艰难维持','jp':'ぎりぎり生活する','kr':'근근이 살아가다'},
-  'set forth':{'de':'formulieren / darlegen / aufbrechen','fr':'formuler / exposer / partir','es':'formular / exponer / partir','it':'formulare / esporre / partire','pl':'formułować / przedstawiać / wyruszać','pt':'formular / expor / partir','sk':'formulovať / predložiť / vyraziť','ru':'формулировать / излагать / отправляться','cn':'阐明/出发','jp':'定める/出発する','kr':'명시하다/출발하다'},
-  'speak up':{'de':'sich melden / lauter sprechen','fr':'prendre la parole / élever la voix','es':'hablar más alto / manifestarse','it':'parlare più forte / farsi sentire','pl':'zabrać głos / mówić głośniej','pt':'falar mais alto / manifestar-se','sk':'ozvať sa / prehovoriť nahlas','ru':'высказаться / говорить громче','cn':'大声说/发言','jp':'声を上げる/はっきり言う','kr':'소리 높여 말하다/발언하다'},
-  'stand by':{'de':'bereitstehen / unterstützen','fr':'rester à côté / soutenir','es':'estar preparado / apoyar','it':'essere pronto / supportare','pl':'stać przy / być w gotowości','pt':'estar pronto / apoiar','sk':'stáť pri / byť v zálohe','ru':'стоять рядом / быть наготове','cn':'支持/待命','jp':'支持する/待機する','kr':'지지하다/대기하다'},
-  'step down':{'de':'zurücktreten / abdanken','fr':'se retirer / démissionner','es':'retirarse / renunciar','it':'dimettersi / ritirarsi','pl':'rezygnować / ustępować','pt':'retirar-se / demitir-se','sk':'odstúpiť / vzdať sa funkcie','ru':'уходить в отставку / уступать','cn':'辞职/下台','jp':'退く/辞任する','kr':'사임하다/물러나다'},
-  'sum up':{'de':'zusammenfassen','fr':'résumer / récapituler','es':'resumir / sintetizar','it':'riassumere','pl':'podsumowywać','pt':'resumir / sintetizar','sk':'zhrnúť','ru':'резюмировать / подводить итоги','cn':'总结/汇总','jp':'要約する','kr':'요약하다'},
-  'suss out':{'de':'herausfinden / auf den Grund gehen','fr':'comprendre / trouver la clé','es':'investigar / descubrir','it':'scoprire / capire','pl':'odkrywać / rozgryźć','pt':'descobrir / perceber','sk':'preskúmať / prísť na kloub','ru':'раскусить / разобраться','cn':'弄清楚/摸清底细','jp':'見極める/解明する','kr':'꿰뚫어보다/알아내다'},
-  'tap into':{'de':'anzapfen / nutzen','fr':'exploiter / tirer parti de','es':'aprovechar / acceder a','it':'attingere a / sfruttare','pl':'korzystać z / podłączać się do','pt':'explorar / aproveitar','sk':'napojit sa na / využiť zdroj','ru':'подключаться к / использовать ресурс','cn':'挖掘/利用资源','jp':'〜を活用する','kr':'활용하다'},
-  'thin out':{'de':'ausdünnen / weniger werden','fr':'s\'éclaircir / s\'amincir','es':'ralear / adelgazar','it':'diradarsi / assottigliarsi','pl':'rzednąć / przerzedzać','pt':'rarear / reduzir','sk':'rednúť / ztenčovať','ru':'редеть / уменьшаться','cn':'稀疏/变少','jp':'間引く/薄くなる','kr':'희박해지다/줄다'},
-  'tighten up':{'de':'verschärfen / anziehen','fr':'resserrer / renforcer','es':'endurecer / apretar','it':'stringere / rafforzare','pl':'zaostrzać / zaciskać','pt':'apertar / reforçar','sk':'sprísniť / utiahnuť','ru':'ужесточать / затягивать','cn':'收紧/强化','jp':'引き締める','kr':'강화하다'},
-  'trade off':{'de':'abwägen / tauschen','fr':'échanger / trouver un compromis','es':'intercambiar / equilibrar','it':'scambiare / trovare un compromesso','pl':'wymieniać / kompromisowo wyważać','pt':'trocar / equilibrar','sk':'vymeniť / kompromisne vyvážiť','ru':'обменивать / идти на компромисс','cn':'权衡/折衷','jp':'トレードオフする','kr':'맞바꾸다/절충하다'},
-  'veer away':{'de':'abweichen / ausweichen','fr':'dévier / s\'éloigner','es':'desviarse / alejarse','it':'deviare / allontanarsi','pl':'zbaczać / oddalać się','pt':'desviar / afastar-se','sk':'odkloniť sa / svrátit kurz','ru':'отклоняться / уходить в сторону','cn':'偏离/转向','jp':'逸れる/離れる','kr':'벗어나다/피하다'},
-  'weigh up':{'de':'abwägen','fr':'peser le pour et le contre','es':'sopesar / valorar','it':'valutare / soppesare','pl':'ważyć / rozważać','pt':'pesar / avaliar','sk':'zvážiť (pros and cons)','ru':'взвешивать / рассматривать','cn':'权衡/考量','jp':'吟味する/比較検討する','kr':'따져보다/검토하다'},
-  'whittle down':{'de':'herunterarbeiten / verkleinern','fr':'réduire progressivement / tailler','es':'reducir poco a poco / recortar','it':'ridurre gradualmente / assottigliare','pl':'stopniowo zmniejszać / okrawać','pt':'reduzir gradualmente / aparar','sk':'postupne zmenšovať / osekávať','ru':'постепенно сокращать / урезать','cn':'逐步削减/慢慢减少','jp':'徐々に削る','kr':'차차 줄이다'},
-  'zero in':{'de':'genau zielen / fokussieren','fr':'viser précisément / se concentrer','es':'apuntar / concentrarse','it':'puntare / concentrarsi','pl':'skupiać się / celować','pt':'focar / mirar','sk':'zamerať sa / priblížiť','ru':'нацеливаться / сосредотачиваться','cn':'瞄准/专注','jp':'狙いを定める','kr':'겨냥하다/집중하다'},
-  'zone in':{'de':'sich voll konzentrieren','fr':'se concentrer totalement','es':'concentrarse totalmente','it':'concentrarsi completamente','pl':'w pełni koncentrować się','pt':'concentrar-se totalmente','sk':'sústredif sa / plne sa ponoriť','ru':'полностью сосредоточиться','cn':'全神贯注/深度投入','jp':'完全に集中する','kr':'완전히 몰입하다'},
-  'act on':{'de':'handeln / reagieren','fr':'agir sur / se conformer à','es':'actuar según / seguir','it':'agire su / rispondere a','pl':'działać na / reagować na','pt':'agir sobre / reagir a','sk':'jednat podľa / reagovať na','ru':'действовать согласно / реагировать','cn':'依据行动/针对…采取行动','jp':'〜に従って行動する','kr':'따라 행동하다'},
-  'build on':{'de':'aufbauen auf / darauf aufbauen','fr':'s\'appuyer sur / développer','es':'basarse en / partir de','it':'basarsi su / sviluppare','pl':'budować na / rozwijać','pt':'basear-se em / desenvolver','sk':'stavať na / nadviazať na','ru':'опираться на / развивать','cn':'以…为基础/建立在…上','jp':'〜を土台にする','kr':'기반으로 하다'},
-  'cash in on':{'de':'profitieren von / ausnutzen','fr':'profiter de / capitaliser sur','es':'sacar provecho de / beneficiarse de','it':'approfittare di / sfruttare','pl':'czerpać zyski z / korzystać z','pt':'aproveitar-se de / lucrar com','sk':'vytežiť z / profitovať z','ru':'наживаться / использовать в своих интересах','cn':'趁机获利/利用','jp':'〜をうまく利用する','kr':'이용하여 이득보다'},
-  'drill down':{'de':'tiefer gehen / detailliert analysieren','fr':'creuser / analyser en détail','es':'profundizar / analizar en detalle','it':'approfondire / analizzare in dettaglio','pl':'zagłębiać się / szczegółowo analizować','pt':'aprofundar / analisar em detalhe','sk':'prokliknut hlbšie / detailne analyzovať','ru':'углубляться / детально анализировать','cn':'深入分析/深入研究','jp':'詳細に分析する','kr':'심층 분석하다'},
-  'bear out':{'de':'bestätigen / beweisen','fr':'confirmer / prouver','es':'confirmar / probar','it':'confermare / provare','pl':'potwierdzać / udowadniać','pt':'confirmar / provar','sk':'potvrdiť / preukázať','ru':'подтверждать / доказывать','cn':'证实/证明','jp':'裏付ける/証明する','kr':'뒷받침하다/증명하다'},
-  'come into':{'de':'erben / eintreten in','fr':'hériter de / entrer dans','es':'heredar / entrar en','it':'ereditare / entrare in','pl':'dziedziczyć / wchodzić w','pt':'herdar / entrar em','sk':'zdediť / vstúpiť do','ru':'наследовать / войти в','cn':'继承/进入(状态)','jp':'受け継ぐ/〜になる','kr':'상속받다/~에 들어서다'},
-  'fall back on':{'de':'zurückgreifen auf / sich stützen auf','fr':'se rabattre sur / compter sur','es':'recurrir a / apoyarse en','it':'ricorrere a / appoggiarsi a','pl':'uciekać się do / polegać na','pt':'recorrer a / apoiar-se em','sk':'uchýliť sa k / spoliehať sa na','ru':'прибегать к / опираться на','cn':'依靠/退而求其次','jp':'〜に頼る/拠り所にする','kr':'의지하다/의존하다'},
-  'lay off':{'de':'entlassen / in Ruhe lassen','fr':'licencier / laisser tranquille','es':'despedir / dejar en paz','it':'licenziare / lasciare in pace','pl':'zwalniać / dawać spokój','pt':'despedir / deixar em paz','sk':'prepustiť / nechať na pokoji','ru':'увольнять / оставить в покое','cn':'解雇/放过','jp':'解雇する/放っておく','kr':'해고하다/내버려두다'},
-  'see through':{'de':'durchschauen / durchziehen','fr':'voir clair dans / mener à bien','es':'ver a través / llevar hasta el final','it':'intuire / portare a termine','pl':'przejrzeć / doprowadzić do końca','pt':'ver através / levar até ao fim','sk':'prohliadnuť / dotiahnuť do konca','ru':'видеть насквозь / доводить до конца','cn':'看穿/完成到底','jp':'見抜く/やり遂げる','kr':'꿰뚫어보다/끝까지 해내다'},
-  'set aside':{'de':'beiseitelegen / zurückstellen','fr':'mettre de côté / réserver','es':'dejar a un lado / reservar','it':'mettere da parte / riservare','pl':'odkładać na bok / rezerwować','pt':'pôr de lado / reservar','sk':'odložiť stranou','ru':'откладывать в сторону / резервировать','cn':'搁置/留出','jp':'脇に置く/取っておく','kr':'제쳐두다/따로 두다'},
-  'write off':{'de':'abschreiben / vernichten','fr':'passer par pertes / annuler','es':'amortizar / cancelar','it':'svalutare / cancellare','pl':'odpisywać / uznawać za straconego','pt':'amortizar / cancelar','sk':'odepísať / zničiť','ru':'списывать / отвергать','cn':'注销/报销','jp':'償却する/見捨てる','kr':'상각하다/포기하다'}
+  'get up':{'de':'aufstehen','fr':'se lever','es':'levantarse','it':'alzarsi','pl':'wstawać','pt':'levantar-se','sk':'vstať','ru':'вставать','cn':'起床','jp':'起きる','kr':'일어나다','uk':'вставати','id':'bangun'},
+  'wake up':{'de':'aufwachen','fr':'se réveiller','es':'despertarse','it':'svegliarsi','pl':'budzić się','pt':'acordar','sk':'zobudiť sa','ru':'просыпаться','cn':'醒来','jp':'目覚める','kr':'일어나다','uk':'прокидатися','id':'terbangun'},
+  'go out':{'de':'ausgehen','fr':'sortir','es':'salir','it':'uscire','pl':'wychodzić','pt':'sair','sk':'ísť von','ru':'выходить','cn':'出去','jp':'出かける','kr':'나가다','uk':'виходити','id':'keluar'},
+  'come back':{'de':'zurückkommen','fr':'revenir','es':'volver','it':'tornare','pl':'wracać','pt':'voltar','sk':'vrátiť sa','ru':'возвращаться','cn':'回来','jp':'戻る','kr':'돌아오다','uk':'повертатися','id':'kembali'},
+  'find out':{'de':'herausfinden','fr':'découvrir','es':'averiguar','it':'scoprire','pl':'dowiedzieć się','pt':'descobrir','sk':'zistiť','ru':'узнавать','cn':'发现','jp':'調べる','kr':'알아내다','uk':'дізнаватися','id':'mengetahui'},
+  'pick up':{'de':'abholen / aufheben','fr':'ramasser / aller chercher','es':'recoger','it':'raccogliere','pl':'podnosić / odbierać','pt':'apanhar / buscar','sk':'zdvihnúť / vyzdvihnúť','ru':'подбирать / забирать','cn':'拿起/接','jp':'拾う/迎える','kr':'집다/데리러가다','uk':'підбирати / забирати','id':'mengambil / menjemput'},
+  'turn on':{'de':'einschalten','fr':'allumer','es':'encender','it':'accendere','pl':'włączać','pt':'ligar','sk':'zapnúť','ru':'включать','cn':'打开','jp':'つける','kr':'켜다','uk':'вмикати','id':'menyalakan'},
+  'turn off':{'de':'ausschalten','fr':'éteindre','es':'apagar','it':'spegnere','pl':'wyłączać','pt':'desligar','sk':'vypnúť','ru':'выключать','cn':'关闭','jp':'消す','kr':'끄다','uk':'вимикати','id':'mematikan'},
+  'give up':{'de':'aufgeben','fr':'abandonner','es':'rendirse','it':'arrendersi','pl':'poddawać się','pt':'desistir','sk':'vzdať sa','ru':'сдаваться','cn':'放弃','jp':'あきらめる','kr':'포기하다','uk':'здаватися','id':'menyerah'},
+  'look for':{'de':'suchen','fr':'chercher','es':'buscar','it':'cercare','pl':'szukać','pt':'procurar','sk':'hľadať','ru':'искать','cn':'寻找','jp':'探す','kr':'찾다','uk':'шукати','id':'mencari'},
+  'put on':{'de':'anziehen / aufsetzen','fr':'mettre / enfiler','es':'ponerse','it':'indossare','pl':'zakładać','pt':'vestir / colocar','sk':'obliecť / nasadiť','ru':'надевать','cn':'穿上/戴上','jp':'着る/かぶる','kr':'입다/쓰다','uk':'надягати','id':'memakai'},
+  'take off':{'de':'ausziehen / abheben','fr':'enlever / décoller','es':'quitarse / despegar','it':'togliersi / decollare','pl':'zdejmować / startować','pt':'tirar / decolar','sk':'vyzliecť / vzlietnuť','ru':'снимать / взлетать','cn':'脱掉/起飞','jp':'脱ぐ/離陸する','kr':'벗다/이륙하다','uk':'знімати / злітати','id':'melepas / lepas landas'},
+  'sit down':{'de':'sich setzen','fr':'s\'asseoir','es':'sentarse','it':'sedersi','pl':'siadać','pt':'sentar-se','sk':'sadnúť si','ru':'садиться','cn':'坐下','jp':'座る','kr':'앉다','uk':'сідати','id':'duduk'},
+  'stand up':{'de':'aufstehen','fr':'se lever','es':'ponerse de pie','it':'alzarsi in piedi','pl':'wstawać','pt':'levantar-se','sk':'vstať / postaviť sa','ru':'вставать','cn':'站起来','jp':'立つ','kr':'일어서다','uk':'вставати','id':'berdiri'},
+  'come in':{'de':'hereinkommen','fr':'entrer','es':'entrar','it':'entrare','pl':'wchodzić','pt':'entrar','sk':'vojsť / vstúpiť','ru':'входить','cn':'进来','jp':'入る','kr':'들어오다','uk':'входити','id':'masuk'},
+  'go in':{'de':'hineingehen','fr':'entrer','es':'entrar','it':'entrare','pl':'wchodzić do środka','pt':'entrar','sk':'ísť dovnútra','ru':'заходить','cn':'进去','jp':'中に入る','kr':'들어가다','uk':'заходити','id':'masuk ke dalam'},
+  'go back':{'de':'zurückgehen','fr':'retourner','es':'volver','it':'tornare indietro','pl':'wracać','pt':'voltar','sk':'ísť späť / vrátiť sa','ru':'возвращаться','cn':'回去','jp':'戻る','kr':'돌아가다','uk':'повертатися','id':'kembali'},
+  'come out':{'de':'herauskommen','fr':'sortir','es':'salir','it':'uscire','pl':'wychodzić','pt':'sair','sk':'vyjsť / vyjsť najavo','ru':'выходить','cn':'出来','jp':'出てくる','kr':'나오다','uk':'виходити','id':'keluar'},
+  'set up':{'de':'einrichten / gründen','fr':'mettre en place','es':'establecer / configurar','it':'configurare / fondare','pl':'zakładać / konfigurować','pt':'configurar / fundar','sk':'nastaviť / založiť','ru':'устанавливать','cn':'建立/设置','jp':'設定する','kr':'설정하다','uk':'налаштовувати / засновувати','id':'mengatur / mendirikan'},
+  'break down':{'de':'zusammenbrechen / kaputtgehen','fr':'tomber en panne / craquer','es':'averiarse / derrumbarse','it':'guastarsi / crollare','pl':'zepsuć się / załamać się','pt':'avariar / desfalecer','sk':'pokaziť sa / zrútiť sa','ru':'ломаться / сдавать','cn':'故障/崩溃','jp':'故障する','kr':'고장나다','uk':'ламатися / руйнуватися','id':'rusak / hancur'},
+  'turn up':{'de':'auftauchen / lauter machen','fr':'se pointer / monter le son','es':'aparecer / subir el volumen','it':'presentarsi / alzare il volume','pl':'pojawiać się / zwiększać głośność','pt':'aparecer / aumentar volume','sk':'dostaviť sa / zvýšiť hlasitosť','ru':'появляться / увеличивать звук','cn':'出现/调大音量','jp':'現れる/音量を上げる','kr':'나타나다/볼륨올리다','uk':'з’являтися / збільшувати гучність','id':'muncul / mengeraskan volume'},
+  'turn down':{'de':'ablehnen / leiser machen','fr':'refuser / baisser le son','es':'rechazar / bajar el volumen','it':'rifiutare / abbassare il volume','pl':'odrzucać / zmniejszać głośność','pt':'recusar / baixar volume','sk':'odmietnuť / stíšiť','ru':'отказываться / убавлять звук','cn':'拒绝/调低音量','jp':'断る/音量を下げる','kr':'거절하다/볼륨내리다','uk':'відмовляти / зменшувати гучність','id':'menolak / mengecilkan volume'},
+  'try on':{'de':'anprobieren','fr':'essayer','es':'probarse','it':'provarsi','pl':'przymierzać','pt':'experimentar','sk':'vyskúšať (oblečenie)','ru':'примерять','cn':'试穿','jp':'試着する','kr':'입어보다','uk':'примірювати','id':'mencoba (pakaian)'},
+  'throw away':{'de':'wegwerfen','fr':'jeter','es':'tirar','it':'buttare via','pl':'wyrzucać','pt':'deitar fora','sk':'vyhodiť','ru':'выбрасывать','cn':'扔掉','jp':'捨てる','kr':'버리다','uk':'викидати','id':'membuang'},
+  'run out':{'de':'ausgehen / enden','fr':'manquer / s\'épuiser','es':'agotarse / acabarse','it':'finire / esaurirsi','pl':'kończyć się','pt':'esgotar-se / acabar','sk':'dôjsť / skončiť','ru':'заканчиваться','cn':'用完/结束','jp':'なくなる','kr':'다 떨어지다','uk':'закінчуватися','id':'kehabisan'},
+  'get out':{'de':'raus / entkommen','fr':'sortir / se tirer','es':'salir / escapar','it':'uscire / scappare','pl':'wychodzić / uciekać','pt':'sair / escapar','sk':'vylézt von / dostať sa preč','ru':'выбираться','cn':'出去/逃脱','jp':'出る/逃げる','kr':'나가다','uk':'виходити / тікати','id':'keluar / melarikan diri'},
+  'check out':{'de':'auschecken / nachschauen','fr':'partir / vérifier','es':'marcharse / revisar','it':'effettuare il check-out / guardare','pl':'wymeldować się / sprawdzić','pt':'fazer check-out / verificar','sk':'odhlásit sa / prezrieť','ru':'выписываться / проверять','cn':'退房/查看','jp':'チェックアウトする','kr':'체크아웃하다','uk':'виписуватися / перевіряти','id':'check out / memeriksa'},
+  'come on':{'de':'komm schon / funktionieren','fr':'allez / marcher','es':'vamos / funcionar','it':'dai / funzionare','pl':'no chodź / działać','pt':'vamos / funcionar','sk':'poď! / fungovať','ru':'ну давай / работать','cn':'快点/起作用','jp':'さあ/動く','kr':'어서/작동하다','uk':'ну давай / працювати','id':'ayo / bekerja'},
+  'go on':{'de':'weitermachen / passieren','fr':'continuer / se passer','es':'continuar / pasar','it':'continuare / accadere','pl':'kontynuować / dziać się','pt':'continuar / acontecer','sk':'pokračovať / diať sa','ru':'продолжать / происходить','cn':'继续/发生','jp':'続ける/起こる','kr':'계속하다/일어나다','uk':'продовжувати / відбуватися','id':'melanjutkan / terjadi'},
+  'look up':{'de':'nachschlagen / hochschauen','fr':'chercher / lever les yeux','es':'buscar / mirar hacia arriba','it':'cercare / guardare su','pl':'sprawdzać / patrzeć w górę','pt':'procurar / olhar para cima','sk':'vyhľadať / pozrieť sa nahor','ru':'искать / смотреть вверх','cn':'查找/抬头看','jp':'調べる/見上げる','kr':'찾다/올려다보다','uk':'шукати / дивитися вгору','id':'mencari / mendongak'},
+  'call back':{'de':'zurückrufen','fr':'rappeler','es':'devolver la llamada','it':'richiamare','pl':'oddzwaniać','pt':'ligar de volta','sk':'zavolať späť','ru':'перезванивать','cn':'回电话','jp':'折り返し電話する','kr':'다시 전화하다','uk':'передзвонювати','id':'menelepon kembali'},
+  'log in':{'de':'einloggen','fr':'se connecter','es':'iniciar sesión','it':'accedere','pl':'logować się','pt':'iniciar sessão','sk':'prihlásiť sa','ru':'войти (в систему)','cn':'登录','jp':'ログインする','kr':'로그인하다','uk':'входити в систему','id':'masuk (akun)'},
+  'log out':{'de':'ausloggen','fr':'se déconnecter','es':'cerrar sesión','it':'disconnettersi','pl':'wylogowywać się','pt':'terminar sessão','sk':'odhlásiť sa','ru':'выйти (из системы)','cn':'登出','jp':'ログアウトする','kr':'로그아웃하다','uk':'виходити з системи','id':'keluar (akun)'},
+  'move on':{'de':'weitermachen','fr':'passer à autre chose','es':'seguir adelante','it':'andare avanti','pl':'iść dalej','pt':'seguir em frente','sk':'ísť ďalej / prejsť k ďalšiemu','ru':'двигаться дальше','cn':'向前走/继续','jp':'前に進む','kr':'앞으로 나아가다','uk':'рухатися далі','id':'melanjutkan'},
+  'grow up':{'de':'aufwachsen','fr':'grandir','es':'crecer / madurar','it':'crescere','pl':'dorastać','pt':'crescer','sk':'vyrásť / dospieť','ru':'расти / взрослеть','cn':'长大/成熟','jp':'成長する','kr':'자라다','uk':'grow up','id':'grow up'},
+  'hand in':{'de':'abgeben / einreichen','fr':'remettre / déposer','es':'entregar','it':'consegnare','pl':'oddawać / składać','pt':'entregar','sk':'odovzdať','ru':'сдавать / подавать','cn':'提交/交上去','jp':'提出する','kr':'제출하다','uk':'здавати','id':'mengumpulkan'},
+  'hand out':{'de':'austeilen / verteilen','fr':'distribuer','es':'distribuir / repartir','it':'distribuire','pl':'rozdawać','pt':'distribuir','sk':'rozdat / rozdávať','ru':'раздавать','cn':'分发','jp':'配る','kr':'나누어주다','uk':'роздавати','id':'membagikan'},
+  'fill in':{'de':'ausfüllen','fr':'remplir','es':'rellenar','it':'compilare','pl':'wypełniać','pt':'preencher','sk':'vyplniť','ru':'заполнять','cn':'填写','jp':'記入する','kr':'작성하다','uk':'заповнювати','id':'mengisi'},
+  'turn around':{'de':'umdrehen / wenden','fr':'se retourner / inverser','es':'darse vuelta / revertir','it':'girarsi / invertire','pl':'odwrócić się / zmienić sytuację','pt':'virar-se / reverter','sk':'otočiť sa / obrátiť situáciu','ru':'развернуться / изменить','cn':'转身/扭转','jp':'振り返る/方向転換','kr':'돌아서다/전환하다','uk':'turn around','id':'turn around'},
+  'blow up':{'de':'explodieren / aufblasen','fr':'exploser / gonfler','es':'explotar / inflar','it':'esplodere / gonfiare','pl':'wybuchnąć / nadmuchiwać','pt':'explodir / inflar','sk':'vybuchnúť / nafúknuť','ru':'взрываться / надувать','cn':'爆炸/充气','jp':'爆発する/膨らませる','kr':'폭발하다/부풀리다','uk':'blow up','id':'blow up'},
+  'calm down':{'de':'beruhigen','fr':'se calmer','es':'calmarse','it':'calmarsi','pl':'uspokajać się','pt':'acalmar-se','sk':'upokojiť sa','ru':'успокаиваться','cn':'冷静下来','jp':'落ち着く','kr':'진정하다','uk':'calm down','id':'calm down'},
+  'slow down':{'de':'langsamer werden / verlangsamen','fr':'ralentir','es':'reducir la velocidad','it':'rallentare','pl':'zwalniać','pt':'abrandar','sk':'spomaliť','ru':'замедляться','cn':'减速','jp':'ゆっくりする','kr':'속도를 줄이다','uk':'slow down','id':'slow down'},
+  'speed up':{'de':'beschleunigen','fr':'accélérer','es':'acelerar','it':'accelerare','pl':'przyspieszać','pt':'acelerar','sk':'zrýchliť','ru':'ускоряться','cn':'加速','jp':'速める','kr':'속도를 높이다','uk':'speed up','id':'speed up'},
+  'eat out':{'de':'auswärts essen','fr':'manger au restaurant','es':'comer fuera','it':'mangiare fuori','pl':'jeść poza domem','pt':'comer fora','sk':'jesť vonku / v reštaurácii','ru':'есть вне дома','cn':'出去吃饭','jp':'外食する','kr':'외식하다','uk':'eat out','id':'eat out'},
+  'stay up':{'de':'aufbleiben','fr':'rester debout / veiller','es':'quedarse despierto','it':'stare alzato','pl':'nie spać / siedzieć do późna','pt':'ficar acordado','sk':'nespať / byť hore dlho','ru':'не спать / засиживаться','cn':'熬夜/不睡觉','jp':'夜更かしする','kr':'밤새우다','uk':'stay up','id':'stay up'},
+  'get in':{'de':'einsteigen / reinkommen','fr':'monter / entrer','es':'entrar / subir','it':'salire / entrare','pl':'wsiadać / dostawać się do środka','pt':'entrar / subir','sk':'nastúpiť / dostať sa dovnútra','ru':'садиться / попадать внутрь','cn':'上车/进入','jp':'乗る/入る','kr':'타다/들어가다','uk':'get in','id':'get in'},
+  'get off':{'de':'aussteigen / abmachen','fr':'descendre / enlever','es':'bajarse / quitar','it':'scendere / togliere','pl':'wysiadać / zdejmować','pt':'descer / tirar','sk':'vystúpiť / sundat','ru':'выходить / снимать','cn':'下车/脱下','jp':'降りる/外す','kr':'내리다/벗다','uk':'виходити (з транспорту)','id':'turun (kendaraan)'},
+  'work out':{'de':'trainieren / herausfinden','fr':'faire du sport / résoudre','es':'hacer ejercicio / resolver','it':'allenarsi / risolvere','pl':'ćwiczyć / rozwiązywać','pt':'treinar / resolver','sk':'vyriešiť / cvičiť','ru':'тренироваться / решать','cn':'锻炼/解决','jp':'運動する/解決する','kr':'운동하다/해결하다','uk':'виходити / тренуватися','id':'berhasil / berolahraga'},
+  'run out of':{'de':'ausgehen (Vorrat)','fr':'manquer de / être à court de','es':'quedarse sin','it':'rimanere senza','pl':'zabrakło / kończyć się','pt':'ficar sem','sk':'dôjsť / vyčerpať','ru':'заканчиваться (запас)','cn':'用完了某物','jp':'〜を使い切る','kr':'〜이 떨어지다','uk':'run out of','id':'run out of'},
+  'bring up':{'de':'erwähnen / erziehen','fr':'mentionner / élever','es':'mencionar / criar','it':'menzionare / crescere','pl':'wychowywać / wspominać','pt':'mencionar / criar','sk':'vychovať / zmieňiť','ru':'упоминать / воспитывать','cn':'提起/养育','jp':'言及する/育てる','kr':'언급하다/키우다','uk':'виховувати / піднімати тему','id':'membesarkan / mengangkat topik'},
+  'come across':{'de':'begegnen / wirken','fr':'tomber sur / paraître','es':'toparse con / parecer','it':'imbattersi / sembrare','pl':'natknąć się / sprawiać wrażenie','pt':'encontrar / parecer','sk':'naraziť na','ru':'наткнуться / казаться','cn':'偶遇/显得','jp':'出会う/見える','kr':'마주치다/보이다','uk':'come across','id':'come across'},
+  'end up':{'de':'am Ende landen','fr':'finir par / se retrouver','es':'acabar / terminar','it':'finire / ritrovarsi','pl':'skończyć','pt':'acabar / ficar','sk':'skončiť','ru':'в конце концов оказаться','cn':'最终落得','jp':'結局〜になる','kr':'결국 ~하게 되다','uk':'end up','id':'end up'},
+  'figure out':{'de':'herausfinden / verstehen','fr':'comprendre / trouver','es':'descifrar / entender','it':'capire / trovare','pl':'rozgryźć / rozumieć','pt':'descobrir / perceber','sk':'prísť na / pochopiť','ru':'разобраться / понять','cn':'弄清楚/搞懂','jp':'理解する/解決する','kr':'알아내다/이해하다','uk':'розбиратися / зрозуміти','id':'memahami / menemukan solusi'},
+  'hang out':{'de':'abhängen / Zeit verbringen','fr':'traîner / passer du temps','es':'pasar el rato','it':'passare il tempo / bighellonare','pl':'wisieć / spędzać czas','pt':'estar / passar tempo','sk':'tráviť čas / poflakovat sa','ru':'тусоваться / проводить время','cn':'闲逛/消磨时间','jp':'ぶらぶらする','kr':'놀다/시간 보내다','uk':'hang out','id':'hang out'},
+  'show up':{'de':'auftauchen / erscheinen','fr':'se pointer / apparaître','es':'aparecer / presentarse','it':'presentarsi / apparire','pl':'pojawiać się','pt':'aparecer / chegar','sk':'ukázať sa / prísť','ru':'появляться / объявляться','cn':'出现/露面','jp':'現れる/やって来る','kr':'나타나다','uk':'з’являтися','id':'muncul'},
+  'move in':{'de':'einziehen','fr':'emménager','es':'mudarse a','it':'trasferirsi','pl':'wprowadzać się','pt':'mudar para','sk':'nasťahovať sa','ru':'въезжать','cn':'搬进来','jp':'引っ越してくる','kr':'이사오다','uk':'в’їжджати','id':'pindah masuk'},
+  'move out':{'de':'ausziehen','fr':'déménager','es':'mudarse de','it':'trasferirsi fuori','pl':'wyprowadzać się','pt':'mudar-se','sk':'odsťahovať sa','ru':'съезжать','cn':'搬出去','jp':'引っ越す','kr':'이사가다','uk':'з’їжджати','id':'pindah keluar'},
+  'take up':{'de':'anfangen (Hobby) / einnehmen','fr':'commencer / prendre de la place','es':'empezar / ocupar','it':'iniziare / occupare','pl':'zacząć (hobby) / zajmować','pt':'começar / ocupar','sk':'začať (koníčka) / zaberať','ru':'начать (хобби) / занимать','cn':'开始(爱好)/占用','jp':'始める/場所を取る','kr':'시작하다/차지하다','uk':'займатися / займати','id':'mulai hobi / memakan'},
+  'give back':{'de':'zurückgeben','fr':'rendre','es':'devolver','it':'restituire','pl':'oddawać','pt':'devolver','sk':'vrátiť (niečo)','ru':'возвращать','cn':'归还','jp':'返す','kr':'돌려주다','uk':'give back','id':'give back'},
+  'take back':{'de':'zurücknehmen','fr':'reprendre / retourner','es':'recuperar / devolver','it':'riprendere','pl':'brać z powrotem / zwracać','pt':'recuperar / devolver','sk':'vziať späť / vrátiť','ru':'забирать обратно / возвращать','cn':'取回/收回','jp':'取り返す/返す','kr':'돌려받다','uk':'брати назад','id':'mengambil kembali'},
+  'cut off':{'de':'abschneiden / unterbrechen','fr':'couper / interrompre','es':'cortar / interrumpir','it':'tagliare / interrompere','pl':'odcinać / przerywać','pt':'cortar / interromper','sk':'prerušiť / odrezať','ru':'прерывать / отрезать','cn':'切断/中断','jp':'切る/中断する','kr':'끊다/방해하다','uk':'відрізати / відключати','id':'memotong / memutus'},
+  'look after':{'de':'sich kümmern um','fr':'s\'occuper de','es':'cuidar de','it':'prendersi cura di','pl':'opiekować się','pt':'cuidar de','sk':'starať sa o','ru':'заботиться о','cn':'照顾','jp':'世話をする','kr':'돌보다','uk':'доглядати','id':'merawat'},
+  'deal with':{'de':'umgehen mit / erledigen','fr':'gérer / s\'occuper de','es':'tratar / lidiar con','it':'affrontare / gestire','pl':'radzić sobie z','pt':'lidar com','sk':'zaoberať sa / vyrovnať sa','ru':'справляться / иметь дело с','cn':'处理/应对','jp':'対処する','kr':'다루다/처리하다','uk':'deal with','id':'deal with'},
+  'deal in':{'de':'handeln mit','fr':'faire du commerce de','es':'comerciar con','it':'commerciare in','pl':'handlować','pt':'negociar em','sk':'obchodovať s','ru':'торговать чем-либо','cn':'经营/交易','jp':'取引する','kr':'거래하다','uk':'deal in','id':'deal in'},
+  'call off':{'de':'absagen','fr':'annuler','es':'cancelar','it':'cancellare / annullare','pl':'odwoływać','pt':'cancelar','sk':'zrušiť','ru':'отменять','cn':'取消','jp':'キャンセルする','kr':'취소하다','uk':'call off','id':'call off'},
+  'carry on':{'de':'weitermachen','fr':'continuer','es':'seguir / continuar','it':'continuare','pl':'kontynuować','pt':'continuar','sk':'pokračovať','ru':'продолжать','cn':'继续','jp':'続ける','kr':'계속하다','uk':'продовжувати','id':'melanjutkan'},
+  'go over':{'de':'durchgehen / wiederholen','fr':'revoir / passer en revue','es':'repasar / revisar','it':'rivedere / riesaminare','pl':'przeglądać / powtarzać','pt':'rever / passar','sk':'prejsť / zopakovať','ru':'повторять / просматривать','cn':'复习/回顾','jp':'復習する/確認する','kr':'검토하다/복습하다','uk':'переглядати','id':'meninjau'},
+  'go through':{'de':'durchmachen / durchgehen','fr':'traverser / vivre','es':'pasar por / vivir','it':'attraversare / vivere','pl':'przejść przez / przeżyć','pt':'passar por','sk':'prejsť si / prežiť','ru':'проходить / пережить','cn':'经历/浏览','jp':'経験する/通過する','kr':'겪다/통과하다','uk':'проходити через','id':'melewati'},
+  'look around':{'de':'sich umsehen','fr':'regarder autour / visiter','es':'mirar alrededor / visitar','it':'guardarsi intorno / visitare','pl':'rozglądać się / zwiedzać','pt':'olhar em volta / visitar','sk':'rozhliadnuť sa / prehliadnuť','ru':'оглядываться / осматривать','cn':'环顾/参观','jp':'見回す/見て回る','kr':'둘러보다','uk':'look around','id':'look around'},
+  'point out':{'de':'hinweisen / zeigen','fr':'faire remarquer / indiquer','es':'señalar / indicar','it':'indicare / far notare','pl':'wskazywać / zwracać uwagę','pt':'apontar / indicar','sk':'upozorniť na / ukázať','ru':'указывать / обращать внимание','cn':'指出/指明','jp':'指摘する','kr':'지적하다','uk':'вказувати','id':'menunjukkan'},
+  'put off':{'de':'verschieben / abschrecken','fr':'reporter / décourager','es':'posponer / desalentar','it':'rimandare / scoraggiare','pl':'odkładać / zniechęcać','pt':'adiar / desanimar','sk':'odložiť / odradiť','ru':'откладывать / отпугивать','cn':'推迟/劝阻','jp':'延期する/嫌がらせる','kr':'미루다/낙담시키다','uk':'відкладати','id':'menunda'},
+  'run into':{'de':'zufällig treffen / aufprallen','fr':'tomber sur / percuter','es':'encontrarse con / chocar','it':'incontrare per caso / scontrarsi','pl':'wpaść na / natknąć się','pt':'encontrar por acaso / colidir','sk':'naraziť na / potkat náhodou','ru':'случайно встретить / врезаться','cn':'偶遇/撞上','jp':'ばったり会う/衝突する','kr':'우연히 만나다/충돌하다','uk':'зіткнутися / натрапити','id':'bertemu secara tidak sengaja'},
+  'get along':{'de':'auskommen mit','fr':'s\'entendre avec','es':'llevarse bien con','it':'andare d\'accordo con','pl':'dogadywać się z','pt':'dar-se bem com','sk':'vychádzať si s niekým','ru':'ладить / уживаться','cn':'相处好/合得来','jp':'仲良くやっていく','kr':'잘 지내다','uk':'ладнати','id':'akur'},
+  'get over':{'de':'überwinden / hinwegkommen','fr':'surmonter / se remettre de','es':'superar','it':'superare / riprendersi','pl':'przezwyciężyć / pogodzić się','pt':'superar','sk':'prekonať / prestať trpieť','ru':'преодолевать / оправляться','cn':'克服/恢复过来','jp':'立ち直る','kr':'극복하다','uk':'долати / одужувати','id':'mengatasi / pulih dari'},
+  'make up':{'de':'erfinden / schminken / versöhnen','fr':'inventer / se maquiller / se réconcilier','es':'inventar / maquillarse / reconciliarse','it':'inventare / truccarsi / riconciliarsi','pl':'wymyślać / malować się / godzić się','pt':'inventar / maquilhar / reconciliar','sk':'vymysleť / líčiť sa / usmiriť sa','ru':'придумывать / краситься / мириться','cn':'编造/化妆/和解','jp':'でっち上げる/化粧する/仲直りする','kr':'꾸며내다/화장하다/화해하다','uk':'вигадувати / миритися','id':'berdamai / mengarang'},
+  'set off':{'de':'aufbrechen / auslösen','fr':'partir / déclencher','es':'partir / desencadenar','it':'partire / innescare','pl':'wyruszać / uruchamiać','pt':'partir / desencadear','sk':'vyraziť / spustiť','ru':'отправляться / вызывать','cn':'出发/触发','jp':'出発する/引き起こす','kr':'출발하다/유발하다','uk':'set off','id':'set off'},
+  'set out':{'de':'aufbrechen / darlegen','fr':'partir / exposer','es':'partir / plantear','it':'partire / esporre','pl':'wyruszać / przedstawiać','pt':'partir / expor','sk':'vydat sa / zahájit','ru':'отправляться / излагать','cn':'出发/阐述','jp':'出発する/提示する','kr':'출발하다/설명하다','uk':'set out','id':'set out'},
+  'stay out':{'de':'draußen bleiben / sich raushalten','fr':'rester dehors / ne pas s\'impliquer','es':'quedarse fuera / no inmiscuirse','it':'restare fuori / non intromettersi','pl':'zostać na zewnątrz / nie wtrącać się','pt':'ficar fora / não se meter','sk':'zostať vonku / nevmešovať sa','ru':'оставаться снаружи / не вмешиваться','cn':'待在外面/不干涉','jp':'外にいる/干渉しない','kr':'밖에 있다/간섭않다','uk':'не повертатися додому','id':'tidak pulang'},
+  'take out':{'de':'herausnehmen / ausführen','fr':'sortir / emmener','es':'sacar / llevar a salir','it':'portare fuori / estrarre','pl':'wynosić / wyjmować','pt':'tirar / levar a sair','sk':'vyniesť / vytiahnuť','ru':'выносить / доставать','cn':'取出/带出去','jp':'取り出す/連れ出す','kr':'꺼내다/데리고 나가다','uk':'take out','id':'take out'},
+  'put down':{'de':'hinlegen / niedermachen','fr':'poser / critiquer','es':'dejar / criticar','it':'mettere giù / criticare','pl':'odkładać / krytykować','pt':'pousar / criticar','sk':'položiť dole / kritizovať','ru':'класть / критиковать','cn':'放下/批评','jp':'置く/けなす','kr':'놓다/비하하다','uk':'put down','id':'put down'},
+  'fill out':{'de':'ausfüllen','fr':'remplir','es':'rellenar','it':'compilare','pl':'wypełniać','pt':'preencher','sk':'vyplniť (formulár)','ru':'заполнять','cn':'填写(表格)','jp':'記入する','kr':'작성하다','uk':'заповнювати','id':'mengisi (formulir)'},
+  'ask for':{'de':'bitten um','fr':'demander','es':'pedir','it':'chiedere','pl':'prosić o','pt':'pedir','sk':'žiadať o','ru':'просить / запрашивать','cn':'要求/请求','jp':'求める','kr':'요청하다','uk':'ask for','id':'ask for'},
+  'pay back':{'de':'zurückzahlen','fr':'rembourser','es':'devolver (dinero)','it':'restituire (denaro)','pl':'oddawać pieniądze / spłacać','pt':'devolver / pagar','sk':'vrátiť peniaze / splatiť','ru':'возвращать деньги / расплачиваться','cn':'还钱/偿还','jp':'返済する','kr':'갚다','uk':'pay back','id':'pay back'},
+  'hold on':{'de':'warten / festhalten','fr':'attendre / tenir','es':'esperar / aguantar','it':'aspettare / reggere','pl':'czekać / trzymać się','pt':'esperar / aguentar','sk':'počkať / držať sa','ru':'подождать / держаться','cn':'等一下/坚持','jp':'待つ/つかまる','kr':'기다리다/버티다','uk':'hold on','id':'hold on'},
+  'switch on':{'de':'einschalten','fr':'allumer','es':'encender','it':'accendere','pl':'włączać','pt':'ligar','sk':'zapnúť','ru':'включать','cn':'打开开关','jp':'スイッチを入れる','kr':'켜다','uk':'вмикати','id':'menyalakan'},
+  'switch off':{'de':'ausschalten','fr':'éteindre','es':'apagar','it':'spegnere','pl':'wyłączać','pt':'desligar','sk':'vypnúť','ru':'выключать','cn':'关闭开关','jp':'スイッチを切る','kr':'끄다','uk':'вимикати','id':'mematikan'},
+  'come up with':{'de':'sich ausdenken','fr':'trouver / imaginer','es':'idear / inventar','it':'trovare / inventare','pl':'wymyślać / wpadać na','pt':'inventar / encontrar','sk':'prísť s (nápadom)','ru':'придумывать','cn':'想出/提出','jp':'思いつく','kr':'생각해내다','uk':'come up with','id':'come up with'},
+  'go ahead':{'de':'vorangehen / weitermachen','fr':'aller de l\'avant / continuer','es':'seguir adelante','it':'andare avanti / procedere','pl':'kontynuować / iść naprzód','pt':'prosseguir','sk':'pokračovať / ísť napred','ru':'продолжать / идти вперёд','cn':'继续/先行','jp':'進む/やってみて','kr':'계속하다/먼저 하다','uk':'йти вперед / діяти','id':'silakan / lanjutkan'},
+  'look into':{'de':'untersuchen / nachforschen','fr':'examiner / enquêter','es':'investigar / examinar','it':'esaminare / indagare','pl':'badać / sprawdzać','pt':'investigar / examinar','sk':'prošetriť / preskúmať','ru':'расследовать / изучать','cn':'调查/研究','jp':'調査する','kr':'조사하다','uk':'досліджувати','id':'menyelidiki'},
+  'put up with':{'de':'erdulden / ertragen','fr':'supporter / tolérer','es':'soportar / aguantar','it':'sopportare / tollerare','pl':'tolerować / znosić','pt':'suportar / tolerar','sk':'znášať / tolerovať','ru':'терпеть / мириться','cn':'忍受/容忍','jp':'我慢する','kr':'참다/견디다','uk':'терпіти','id':'toleran terhadap'},
+  'get away with':{'de':'ungestraft davonkommen','fr':'s\'en tirer sans punition','es':'salirse con la suya','it':'cavarsela / farla franca','pl':'ujść bezkarnie','pt':'sair impune','sk':'vyváznuť bez trestu','ru':'уйти безнаказанным','cn':'逃脱惩罚','jp':'うまくごまかす','kr':'처벌을 피하다','uk':'get away with','id':'get away with'},
+  'bring out':{'de':'herausbringen / betonen','fr':'sortir / mettre en valeur','es':'sacar / resaltar','it':'pubblicare / mettere in risalto','pl':'wydawać / podkreślać','pt':'lançar / ressaltar','sk':'vydať / zdôrazniť','ru':'выпускать / выделять','cn':'推出/凸显','jp':'出す/引き出す','kr':'출시하다/부각시키다','uk':'виявляти / видавати','id':'mengeluarkan / menerbitkan'},
+  'call in':{'de':'anrufen / krankmelden','fr':'appeler / se déclarer malade','es':'llamar / notificar enfermedad','it':'chiamare / dichiarare malattia','pl':'dzwonić / zgłaszać chorobę','pt':'ligar / reportar doença','sk':'zavolať / nahlásit nemoc','ru':'позвонить / сообщить о болезни','cn':'打电话/请病假','jp':'電話する/病欠届け','kr':'전화하다/병가신고','uk':'call in','id':'call in'},
+  'check in':{'de':'einchecken','fr':'s\'enregistrer / faire le check-in','es':'registrarse / hacer el check-in','it':'fare il check-in','pl':'meldować się','pt':'fazer check-in','sk':'prihlásiť sa / odbavit sa','ru':'регистрироваться','cn':'登记/值机','jp':'チェックインする','kr':'체크인하다','uk':'check in','id':'check in'},
+  'drop off':{'de':'abgeben / abliefern','fr':'déposer / s\'endormir','es':'dejar / dormir','it':'lasciare / addormentarsi','pl':'odwozić / zasypiać','pt':'deixar / adormecer','sk':'odviesť / odpadnúť spánkom','ru':'высаживать / засыпать','cn':'送到/睡着了','jp':'降ろす/眠る','kr':'내려주다/깜빡 잠들다','uk':'залишати / задрімати','id':'mengantarkan / tertidur'},
+  'drop out':{'de':'aussteigen / abbrechen','fr':'abandonner / décrocher','es':'abandonar / desertar','it':'abbandonare / ritirarsi','pl':'rezygnować / rzucać szkołę','pt':'desistir / abandonar','sk':'vypadnúť / prestať studovať','ru':'бросать / отчисляться','cn':'退出/辍学','jp':'脱落する/中退する','kr':'중도 포기하다','uk':'кидати / виходити','id':'keluar / mundur'},
+  'hand over':{'de':'übergeben / aushändigen','fr':'remettre / transférer','es':'entregar / ceder','it':'consegnare / cedere','pl':'przekazywać / oddawać','pt':'entregar / ceder','sk':'predať / odovzdať','ru':'передавать','cn':'移交/交出','jp':'引き渡す','kr':'넘기다/인도하다','uk':'hand over','id':'hand over'},
+  'keep on':{'de':'weitermachen / nicht aufgeben','fr':'continuer / ne pas lâcher','es':'seguir / no rendirse','it':'continuare / non mollare','pl':'kontynuować / nie poddawać się','pt':'continuar / não desistir','sk':'pokračovať / nevzdávať','ru':'продолжать / не сдаваться','cn':'继续/坚持','jp':'続ける/あきらめない','kr':'계속하다/포기하지않다','uk':'keep on','id':'keep on'},
+  'let down':{'de':'enttäuschen','fr':'décevoir','es':'decepcionar','it':'deludere','pl':'zawodzić','pt':'decepcionar','sk':'sklamať','ru':'подводить','cn':'让...失望','jp':'がっかりさせる','kr':'실망시키다','uk':'let down','id':'let down'},
+  'log on':{'de':'einloggen (Web)','fr':'se connecter (web)','es':'iniciar sesión (web)','it':'accedere (web)','pl':'logować się (web)','pt':'entrar (web)','sk':'prihlásiť sa (na web)','ru':'входить на сайт','cn':'登录(网站)','jp':'ログオンする','kr':'로그온하다','uk':'log on','id':'log on'},
+  'log off':{'de':'ausloggen (Web)','fr':'se déconnecter (web)','es':'cerrar sesión (web)','it':'disconnettersi (web)','pl':'wylogowywać się (web)','pt':'terminar sessão (web)','sk':'odhlásiť sa (z webu)','ru':'выходить с сайта','cn':'退出(网站)','jp':'ログオフする','kr':'로그오프하다','uk':'log off','id':'log off'},
+  'make out':{'de':'erkennen / behaupten','fr':'distinguer / prétendre','es':'distinguir / pretender','it':'capire / sostenere','pl':'rozpoznawać / twierdzić','pt':'reconhecer / alegar','sk':'tvrdiť / rozpoznať','ru':'различать / утверждать','cn':'辨别/声称','jp':'わかる/主張する','kr':'알아보다/주장하다','uk':'розбирати / мати успіх','id':'memahami / berhasil'},
+  'pass out':{'de':'ohnmächtig werden / verteilen','fr':'s\'évanouir / distribuer','es':'desmayarse / distribuir','it':'svenire / distribuire','pl':'omdleć / rozdawać','pt':'desmaiar / distribuir','sk':'omdliet / rozdať','ru':'терять сознание / раздавать','cn':'昏倒/分发','jp':'気絶する/配る','kr':'기절하다/나누다','uk':'знепритомніти','id':'pingsan'},
+  'pull over':{'de':'an den Rand fahren / anhalten','fr':'se ranger / arrêter','es':'hacerse a un lado / parar','it':'accostarsi / fermarsi','pl':'zjechać na bok / zatrzymać','pt':'encostar / parar','sk':'zajet k okraju / zastaviť auto','ru':'съезжать к обочине / останавливаться','cn':'靠边停车','jp':'路肩に止める','kr':'갓길에 세우다','uk':'pull over','id':'pull over'},
+  'run over':{'de':'überfahren / kurz durchgehen','fr':'écraser / passer en revue','es':'atropellar / repasar','it':'investire / rivedere','pl':'potrącić / przeglądać','pt':'atropelar / rever','sk':'prejet / stručne prejsť','ru':'переехать / вкратце пройти','cn':'碾过/简述','jp':'ひく/ざっと確認する','kr':'치다/간략히 검토하다','uk':'збивати / переглядати','id':'menabrak / meninjau'},
+  'sort out':{'de':'klären / sortieren','fr':'régler / trier','es':'solucionar / ordenar','it':'risolvere / ordinare','pl':'rozwiązywać / sortować','pt':'resolver / organizar','sk':'vyriešiť / roztriediť','ru':'разбираться / сортировать','cn':'解决/整理','jp':'解決する/整理する','kr':'해결하다/정리하다','uk':'вирішувати / розбиратися','id':'menyelesaikan / membereskan'},
+  'stick to':{'de':'sich halten an','fr':'s\'en tenir à / rester à','es':'atenerse a / ceñirse a','it':'attenersi a / mantenere','pl':'trzymać się (planu)','pt':'manter / cumprir','sk':'držať sa (plánu/slova)','ru':'придерживаться','cn':'坚持/遵守','jp':'〜を守る','kr':'고수하다','uk':'дотримуватися','id':'berpegang pada'},
+  'take over':{'de':'übernehmen','fr':'prendre le relais / reprendre','es':'hacerse cargo / tomar el control','it':'prendere il controllo','pl':'przejmować (kontrolę)','pt':'assumir / tomar o controlo','sk':'prevziať (kontrolu)','ru':'брать на себя / перехватывать','cn':'接管/接手','jp':'引き継ぐ','kr':'인수하다','uk':'переймати / захоплювати','id':'mengambil alih'},
+  'talk over':{'de':'besprechen','fr':'discuter de','es':'discutir / hablar de','it':'discutere / parlare','pl':'omawiać','pt':'discutir / conversar sobre','sk':'prediskutovať','ru':'обсуждать','cn':'讨论/商量','jp':'話し合う','kr':'논의하다','uk':'обговорювати','id':'mendiskusikan'},
+  'think over':{'de':'überdenken / überlegen','fr':'réfléchir à / peser','es':'pensar bien / considerar','it':'riflettere su / valutare','pl':'przemyśleć / rozważyć','pt':'pensar / ponderar','sk':'rozmyslieť si / zvážiť','ru':'обдумывать / взвешивать','cn':'仔细考虑/权衡','jp':'よく考える','kr':'재고하다/심사숙고하다','uk':'обмірковувати','id':'mempertimbangkan'},
+  'turn back':{'de':'umkehren','fr':'faire demi-tour','es':'dar la vuelta / regresar','it':'tornare indietro','pl':'zawracać','pt':'voltar atrás','sk':'vrátiť sa / obrátiť','ru':'повернуть назад','cn':'回头/返回','jp':'引き返す','kr':'돌아가다','uk':'turn back','id':'turn back'},
+  'wear out':{'de':'abnutzen / erschöpfen','fr':'user / épuiser','es':'gastar / agotar','it':'consumare / esaurire','pl':'zużywać / wyczerpywać','pt':'gastar / esgotar','sk':'opotrebovať / vyčerpať','ru':'изнашивать / изматывать','cn':'磨损/筋疲力尽','jp':'すり減る/疲弊させる','kr':'닳다/기진맥진시키다','uk':'wear out','id':'wear out'},
+  'work on':{'de':'arbeiten an','fr':'travailler sur / améliorer','es':'trabajar en / mejorar','it':'lavorare su / migliorare','pl':'pracować nad / doskonalić','pt':'trabalhar em / melhorar','sk':'pracovať na / zdokonaľovať','ru':'работать над / совершенствовать','cn':'努力改进/致力于','jp':'〜に取り組む','kr':'작업하다/개선하다','uk':'work on','id':'work on'},
+  'come along':{'de':'mitkommen','fr':'venir avec / accompagner','es':'venir / acompañar','it':'venire con / accompagnare','pl':'iść razem / dołączać','pt':'vir junto / acompanhar','sk':'prísť s / ísť spolu','ru':'идти вместе / приходить','cn':'一起来/陪同','jp':'一緒に来る','kr':'함께 오다','uk':'come along','id':'come along'},
+  'go along':{'de':'mitmachen / zustimmen','fr':'aller avec / être d\'accord','es':'ir junto / estar de acuerdo','it':'andare insieme / essere d\'accordo','pl':'iść razem / zgadzać się','pt':'ir junto / concordar','sk':'súhlasiť / ísť spolu','ru':'идти вместе / соглашаться','cn':'赞同/一起去','jp':'同行する/賛成する','kr':'동의하다/따라가다','uk':'go along','id':'go along'},
+  'get back':{'de':'zurückbekommen / zurückkehren','fr':'récupérer / rentrer','es':'recuperar / volver','it':'recuperare / tornare','pl':'odzyskiwać / wracać','pt':'recuperar / regressar','sk':'vrátiť sa / dostať späť','ru':'получать обратно / возвращаться','cn':'取回/回来','jp':'取り戻す/戻る','kr':'되찾다/돌아오다','uk':'повертатися','id':'kembali'},
+  'keep up':{'de':'mithalten / Schritt halten','fr':'suivre / maintenir','es':'mantener el ritmo / seguir','it':'stare al passo / mantenere','pl':'dotrzymywać kroku / nie zaostrzać','pt':'manter o ritmo / acompanhar','sk':'udržať tempo / nezaostávať','ru':'успевать / не отставать','cn':'跟上/保持','jp':'ついていく/維持する','kr':'따라가다/유지하다','uk':'keep up','id':'keep up'},
+  'look back':{'de':'zurückblicken','fr':'regarder en arrière','es':'mirar atrás','it':'guardare indietro','pl':'oglądać się za siebie / wspominać','pt':'olhar para trás','sk':'ohliadnuť sa (na minulosť)','ru':'оглядываться назад','cn':'回顾/回头看','jp':'振り返る','kr':'돌아보다','uk':'look back','id':'look back'},
+  'look forward to':{'de':'sich freuen auf','fr':'se réjouir de / avoir hâte de','es':'tener ganas de / esperar con interés','it':'non vedere l\'ora di','pl':'cieszyć się na','pt':'aguardar com expectativa','sk':'tešiť sa na','ru':'ожидать с нетерпением','cn':'期待/盼望','jp':'楽しみにする','kr':'기대하다','uk':'чекати з нетерпінням','id':'menantikan'},
+  'fall apart':{'de':'auseinanderfallen / zerbrechen','fr':'tomber en morceaux / craquer','es':'deshacerse / venirse abajo','it':'andare a pezzi','pl':'rozpadać się','pt':'desintegrar-se','sk':'rozpadnúť sa','ru':'разваливаться','cn':'瓦解/崩溃','jp':'バラバラになる','kr':'무너지다','uk':'fall apart','id':'fall apart'},
+  'brush up on':{'de':'auffrischen','fr':'réviser / se remettre à niveau','es':'repasar / actualizarse','it':'ripassare / rinfrescare','pl':'odświeżać / przypominać sobie','pt':'rever / actualizar','sk':'oprášiť znalosti','ru':'освежать знания','cn':'温习/更新知识','jp':'復習する','kr':'복습하다','uk':'brush up on','id':'brush up on'},
+  'come across as':{'de':'wirken wie / erscheinen als','fr':'donner l\'impression de / paraître','es':'dar la impresión de / parecer','it':'sembrare / apparire','pl':'sprawiać wrażenie / uchodzić za','pt':'dar a impressão de / parecer','sk':'pôsobiť dojmem / javiť sa ako','ru':'производить впечатление / казаться','cn':'给人的印象是/显得','jp':'〜という印象を与える','kr':'~처럼 보이다','uk':'come across as','id':'come across as'},
+  'get by':{'de':'durchkommen / überleben','fr':'s\'en sortir / se débrouiller','es':'arreglárselas / sobrevivir','it':'cavarsela / sopravvivere','pl':'dawać sobie radę / jakoś przeżywać','pt':'conseguir / sobreviver','sk':'vyjsť / prežiť / nějak to zvládnout','ru':'справляться / перебиваться','cn':'勉强应付/将就度日','jp':'なんとかやっていく','kr':'어떻게든 해나가다','uk':'get by','id':'get by'},
+  'get through':{'de':'durchkommen / abschließen','fr':'passer / terminer','es':'pasar por / terminar','it':'passare / finire','pl':'przebrnąć / połączyć się','pt':'passar / concluir','sk':'dostať sa cez / dokončiť / spojiť','ru':'пробиться / дозвониться / закончить','cn':'通过/完成','jp':'乗り越える/連絡がつく','kr':'통과하다/연결되다','uk':'пробиватися / дзвонити','id':'berhasil menelepon / melewati'},
+  'go for':{'de':'sich entscheiden für / angreifen','fr':'choisir / viser / attaquer','es':'ir a por / elegir','it':'optare per / attaccare','pl':'wybrać / atakować','pt':'ir para / escolher','sk':'ísť pre / voliť / útočiť','ru':'нападать / выбирать','cn':'争取/选择','jp':'〜をねらう/選ぶ','kr':'도전하다/선택하다','uk':'go for','id':'go for'},
+  'go without':{'de':'verzichten auf','fr':'se passer de','es':'prescindir de','it':'fare a meno di','pl':'obejść się bez','pt':'passar sem','sk':'obejsť sa bez','ru':'обходиться без','cn':'没有也行/忍受没有','jp':'〜なしで済ます','kr':'없이 지내다','uk':'go without','id':'go without'},
+  'live up to':{'de':'gerecht werden / entsprechen','fr':'être à la hauteur de','es':'estar a la altura de','it':'essere all\'altezza di','pl':'spełniać oczekiwania','pt':'estar à altura de','sk':'dostať očakávaniu','ru':'соответствовать / оправдывать','cn':'符合期望','jp':'〜に応える','kr':'기대에 부응하다','uk':'live up to','id':'live up to'},
+  'look down on':{'de':'herabschauen / verachten','fr':'regarder de haut / mépriser','es':'mirar con desdén / despreciar','it':'guardare dall\'alto / disprezzare','pl':'patrzeć z góry na','pt':'olhar com desdém / desprezar','sk':'dívať sa zvrchu na','ru':'смотреть свысока / презирать','cn':'俯视/轻视','jp':'見下す','kr':'깔보다','uk':'зневажати','id':'meremehkan'},
+  'look up to':{'de':'bewundern / aufschauen zu','fr':'admirer / respecter','es':'admirar / respetar','it':'ammirare / rispettare','pl':'podziwiać / patrzeć z uznaniem','pt':'admirar / respeitar','sk':'vzhliadať k / obdivovať','ru':'восхищаться / уважать','cn':'仰望/钦佩','jp':'尊敬する','kr':'존경하다','uk':'поважати','id':'menghormati'},
+  'make do':{'de':'sich begnügen / auskommen','fr':'se contenter de / s\'en sortir avec','es':'arreglárselas / conformarse','it':'accontentarsi / arrangiarsi','pl':'zadowalać się / radzić sobie','pt':'contentar-se / arranjar-se','sk':'vystačiť si s / spokojit sa','ru':'довольствоваться / обходиться','cn':'将就/凑合','jp':'間に合わせる','kr':'임시변통하다','uk':'обходитися','id':'mencukupkan diri'},
+  'miss out on':{'de':'verpassen','fr':'rater / manquer','es':'perderse','it':'perdersi','pl':'tracić szansę / przegapiać','pt':'perder / não aproveitar','sk':'prísť o / zmeškat','ru':'упускать / пропускать','cn':'错过/失去机会','jp':'見逃す/チャンスを逃す','kr':'놓치다','uk':'miss out on','id':'miss out on'},
+  'move on from':{'de':'loslassen / weitermachen mit','fr':'passer à autre chose / se remettre de','es':'seguir adelante / dejar atrás','it':'andare avanti / lasciarsi alle spalle','pl':'zostawiać za sobą','pt':'seguir em frente / deixar para trás','sk':'prejsť od / nechať za sebou','ru':'двигаться дальше / забывать','cn':'走出/告别','jp':'〜から前進する','kr':'~에서 벗어나 나아가다','uk':'move on from','id':'move on from'},
+  'play down':{'de':'kleinreden / herunterspielen','fr':'minimiser / atténuer','es':'minimizar / restar importancia','it':'sminuire / minimizzare','pl':'bagatelizować / umniejszać','pt':'minimizar','sk':'zlehčovať','ru':'преуменьшать','cn':'淡化/轻描淡写','jp':'軽くあしらう','kr':'대수롭지않게 여기다','uk':'play down','id':'play down'},
+  'put forward':{'de':'vorschlagen / vorlegen','fr':'proposer / soumettre','es':'proponer / presentar','it':'proporre / presentare','pl':'proponować / przedstawiać','pt':'propor / apresentar','sk':'navrhnúť / predložiť','ru':'предлагать / выдвигать','cn':'提出/提议','jp':'提案する','kr':'제안하다','uk':'put forward','id':'put forward'},
+  'read up on':{'de':'sich informieren über','fr':'se renseigner sur / étudier','es':'informarse sobre / estudiar','it':'informarsi su / studiare','pl':'zapoznawać się z / studiować','pt':'informar-se sobre / estudar','sk':'nastudovať / prečítať si o','ru':'изучать / знакомиться с темой','cn':'查阅/钻研','jp':'調べる/勉強する','kr':'공부하다/알아보다','uk':'read up on','id':'read up on'},
+  'rule out':{'de':'ausschließen','fr':'exclure / éliminer','es':'descartar','it':'escludere','pl':'wykluczać','pt':'excluir / descartar','sk':'vylúčiť','ru':'исключать','cn':'排除','jp':'除外する','kr':'제외하다','uk':'rule out','id':'rule out'},
+  'stand for':{'de':'stehen für / dulden','fr':'représenter / tolérer','es':'representar / tolerar','it':'rappresentare / tollerare','pl':'stać za / tolerować','pt':'representar / tolerar','sk':'zastupovať / tolerovať / stáť za','ru':'означать / терпеть','cn':'代表/忍受','jp':'意味する/我慢する','kr':'대표하다/참다','uk':'stand for','id':'stand for'},
+  'take in':{'de':'aufnehmen / hereinlegen','fr':'absorber / accueillir / tromper','es':'absorber / acoger / engañar','it':'assorbire / ospitare / ingannare','pl':'przyjmować / wchłaniać / oszukiwać','pt':'absorver / receber / enganar','sk':'vstrebať / prijat / oklamať','ru':'воспринимать / приютить / обмануть','cn':'理解/容纳/欺骗','jp':'理解する/泊める/だます','kr':'이해하다/받아들이다/속이다','uk':'take in','id':'take in'},
+  'take on':{'de':'übernehmen (Aufgabe)','fr':'relever un défi / embaucher','es':'asumir / enfrentarse','it':'affrontare / assumere','pl':'podejmować (pracę/wyzwanie)','pt':'assumir / enfrentar','sk':'prijat (prácu/výzvu)','ru':'брать на себя / нанимать','cn':'承担/迎接挑战','jp':'引き受ける','kr':'맡다/도전하다','uk':'брати на себе','id':'mengambil alih'},
+  'think ahead':{'de':'vorausdenken / planen','fr':'anticiper / planifier','es':'pensar en el futuro / planificar','it':'pensare in anticipo / pianificare','pl':'myśleć naprzód / planować','pt':'pensar no futuro / planear','sk':'mysleť dopredu / plánovať','ru':'думать наперёд / планировать','cn':'未雨绸缪/提前规划','jp':'先を考える/計画する','kr':'미리 생각하다/계획하다','uk':'think ahead','id':'think ahead'},
+  'warm up':{'de':'aufwärmen / sich aufwärmen','fr':'se réchauffer / s\'échauffer','es':'calentarse / hacer el calentamiento','it':'scaldarsi / riscaldarsi','pl':'rozgrzewać się','pt':'aquecer / fazer o aquecimento','sk':'zahriať sa / rozohriať sa','ru':'разогреваться / подогревать','cn':'热身/预热','jp':'ウォームアップする','kr':'몸 풀다/워밍업하다','uk':'warm up','id':'warm up'},
+  'wind up':{'de':'enden / aufregen / aufziehen','fr':'finir / irriter / remonter','es':'acabar / irritar / dar cuerda','it':'finire / irritare / carica','pl':'kończyć / drażnić / nakręcać','pt':'acabar / irritar / dar corda','sk':'skončiť / utnúť / natiahnuť','ru':'заканчивать / заводить / раздражать','cn':'终结/激怒/上发条','jp':'終わる/イライラさせる','kr':'끝내다/화나게하다','uk':'wind up','id':'wind up'},
+  'work around':{'de':'umgehen / Umweg finden','fr':'contourner / trouver une alternative','es':'evitar / encontrar alternativa','it':'aggirare / trovare un\'alternativa','pl':'obchodzić / znajdować inne rozwiązanie','pt':'contornar / arranjar alternativa','sk':'obejsť / najst iné riešenie','ru':'обходить / находить обходной путь','cn':'绕过/另辟蹊径','jp':'回避策を見つける','kr':'우회하다/해결책 찾다','uk':'work around','id':'work around'},
+  'zone out':{'de':'wegdriften / geistesabwesend sein','fr':'déconnecter / être dans la lune','es':'desconectarse / estar en las nubes','it':'scollegarsi / perdere il filo','pl':'odpływać myślami / wyłączać się','pt':'desligar / estar distraído','sk':'odplávať myšlienkami / vypnúť','ru':'витать в облаках / отключаться','cn':'走神/发呆','jp':'ぼんやりする','kr':'멍하다/딴생각하다','uk':'zone out','id':'zone out'},
+  'zero in on':{'de':'sich konzentrieren auf / zielen auf','fr':'se concentrer sur / viser','es':'concentrarse en / apuntar a','it':'concentrarsi su / puntare a','pl':'skupiać się na / celować w','pt':'concentrar-se em / focar','sk':'zamerať sa na / priblížiť sa','ru':'сосредоточиться / прицелиться','cn':'专注于/瞄准','jp':'〜に焦点を当てる','kr':'집중하다/겨냥하다','uk':'zero in on','id':'zero in on'},
+  'back up':{'de':'sichern / unterstützen / zurücksetzen','fr':'sauvegarder / soutenir / reculer','es':'hacer copia de seguridad / apoyar','it':'fare il backup / supportare','pl':'zrobić kopię / popierać','pt':'fazer backup / apoiar','sk':'zálohovať / podporiť','ru':'резервировать / поддерживать','cn':'备份/支持/倒退','jp':'バックアップする/後退する','kr':'백업하다/지원하다','uk':'підтримувати / робити резервну копію','id':'mendukung / mencadangkan'},
+  'break into':{'de':'einbrechen / plötzlich anfangen','fr':'s\'introduire / éclater en','es':'irrumpir / prorrumpir','it':'irrompere / scoppiare','pl':'włamywać się / nagle zaczynać','pt':'arrombar / explodir','sk':'vlúpat sa / náhle začať','ru':'взламывать / внезапно начать','cn':'闯入/突然开始','jp':'押し入る/突然始める','kr':'침입하다/갑자기 시작하다','uk':'break into','id':'break into'},
+  'build up':{'de':'aufbauen / ansammeln / verstärken','fr':'construire / accumuler / renforcer','es':'construir / acumular / reforzar','it':'costruire / accumulare / rafforzare','pl':'budować / gromadzić / wzmaciać','pt':'construir / acumular / reforçar','sk':'budovať / hromadiť / zosilňovať','ru':'накапливать / усиливать / строить','cn':'积累/增强/建立','jp':'積み上げる/強化する','kr':'쌓다/강화하다','uk':'build up','id':'build up'},
+  'catch on':{'de':'begreifen / beliebt werden','fr':'comprendre / prendre','es':'entender / ponerse de moda','it':'capire / diffondersi','pl':'rozumieć / chwytać się','pt':'perceber / tornar-se popular','sk':'chytiť sa / pochopiť','ru':'понимать / приживаться','cn':'理解/流行起来','jp':'わかる/流行る','kr':'이해하다/유행하다','uk':'catch on','id':'catch on'},
+  'check up on':{'de':'überprüfen / nachsehen','fr':'vérifier / surveiller','es':'controlar / comprobar','it':'controllare / monitorare','pl':'sprawdzać / doglądać','pt':'verificar / supervisionar','sk':'zkontrolovať / dohliadnuť na','ru':'проверять / следить','cn':'检查/督促','jp':'様子を見る/確認する','kr':'확인하다/점검하다','uk':'check up on','id':'check up on'},
+  'come down to':{'de':'ankommen auf / hinauslaufen auf','fr':'se résumer à / dépendre de','es':'reducirse a / depender de','it':'ridursi a / dipendere da','pl':'sprowadzać się do / zależeć od','pt':'resumir-se a / depender de','sk':'záležať na / sviesť na','ru':'сводиться к / зависеть от','cn':'归结为/取决于','jp':'〜次第だ','kr':'~에 달려 있다','uk':'come down to','id':'come down to'},
+  'cut back on':{'de':'einschränken / reduzieren','fr':'réduire / baisser','es':'recortar / reducir','it':'ridurre / tagliare','pl':'ograniczać / zmniejszać','pt':'reduzir / cortar','sk':'obmedziť / znížiť','ru':'сокращать / урезать','cn':'削减/减少','jp':'削減する/減らす','kr':'줄이다/삭감하다','uk':'cut back on','id':'cut back on'},
+  'fit in':{'de':'passen / dazugehören','fr':'s\'intégrer / trouver le temps','es':'integrarse / encajar','it':'integrarsi / rientrare','pl':'pasować / wpisywać się','pt':'integrar-se / encaixar','sk':'zapadnúť / stihnúť','ru':'вписываться / успевать','cn':'融入/合适','jp':'うまく合う/溶け込む','kr':'어울리다/맞다','uk':'fit in','id':'fit in'},
+  'get ahead':{'de':'vorankommen / erfolgreich sein','fr':'progresser / réussir','es':'progresar / avanzar','it':'progredire / avanzare','pl':'postępować / udać się','pt':'progredir / ter sucesso','sk':'postúpiť / uspieť','ru':'продвигаться / преуспевать','cn':'取得进步/成功','jp':'前進する/成功する','kr':'앞서나가다/성공하다','uk':'get ahead','id':'get ahead'},
+  'go under':{'de':'untergehen / Pleite machen','fr':'couler / faire faillite','es':'hundirse / quebrar','it':'affondare / fallire','pl':'tonąć / bankrutować','pt':'afundar / falir','sk':'krachovať / potopiť sa','ru':'тонуть / обанкротиться','cn':'倒闭/下沉','jp':'沈む/倒産する','kr':'가라앉다/파산하다','uk':'go under','id':'go under'},
+  'hold back':{'de':'zurückhalten / hemmen','fr':'retenir / freiner','es':'retener / inhibirse','it':'trattenersi / frenare','pl':'powstrzymywać / hamować','pt':'reter / conter','sk':'zdržať / potlačiť','ru':'удерживать / сдерживаться','cn':'阻止/克制','jp':'抑える/引き留める','kr':'막다/억제하다','uk':'hold back','id':'hold back'},
+  'hold up':{'de':'aufhalten / standhalten','fr':'retarder / résister','es':'retrasar / aguantar','it':'ritardare / resistere','pl':'zatrzymywać / wytrzymywać','pt':'atrasar / aguentar','sk':'zadržat / vydržat','ru':'задерживать / держаться','cn':'拖延/坚持住','jp':'遅らせる/耐える','kr':'지연시키다/버티다','uk':'hold up','id':'hold up'},
+  'back out':{'de':'zurückziehen / einen Rückzieher machen','fr':'se retirer / reculer','es':'echarse atrás / retirarse','it':'tirarsi indietro / ritirarsi','pl':'wycofywać się / rezygnować','pt':'recuar / desistir','sk':'couvnúť / stiahnuť sa','ru':'отступать / отказываться','cn':'退缩/退出','jp':'引き下がる/撤退する','kr':'물러서다/취소하다','uk':'back out','id':'back out'},
+  'bring about':{'de':'verursachen / herbeiführen','fr':'provoquer / entraîner','es':'causar / provocar','it':'causare / provocare','pl':'powodować / wywoływać','pt':'causar / provocar','sk':'spôsobiť / privodiť','ru':'вызывать / приводить к','cn':'导致/引起','jp':'引き起こす','kr':'야기하다','uk':'bring about','id':'bring about'},
+  'carry out':{'de':'durchführen / ausführen','fr':'effectuer / réaliser','es':'llevar a cabo / realizar','it':'eseguire / realizzare','pl':'przeprowadzać / wykonywać','pt':'realizar / executar','sk':'previesť / uskutočniť','ru':'выполнять / осуществлять','cn':'执行/实施','jp':'実行する','kr':'수행하다','uk':'виконувати','id':'melaksanakan'},
+  'catch up':{'de':'aufholen / gleichziehen','fr':'rattraper / se mettre à niveau','es':'ponerse al día / alcanzar','it':'raggiungere / aggiornarsi','pl':'nadrabiać / doganiać','pt':'recuperar / alcançar','sk':'dohnat / dostať sa na rovnakú úroveň','ru':'догонять / наверстать','cn':'赶上/追赶','jp':'追いつく','kr':'따라잡다','uk':'catch up','id':'catch up'},
+  'clear up':{'de':'aufklären / aufräumen','fr':'éclaircir / ranger','es':'aclarar / ordenar','it':'chiarire / riordinare','pl':'wyjaśniać / sprzątać','pt':'esclarecer / arrumar','sk':'vyjasniť / upratať','ru':'проясниться / прибраться','cn':'阐明/整理','jp':'晴れる/片付ける','kr':'해명하다/치우다','uk':'clear up','id':'clear up'},
+  'die down':{'de':'nachlassen / abklingen','fr':'s\'apaiser / se calmer','es':'calmarse / disminuir','it':'calmarsi / diminuire','pl':'uspokajać się / cichać','pt':'acalmar / diminuir','sk':'upokojiť sa / utíchnuť','ru':'утихать / спадать','cn':'平息/减弱','jp':'収まる/静まる','kr':'가라앉다/잠잠해지다','uk':'die down','id':'die down'},
+  'draw up':{'de':'aufsetzen / erstellen','fr':'rédiger / dresser','es':'redactar / elaborar','it':'redigere / preparare','pl':'sporządzać / redagować','pt':'redigir / elaborar','sk':'sestaviť / spísať','ru':'составлять','cn':'起草/制定','jp':'作成する','kr':'작성하다/기안하다','uk':'draw up','id':'draw up'},
+  'fall through':{'de':'scheitern / platzen','fr':'échouer / tomber à l\'eau','es':'fracasar / no llegar a nada','it':'fallire / andare in fumo','pl':'nie dojść do skutku / spaść','pt':'falhar / não se concretizar','sk':'nevyjsť / ztroskotať','ru':'срываться / провалиться','cn':'落空/失败','jp':'失敗に終わる','kr':'수포로 돌아가다','uk':'fall through','id':'fall through'},
+  'get around to':{'de':'dazu kommen / Zeit finden','fr':'trouver le temps de / finir par','es':'encontrar tiempo para','it':'trovare il tempo per','pl':'znaleźć czas na / w końcu zrobić','pt':'arranjar tempo para / acabar por','sk':'dostať sa k / nájsť čas na','ru':'дойти до / найти время','cn':'抽空做/终于做到','jp':'〜する時間を作る','kr':'시간을 내다','uk':'get around to','id':'get around to'},
+  'pull off':{'de':'schaffen / hinkriegen','fr':'réussir / s\'en sortir','es':'conseguir / lograrlo','it':'riuscire / farcela','pl':'udawać się / dokonywać','pt':'conseguir / realizar','sk':'zvládnuť / previesť','ru':'удаться / вытащить','cn':'成功做到/完成','jp':'やり遂げる','kr':'해내다','uk':'pull off','id':'pull off'},
+  'talk into':{'de':'überreden zu','fr':'convaincre de / persuader','es':'convencer de','it':'convincere a','pl':'namawiać do / przekonywać','pt':'convencer a','sk':'premluvit (k niečomu)','ru':'уговорить / убедить','cn':'说服做某事','jp':'〜するように説得する','kr':'설득하다','uk':'talk into','id':'talk into'},
+  'talk out of':{'de':'abraten / herausreden aus','fr':'dissuader de','es':'disuadir de','it':'dissuadere da','pl':'odwodzić od','pt':'demover de / convencer a não','sk':'rozmluvit (od niečoho)','ru':'отговорить','cn':'劝阻做某事','jp':'〜しないよう説得する','kr':'~을 못하게 설득하다','uk':'talk out of','id':'talk out of'},
+  'account for':{'de':'erklären / ausmachen','fr':'expliquer / représenter','es':'explicar / representar','it':'spiegare / rappresentare','pl':'wyjaśniać / stanowić','pt':'explicar / representar','sk':'zodpovedať za / tvoriť časť','ru':'объяснять / составлять','cn':'解释/占(比例)','jp':'説明する/占める','kr':'설명하다/차지하다','uk':'account for','id':'account for'},
+  'adhere to':{'de':'sich halten an / einhalten','fr':'adhérer à / respecter','es':'adherirse a / cumplir','it':'aderire a / rispettare','pl':'przestrzegać / trzymać się','pt':'aderir a / cumprir','sk':'dodržovať / pridržovať sa','ru':'придерживаться / соблюдать','cn':'坚持/遵守','jp':'〜を守る','kr':'준수하다/고수하다','uk':'adhere to','id':'adhere to'},
+  'bank on':{'de':'verlassen auf / zählen auf','fr':'compter sur / miser sur','es':'contar con / apostar por','it':'contare su / fare affidamento su','pl':'polegać na / liczyć na','pt':'contar com / apostar em','sk':'spoliehať na / počítať s','ru':'рассчитывать на / надеяться на','cn':'指望/依靠','jp':'〜をあてにする','kr':'기대다/믿다','uk':'bank on','id':'bank on'},
+  'bear with':{'de':'Geduld haben / durchhalten','fr':'prendre patience / supporter','es':'tener paciencia con','it':'avere pazienza con','pl':'być cierpliwym / wytrwać','pt':'ter paciência / aguentar','sk':'mať trpezlivosť / vydržať s','ru':'терпеть / мириться','cn':'忍耐/耐心对待','jp':'〜に我慢する','kr':'참아주다','uk':'bear with','id':'bear with'},
+  'boil down to':{'de':'im Wesentlichen sein / herauskommen auf','fr':'se résumer à / revenir à','es':'resumirse en / reducirse a','it':'ridursi a / essere fondamentalmente','pl':'sprowadzać się do / być w istocie','pt':'resumir-se a','sk':'sviesť na / byť v podstate o','ru':'сводиться к / означать в конечном счёте','cn':'归根结底是','jp':'要するに〜だ','kr':'결국 ~이다','uk':'boil down to','id':'boil down to'},
+  'break down into':{'de':'aufteilen in / aufgliedern','fr':'décomposer en / diviser en','es':'dividir en / descomponer','it':'suddividere in / scomporre','pl':'rozkładać na / dzielić','pt':'decompor em / dividir','sk':'rozložiť na / rozčleniť','ru':'разбивать на / разделять','cn':'分解为/细分为','jp':'〜に分解する','kr':'분해하다/세분화하다','uk':'break down into','id':'break down into'},
+  'call upon':{'de':'auffordern / bitten / aufrufen','fr':'faire appel à / appeler','es':'pedir / convocar / apelar','it':'chiedere / convocare','pl':'wzywać / apelować','pt':'apelar / convocar','sk':'vyzvat / apelovat / povolat','ru':'призывать / обращаться','cn':'呼吁/召唤','jp':'呼びかける/頼む','kr':'촉구하다/불러내다','uk':'call upon','id':'call upon'},
+  'carve out':{'de':'sich erarbeiten / herausschnitzen','fr':'se tailler / créer','es':'labrarse / crear','it':'costruirsi / ritagliarsi','pl':'wywalczyć / wygospodarować','pt':'criar / conquistar','sk':'vydobyť si / vyhradiť si','ru':'выгрызать / создавать','cn':'开辟/争取到','jp':'〜を切り開く','kr':'개척하다','uk':'carve out','id':'carve out'},
+  'come to terms with':{'de':'sich abfinden mit / akzeptieren','fr':'accepter / se résigner à','es':'aceptar / resignarse','it':'accettare / venire a patti con','pl':'godzić się z / pogodzić się','pt':'aceitar / conformar-se','sk':'smieriť sa s / vyrovnať sa','ru':'смириться с / принять','cn':'接受/妥协','jp':'〜を受け入れる','kr':'받아들이다/화해하다','uk':'come to terms with','id':'come to terms with'},
+  'contend with':{'de':'kämpfen mit / fertig werden mit','fr':'faire face à / lutter contre','es':'hacer frente a / luchar contra','it':'affrontare / lottare contro','pl':'zmagać się z / stawiać czoła','pt':'enfrentar / lidar com','sk':'potýkať sa s / čeliť','ru':'бороться с / справляться','cn':'应对/与…抗争','jp':'〜と格闘する','kr':'맞서 싸우다','uk':'contend with','id':'contend with'},
+  'draw on':{'de':'schöpfen aus / zurückgreifen auf','fr':'puiser dans / s\'appuyer sur','es':'recurrir a / basarse en','it':'attingere a / basarsi su','pl':'czerpać z / korzystać z','pt':'recorrer a / basear-se em','sk':'čerpať z / vychádzať z','ru':'черпать из / опираться на','cn':'借鉴/利用','jp':'〜を活用する','kr':'활용하다','uk':'draw on','id':'draw on'},
+  'ease off':{'de':'nachlassen / lockern','fr':'se détendre / relâcher','es':'aflojar / relajarse','it':'allentare / diminuire','pl':'odpuszczać / zmniejszać','pt':'aliviar / diminuir','sk':'slevit / zmierniť / upokojit sa','ru':'ослаблять / успокаиваться','cn':'放松/减缓','jp':'和らぐ/緩める','kr':'완화하다/줄이다','uk':'ease off','id':'ease off'},
+  'factor in':{'de':'einbeziehen / berücksichtigen','fr':'intégrer / prendre en compte','es':'tener en cuenta / incluir','it':'considerare / tenere conto','pl':'uwzględniać / wliczać','pt':'considerar / incluir','sk':'zohľadniť / zahrnúť do výpočtu','ru':'учитывать / принимать во внимание','cn':'考虑进去/纳入考量','jp':'考慮に入れる','kr':'고려하다','uk':'factor in','id':'factor in'},
+  'fend for':{'de':'für sich sorgen / verteidigen','fr':'se débrouiller / défendre','es':'apañárselas / cuidarse','it':'badare a sé / difendere','pl':'dbać o siebie / bronić','pt':'cuidar de si / defender','sk':'starat sa o seba / obhajovať','ru':'заботиться о себе / защищать','cn':'照顾自己/为…辩护','jp':'自分でやっていく/擁護する','kr':'스스로 돌보다','uk':'fend for','id':'fend for'},
+  'frown upon':{'de':'missbilligen / schief ansehen','fr':'désapprouver / voir d\'un mauvais œil','es':'desaprobar / ver con malos ojos','it':'disapprovare / guardare male','pl':'dezaprobować / patrzeć krzywo','pt':'desaprovar / ver com maus olhos','sk':'odsúdiť / nelibe pozerať','ru':'неодобрять / смотреть косо','cn':'不赞成/皱眉以对','jp':'眉をひそめる/不承認する','kr':'못마땅해하다','uk':'frown upon','id':'frown upon'},
+  'give in':{'de':'nachgeben / klein beigeben','fr':'céder / se rendre','es':'ceder / rendirse','it':'cedere / arrendersi','pl':'ulegać / poddawać się','pt':'ceder / render-se','sk':'podvolit sa / vzdať sa / odovzdať','ru':'уступать / сдаваться','cn':'屈服/让步','jp':'折れる/諦める','kr':'굴복하다/포기하다','uk':'give in','id':'give in'},
+  'hinge on':{'de':'abhängen von','fr':'dépendre de / reposer sur','es':'depender de / girar en torno a','it':'dipendere da / essere determinato da','pl':'zależeć od / opierać się na','pt':'depender de','sk':'závisieť na / záležat na','ru':'зависеть от','cn':'取决于/以...为轴','jp':'〜次第だ/〜にかかっている','kr':'~에 달려 있다','uk':'hinge on','id':'hinge on'},
+  'iron out':{'de':'bügeln / glätten / lösen','fr':'résoudre / régler','es':'resolver / allanar','it':'risolvere / appianare','pl':'rozwiązywać / wygładzać','pt':'resolver / ultrapassar','sk':'vyriešiť (problémy) / vyrovnať','ru':'решать / сглаживать','cn':'解决(问题)/消除','jp':'解決する/ならす','kr':'해결하다/평탄하게하다','uk':'iron out','id':'iron out'},
+  'latch onto':{'de':'sich anhängen / greifen','fr':'s\'accrocher à / saisir','es':'aferrarse a / conectar con','it':'aggrapparsi a / appigliarsi','pl':'czepiać się / chwytać','pt':'agarrar-se a / fixar-se em','sk':'chytiť sa / prilepiť sa','ru':'хвататься / цепляться','cn':'抓住/粘上','jp':'くっつく/とりつく','kr':'매달리다/포착하다','uk':'latch onto','id':'latch onto'},
+  'lump together':{'de':'zusammenwerfen / in einen Topf','fr':'regrouper / mettre dans le même sac','es':'meter en el mismo saco','it':'mettere insieme / fare di tutt\'erba un fascio','pl':'wrzucać do jednego worka','pt':'pôr no mesmo saco','sk':'házať do jedného pytle','ru':'смешивать / ставить в один ряд','cn':'混为一谈/一概而论','jp':'一緒くたにする','kr':'한데 묶다','uk':'lump together','id':'lump together'},
+  'mark down':{'de':'preisreduzieren / notieren','fr':'réduire le prix / noter','es':'bajar el precio / anotar','it':'ridurre il prezzo / annotare','pl':'obniżać cenę / notować','pt':'baixar o preço / anotar','sk':'znížiť cenu / poznačiť','ru':'снижать цену / отмечать','cn':'降价/标注','jp':'値下げする/書き留める','kr':'가격내리다/표시하다','uk':'mark down','id':'mark down'},
+  'opt for':{'de':'sich entscheiden für','fr':'opter pour / choisir','es':'optar por / elegir','it':'optare per / scegliere','pl':'decydować się na / wybierać','pt':'optar por / escolher','sk':'zvoliť / rozhodnúť sa pre','ru':'выбирать / останавливаться на','cn':'选择/决定','jp':'〜を選ぶ','kr':'선택하다','uk':'opt for','id':'opt for'},
+  'phase out':{'de':'schrittweise einstellen / auslaufen lassen','fr':'éliminer progressivement / supprimer','es':'eliminar progresivamente / retirar','it':'eliminare gradualmente / sopprimere','pl':'stopniowo wycofywać / likwidować','pt':'eliminar gradualmente / retirar','sk':'postupne ukončiť / vyradiť','ru':'постепенно прекращать / ликвидировать','cn':'逐步淘汰/逐步停止','jp':'段階的に廃止する','kr':'단계적으로 폐지하다','uk':'поступово виводити з вжитку','id':'menghapus secara bertahap'},
+  'play along':{'de':'mitmachen / zustimmen','fr':'jouer le jeu / acquiescer','es':'seguir el juego','it':'stare al gioco / acconsentire','pl':'grać w to / przytakiwać','pt':'entrar no jogo / concordar','sk':'ísť s tým / pritakávať','ru':'подыгрывать / соглашаться','cn':'顺着来/配合','jp':'乗る/合わせる','kr':'따라가다/동의해주다','uk':'play along','id':'play along'},
+  'pull through':{'de':'durchkommen / überleben','fr':'s\'en sortir / survivre','es':'salir adelante / sobrevivir','it':'farcela / sopravvivere','pl':'wychodzić z tego / przeżywać','pt':'sobreviver / conseguir','sk':'prežiť / dostať sa cez','ru':'выживать / справляться','cn':'渡过难关/撑过来','jp':'乗り越える/生き延びる','kr':'극복하다/살아남다','uk':'pull through','id':'pull through'},
+  'reason out':{'de':'logisch herleiten / durchdenken','fr':'raisonner / déduire logiquement','es':'razonar / deducir lógicamente','it':'ragionare / dedurre','pl':'dochodzić do / rozumować','pt':'raciocinar / deduzir','sk':'logicky dospieť k / odvysvětliť','ru':'логически прийти к / обосновать','cn':'推理出/逻辑推导','jp':'論理的に導き出す','kr':'추론하다','uk':'reason out','id':'reason out'},
+  'rule in':{'de':'einschließen / als möglich ansehen','fr':'inclure / ne pas exclure','es':'incluir / no descartar','it':'includere / non escludere','pl':'nie wykluczać / włączać jako możliwość','pt':'incluir / não excluir','sk':'nevylúčiť / zahrnúť ako možnosť','ru':'допускать / включать как возможность','cn':'纳入考虑/不排除','jp':'含める/除外しない','kr':'포함시키다/배제않다','uk':'rule in','id':'rule in'},
+  'scale back':{'de':'reduzieren / einschränken','fr':'réduire / diminuer l\'ampleur','es':'reducir / recortar','it':'ridurre / contenere','pl':'ograniczać / zredukować','pt':'reduzir / diminuir','sk':'obmedziť / zredukovať rozsah','ru':'сокращать / уменьшать масштаб','cn':'缩减规模/削减','jp':'縮小する','kr':'축소하다','uk':'scale back','id':'scale back'},
+  'scrape by':{'de':'gerade so durchkommen','fr':'s\'en sortir de justesse / vivoter','es':'apañárselas / vivir con lo justo','it':'cavarsela a malapena','pl':'ledwo wiązać koniec z końcem','pt':'conseguir mal e mal','sk':'sotva vyjsť / nějak sa protlúcť','ru':'кое-как перебиваться','cn':'勉强度日/艰难维持','jp':'ぎりぎり生活する','kr':'근근이 살아가다','uk':'scrape by','id':'scrape by'},
+  'set forth':{'de':'formulieren / darlegen / aufbrechen','fr':'formuler / exposer / partir','es':'formular / exponer / partir','it':'formulare / esporre / partire','pl':'formułować / przedstawiać / wyruszać','pt':'formular / expor / partir','sk':'formulovať / predložiť / vyraziť','ru':'формулировать / излагать / отправляться','cn':'阐明/出发','jp':'定める/出発する','kr':'명시하다/출발하다','uk':'set forth','id':'set forth'},
+  'speak up':{'de':'sich melden / lauter sprechen','fr':'prendre la parole / élever la voix','es':'hablar más alto / manifestarse','it':'parlare più forte / farsi sentire','pl':'zabrać głos / mówić głośniej','pt':'falar mais alto / manifestar-se','sk':'ozvať sa / prehovoriť nahlas','ru':'высказаться / говорить громче','cn':'大声说/发言','jp':'声を上げる/はっきり言う','kr':'소리 높여 말하다/발언하다','uk':'говорити голосніше','id':'berbicara lebih keras'},
+  'stand by':{'de':'bereitstehen / unterstützen','fr':'rester à côté / soutenir','es':'estar preparado / apoyar','it':'essere pronto / supportare','pl':'stać przy / być w gotowości','pt':'estar pronto / apoiar','sk':'stáť pri / byť v zálohe','ru':'стоять рядом / быть наготове','cn':'支持/待命','jp':'支持する/待機する','kr':'지지하다/대기하다','uk':'stand by','id':'stand by'},
+  'step down':{'de':'zurücktreten / abdanken','fr':'se retirer / démissionner','es':'retirarse / renunciar','it':'dimettersi / ritirarsi','pl':'rezygnować / ustępować','pt':'retirar-se / demitir-se','sk':'odstúpiť / vzdať sa funkcie','ru':'уходить в отставку / уступать','cn':'辞职/下台','jp':'退く/辞任する','kr':'사임하다/물러나다','uk':'step down','id':'step down'},
+  'sum up':{'de':'zusammenfassen','fr':'résumer / récapituler','es':'resumir / sintetizar','it':'riassumere','pl':'podsumowywać','pt':'resumir / sintetizar','sk':'zhrnúť','ru':'резюмировать / подводить итоги','cn':'总结/汇总','jp':'要約する','kr':'요약하다','uk':'sum up','id':'sum up'},
+  'suss out':{'de':'herausfinden / auf den Grund gehen','fr':'comprendre / trouver la clé','es':'investigar / descubrir','it':'scoprire / capire','pl':'odkrywać / rozgryźć','pt':'descobrir / perceber','sk':'preskúmať / prísť na kloub','ru':'раскусить / разобраться','cn':'弄清楚/摸清底细','jp':'見極める/解明する','kr':'꿰뚫어보다/알아내다','uk':'suss out','id':'suss out'},
+  'tap into':{'de':'anzapfen / nutzen','fr':'exploiter / tirer parti de','es':'aprovechar / acceder a','it':'attingere a / sfruttare','pl':'korzystać z / podłączać się do','pt':'explorar / aproveitar','sk':'napojit sa na / využiť zdroj','ru':'подключаться к / использовать ресурс','cn':'挖掘/利用资源','jp':'〜を活用する','kr':'활용하다','uk':'tap into','id':'tap into'},
+  'thin out':{'de':'ausdünnen / weniger werden','fr':'s\'éclaircir / s\'amincir','es':'ralear / adelgazar','it':'diradarsi / assottigliarsi','pl':'rzednąć / przerzedzać','pt':'rarear / reduzir','sk':'rednúť / ztenčovať','ru':'редеть / уменьшаться','cn':'稀疏/变少','jp':'間引く/薄くなる','kr':'희박해지다/줄다','uk':'thin out','id':'thin out'},
+  'tighten up':{'de':'verschärfen / anziehen','fr':'resserrer / renforcer','es':'endurecer / apretar','it':'stringere / rafforzare','pl':'zaostrzać / zaciskać','pt':'apertar / reforçar','sk':'sprísniť / utiahnuť','ru':'ужесточать / затягивать','cn':'收紧/强化','jp':'引き締める','kr':'강화하다','uk':'tighten up','id':'tighten up'},
+  'trade off':{'de':'abwägen / tauschen','fr':'échanger / trouver un compromis','es':'intercambiar / equilibrar','it':'scambiare / trovare un compromesso','pl':'wymieniać / kompromisowo wyważać','pt':'trocar / equilibrar','sk':'vymeniť / kompromisne vyvážiť','ru':'обменивать / идти на компромисс','cn':'权衡/折衷','jp':'トレードオフする','kr':'맞바꾸다/절충하다','uk':'trade off','id':'trade off'},
+  'veer away':{'de':'abweichen / ausweichen','fr':'dévier / s\'éloigner','es':'desviarse / alejarse','it':'deviare / allontanarsi','pl':'zbaczać / oddalać się','pt':'desviar / afastar-se','sk':'odkloniť sa / svrátit kurz','ru':'отклоняться / уходить в сторону','cn':'偏离/转向','jp':'逸れる/離れる','kr':'벗어나다/피하다','uk':'veer away','id':'veer away'},
+  'weigh up':{'de':'abwägen','fr':'peser le pour et le contre','es':'sopesar / valorar','it':'valutare / soppesare','pl':'ważyć / rozważać','pt':'pesar / avaliar','sk':'zvážiť (pros and cons)','ru':'взвешивать / рассматривать','cn':'权衡/考量','jp':'吟味する/比較検討する','kr':'따져보다/검토하다','uk':'weigh up','id':'weigh up'},
+  'whittle down':{'de':'herunterarbeiten / verkleinern','fr':'réduire progressivement / tailler','es':'reducir poco a poco / recortar','it':'ridurre gradualmente / assottigliare','pl':'stopniowo zmniejszać / okrawać','pt':'reduzir gradualmente / aparar','sk':'postupne zmenšovať / osekávať','ru':'постепенно сокращать / урезать','cn':'逐步削减/慢慢减少','jp':'徐々に削る','kr':'차차 줄이다','uk':'whittle down','id':'whittle down'},
+  'zero in':{'de':'genau zielen / fokussieren','fr':'viser précisément / se concentrer','es':'apuntar / concentrarse','it':'puntare / concentrarsi','pl':'skupiać się / celować','pt':'focar / mirar','sk':'zamerať sa / priblížiť','ru':'нацеливаться / сосредотачиваться','cn':'瞄准/专注','jp':'狙いを定める','kr':'겨냥하다/집중하다','uk':'zero in','id':'zero in'},
+  'zone in':{'de':'sich voll konzentrieren','fr':'se concentrer totalement','es':'concentrarse totalmente','it':'concentrarsi completamente','pl':'w pełni koncentrować się','pt':'concentrar-se totalmente','sk':'sústredif sa / plne sa ponoriť','ru':'полностью сосредоточиться','cn':'全神贯注/深度投入','jp':'完全に集中する','kr':'완전히 몰입하다','uk':'zone in','id':'zone in'},
+  'act on':{'de':'handeln / reagieren','fr':'agir sur / se conformer à','es':'actuar según / seguir','it':'agire su / rispondere a','pl':'działać na / reagować na','pt':'agir sobre / reagir a','sk':'jednat podľa / reagovať na','ru':'действовать согласно / реагировать','cn':'依据行动/针对…采取行动','jp':'〜に従って行動する','kr':'따라 행동하다','uk':'act on','id':'act on'},
+  'build on':{'de':'aufbauen auf / darauf aufbauen','fr':'s\'appuyer sur / développer','es':'basarse en / partir de','it':'basarsi su / sviluppare','pl':'budować na / rozwijać','pt':'basear-se em / desenvolver','sk':'stavať na / nadviazať na','ru':'опираться на / развивать','cn':'以…为基础/建立在…上','jp':'〜を土台にする','kr':'기반으로 하다','uk':'build on','id':'build on'},
+  'cash in on':{'de':'profitieren von / ausnutzen','fr':'profiter de / capitaliser sur','es':'sacar provecho de / beneficiarse de','it':'approfittare di / sfruttare','pl':'czerpać zyski z / korzystać z','pt':'aproveitar-se de / lucrar com','sk':'vytežiť z / profitovať z','ru':'наживаться / использовать в своих интересах','cn':'趁机获利/利用','jp':'〜をうまく利用する','kr':'이용하여 이득보다','uk':'cash in on','id':'cash in on'},
+  'drill down':{'de':'tiefer gehen / detailliert analysieren','fr':'creuser / analyser en détail','es':'profundizar / analizar en detalle','it':'approfondire / analizzare in dettaglio','pl':'zagłębiać się / szczegółowo analizować','pt':'aprofundar / analisar em detalhe','sk':'prokliknut hlbšie / detailne analyzovať','ru':'углубляться / детально анализировать','cn':'深入分析/深入研究','jp':'詳細に分析する','kr':'심층 분석하다','uk':'заглиблюватися / детально аналізувати','id':'menggali lebih dalam / menganalisis detail'},
+  'bear out':{'de':'bestätigen / beweisen','fr':'confirmer / prouver','es':'confirmar / probar','it':'confermare / provare','pl':'potwierdzać / udowadniać','pt':'confirmar / provar','sk':'potvrdiť / preukázať','ru':'подтверждать / доказывать','cn':'证实/证明','jp':'裏付ける/証明する','kr':'뒷받침하다/증명하다','uk':'підтверджувати / доводити','id':'membuktikan / mengkonfirmasi'},
+  'come into':{'de':'erben / eintreten in','fr':'hériter de / entrer dans','es':'heredar / entrar en','it':'ereditare / entrare in','pl':'dziedziczyć / wchodzić w','pt':'herdar / entrar em','sk':'zdediť / vstúpiť do','ru':'наследовать / войти в','cn':'继承/进入(状态)','jp':'受け継ぐ/〜になる','kr':'상속받다/~에 들어서다','uk':'успадковувати / вступати в','id':'mewarisi / memasuki'},
+  'fall back on':{'de':'zurückgreifen auf / sich stützen auf','fr':'se rabattre sur / compter sur','es':'recurrir a / apoyarse en','it':'ricorrere a / appoggiarsi a','pl':'uciekać się do / polegać na','pt':'recorrer a / apoiar-se em','sk':'uchýliť sa k / spoliehať sa na','ru':'прибегать к / опираться на','cn':'依靠/退而求其次','jp':'〜に頼る/拠り所にする','kr':'의지하다/의존하다','uk':'покладатися на','id':'mengandalkan'},
+  'lay off':{'de':'entlassen / in Ruhe lassen','fr':'licencier / laisser tranquille','es':'despedir / dejar en paz','it':'licenziare / lasciare in pace','pl':'zwalniać / dawać spokój','pt':'despedir / deixar em paz','sk':'prepustiť / nechať na pokoji','ru':'увольнять / оставить в покое','cn':'解雇/放过','jp':'解雇する/放っておく','kr':'해고하다/내버려두다','uk':'звільняти / залишити в спокої','id':'memberhentikan / membiarkan'},
+  'see through':{'de':'durchschauen / durchziehen','fr':'voir clair dans / mener à bien','es':'ver a través / llevar hasta el final','it':'intuire / portare a termine','pl':'przejrzeć / doprowadzić do końca','pt':'ver através / levar até ao fim','sk':'prohliadnuť / dotiahnuť do konca','ru':'видеть насквозь / доводить до конца','cn':'看穿/完成到底','jp':'見抜く/やり遂げる','kr':'꿰뚫어보다/끝까지 해내다','uk':'наскрізь бачити / довести до кінця','id':'melihat tembus / menyelesaikan'},
+  'set aside':{'de':'beiseitelegen / zurückstellen','fr':'mettre de côté / réserver','es':'dejar a un lado / reservar','it':'mettere da parte / riservare','pl':'odkładać na bok / rezerwować','pt':'pôr de lado / reservar','sk':'odložiť stranou','ru':'откладывать в сторону / резервировать','cn':'搁置/留出','jp':'脇に置く/取っておく','kr':'제쳐두다/따로 두다','uk':'відкласти вбік','id':'menyisihkan'},
+  'write off':{'de':'abschreiben / vernichten','fr':'passer par pertes / annuler','es':'amortizar / cancelar','it':'svalutare / cancellare','pl':'odpisywać / uznawać za straconego','pt':'amortizar / cancelar','sk':'odepísať / zničiť','ru':'списывать / отвергать','cn':'注销/报销','jp':'償却する/見捨てる','kr':'상각하다/포기하다','uk':'списувати / відмовлятися','id':'menghapuskan / melepaskan'}
 };
 
 // Returns translation for current webLang; fallback EN (key) or CZ
@@ -7316,6 +7608,7 @@ buildGenLangDropdowns();
 buildTopicDrop();
 buildVerbDrop();
 applyWebLang();
+window.addEventListener('resize', fitChipRow);
 
 
 // Nastav vlajku pri inicializaci
@@ -7813,10 +8106,10 @@ document.addEventListener('click', function(e) {
       <button class="vt-level-btn"           data-level="S3"  onclick="vtSelectLevel(this)">S3 <span style="opacity:.6;font-weight:400">151–300</span></button>
       <button class="vt-level-btn"           data-level="S4"  onclick="vtSelectLevel(this)">S4 <span style="opacity:.6;font-weight:400">301–500</span></button>
       <button class="vt-level-btn"           data-level="ALL" onclick="vtSelectLevel(this)">ALL</button>
-      <button id="vtRandom" onclick="vtPickRandom()">🎲 Random verb</button>
+      <button id="vtRandom" onclick="vtPickRandom()">✨ Random verb</button>
     </div>
     <div id="vtBody">
-      <div id="vtEmpty">Vyber úroveň a klikni na <strong>🎲 Random verb</strong> — session se otevře v ChatGPT.</div>
+      <div id="vtEmpty">Vyber úroveň a klikni na <strong>✨ Random verb</strong> — session se otevře v ChatGPT.</div>
     </div>
   </div>
 </div>
@@ -7988,6 +8281,176 @@ function vtGeneratePhrasal(pv) {
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
+}
+
+/* ── ✨ Náhodná inspirace ── */
+function insertRandomInspiration() {
+  var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+  var pools = {
+    cz: [
+      'první rande v kavárně','ztracené zavazadlo na letišti','pohovor o práci',
+      'reklamace v obchodě','hádka se sousedem','večeře u přátel',
+      'doktor — bolest hlavy','pronájem bytu','zpoždění vlaku',
+      'nákup v supermarketu','domluvení schůzky','oprava auta v servisu',
+      'narozeninová oslava','telefonát zákaznické podpoře','procházka po Praze',
+      'vaření nového receptu','výlet do hor','objednání v restauraci',
+      'přijímací řízení na školu','vysvětlení cesty turistovi'
+    ],
+    en: [
+      'first date at a café','lost luggage at the airport','job interview',
+      'returning a purchase','argument with a neighbor','dinner with friends',
+      'doctor visit — headache','renting an apartment','delayed train',
+      'grocery shopping','scheduling a meeting','car repair at the garage',
+      'birthday party','customer support call','walk around London',
+      'cooking a new recipe','hiking trip','ordering at a restaurant',
+      'university application','giving directions to a tourist'
+    ],
+    de: [
+      'erstes Date im Café','verlorenes Gepäck am Flughafen','Vorstellungsgespräch',
+      'Reklamation im Geschäft','Streit mit dem Nachbarn','Abendessen bei Freunden',
+      'Arztbesuch — Kopfschmerzen','Wohnung mieten','Zugverspätung',
+      'Einkauf im Supermarkt','Termin vereinbaren','Auto in der Werkstatt',
+      'Geburtstagsfeier','Kundenservice anrufen','Spaziergang durch Berlin',
+      'neues Rezept kochen','Wanderausflug','im Restaurant bestellen',
+      'Bewerbung an der Uni','Touristen den Weg erklären'
+    ],
+    fr: [
+      'premier rendez-vous dans un café','bagage perdu à l\'aéroport','entretien d\'embauche',
+      'retourner un achat','dispute avec un voisin','dîner chez des amis',
+      'chez le médecin — mal de tête','louer un appartement','train en retard',
+      'courses au supermarché','prendre rendez-vous','réparation de voiture',
+      'fête d\'anniversaire','appel service client','promenade à Paris',
+      'cuisiner une nouvelle recette','randonnée en montagne','commander au restaurant',
+      'inscription à l\'université','expliquer le chemin à un touriste'
+    ],
+    es: [
+      'primera cita en una cafetería','equipaje perdido en el aeropuerto','entrevista de trabajo',
+      'devolver una compra','discusión con el vecino','cena con amigos',
+      'médico — dolor de cabeza','alquilar un piso','tren con retraso',
+      'compras en el supermercado','concertar una cita','reparar el coche',
+      'fiesta de cumpleaños','llamada al servicio al cliente','paseo por Madrid',
+      'cocinar una receta nueva','excursión a la montaña','pedir en un restaurante',
+      'solicitud universitaria','explicar el camino a un turista'
+    ],
+    it: [
+      'primo appuntamento al bar','bagaglio perso in aeroporto','colloquio di lavoro',
+      'restituire un acquisto','litigio con il vicino','cena con gli amici',
+      'dal medico — mal di testa','affittare un appartamento','treno in ritardo',
+      'spesa al supermercato','fissare un appuntamento','riparare l\'auto',
+      'festa di compleanno','chiamata al servizio clienti','passeggiata a Roma',
+      'cucinare una nuova ricetta','gita in montagna','ordinare al ristorante',
+      'iscrizione all\'università','spiegare la strada a un turista'
+    ],
+    pt: [
+      'primeiro encontro num café','bagagem perdida no aeroporto','entrevista de emprego',
+      'devolver uma compra','discussão com o vizinho','jantar com amigos',
+      'médico — dor de cabeça','alugar um apartamento','comboio atrasado',
+      'compras no supermercado','marcar uma reunião','reparar o carro',
+      'festa de aniversário','chamada ao serviço de apoio','passeio por Lisboa',
+      'cozinhar uma receita nova','excursão à montanha','pedir no restaurante',
+      'candidatura à universidade','explicar o caminho a um turista'
+    ],
+    pl: [
+      'pierwsza randka w kawiarni','zgubiony bagaż na lotnisku','rozmowa kwalifikacyjna',
+      'zwrot zakupu','kłótnia z sąsiadem','kolacja u przyjaciół',
+      'wizyta u lekarza — ból głowy','wynajęcie mieszkania','opóźnienie pociągu',
+      'zakupy w supermarkecie','umówienie spotkania','naprawa auta w warsztacie',
+      'urodziny','telefon do obsługi klienta','spacer po Warszawie',
+      'gotowanie nowego przepisu','wycieczka w góry','zamawianie w restauracji',
+      'rekrutacja na studia','tłumaczenie drogi turyście'
+    ],
+    cn: [
+      '咖啡馆第一次约会','机场丢失行李','工作面试',
+      '退货','和邻居争吵','和朋友共进晚餐',
+      '看医生——头痛','租公寓','火车晚点',
+      '在超市购物','安排会议','汽车维修',
+      '生日派对','客服电话','在北京漫步',
+      '学做新菜','山区旅行','在餐厅点餐',
+      '大学申请','给游客指路'
+    ],
+    jp: [
+      'カフェでの初デート','空港での荷物の紛失','就職面接',
+      '購入品の返品','隣人とのトラブル','友人との夕食',
+      '医者へ行く — 頭痛','アパートを借りる','電車の遅延',
+      'スーパーでの買い物','打ち合わせのスケジュール','車の修理',
+      '誕生日パーティー','カスタマーサポートへの電話','東京を散歩',
+      '新しいレシピを作る','山へのハイキング','レストランで注文',
+      '大学への入学申請','観光客への道案内'
+    ],
+    kr: [
+      '카페에서의 첫 데이트','공항에서 수화물 분실','취업 면접',
+      '구매 반품','이웃과의 다툼','친구들과 저녁 식사',
+      '병원 방문 — 두통','아파트 임대','기차 지연',
+      '슈퍼마켓 쇼핑','미팅 일정 잡기','자동차 수리',
+      '생일 파티','고객 서비스 전화','서울 산책',
+      '새 레시피 요리','산 하이킹','레스토랑에서 주문',
+      '대학 지원','관광객에게 길 안내'
+    ],
+    sk: [
+      'prvé rande v kaviarni','stratená batožina na letisku','pracovný pohovor',
+      'reklamácia v obchode','hádka so susedom','večera u priateľov',
+      'lekár — bolesť hlavy','prenájom bytu','meškanie vlaku',
+      'nákup v supermarkete','dohodnutie stretnutia','oprava auta v servise',
+      'narodeninová oslava','telefonát zákazníckej podpore','prechádzka po Bratislave',
+      'varenie nového receptu','výlet do hôr','objednávanie v reštaurácii',
+      'prijímacie konanie na školu','vysvetlenie cesty turistovi'
+    ],
+    nl: [
+      'eerste date in een café','verloren bagage op het vliegveld','sollicitatiegesprek',
+      'aankoop retourneren','ruzie met de buurman','diner bij vrienden',
+      'doktersbezoek — hoofdpijn','appartement huren','trein vertraging',
+      'boodschappen in de supermarkt','vergadering plannen','auto repareren',
+      'verjaardagsfeest','klantenservice bellen','wandeling door Amsterdam',
+      'nieuw recept koken','wandeltocht in de bergen','bestellen in een restaurant',
+      'universitaire aanmelding','een toerist de weg wijzen'
+    ],
+    sv: [
+      'första dejt på ett café','förlorat bagage på flygplatsen','jobbintervju',
+      'returnera ett köp','bråk med grannen','middag hos vänner',
+      'läkarbesök — huvudvärk','hyra en lägenhet','tågförseining',
+      'handla i affären','boka ett möte','reparera bilen',
+      'födelsedagsfest','ringa kundtjänst','promenad i Stockholm',
+      'laga ett nytt recept','vandringsutflykt','beställa på restaurang',
+      'universitetsansökan','ge en turist vägbeskrivning'
+    ],
+    ru: [
+      'первое свидание в кафе','потеря багажа в аэропорту','собеседование на работу',
+      'возврат покупки','ссора с соседом','ужин у друзей',
+      'визит к врачу — головная боль','аренда квартиры','задержка поезда',
+      'покупки в супермаркете','назначение встречи','ремонт автомобиля',
+      'день рождения','звонок в службу поддержки','прогулка по Москве',
+      'приготовление нового рецепта','поход в горы','заказ в ресторане',
+      'поступление в университет','объяснить дорогу туристу'
+    ],
+    tr: [
+      'kafede ilk buluşma','havalimanında kayıp bagaj','iş görüşmesi',
+      'alışveriş iadesi','komşuyla tartışma','arkadaşlarda akşam yemeği',
+      'doktor ziyareti — baş ağrısı','daire kiralama','tren gecikmesi',
+      'süpermarkette alışveriş','toplantı planlamak','araba tamiri',
+      'doğum günü partisi','müşteri hizmetleri araması','İstanbul\'da yürüyüş',
+      'yeni tarif pişirmek','dağ gezisi','restoranda sipariş vermek',
+      'üniversiteye başvuru','turiste yol tarifi vermek'
+    ]
+  };
+  var list = pools[lang] || pools.en;
+  var pick = list[Math.floor(Math.random() * list.length)];
+
+  var input = document.getElementById('practiceInput');
+  if (input) {
+    input.value = pick;
+    if (typeof onIntentInput === 'function') onIntentInput(input);
+    input.focus();
+  }
+
+  // Animace kostky
+  var btn = document.getElementById('randomInspirationBtn');
+  if (btn) {
+    btn.classList.remove('spin');
+    void btn.offsetWidth; // reflow
+    btn.classList.add('spin');
+    btn.addEventListener('animationend', function() { btn.classList.remove('spin'); }, { once: true });
+  }
+
 }
 
 
