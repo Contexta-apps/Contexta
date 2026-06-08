@@ -2091,6 +2091,7 @@ img { max-width: 100%; height: auto; }
 .gg-b-b1 { background: rgba(201,151,58,.15); color: var(--gold-lt); border: 1px solid rgba(201,151,58,.3); }
 .gg-b-b2 { background: rgba(220,140,80,.15); color: #e8a870; border: 1px solid rgba(220,140,80,.3); }
 .gg-b-c1 { background: rgba(200,80,80,.12); color: #e87a7a; border: 1px solid rgba(200,80,80,.25); }
+.gg-b-sit { background: rgba(130,90,220,.15); color: #b39dff; border: 1px solid rgba(130,90,220,.3); }
 .gg-level-name { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.6); flex: 1; }
 .gg-arrow { font-size: .55rem; color: rgba(255,255,255,.3); transition: transform .2s; }
 .gg-level.open .gg-arrow { transform: rotate(180deg); }
@@ -6102,6 +6103,8 @@ function getTranslatedGrammarData() {
   var tr = GRAMMAR_TRANSLATIONS[lang];
   if (!tr) return GRAMMAR_DATA; // CZ = default (data jsou česky)
   return GRAMMAR_DATA.map(function(lvl, li) {
+    // SIT blok používá 'sub' místo 'topics' — přeskočit překlad, vrátit beze změny
+    if (!lvl.topics) return Object.assign({}, lvl);
     return Object.assign({}, lvl, {
       label: (tr.levels[li] || lvl.label),
       topics: lvl.topics.map(function(topic, ti) {
@@ -6250,6 +6253,126 @@ var GRAMMAR_DATA = [
       { name:'Americká vs. britská angličtina', prompt:'Highlight differences between American and British English (vocabulary, spelling) in the sentences and dialogues. At the end add a grammar note on key differences with 3 examples.' },
     ]},
   ]},
+  { name:'Situační témata', icon:'🎯', level:'SIT', badge:'gg-b-sit', label:'Situační témata', sub:[
+    { name:'Technologie a digitální svět', icon:'📱', items:[
+      { name:'nastavení telefonu', prompt:'Create a dialogue or short text about setting up a phone (language, apps, notifications). Use natural everyday language.' },
+      { name:'problém s Wi-Fi', prompt:'Create a dialogue or short text about Wi-Fi connection problems and how to fix them.' },
+      { name:'aktualizace aplikace', prompt:'Create a dialogue or short text about updating an app and what to do when the update fails.' },
+      { name:'zapomenuté heslo', prompt:'Create a dialogue or short text about forgetting a password and the recovery process.' },
+      { name:'práce s cloudem', prompt:'Create a dialogue or short text about using cloud storage (uploading, sharing, syncing files).' },
+      { name:'sociální sítě a soukromí', prompt:'Create a dialogue or short text about social media privacy settings and online safety.' },
+      { name:'online nákupy a platby', prompt:'Create a dialogue or short text about making online purchases and payment issues.' },
+      { name:'technická podpora', prompt:'Create a dialogue or short text about calling or chatting with technical support.' },
+      { name:'e-mailový problém', prompt:'Create a dialogue or short text about an email issue (not sending, spam, lost message).' },
+      { name:'bezpečnost na internetu', prompt:'Create a dialogue or short text about internet safety and protecting personal data online.' },
+    ]},
+    { name:'Zdraví a wellness', icon:'🏥', items:[
+      { name:'návštěva u lékaře', prompt:'Create a dialogue or short text about visiting a doctor, describing symptoms and getting advice.' },
+      { name:'objednání na vyšetření', prompt:'Create a dialogue or short text about booking a medical appointment by phone or online.' },
+      { name:'bolest hlavy / nemoc', prompt:'Create a dialogue or short text about having a headache or being sick and asking for help.' },
+      { name:'lékárna a léky', prompt:'Create a dialogue or short text about going to a pharmacy and asking about medication.' },
+      { name:'zdravá strava', prompt:'Create a dialogue or short text about healthy eating habits and food choices.' },
+      { name:'fitness a posilovna', prompt:'Create a dialogue or short text about going to the gym and working out.' },
+      { name:'běhání a kondice', prompt:'Create a dialogue or short text about running as a hobby and improving fitness.' },
+      { name:'stres a duševní zdraví', prompt:'Create a dialogue or short text about dealing with stress and taking care of mental health.' },
+      { name:'zubní péče', prompt:'Create a dialogue or short text about visiting the dentist or daily dental hygiene.' },
+      { name:'prevence nemocí', prompt:'Create a dialogue or short text about disease prevention, vaccinations, and healthy lifestyle.' },
+    ]},
+    { name:'Práce a kariéra', icon:'💼', items:[
+      { name:'pracovní pohovor', prompt:'Create a dialogue or short text about a job interview — questions, answers, and impressions.' },
+      { name:'porada v práci', prompt:'Create a dialogue or short text about a work meeting — setting agenda, discussing tasks.' },
+      { name:'prezentace projektu', prompt:'Create a dialogue or short text about presenting a project to colleagues or a manager.' },
+      { name:'konflikt s kolegou', prompt:'Create a dialogue or short text about resolving a conflict with a coworker professionally.' },
+      { name:'žádost o zvýšení platu', prompt:'Create a dialogue or short text about asking for a salary raise.' },
+      { name:'práce z domova', prompt:'Create a dialogue or short text about working from home — challenges and communication.' },
+      { name:'deadline a stres', prompt:'Create a dialogue or short text about meeting a tight deadline and managing work stress.' },
+      { name:'e-mail nadřízenému', prompt:'Create a dialogue or short text about writing a professional email to a manager.' },
+      { name:'školení zaměstnanců', prompt:'Create a dialogue or short text about an employee training session.' },
+      { name:'změna zaměstnání', prompt:'Create a dialogue or short text about deciding to change jobs and the process involved.' },
+    ]},
+    { name:'Cestování a doprava', icon:'✈️', items:[
+      { name:'letiště a odbavení', prompt:'Create a dialogue or short text about checking in at the airport and going through security.' },
+      { name:'ztracené zavazadlo', prompt:'Create a dialogue or short text about reporting and dealing with lost luggage at the airport.' },
+      { name:'rezervace hotelu', prompt:'Create a dialogue or short text about booking a hotel room and asking about facilities.' },
+      { name:'půjčení auta', prompt:'Create a dialogue or short text about renting a car — requirements, insurance, returning it.' },
+      { name:'cesta vlakem', prompt:'Create a dialogue or short text about travelling by train — buying tickets, finding the seat.' },
+      { name:'navigace ve městě', prompt:'Create a dialogue or short text about navigating in an unfamiliar city using a map or phone.' },
+      { name:'dopravní zpoždění', prompt:'Create a dialogue or short text about a delayed flight or train and what to do.' },
+      { name:'celní kontrola', prompt:'Create a dialogue or short text about going through customs at the border.' },
+      { name:'plánování dovolené', prompt:'Create a dialogue or short text about planning a holiday — destination, budget, activities.' },
+      { name:'problém na cestě', prompt:'Create a dialogue or short text about an unexpected problem during travel and solving it.' },
+    ]},
+    { name:'Bydlení a domácnost', icon:'🏠', items:[
+      { name:'stěhování', prompt:'Create a dialogue or short text about moving to a new home — packing, transport, setting up.' },
+      { name:'oprava v bytě', prompt:'Create a dialogue or short text about a repair needed in the flat and calling a repairman.' },
+      { name:'výpadek elektřiny', prompt:'Create a dialogue or short text about a power outage and how to deal with it.' },
+      { name:'problém s internetem', prompt:'Create a dialogue or short text about internet not working at home and troubleshooting.' },
+      { name:'sousedské spory', prompt:'Create a dialogue or short text about resolving a dispute with a neighbour.' },
+      { name:'úklid a organizace', prompt:'Create a dialogue or short text about cleaning and organising the home.' },
+      { name:'nákup nábytku', prompt:'Create a dialogue or short text about buying furniture — choosing, ordering, delivery.' },
+      { name:'poškozený spotřebič', prompt:'Create a dialogue or short text about a broken appliance and getting it repaired or replaced.' },
+      { name:'domácí rozpočet', prompt:'Create a dialogue or short text about managing a household budget and cutting expenses.' },
+      { name:'renovace bytu', prompt:'Create a dialogue or short text about renovating a flat — planning, workers, costs.' },
+    ]},
+    { name:'Vzdělávání a studium', icon:'🎓', items:[
+      { name:'příprava na zkoušku', prompt:'Create a dialogue or short text about preparing for an exam — study tips and stress.' },
+      { name:'školní projekt', prompt:'Create a dialogue or short text about working on a school project with classmates.' },
+      { name:'rozhovor s učitelem', prompt:'Create a dialogue or short text about talking to a teacher about grades or problems.' },
+      { name:'skupinové studium', prompt:'Create a dialogue or short text about studying in a group and dividing tasks.' },
+      { name:'domácí úkol', prompt:'Create a dialogue or short text about doing homework and asking for help.' },
+      { name:'jazyková výuka', prompt:'Create a dialogue or short text about learning a new language and practising it.' },
+      { name:'prezentace ve škole', prompt:'Create a dialogue or short text about giving a presentation in front of the class.' },
+      { name:'online kurz', prompt:'Create a dialogue or short text about taking an online course and staying motivated.' },
+      { name:'problém s učením', prompt:'Create a dialogue or short text about struggling with a subject and finding solutions.' },
+      { name:'motivace ke studiu', prompt:'Create a dialogue or short text about finding motivation to study and setting goals.' },
+    ]},
+    { name:'Každodenní situace', icon:'🛍️', items:[
+      { name:'v obchodě', prompt:'Create a dialogue or short text about shopping in a store — finding products, paying.' },
+      { name:'na poště', prompt:'Create a dialogue or short text about sending a package or picking up mail at the post office.' },
+      { name:'v bance', prompt:'Create a dialogue or short text about visiting a bank — opening an account, transferring money.' },
+      { name:'u kadeřníka', prompt:'Create a dialogue or short text about visiting a hairdresser and describing the haircut you want.' },
+      { name:'ztracené věci', prompt:'Create a dialogue or short text about losing something and trying to find it.' },
+      { name:'reklamace zboží', prompt:'Create a dialogue or short text about returning or complaining about a defective product.' },
+      { name:'výběr peněz', prompt:'Create a dialogue or short text about withdrawing money at an ATM or bank.' },
+      { name:'objednávka jídla', prompt:'Create a dialogue or short text about ordering food — at a restaurant or via delivery app.' },
+      { name:'čekání ve frontě', prompt:'Create a dialogue or short text about waiting in a queue and passing the time.' },
+      { name:'komunikace s úřadem', prompt:'Create a dialogue or short text about dealing with a government office or official.' },
+    ]},
+    { name:'Volný čas a zábava', icon:'🎬', items:[
+      { name:'výběr filmu', prompt:'Create a dialogue or short text about choosing a film to watch and discussing preferences.' },
+      { name:'návštěva kina', prompt:'Create a dialogue or short text about going to the cinema — tickets, snacks, opinions.' },
+      { name:'koncert', prompt:'Create a dialogue or short text about going to a concert and talking about the experience.' },
+      { name:'sportovní událost', prompt:'Create a dialogue or short text about attending or watching a sports event.' },
+      { name:'hry a hobby', prompt:'Create a dialogue or short text about hobbies and how people spend their free time.' },
+      { name:'knihy a čtení', prompt:'Create a dialogue or short text about reading books and recommending titles.' },
+      { name:'setkání s přáteli', prompt:'Create a dialogue or short text about meeting up with friends and planning activities.' },
+      { name:'víkendové aktivity', prompt:'Create a dialogue or short text about weekend plans and things to do.' },
+      { name:'festival', prompt:'Create a dialogue or short text about attending a music or cultural festival.' },
+    ]},
+    { name:'Město a veřejný prostor', icon:'🌆', items:[
+      { name:'doprava ve městě', prompt:'Create a dialogue or short text about getting around the city by public transport.' },
+      { name:'turistické informace', prompt:'Create a dialogue or short text about asking for tourist information in a city.' },
+      { name:'restaurace a kavárny', prompt:'Create a dialogue or short text about choosing a restaurant or café and ordering.' },
+      { name:'parkování', prompt:'Create a dialogue or short text about finding parking in the city and dealing with restrictions.' },
+      { name:'městský úřad', prompt:'Create a dialogue or short text about visiting a city council office and completing paperwork.' },
+      { name:'kulturní akce', prompt:'Create a dialogue or short text about attending a cultural event — exhibition, theatre.' },
+      { name:'bezpečnost ve městě', prompt:'Create a dialogue or short text about staying safe in the city and what to do in an emergency.' },
+      { name:'orientace v neznámém místě', prompt:'Create a dialogue or short text about finding your way in an unfamiliar place.' },
+      { name:'veřejná doprava', prompt:'Create a dialogue or short text about using buses, trams, or metro in a city.' },
+    ]},
+    { name:'Sociální interakce', icon:'🤝', items:[
+      { name:'seznamování', prompt:'Create a dialogue or short text about meeting someone new and introducing yourself.' },
+      { name:'small talk', prompt:'Create a dialogue or short text about making small talk in a social or professional setting.' },
+      { name:'pozvání na akci', prompt:'Create a dialogue or short text about inviting someone to an event and their response.' },
+      { name:'omluva', prompt:'Create a dialogue or short text about apologising for a mistake and making it right.' },
+      { name:'řešení konfliktu', prompt:'Create a dialogue or short text about resolving a disagreement calmly and respectfully.' },
+      { name:'vyjádření názoru', prompt:'Create a dialogue or short text about expressing an opinion politely in a group.' },
+      { name:'žádost o pomoc', prompt:'Create a dialogue or short text about asking someone for help and their response.' },
+      { name:'telefonní hovor', prompt:'Create a dialogue or short text about making or receiving a phone call.' },
+      { name:'chatování online', prompt:'Create a dialogue or short text about chatting online — messages, misunderstandings.' },
+      { name:'společenská etiketa', prompt:'Create a dialogue or short text about social etiquette in different situations.' },
+    ]},
+  ]},
 ];
 
 function buildGrammarMenu(data) {
@@ -6267,7 +6390,9 @@ function buildGrammarMenu(data) {
       '</div>' +
       '<div class="gg-topics"></div>';
     var topicsEl = block.querySelector('.gg-topics');
-    lvl.topics.forEach(function(topic) {
+    // SIT blok má 'sub' místo 'topics' — rozbalit sub jako topics
+    var topics = lvl.topics || lvl.sub || [];
+    topics.forEach(function(topic) {
       var tDiv = document.createElement('div');
       tDiv.className = 'gg-topic';
       tDiv.innerHTML =
@@ -6297,7 +6422,7 @@ function filterGrammar(q) {
   var srcData = getTranslatedGrammarData();
   if (!q) { buildGrammarMenu(srcData); return; }
   var filtered = srcData.map(function(lvl) {
-    var topics = lvl.topics.map(function(topic) {
+    var topics = (lvl.topics || lvl.sub || []).map(function(topic) {
       var items = topic.items.filter(function(item) {
         return item.name.toLowerCase().includes(q) || topic.name.toLowerCase().includes(q);
       });
@@ -8306,6 +8431,7 @@ function vtGeneratePhrasal(pv) {
 /* ── ✨ Náhodná inspirace ── */
 function insertRandomInspiration() {
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+
   var pools = {
     cz: [
       'první rande v kavárně','ztracené zavazadlo na letišti','pohovor o práci',
@@ -8471,7 +8597,13 @@ function insertRandomInspiration() {
     ]
   };
   var list = pools[lang] || pools.en;
-  var pick = list[Math.floor(Math.random() * list.length)];
+  if (!insertRandomInspiration._history) insertRandomInspiration._history = [];
+  var history = insertRandomInspiration._history;
+  var available = list.filter(function(t) { return history.indexOf(t) === -1; });
+  if (available.length === 0) available = list.slice();
+  var pick = available[Math.floor(Math.random() * available.length)];
+  history.push(pick);
+  if (history.length > 10) history.shift();
 
   var input = document.getElementById('practiceInput');
   if (input) {
