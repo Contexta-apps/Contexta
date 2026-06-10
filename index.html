@@ -2596,6 +2596,10 @@ img { max-width: 100%; height: auto; }
   color: var(--gold-lt);
   background: rgba(201,151,58,.15);
 }
+.gen-history-more {
+  border-style: dashed;
+  opacity: .7;
+}
 .gen-history-clear {
   background: none;
   border: none;
@@ -3476,6 +3480,8 @@ h1[data-t="heroH"] {
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
         <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
         <div class="gen-history-chips" id="genHistoryChips"></div>
+        <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.style.display='none';}">
+        <button class="gen-history-clear" onclick="genHistoryToggleInput()" title="Přidat slovo">＋</button>
         <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
       </div>
 
@@ -7778,7 +7784,7 @@ function selectAI(aiKey, name, cls, el) {
 
 // ── Probíraná slova (history) ──────────────────────────────────
 var GEN_HISTORY_KEY = 'gen_history_v1';
-var GEN_HISTORY_MAX = 8;
+var GEN_HISTORY_MAX = 50;
 
 function genHistoryLoad() {
   try { return JSON.parse(localStorage.getItem(GEN_HISTORY_KEY) || '[]'); }
@@ -7805,6 +7811,9 @@ function genHistoryClear() {
   genHistoryRender();
 }
 
+var GEN_HISTORY_VISIBLE = 12;
+var genHistoryExpanded = false;
+
 function genHistoryRender() {
   var list = genHistoryLoad();
   var row  = document.getElementById('genHistoryRow');
@@ -7813,7 +7822,8 @@ function genHistoryRender() {
   if (!list.length) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
   wrap.innerHTML = '';
-  list.forEach(function(word) {
+  var visible = genHistoryExpanded ? list : list.slice(0, GEN_HISTORY_VISIBLE);
+  visible.forEach(function(word) {
     var btn = document.createElement('button');
     btn.className = 'gen-history-chip';
     btn.textContent = word;
@@ -7823,6 +7833,34 @@ function genHistoryRender() {
     };
     wrap.appendChild(btn);
   });
+  if (list.length > GEN_HISTORY_VISIBLE) {
+    var more = document.createElement('button');
+    more.className = 'gen-history-chip gen-history-more';
+    more.textContent = genHistoryExpanded ? '▲ méně' : '+ ' + (list.length - GEN_HISTORY_VISIBLE) + ' další';
+    more.onclick = function() { genHistoryExpanded = !genHistoryExpanded; genHistoryRender(); };
+    wrap.appendChild(more);
+  }
+}
+
+function genHistoryAddManual() {
+  var inp = document.getElementById('genHistoryManualInput');
+  if (!inp) return;
+  var word = inp.value.trim();
+  if (!word) return;
+  genHistoryAdd(word);
+  inp.value = '';
+  inp.style.display = 'none';
+}
+
+function genHistoryToggleInput() {
+  var inp = document.getElementById('genHistoryManualInput');
+  if (!inp) return;
+  if (inp.style.display === 'none' || !inp.style.display) {
+    inp.style.display = 'inline-block';
+    inp.focus();
+  } else {
+    inp.style.display = 'none';
+  }
 }
 
 // Init při načtení stránky
@@ -8387,6 +8425,23 @@ function vtGeneratePhrasal(pv) {
 /* ── ✨ Náhodná inspirace ── */
 function insertRandomInspiration() {
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+
+  // Každých 5 kliknutí zkusit slovo z historie
+  if (!insertRandomInspiration._clickCount) insertRandomInspiration._clickCount = 0;
+  insertRandomInspiration._clickCount++;
+  if (insertRandomInspiration._clickCount % 5 === 0) {
+    var histList = genHistoryLoad();
+    if (!insertRandomInspiration._historyUsed) insertRandomInspiration._historyUsed = [];
+    var histAvail = histList.filter(function(w) { return insertRandomInspiration._historyUsed.indexOf(w) === -1; });
+    if (!histAvail.length) { insertRandomInspiration._historyUsed = []; histAvail = histList.slice(); }
+    if (histAvail.length) {
+      var pick = histAvail[Math.floor(Math.random() * histAvail.length)];
+      insertRandomInspiration._historyUsed.push(pick);
+      var input = document.getElementById('practiceInput');
+      if (input) { input.value = pick; if (typeof onIntentInput === 'function') onIntentInput(input); input.focus(); }
+      return;
+    }
+  }
 
   // Sestavit seznam ze sekce "Vybrat témata" (TOPICS) — jediný zdroj dat
   var list = [];
