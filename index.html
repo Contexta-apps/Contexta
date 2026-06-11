@@ -124,6 +124,19 @@ body {
 .coffee-nav-panel p a { color: var(--gold-lt); }
 .coffee-nav-panel .kofi-frame { font-size: .8rem; }
 .coffee-nav-panel .kofi-hint { font-size: .72rem; }
+.paypal-donate-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px;
+  padding: 7px 16px;
+  background: #0070ba;
+  color: #fff;
+  font-size: .78rem; font-weight: 700;
+  border-radius: 20px;
+  text-decoration: none;
+  letter-spacing: .3px;
+  transition: background .2s, transform .2s;
+}
+.paypal-donate-btn:hover { background: #005ea6; transform: translateY(-1px); }
 
 /* ══════════════════════════════
    LANGUAGE BAR
@@ -3433,7 +3446,7 @@ h1[data-t="heroH"] {
         <div class="coffee-nav-panel" id="coffeeNavPanel">
           <span class="coffee-emoji">☕</span>
           <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
-          <p data-t="coffeeP">Pomáhá ti Contexta? Podpoř mě kávou na <a href="https://ko-fi.com/contexta" target="_blank" rel="noopener">Ko-fi</a> — každý příspěvek může Contextu posunout dál.</p>
+          <p data-t="coffeeP">Pomáhá ti Contexta? Podpoř mě kávou na <a href="https://ko-fi.com/Contexta" target="_blank" rel="noopener">Ko-fi</a> — každý příspěvek může Contextu posunout dál.</p>
         </div>
       </div>
 
@@ -3896,7 +3909,7 @@ cz:{
   audioNote:'V ChatGPT si lze zapnout přehrávání hlasem – slyšíte <span class="hl">správnou výslovnost</span>.',
   coffeeH:"Líbí se ti Contexta?",
   coffeeBtn:"Podpoř vývoj",
-  coffeeP:"Pomáhá ti Contexta? Podpoř mě kávou na <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý příspěvek může Contextu posunout dál.",
+  coffeeP:"Pomáhá ti Contexta? Podpoř mě kávou na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý příspěvek může Contextu posunout dál.",
   footerP:"Vytvořeno pomocí Claude AI (Anthropic) · claude.ai",
   footerSub:"10 jazyků · 3 úrovně · 6 AI platforem",
   nav1:'Prompty',
@@ -3987,7 +4000,7 @@ en:{
   audioNote:'In ChatGPT you can enable voice playback – hear <span class="hl">correct pronunciation</span>.',
   coffeeH:"Do you like Contexta?",
   coffeeBtn:"Support development",
-  coffeeP:"Does Contexta help you? Support me with a coffee on <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — every contribution can move Contexta forward.",
+  coffeeP:"Does Contexta help you? Support me with a coffee on <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — every contribution can move Contexta forward.",
   footerP:"Created with Claude AI (Anthropic) · claude.ai",
   footerSub:"10 languages · 3 levels · 6 AI platforms",
   nav1:'Prompts',
@@ -4077,7 +4090,7 @@ de:{
   audioNote:'In ChatGPT kann die Sprachausgabe aktiviert werden – du hörst <span class="hl">die richtige Aussprache</span>.',
   coffeeH:"Gefällt dir Contexta?",
   coffeeBtn:"Entwicklung unterstützen",
-  coffeeP:"Hilft dir Contexta? Unterstütze mich mit einem Kaffee auf <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — jeder Beitrag kann Contexta weiterbringen.",
+  coffeeP:"Hilft dir Contexta? Unterstütze mich mit einem Kaffee auf <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — jeder Beitrag kann Contexta weiterbringen.",
   footerP:"Erstellt mit Claude AI (Anthropic) · claude.ai",
   footerSub:"10 Sprachen · 3 Niveaus · 6 KI-Plattformen",
   nav1:'Prompts',
@@ -4163,7 +4176,7 @@ fr:{
   audioNote:'Dans ChatGPT, la lecture audio peut être activée – tu entends <span class="hl">la bonne prononciation</span>.',
   coffeeH:"Aimes-tu Contexta ?",
   coffeeBtn:"Soutenir le développement",
-  coffeeP:"Contexta t'aide ? Soutiens-moi avec un café sur <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — chaque contribution peut faire avancer Contexta.",
+  coffeeP:"Contexta t'aide ? Soutiens-moi avec un café sur <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — chaque contribution peut faire avancer Contexta.",
   footerP:"Créé avec Claude AI (Anthropic) · claude.ai",
   footerSub:"10 langues · 3 niveaux · 6 plateformes IA",
   nav1:'Prompts',
@@ -4249,7 +4262,7 @@ es:{
   audioNote:'En ChatGPT se puede activar la reproducción de voz – escuchas <span class="hl">la pronunciación correcta</span>.',
   coffeeH:"¿Te gusta Contexta?",
   coffeeBtn:"Apoyar el desarrollo",
-  coffeeP:"¿Te ayuda Contexta? Apóyame con un café en <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribución puede impulsar Contexta.",
+  coffeeP:"¿Te ayuda Contexta? Apóyame con un café en <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribución puede impulsar Contexta.",
   footerP:"Creado con Claude AI (Anthropic) · claude.ai",
   footerSub:"10 idiomas · 3 niveles · 6 plataformas IA",
   nav1:'Prompts',
@@ -4333,7 +4346,7 @@ it:{
   audioNote:'In ChatGPT è possibile attivare la riproduzione vocale – senti <span class="hl">la pronuncia corretta</span>.',
   coffeeH:"Ti piace Contexta?",
   coffeeBtn:"Supporta lo sviluppo",
-  coffeeP:"Contexta ti è utile? Supportami con un caffè su <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — ogni contributo può far avanzare Contexta.",
+  coffeeP:"Contexta ti è utile? Supportami con un caffè su <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — ogni contributo può far avanzare Contexta.",
   footerP:"Creato con Claude AI (Anthropic) · claude.ai",
   footerSub:"10 lingue · 3 livelli · 6 piattaforme IA",
   nav1:'Prompt',
@@ -4417,7 +4430,7 @@ pt:{
   audioNote:'No ChatGPT é possível ativar a reprodução de voz – você ouve <span class="hl">a pronúncia correta</span>.',
   coffeeH:"Gostaste do Contexta?",
   coffeeBtn:"Apoiar o desenvolvimento",
-  coffeeP:"O Contexta ajuda-te? Apoia-me com um café no <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribuição pode fazer o Contexta avançar.",
+  coffeeP:"O Contexta ajuda-te? Apoia-me com um café no <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribuição pode fazer o Contexta avançar.",
   footerP:"Criado com Claude AI (Anthropic) · claude.ai",
   footerSub:"10 idiomas · 3 níveis · 6 plataformas IA",
   nav1:'Prompts',
@@ -4500,7 +4513,7 @@ pl:{
   audioNote:'W ChatGPT można włączyć odtwarzanie głosowe – słyszysz <span class="hl">właściwą wymowę</span>.',
   coffeeH:"Podoba ci się Contexta?",
   coffeeBtn:"Wesprzyj rozwój",
-  coffeeP:"Czy Contexta Ci pomaga? Wesprzyj mnie kawą na <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — każda wpłata może przybliżyć rozwój Contexty.",
+  coffeeP:"Czy Contexta Ci pomaga? Wesprzyj mnie kawą na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — każda wpłata może przybliżyć rozwój Contexty.",
   footerP:"Stworzone z Claude AI (Anthropic) · claude.ai",
   footerSub:"10 języków · 3 poziomy · 6 platform AI",
   nav1:'Podpowiedzi',
@@ -4584,7 +4597,7 @@ cn:{
   audioNote:'在ChatGPT中可以开启语音播放 – 听到<span class="hl">正确发音</span>。',
   coffeeH:"你喜欢Contexta吗？",
   coffeeBtn:"支持开发",
-  coffeeP:"Contexta对你有帮助吗？在<a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>上请我喝杯咖啡——每一份支持都能让Contexta更进一步。",
+  coffeeP:"Contexta对你有帮助吗？在<a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>上请我喝杯咖啡——每一份支持都能让Contexta更进一步。",
   footerP:"使用Claude AI (Anthropic) · claude.ai创建",
   footerSub:"10种语言 · 3个级别 · 6个AI平台",
   nav1:'提示词',
@@ -4668,7 +4681,7 @@ jp:{
   audioNote:'ChatGPTでボイス再生をオンにできます – <span class="hl">正しい発音</span>が聞けます。',
   coffeeH:"Contextaはいかがですか？",
   coffeeBtn:"開発をサポート",
-  coffeeP:"Contextaは役に立っていますか？<a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>でコーヒーをおごってください — あなたのサポートがContextaを前進させます。",
+  coffeeP:"Contextaは役に立っていますか？<a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>でコーヒーをおごってください — あなたのサポートがContextaを前進させます。",
   footerP:"Claude AI (Anthropic) · claude.ai で作成",
   footerSub:"10言語 · 3レベル · 6AIプラットフォーム",
   nav1:'プロンプト',
@@ -4752,7 +4765,7 @@ kr:{
   audioNote:'ChatGPT에서 음성 재생을 켤 수 있습니다 – <span class="hl">올바른 발음</span>을 들을 수 있습니다.',
   coffeeH:"Contexta가 마음에 드세요?",
   coffeeBtn:"개발 후원하기",
-  coffeeP:"Contexta가 도움이 되나요? <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>에서 커피 한 잔으로 응원해 주세요 — 모든 후원이 Contexta를 발전시킵니다.",
+  coffeeP:"Contexta가 도움이 되나요? <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>에서 커피 한 잔으로 응원해 주세요 — 모든 후원이 Contexta를 발전시킵니다.",
   footerP:"Claude AI (Anthropic) · claude.ai로 제작",
   footerSub:"10개 언어 · 3개 레벨 · 6개 AI 플랫폼",
   nav1:'프롬프트',
@@ -4836,7 +4849,7 @@ sk:{
   audioNote:'V ChatGPT si možno zapnúť prehrávanie hlasom – počuješ <span class="hl">správnu výslovnosť</span>.',
   coffeeH:"Páči sa ti Contexta?",
   coffeeBtn:"Podporiť vývoj",
-  coffeeP:"Pomáha ti Contexta? Podpor ma kávou na <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý príspevok môže Contextu posunúť ďalej.",
+  coffeeP:"Pomáha ti Contexta? Podpor ma kávou na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý príspevok môže Contextu posunúť ďalej.",
   footerP:"Vytvorené pomocou Claude AI (Anthropic) · claude.ai",
   footerSub:"10 jazykov · 3 úrovne · 6 AI platforiem",
   nav3:'AI', nav4:'☕',
@@ -4909,7 +4922,7 @@ nl:{
   audioNote:'In ChatGPT kun je spraakweergave inschakelen – je hoort de <span class="hl">juiste uitspraak</span>.',
   coffeeH:"Vind je Contexta goed?",
   coffeeBtn:"Ondersteun ontwikkeling",
-  coffeeP:"Helpt Contexta je? Steun me met een koffie op <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — elke bijdrage kan Contexta verder helpen.",
+  coffeeP:"Helpt Contexta je? Steun me met een koffie op <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — elke bijdrage kan Contexta verder helpen.",
   footerP:"Gemaakt met Claude AI (Anthropic) · claude.ai",
   footerSub:"10 talen · 3 niveaus · 6 AI-platforms",
   nav3:'AI', nav4:'☕',
@@ -4982,7 +4995,7 @@ sv:{
   audioNote:'I ChatGPT kan du aktivera röstuppspelning – du hör <span class="hl">korrekt uttal</span>.',
   coffeeH:"Gillar du Contexta?",
   coffeeBtn:"Stöd utvecklingen",
-  coffeeP:"Hjälper Contexta dig? Stöd mig med ett kaffe på <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — varje bidrag kan föra Contexta framåt.",
+  coffeeP:"Hjälper Contexta dig? Stöd mig med ett kaffe på <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — varje bidrag kan föra Contexta framåt.",
   footerP:"Skapad med Claude AI (Anthropic) · claude.ai",
   footerSub:"10 språk · 3 nivåer · 6 AI-plattformar",
   nav3:'AI', nav4:'☕',
@@ -5055,7 +5068,7 @@ ru:{
   audioNote:'В ChatGPT можно включить голосовое воспроизведение — <span class="hl">услышишь правильное произношение</span>.',
   coffeeH:"Нравится Contexta?",
   coffeeBtn:"Поддержать разработку",
-  coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
+  coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
   footerP:"Создано с помощью Claude AI (Anthropic) · claude.ai",
   footerSub:"10 языков · 3 уровня · 6 AI платформ",
   genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
@@ -5123,7 +5136,7 @@ tr:{
   audioNote:'ChatGPT\'de sesli oynatmayı etkinleştirebilirsin – <span class="hl">doğru telaffuzu</span> duyarsın.',
   coffeeH:"Contexta'yı beğendin mi?",
   coffeeBtn:"Geliştirmeyi destekle",
-  coffeeP:"Contexta işine yarıyor mu? <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>'de bir kahveyle beni destekle — her katkı Contexta'yı ileriye taşıyabilir.",
+  coffeeP:"Contexta işine yarıyor mu? <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>'de bir kahveyle beni destekle — her katkı Contexta'yı ileriye taşıyabilir.",
   footerP:"Claude AI (Anthropic) · claude.ai ile oluşturuldu",
   footerSub:"10 dil · 3 seviye · 6 AI platformu",
   nav3:'AI', nav4:'☕',
@@ -5197,7 +5210,7 @@ uk:{
   audioNote:'У ChatGPT можна увімкнути голосове відтворення – чуй <span class="hl">правильну вимову</span>.',
   coffeeH:"Подобається Contexta?",
   coffeeBtn:"Підтримати розвиток",
-  coffeeP:"Contexta допомагає тобі? Підтримай мене кавою на <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — кожен внесок може просунути Contexta вперед.",
+  coffeeP:"Contexta допомагає тобі? Підтримай мене кавою на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — кожен внесок може просунути Contexta вперед.",
   footerP:"Створено за допомогою Claude AI (Anthropic) · claude.ai",
   footerSub:"10 мов · 3 рівні · 6 AI платформ",
   nav1:'Промпти', nav3:'ШІ', nav4:'☕',
@@ -5276,7 +5289,7 @@ id:{
   audioNote:'Di ChatGPT kamu dapat mengaktifkan pemutaran suara – dengar <span class="hl">pengucapan yang benar</span>.',
   coffeeH:"Apakah kamu suka Contexta?",
   coffeeBtn:"Dukung pengembangan",
-  coffeeP:"Apakah Contexta membantumu? Dukung saya dengan kopi di <a href=\"https://ko-fi.com/contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — setiap kontribusi dapat memajukan Contexta.",
+  coffeeP:"Apakah Contexta membantumu? Dukung saya dengan kopi di <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — setiap kontribusi dapat memajukan Contexta.",
   footerP:"Dibuat dengan Claude AI (Anthropic) · claude.ai",
   footerSub:"10 bahasa · 3 level · 6 platform AI",
   nav1:'Prompt', nav3:'AI', nav4:'☕',
