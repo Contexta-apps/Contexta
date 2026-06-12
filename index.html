@@ -3541,8 +3541,8 @@ h1[data-t="heroH"] {
       <div class="gen-tuning-chips">
         <div class="gen-lang-dd" id="fromLangDd">
           <button class="gen-lang-dd-btn gen-lang-chip" id="fromLangBtn" onclick="toggleGenLangDd('from',event)" aria-haspopup="listbox" aria-expanded="false" aria-label="Jazyk překladu z">
-            <img class="gen-lang-dd-flag" id="fromLangFlag" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e8-1f1ff.svg" alt="" aria-hidden="true">
-            <span class="gen-lang-dd-name" id="fromLangName">Čeština</span>
+            <img class="gen-lang-dd-flag" id="fromLangFlag" src="" alt="" aria-hidden="true">
+            <span class="gen-lang-dd-name" id="fromLangName"></span>
             <span class="gen-lang-dd-arrow">▼</span>
           </button>
           <div class="gen-lang-dd-list" id="fromLangList"></div>
@@ -3550,8 +3550,8 @@ h1[data-t="heroH"] {
         <button class="gen-swap-btn" onclick="swapLangs()">⇄</button>
         <div class="gen-lang-dd" id="toLangDd">
           <button class="gen-lang-dd-btn gen-lang-chip" id="toLangBtn" onclick="toggleGenLangDd('to',event)" aria-haspopup="listbox" aria-expanded="false" aria-label="Jazyk překladu do">
-            <img class="gen-lang-dd-flag" id="toLangFlag" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e8-1f1ff.svg" alt="" aria-hidden="true">
-            <span class="gen-lang-dd-name" id="toLangName">Čeština</span>
+            <img class="gen-lang-dd-flag" id="toLangFlag" src="" alt="" aria-hidden="true">
+            <span class="gen-lang-dd-name" id="toLangName"></span>
             <span class="gen-lang-dd-arrow">▼</span>
           </button>
           <div class="gen-lang-dd-list" id="toLangList"></div>
@@ -5361,7 +5361,20 @@ function switchLanguage(lang) {
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
-let webLang   = 'cz';
+// Priorita: 1) localStorage  2) jazyk prohlížeče  3) "en"
+(function() {
+  var savedLang = localStorage.getItem('lang');
+  if (savedLang) {
+    // Normalizuj cs→cz pro interní kód
+    window.__initLang = savedLang === 'cs' ? 'cz' : savedLang;
+  } else {
+    var browserLang = (navigator.language || '').slice(0, 2);
+    var internalLang = browserLang === 'cs' ? 'cz' : browserLang;
+    var isSupported = LANG_LIST.some(function(l){ return l.code === internalLang; });
+    window.__initLang = isSupported ? internalLang : 'en';
+  }
+})();
+let webLang   = window.__initLang || 'en';
 let learnLang = 'en';
 let openRow   = null;
 let currentUtterance = null;
@@ -5411,6 +5424,8 @@ function toggleDrop(id, e) {
 // ── Roletka 1: změní jazyk celé stránky ──
 function selectWebLang(code, label, flag, el) {
   webLang = code;
+  // Ulož volbu uživatele (interní 'cz' → ISO 'cs' pro konzistenci)
+  localStorage.setItem('lang', code === 'cz' ? 'cs' : code);
   setLangBtn(code, label);
 
   selectGenLang('from', code, null);
@@ -6902,8 +6917,8 @@ document.addEventListener('click', function(e) {
 // Jazyky dostupné v generátoru (podmnožina LANG_LIST)
 var GEN_LANGS = ['en','de','fr','es','it','pt','cz','pl','sk','uk','id','ru','cn','jp','kr'];
 
-var genFromLangVal = 'cz';
-var genToLangVal   = 'en';
+var genFromLangVal = (typeof webLang !== 'undefined') ? webLang : 'en';
+var genToLangVal   = (genFromLangVal === 'en') ? 'cz' : 'en';
 
 function buildGenLangDropdowns() {
   ['from','to'].forEach(function(side) {
