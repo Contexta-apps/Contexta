@@ -8044,73 +8044,58 @@ function genGenerate() {
   var needsTranslation = looksEnglish && !fromIsEnglish;
 
   var prompt =
-    'Výukové dialogy. JAZYK A: ' + fromName + ' JAZYK B: ' + toName + '\n' +
-    'TÉMA: ' + intent + '\n' +
-    (assistTopic ? 'TÉMA KONTEXT: ' + assistTopic + '\n' : '') +
-    (assistVerb  ? 'FRÁZOVÉ SLOVESO: ' + assistVerb + '\n' : '') +
-    (selectedGrammar ? 'GRAMATICKÝ JEV: ' + selectedGrammar.name + '\n' : '') +
-    'ÚROVEŇ: ' + cefrLevel + ' STYL: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
+    'Create language learning content.\n' +
+    'Language A: ' + fromName + '\n' +
+    'Language B: ' + toName + '\n' +
+    'Topic/target word: ' + intent + '\n' +
+    (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
+    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' : '') +
+    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
+    'Level: ' + cefrLevel + '\n' +
+    'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
-    'ŠTÍTKY (neměnné): ' + fromLabel + ' a ' + toLabel + '\n\n' +
+    'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
-    'VÝSTUP:\n' +
-    '1. Řádek 1 — PŘESNĚ v tomto formátu (každé slovo ve SVÉM jazyce, žádné míchání):\n' +
-    fromLabel + ' [překlad tématu do ' + fromName + '] — ' + toLabel + ' [překlad tématu do ' + toName + ']\n' +
-    '⚠️ Na řádku 1 NESMÍ být žádné slovo z jiného jazyka než je přiřazený blok.\n\n' +
-    '2. Tři vzorové věty (každá dvojice na 2 řádcích, mezi nimi prázdný řádek):\n' +
-    fromLabel + ' věta\n' +
-    toLabel + ' překlad\n\n' +
-    '3. ' + totalDialogs + ' dialogů (1.–' + totalDialogs + ') v PŘESNĚ tomto formátu:\n\n' +
-    '1.\n' +
-    fromLabel + '\n' +
-    'a) ...\n' +
-    'b) ...\n' +
-    'a) ...\n\n' +
-    toLabel + '\n' +
-    'a) ...\n' +
-    'b) ...\n' +
-    'a) ...\n\n' +
-    '2.\n' +
-    '(atd.)\n\n' +
+    'OUTPUT:\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']\n' +
+    '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a), format:\n' +
+    '1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n2.\n(etc.)\n\n' +
 
-    'PRAVIDLA DIALOGŮ:\n' +
-    (selectedGrammar ? '' :
-      '- KRITICKÁ PRAVIDLA ČASŮ: dialogy 1–4 přítomný čas, 5–7 minulý čas, 8–10 budoucí čas. ' +
-      'Překlad zachovává stejný čas jako originál. Odpověď je chybná, pokud chybí minulý nebo budoucí čas.\n') +
-    '- 3 repliky: a) otázka  b) odpověď  a) reakce (ne jen "Aha." nebo "Rozumím.")\n' +
-    '- Každý dialog = jiná situace na téma "' + intent + '"\n' +
-    '- ' + toLabel + ' = přirozený ekvivalent, ne doslovný překlad\n' +
-    '- Krátké, reálné, hovorové\n' +
-    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách, dialozích i příkladech musí být zadané slovo přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku ' + fromLabel + ' použij překlad do ' + fromName + ', v bloku ' + toLabel + ' překlad do ' + toName + '. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
-    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n\n' +
+    'RULES:\n' +
+    '- 3 turns: a) question b) answer a) reaction (not just "ok"/"got it")\n' +
+    '- Each dialogue = different situation about "' + intent + '"\n' +
+    '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
+    '- Natural native-speaker language in both A and B, matching level ' + cefrLevel + '.\n' +
+    '- LEVEL COMPLIANCE: every sentence, every dialogue turn, and every translation must strictly match level ' + cefrLevel + '. Vocabulary, grammar structures, and sentence complexity must all be appropriate for this level — no exceptions.\n' +
+    '\n' +
+    'KEY PRINCIPLE — "' + intent + '":\n' +
+    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
+    '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, or expresses irony/sarcasm.\n' +
+    'NEVER insert "' + intent + '" just to fulfil a quota, when it sounds unnatural, or when it has no communicative function.\n' +
+    'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
+    'If "' + intent + '" has multiple meanings, each dialogue reflects one distinct meaning — chosen by context, not by rotation.\n' +
+    'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
+    '"' + intent + '" in dialogues: use only in turns where it naturally belongs as part of a reaction or statement — not forced into every turn.\n' +
+    'Across all examples, "' + intent + '" must appear in varied pragmatic functions — not only logical deduction, but also: reaction to new information, contrast with expectation, expression of speaker\'s attitude or stance.\n' +
+    '\n' +
+    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order). Translation keeps the same tense as the original.\n') +
+    '- Translate meaning, not words; do not preserve lexical structure.\n' +
+    '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
-      ? '⚠️ SLOVO "' + intent + '" JE ANGLICKÉ — JAZYK A JE ' + fromName.toUpperCase() + ':\n' +
-        '- V ' + fromLabel + ' blocích NIKDY nepiš "' + intent + '" — přelož ho do ' + fromName + ' a používej POUZE tento překlad.\n' +
-        '- V ' + toLabel + ' blocích používej "' + intent + '" (anglicky).\n' +
-        '- Drž se PŘESNĚ tohoto slova — nikdy ne synonyma, podkategorie ani příbuzné výrazy.\n\n'
-      : '⚠️ STRIKTNÍ JAZYKOVÁ IZOLACE:\n' +
-        '- Téma "' + intent + '" přelož do každého jazyka zvlášť.\n' +
-        '- V bloku ' + fromLabel + ' NIKDY nepoužívej slovo z jiného jazyka než ' + fromName + ' — ani jednou.\n' +
-        '- V bloku ' + toLabel + ' NIKDY nepoužívej slovo z jiného jazyka než ' + toName + ' — ani jednou.\n' +
-        '- Každý blok je izolovaný datový slot. Cross-language leakage (přenos slova z jednoho jazyka do druhého bloku) je chyba a výstup je neplatný.\n' +
-        '- Drž se PŘESNĚ překladu daného jazyka — nikdy ne synonyma ani podkategorie.\n\n') +
+      ? 'NOTE: "' + intent + '" is English; ' + fromLabel + ' is ' + fromName + '. In ' + fromLabel + ' blocks translate it into ' + fromName + '; in ' + toLabel + ' blocks keep "' + intent + '" in English.\n\n'
+      : 'Keep each block strictly in its own language (' + fromLabel + ' = ' + fromName + ' only, ' + toLabel + ' = ' + toName + ' only) - no mixing.\n\n') +
 
-    'ZÁKAZY: názvy jazyků v plné formě, tabulky, Markdown, pipe znaky (|)\n' +
-    'Věta a překlad nesmí být na stejném řádku.\n\n' +
+    'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
     (selectedGrammar
-      ? '📖 GRAMATICKÝ JEV — POVINNÉ ZAPRACOVÁNÍ:\n' +
-        'Téma: ' + selectedGrammar.name + '\n' +
-        'Instrukce pro AI: ' + selectedGrammar.prompt + '\n\n' +
-        'PRAVIDLA GRAMATICKÉ INTEGRACE:\n' +
-        '- Ve vzorových větách i dialozích přirozeně použij tento gramatický jev (v anglické části).\n' +
-        '- Na konci celé odpovědi přidej sekci "📖 GRAMATIKA: ' + selectedGrammar.name + '" s krátkým vysvětlením jevu v ' + fromName + ' (3–5 vět) a 3 dalšími ilustračními příklady.\n' +
-        '- Gramatický jev zahrň jemně a přirozeně — dialogy musí stále znít autenticky.\n\n'
+      ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\n' +
+        'Use it naturally in the ' + fromLabel + ' examples and dialogues. At the end add a section titled "GRAMMAR: ' + selectedGrammar.name + '" with a short explanation in ' + fromName + ' (3-5 sentences) and 3 more example sentences.\n\n'
       : '') +
 
-    'Počet dialogů: ' + totalDialogs + '\n' +
-    'Délka: ' + dlInfo.label + '\n';
+    'Number of dialogues: ' + totalDialogs + '\n' +
+    'Length: ' + dlInfo.label + '\n';
 
   // Uložit do Probíraných slov
   genHistoryAdd(intent);
@@ -8118,10 +8103,8 @@ function genGenerate() {
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
   if (sendBtn) sendBtn.classList.add('loading');
-  setTimeout(function() {
-    genOpen(currentAI, prompt);
-    if (sendBtn) sendBtn.classList.remove('loading');
-  }, 600);
+  genOpen(currentAI, prompt);
+  if (sendBtn) sendBtn.classList.remove('loading');
 }
 
 function genOpen(ai, promptText) {
@@ -8134,8 +8117,18 @@ function genOpen(ai, promptText) {
     mistral: 'https://chat.mistral.ai/chat?q=' + enc,
     meta:    'https://www.meta.ai/?q=' + enc,
   };
-  window.open(urls[ai] || urls.chatgpt, '_blank');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(promptText).catch(function(){});
+  }
+  var LIMIT = 6000;
+  var url = urls[ai] || urls.chatgpt;
+  if (enc.length > LIMIT) {
+    var base = { chatgpt:'https://chatgpt.com/', claude:'https://claude.ai/new', gemini:'https://gemini.google.com/app', copilot:'https://copilot.microsoft.com/', mistral:'https://chat.mistral.ai/chat', meta:'https://www.meta.ai/' };
+    url = base[ai] || base.chatgpt;
+  }
+  window.open(url, '_blank');
 }
+
 
 
 
@@ -8414,8 +8407,9 @@ function vtGenerate(verb, level) {
     '- Různé situace: práce, cestování, každodenní život.\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova. Použij přirozený ekvivalent v cílovém jazyce.\n' +
-    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
-    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n' +
+    '- CÍLOVÉ SLOVESO "' + verb + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
+    '- Má-li sloveso více významů/vazeb, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
+    '- Překlad = význam celé věty v kontextu, ne slovo za slovo.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
@@ -8448,8 +8442,9 @@ function vtGeneratePhrasal(pv) {
     '- Různé situace: práce, cestování, každodenní život.\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa překládej jako celek — nikdy doslova. Nejprve urči jejich skutečný kontextový význam, pak použij přirozený idiomatický ekvivalent v cílovém jazyce. Nesmí znít jako přeloženo strojově.\n' +
-    '- KRITICKÉ PRAVIDLO PŘEKLADU: Ve VŠECH větách a dialozích musí být zadané frázové sloveso přeloženo do příslušného jazyka bloku — nesmí zůstat v původním jazyce v jediném výskytu. V bloku JAZYK A použij překlad do výchozího jazyka, v bloku JAZYK B překlad do cílového jazyka. Odpověď je chybná, pokud zůstane byť jeden nepřeložený výskyt.\n' +
-    '- PRAVIDLO LEXIKÁLNÍ NÁHRADY: Každý jednotlivý token vstupního textu, včetně slov uvnitř vět, musí být přeložen do cílového jazyka. Žádné slovo nesmí zůstat v původním jazyce. Neexistují výjimky pro malá slova, jednoslovné tokeny ani části vět. Výstup musí vždy obsahovat pouze překlad — je zakázáno opakovat nebo zachovávat jakýkoli segment původního textu.\n' +
+    '- CÍLOVÉ FRÁZOVÉ SLOVESO "' + pv + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
+    '- Má-li více významů, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
+    '- Překlad = význam celé věty v kontextu, ne slovo za slovo.\n' +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
