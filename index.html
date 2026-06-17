@@ -8084,7 +8084,8 @@ function genGenerate() {
     (needsTranslation
       ? 'NOTE: "' + intent + '" looks English but treat as ' + fromName + '. Always translate into ' + toName + ' in ' + toLabel + ' blocks.\n\n'
       : fromLabel + ' = ' + fromName + ' only. ' + toLabel + ' = ' + toName + ' only. No mixing.\n\n') +
-    'Forbidden: language names in text, tables, Markdown, pipe |. Never put sentence and translation on same line.\n\n' +
+    'Forbidden: language names in text, tables, Markdown, pipe |. Never put sentence and translation on same line.\n' +
+    'CRITICAL FORMATTING: Every a) b) a) line MUST be on its own separate line. Never put a) b) a) on one line. One speaker turn = one line. This applies on all devices including mobile.\n\n' +
 
     (selectedGrammar
       ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\nUse naturally in ' + fromLabel + ' examples and dialogues. End with section "GRAMMAR: ' + selectedGrammar.name + '" — short explanation in ' + fromName + ' (3-5 sentences) + 3 examples.\n\n'
