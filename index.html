@@ -5769,7 +5769,6 @@ function setIntent(btn) {
 }
 
 function onIntentInput(el) {
-  intentIsTopicCategory = false;
   var btn = document.getElementById('clearInputBtn');
   var mini = document.getElementById('generateMiniBtn');
   var hasText = el.value.length > 0;
@@ -6424,7 +6423,6 @@ function toggleGrammarPanel(hdr) {
 
 var selectedTopic = '';
 var selectedTopicLabel = '';
-var intentIsTopicCategory = false;
 
 // ── Helper: escape HTML in topic labels ──
 function escapeTopicHtml(str) {
@@ -6830,7 +6828,6 @@ function selectTopic(item, e) {
   });
   // Přidej do pole
   insertToPractice(item);
-  intentIsTopicCategory = true;
 }
 
 
@@ -8055,43 +8052,49 @@ function genGenerate() {
     (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' : '') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
     'Level: ' + cefrLevel + '\n' +
-    'Item type: ' + (intentIsTopicCategory ? 'topic' : 'target_word') + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
-    'Labels: ' + fromLabel + ' / ' + toLabel + '\n\n' +
+    'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    fromLabel + ' [topic] - ' + toLabel + ' [topic]\n' +
-    '3 sentence pairs. STRICTLY no numbering, no bullets, no dashes before sentences:\n' + fromLabel + ' [sentence]\n' + toLabel + ' [translation]\n\n' + fromLabel + ' [sentence]\n' + toLabel + ' [translation]\n\n' + fromLabel + ' [sentence]\n' + toLabel + ' [translation]\n\n' +
-    totalDialogs + ' dialogues, format:\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']\n' +
+    '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a), format:\n' +
     '1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n2.\n(etc.)\n\n' +
 
     'RULES:\n' +
-    '- No speaker labels. Format: a) b) a) only — never "Passenger:", "Customer:" etc.\n' +
-    '- Fixed roles per dialogue (e.g. customer/shopkeeper). Role stays consistent. Only natural role asks questions. Last line = natural close, not a role switch. Fix any violation before output.\n' +
-    (!intentIsTopicCategory ? '- CONTEXTUAL TRANSLATION: "' + intent + '" may have context-dependent equivalents (e.g. bill/receipt/account). Identify meanings by context, use the correct one per situation. Never default to one fixed translation.\n' : '') +
-    (intentIsTopicCategory ? '- Each dialogue = different situation within the topic area\n' : '- Each dialogue = different situation using "' + intent + '"\n') +
-    '- Each language block = independent natural version, NOT a literal translation.\n' +
-    '- Native-speaker language, level ' + cefrLevel + '. Every turn must match this level — no exceptions.\n' +
+    '- 3 turns: a) question b) answer a) reaction (not just "ok"/"got it")\n' +
+    '- Each dialogue = different situation about "' + intent + '"\n' +
+    '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
+    '- Natural native-speaker language in both A and B, matching level ' + cefrLevel + '.\n' +
+    '- LEVEL COMPLIANCE: every sentence, every dialogue turn, and every translation must strictly match level ' + cefrLevel + '. Vocabulary, grammar structures, and sentence complexity must all be appropriate for this level — no exceptions.\n' +
     '\n' +
-    'ITEM TYPE: ' + (intentIsTopicCategory ? 'topic' : 'target_word') + '\n' +
-    (intentIsTopicCategory
-      ? 'Topic = thematic area only. Do not insert the topic name literally. Create natural everyday situations within this area. Each must be a DIFFERENT realistic situation. Translate the whole situation naturally.\n'
-      : 'Target word = use "' + intent + '" directly. Build a real situation first, then write the line. Use it only where natural (reaction, conclusion, attitude, irony). Never force it. Each example = different situation and use. Multiple meanings = one per dialogue by context. Vary pragmatic functions: reaction, contrast, stance — not only deduction.\n') +
+    'KEY PRINCIPLE — "' + intent + '":\n' +
+    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
+    '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, or expresses irony/sarcasm.\n' +
+    'NEVER insert "' + intent + '" just to fulfil a quota, when it sounds unnatural, or when it has no communicative function.\n' +
+    'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
+    'If "' + intent + '" has multiple meanings, each dialogue reflects one distinct meaning — chosen by context, not by rotation.\n' +
+    'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
+    '"' + intent + '" in dialogues: use only in turns where it naturally belongs as part of a reaction or statement — not forced into every turn.\n' +
+    'Across all examples, "' + intent + '" must appear in varied pragmatic functions — not only logical deduction, but also: reaction to new information, contrast with expectation, expression of speaker\'s attitude or stance.\n' +
     '\n' +
-    (selectedGrammar ? '- Tenses: follow grammar focus.\n' : '- Tenses: sentences 1 present/1 past/1 future. Dialogues: 4 present/3 past/3 future. Keep tense in translation.\n') +
-    '- Translate meaning not words. Goal: real usage, not dictionary equivalence.\n' +
+    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order). Translation keeps the same tense as the original.\n') +
+    '- Translate meaning, not words; do not preserve lexical structure.\n' +
+    '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
+
     (needsTranslation
-      ? 'NOTE: "' + intent + '" looks English but treat as ' + fromName + '. Always translate into ' + toName + ' in ' + toLabel + ' blocks.\n\n'
-      : fromLabel + ' = ' + fromName + ' only. ' + toLabel + ' = ' + toName + ' only. No mixing.\n\n') +
-    'Forbidden: language names in text, tables, Markdown, pipe |. Never put sentence and translation on same line.\n' +
-    'CRITICAL FORMATTING — HIGHEST PRIORITY: Output each speaker turn on its OWN LINE. a) on line 1, b) on line 2, a) on line 3. NEVER merge into one line like "a) ... b) ... a) ...". Treat each a)/b) as a hard line break. Violation = wrong output.\n\n' +
+      ? 'NOTE: "' + intent + '" is English; ' + fromLabel + ' is ' + fromName + '. In ' + fromLabel + ' blocks translate it into ' + fromName + '; in ' + toLabel + ' blocks keep "' + intent + '" in English.\n\n'
+      : 'Keep each block strictly in its own language (' + fromLabel + ' = ' + fromName + ' only, ' + toLabel + ' = ' + toName + ' only) - no mixing.\n\n') +
+
+    'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
     (selectedGrammar
-      ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\nUse naturally in ' + fromLabel + ' examples and dialogues. End with section "GRAMMAR: ' + selectedGrammar.name + '" — short explanation in ' + fromName + ' (3-5 sentences) + 3 examples.\n\n'
+      ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\n' +
+        'Use it naturally in the ' + fromLabel + ' examples and dialogues. At the end add a section titled "GRAMMAR: ' + selectedGrammar.name + '" with a short explanation in ' + fromName + ' (3-5 sentences) and 3 more example sentences.\n\n'
       : '') +
 
-    'Dialogues: ' + totalDialogs + '\n' +
+    'Number of dialogues: ' + totalDialogs + '\n' +
     'Length: ' + dlInfo.label + '\n';
 
   // Uložit do Probíraných slov
@@ -8495,7 +8498,6 @@ function insertRandomInspiration() {
   if (input) {
     input.value = pick;
     if (typeof onIntentInput === 'function') onIntentInput(input);
-    intentIsTopicCategory = true;
     input.focus();
   }
 
