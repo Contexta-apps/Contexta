@@ -1982,16 +1982,16 @@ img { max-width: 100%; height: auto; }
   border-radius: 7px;
   color: rgba(255,255,255,.8);
   font-family: 'DM Sans', sans-serif;
-  font-size: .8rem; font-weight: 500;
-  padding: 5px 28px 5px 10px;
+  font-size: .72rem; font-weight: 500;
+  padding: 4px 24px 4px 9px;
   cursor: pointer;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9973a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 9px center;
-  min-height: 34px;
+  background-position: right 8px center;
+  min-height: 28px;
   transition: border-color .18s;
 }
 .gen-word-source-select:hover, .gen-word-source-select:focus {
@@ -1999,6 +1999,46 @@ img { max-width: 100%; height: auto; }
 }
 .gen-word-source-select optgroup { color: rgba(255,255,255,.4); font-size: .72rem; }
 .gen-word-source-select option { background: #1a2035; color: rgba(255,255,255,.85); }
+
+/* ── Custom word-source dropdown (designová náhrada nativního <select>) ── */
+.gen-word-source-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 7px;
+  color: rgba(255,255,255,.85);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .72rem; font-weight: 500;
+  padding: 4px 10px;
+  cursor: pointer;
+  min-height: 28px;
+  transition: border-color .18s;
+}
+.gen-word-source-btn:hover { border-color: rgba(201,151,58,.5); }
+.gen-word-source-wrap.open .gen-word-source-btn { border-color: var(--gold); }
+.gen-word-source-wrap.open .gen-word-source-btn .arrow { transform: rotate(180deg); }
+.gen-word-source-btn .arrow { font-size: .65rem; color: var(--gold); transition: transform .18s ease; line-height: 1; }
+.gen-word-source-list {
+  position: absolute; top: calc(100% + 4px); left: 0; z-index: 40;
+  background: #1a2035; border: 1px solid rgba(255,255,255,.14);
+  border-radius: 9px; min-width: 160px; max-height: 260px; overflow-y: auto;
+  box-shadow: 0 10px 28px rgba(0,0,0,.4);
+  padding: 4px 0;
+}
+.gen-word-source-group-label {
+  font-size: .62rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: rgba(255,255,255,.35); padding: 7px 12px 3px;
+}
+.gen-word-source-opt {
+  font-size: .76rem; color: rgba(255,255,255,.85);
+  padding: 7px 12px; cursor: pointer; white-space: nowrap;
+}
+.gen-word-source-opt:hover { background: rgba(201,151,58,.12); color: var(--gold-lt); }
+.gen-word-source-opt.selected { color: var(--gold-lt); font-weight: 600; background: rgba(201,151,58,.08); }
+@media (max-width: 600px) {
+  .gen-word-source-list { left: auto; right: 0; min-width: 180px; }
+  .gen-word-source-opt { padding: 9px 12px; font-size: .8rem; }
+}
 
 .gen-chip-level, .gen-chip-style, .gen-chip-count {
   padding: 6px 14px; border-radius: 20px; font-size: .78rem; font-weight: 600;
@@ -3635,7 +3675,32 @@ h1[data-t="heroH"] {
             <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="wordSourceLabel">📖 Zdroj slovíček</span>
               <div class="gen-tuning-chips">
-                <select class="gen-word-source-select" id="wordSourceSelect" onchange="updateSplitSourceLabel()">
+                <div class="gen-word-source-wrap" id="wordSourceWrap" style="position:relative;">
+                  <button type="button" class="gen-word-source-btn" id="wordSourceBtn" onclick="event.stopPropagation();wsToggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="wordSourceBtnLabel">A1</span>
+                    <span class="arrow">▾</span>
+                  </button>
+                  <div class="gen-word-source-list" id="wordSourceList" role="listbox" style="display:none;">
+                    <div class="gen-word-source-group-label">CEFR</div>
+                    <div class="gen-word-source-opt selected" data-value="A1" onclick="wsSelect('A1','A1',this)">A1</div>
+                    <div class="gen-word-source-opt" data-value="A2" onclick="wsSelect('A2','A2',this)">A2</div>
+                    <div class="gen-word-source-opt" data-value="B1" onclick="wsSelect('B1','B1',this)">B1</div>
+                    <div class="gen-word-source-opt" data-value="B2" onclick="wsSelect('B2','B2',this)">B2</div>
+                    <div class="gen-word-source-opt" data-value="C1" onclick="wsSelect('C1','C1',this)">C1</div>
+                    <div class="gen-word-source-opt" data-value="C2" onclick="wsSelect('C2','C2',this)">C2</div>
+                    <div class="gen-word-source-group-label">Collections</div>
+                    <div class="gen-word-source-opt" data-value="top500" onclick="wsSelect('top500','top500',this)">top500</div>
+                    <div class="gen-word-source-opt" data-value="top1000" onclick="wsSelect('top1000','top1000',this)">top1000</div>
+                    <div class="gen-word-source-opt" data-value="top3000" onclick="wsSelect('top3000','top3000',this)">top3000</div>
+                    <div class="gen-word-source-opt" data-value="business" onclick="wsSelect('business','business',this)">business</div>
+                    <div class="gen-word-source-opt" data-value="phrasal_verbs" onclick="wsSelect('phrasal_verbs','phrasal_verbs',this)">phrasal_verbs</div>
+                    <div class="gen-word-source-opt" data-value="idioms" onclick="wsSelect('idioms','idioms',this)">idioms</div>
+                    <div class="gen-word-source-opt" data-value="toefl" onclick="wsSelect('toefl','toefl',this)">toefl</div>
+                    <div class="gen-word-source-opt" data-value="ielts" onclick="wsSelect('ielts','ielts',this)">ielts</div>
+                    <div class="gen-word-source-opt" data-value="" data-translate="wordSourceTopicsOpt" onclick="wsSelect('','— témata aplikace —',this)">— témata aplikace —</div>
+                  </div>
+                </div>
+                <select class="gen-word-source-select" id="wordSourceSelect" onchange="updateSplitSourceLabel()" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
                   <optgroup label="CEFR">
                     <option value="A1">A1</option>
                     <option value="A2">A2</option>
@@ -3654,7 +3719,7 @@ h1[data-t="heroH"] {
                     <option value="toefl">toefl</option>
                     <option value="ielts">ielts</option>
                   </optgroup>
-                  <option value="">— témata aplikace —</option>
+                  <option value="" data-translate="wordSourceTopicsOpt">— témata aplikace —</option>
                 </select>
               </div>
             </div>
@@ -4018,7 +4083,7 @@ cz:{
   intentPlaceholder:'Napiš slovo, téma nebo myšlenku – např. restaurace, cestování, práce…',
   verbSearchPh:'🔍 Hledat frázové sloveso…',
   verbDropDefault:'— vybrat —',
-  topicDropDefault:'— vybrat téma —',
+  topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —',
   lvChip0:'A1–A2', lvChipSub0:'Začátečník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -4110,7 +4175,7 @@ en:{
   intentPlaceholder:'Write a word, topic or idea – e.g. restaurant, travel, work…',
   verbSearchPh:'🔍 Search phrasal verb…',
   verbDropDefault:'— select —',
-  topicDropDefault:'— select topic —',
+  topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Intermediate',
   lvChip2:'C1–C2', lvChipSub2:'Advanced',
@@ -4200,7 +4265,7 @@ de:{
   intentPlaceholder:'Schreibe ein Wort, Thema oder eine Idee – z.B. Restaurant, Reisen, Arbeit…',
   verbSearchPh:'🔍 Phrasal Verb suchen…',
   verbDropDefault:'— auswählen —',
-  topicDropDefault:'— Thema auswählen —',
+  topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —',
   lvChip0:'A1–A2', lvChipSub0:'Anfänger',
   lvChip1:'B1–B2', lvChipSub1:'Mittelstufe',
   lvChip2:'C1–C2', lvChipSub2:'Fortgeschritten',
@@ -4287,7 +4352,7 @@ fr:{
   intentPlaceholder:"Écris un mot, un sujet ou une idée – ex. restaurant, voyage, travail…",
   verbSearchPh:"🔍 Rechercher un verbe phrasé…",
   verbDropDefault:"— sélectionner —",
-  topicDropDefault:"— choisir un sujet —",
+  topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —",
   lvChipSub0:"Débutant", lvChipSub1:"Intermédiaire", lvChipSub2:"Avancé",
   styleLabel:"🎭 Style",
   styleNormal:"courant", styleFormal:"formel", styleSlang:"argot", styleHumor:"humoristique",
@@ -4372,7 +4437,7 @@ es:{
   intentPlaceholder:'Escribe una palabra, tema o idea – ej. restaurante, viaje, trabajo…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— seleccionar —',
-  topicDropDefault:'— elegir tema —',
+  topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —',
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzado',
@@ -4456,7 +4521,7 @@ it:{
   intentPlaceholder:'Scrivi una parola, un argomento o un idea – es. ristorante, viaggio, lavoro…',
   verbSearchPh:'🔍 Cerca verbo frasale…',
   verbDropDefault:'— seleziona —',
-  topicDropDefault:'— scegli argomento —',
+  topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —",
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzato',
@@ -4539,7 +4604,7 @@ pt:{
   intentPlaceholder:'Escreva uma palavra, tema ou ideia – ex. restaurante, viagem, trabalho…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— selecionar —',
-  topicDropDefault:'— escolher tema —',
+  topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —',
   lvChip0:'A1–A2', lvChipSub0:'Iniciante',
   lvChip1:'B1–B2', lvChipSub1:'Intermediário',
   lvChip2:'C1–C2', lvChipSub2:'Avançado',
@@ -4623,7 +4688,7 @@ pl:{
   intentPlaceholder:'Napisz słowo, temat lub myśl – np. restauracja, podróże, praca…',
   verbSearchPh:'🔍 Szukaj czasownika frazowego…',
   verbDropDefault:'— wybierz —',
-  topicDropDefault:'— wybierz temat —',
+  topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —',
   lvChip0:'A1–A2', lvChipSub0:'Początkujący',
   lvChip1:'B1–B2', lvChipSub1:'Średniozaawansowany',
   lvChip2:'C1–C2', lvChipSub2:'Zaawansowany',
@@ -4707,7 +4772,7 @@ cn:{
   intentPlaceholder:'输入单词、主题或想法 – 例如：餐厅、旅行、工作…',
   verbSearchPh:'🔍 搜索短语动词…',
   verbDropDefault:'— 选择 —',
-  topicDropDefault:'— 选择主题 —',
+  topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —',
   lvChip0:'A1–A2', lvChipSub0:'初学者',
   lvChip1:'B1–B2', lvChipSub1:'中级',
   lvChip2:'C1–C2', lvChipSub2:'高级',
@@ -4791,7 +4856,7 @@ jp:{
   intentPlaceholder:'単語、テーマ、またはアイデアを入力 – 例：レストラン、旅行、仕事…',
   verbSearchPh:'🔍 句動詞を検索…',
   verbDropDefault:'— 選択 —',
-  topicDropDefault:'— テーマを選択 —',
+  topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —',
   lvChip0:'A1–A2', lvChipSub0:'初心者',
   lvChip1:'B1–B2', lvChipSub1:'中級',
   lvChip2:'C1–C2', lvChipSub2:'上級',
@@ -4875,7 +4940,7 @@ kr:{
   intentPlaceholder:'단어, 주제 또는 아이디어를 입력하세요 – 예: 레스토랑, 여행, 업무…',
   verbSearchPh:'🔍 구동사 검색…',
   verbDropDefault:'— 선택 —',
-  topicDropDefault:'— 주제 선택 —',
+  topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —',
   lvChip0:'A1–A2', lvChipSub0:'초보자',
   lvChip1:'B1–B2', lvChipSub1:'중급자',
   lvChip2:'C1–C2', lvChipSub2:'고급자',
@@ -4948,7 +5013,7 @@ sk:{
   intentLabel:'💬 Čo chceš precvičiť?',
   intentPlaceholder:'Napíš slovo, tému alebo myšlienku – napr. reštaurácia, cestovanie, práca…',
   verbSearchPh:'🔍 Hľadať frázové sloveso…',
-  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —',
+  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —',
   lvChip0:'A1–A2', lvChipSub0:'Začiatočník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -5021,7 +5086,7 @@ nl:{
   intentLabel:'💬 Wat wil je oefenen?',
   intentPlaceholder:'Schrijf een woord, onderwerp of gedachte – bijv. restaurant, reizen, werk…',
   verbSearchPh:'🔍 Zoek werkwoordgroep…',
-  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —',
+  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Gevorderd',
   lvChip2:'C1–C2', lvChipSub2:'Vorderend',
@@ -5094,7 +5159,7 @@ sv:{
   intentLabel:'💬 Vad vill du öva?',
   intentPlaceholder:'Skriv ett ord, ämne eller tanke – t.ex. restaurang, resor, arbete…',
   verbSearchPh:'🔍 Sök frasverb…',
-  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —',
+  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —',
   lvChip0:'A1–A2', lvChipSub0:'Nybörjare',
   lvChip1:'B1–B2', lvChipSub1:'Medelnivå',
   lvChip2:'C1–C2', lvChipSub2:'Avancerad',
@@ -5162,7 +5227,7 @@ ru:{
   intentLabel:'💬 Что хочешь практиковать?',
   intentPlaceholder:'Напиши слово, тему или мысль – напр. ресторан, путешествие, работа…',
   verbSearchPh:'🔍 Поиск фразового глагола…',
-  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —',
+  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —',
   lvChip0:'A1–A2', lvChipSub0:'Начинающий',
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
@@ -5235,7 +5300,7 @@ tr:{
   intentLabel:'💬 Ne pratik yapmak istiyorsun?',
   intentPlaceholder:'Kelime, konu veya düşünce yaz – örn. restoran, seyahat, iş…',
   verbSearchPh:'🔍 Fiil öbeği ara…',
-  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —',
+  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —',
   lvChip0:'A1–A2', lvChipSub0:'Başlangıç',
   lvChip1:'B1–B2', lvChipSub1:'Orta',
   lvChip2:'C1–C2', lvChipSub2:'İleri',
@@ -5311,7 +5376,7 @@ uk:{
   intentLabel:'💬 Що хочеш попрактикувати?',
   intentPlaceholder:'Напиши слово, тему або думку – напр. ресторан, подорож, робота…',
   verbSearchPh:'🔍 Шукати фразове дієслово…',
-  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —',
+  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —',
   lvChip0:'A1–A2', lvChipSub0:'Початківець',
   lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
   lvChip2:'C1–C2', lvChipSub2:'Просунутий',
@@ -5390,7 +5455,7 @@ id:{
   intentLabel:'💬 Apa yang ingin kamu latih?',
   intentPlaceholder:'Tulis kata, topik atau ide – mis. restoran, perjalanan, pekerjaan…',
   verbSearchPh:'🔍 Cari phrasal verb…',
-  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —',
+  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —',
   lvChip0:'A1–A2', lvChipSub0:'Pemula',
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
@@ -8573,6 +8638,42 @@ function updateSplitSourceLabel() {
   lbl.textContent = sel.value || 'TOPICS';
 }
 
+function wsToggle() {
+  var wrap = document.getElementById('wordSourceWrap');
+  var list = document.getElementById('wordSourceList');
+  if (!wrap || !list) return;
+  var isOpen = list.style.display !== 'none';
+  list.style.display = isOpen ? 'none' : 'block';
+  wrap.classList.toggle('open', !isOpen);
+  var btn = document.getElementById('wordSourceBtn');
+  if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+}
+
+function wsSelect(value, label, el) {
+  var sel = document.getElementById('wordSourceSelect');
+  var btnLabel = document.getElementById('wordSourceBtnLabel');
+  var list = document.getElementById('wordSourceList');
+  var wrap = document.getElementById('wordSourceWrap');
+  if (sel) {
+    sel.value = value;
+    sel.dispatchEvent(new Event('change'));
+  }
+  if (btnLabel) btnLabel.textContent = label;
+  document.querySelectorAll('.gen-word-source-opt').forEach(function(o) { o.classList.remove('selected'); });
+  if (el) el.classList.add('selected');
+  if (list) list.style.display = 'none';
+  if (wrap) wrap.classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  var wrap = document.getElementById('wordSourceWrap');
+  var list = document.getElementById('wordSourceList');
+  if (wrap && list && !wrap.contains(e.target)) {
+    list.style.display = 'none';
+    wrap.classList.remove('open');
+  }
+});
+
 function openAdvancedToSource() {
   // Otevřít pokročilé nastavení a scrollovat k zdroji
   var adv = document.getElementById('genAdvanced');
@@ -8581,8 +8682,8 @@ function openAdvancedToSource() {
     if (toggle && typeof toggleAdvanced === 'function') toggleAdvanced(toggle);
   }
   setTimeout(function() {
-    var sel = document.getElementById('wordSourceSelect');
-    if (sel) { sel.scrollIntoView({ behavior: 'smooth', block: 'center' }); sel.focus(); }
+    var wrap = document.getElementById('wordSourceWrap');
+    if (wrap) { wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   }, 200);
 }
 
