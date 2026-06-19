@@ -1850,12 +1850,46 @@ img { max-width: 100%; height: auto; }
 .gen-cta-row {
   display: flex; justify-content: center; margin-top: 10px; margin-bottom: 6px;
 }
-.gen-cta-row .gen-ex-chip--random {
-  width: 100%; max-width: 100%; text-align: center; justify-content: center;
+/* ── Split button: Náhodná inspirace + zdroj ── */
+.split-inspiration-wrap {
+  display: flex;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(201,151,58,.55);
+  background: linear-gradient(135deg, rgba(201,151,58,.18) 0%, rgba(43,158,142,.12) 100%);
 }
-@media (min-width: 768px) {
-  .gen-cta-row .gen-ex-chip--random { width: auto; max-width: none; }
+.split-inspiration-main {
+  flex: 1;
+  background: transparent;
+  color: var(--gold-lt);
+  font-size: .82rem; font-weight: 600;
+  padding: 9px 14px;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
+  transition: background .15s;
+  min-height: 38px;
+  touch-action: manipulation;
 }
+.split-inspiration-main:hover { background: rgba(201,151,58,.12); }
+.split-source-btn {
+  background: rgba(201,151,58,.1);
+  color: var(--gold);
+  font-size: .78rem; font-weight: 700;
+  padding: 9px 13px;
+  border: none;
+  border-left: 1px solid rgba(201,151,58,.35);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+  transition: background .15s;
+  touch-action: manipulation;
+  min-height: 38px;
+}
+.split-source-btn:hover { background: rgba(201,151,58,.2); }
 .gen-intent-examples {
   display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 0; align-items: center; justify-content: center;
 }
@@ -1942,6 +1976,29 @@ img { max-width: 100%; height: auto; }
 }
 .gen-tuning-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .gen-tuning-hint { font-size: .68rem; color: rgba(255,255,255,.3); margin-top: 2px; padding-left: 2px; }
+.gen-word-source-select {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 7px;
+  color: rgba(255,255,255,.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem; font-weight: 500;
+  padding: 5px 28px 5px 10px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9973a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  min-height: 34px;
+  transition: border-color .18s;
+}
+.gen-word-source-select:hover, .gen-word-source-select:focus {
+  border-color: rgba(201,151,58,.5);
+}
+.gen-word-source-select optgroup { color: rgba(255,255,255,.4); font-size: .72rem; }
+.gen-word-source-select option { background: #1a2035; color: rgba(255,255,255,.85); }
 
 .gen-chip-level, .gen-chip-style, .gen-chip-count {
   padding: 6px 14px; border-radius: 20px; font-size: .78rem; font-weight: 600;
@@ -2529,6 +2586,9 @@ img { max-width: 100%; height: auto; }
   padding: 0;
   gap: 0;
 }
+.gen-advanced-wrap .gen-config-block:first-child {
+  padding-top: 16px;
+}
 .gen-advanced-wrap .gen-grammar-header {
   padding-left: 28px;
   padding-right: 28px;
@@ -3097,7 +3157,7 @@ h1[data-t="heroH"] {
   .gen-config-block .gen-tuning-row {
     flex-wrap: nowrap;
   }
-  .gen-tuning-label { width: 80px; }
+  .gen-tuning-label { width: 120px; }
 
   /* ── AI grid: max 3 columns ── */
   .gen-ai-grid { grid-template-columns: repeat(3, 1fr); }
@@ -3141,8 +3201,9 @@ h1[data-t="heroH"] {
   .gen-ai-extract { margin-left: 48px; margin-right: 48px; }
 
   /* ── Tuning řádky: inline ── */
-  .gen-tuning { flex-direction: row; flex-wrap: wrap; gap: 16px; }
-  .gen-tuning-row { flex: 1; min-width: 200px; flex-wrap: nowrap; }
+  .gen-tuning { flex-direction: column; gap: 10px; }
+  .gen-tuning-row { flex-wrap: nowrap; align-items: center; }
+  .gen-tuning-label { width: 130px; flex-shrink: 0; }
 
   /* ── Chips: větší ── */
   .gen-chip-level, .gen-chip-style, .gen-chip-count {
@@ -3467,7 +3528,12 @@ h1[data-t="heroH"] {
         </div>
       </div>
       <div class="gen-cta-row">
-        <button class="gen-ex-chip gen-ex-chip--random" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodná inspirace</button>
+        <div class="split-inspiration-wrap">
+          <button class="split-inspiration-main" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodná inspirace</button>
+          <button class="split-source-btn" id="splitSourceBtn" onclick="openAdvancedToSource()" title="Zdroj slovíček">
+            <span id="splitSourceLabel">TOPICS</span> ▾
+          </button>
+        </div>
       </div>
       <div class="gen-intent-examples">
         <button class="gen-ex-chip" data-translate="exChip1" onclick="insertToPractice(this.textContent)">Jídlo</button>
@@ -3567,6 +3633,32 @@ h1[data-t="heroH"] {
               </div>
             </div>
             <div class="gen-tuning-row">
+              <span class="gen-tuning-label" data-translate="wordSourceLabel">📖 Zdroj slovíček</span>
+              <div class="gen-tuning-chips">
+                <select class="gen-word-source-select" id="wordSourceSelect" onchange="updateSplitSourceLabel()">
+                  <optgroup label="CEFR">
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                  </optgroup>
+                  <optgroup id="wordSourceCollectionsGroup" label="Collections">
+                    <option value="top500">top500</option>
+                    <option value="top1000">top1000</option>
+                    <option value="top3000">top3000</option>
+                    <option value="business">business</option>
+                    <option value="phrasal_verbs">phrasal_verbs</option>
+                    <option value="idioms">idioms</option>
+                    <option value="toefl">toefl</option>
+                    <option value="ielts">ielts</option>
+                  </optgroup>
+                  <option value="">— témata aplikace —</option>
+                </select>
+              </div>
+            </div>
+            <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="styleLabel">🎭 Styl</span>
               <div class="gen-tuning-chips">
                 <button class="gen-chip-style active" onclick="selectStyle('casual',this)" data-translate="styleNormal">běžná</button>
@@ -3583,7 +3675,6 @@ h1[data-t="heroH"] {
                 <button class="gen-chip-count" onclick="selectLength('long',this)" data-translate="lengthLong">Nejdelší</button>
               </div>
             </div>
-            <div class="gen-tuning-hint" data-i18n="dialogLengthHint">Určuje délku každého dialogu.</div>
           </div>
         </div>
 
@@ -3886,7 +3977,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodná inspirace", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodná inspirace", wordSourceLabel:"📖 Zdroj slovíček", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -3977,7 +4068,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random inspiration", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random inspiration", wordSourceLabel:"📖 Word source", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -4067,7 +4158,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufällige Inspiration", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufällige Inspiration", wordSourceLabel:"📖 Wortquelle", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -4153,7 +4244,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Inspiration aléatoire", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Inspiration aléatoire", wordSourceLabel:"📖 Source de mots", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -4239,7 +4330,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Inspiración aleatoria", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Inspiración aleatoria", wordSourceLabel:"📖 Fuente de palabras", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -4323,7 +4414,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Ispirazione casuale", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Ispirazione casuale", wordSourceLabel:"📖 Fonte delle parole", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -4407,7 +4498,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Inspiração aleatória", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Inspiração aleatória", wordSourceLabel:"📖 Fonte de palavras", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -4490,7 +4581,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowa inspiracja", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowa inspiracja", wordSourceLabel:"📖 Źródło słów", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -4574,7 +4665,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机灵感", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机灵感", wordSourceLabel:"📖 词汇来源", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -4658,7 +4749,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムなインスピレーション", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムなインスピレーション", wordSourceLabel:"📖 単語ソース", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -4742,7 +4833,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 랜덤 영감", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 랜덤 영감", wordSourceLabel:"📖 단어 출처", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -4826,7 +4917,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodná inšpirácia", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodná inšpirácia", wordSourceLabel:"📖 Zdroj slovíčok", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -4899,7 +4990,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurige inspiratie", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurige inspiratie", wordSourceLabel:"📖 Woordbron", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -4972,7 +5063,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässig inspiration", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässig inspiration", wordSourceLabel:"📖 Ordkälla", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -5045,7 +5136,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное вдохновение", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное вдохновение", wordSourceLabel:"📖 Источник слов", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -5113,7 +5204,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele ilham", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele ilham", wordSourceLabel:"📖 Kelime kaynağı", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -5187,7 +5278,7 @@ uk:{
   lvLabel0:"Початківець", lvLabel1:"Середній рівень", lvLabel2:"Просунутий",
   lblVerb:'⚡ Фразові дієслова', lblTopic:'🗂 Тема', editDetails:'⚙ Змінити деталі',
   lockTitle:"Промпт заблоковано", lockDesc:"Доступ після Pay me coffee.",
-  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове натхнення", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
+  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове натхнення", wordSourceLabel:"📖 Джерело слів", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
   lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
   dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
   lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
@@ -5266,7 +5357,7 @@ id:{
   lvLabel0:"Pemula", lvLabel1:"Menengah", lvLabel2:"Mahir",
   lblVerb:'⚡ Phrasal verb', lblTopic:'🗂 Topik', editDetails:'⚙ Edit detail',
   lockTitle:"Prompt terkunci", lockDesc:"Akses setelah Pay me coffee.",
-  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Inspirasi acak", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
+  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Inspirasi acak", wordSourceLabel:"📖 Sumber kata", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
   lead3:"Klik dialog untuk membuka dan memutar audio.",
   dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
   lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
@@ -8433,27 +8524,33 @@ function vtGeneratePhrasal(pv) {
 }
 
 /* ── ✨ Náhodná inspirace ── */
-function insertRandomInspiration() {
-  var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+var _wordSourceCache = {};
 
-  // Každých 5 kliknutí zkusit slovo z historie
-  if (!insertRandomInspiration._clickCount) insertRandomInspiration._clickCount = 0;
-  insertRandomInspiration._clickCount++;
-  if (insertRandomInspiration._clickCount % 5 === 0) {
-    var histList = genHistoryLoad();
-    if (!insertRandomInspiration._historyUsed) insertRandomInspiration._historyUsed = [];
-    var histAvail = histList.filter(function(w) { return insertRandomInspiration._historyUsed.indexOf(w) === -1; });
-    if (!histAvail.length) { insertRandomInspiration._historyUsed = []; histAvail = histList.slice(); }
-    if (histAvail.length) {
-      var pick = histAvail[Math.floor(Math.random() * histAvail.length)];
-      insertRandomInspiration._historyUsed.push(pick);
-      var input = document.getElementById('practiceInput');
-      if (input) { input.value = pick; if (typeof onIntentInput === 'function') onIntentInput(input); input.focus(); }
-      return;
-    }
+function _pickFromList(list) {
+  if (!list || !list.length) return null;
+  if (!_pickFromList._hist) _pickFromList._hist = {};
+  var key = list.length + '_' + (list[0] || '');
+  if (!_pickFromList._hist[key]) _pickFromList._hist[key] = [];
+  var h = _pickFromList._hist[key];
+  var block = Math.min(20, Math.max(1, Math.floor(list.length * 0.15)));
+  var avail = list.filter(function(w) { return h.indexOf(w) === -1; });
+  if (!avail.length) { _pickFromList._hist[key] = []; avail = list.slice(); }
+  var pick = avail[Math.floor(Math.random() * avail.length)];
+  h.push(pick);
+  if (h.length > block) h.shift();
+  return pick;
+}
+
+function _insertWord(word) {
+  var input = document.getElementById('practiceInput');
+  if (input && word) {
+    input.value = word;
+    if (typeof onIntentInput === 'function') onIntentInput(input);
+    input.focus();
   }
+}
 
-  // Sestavit seznam ze sekce "Vybrat témata" (TOPICS) — jediný zdroj dat
+function _insertFromTopics(lang) {
   var list = [];
   if (typeof TOPICS !== 'undefined') {
     TOPICS.forEach(function(cat) {
@@ -8466,29 +8563,90 @@ function insertRandomInspiration() {
     });
   }
   if (!list.length) list = ['Conversation practice'];
-  if (!insertRandomInspiration._history) insertRandomInspiration._history = [];
-  var history = insertRandomInspiration._history;
-  // Blokovat posledních min(10, 30% listu) témat
-  var blockCount = Math.min(10, Math.max(1, Math.floor(list.length * 0.3)));
-  var available = list.filter(function(t) { return history.indexOf(t) === -1; });
-  if (available.length === 0) { insertRandomInspiration._history = []; available = list.slice(); }
-  var pick = available[Math.floor(Math.random() * available.length)];
-  history.push(pick);
-  if (history.length > blockCount) history.shift();
-
-  var input = document.getElementById('practiceInput');
-  if (input) {
-    input.value = pick;
-    if (typeof onIntentInput === 'function') onIntentInput(input);
-    input.focus();
-  }
-
-  // Animace kostky
-  var btn = document.getElementById('randomInspirationBtn');
-
-
+  _insertWord(_pickFromList(list));
 }
 
+function updateSplitSourceLabel() {
+  var sel = document.getElementById('wordSourceSelect');
+  var lbl = document.getElementById('splitSourceLabel');
+  if (!sel || !lbl) return;
+  lbl.textContent = sel.value || 'TOPICS';
+}
+
+function openAdvancedToSource() {
+  // Otevřít pokročilé nastavení a scrollovat k zdroji
+  var adv = document.getElementById('genAdvanced');
+  var toggle = document.querySelector('.gen-advanced-toggle');
+  if (adv && adv.style.display === 'none') {
+    if (toggle && typeof toggleAdvanced === 'function') toggleAdvanced(toggle);
+  }
+  setTimeout(function() {
+    var sel = document.getElementById('wordSourceSelect');
+    if (sel) { sel.scrollIntoView({ behavior: 'smooth', block: 'center' }); sel.focus(); }
+  }, 200);
+}
+
+function insertRandomInspiration() {
+  var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+
+  // Každých 5 kliknutí zkusit slovo z uživatelské historie
+  if (!insertRandomInspiration._clickCount) insertRandomInspiration._clickCount = 0;
+  insertRandomInspiration._clickCount++;
+  if (insertRandomInspiration._clickCount % 5 === 0) {
+    var histList = genHistoryLoad();
+    if (!insertRandomInspiration._historyUsed) insertRandomInspiration._historyUsed = [];
+    var histAvail = histList.filter(function(w) { return insertRandomInspiration._historyUsed.indexOf(w) === -1; });
+    if (!histAvail.length) { insertRandomInspiration._historyUsed = []; histAvail = histList.slice(); }
+    if (histAvail.length) {
+      var pick = histAvail[Math.floor(Math.random() * histAvail.length)];
+      insertRandomInspiration._historyUsed.push(pick);
+      _insertWord(pick);
+      return;
+    }
+  }
+
+  var sel = document.getElementById('wordSourceSelect');
+  var source = sel ? sel.value : '';
+
+  if (!source) { _insertFromTopics(lang); return; }
+
+  if (_wordSourceCache[source]) {
+    _insertWord(_pickFromList(_wordSourceCache[source]));
+    return;
+  }
+
+  var btn = document.getElementById('randomInspirationBtn');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
+
+  var url = 'data/' + source.toLowerCase() + '.json';
+  console.log('[WordSource] fetch:', url, '| source:', source);
+  fetch(url)
+    .then(function(r) {
+      console.log('[WordSource] response status:', r.status, r.ok);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      console.log('[WordSource] data:', data);
+      if (Array.isArray(data) && data.length) {
+        _wordSourceCache[source] = data;
+        _insertWord(_pickFromList(data));
+      } else {
+        console.log('[WordSource] empty or invalid, fallback');
+        _insertFromTopics(lang);
+      }
+    })
+    .catch(function(err) {
+      console.log('[WordSource] error:', err.message);
+      _insertFromTopics(lang);
+    })
+    .finally(function() {
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    });
+}
+
+// Inicializace labelu po načtení stránky
+document.addEventListener('DOMContentLoaded', function() { updateSplitSourceLabel(); });
 
 
 </script>
