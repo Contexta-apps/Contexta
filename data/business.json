@@ -1,5 +1,1 @@
-[
-  {"word": "revenue", "translation": "tržby"},
-  {"word": "stakeholder", "translation": "zúčastněná strana"},
-  {"word": "deadline", "translation": "termín"}
-]
+["revenue", "profit", "loss", "budget", "forecast", "stakeholder", "shareholder", "dividend", "merger", "acquisition", "invoice", "contract", "negotiation", "deadline", "milestone", "deliverable", "proposal", "presentation", "strategy", "quarterly", "fiscal", "audit", "compliance", "regulation", "liability", "asset", "equity", "portfolio", "leverage", "turnover", "outsource", "benchmark", "KPI", "ROI", "cash flow", "supply chain", "market share", "competitive advantage", "brand awareness", "due diligence"]
