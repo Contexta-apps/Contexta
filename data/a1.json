@@ -1,5 +1,1 @@
-[
-  {"word": "hello", "translation": "ahoj", "level": "A1"},
-  {"word": "thank you", "translation": "děkuji", "level": "A1"},
-  {"word": "water", "translation": "voda", "level": "A1"}
-]
+["hello", "thank you", "water"]
