@@ -1325,6 +1325,7 @@ img { max-width: 100%; height: auto; }
 .gen-lang-dd-list::-webkit-scrollbar { width: 3px; }
 .gen-lang-dd-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
 .gen-lang-dd-list.open { display: flex; flex-direction: column; }
+#toLangList { left: auto; right: 0; }
 
 .gen-lang-opt {
   display: flex; align-items: center; justify-content: flex-start; gap: 9px;
@@ -3708,7 +3709,7 @@ h1[data-t="heroH"] {
           </div>
         </div>
         <div class="gen-quickpick-box">
-          <button class="gen-quickpick-btn" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodné slovo</button>
+          <button class="gen-quickpick-btn" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodné anglické slovo</button>
           <div class="quicklevel-select-wrap" id="quickLevelWrap">
             <button class="gen-quickpick-label gen-quickpick-label--dd" id="quickLevelLabel" type="button" onclick="toggleQuickLevelDrop(event)" aria-haspopup="listbox" aria-expanded="false">
               <span id="quickLevelLabelText">A1</span>
@@ -4179,7 +4180,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodné slovo", randomTopicLabel:"🗂 Náhodné téma", manualTopicLabel:"▾ Vybrat téma manuálně", wordSourceLabel:"📖 Zdroj slovíček", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodné téma", manualTopicLabel:"▾ Vybrat téma manuálně", wordSourceLabel:"📖 Zdroj slovíček", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -4270,7 +4271,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random word", randomTopicLabel:"🗂 Random topic", manualTopicLabel:"▾ Choose topic manually", wordSourceLabel:"📖 Word source", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random English word", randomTopicLabel:"🗂 Random topic", manualTopicLabel:"▾ Choose topic manually", wordSourceLabel:"📖 Word source", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -4360,7 +4361,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufälliges Wort", randomTopicLabel:"🗂 Zufälliges Thema", manualTopicLabel:"▾ Thema manuell wählen", wordSourceLabel:"📖 Wortquelle", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufälliges englisches Wort", randomTopicLabel:"🗂 Zufälliges Thema", manualTopicLabel:"▾ Thema manuell wählen", wordSourceLabel:"📖 Wortquelle", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -4446,7 +4447,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Mot aléatoire", randomTopicLabel:"🗂 Sujet aléatoire", manualTopicLabel:"▾ Choisir un sujet manuellement", wordSourceLabel:"📖 Source de mots", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Mot anglais aléatoire", randomTopicLabel:"🗂 Sujet aléatoire", manualTopicLabel:"▾ Choisir un sujet manuellement", wordSourceLabel:"📖 Source de mots", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -4532,7 +4533,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Palabra aleatoria", randomTopicLabel:"🗂 Tema aleatorio", manualTopicLabel:"▾ Elegir tema manualmente", wordSourceLabel:"📖 Fuente de palabras", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Palabra aleatoria en inglés", randomTopicLabel:"🗂 Tema aleatorio", manualTopicLabel:"▾ Elegir tema manualmente", wordSourceLabel:"📖 Fuente de palabras", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -4616,7 +4617,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Parola casuale", randomTopicLabel:"🗂 Argomento casuale", manualTopicLabel:"▾ Scegli argomento manualmente", wordSourceLabel:"📖 Fonte delle parole", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Parola inglese casuale", randomTopicLabel:"🗂 Argomento casuale", manualTopicLabel:"▾ Scegli argomento manualmente", wordSourceLabel:"📖 Fonte delle parole", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -4700,7 +4701,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Palavra aleatória", randomTopicLabel:"🗂 Tema aleatório", manualTopicLabel:"▾ Escolher tema manualmente", wordSourceLabel:"📖 Fonte de palavras", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Palavra aleatória em inglês", randomTopicLabel:"🗂 Tema aleatório", manualTopicLabel:"▾ Escolher tema manualmente", wordSourceLabel:"📖 Fonte de palavras", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -4783,7 +4784,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowe słowo", randomTopicLabel:"🗂 Losowy temat", manualTopicLabel:"▾ Wybierz temat ręcznie", wordSourceLabel:"📖 Źródło słów", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowe słowo angielskie", randomTopicLabel:"🗂 Losowy temat", manualTopicLabel:"▾ Wybierz temat ręcznie", wordSourceLabel:"📖 Źródło słów", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -4867,7 +4868,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机单词", randomTopicLabel:"🗂 随机主题", manualTopicLabel:"▾ 手动选择主题", wordSourceLabel:"📖 词汇来源", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机英语单词", randomTopicLabel:"🗂 随机主题", manualTopicLabel:"▾ 手动选择主题", wordSourceLabel:"📖 词汇来源", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -4951,7 +4952,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムな単語", randomTopicLabel:"🗂 ランダムなテーマ", manualTopicLabel:"▾ テーマを手動で選択", wordSourceLabel:"📖 単語ソース", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムな英単語", randomTopicLabel:"🗂 ランダムなテーマ", manualTopicLabel:"▾ テーマを手動で選択", wordSourceLabel:"📖 単語ソース", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -5035,7 +5036,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 무작위 단어", randomTopicLabel:"🗂 무작위 주제", manualTopicLabel:"▾ 주제 직접 선택", wordSourceLabel:"📖 단어 출처", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 무작위 영어 단어", randomTopicLabel:"🗂 무작위 주제", manualTopicLabel:"▾ 주제 직접 선택", wordSourceLabel:"📖 단어 출처", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -5119,7 +5120,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodné slovo", randomTopicLabel:"🗂 Náhodná téma", manualTopicLabel:"▾ Vybrať tému manuálne", wordSourceLabel:"📖 Zdroj slovíčok", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodná téma", manualTopicLabel:"▾ Vybrať tému manuálne", wordSourceLabel:"📖 Zdroj slovíčok", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -5192,7 +5193,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurig woord", randomTopicLabel:"🗂 Willekeurig onderwerp", manualTopicLabel:"▾ Onderwerp handmatig kiezen", wordSourceLabel:"📖 Woordbron", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurig Engels woord", randomTopicLabel:"🗂 Willekeurig onderwerp", manualTopicLabel:"▾ Onderwerp handmatig kiezen", wordSourceLabel:"📖 Woordbron", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -5265,7 +5266,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässigt ord", randomTopicLabel:"🗂 Slumpmässigt ämne", manualTopicLabel:"▾ Välj ämne manuellt", wordSourceLabel:"📖 Ordkälla", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässigt engelskt ord", randomTopicLabel:"🗂 Slumpmässigt ämne", manualTopicLabel:"▾ Välj ämne manuellt", wordSourceLabel:"📖 Ordkälla", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -5338,7 +5339,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное слово", randomTopicLabel:"🗂 Случайная тема", manualTopicLabel:"▾ Выбрать тему вручную", wordSourceLabel:"📖 Источник слов", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное английское слово", randomTopicLabel:"🗂 Случайная тема", manualTopicLabel:"▾ Выбрать тему вручную", wordSourceLabel:"📖 Источник слов", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -5406,7 +5407,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele kelime", randomTopicLabel:"🗂 Rastgele konu", manualTopicLabel:"▾ Konuyu manuel seç", wordSourceLabel:"📖 Kelime kaynağı", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele İngilizce kelime", randomTopicLabel:"🗂 Rastgele konu", manualTopicLabel:"▾ Konuyu manuel seç", wordSourceLabel:"📖 Kelime kaynağı", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -5480,7 +5481,7 @@ uk:{
   lvLabel0:"Початківець", lvLabel1:"Середній рівень", lvLabel2:"Просунутий",
   lblVerb:'⚡ Фразові дієслова', lblTopic:'🗂 Тема', editDetails:'⚙ Змінити деталі',
   lockTitle:"Промпт заблоковано", lockDesc:"Доступ після Pay me coffee.",
-  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове слово", randomTopicLabel:"🗂 Випадкова тема", manualTopicLabel:"▾ Обрати тему вручну", wordSourceLabel:"📖 Джерело слів", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
+  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове англійське слово", randomTopicLabel:"🗂 Випадкова тема", manualTopicLabel:"▾ Обрати тему вручну", wordSourceLabel:"📖 Джерело слів", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
   lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
   dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
   lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
@@ -5559,7 +5560,7 @@ id:{
   lvLabel0:"Pemula", lvLabel1:"Menengah", lvLabel2:"Mahir",
   lblVerb:'⚡ Phrasal verb', lblTopic:'🗂 Topik', editDetails:'⚙ Edit detail',
   lockTitle:"Prompt terkunci", lockDesc:"Akses setelah Pay me coffee.",
-  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Kata acak", randomTopicLabel:"🗂 Topik acak", manualTopicLabel:"▾ Pilih topik manual", wordSourceLabel:"📖 Sumber kata", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
+  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Kata acak bahasa Inggris", randomTopicLabel:"🗂 Topik acak", manualTopicLabel:"▾ Pilih topik manual", wordSourceLabel:"📖 Sumber kata", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
   lead3:"Klik dialog untuk membuka dan memutar audio.",
   dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
   lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
