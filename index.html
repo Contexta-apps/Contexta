@@ -8408,7 +8408,7 @@ function genGenerate() {
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
-      ? 'NOTE: "' + intent + '" is English; ' + fromLabel + ' is ' + fromName + '. In ' + fromLabel + ' blocks translate it into ' + fromName + '; in ' + toLabel + ' blocks keep "' + intent + '" in English.\n\n'
+      ? 'NOTE: "' + intent + '" is given in English. Translate it appropriately into both ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) - it must not stay untranslated in either language.\n\n'
       : 'Keep each block strictly in its own language (' + fromLabel + ' = ' + fromName + ' only, ' + toLabel + ' = ' + toName + ' only) - no mixing.\n\n') +
 
     'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
