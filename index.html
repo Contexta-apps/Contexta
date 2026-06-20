@@ -1539,16 +1539,17 @@ img { max-width: 100%; height: auto; }
 }
 
 .topic-dropdown {
-  position: absolute; bottom: calc(100% + 6px); top: auto; left: 0; right: 0;
-  background: var(--navy-lt);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 12px;
+  position: absolute; top: calc(100% + 6px); bottom: auto; left: 0; right: 0;
+  background: linear-gradient(180deg, #212c4a, #1a2035);
+  border: 1.5px solid rgba(201,151,58,.5);
+  border-radius: 16px;
   box-shadow: 0 16px 48px rgba(0,0,0,.55);
   z-index: 600;
   max-height: min(60vh, 380px);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  text-align: left;
 }
 .topic-dropdown::-webkit-scrollbar { width: 4px; }
 .topic-dropdown::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
@@ -1626,16 +1627,22 @@ img { max-width: 100%; height: auto; }
 .tree-item.selected .tree-item-bullet { content: '✓'; opacity: 1; color: var(--gold); }
 
 
-/* ── Topic dropdown mobilní fix ── */
+/* ── Topic/quicklevel dropdown – centrované na mobilu, zarovnané vlevo, menší ── */
 @media (max-width: 480px) {
   .topic-dropdown {
-    position: absolute;
-    left: 0; right: 0;
-    bottom: calc(100% + 6px); top: auto;
-    max-height: 55vh;
+    position: fixed; top: 50%; left: 50%; right: auto; bottom: auto;
+    transform: translate(-50%, -50%);
+    width: min(82vw, 290px);
+    max-height: min(70vh, 380px);
     border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.6);
+    z-index: 700;
   }
-  .topic-select-wrap { position: relative; }
+  .gen-quickpick-box .tree-item,
+  .quicklevel-item {
+    padding: 11px 14px;
+    font-size: .85rem;
+  }
 }
 
 /* ── Mode Toggle ── */
@@ -1963,6 +1970,82 @@ img { max-width: 100%; height: auto; }
   color: #fff;
   box-shadow: 0 0 14px rgba(201,151,58,.25);
 }
+
+/* ── Dva boxy: téma / slovo ── */
+.gen-quickpick-row {
+  display: flex; gap: 8px;
+  margin-top: 10px; margin-bottom: 6px;
+}
+.gen-quickpick-box {
+  flex: 1; min-width: 0;
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(201,151,58,.4);
+  border-radius: 14px;
+  padding: 9px 10px;
+  text-align: center;
+  position: relative;
+}
+.gen-quickpick-label {
+  font-size: .72rem; color: rgba(255,255,255,.55);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+/* ── Klikací varianta labelu (téma ▾ / úroveň ▾) ── */
+.gen-quickpick-label--dd {
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  width: 100%;
+  background: rgba(43,158,142,.08);
+  border: 1px solid rgba(201,151,58,.35);
+  border-radius: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: border-color .18s, background .18s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.gen-quickpick-label--dd span:first-child {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+}
+.gen-quickpick-label--dd:hover { border-color: var(--gold); background: rgba(43,158,142,.14); }
+.gen-quickpick-label--dd.open { border-color: var(--gold); }
+.gen-quickpick-label--dd .arrow {
+  flex-shrink: 0; font-size: .65rem; color: var(--gold); line-height: 1;
+  transition: transform .18s ease;
+}
+.gen-quickpick-label--dd.open .arrow { transform: rotate(180deg); }
+/* ── Mini-roletka úrovně (stejný vizuál jako topic-dropdown) ── */
+.quicklevel-select-wrap { position: relative; width: 100%; }
+.quicklevel-dropdown {
+  padding: 5px 0;
+}
+.quicklevel-item {
+  padding: 9px 14px; font-size: .85rem; text-align: left;
+  cursor: pointer; color: rgba(255,255,255,.8);
+  touch-action: manipulation;
+}
+.quicklevel-item:hover { background: rgba(201,151,58,.18); color: var(--gold-lt); }
+.quicklevel-item.selected { color: var(--gold-lt); font-weight: 600; background: rgba(201,151,58,.08); }
+.gen-quickpick-btn {
+  width: 100%; padding: 8px 8px; border-radius: 10px;
+  border: 1.5px solid rgba(201,151,58,.55);
+  background: rgba(201,151,58,.1);
+  color: var(--gold-lt); font-size: .78rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+  font-family: 'DM Sans', sans-serif;
+  touch-action: manipulation;
+  margin-bottom: 7px;
+}
+.gen-quickpick-btn:hover { border-color: var(--gold); background: rgba(201,151,58,.2); color: #fff; }
+.gen-manual-topic-toggle {
+  display: block; width: 100%; text-align: center;
+  margin: 2px 0 8px;
+  font-size: .76rem; color: rgba(255,255,255,.45);
+  cursor: pointer; background: none; border: none;
+  font-family: 'Inter', sans-serif;
+  padding: 4px;
+  touch-action: manipulation;
+}
+.gen-manual-topic-toggle:hover { color: var(--gold-lt); }
 
 
 
@@ -3613,41 +3696,44 @@ h1[data-t="heroH"] {
           </button>
         </div>
       </div>
-      <div class="gen-cta-row">
-        <div class="split-inspiration-wrap">
-          <button class="split-inspiration-main" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodná inspirace</button>
-          <button class="split-source-btn" id="splitSourceBtn" onclick="openAdvancedToSource()" title="Zdroj slovíček">
-            <span id="splitSourceLabel">TOPICS</span> ▾
-          </button>
+      <div class="gen-quickpick-row">
+        <div class="gen-quickpick-box">
+          <button class="gen-quickpick-btn" id="randomTopicBtn" data-translate="randomTopicLabel" onclick="insertRandomTopic()">🗂 Náhodné téma</button>
+          <div class="topic-select-wrap" id="topicWrap">
+            <button class="gen-quickpick-label gen-quickpick-label--dd" id="quickTopicLabel" type="button" onclick="toggleTopicDrop(event)" aria-haspopup="listbox" aria-expanded="false">
+              <span id="quickTopicLabelText">— vybrat téma —</span>
+              <span class="arrow">▾</span>
+            </button>
+            <div class="topic-dropdown" id="topicList" style="display:none;"></div>
+          </div>
+        </div>
+        <div class="gen-quickpick-box">
+          <button class="gen-quickpick-btn" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodné slovo</button>
+          <div class="quicklevel-select-wrap" id="quickLevelWrap">
+            <button class="gen-quickpick-label gen-quickpick-label--dd" id="quickLevelLabel" type="button" onclick="toggleQuickLevelDrop(event)" aria-haspopup="listbox" aria-expanded="false">
+              <span id="quickLevelLabelText">A1</span>
+              <span class="arrow">▾</span>
+            </button>
+            <div class="topic-dropdown quicklevel-dropdown" id="quickLevelList" style="display:none;">
+              <div class="tree-item quicklevel-item selected" data-value="A1" onclick="selectQuickLevel('A1','A1',this)">A1</div>
+              <div class="tree-item quicklevel-item" data-value="A2" onclick="selectQuickLevel('A2','A2',this)">A2</div>
+              <div class="tree-item quicklevel-item" data-value="B1" onclick="selectQuickLevel('B1','B1',this)">B1</div>
+              <div class="tree-item quicklevel-item" data-value="B2" onclick="selectQuickLevel('B2','B2',this)">B2</div>
+              <div class="tree-item quicklevel-item" data-value="C1" onclick="selectQuickLevel('C1','C1',this)">C1</div>
+              <div class="tree-item quicklevel-item" data-value="C2" onclick="selectQuickLevel('C2','C2',this)">C2</div>
+              <div class="tree-item quicklevel-item" data-value="phrasal_verbs" data-translate="quickLevelPhrasalVerbs" onclick="selectQuickLevel('phrasal_verbs',this.textContent,this)">frázová slovesa</div>
+              <div class="tree-item quicklevel-item" data-value="idioms" data-translate="quickLevelIdioms" onclick="selectQuickLevel('idioms',this.textContent,this)">idiomy</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="gen-intent-examples">
-        <button class="gen-ex-chip" data-translate="exChip1" onclick="insertToPractice(this.textContent)">Jídlo</button>
-        <button class="gen-ex-chip" data-translate="exChip8" onclick="insertToPractice(this.textContent)">Zábava</button>
-        <button class="gen-ex-chip" data-translate="exChip3" onclick="insertToPractice(this.textContent)">Cestování</button>
-        <button class="gen-ex-chip" data-translate="exChip9" onclick="insertToPractice(this.textContent)">Fitness</button>
-        <button class="gen-ex-chip" data-translate="exChip10" onclick="insertToPractice(this.textContent)">Studium</button>
-      </div>
-
-      <!-- ── Probíraná slova ── -->
+      <!-- Probíraná slova ── -->
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
         <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
         <div class="gen-history-chips" id="genHistoryChips"></div>
         <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.style.display='none';}">
         <button class="gen-history-clear" onclick="genHistoryToggleInput()" title="Přidat slovo">＋</button>
         <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
-      </div>
-
-      <!-- TÉMA DROPDOWN -->
-      <div class="gen-topic-inline">
-        <div class="topic-select-wrap" id="topicWrap">
-          <button class="topic-btn" id="topicBtn" onclick="toggleTopicDrop(event)" aria-haspopup="listbox" aria-expanded="false" aria-label="Vybrat téma">
-            <span class="topic-btn-icon">🗂</span>
-            <span id="topicBtnLabel">— vybrat téma —</span>
-            <span class="arrow">▼</span>
-          </button>
-          <div class="topic-dropdown" id="topicList" style="display:none;"></div>
-        </div>
       </div>
     </div>
 
@@ -4093,7 +4179,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodná inspirace", wordSourceLabel:"📖 Zdroj slovíček", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Cestování", randomChipLabel:"✨ Náhodné slovo", randomTopicLabel:"🗂 Náhodné téma", manualTopicLabel:"▾ Vybrat téma manuálně", wordSourceLabel:"📖 Zdroj slovíček", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -4134,7 +4220,7 @@ cz:{
   intentPlaceholder:'Napiš slovo, téma nebo myšlenku – např. restaurace, cestování, práce…',
   verbSearchPh:'🔍 Hledat frázové sloveso…',
   verbDropDefault:'— vybrat —',
-  topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —',
+  topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —', quickLevelPhrasalVerbs:'frázová slovesa', quickLevelIdioms:'idiomy',
   lvChip0:'A1–A2', lvChipSub0:'Začátečník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -4184,7 +4270,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random inspiration", wordSourceLabel:"📖 Word source", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Travel", randomChipLabel:"✨ Random word", randomTopicLabel:"🗂 Random topic", manualTopicLabel:"▾ Choose topic manually", wordSourceLabel:"📖 Word source", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -4226,7 +4312,7 @@ en:{
   intentPlaceholder:'Write a word, topic or idea – e.g. restaurant, travel, work…',
   verbSearchPh:'🔍 Search phrasal verb…',
   verbDropDefault:'— select —',
-  topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —',
+  topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —', quickLevelPhrasalVerbs:'phrasal verbs', quickLevelIdioms:'idioms',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Intermediate',
   lvChip2:'C1–C2', lvChipSub2:'Advanced',
@@ -4274,7 +4360,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufällige Inspiration", wordSourceLabel:"📖 Wortquelle", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Reisen", randomChipLabel:"✨ Zufälliges Wort", randomTopicLabel:"🗂 Zufälliges Thema", manualTopicLabel:"▾ Thema manuell wählen", wordSourceLabel:"📖 Wortquelle", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -4316,7 +4402,7 @@ de:{
   intentPlaceholder:'Schreibe ein Wort, Thema oder eine Idee – z.B. Restaurant, Reisen, Arbeit…',
   verbSearchPh:'🔍 Phrasal Verb suchen…',
   verbDropDefault:'— auswählen —',
-  topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —',
+  topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —', quickLevelPhrasalVerbs:'Phrasal Verbs', quickLevelIdioms:'Redewendungen',
   lvChip0:'A1–A2', lvChipSub0:'Anfänger',
   lvChip1:'B1–B2', lvChipSub1:'Mittelstufe',
   lvChip2:'C1–C2', lvChipSub2:'Fortgeschritten',
@@ -4360,7 +4446,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Inspiration aléatoire", wordSourceLabel:"📖 Source de mots", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Voyage", randomChipLabel:"✨ Mot aléatoire", randomTopicLabel:"🗂 Sujet aléatoire", manualTopicLabel:"▾ Choisir un sujet manuellement", wordSourceLabel:"📖 Source de mots", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -4403,7 +4489,7 @@ fr:{
   intentPlaceholder:"Écris un mot, un sujet ou une idée – ex. restaurant, voyage, travail…",
   verbSearchPh:"🔍 Rechercher un verbe phrasé…",
   verbDropDefault:"— sélectionner —",
-  topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —",
+  topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes',
   lvChipSub0:"Débutant", lvChipSub1:"Intermédiaire", lvChipSub2:"Avancé",
   styleLabel:"🎭 Style",
   styleNormal:"courant", styleFormal:"formel", styleSlang:"argot", styleHumor:"humoristique",
@@ -4446,7 +4532,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Inspiración aleatoria", wordSourceLabel:"📖 Fuente de palabras", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Viaje", randomChipLabel:"✨ Palabra aleatoria", randomTopicLabel:"🗂 Tema aleatorio", manualTopicLabel:"▾ Elegir tema manualmente", wordSourceLabel:"📖 Fuente de palabras", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -4488,7 +4574,7 @@ es:{
   intentPlaceholder:'Escribe una palabra, tema o idea – ej. restaurante, viaje, trabajo…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— seleccionar —',
-  topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —',
+  topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —', quickLevelPhrasalVerbs:'verbos frasales', quickLevelIdioms:'modismos',
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzado',
@@ -4530,7 +4616,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Ispirazione casuale", wordSourceLabel:"📖 Fonte delle parole", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Viaggio", randomChipLabel:"✨ Parola casuale", randomTopicLabel:"🗂 Argomento casuale", manualTopicLabel:"▾ Scegli argomento manualmente", wordSourceLabel:"📖 Fonte delle parole", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -4572,7 +4658,7 @@ it:{
   intentPlaceholder:'Scrivi una parola, un argomento o un idea – es. ristorante, viaggio, lavoro…',
   verbSearchPh:'🔍 Cerca verbo frasale…',
   verbDropDefault:'— seleziona —',
-  topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —",
+  topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —", quickLevelPhrasalVerbs:'verbi frasali', quickLevelIdioms:'modi di dire',
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzato',
@@ -4614,7 +4700,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Inspiração aleatória", wordSourceLabel:"📖 Fonte de palavras", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Viagem", randomChipLabel:"✨ Palavra aleatória", randomTopicLabel:"🗂 Tema aleatório", manualTopicLabel:"▾ Escolher tema manualmente", wordSourceLabel:"📖 Fonte de palavras", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -4655,7 +4741,7 @@ pt:{
   intentPlaceholder:'Escreva uma palavra, tema ou ideia – ex. restaurante, viagem, trabalho…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— selecionar —',
-  topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —',
+  topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —', quickLevelPhrasalVerbs:'verbos frasais', quickLevelIdioms:'expressões idiomáticas',
   lvChip0:'A1–A2', lvChipSub0:'Iniciante',
   lvChip1:'B1–B2', lvChipSub1:'Intermediário',
   lvChip2:'C1–C2', lvChipSub2:'Avançado',
@@ -4697,7 +4783,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowa inspiracja", wordSourceLabel:"📖 Źródło słów", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Podróż", randomChipLabel:"✨ Losowe słowo", randomTopicLabel:"🗂 Losowy temat", manualTopicLabel:"▾ Wybierz temat ręcznie", wordSourceLabel:"📖 Źródło słów", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -4739,7 +4825,7 @@ pl:{
   intentPlaceholder:'Napisz słowo, temat lub myśl – np. restauracja, podróże, praca…',
   verbSearchPh:'🔍 Szukaj czasownika frazowego…',
   verbDropDefault:'— wybierz —',
-  topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —',
+  topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —', quickLevelPhrasalVerbs:'czasowniki złożone', quickLevelIdioms:'idiomy',
   lvChip0:'A1–A2', lvChipSub0:'Początkujący',
   lvChip1:'B1–B2', lvChipSub1:'Średniozaawansowany',
   lvChip2:'C1–C2', lvChipSub2:'Zaawansowany',
@@ -4781,7 +4867,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机灵感", wordSourceLabel:"📖 词汇来源", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"旅行", randomChipLabel:"✨ 随机单词", randomTopicLabel:"🗂 随机主题", manualTopicLabel:"▾ 手动选择主题", wordSourceLabel:"📖 词汇来源", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -4823,7 +4909,7 @@ cn:{
   intentPlaceholder:'输入单词、主题或想法 – 例如：餐厅、旅行、工作…',
   verbSearchPh:'🔍 搜索短语动词…',
   verbDropDefault:'— 选择 —',
-  topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —',
+  topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —', quickLevelPhrasalVerbs:'短语动词', quickLevelIdioms:'习语',
   lvChip0:'A1–A2', lvChipSub0:'初学者',
   lvChip1:'B1–B2', lvChipSub1:'中级',
   lvChip2:'C1–C2', lvChipSub2:'高级',
@@ -4865,7 +4951,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムなインスピレーション", wordSourceLabel:"📖 単語ソース", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"旅行", randomChipLabel:"✨ ランダムな単語", randomTopicLabel:"🗂 ランダムなテーマ", manualTopicLabel:"▾ テーマを手動で選択", wordSourceLabel:"📖 単語ソース", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -4907,7 +4993,7 @@ jp:{
   intentPlaceholder:'単語、テーマ、またはアイデアを入力 – 例：レストラン、旅行、仕事…',
   verbSearchPh:'🔍 句動詞を検索…',
   verbDropDefault:'— 選択 —',
-  topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —',
+  topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —', quickLevelPhrasalVerbs:'句動詞', quickLevelIdioms:'イディオム',
   lvChip0:'A1–A2', lvChipSub0:'初心者',
   lvChip1:'B1–B2', lvChipSub1:'中級',
   lvChip2:'C1–C2', lvChipSub2:'上級',
@@ -4949,7 +5035,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 랜덤 영감", wordSourceLabel:"📖 단어 출처", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"여행", randomChipLabel:"✨ 무작위 단어", randomTopicLabel:"🗂 무작위 주제", manualTopicLabel:"▾ 주제 직접 선택", wordSourceLabel:"📖 단어 출처", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -4991,7 +5077,7 @@ kr:{
   intentPlaceholder:'단어, 주제 또는 아이디어를 입력하세요 – 예: 레스토랑, 여행, 업무…',
   verbSearchPh:'🔍 구동사 검색…',
   verbDropDefault:'— 선택 —',
-  topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —',
+  topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —', quickLevelPhrasalVerbs:'구동사', quickLevelIdioms:'관용구',
   lvChip0:'A1–A2', lvChipSub0:'초보자',
   lvChip1:'B1–B2', lvChipSub1:'중급자',
   lvChip2:'C1–C2', lvChipSub2:'고급자',
@@ -5033,7 +5119,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodná inšpirácia", wordSourceLabel:"📖 Zdroj slovíčok", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Cestovanie", randomChipLabel:"✨ Náhodné slovo", randomTopicLabel:"🗂 Náhodná téma", manualTopicLabel:"▾ Vybrať tému manuálne", wordSourceLabel:"📖 Zdroj slovíčok", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -5064,7 +5150,7 @@ sk:{
   intentLabel:'💬 Čo chceš precvičiť?',
   intentPlaceholder:'Napíš slovo, tému alebo myšlienku – napr. reštaurácia, cestovanie, práca…',
   verbSearchPh:'🔍 Hľadať frázové sloveso…',
-  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —',
+  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —', quickLevelPhrasalVerbs:'frázové slovesá', quickLevelIdioms:'idiómy',
   lvChip0:'A1–A2', lvChipSub0:'Začiatočník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -5106,7 +5192,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurige inspiratie", wordSourceLabel:"📖 Woordbron", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Reizen", randomChipLabel:"✨ Willekeurig woord", randomTopicLabel:"🗂 Willekeurig onderwerp", manualTopicLabel:"▾ Onderwerp handmatig kiezen", wordSourceLabel:"📖 Woordbron", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -5137,7 +5223,7 @@ nl:{
   intentLabel:'💬 Wat wil je oefenen?',
   intentPlaceholder:'Schrijf een woord, onderwerp of gedachte – bijv. restaurant, reizen, werk…',
   verbSearchPh:'🔍 Zoek werkwoordgroep…',
-  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —',
+  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —', quickLevelPhrasalVerbs:'voorzetselwerkwoorden', quickLevelIdioms:'idiomen',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Gevorderd',
   lvChip2:'C1–C2', lvChipSub2:'Vorderend',
@@ -5179,7 +5265,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässig inspiration", wordSourceLabel:"📖 Ordkälla", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Resa", randomChipLabel:"✨ Slumpmässigt ord", randomTopicLabel:"🗂 Slumpmässigt ämne", manualTopicLabel:"▾ Välj ämne manuellt", wordSourceLabel:"📖 Ordkälla", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -5210,7 +5296,7 @@ sv:{
   intentLabel:'💬 Vad vill du öva?',
   intentPlaceholder:'Skriv ett ord, ämne eller tanke – t.ex. restaurang, resor, arbete…',
   verbSearchPh:'🔍 Sök frasverb…',
-  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —',
+  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —', quickLevelPhrasalVerbs:'frasala verb', quickLevelIdioms:'idiom',
   lvChip0:'A1–A2', lvChipSub0:'Nybörjare',
   lvChip1:'B1–B2', lvChipSub1:'Medelnivå',
   lvChip2:'C1–C2', lvChipSub2:'Avancerad',
@@ -5252,7 +5338,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное вдохновение", wordSourceLabel:"📖 Источник слов", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Путешествие", randomChipLabel:"✨ Случайное слово", randomTopicLabel:"🗂 Случайная тема", manualTopicLabel:"▾ Выбрать тему вручную", wordSourceLabel:"📖 Источник слов", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -5278,7 +5364,7 @@ ru:{
   intentLabel:'💬 Что хочешь практиковать?',
   intentPlaceholder:'Напиши слово, тему или мысль – напр. ресторан, путешествие, работа…',
   verbSearchPh:'🔍 Поиск фразового глагола…',
-  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —',
+  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —', quickLevelPhrasalVerbs:'фразовые глаголы', quickLevelIdioms:'идиомы',
   lvChip0:'A1–A2', lvChipSub0:'Начинающий',
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
@@ -5320,7 +5406,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele ilham", wordSourceLabel:"📖 Kelime kaynağı", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Seyahat", randomChipLabel:"✨ Rastgele kelime", randomTopicLabel:"🗂 Rastgele konu", manualTopicLabel:"▾ Konuyu manuel seç", wordSourceLabel:"📖 Kelime kaynağı", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -5351,7 +5437,7 @@ tr:{
   intentLabel:'💬 Ne pratik yapmak istiyorsun?',
   intentPlaceholder:'Kelime, konu veya düşünce yaz – örn. restoran, seyahat, iş…',
   verbSearchPh:'🔍 Fiil öbeği ara…',
-  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —',
+  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —', quickLevelPhrasalVerbs:'deyimsel fiiller', quickLevelIdioms:'deyimler',
   lvChip0:'A1–A2', lvChipSub0:'Başlangıç',
   lvChip1:'B1–B2', lvChipSub1:'Orta',
   lvChip2:'C1–C2', lvChipSub2:'İleri',
@@ -5394,7 +5480,7 @@ uk:{
   lvLabel0:"Початківець", lvLabel1:"Середній рівень", lvLabel2:"Просунутий",
   lblVerb:'⚡ Фразові дієслова', lblTopic:'🗂 Тема', editDetails:'⚙ Змінити деталі',
   lockTitle:"Промпт заблоковано", lockDesc:"Доступ після Pay me coffee.",
-  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове натхнення", wordSourceLabel:"📖 Джерело слів", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
+  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Подорож", randomChipLabel:"✨ Випадкове слово", randomTopicLabel:"🗂 Випадкова тема", manualTopicLabel:"▾ Обрати тему вручну", wordSourceLabel:"📖 Джерело слів", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
   lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
   dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
   lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
@@ -5427,7 +5513,7 @@ uk:{
   intentLabel:'💬 Що хочеш попрактикувати?',
   intentPlaceholder:'Напиши слово, тему або думку – напр. ресторан, подорож, робота…',
   verbSearchPh:'🔍 Шукати фразове дієслово…',
-  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —',
+  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —', quickLevelPhrasalVerbs:'фразові дієслова', quickLevelIdioms:'ідіоми',
   lvChip0:'A1–A2', lvChipSub0:'Початківець',
   lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
   lvChip2:'C1–C2', lvChipSub2:'Просунутий',
@@ -5473,7 +5559,7 @@ id:{
   lvLabel0:"Pemula", lvLabel1:"Menengah", lvLabel2:"Mahir",
   lblVerb:'⚡ Phrasal verb', lblTopic:'🗂 Topik', editDetails:'⚙ Edit detail',
   lockTitle:"Prompt terkunci", lockDesc:"Akses setelah Pay me coffee.",
-  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Inspirasi acak", wordSourceLabel:"📖 Sumber kata", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
+  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Perjalanan", randomChipLabel:"✨ Kata acak", randomTopicLabel:"🗂 Topik acak", manualTopicLabel:"▾ Pilih topik manual", wordSourceLabel:"📖 Sumber kata", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
   lead3:"Klik dialog untuk membuka dan memutar audio.",
   dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
   lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
@@ -5506,7 +5592,7 @@ id:{
   intentLabel:'💬 Apa yang ingin kamu latih?',
   intentPlaceholder:'Tulis kata, topik atau ide – mis. restoran, perjalanan, pekerjaan…',
   verbSearchPh:'🔍 Cari phrasal verb…',
-  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —',
+  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —', quickLevelPhrasalVerbs:'kata kerja frasa', quickLevelIdioms:'idiom',
   lvChip0:'A1–A2', lvChipSub0:'Pemula',
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
@@ -5672,6 +5758,8 @@ function applyWebLang() {
   if (!selectedTopic) {
     const tl = document.getElementById('topicBtnLabel');
     if (tl) tl.textContent = t.topicDropDefault || '— vybrat téma —';
+    const qtl = document.getElementById('quickTopicLabelText');
+    if (qtl) qtl.textContent = t.topicDropDefault || '— vybrat téma —';
   }
 
   // ── Level chips překládá data-translate loop výše ──
@@ -5929,6 +6017,11 @@ function clearPracticeInput() {
   if (topicBtnLabel) {
     var _t = T[webLang] || T.cz;
     topicBtnLabel.textContent = _t.topicDropDefault || '— vybrat téma —';
+  }
+  var quickTopicLabel = document.getElementById('quickTopicLabelText');
+  if (quickTopicLabel) {
+    var _t2 = T[webLang] || T.cz;
+    quickTopicLabel.textContent = _t2.topicDropDefault || '— vybrat téma —';
   }
   if (topicList) {
     topicList.style.display = 'none';
@@ -7009,6 +7102,10 @@ function selectTopic(item, e) {
   selectedTopic = item;
   var btn = document.getElementById('topicBtnLabel');
   if (btn) btn.textContent = item;
+  var quickBtnText = document.getElementById('quickTopicLabelText');
+  if (quickBtnText) quickBtnText.textContent = item;
+  var quickBtn = document.getElementById('quickTopicLabel');
+  if (quickBtn) { quickBtn.classList.add('active-topic'); quickBtn.classList.remove('open'); }
   var topicBtn = document.getElementById('topicBtn');
   if (topicBtn) topicBtn.classList.add('active-topic');
   if (topicBtn) topicBtn.classList.remove('open');
@@ -7044,6 +7141,32 @@ function setCEFR(level, el) {
   if (el) el.classList.add('active');
 }
 
+// ── Quickpick roletka úrovně (téma A1▾ styl) ──
+function toggleQuickLevelDrop(e) {
+  if (e) e.stopPropagation();
+  var list = document.getElementById('quickLevelList');
+  if (!list) return;
+  var opening = list.style.display !== 'block';
+  // Zavři ostatní dropdowny
+  var topicList = document.getElementById('topicList');
+  if (topicList) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); }
+  var langEl = document.getElementById('langWrap');
+  if (langEl) langEl.classList.remove('open');
+  list.style.display = opening ? 'block' : 'none';
+  var labelBtn = document.getElementById('quickLevelLabel');
+  if (labelBtn) { labelBtn.classList.toggle('open', opening); labelBtn.setAttribute('aria-expanded', opening ? 'true' : 'false'); }
+}
+
+function selectQuickLevel(value, label, el) {
+  // Najdi odpovídající položku v "Zdroj slovíček" a deleguj na stávající logiku (wsSelect)
+  var srcOpt = document.querySelector('.gen-word-source-opt[data-value="' + value + '"]');
+  wsSelect(value, label, srcOpt);
+  var list = document.getElementById('quickLevelList');
+  if (list) list.style.display = 'none';
+  var labelBtn = document.getElementById('quickLevelLabel');
+  if (labelBtn) { labelBtn.classList.remove('open'); labelBtn.setAttribute('aria-expanded', 'false'); }
+}
+
 function setGenMode(mode) {
   genMode = mode;
   document.getElementById('toggleWord').classList.toggle('active', mode === 'word');
@@ -7072,6 +7195,9 @@ document.addEventListener('click', function(e) {
   var topicWrap = document.getElementById('topicWrap');
   var topicList = document.getElementById('topicList');
   if (topicWrap && topicList && !topicWrap.contains(e.target)) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); resetTopicTree(); }
+  var quickLevelWrap = document.getElementById('quickLevelWrap');
+  var quickLevelList = document.getElementById('quickLevelList');
+  if (quickLevelWrap && quickLevelList && !quickLevelWrap.contains(e.target)) { quickLevelList.style.display = 'none'; var _qlb=document.getElementById('quickLevelLabel'); if(_qlb) _qlb.classList.remove('open'); }
   var verbWrap = document.getElementById('verbWrap');
   var verbDd   = document.getElementById('verbDropList');
   if (verbDd && (!verbWrap || !verbWrap.contains(e.target))) {
@@ -8235,8 +8361,12 @@ function genGenerate() {
   var fromIsEnglish = (fromLang === 'en');
   var needsTranslation = looksEnglish && !fromIsEnglish;
 
+  var webLangName = GEN_NAMES[webLang] || webLang;
+
   var prompt =
     'Create language learning content.\n' +
+    'Source language (interface / web language): ' + webLangName + '\n' +
+    'SYSTEM RULE: All error messages, warnings, validation messages, and system feedback must be written in ' + webLangName + ' only — never in Language A or Language B.\n' +
     'Language A: ' + fromName + '\n' +
     'Language B: ' + toName + '\n' +
     'Topic/target word: ' + intent + '\n' +
@@ -8271,7 +8401,8 @@ function genGenerate() {
     '"' + intent + '" in dialogues: use only in turns where it naturally belongs as part of a reaction or statement — not forced into every turn.\n' +
     'Across all examples, "' + intent + '" must appear in varied pragmatic functions — not only logical deduction, but also: reaction to new information, contrast with expectation, expression of speaker\'s attitude or stance.\n' +
     '\n' +
-    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order). Translation keeps the same tense as the original.\n') +
+    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
+    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. If the source uses past simple, the translation must use past simple (or the closest equivalent). If the source uses present perfect, future, or progressive aspect, the translation must reflect the same temporal meaning. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction. This rule applies to every sentence and every dialogue turn without exception.\n' +
     '- Translate meaning, not words; do not preserve lexical structure.\n' +
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
@@ -8403,6 +8534,8 @@ document.addEventListener('click', function(e) {
       // Aktualizuj label tlačítka
       var tbtn = document.getElementById('topicBtnLabel');
       if (tbtn) tbtn.textContent = val;
+      var qtbtn = document.getElementById('quickTopicLabelText');
+      if (qtbtn) qtbtn.textContent = val;
       var topicBtn = document.getElementById('topicBtn');
       if (topicBtn) topicBtn.classList.add('active-topic');
       // Označ jako vybrané
@@ -8739,6 +8872,10 @@ function wsSelect(value, label, el) {
   if (el) el.classList.add('selected');
   if (list) list.style.display = 'none';
   if (wrap) wrap.classList.remove('open');
+  // Synchronizuj quickpick roletku "Náhodné slovo"
+  var qlt = document.getElementById('quickLevelLabelText');
+  if (qlt) qlt.textContent = label;
+  document.querySelectorAll('.quicklevel-item').forEach(function(t){ t.classList.toggle('selected', t.getAttribute('data-value') === value); });
 }
 
 document.addEventListener('click', function(e) {
@@ -8761,6 +8898,29 @@ function openAdvancedToSource() {
     var wrap = document.getElementById('wordSourceWrap');
     if (wrap) { wrap.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   }, 200);
+}
+
+/* ── 🗂 Náhodné téma ── */
+function insertRandomTopic() {
+  if (typeof TOPICS === 'undefined' || !TOPICS.length) return;
+  var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
+  var cat = TOPICS[Math.floor(Math.random() * TOPICS.length)];
+  var label = (cat.cat && (cat.cat[lang] || cat.cat['en'] || cat.cat['cz'])) || '';
+  if (!label) return;
+  selectedTopic = label;
+  var topicBtnLabel = document.getElementById('topicBtnLabel');
+  if (topicBtnLabel) topicBtnLabel.textContent = label;
+  var quickTopicLabel = document.getElementById('quickTopicLabelText');
+  if (quickTopicLabel) quickTopicLabel.textContent = label;
+  var quickTopicBtn = document.getElementById('quickTopicLabel');
+  if (quickTopicBtn) quickTopicBtn.classList.add('active-topic');
+  var topicBtn = document.getElementById('topicBtn');
+  if (topicBtn) topicBtn.classList.add('active-topic');
+  document.querySelectorAll('.tree-item').forEach(function(el) {
+    var lbl = el.querySelector('.tree-item-label');
+    el.classList.toggle('selected', lbl && lbl.textContent.trim() === label);
+  });
+  _insertWord(label);
 }
 
 function insertRandomInspiration() {
