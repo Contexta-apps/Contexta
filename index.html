@@ -43,6 +43,10 @@ body {
   color: var(--ink);
   line-height: 1.7;
   font-size: 16px;
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
 }
 
 /* ══════════════════════════════
@@ -2839,7 +2843,10 @@ img { max-width: 100%; height: auto; }
   transition: all .15s;
   font-family: 'Inter', sans-serif;
   min-height: 32px;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .gen-history-chip:hover {
   border-color: var(--gold);
@@ -9317,7 +9324,7 @@ document.addEventListener('DOMContentLoaded', function() { updateSplitSourceLabe
               // Krok 6: deaktivace
               finishOnboarding();
             }, 400);
-          }, 9600);
+          }, 6600);
         }, 700);
       }
     }, 90);
