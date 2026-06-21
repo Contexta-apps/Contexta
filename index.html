@@ -2803,6 +2803,7 @@ img { max-width: 100%; height: auto; }
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
 }
 .gen-history-label {
   font-size: .72rem;
@@ -2826,6 +2827,7 @@ img { max-width: 100%; height: auto; }
   flex-wrap: wrap;
   gap: 6px;
   flex: 1;
+  min-width: 0;
 }
 .gen-history-chip {
   padding: 5px 12px;
@@ -2841,8 +2843,10 @@ img { max-width: 100%; height: auto; }
   min-height: 32px;
   white-space: nowrap;
   max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  box-sizing: border-box;
 }
 .gen-history-chip:hover {
   border-color: var(--gold);
