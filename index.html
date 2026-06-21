@@ -2132,7 +2132,7 @@ img { max-width: 100%; height: auto; }
   min-height: 38px;
   transition: border-color .18s;
 }
-.gen-word-source-label { font-size: .82rem; }
+.gen-word-source-label { font-size: .82rem; overflow-wrap: break-word; word-break: break-word; }
 .gen-word-source-btn:hover { border-color: rgba(201,151,58,.5); }
 .gen-word-source-wrap.open .gen-word-source-btn { border-color: var(--gold); }
 .gen-word-source-wrap.open .gen-word-source-btn .arrow { transform: rotate(180deg); }
@@ -2797,14 +2797,12 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
 }
 .gen-history-bottom {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  min-width: 0;
 }
 .gen-history-label {
   font-size: .72rem;
@@ -2828,7 +2826,6 @@ img { max-width: 100%; height: auto; }
   flex-wrap: wrap;
   gap: 6px;
   flex: 1;
-  min-width: 0;
 }
 .gen-history-chip {
   padding: 5px 12px;
@@ -2843,11 +2840,6 @@ img { max-width: 100%; height: auto; }
   font-family: 'Inter', sans-serif;
   min-height: 32px;
   white-space: nowrap;
-  max-width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
 }
 .gen-history-chip:hover {
   border-color: var(--gold);
