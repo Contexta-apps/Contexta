@@ -2784,14 +2784,25 @@ img { max-width: 100%; height: auto; }
 /* ── Probíraná slova ── */
 .gen-history-row {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
   margin-top: 10px;
   padding: 8px 12px;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 10px;
+}
+.gen-history-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gen-history-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .gen-history-label {
   font-size: .72rem;
@@ -2801,6 +2812,14 @@ img { max-width: 100%; height: auto; }
   letter-spacing: .05em;
   flex-shrink: 0;
   white-space: nowrap;
+}
+.gen-history-streak {
+  font-size: .72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.45);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 .gen-history-chips {
   display: flex;
@@ -3730,11 +3749,16 @@ h1[data-t="heroH"] {
       </div>
       <!-- Probíraná slova ── -->
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
-        <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
-        <div class="gen-history-chips" id="genHistoryChips"></div>
-        <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.style.display='none';}">
-        <button class="gen-history-clear" onclick="genHistoryToggleInput()" title="Přidat slovo">＋</button>
-        <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
+        <div class="gen-history-top">
+          <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
+          <span class="gen-history-streak" id="genHistoryStreak"></span>
+        </div>
+        <div class="gen-history-bottom">
+          <div class="gen-history-chips" id="genHistoryChips"></div>
+          <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.style.display='none';}">
+          <button class="gen-history-clear" onclick="genHistoryToggleInput()" title="Přidat slovo">＋</button>
+          <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
+        </div>
       </div>
     </div>
 
@@ -8173,6 +8197,8 @@ function genHistoryRender() {
   if (!row || !wrap) return;
   if (!list.length) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
+  var streakEl = document.getElementById('genHistoryStreak');
+  if (streakEl) streakEl.textContent = '📦 ' + list.length + ' slov celkem';
   wrap.innerHTML = '';
   var visible = genHistoryExpanded ? list : list.slice(0, GEN_HISTORY_VISIBLE);
   visible.forEach(function(word) {
