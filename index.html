@@ -2797,6 +2797,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .gen-history-bottom {
   display: flex;
@@ -4184,7 +4185,57 @@ const D = {
       ["Apakah nenek senang dengan kunjungan itu?","Oh, dia sudah membicarakannya sepanjang minggu."],
       ["Kamu tidak terlihat semangat.","Memang tidak. Saya lelah dan tidak bergairah."],
       ["Mau makan malam di luar malam ini?","Tentu saja. Saya belum makan sama sekali hari ini."],
-      ["Sudah lihat trailer film baru itu?","Sudah! Saya sangat menantikannya. Terlihat luar biasa."]]
+      ["Sudah lihat trailer film baru itu?","Sudah! Saya sangat menantikannya. Terlihat luar biasa."]],
+  ru:[["Куда бы ты хотел поехать в этом году?","Я бы с удовольствием посетил Италию."],
+      ["Чего ты больше всего ждёшь?","Честно? Просто поспать подольше и ничего не делать."],
+      ["Как дела на новой работе?","Пока хорошо. Я ещё привыкаю."],
+      ["Дети хотят вернуться в школу?","Ни за что. Они этого боятся."],
+      ["Ты достал билеты на концерт?","Да, наконец-то! Я жду этого уже несколько месяцев."],
+      ["Какие планы на выходные?","Не особо. Просто хочу отдохнуть дома."],
+      ["Твоя бабушка рада визиту?","О, она говорит об этом всю неделю."],
+      ["Ты не выглядишь очень радостным.","Это точно. Я устал, и настроения нет."],
+      ["Пойдём куда-нибудь поужинать сегодня?","Конечно. Я весь день ничего не ел."],
+      ["Ты видел трейлер того нового фильма?","Да! Я очень его жду. Выглядит потрясающе."]],
+  sk:[["Kam by si chcel tento rok cestovať?","Rád by som navštívil Itáliu."],
+      ["Na čo sa najviac tešíš?","Úprimne? Hlavne na to, že si dlho pospím a nebudem nič robiť."],
+      ["Ako to ide v novej práci?","Zatiaľ dobre. Ešte si zvykám."],
+      ["Tešia sa deti do školy?","Vôbec nie. Hrozia sa toho."],
+      ["Zohnal si lístky na koncert?","Áno, konečne! Teším sa na to už mesiace."],
+      ["Máš nejaké plány na víkend?","Nič moc. Chcem si len oddýchnuť doma."],
+      ["Teší sa babka na návštevu?","Och, hovorí o tom celý týždeň."],
+      ["Nevyzeráš veľmi nadšený.","Nie som. Som unavený a nemám náladu."],
+      ["Pôjdeme dnes večer niekam na večeru?","Určite. Celý deň som nič nejedol."],
+      ["Videl si trailer na ten nový film?","Áno! Veľmi sa na to teším. Vyzerá to skvele."]],
+  nl:[["Waar zou je dit jaar naartoe willen reizen?","Ik zou graag Italië bezoeken."],
+      ["Waar verheug je je het meest op?","Eerlijk gezegd? Gewoon uitslapen en niets doen."],
+      ["Hoe gaat het met de nieuwe baan?","Tot nu toe goed. Ik moet er nog aan wennen."],
+      ["Willen de kinderen weer naar school?","Geen sprake van. Ze zien er erg tegenop."],
+      ["Heb je kaartjes voor het concert gekregen?","Ja, eindelijk! Ik kijk er al maanden naar uit."],
+      ["Heb je plannen voor het weekend?","Niet veel. Ik wil gewoon thuis relaxen."],
+      ["Is je oma blij met het bezoek?","Oh, ze praat er al de hele week over."],
+      ["Je lijkt niet erg enthousiast.","Dat ben ik ook niet. Ik ben uitgeput en heb er geen zin in."],
+      ["Zullen we vanavond uit eten gaan?","Absoluut. Ik heb de hele dag nog niets gegeten."],
+      ["Heb je de trailer van die nieuwe film gezien?","Ja! Ik kijk er erg naar uit. Het ziet er geweldig uit."]],
+  sv:[["Vart skulle du vilja resa i år?","Jag skulle gärna besöka Italien."],
+      ["Vad ser du mest fram emot?","Ärligt talat? Att bara sova länge och inte göra något."],
+      ["Hur går det med det nya jobbet?","Bra så här långt. Jag vänjer mig fortfarande."],
+      ["Vill barnen tillbaka till skolan?","Inte en chans. De gruvar sig för det."],
+      ["Fick du biljetter till konserten?","Ja, äntligen! Jag har sett fram emot det i flera månader."],
+      ["Några planer för helgen?","Inte mycket. Jag vill bara koppla av hemma."],
+      ["Är din mormor glad över besöket?","Åh, hon har pratat om det hela veckan."],
+      ["Du verkar inte särskilt glad.","Det är jag inte. Jag är utsliten och inte på humör."],
+      ["Ska vi gå ut och äta middag ikväll?","Absolut. Jag har inte ätit hela dagen."],
+      ["Har du sett trailern för den nya filmen?","Ja! Jag ser verkligen fram emot den. Den ser fantastisk ut."]],
+  tr:[["Bu yıl nereye gitmek istersin?","İtalya'yı ziyaret etmeyi çok isterim."],
+      ["En çok neyi dört gözle bekliyorsun?","Açıkçası mı? Sadece geç kalkıp hiçbir şey yapmamak."],
+      ["Yeni iş nasıl gidiyor?","Şimdiye kadar iyi. Hâlâ alışıyorum."],
+      ["Çocuklar okula dönmek istiyor mu?","Hiç de değil. Bundan dehşete kapılıyorlar."],
+      ["Konser için bilet aldın mı?","Evet, sonunda! Aylardır bunu bekliyordum."],
+      ["Hafta sonu için bir planın var mı?","Pek bir şey yok. Sadece evde rahatlamak istiyorum."],
+      ["Büyükannen ziyaretten mutlu mu?","Ah, bütün hafta bunu konuşuyor."],
+      ["Pek heyecanlı görünmüyorsun.","Değilim. Bitkinim ve hiç havamda değilim."],
+      ["Bu akşam dışarıda yemek yiyelim mi?","Kesinlikle. Bütün gün hiçbir şey yemedim."],
+      ["O yeni filmin fragmanını gördün mü?","Evet! Onu çok bekliyorum. Harika görünüyor."]],
 };
 
 // ═══════════════════════════════════════════════════════
