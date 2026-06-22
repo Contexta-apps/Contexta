@@ -1018,6 +1018,26 @@ img { max-width: 100%; height: auto; }
 }
 .gen-error.visible { display: block; }
 
+.gen-clipboard-hint {
+  display: none; margin-top: 10px;
+}
+.gen-clipboard-hint.visible { display: block; }
+
+.gen-clipboard-hint-full {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: .8rem; color: var(--gold);
+  padding: 8px 12px;
+  background: rgba(201,151,58,.1);
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+}
+.gen-clipboard-hint-full-text { flex: 1; }
+.gen-clipboard-hint-close {
+  background: none; border: none; color: var(--gold);
+  font-size: .85rem; cursor: pointer; line-height: 1;
+  padding: 2px 0 2px 4px; flex-shrink: 0;
+}
+
 /* Loader */
 .gen-loader { display: none; text-align: center; padding: 30px; }
 .gen-loader.active { display: block; }
@@ -1442,10 +1462,6 @@ img { max-width: 100%; height: auto; }
 .ai-chatgpt  { border-color: rgba(16,163,127,.35); }
 .ai-chatgpt:hover  { border-color: rgba(16,163,127,.7); color: #10a37f; background: rgba(16,163,127,.08); }
 .ai-chatgpt:hover .ai-icon { fill: #10a37f; }
-
-.ai-claude   { border-color: rgba(204,120,92,.35); }
-.ai-claude:hover   { border-color: rgba(204,120,92,.7); color: #cc785c; background: rgba(204,120,92,.08); }
-.ai-claude:hover .ai-icon { fill: #cc785c; }
 
 .ai-copilot  { border-color: rgba(0,120,212,.35); }
 .ai-copilot:hover  { border-color: rgba(0,120,212,.7); color: #0078d4; background: rgba(0,120,212,.08); }
@@ -2772,6 +2788,9 @@ img { max-width: 100%; height: auto; }
 .gen-card .gen-error {
   margin: 0 28px 4px;
 }
+.gen-card .gen-clipboard-hint {
+  margin: 0 28px 4px;
+}
 
 /* ── Override: gen-send-row ── */
 .gen-card .gen-send-row {
@@ -3342,6 +3361,7 @@ h1[data-t="heroH"] {
   .gen-primary-block { padding: 24px 32px 20px; }
   .gen-card .gen-send-row { padding: 16px 32px 22px; }
   .gen-card .gen-error { margin: 0 32px 4px; }
+  .gen-card .gen-clipboard-hint { margin: 0 32px 4px; }
   .gen-config-block { padding: 0 32px 4px; }
   .gen-hero-header { padding: 24px 32px 28px; }
   .gen-lang-row-inline { padding: 10px 32px; }
@@ -3394,6 +3414,7 @@ h1[data-t="heroH"] {
   .gen-primary-block { padding: 28px 48px 22px; }
   .gen-card .gen-send-row { padding: 18px 48px 26px; }
   .gen-card .gen-error { margin: 0 48px 4px; }
+  .gen-card .gen-clipboard-hint { margin: 0 48px 4px; }
   .gen-ai-extract { margin-left: 48px; margin-right: 48px; }
 
   /* ── Tuning řádky: inline ── */
@@ -3490,6 +3511,7 @@ h1[data-t="heroH"] {
   /* ── Generator send row ── */
   .gen-card .gen-send-row { padding: 20px 80px 32px; }
   .gen-card .gen-error { margin: 0 80px 4px; }
+  .gen-card .gen-clipboard-hint { margin: 0 80px 4px; }
 
   /* ── Primary input: větší ── */
   .gen-primary-input { font-size: 1.05rem; min-height: 80px; }
@@ -3762,7 +3784,7 @@ h1[data-t="heroH"] {
         </div>
         <div class="gen-history-bottom">
           <div class="gen-history-chips" id="genHistoryChips"></div>
-          <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.style.display='none';}">
+          <input id="genHistoryManualInput" type="text" placeholder="slovo…" style="display:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:6px;color:#fff;font-size:.78rem;padding:3px 8px;width:90px;outline:none;" onkeydown="if(event.key==='Enter')genHistoryAddManual();if(event.key==='Escape'){this.value='';this.style.display='none';}" onblur="genHistoryInputBlur()">
           <button class="gen-history-clear" onclick="genHistoryToggleInput()" title="Přidat slovo">＋</button>
           <button class="gen-history-clear" onclick="genHistoryClear()" title="Smazat historii">✕</button>
         </div>
@@ -3943,19 +3965,24 @@ h1[data-t="heroH"] {
                 </button>
                 <div class="ai-dropdown-list" id="aiList" style="display:none;position:absolute;bottom:calc(100% + 4px);top:auto;left:0;min-width:100%;z-index:9999;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);box-shadow:0 8px 32px rgba(0,0,0,.35);overflow:hidden;">
                   <div class="ai-opt" onclick="selectAI('chatgpt','ChatGPT','chatgpt',this)">ChatGPT</div>
-                  <div class="ai-opt" onclick="selectAI('claude','Claude','claude',this)">Claude</div>
                   <div class="ai-opt" onclick="selectAI('copilot','Copilot','copilot',this)">Copilot</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="gen-tuning-hint" data-i18n="aiHint">Aplikace funguje s AI asistenty — ChatGPT, Claude, Copilot.</div>
+          <div class="gen-tuning-hint" data-i18n="aiHint">Aplikace funguje s AI asistenty — ChatGPT, Copilot.</div>
         </div>
 
       </div><!-- /gen-advanced -->
     </div><!-- /gen-advanced-wrap -->
 
     <div class="gen-error" id="genError"></div>
+    <div class="gen-clipboard-hint" id="genClipboardHint">
+      <div class="gen-clipboard-hint-full" id="genClipboardHintFull">
+        <span class="gen-clipboard-hint-full-text" id="genClipboardHintText"></span>
+        <button type="button" class="gen-clipboard-hint-close" onclick="hideClipboardHint()" aria-label="Zavřít">✕</button>
+      </div>
+    </div>
 
     <!-- ══ BLOK 4: GENEROVAT ══ -->
     <div class="gen-send-row">
@@ -4271,7 +4298,7 @@ cz:{
   coffeeBtn:"Podpoř vývoj",
   coffeeP:"Pomáhá ti Contexta? Podpoř mě kávou na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý příspěvek může Contextu posunout dál.",
   footerP:"Vytvořeno pomocí Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 jazyků · 3 úrovně · 6 AI platforem", footerTermsLink:'Podmínky používání', footerPrivacyLink:'Ochrana soukromí', termsTitle:'Podmínky používání', termsBody:'<p>Tato aplikace (Contexta) je poskytována tak, jak je ("as-is"), bez jakékoliv záruky, výslovné či předpokládané. Autor nezaručuje nepřetržitou dostupnost, bezchybnost ani bezpečnost aplikace.</p><p>Použitím aplikace souhlasíte s tím, že ji používáte na vlastní riziko. Autor nenese odpovědnost za jakékoliv přímé či nepřímé škody, ztrátu dat nebo jiné újmy vzniklé v souvislosti s používáním aplikace.</p><p>Aplikace využívá AI nástroje třetích stran ke generování výukového obsahu. Autor nezaručuje přesnost, úplnost ani vhodnost generovaného obsahu pro konkrétní účel.</p><p>Příspěvky na Ko-fi jsou dobrovolné a nezakládají nárok na žádné konkrétní služby ani záruky.</p><p>Tyto podmínky se mohou čas od času změnit. Pokračováním v používání aplikace souhlasíte s aktuálním zněním podmínek.</p>', privacyTitle:'Ochrana osobních údajů', privacyBody:'<p>Tato aplikace neukládá žádná osobní data na serveru. Veškerá data (historie slovíček, nastavení jazyka apod.) se ukládají pouze lokálně ve vašem prohlížeči (localStorage) a nejsou nikam odesílána ani sdílena s autorem aplikace.</p><p>Aplikace může odesílat zadaný text třetím AI poskytovatelům (např. ChatGPT, Claude, Gemini) za účelem generování výukového obsahu. Tyto služby mají vlastní zásady ochrany osobních údajů, které doporučujeme prostudovat.</p><p>Aplikace nepoužívá sledovací cookies ani analytické nástroje třetích stran nad rámec běžného hostingu (GitHub Pages).</p><p>Pro dobrovolné příspěvky využíváme platformu Ko-fi, která zpracovává platební údaje podle svých vlastních zásad ochrany osobních údajů.</p>',
+  footerSub:"10 jazyků · 3 úrovně · 6 AI platforem", footerTermsLink:'Podmínky používání', footerPrivacyLink:'Ochrana soukromí', termsTitle:'Podmínky používání', termsBody:'<p>Tato aplikace (Contexta) je poskytována tak, jak je ("as-is"), bez jakékoliv záruky, výslovné či předpokládané. Autor nezaručuje nepřetržitou dostupnost, bezchybnost ani bezpečnost aplikace.</p><p>Použitím aplikace souhlasíte s tím, že ji používáte na vlastní riziko. Autor nenese odpovědnost za jakékoliv přímé či nepřímé škody, ztrátu dat nebo jiné újmy vzniklé v souvislosti s používáním aplikace.</p><p>Aplikace využívá AI nástroje třetích stran ke generování výukového obsahu. Autor nezaručuje přesnost, úplnost ani vhodnost generovaného obsahu pro konkrétní účel.</p><p>Příspěvky na Ko-fi jsou dobrovolné a nezakládají nárok na žádné konkrétní služby ani záruky.</p><p>Tyto podmínky se mohou čas od času změnit. Pokračováním v používání aplikace souhlasíte s aktuálním zněním podmínek.</p>', privacyTitle:'Ochrana osobních údajů', privacyBody:'<p>Tato aplikace neukládá žádná osobní data na serveru. Veškerá data (historie slovíček, nastavení jazyka apod.) se ukládají pouze lokálně ve vašem prohlížeči (localStorage) a nejsou nikam odesílána ani sdílena s autorem aplikace.</p><p>Aplikace může odesílat zadaný text třetím AI poskytovatelům (např. ChatGPT) za účelem generování výukového obsahu. Tyto služby mají vlastní zásady ochrany osobních údajů, které doporučujeme prostudovat.</p><p>Aplikace nepoužívá sledovací cookies ani analytické nástroje třetích stran nad rámec běžného hostingu (GitHub Pages).</p><p>Pro dobrovolné příspěvky využíváme platformu Ko-fi, která zpracovává platební údaje podle svých vlastních zásad ochrany osobních údajů.</p>',
   nav1:'Prompty',
   nav3:'AI',
   nav4:'☕',
@@ -4318,6 +4345,8 @@ cz:{
   advTopicLabel:'🗂 Téma (nápověda)',
   genSendBtn:'▶ Vygenerovat kontext',
   genHintSmall:'💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter',
+  clipboardHintDesktop:'📋 Prompt je zkopírovaný do schránky — pokud se ChatGPT/Copilot neotevře s textem, vlož ho (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompt je zkopírovaný do schránky — pokud se ChatGPT/Copilot neotevře s textem, podrž prst v poli a vyber Vložit',
   genErrEmpty:'Napiš situaci nebo záměr, který chceš procvičit.',
   exChip0:'pracovat v týmu', exChip1:'objednat jídlo',
   exChip2:'vyřešit konflikt', exChip3:'cestování', exChip4:'pracovní pohovor',
@@ -4330,7 +4359,7 @@ cz:{
   grammarHint:'Vyber gramatický jev — bude zahrnut do kontextu dialogů a vět s vysvětlením.',
   grammarSearchPh:'🔍 Hledat téma…',
   dialogLengthHint:'Určuje délku každého dialogu.',
-  aiHint:'Aplikace funguje s AI asistenty — ChatGPT, Claude, Copilot.'
+  aiHint:'Aplikace funguje s AI asistenty — ChatGPT, Copilot.'
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -4362,7 +4391,7 @@ en:{
   coffeeBtn:"Support development",
   coffeeP:"Does Contexta help you? Support me with a coffee on <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — every contribution can move Contexta forward.",
   footerP:"Created with Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 languages · 3 levels · 6 AI platforms", footerTermsLink:'Terms of Use', footerPrivacyLink:'Privacy Policy', termsTitle:'Terms of Use', termsBody:'<p>This application (Contexta) is provided "as-is," without any warranty, express or implied. The author does not guarantee continuous availability, error-free operation, or security of the application.</p><p>By using the application, you agree that you do so at your own risk. The author is not liable for any direct or indirect damages, data loss, or other harm arising from the use of the application.</p><p>The application uses third-party AI tools to generate learning content. The author does not guarantee the accuracy, completeness, or suitability of generated content for any particular purpose.</p><p>Contributions via Ko-fi are voluntary and do not create any entitlement to specific services or guarantees.</p><p>These terms may change from time to time. Continued use of the application constitutes acceptance of the current terms.</p>', privacyTitle:'Privacy Policy', privacyBody:'<p>This application does not store any personal data on a server. All data (vocabulary history, language settings, etc.) is stored only locally in your browser (localStorage) and is never sent to or shared with the author.</p><p>The application may send the text you enter to third-party AI providers (e.g., ChatGPT, Claude, Gemini) to generate learning content. These services have their own privacy policies, which we recommend reviewing.</p><p>The application does not use tracking cookies or third-party analytics beyond standard hosting (GitHub Pages).</p><p>For voluntary contributions, we use the Ko-fi platform, which processes payment information according to its own privacy policy.</p>',
+  footerSub:"10 languages · 3 levels · 6 AI platforms", footerTermsLink:'Terms of Use', footerPrivacyLink:'Privacy Policy', termsTitle:'Terms of Use', termsBody:'<p>This application (Contexta) is provided "as-is," without any warranty, express or implied. The author does not guarantee continuous availability, error-free operation, or security of the application.</p><p>By using the application, you agree that you do so at your own risk. The author is not liable for any direct or indirect damages, data loss, or other harm arising from the use of the application.</p><p>The application uses third-party AI tools to generate learning content. The author does not guarantee the accuracy, completeness, or suitability of generated content for any particular purpose.</p><p>Contributions via Ko-fi are voluntary and do not create any entitlement to specific services or guarantees.</p><p>These terms may change from time to time. Continued use of the application constitutes acceptance of the current terms.</p>', privacyTitle:'Privacy Policy', privacyBody:'<p>This application does not store any personal data on a server. All data (vocabulary history, language settings, etc.) is stored only locally in your browser (localStorage) and is never sent to or shared with the author.</p><p>The application may send the text you enter to third-party AI providers (e.g., ChatGPT) to generate learning content. These services have their own privacy policies, which we recommend reviewing.</p><p>The application does not use tracking cookies or third-party analytics beyond standard hosting (GitHub Pages).</p><p>For voluntary contributions, we use the Ko-fi platform, which processes payment information according to its own privacy policy.</p>',
   nav1:'Prompts',
   nav3:'AI',
   nav4:'☕',
@@ -4408,6 +4437,8 @@ en:{
   advTopicLabel:'🗂 Topic (hint)',
   genSendBtn:'▶ Generate Context',
   genHintSmall:'💡 ChatGPT opens with the prompt ready — just press Enter',
+  clipboardHintDesktop:'📋 The prompt is copied to your clipboard — if ChatGPT/Copilot opens without it, paste it in (Ctrl+V)',
+  clipboardHintMobile:'📋 The prompt is copied to your clipboard — if ChatGPT/Copilot opens without it, press and hold the field and tap Paste',
   genErrEmpty:'Write a situation or intention you want to practise.',
   exChip0:'working in a team', exChip1:'food',
   exChip2:'resolving a conflict', exChip3:'travel', exChip4:'job interview',
@@ -4420,7 +4451,7 @@ en:{
   grammarHint:'Select a grammar topic — it will be included in the context of dialogues and sentences with an explanation.',
   grammarSearchPh:'🔍 Search topic…',
   dialogLengthHint:'Sets the length of each dialogue.',
-  aiHint:'The app works with AI assistants — ChatGPT, Claude, Copilot.'
+  aiHint:'The app works with AI assistants — ChatGPT, Copilot.'
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -4452,7 +4483,7 @@ de:{
   coffeeBtn:"Entwicklung unterstützen",
   coffeeP:"Hilft dir Contexta? Unterstütze mich mit einem Kaffee auf <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — jeder Beitrag kann Contexta weiterbringen.",
   footerP:"Erstellt mit Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 Sprachen · 3 Niveaus · 6 KI-Plattformen", footerTermsLink:'Nutzungsbedingungen', footerPrivacyLink:'Datenschutz', termsTitle:'Nutzungsbedingungen', termsBody:'<p>Diese Anwendung (Contexta) wird "wie sie ist" bereitgestellt, ohne jegliche ausdrückliche oder stillschweigende Garantie. Der Autor garantiert keine durchgehende Verfügbarkeit, Fehlerfreiheit oder Sicherheit der Anwendung.</p><p>Durch die Nutzung der Anwendung erklären Sie sich damit einverstanden, dies auf eigenes Risiko zu tun. Der Autor haftet nicht für direkte oder indirekte Schäden, Datenverlust oder sonstige Nachteile, die durch die Nutzung der Anwendung entstehen.</p><p>Die Anwendung verwendet KI-Tools von Drittanbietern zur Erstellung von Lerninhalten. Der Autor garantiert nicht die Genauigkeit, Vollständigkeit oder Eignung der generierten Inhalte für einen bestimmten Zweck.</p><p>Beiträge über Ko-fi sind freiwillig und begründen keinen Anspruch auf bestimmte Leistungen oder Garantien.</p><p>Diese Bedingungen können sich von Zeit zu Zeit ändern. Die fortgesetzte Nutzung der Anwendung gilt als Zustimmung zu den jeweils aktuellen Bedingungen.</p>', privacyTitle:'Datenschutzerklärung', privacyBody:'<p>Diese Anwendung speichert keine personenbezogenen Daten auf einem Server. Alle Daten (Vokabelverlauf, Spracheinstellungen usw.) werden ausschließlich lokal in Ihrem Browser (localStorage) gespeichert und niemals an den Autor übermittelt oder mit ihm geteilt.</p><p>Die Anwendung kann den eingegebenen Text zur Erstellung von Lerninhalten an KI-Anbieter von Drittanbietern senden (z. B. ChatGPT, Claude, Gemini). Diese Dienste haben eigene Datenschutzrichtlinien, deren Lektüre wir empfehlen.</p><p>Die Anwendung verwendet keine Tracking-Cookies oder Analysetools von Drittanbietern über das übliche Hosting (GitHub Pages) hinaus.</p><p>Für freiwillige Beiträge nutzen wir die Plattform Ko-fi, die Zahlungsdaten gemäß ihrer eigenen Datenschutzrichtlinie verarbeitet.</p>',
+  footerSub:"10 Sprachen · 3 Niveaus · 6 KI-Plattformen", footerTermsLink:'Nutzungsbedingungen', footerPrivacyLink:'Datenschutz', termsTitle:'Nutzungsbedingungen', termsBody:'<p>Diese Anwendung (Contexta) wird "wie sie ist" bereitgestellt, ohne jegliche ausdrückliche oder stillschweigende Garantie. Der Autor garantiert keine durchgehende Verfügbarkeit, Fehlerfreiheit oder Sicherheit der Anwendung.</p><p>Durch die Nutzung der Anwendung erklären Sie sich damit einverstanden, dies auf eigenes Risiko zu tun. Der Autor haftet nicht für direkte oder indirekte Schäden, Datenverlust oder sonstige Nachteile, die durch die Nutzung der Anwendung entstehen.</p><p>Die Anwendung verwendet KI-Tools von Drittanbietern zur Erstellung von Lerninhalten. Der Autor garantiert nicht die Genauigkeit, Vollständigkeit oder Eignung der generierten Inhalte für einen bestimmten Zweck.</p><p>Beiträge über Ko-fi sind freiwillig und begründen keinen Anspruch auf bestimmte Leistungen oder Garantien.</p><p>Diese Bedingungen können sich von Zeit zu Zeit ändern. Die fortgesetzte Nutzung der Anwendung gilt als Zustimmung zu den jeweils aktuellen Bedingungen.</p>', privacyTitle:'Datenschutzerklärung', privacyBody:'<p>Diese Anwendung speichert keine personenbezogenen Daten auf einem Server. Alle Daten (Vokabelverlauf, Spracheinstellungen usw.) werden ausschließlich lokal in Ihrem Browser (localStorage) gespeichert und niemals an den Autor übermittelt oder mit ihm geteilt.</p><p>Die Anwendung kann den eingegebenen Text zur Erstellung von Lerninhalten an KI-Anbieter von Drittanbietern senden (z. B. ChatGPT). Diese Dienste haben eigene Datenschutzrichtlinien, deren Lektüre wir empfehlen.</p><p>Die Anwendung verwendet keine Tracking-Cookies oder Analysetools von Drittanbietern über das übliche Hosting (GitHub Pages) hinaus.</p><p>Für freiwillige Beiträge nutzen wir die Plattform Ko-fi, die Zahlungsdaten gemäß ihrer eigenen Datenschutzrichtlinie verarbeitet.</p>',
   nav1:'Prompts',
   nav3:'KI',
   nav4:'☕',
@@ -4498,6 +4529,8 @@ de:{
   advTopicLabel:'🗂 Thema (Hinweis)',
   genSendBtn:'▶ Kontext generieren',
   genHintSmall:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
+  clipboardHintDesktop:'📋 Der Prompt wurde in die Zwischenablage kopiert — falls ChatGPT/Copilot ihn nicht zeigt, einfügen mit (Strg+V)',
+  clipboardHintMobile:'📋 Der Prompt wurde in die Zwischenablage kopiert — falls ChatGPT/Copilot ihn nicht zeigt, Feld gedrückt halten und Einfügen wählen',
   genErrEmpty:'Bitte eine Situation oder Absicht eingeben.',
   exChip0:'im Team arbeiten', exChip1:'Essen',
   exChip2:'Konflikt lösen', exChip3:'Reisen', exChip4:'Vorstellungsgespräch',
@@ -4510,7 +4543,7 @@ de:{
   grammarHint:'Wähle ein Grammatikthema — es wird in den Kontext der Dialoge und Sätze mit Erklärung einbezogen.',
   grammarSearchPh:'🔍 Thema suchen…',
   dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
-  aiHint:'Die App funktioniert mit KI-Assistenten — ChatGPT, Claude, Copilot.'
+  aiHint:'Die App funktioniert mit KI-Assistenten — ChatGPT, Copilot.'
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -4538,7 +4571,7 @@ fr:{
   coffeeBtn:"Soutenir le développement",
   coffeeP:"Contexta t'aide ? Soutiens-moi avec un café sur <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — chaque contribution peut faire avancer Contexta.",
   footerP:"Créé avec Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 langues · 3 niveaux · 6 plateformes IA", footerTermsLink:'Conditions d\'utilisation', footerPrivacyLink:'Politique de confidentialité', termsTitle:'Conditions d\'utilisation', termsBody:'<p>Cette application (Contexta) est fournie "telle quelle", sans aucune garantie, expresse ou implicite. L\'auteur ne garantit pas la disponibilité continue, le fonctionnement sans erreur ni la sécurité de l\'application.</p><p>En utilisant l\'application, vous acceptez de le faire à vos propres risques. L\'auteur n\'est pas responsable des dommages directs ou indirects, des pertes de données ou de tout autre préjudice résultant de l\'utilisation de l\'application.</p><p>L\'application utilise des outils d\'IA tiers pour générer du contenu pédagogique. L\'auteur ne garantit ni l\'exactitude, ni l\'exhaustivité, ni l\'adéquation du contenu généré à un usage particulier.</p><p>Les contributions via Ko-fi sont volontaires et ne créent aucun droit à des services ou garanties spécifiques.</p><p>Ces conditions peuvent être modifiées de temps à autre. La poursuite de l\'utilisation de l\'application vaut acceptation des conditions en vigueur.</p>', privacyTitle:'Politique de confidentialité', privacyBody:'<p>Cette application ne stocke aucune donnée personnelle sur un serveur. Toutes les données (historique de vocabulaire, paramètres de langue, etc.) sont stockées uniquement localement dans votre navigateur (localStorage) et ne sont jamais transmises ni partagées avec l\'auteur.</p><p>L\'application peut envoyer le texte saisi à des fournisseurs d\'IA tiers (par ex. ChatGPT, Claude, Gemini) afin de générer du contenu pédagogique. Ces services disposent de leurs propres politiques de confidentialité, que nous vous recommandons de consulter.</p><p>L\'application n\'utilise pas de cookies de suivi ni d\'outils d\'analyse tiers au-delà de l\'hébergement standard (GitHub Pages).</p><p>Pour les contributions volontaires, nous utilisons la plateforme Ko-fi, qui traite les informations de paiement selon sa propre politique de confidentialité.</p>',
+  footerSub:"10 langues · 3 niveaux · 6 plateformes IA", footerTermsLink:'Conditions d\'utilisation', footerPrivacyLink:'Politique de confidentialité', termsTitle:'Conditions d\'utilisation', termsBody:'<p>Cette application (Contexta) est fournie "telle quelle", sans aucune garantie, expresse ou implicite. L\'auteur ne garantit pas la disponibilité continue, le fonctionnement sans erreur ni la sécurité de l\'application.</p><p>En utilisant l\'application, vous acceptez de le faire à vos propres risques. L\'auteur n\'est pas responsable des dommages directs ou indirects, des pertes de données ou de tout autre préjudice résultant de l\'utilisation de l\'application.</p><p>L\'application utilise des outils d\'IA tiers pour générer du contenu pédagogique. L\'auteur ne garantit ni l\'exactitude, ni l\'exhaustivité, ni l\'adéquation du contenu généré à un usage particulier.</p><p>Les contributions via Ko-fi sont volontaires et ne créent aucun droit à des services ou garanties spécifiques.</p><p>Ces conditions peuvent être modifiées de temps à autre. La poursuite de l\'utilisation de l\'application vaut acceptation des conditions en vigueur.</p>', privacyTitle:'Politique de confidentialité', privacyBody:'<p>Cette application ne stocke aucune donnée personnelle sur un serveur. Toutes les données (historique de vocabulaire, paramètres de langue, etc.) sont stockées uniquement localement dans votre navigateur (localStorage) et ne sont jamais transmises ni partagées avec l\'auteur.</p><p>L\'application peut envoyer le texte saisi à des fournisseurs d\'IA tiers (par ex. ChatGPT) afin de générer du contenu pédagogique. Ces services disposent de leurs propres politiques de confidentialité, que nous vous recommandons de consulter.</p><p>L\'application n\'utilise pas de cookies de suivi ni d\'outils d\'analyse tiers au-delà de l\'hébergement standard (GitHub Pages).</p><p>Pour les contributions volontaires, nous utilisons la plateforme Ko-fi, qui traite les informations de paiement selon sa propre politique de confidentialité.</p>',
   nav1:'Prompts',
   nav3:'IA',
   nav4:'☕',
@@ -4581,6 +4614,8 @@ fr:{
   advVerbLabel:"⚡ Verbe phrasé (indice)", advTopicLabel:"🗂 Sujet (indice)",
   genSendBtn:"▶ Générer le contexte",
   genHintSmall:"💡 ChatGPT s'ouvre avec le prompt prêt — appuie sur Entrée",
+  clipboardHintDesktop:"📋 Le prompt est copié dans le presse-papiers — si ChatGPT/Copilot s'ouvre sans texte, colle-le (Ctrl+V)",
+  clipboardHintMobile:"📋 Le prompt est copié dans le presse-papiers — si ChatGPT/Copilot s'ouvre sans texte, maintiens le champ et choisis Coller",
   genErrEmpty2:"Écris une situation ou une intention à pratiquer.",
   exChip0:"travailler en équipe", exChip1:"repas",
   exChip2:"résoudre un conflit", exChip3:"voyage", exChip4:"entretien d'embauche",
@@ -4593,7 +4628,7 @@ fr:{
   grammarHint:"Sélectionnez un sujet de grammaire — il sera inclus dans le contexte des dialogues et des phrases avec une explication.",
   grammarSearchPh:'🔍 Rechercher un sujet…',
   dialogLengthHint:'Définit la longueur de chaque dialogue.',
-  aiHint:'L\'application fonctionne avec des assistants IA — ChatGPT, Claude, Copilot.'
+  aiHint:'L\'application fonctionne avec des assistants IA — ChatGPT, Copilot.'
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
@@ -4624,7 +4659,7 @@ es:{
   coffeeBtn:"Apoyar el desarrollo",
   coffeeP:"¿Te ayuda Contexta? Apóyame con un café en <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribución puede impulsar Contexta.",
   footerP:"Creado con Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 idiomas · 3 niveles · 6 plataformas IA", footerTermsLink:'Condiciones de uso', footerPrivacyLink:'Política de privacidad', termsTitle:'Condiciones de uso', termsBody:'<p>Esta aplicación (Contexta) se proporciona "tal cual", sin ninguna garantía, expresa o implícita. El autor no garantiza la disponibilidad continua, el funcionamiento sin errores ni la seguridad de la aplicación.</p><p>Al usar la aplicación, aceptas hacerlo bajo tu propio riesgo. El autor no se hace responsable de ningún daño directo o indirecto, pérdida de datos u otros perjuicios derivados del uso de la aplicación.</p><p>La aplicación utiliza herramientas de IA de terceros para generar contenido educativo. El autor no garantiza la precisión, integridad ni idoneidad del contenido generado para ningún fin específico.</p><p>Las contribuciones a través de Ko-fi son voluntarias y no generan derecho a servicios ni garantías específicas.</p><p>Estas condiciones pueden cambiar ocasionalmente. El uso continuado de la aplicación implica la aceptación de las condiciones vigentes.</p>', privacyTitle:'Política de privacidad', privacyBody:'<p>Esta aplicación no almacena datos personales en ningún servidor. Todos los datos (historial de vocabulario, configuración de idioma, etc.) se guardan únicamente de forma local en tu navegador (localStorage) y nunca se envían ni se comparten con el autor.</p><p>La aplicación puede enviar el texto introducido a proveedores de IA de terceros (p. ej., ChatGPT, Claude, Gemini) para generar contenido educativo. Estos servicios tienen sus propias políticas de privacidad, que recomendamos revisar.</p><p>La aplicación no utiliza cookies de seguimiento ni herramientas de análisis de terceros más allá del alojamiento estándar (GitHub Pages).</p><p>Para las contribuciones voluntarias utilizamos la plataforma Ko-fi, que procesa la información de pago conforme a su propia política de privacidad.</p>',
+  footerSub:"10 idiomas · 3 niveles · 6 plataformas IA", footerTermsLink:'Condiciones de uso', footerPrivacyLink:'Política de privacidad', termsTitle:'Condiciones de uso', termsBody:'<p>Esta aplicación (Contexta) se proporciona "tal cual", sin ninguna garantía, expresa o implícita. El autor no garantiza la disponibilidad continua, el funcionamiento sin errores ni la seguridad de la aplicación.</p><p>Al usar la aplicación, aceptas hacerlo bajo tu propio riesgo. El autor no se hace responsable de ningún daño directo o indirecto, pérdida de datos u otros perjuicios derivados del uso de la aplicación.</p><p>La aplicación utiliza herramientas de IA de terceros para generar contenido educativo. El autor no garantiza la precisión, integridad ni idoneidad del contenido generado para ningún fin específico.</p><p>Las contribuciones a través de Ko-fi son voluntarias y no generan derecho a servicios ni garantías específicas.</p><p>Estas condiciones pueden cambiar ocasionalmente. El uso continuado de la aplicación implica la aceptación de las condiciones vigentes.</p>', privacyTitle:'Política de privacidad', privacyBody:'<p>Esta aplicación no almacena datos personales en ningún servidor. Todos los datos (historial de vocabulario, configuración de idioma, etc.) se guardan únicamente de forma local en tu navegador (localStorage) y nunca se envían ni se comparten con el autor.</p><p>La aplicación puede enviar el texto introducido a proveedores de IA de terceros (p. ej., ChatGPT) para generar contenido educativo. Estos servicios tienen sus propias políticas de privacidad, que recomendamos revisar.</p><p>La aplicación no utiliza cookies de seguimiento ni herramientas de análisis de terceros más allá del alojamiento estándar (GitHub Pages).</p><p>Para las contribuciones voluntarias utilizamos la plataforma Ko-fi, que procesa la información de pago conforme a su propia política de privacidad.</p>',
   nav1:'Prompts',
   nav3:'IA',
   nav4:'☕',
@@ -4668,6 +4703,8 @@ es:{
   advVerbLabel:'⚡ Verbo frasal (pista)', advTopicLabel:'🗂 Tema (pista)',
   genSendBtn:'▶ Generar contexto',
   genHintSmall:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
+  clipboardHintDesktop:'📋 El prompt se copió al portapapeles — si ChatGPT/Copilot se abre sin texto, pégalo (Ctrl+V)',
+  clipboardHintMobile:'📋 El prompt se copió al portapapeles — si ChatGPT/Copilot se abre sin texto, mantén pulsado el campo y elige Pegar',
   genErrEmpty2:'Escribe una situación o intención que quieras practicar.',
   exChip0:'trabajar en equipo', exChip1:'comida',
   exChip2:'resolver un conflicto', exChip3:'viaje', exChip4:'entrevista de trabajo',
@@ -4677,7 +4714,7 @@ es:{
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
   dialogLengthHint:'Determina la longitud de cada diálogo.',
-  aiHint:'La app funciona con asistentes de IA — ChatGPT, Claude, Copilot.'
+  aiHint:'La app funciona con asistentes de IA — ChatGPT, Copilot.'
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
@@ -4708,7 +4745,7 @@ it:{
   coffeeBtn:"Supporta lo sviluppo",
   coffeeP:"Contexta ti è utile? Supportami con un caffè su <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — ogni contributo può far avanzare Contexta.",
   footerP:"Creato con Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 lingue · 3 livelli · 6 piattaforme IA", footerTermsLink:'Termini di utilizzo', footerPrivacyLink:'Informativa sulla privacy', termsTitle:'Termini di utilizzo', termsBody:'<p>Questa applicazione (Contexta) è fornita "così com\'è", senza alcuna garanzia, espressa o implicita. L\'autore non garantisce la disponibilità continua, il funzionamento privo di errori né la sicurezza dell\'applicazione.</p><p>Utilizzando l\'applicazione, accetti di farlo a tuo rischio. L\'autore non è responsabile di eventuali danni diretti o indiretti, perdita di dati o altri danni derivanti dall\'uso dell\'applicazione.</p><p>L\'applicazione utilizza strumenti di IA di terze parti per generare contenuti didattici. L\'autore non garantisce l\'accuratezza, la completezza né l\'idoneità del contenuto generato per uno scopo specifico.</p><p>I contributi tramite Ko-fi sono volontari e non danno diritto a servizi o garanzie specifiche.</p><p>Questi termini possono cambiare di volta in volta. L\'uso continuato dell\'applicazione comporta l\'accettazione dei termini correnti.</p>', privacyTitle:'Informativa sulla privacy', privacyBody:'<p>Questa applicazione non memorizza alcun dato personale su un server. Tutti i dati (cronologia del vocabolario, impostazioni della lingua, ecc.) sono memorizzati solo localmente nel tuo browser (localStorage) e non vengono mai inviati né condivisi con l\'autore.</p><p>L\'applicazione potrebbe inviare il testo inserito a fornitori di IA terzi (ad es. ChatGPT, Claude, Gemini) per generare contenuti didattici. Questi servizi hanno proprie informative sulla privacy, che consigliamo di consultare.</p><p>L\'applicazione non utilizza cookie di tracciamento né strumenti di analisi di terze parti oltre al normale hosting (GitHub Pages).</p><p>Per i contributi volontari utilizziamo la piattaforma Ko-fi, che elabora i dati di pagamento secondo la propria informativa sulla privacy.</p>',
+  footerSub:"10 lingue · 3 livelli · 6 piattaforme IA", footerTermsLink:'Termini di utilizzo', footerPrivacyLink:'Informativa sulla privacy', termsTitle:'Termini di utilizzo', termsBody:'<p>Questa applicazione (Contexta) è fornita "così com\'è", senza alcuna garanzia, espressa o implicita. L\'autore non garantisce la disponibilità continua, il funzionamento privo di errori né la sicurezza dell\'applicazione.</p><p>Utilizzando l\'applicazione, accetti di farlo a tuo rischio. L\'autore non è responsabile di eventuali danni diretti o indiretti, perdita di dati o altri danni derivanti dall\'uso dell\'applicazione.</p><p>L\'applicazione utilizza strumenti di IA di terze parti per generare contenuti didattici. L\'autore non garantisce l\'accuratezza, la completezza né l\'idoneità del contenuto generato per uno scopo specifico.</p><p>I contributi tramite Ko-fi sono volontari e non danno diritto a servizi o garanzie specifiche.</p><p>Questi termini possono cambiare di volta in volta. L\'uso continuato dell\'applicazione comporta l\'accettazione dei termini correnti.</p>', privacyTitle:'Informativa sulla privacy', privacyBody:'<p>Questa applicazione non memorizza alcun dato personale su un server. Tutti i dati (cronologia del vocabolario, impostazioni della lingua, ecc.) sono memorizzati solo localmente nel tuo browser (localStorage) e non vengono mai inviati né condivisi con l\'autore.</p><p>L\'applicazione potrebbe inviare il testo inserito a fornitori di IA terzi (ad es. ChatGPT) per generare contenuti didattici. Questi servizi hanno proprie informative sulla privacy, che consigliamo di consultare.</p><p>L\'applicazione non utilizza cookie di tracciamento né strumenti di analisi di terze parti oltre al normale hosting (GitHub Pages).</p><p>Per i contributi volontari utilizziamo la piattaforma Ko-fi, che elabora i dati di pagamento secondo la propria informativa sulla privacy.</p>',
   nav1:'Prompt',
   nav3:'IA',
   nav4:'☕',
@@ -4752,6 +4789,8 @@ it:{
   advVerbLabel:'⚡ Verbo frasale (suggerimento)', advTopicLabel:'🗂 Argomento (suggerimento)',
   genSendBtn:'▶ Genera contesto',
   genHintSmall:'💡 ChatGPT si apre con il prompt — premi solo Invio',
+  clipboardHintDesktop:'📋 Il prompt è stato copiato negli appunti — se ChatGPT/Copilot si apre senza testo, incollalo (Ctrl+V)',
+  clipboardHintMobile:'📋 Il prompt è stato copiato negli appunti — se ChatGPT/Copilot si apre senza testo, tieni premuto il campo e scegli Incolla',
   genErrEmpty2:'Scrivi una situazione o intenzione da praticare.',
   exChip0:'lavorare in team', exChip1:'cibo',
   exChip2:'risolvere un conflitto', exChip3:'viaggio', exChip4:'colloquio di lavoro',
@@ -4761,7 +4800,7 @@ it:{
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
   dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
-  aiHint:'L\'app funziona con assistenti IA — ChatGPT, Claude, Copilot.'
+  aiHint:'L\'app funziona con assistenti IA — ChatGPT, Copilot.'
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
@@ -4792,7 +4831,7 @@ pt:{
   coffeeBtn:"Apoiar o desenvolvimento",
   coffeeP:"O Contexta ajuda-te? Apoia-me com um café no <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — cada contribuição pode fazer o Contexta avançar.",
   footerP:"Criado com Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 idiomas · 3 níveis · 6 plataformas IA", footerTermsLink:'Termos de utilização', footerPrivacyLink:'Política de privacidade', termsTitle:'Termos de utilização', termsBody:'<p>Esta aplicação (Contexta) é fornecida "tal como está", sem qualquer garantia, expressa ou implícita. O autor não garante disponibilidade contínua, funcionamento sem erros nem a segurança da aplicação.</p><p>Ao utilizar a aplicação, você concorda em fazê-lo por sua conta e risco. O autor não se responsabiliza por quaisquer danos diretos ou indiretos, perda de dados ou outros prejuízos resultantes do uso da aplicação.</p><p>A aplicação utiliza ferramentas de IA de terceiros para gerar conteúdo educativo. O autor não garante a exatidão, integridade ou adequação do conteúdo gerado para qualquer finalidade específica.</p><p>As contribuições através do Ko-fi são voluntárias e não criam qualquer direito a serviços ou garantias específicas.</p><p>Estes termos podem ser alterados periodicamente. A utilização continuada da aplicação implica a aceitação dos termos em vigor.</p>', privacyTitle:'Política de privacidade', privacyBody:'<p>Esta aplicação não armazena quaisquer dados pessoais num servidor. Todos os dados (histórico de vocabulário, definições de idioma, etc.) são guardados apenas localmente no seu navegador (localStorage) e nunca são enviados ou partilhados com o autor.</p><p>A aplicação pode enviar o texto introduzido a fornecedores de IA de terceiros (por exemplo, ChatGPT, Claude, Gemini) para gerar conteúdo educativo. Estes serviços têm as suas próprias políticas de privacidade, que recomendamos consultar.</p><p>A aplicação não utiliza cookies de rastreamento nem ferramentas de análise de terceiros além da hospedagem padrão (GitHub Pages).</p><p>Para contribuições voluntárias, utilizamos a plataforma Ko-fi, que processa as informações de pagamento de acordo com a sua própria política de privacidade.</p>',
+  footerSub:"10 idiomas · 3 níveis · 6 plataformas IA", footerTermsLink:'Termos de utilização', footerPrivacyLink:'Política de privacidade', termsTitle:'Termos de utilização', termsBody:'<p>Esta aplicação (Contexta) é fornecida "tal como está", sem qualquer garantia, expressa ou implícita. O autor não garante disponibilidade contínua, funcionamento sem erros nem a segurança da aplicação.</p><p>Ao utilizar a aplicação, você concorda em fazê-lo por sua conta e risco. O autor não se responsabiliza por quaisquer danos diretos ou indiretos, perda de dados ou outros prejuízos resultantes do uso da aplicação.</p><p>A aplicação utiliza ferramentas de IA de terceiros para gerar conteúdo educativo. O autor não garante a exatidão, integridade ou adequação do conteúdo gerado para qualquer finalidade específica.</p><p>As contribuições através do Ko-fi são voluntárias e não criam qualquer direito a serviços ou garantias específicas.</p><p>Estes termos podem ser alterados periodicamente. A utilização continuada da aplicação implica a aceitação dos termos em vigor.</p>', privacyTitle:'Política de privacidade', privacyBody:'<p>Esta aplicação não armazena quaisquer dados pessoais num servidor. Todos os dados (histórico de vocabulário, definições de idioma, etc.) são guardados apenas localmente no seu navegador (localStorage) e nunca são enviados ou partilhados com o autor.</p><p>A aplicação pode enviar o texto introduzido a fornecedores de IA de terceiros (por exemplo, ChatGPT) para gerar conteúdo educativo. Estes serviços têm as suas próprias políticas de privacidade, que recomendamos consultar.</p><p>A aplicação não utiliza cookies de rastreamento nem ferramentas de análise de terceiros além da hospedagem padrão (GitHub Pages).</p><p>Para contribuições voluntárias, utilizamos a plataforma Ko-fi, que processa as informações de pagamento de acordo com a sua própria política de privacidade.</p>',
   nav1:'Prompts',
   nav3:'IA',
   nav4:'☕',
@@ -4835,6 +4874,8 @@ pt:{
   advVerbLabel:'⚡ Verbo frasal (dica)', advTopicLabel:'🗂 Tema (dica)',
   genSendBtn:'▶ Gerar contexto',
   genHintSmall:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
+  clipboardHintDesktop:'📋 O prompt foi copiado para a área de transferência — se o ChatGPT/Copilot abrir sem texto, cole-o (Ctrl+V)',
+  clipboardHintMobile:'📋 O prompt foi copiado para a área de transferência — se o ChatGPT/Copilot abrir sem texto, mantenha o campo pressionado e toque em Colar',
   genErrEmpty2:'Escreva uma situação ou intenção que deseja praticar.',
   exChip0:'trabalhar em equipe', exChip1:'comida',
   exChip2:'resolver um conflito', exChip3:'viagem', exChip4:'entrevista de emprego',
@@ -4844,7 +4885,7 @@ pt:{
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
   dialogLengthHint:'Define o comprimento de cada diálogo.',
-  aiHint:'A app funciona com assistentes de IA — ChatGPT, Claude, Copilot.'
+  aiHint:'A app funciona com assistentes de IA — ChatGPT, Copilot.'
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
@@ -4875,7 +4916,7 @@ pl:{
   coffeeBtn:"Wesprzyj rozwój",
   coffeeP:"Czy Contexta Ci pomaga? Wesprzyj mnie kawą na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — każda wpłata może przybliżyć rozwój Contexty.",
   footerP:"Stworzone z Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 języków · 3 poziomy · 6 platform AI", footerTermsLink:'Warunki użytkowania', footerPrivacyLink:'Polityka prywatności', termsTitle:'Warunki użytkowania', termsBody:'<p>Ta aplikacja (Contexta) jest dostarczana "tak jak jest", bez żadnej gwarancji, wyraźnej ani domyślnej. Autor nie zapewnia nieprzerwanej dostępności, bezbłędnego działania ani bezpieczeństwa aplikacji.</p><p>Korzystając z aplikacji, zgadzasz się, że robisz to na własną odpowiedzialność. Autor nie odpowiada za jakiekolwiek bezpośrednie lub pośrednie szkody, utratę danych ani inne straty wynikające z korzystania z aplikacji.</p><p>Aplikacja korzysta z narzędzi AI firm trzecich do generowania treści edukacyjnych. Autor nie zapewnia dokładności, kompletności ani przydatności generowanej treści do jakiegokolwiek konkretnego celu.</p><p>Wpłaty przez Ko-fi są dobrowolne i nie tworzą żadnego prawa do konkretnych usług czy gwarancji.</p><p>Niniejsze warunki mogą się od czasu do czasu zmieniać. Dalsze korzystanie z aplikacji oznacza akceptację aktualnych warunków.</p>', privacyTitle:'Polityka prywatności', privacyBody:'<p>Ta aplikacja nie przechowuje żadnych danych osobowych na serwerze. Wszystkie dane (historia słownictwa, ustawienia językowe itp.) są przechowywane wyłącznie lokalnie w Twojej przeglądarce (localStorage) i nigdy nie są wysyłane ani udostępniane autorowi.</p><p>Aplikacja może wysyłać wprowadzony tekst do dostawców AI firm trzecich (np. ChatGPT, Claude, Gemini) w celu generowania treści edukacyjnych. Usługi te mają własne polityki prywatności, które zalecamy przeczytać.</p><p>Aplikacja nie korzysta z plików cookie śledzących ani narzędzi analitycznych firm trzecich poza standardowym hostingiem (GitHub Pages).</p><p>W przypadku dobrowolnych wpłat korzystamy z platformy Ko-fi, która przetwarza dane płatnicze zgodnie z własną polityką prywatności.</p>',
+  footerSub:"10 języków · 3 poziomy · 6 platform AI", footerTermsLink:'Warunki użytkowania', footerPrivacyLink:'Polityka prywatności', termsTitle:'Warunki użytkowania', termsBody:'<p>Ta aplikacja (Contexta) jest dostarczana "tak jak jest", bez żadnej gwarancji, wyraźnej ani domyślnej. Autor nie zapewnia nieprzerwanej dostępności, bezbłędnego działania ani bezpieczeństwa aplikacji.</p><p>Korzystając z aplikacji, zgadzasz się, że robisz to na własną odpowiedzialność. Autor nie odpowiada za jakiekolwiek bezpośrednie lub pośrednie szkody, utratę danych ani inne straty wynikające z korzystania z aplikacji.</p><p>Aplikacja korzysta z narzędzi AI firm trzecich do generowania treści edukacyjnych. Autor nie zapewnia dokładności, kompletności ani przydatności generowanej treści do jakiegokolwiek konkretnego celu.</p><p>Wpłaty przez Ko-fi są dobrowolne i nie tworzą żadnego prawa do konkretnych usług czy gwarancji.</p><p>Niniejsze warunki mogą się od czasu do czasu zmieniać. Dalsze korzystanie z aplikacji oznacza akceptację aktualnych warunków.</p>', privacyTitle:'Polityka prywatności', privacyBody:'<p>Ta aplikacja nie przechowuje żadnych danych osobowych na serwerze. Wszystkie dane (historia słownictwa, ustawienia językowe itp.) są przechowywane wyłącznie lokalnie w Twojej przeglądarce (localStorage) i nigdy nie są wysyłane ani udostępniane autorowi.</p><p>Aplikacja może wysyłać wprowadzony tekst do dostawców AI firm trzecich (np. ChatGPT) w celu generowania treści edukacyjnych. Usługi te mają własne polityki prywatności, które zalecamy przeczytać.</p><p>Aplikacja nie korzysta z plików cookie śledzących ani narzędzi analitycznych firm trzecich poza standardowym hostingiem (GitHub Pages).</p><p>W przypadku dobrowolnych wpłat korzystamy z platformy Ko-fi, która przetwarza dane płatnicze zgodnie z własną polityką prywatności.</p>',
   nav1:'Podpowiedzi',
   nav3:'AI',
   nav4:'☕',
@@ -4919,6 +4960,8 @@ pl:{
   advVerbLabel:'⚡ Czasownik frazowy (podpowiedź)', advTopicLabel:'🗂 Temat (podpowiedź)',
   genSendBtn:'▶ Wygeneruj kontekst',
   genHintSmall:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
+  clipboardHintDesktop:'📋 Prompt został skopiowany do schowka — jeśli ChatGPT/Copilot otworzy się bez tekstu, wklej go (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompt został skopiowany do schowka — jeśli ChatGPT/Copilot otworzy się bez tekstu, przytrzymaj pole i wybierz Wklej',
   genErrEmpty2:'Napisz sytuację lub zamiar, który chcesz ćwiczyć.',
   exChip0:'praca zespołowa', exChip1:'jedzenie',
   exChip2:'rozwiązanie konfliktu', exChip3:'podróże', exChip4:'rozmowa kwalifikacyjna',
@@ -4928,7 +4971,7 @@ pl:{
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
   dialogLengthHint:'Określa długość każdego dialogu.',
-  aiHint:'Aplikacja działa z asystentami AI — ChatGPT, Claude, Copilot.'
+  aiHint:'Aplikacja działa z asystentami AI — ChatGPT, Copilot.'
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
@@ -4959,7 +5002,7 @@ cn:{
   coffeeBtn:"支持开发",
   coffeeP:"Contexta对你有帮助吗？在<a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>上请我喝杯咖啡——每一份支持都能让Contexta更进一步。",
   footerP:"使用Claude AI (Anthropic) · claude.ai创建",
-  footerSub:"10种语言 · 3个级别 · 6个AI平台", footerTermsLink:'使用条款', footerPrivacyLink:'隐私政策', termsTitle:'使用条款', termsBody:'<p>本应用程序（Contexta）按"现状"提供，不附带任何明示或暗示的担保。作者不保证应用程序的持续可用性、无错误运行或安全性。</p><p>使用本应用程序即表示您同意自行承担风险。作者对因使用本应用程序而产生的任何直接或间接损害、数据丢失或其他损失不承担责任。</p><p>本应用程序使用第三方AI工具生成学习内容。作者不保证生成内容对任何特定用途的准确性、完整性或适用性。</p><p>通过Ko-fi进行的捐助是自愿的，不构成对任何特定服务或保证的权利。</p><p>本条款可能随时变更。继续使用本应用程序即表示接受当前条款。</p>', privacyTitle:'隐私政策', privacyBody:'<p>本应用程序不会在服务器上存储任何个人数据。所有数据（词汇历史、语言设置等）仅存储在您浏览器的本地存储（localStorage）中，绝不会发送或与作者共享。</p><p>本应用程序可能会将您输入的文本发送给第三方AI提供商（例如ChatGPT、Claude、Gemini）以生成学习内容。这些服务有其自己的隐私政策，我们建议您查阅。</p><p>本应用程序除标准托管服务（GitHub Pages）外，不使用跟踪Cookie或第三方分析工具。</p><p>对于自愿捐助，我们使用Ko-fi平台，该平台依据其自身的隐私政策处理支付信息。</p>',
+  footerSub:"10种语言 · 3个级别 · 6个AI平台", footerTermsLink:'使用条款', footerPrivacyLink:'隐私政策', termsTitle:'使用条款', termsBody:'<p>本应用程序（Contexta）按"现状"提供，不附带任何明示或暗示的担保。作者不保证应用程序的持续可用性、无错误运行或安全性。</p><p>使用本应用程序即表示您同意自行承担风险。作者对因使用本应用程序而产生的任何直接或间接损害、数据丢失或其他损失不承担责任。</p><p>本应用程序使用第三方AI工具生成学习内容。作者不保证生成内容对任何特定用途的准确性、完整性或适用性。</p><p>通过Ko-fi进行的捐助是自愿的，不构成对任何特定服务或保证的权利。</p><p>本条款可能随时变更。继续使用本应用程序即表示接受当前条款。</p>', privacyTitle:'隐私政策', privacyBody:'<p>本应用程序不会在服务器上存储任何个人数据。所有数据（词汇历史、语言设置等）仅存储在您浏览器的本地存储（localStorage）中，绝不会发送或与作者共享。</p><p>本应用程序可能会将您输入的文本发送给第三方AI提供商（例如ChatGPT）以生成学习内容。这些服务有其自己的隐私政策，我们建议您查阅。</p><p>本应用程序除标准托管服务（GitHub Pages）外，不使用跟踪Cookie或第三方分析工具。</p><p>对于自愿捐助，我们使用Ko-fi平台，该平台依据其自身的隐私政策处理支付信息。</p>',
   nav1:'提示词',
   nav3:'AI',
   nav4:'☕',
@@ -5003,6 +5046,8 @@ cn:{
   advVerbLabel:'⚡ 短语动词（提示）', advTopicLabel:'🗂 主题（提示）',
   genSendBtn:'▶ 生成语境',
   genHintSmall:'💡 ChatGPT将携带提示词打开 — 只需按Enter',
+  clipboardHintDesktop:'📋 提示词已复制到剪贴板 — 如果ChatGPT/Copilot打开后没有文字，请粘贴（Ctrl+V）',
+  clipboardHintMobile:'📋 提示词已复制到剪贴板 — 如果ChatGPT/Copilot打开后没有文字，请长按输入框并选择粘贴',
   genErrEmpty2:'请输入您想练习的情境或意图。',
   exChip0:'团队合作', exChip1:'点餐',
   exChip2:'解决冲突', exChip3:'旅行', exChip4:'工作面试',
@@ -5012,7 +5057,7 @@ cn:{
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
   dialogLengthHint:'设置每段对话的长度。',
-  aiHint:'本应用支持AI助手 — ChatGPT、Claude、Copilot。'
+  aiHint:'本应用支持AI助手 — ChatGPT、Copilot。'
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
@@ -5043,7 +5088,7 @@ jp:{
   coffeeBtn:"開発をサポート",
   coffeeP:"Contextaは役に立っていますか？<a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>でコーヒーをおごってください — あなたのサポートがContextaを前進させます。",
   footerP:"Claude AI (Anthropic) · claude.ai で作成",
-  footerSub:"10言語 · 3レベル · 6AIプラットフォーム", footerTermsLink:'利用規約', footerPrivacyLink:'プライバシーポリシー', termsTitle:'利用規約', termsBody:'<p>本アプリケーション（Contexta）は「現状のまま」提供され、明示または暗示を問わずいかなる保証もありません。作者は、本アプリケーションの継続的な利用可能性、無誤動作、またはセキュリティを保証しません。</p><p>本アプリケーションを利用することにより、自己の責任において利用することに同意したものとみなされます。作者は、本アプリケーションの利用に起因する直接的または間接的な損害、データの損失、その他の損害について責任を負いません。</p><p>本アプリケーションは、学習コンテンツを生成するために第三者のAIツールを使用しています。作者は、生成されたコンテンツの正確性、完全性、または特定の目的への適合性を保証しません。</p><p>Ko-fiを通じた寄付は自発的なものであり、特定のサービスや保証を受ける権利を生じさせるものではありません。</p><p>本規約は随時変更される場合があります。本アプリケーションを継続して利用することにより、最新の規約に同意したものとみなされます。</p>', privacyTitle:'プライバシーポリシー', privacyBody:'<p>本アプリケーションは、サーバー上に個人データを保存しません。すべてのデータ（語彙履歴、言語設定など）はお使いのブラウザにローカルに（localStorageに）のみ保存され、作者に送信されたり共有されることはありません。</p><p>本アプリケーションは、学習コンテンツを生成するために、入力されたテキストを第三者のAIプロバイダー（例：ChatGPT、Claude、Gemini）に送信することがあります。これらのサービスには独自のプライバシーポリシーがあり、確認することをお勧めします。</p><p>本アプリケーションは、標準的なホスティング（GitHub Pages）以外に、トラッキングクッキーや第三者の分析ツールを使用しません。</p><p>自発的な寄付には、独自のプライバシーポリシーに基づき決済情報を処理するKo-fiプラットフォームを使用しています。</p>',
+  footerSub:"10言語 · 3レベル · 6AIプラットフォーム", footerTermsLink:'利用規約', footerPrivacyLink:'プライバシーポリシー', termsTitle:'利用規約', termsBody:'<p>本アプリケーション（Contexta）は「現状のまま」提供され、明示または暗示を問わずいかなる保証もありません。作者は、本アプリケーションの継続的な利用可能性、無誤動作、またはセキュリティを保証しません。</p><p>本アプリケーションを利用することにより、自己の責任において利用することに同意したものとみなされます。作者は、本アプリケーションの利用に起因する直接的または間接的な損害、データの損失、その他の損害について責任を負いません。</p><p>本アプリケーションは、学習コンテンツを生成するために第三者のAIツールを使用しています。作者は、生成されたコンテンツの正確性、完全性、または特定の目的への適合性を保証しません。</p><p>Ko-fiを通じた寄付は自発的なものであり、特定のサービスや保証を受ける権利を生じさせるものではありません。</p><p>本規約は随時変更される場合があります。本アプリケーションを継続して利用することにより、最新の規約に同意したものとみなされます。</p>', privacyTitle:'プライバシーポリシー', privacyBody:'<p>本アプリケーションは、サーバー上に個人データを保存しません。すべてのデータ（語彙履歴、言語設定など）はお使いのブラウザにローカルに（localStorageに）のみ保存され、作者に送信されたり共有されることはありません。</p><p>本アプリケーションは、学習コンテンツを生成するために、入力されたテキストを第三者のAIプロバイダー（例：ChatGPT）に送信することがあります。これらのサービスには独自のプライバシーポリシーがあり、確認することをお勧めします。</p><p>本アプリケーションは、標準的なホスティング（GitHub Pages）以外に、トラッキングクッキーや第三者の分析ツールを使用しません。</p><p>自発的な寄付には、独自のプライバシーポリシーに基づき決済情報を処理するKo-fiプラットフォームを使用しています。</p>',
   nav1:'プロンプト',
   nav3:'AI',
   nav4:'☕',
@@ -5087,6 +5132,8 @@ jp:{
   advVerbLabel:'⚡ 句動詞（ヒント）', advTopicLabel:'🗂 テーマ（ヒント）',
   genSendBtn:'▶ コンテキストを生成',
   genHintSmall:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
+  clipboardHintDesktop:'📋 プロンプトはクリップボードにコピーされました — ChatGPT/Copilotが空で開いた場合は貼り付けてください（Ctrl+V）',
+  clipboardHintMobile:'📋 プロンプトはクリップボードにコピーされました — ChatGPT/Copilotが空で開いた場合は、入力欄を長押しして貼り付けを選んでください',
   genErrEmpty2:'練習したい状況や意図を入力してください。',
   exChip0:'チームで働く', exChip1:'食事',
   exChip2:'対立を解決する', exChip3:'旅行', exChip4:'就職面接',
@@ -5096,7 +5143,7 @@ jp:{
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
   dialogLengthHint:'各ダイアログの長さを設定します。',
-  aiHint:'このアプリはAIアシスタントに対応しています — ChatGPT、Claude、Copilot。'
+  aiHint:'このアプリはAIアシスタントに対応しています — ChatGPT、Copilot。'
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
@@ -5127,7 +5174,7 @@ kr:{
   coffeeBtn:"개발 후원하기",
   coffeeP:"Contexta가 도움이 되나요? <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>에서 커피 한 잔으로 응원해 주세요 — 모든 후원이 Contexta를 발전시킵니다.",
   footerP:"Claude AI (Anthropic) · claude.ai로 제작",
-  footerSub:"10개 언어 · 3개 레벨 · 6개 AI 플랫폼", footerTermsLink:'이용 약관', footerPrivacyLink:'개인정보 보호정책', termsTitle:'이용 약관', termsBody:'<p>본 애플리케이션(Contexta)은 명시적이든 묵시적이든 어떠한 보증도 없이 "있는 그대로" 제공됩니다. 저작자는 애플리케이션의 지속적인 가용성, 오류 없는 작동 또는 보안을 보장하지 않습니다.</p><p>애플리케이션을 사용함으로써 귀하는 자신의 책임하에 사용하는 것에 동의합니다. 저작자는 애플리케이션 사용으로 인해 발생하는 직접적 또는 간접적 손해, 데이터 손실 또는 기타 피해에 대해 책임을 지지 않습니다.</p><p>본 애플리케이션은 학습 콘텐츠 생성을 위해 제3자 AI 도구를 사용합니다. 저작자는 생성된 콘텐츠의 정확성, 완전성 또는 특정 목적에의 적합성을 보장하지 않습니다.</p><p>Ko-fi를 통한 후원은 자발적인 것이며 특정 서비스나 보증에 대한 권리를 발생시키지 않습니다.</p><p>본 약관은 수시로 변경될 수 있습니다. 애플리케이션을 계속 사용하는 것은 현재 약관에 동의하는 것으로 간주됩니다.</p>', privacyTitle:'개인정보 보호정책', privacyBody:'<p>본 애플리케이션은 서버에 개인 데이터를 저장하지 않습니다. 모든 데이터(어휘 기록, 언어 설정 등)는 사용자의 브라우저에 로컬로(localStorage)만 저장되며 저작자에게 전송되거나 공유되지 않습니다.</p><p>본 애플리케이션은 학습 콘텐츠 생성을 위해 입력된 텍스트를 제3자 AI 제공업체(예: ChatGPT, Claude, Gemini)로 전송할 수 있습니다. 이러한 서비스에는 자체 개인정보 보호정책이 있으며, 이를 검토하시기를 권장합니다.</p><p>본 애플리케이션은 표준 호스팅(GitHub Pages) 이외의 추적 쿠키나 제3자 분석 도구를 사용하지 않습니다.</p><p>자발적 후원의 경우, 자체 개인정보 보호정책에 따라 결제 정보를 처리하는 Ko-fi 플랫폼을 사용합니다.</p>',
+  footerSub:"10개 언어 · 3개 레벨 · 6개 AI 플랫폼", footerTermsLink:'이용 약관', footerPrivacyLink:'개인정보 보호정책', termsTitle:'이용 약관', termsBody:'<p>본 애플리케이션(Contexta)은 명시적이든 묵시적이든 어떠한 보증도 없이 "있는 그대로" 제공됩니다. 저작자는 애플리케이션의 지속적인 가용성, 오류 없는 작동 또는 보안을 보장하지 않습니다.</p><p>애플리케이션을 사용함으로써 귀하는 자신의 책임하에 사용하는 것에 동의합니다. 저작자는 애플리케이션 사용으로 인해 발생하는 직접적 또는 간접적 손해, 데이터 손실 또는 기타 피해에 대해 책임을 지지 않습니다.</p><p>본 애플리케이션은 학습 콘텐츠 생성을 위해 제3자 AI 도구를 사용합니다. 저작자는 생성된 콘텐츠의 정확성, 완전성 또는 특정 목적에의 적합성을 보장하지 않습니다.</p><p>Ko-fi를 통한 후원은 자발적인 것이며 특정 서비스나 보증에 대한 권리를 발생시키지 않습니다.</p><p>본 약관은 수시로 변경될 수 있습니다. 애플리케이션을 계속 사용하는 것은 현재 약관에 동의하는 것으로 간주됩니다.</p>', privacyTitle:'개인정보 보호정책', privacyBody:'<p>본 애플리케이션은 서버에 개인 데이터를 저장하지 않습니다. 모든 데이터(어휘 기록, 언어 설정 등)는 사용자의 브라우저에 로컬로(localStorage)만 저장되며 저작자에게 전송되거나 공유되지 않습니다.</p><p>본 애플리케이션은 학습 콘텐츠 생성을 위해 입력된 텍스트를 제3자 AI 제공업체(예: ChatGPT)로 전송할 수 있습니다. 이러한 서비스에는 자체 개인정보 보호정책이 있으며, 이를 검토하시기를 권장합니다.</p><p>본 애플리케이션은 표준 호스팅(GitHub Pages) 이외의 추적 쿠키나 제3자 분석 도구를 사용하지 않습니다.</p><p>자발적 후원의 경우, 자체 개인정보 보호정책에 따라 결제 정보를 처리하는 Ko-fi 플랫폼을 사용합니다.</p>',
   nav1:'프롬프트',
   nav3:'AI',
   nav4:'☕',
@@ -5171,6 +5218,8 @@ kr:{
   advVerbLabel:'⚡ 구동사 (힌트)', advTopicLabel:'🗂 주제 (힌트)',
   genSendBtn:'▶ 컨텍스트 생성',
   genHintSmall:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
+  clipboardHintDesktop:'📋 프롬프트가 클립보드에 복사되었습니다 — ChatGPT/Copilot가 빈 화면으로 열리면 붙여넣기 하세요 (Ctrl+V)',
+  clipboardHintMobile:'📋 프롬프트가 클립보드에 복사되었습니다 — ChatGPT/Copilot가 빈 화면으로 열리면 입력란을 길게 눌러 붙여넣기를 선택하세요',
   genErrEmpty2:'연습하고 싶은 상황이나 의도를 입력해 주세요.',
   exChip0:'팀으로 일하기', exChip1:'음식',
   exChip2:'갈등 해결하기', exChip3:'여행', exChip4:'취업 면접',
@@ -5180,7 +5229,7 @@ kr:{
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
   dialogLengthHint:'각 대화의 길이를 설정합니다.',
-  aiHint:'이 앱은 AI 어시스턴트와 호환됩니다 — ChatGPT, Claude, Copilot.'
+  aiHint:'이 앱은 AI 어시스턴트와 호환됩니다 — ChatGPT, Copilot.'
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
@@ -5211,7 +5260,7 @@ sk:{
   coffeeBtn:"Podporiť vývoj",
   coffeeP:"Pomáha ti Contexta? Podpor ma kávou na <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — každý príspevok môže Contextu posunúť ďalej.",
   footerP:"Vytvorené pomocou Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 jazykov · 3 úrovne · 6 AI platforiem", footerTermsLink:'Podmienky používania', footerPrivacyLink:'Ochrana súkromia', termsTitle:'Podmienky používania', termsBody:'<p>Táto aplikácia (Contexta) je poskytovaná "tak, ako je", bez akejkoľvek záruky, výslovnej či implicitnej. Autor nezaručuje nepretržitú dostupnosť, bezchybnú prevádzku ani bezpečnosť aplikácie.</p><p>Používaním aplikácie súhlasíte, že to robíte na vlastné riziko. Autor nenesie zodpovednosť za žiadne priame ani nepriame škody, stratu dát ani inú újmu vzniknutú v dôsledku používania aplikácie.</p><p>Aplikácia využíva nástroje AI tretích strán na generovanie vzdelávacieho obsahu. Autor nezaručuje presnosť, úplnosť ani vhodnosť generovaného obsahu na akýkoľvek konkrétny účel.</p><p>Príspevky cez Ko-fi sú dobrovoľné a nezakladajú nárok na žiadne konkrétne služby ani záruky.</p><p>Tieto podmienky sa môžu z času na čas zmeniť. Pokračujúce používanie aplikácie znamená súhlas s aktuálnym znením podmienok.</p>', privacyTitle:'Ochrana súkromia', privacyBody:'<p>Táto aplikácia neukladá žiadne osobné údaje na serveri. Všetky údaje (história slovnej zásoby, jazykové nastavenia atď.) sa ukladajú iba lokálne vo vašom prehliadači (localStorage) a nikdy sa neposielajú ani nezdieľajú s autorom.</p><p>Aplikácia môže odosielať zadaný text tretím AI poskytovateľom (napr. ChatGPT, Claude, Gemini) na účely generovania vzdelávacieho obsahu. Tieto služby majú vlastné zásady ochrany súkromia, ktoré odporúčame si prečítať.</p><p>Aplikácia nepoužíva sledovacie cookies ani analytické nástroje tretích strán nad rámec štandardného hostingu (GitHub Pages).</p><p>Pre dobrovoľné príspevky používame platformu Ko-fi, ktorá zpracúva platobné informácie podľa vlastných zásad ochrany súkromia.</p>',
+  footerSub:"10 jazykov · 3 úrovne · 6 AI platforiem", footerTermsLink:'Podmienky používania', footerPrivacyLink:'Ochrana súkromia', termsTitle:'Podmienky používania', termsBody:'<p>Táto aplikácia (Contexta) je poskytovaná "tak, ako je", bez akejkoľvek záruky, výslovnej či implicitnej. Autor nezaručuje nepretržitú dostupnosť, bezchybnú prevádzku ani bezpečnosť aplikácie.</p><p>Používaním aplikácie súhlasíte, že to robíte na vlastné riziko. Autor nenesie zodpovednosť za žiadne priame ani nepriame škody, stratu dát ani inú újmu vzniknutú v dôsledku používania aplikácie.</p><p>Aplikácia využíva nástroje AI tretích strán na generovanie vzdelávacieho obsahu. Autor nezaručuje presnosť, úplnosť ani vhodnosť generovaného obsahu na akýkoľvek konkrétny účel.</p><p>Príspevky cez Ko-fi sú dobrovoľné a nezakladajú nárok na žiadne konkrétne služby ani záruky.</p><p>Tieto podmienky sa môžu z času na čas zmeniť. Pokračujúce používanie aplikácie znamená súhlas s aktuálnym znením podmienok.</p>', privacyTitle:'Ochrana súkromia', privacyBody:'<p>Táto aplikácia neukladá žiadne osobné údaje na serveri. Všetky údaje (história slovnej zásoby, jazykové nastavenia atď.) sa ukladajú iba lokálne vo vašom prehliadači (localStorage) a nikdy sa neposielajú ani nezdieľajú s autorom.</p><p>Aplikácia môže odosielať zadaný text tretím AI poskytovateľom (napr. ChatGPT) na účely generovania vzdelávacieho obsahu. Tieto služby majú vlastné zásady ochrany súkromia, ktoré odporúčame si prečítať.</p><p>Aplikácia nepoužíva sledovacie cookies ani analytické nástroje tretích strán nad rámec štandardného hostingu (GitHub Pages).</p><p>Pre dobrovoľné príspevky používame platformu Ko-fi, ktorá zpracúva platobné informácie podľa vlastných zásad ochrany súkromia.</p>',
   nav3:'AI', nav4:'☕',
   h2:'Vyber úroveň', h4:'Otvoriť AI asistenta',
   pill2:'B1–B2 Pokročilejší', pill3:'C1–C2 Pokročilý', pill4:'10 jazykov',
@@ -5244,6 +5293,8 @@ sk:{
   advVerbLabel:'⚡ Frázové sloveso (nápoveda)', advTopicLabel:'🗂 Téma (nápoveda)',
   genSendBtn:'▶ Generovať kontext',
   genHintSmall:'💡 ChatGPT sa otvorí s hotovým promptom — stačí stlačiť Enter',
+  clipboardHintDesktop:'📋 Prompt bol skopírovaný do schránky — ak sa ChatGPT/Copilot otvorí bez textu, vlož ho (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompt bol skopírovaný do schránky — ak sa ChatGPT/Copilot otvorí bez textu, podrž prst v poli a vyber Prilepiť',
   genErrEmpty2:'Napíš situáciu alebo zámer, ktorý chceš precvičiť.',
   exChip0:'pracovať v tíme', exChip1:'jedlo',
   exChip2:'vyriešiť konflikt', exChip3:'cestovanie', exChip4:'pracovný pohovor',
@@ -5253,7 +5304,7 @@ sk:{
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
   dialogLengthHint:'Určuje dĺžku každého dialógu.',
-  aiHint:'Aplikácia funguje s AI asistentmi — ChatGPT, Claude, Copilot.'
+  aiHint:'Aplikácia funguje s AI asistentmi — ChatGPT, Copilot.'
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
@@ -5284,7 +5335,7 @@ nl:{
   coffeeBtn:"Ondersteun ontwikkeling",
   coffeeP:"Helpt Contexta je? Steun me met een koffie op <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — elke bijdrage kan Contexta verder helpen.",
   footerP:"Gemaakt met Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 talen · 3 niveaus · 6 AI-platforms", footerTermsLink:'Gebruiksvoorwaarden', footerPrivacyLink:'Privacybeleid', termsTitle:'Gebruiksvoorwaarden', termsBody:'<p>Deze applicatie (Contexta) wordt geleverd "zoals ze is", zonder enige garantie, expliciet of impliciet. De auteur garandeert geen ononderbroken beschikbaarheid, foutloze werking of veiligheid van de applicatie.</p><p>Door de applicatie te gebruiken, stemt u ermee in dit op eigen risico te doen. De auteur is niet aansprakelijk voor directe of indirecte schade, gegevensverlies of andere nadelen die voortvloeien uit het gebruik van de applicatie.</p><p>De applicatie gebruikt AI-tools van derden om leerinhoud te genereren. De auteur garandeert niet de nauwkeurigheid, volledigheid of geschiktheid van de gegenereerde inhoud voor een specifiek doel.</p><p>Bijdragen via Ko-fi zijn vrijwillig en geven geen recht op specifieke diensten of garanties.</p><p>Deze voorwaarden kunnen van tijd tot tijd wijzigen. Voortgezet gebruik van de applicatie houdt aanvaarding van de huidige voorwaarden in.</p>', privacyTitle:'Privacybeleid', privacyBody:'<p>Deze applicatie slaat geen persoonlijke gegevens op een server op. Alle gegevens (woordenschatgeschiedenis, taalinstellingen, enz.) worden alleen lokaal in uw browser (localStorage) opgeslagen en worden nooit naar de auteur verzonden of met hem gedeeld.</p><p>De applicatie kan de ingevoerde tekst naar AI-aanbieders van derden (bijv. ChatGPT, Claude, Gemini) verzenden om leerinhoud te genereren. Deze diensten hebben hun eigen privacybeleid, dat we aanraden om te bekijken.</p><p>De applicatie gebruikt geen trackingcookies of analysetools van derden, behalve standaard hosting (GitHub Pages).</p><p>Voor vrijwillige bijdragen gebruiken we het Ko-fi-platform, dat betalingsgegevens verwerkt volgens zijn eigen privacybeleid.</p>',
+  footerSub:"10 talen · 3 niveaus · 6 AI-platforms", footerTermsLink:'Gebruiksvoorwaarden', footerPrivacyLink:'Privacybeleid', termsTitle:'Gebruiksvoorwaarden', termsBody:'<p>Deze applicatie (Contexta) wordt geleverd "zoals ze is", zonder enige garantie, expliciet of impliciet. De auteur garandeert geen ononderbroken beschikbaarheid, foutloze werking of veiligheid van de applicatie.</p><p>Door de applicatie te gebruiken, stemt u ermee in dit op eigen risico te doen. De auteur is niet aansprakelijk voor directe of indirecte schade, gegevensverlies of andere nadelen die voortvloeien uit het gebruik van de applicatie.</p><p>De applicatie gebruikt AI-tools van derden om leerinhoud te genereren. De auteur garandeert niet de nauwkeurigheid, volledigheid of geschiktheid van de gegenereerde inhoud voor een specifiek doel.</p><p>Bijdragen via Ko-fi zijn vrijwillig en geven geen recht op specifieke diensten of garanties.</p><p>Deze voorwaarden kunnen van tijd tot tijd wijzigen. Voortgezet gebruik van de applicatie houdt aanvaarding van de huidige voorwaarden in.</p>', privacyTitle:'Privacybeleid', privacyBody:'<p>Deze applicatie slaat geen persoonlijke gegevens op een server op. Alle gegevens (woordenschatgeschiedenis, taalinstellingen, enz.) worden alleen lokaal in uw browser (localStorage) opgeslagen en worden nooit naar de auteur verzonden of met hem gedeeld.</p><p>De applicatie kan de ingevoerde tekst naar AI-aanbieders van derden (bijv. ChatGPT) verzenden om leerinhoud te genereren. Deze diensten hebben hun eigen privacybeleid, dat we aanraden om te bekijken.</p><p>De applicatie gebruikt geen trackingcookies of analysetools van derden, behalve standaard hosting (GitHub Pages).</p><p>Voor vrijwillige bijdragen gebruiken we het Ko-fi-platform, dat betalingsgegevens verwerkt volgens zijn eigen privacybeleid.</p>',
   nav3:'AI', nav4:'☕',
   h2:'Kies niveau', h4:'AI-assistent openen',
   pill2:'B1–B2 Gevorderd', pill3:'C1–C2 Vorderend', pill4:'10 talen',
@@ -5317,6 +5368,8 @@ nl:{
   advVerbLabel:'⚡ Werkwoordgroep (hint)', advTopicLabel:'🗂 Onderwerp (hint)',
   genSendBtn:'▶ Context genereren',
   genHintSmall:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
+  clipboardHintDesktop:'📋 De prompt is gekopieerd naar het klembord — als ChatGPT/Copilot zonder tekst opent, plak hem (Ctrl+V)',
+  clipboardHintMobile:'📋 De prompt is gekopieerd naar het klembord — als ChatGPT/Copilot zonder tekst opent, houd het veld ingedrukt en kies Plakken',
   genErrEmpty2:'Schrijf de situatie of intentie die je wilt oefenen.',
   exChip0:'samenwerken', exChip1:'eten',
   exChip2:'conflict oplossen', exChip3:'reizen', exChip4:'sollicitatiegesprek',
@@ -5326,7 +5379,7 @@ nl:{
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
   dialogLengthHint:'Stelt de lengte van elk dialoog in.',
-  aiHint:'De app werkt met AI-assistenten — ChatGPT, Claude, Copilot.'
+  aiHint:'De app werkt met AI-assistenten — ChatGPT, Copilot.'
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
@@ -5357,7 +5410,7 @@ sv:{
   coffeeBtn:"Stöd utvecklingen",
   coffeeP:"Hjälper Contexta dig? Stöd mig med ett kaffe på <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — varje bidrag kan föra Contexta framåt.",
   footerP:"Skapad med Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 språk · 3 nivåer · 6 AI-plattformar", footerTermsLink:'Användarvillkor', footerPrivacyLink:'Integritetspolicy', termsTitle:'Användarvillkor', termsBody:'<p>Denna applikation (Contexta) tillhandahålls "i befintligt skick", utan någon garanti, uttrycklig eller underförstådd. Författaren garanterar inte kontinuerlig tillgänglighet, felfri drift eller säkerhet för applikationen.</p><p>Genom att använda applikationen samtycker du till att göra det på egen risk. Författaren ansvarar inte för direkta eller indirekta skador, dataförlust eller annan skada som uppstår till följd av användningen av applikationen.</p><p>Applikationen använder AI-verktyg från tredje part för att generera utbildningsinnehåll. Författaren garanterar inte att det genererade innehållet är korrekt, fullständigt eller lämpligt för något specifikt syfte.</p><p>Bidrag via Ko-fi är frivilliga och ger inte rätt till specifika tjänster eller garantier.</p><p>Dessa villkor kan ändras från tid till annan. Fortsatt användning av applikationen innebär godkännande av de gällande villkoren.</p>', privacyTitle:'Integritetspolicy', privacyBody:'<p>Denna applikation lagrar inga personuppgifter på en server. All data (ordförrådshistorik, språkinställningar, etc.) lagras endast lokalt i din webbläsare (localStorage) och skickas eller delas aldrig med författaren.</p><p>Applikationen kan skicka den text du anger till tredjepartsleverantörer av AI (t.ex. ChatGPT, Claude, Gemini) för att generera utbildningsinnehåll. Dessa tjänster har egna integritetspolicyer, som vi rekommenderar att du läser igenom.</p><p>Applikationen använder inte spårningscookies eller tredjeparts analysverktyg utöver standardhosting (GitHub Pages).</p><p>För frivilliga bidrag använder vi plattformen Ko-fi, som behandlar betalningsinformation enligt sin egen integritetspolicy.</p>',
+  footerSub:"10 språk · 3 nivåer · 6 AI-plattformar", footerTermsLink:'Användarvillkor', footerPrivacyLink:'Integritetspolicy', termsTitle:'Användarvillkor', termsBody:'<p>Denna applikation (Contexta) tillhandahålls "i befintligt skick", utan någon garanti, uttrycklig eller underförstådd. Författaren garanterar inte kontinuerlig tillgänglighet, felfri drift eller säkerhet för applikationen.</p><p>Genom att använda applikationen samtycker du till att göra det på egen risk. Författaren ansvarar inte för direkta eller indirekta skador, dataförlust eller annan skada som uppstår till följd av användningen av applikationen.</p><p>Applikationen använder AI-verktyg från tredje part för att generera utbildningsinnehåll. Författaren garanterar inte att det genererade innehållet är korrekt, fullständigt eller lämpligt för något specifikt syfte.</p><p>Bidrag via Ko-fi är frivilliga och ger inte rätt till specifika tjänster eller garantier.</p><p>Dessa villkor kan ändras från tid till annan. Fortsatt användning av applikationen innebär godkännande av de gällande villkoren.</p>', privacyTitle:'Integritetspolicy', privacyBody:'<p>Denna applikation lagrar inga personuppgifter på en server. All data (ordförrådshistorik, språkinställningar, etc.) lagras endast lokalt i din webbläsare (localStorage) och skickas eller delas aldrig med författaren.</p><p>Applikationen kan skicka den text du anger till tredjepartsleverantörer av AI (t.ex. ChatGPT) för att generera utbildningsinnehåll. Dessa tjänster har egna integritetspolicyer, som vi rekommenderar att du läser igenom.</p><p>Applikationen använder inte spårningscookies eller tredjeparts analysverktyg utöver standardhosting (GitHub Pages).</p><p>För frivilliga bidrag använder vi plattformen Ko-fi, som behandlar betalningsinformation enligt sin egen integritetspolicy.</p>',
   nav3:'AI', nav4:'☕',
   h2:'Välj nivå', h4:'Öppna AI-assistent',
   pill2:'B1–B2 Medelnivå', pill3:'C1–C2 Avancerad', pill4:'10 språk',
@@ -5390,6 +5443,8 @@ sv:{
   advVerbLabel:'⚡ Frasverb (ledtråd)', advTopicLabel:'🗂 Ämne (ledtråd)',
   genSendBtn:'▶ Generera kontext',
   genHintSmall:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
+  clipboardHintDesktop:'📋 Prompten har kopierats till urklipp — om ChatGPT/Copilot öppnas utan text, klistra in den (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompten har kopierats till urklipp — om ChatGPT/Copilot öppnas utan text, håll inne fältet och välj Klistra in',
   genErrEmpty2:'Skriv situationen eller avsikten du vill öva.',
   exChip0:'teamarbete', exChip1:'mat',
   exChip2:'lösa konflikt', exChip3:'resor', exChip4:'jobbintervju',
@@ -5399,7 +5454,7 @@ sv:{
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
   dialogLengthHint:'Anger längden på varje dialog.',
-  aiHint:'Appen fungerar med AI-assistenter — ChatGPT, Claude, Copilot.'
+  aiHint:'Appen fungerar med AI-assistenter — ChatGPT, Copilot.'
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
@@ -5430,7 +5485,7 @@ ru:{
   coffeeBtn:"Поддержать разработку",
   coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
   footerP:"Создано с помощью Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 языков · 3 уровня · 6 AI платформ", footerTermsLink:'Условия использования', footerPrivacyLink:'Политика конфиденциальности', termsTitle:'Условия использования', termsBody:'<p>Это приложение (Contexta) предоставляется «как есть», без каких-либо гарантий, явных или подразумеваемых. Автор не гарантирует непрерывную доступность, безошибочную работу или безопасность приложения.</p><p>Используя приложение, вы соглашаетесь делать это на собственный риск. Автор не несёт ответственности за любой прямой или косвенный ущерб, потерю данных или иной вред, возникший в результате использования приложения.</p><p>Приложение использует сторонние AI-инструменты для генерации обучающего контента. Автор не гарантирует точность, полноту или пригодность сгенерированного контента для какой-либо конкретной цели.</p><p>Пожертвования через Ko-fi являются добровольными и не создают права на какие-либо конкретные услуги или гарантии.</p><p>Эти условия могут время от времени изменяться. Продолжение использования приложения означает согласие с действующими условиями.</p>', privacyTitle:'Политика конфиденциальности', privacyBody:'<p>Это приложение не хранит никаких персональных данных на сервере. Все данные (история словарного запаса, языковые настройки и т.д.) хранятся только локально в вашем браузере (localStorage) и никогда не отправляются и не передаются автору.</p><p>Приложение может отправлять введённый вами текст сторонним поставщикам AI (например, ChatGPT, Claude, Gemini) для генерации обучающего контента. У этих сервисов есть собственная политика конфиденциальности, которую мы рекомендуем изучить.</p><p>Приложение не использует отслеживающие куки или сторонние аналитические инструменты помимо стандартного хостинга (GitHub Pages).</p><p>Для добровольных пожертвований мы используем платформу Ko-fi, которая обрабатывает платёжную информацию в соответствии со своей собственной политикой конфиденциальности.</p>',
+  footerSub:"10 языков · 3 уровня · 6 AI платформ", footerTermsLink:'Условия использования', footerPrivacyLink:'Политика конфиденциальности', termsTitle:'Условия использования', termsBody:'<p>Это приложение (Contexta) предоставляется «как есть», без каких-либо гарантий, явных или подразумеваемых. Автор не гарантирует непрерывную доступность, безошибочную работу или безопасность приложения.</p><p>Используя приложение, вы соглашаетесь делать это на собственный риск. Автор не несёт ответственности за любой прямой или косвенный ущерб, потерю данных или иной вред, возникший в результате использования приложения.</p><p>Приложение использует сторонние AI-инструменты для генерации обучающего контента. Автор не гарантирует точность, полноту или пригодность сгенерированного контента для какой-либо конкретной цели.</p><p>Пожертвования через Ko-fi являются добровольными и не создают права на какие-либо конкретные услуги или гарантии.</p><p>Эти условия могут время от времени изменяться. Продолжение использования приложения означает согласие с действующими условиями.</p>', privacyTitle:'Политика конфиденциальности', privacyBody:'<p>Это приложение не хранит никаких персональных данных на сервере. Все данные (история словарного запаса, языковые настройки и т.д.) хранятся только локально в вашем браузере (localStorage) и никогда не отправляются и не передаются автору.</p><p>Приложение может отправлять введённый вами текст сторонним поставщикам AI (например, ChatGPT) для генерации обучающего контента. У этих сервисов есть собственная политика конфиденциальности, которую мы рекомендуем изучить.</p><p>Приложение не использует отслеживающие куки или сторонние аналитические инструменты помимо стандартного хостинга (GitHub Pages).</p><p>Для добровольных пожертвований мы используем платформу Ko-fi, которая обрабатывает платёжную информацию в соответствии со своей собственной политикой конфиденциальности.</p>',
   genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
   genH:'Создать диалог в ChatGPT',
   genLead:'Выбери языки, введи слово — ChatGPT откроется с готовым промптом.',
@@ -5458,6 +5513,8 @@ ru:{
   advVerbLabel:'⚡ Фразовый глагол (подсказка)', advTopicLabel:'🗂 Тема (подсказка)',
   genSendBtn:'▶ Создать контекст',
   genHintSmall:'💡 ChatGPT откроется с промптом — просто нажми Enter',
+  clipboardHintDesktop:'📋 Промпт скопирован в буфер обмена — если ChatGPT/Copilot открылся без текста, вставь его (Ctrl+V)',
+  clipboardHintMobile:'📋 Промпт скопирован в буфер обмена — если ChatGPT/Copilot открылся без текста, нажми и удерживай поле, затем выбери Вставить',
   genErrEmpty2:'Напиши ситуацию или намерение для практики.',
   exChip0:'командная работа', exChip1:'еда',
   exChip2:'разрешить конфликт', exChip3:'поездка', exChip4:'собеседование',
@@ -5467,7 +5524,7 @@ ru:{
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
   dialogLengthHint:'Определяет длину каждого диалога.',
-  aiHint:'Приложение работает с ИИ-ассистентами — ChatGPT, Claude, Copilot.'
+  aiHint:'Приложение работает с ИИ-ассистентами — ChatGPT, Copilot.'
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
@@ -5498,7 +5555,7 @@ tr:{
   coffeeBtn:"Geliştirmeyi destekle",
   coffeeP:"Contexta işine yarıyor mu? <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a>'de bir kahveyle beni destekle — her katkı Contexta'yı ileriye taşıyabilir.",
   footerP:"Claude AI (Anthropic) · claude.ai ile oluşturuldu",
-  footerSub:"10 dil · 3 seviye · 6 AI platformu", footerTermsLink:'Kullanım Koşulları', footerPrivacyLink:'Gizlilik Politikası', termsTitle:'Kullanım Koşulları', termsBody:'<p>Bu uygulama (Contexta), açık veya zımni hiçbir garanti olmaksızın "olduğu gibi" sunulmaktadır. Yazar, uygulamanın sürekli kullanılabilirliğini, hatasız çalışmasını veya güvenliğini garanti etmez.</p><p>Uygulamayı kullanarak, bunu kendi sorumluluğunuzda yaptığınızı kabul edersiniz. Yazar, uygulamanın kullanımından kaynaklanan doğrudan veya dolaylı zararlardan, veri kaybından veya başka herhangi bir hasardan sorumlu değildir.</p><p>Uygulama, eğitim içeriği oluşturmak için üçüncü taraf yapay zeka araçlarını kullanır. Yazar, oluşturulan içeriğin belirli bir amaca uygunluğunu, doğruluğunu veya eksiksizliğini garanti etmez.</p><p>Ko-fi üzerinden yapılan bağışlar gönüllüdür ve belirli hizmetler veya garantiler için herhangi bir hak oluşturmaz.</p><p>Bu koşullar zaman zaman değişebilir. Uygulamayı kullanmaya devam etmeniz, geçerli koşulların kabul edildiği anlamına gelir.</p>', privacyTitle:'Gizlilik Politikası', privacyBody:'<p>Bu uygulama, sunucuda hiçbir kişisel veri saklamaz. Tüm veriler (kelime geçmişi, dil ayarları vb.) yalnızca tarayıcınızda yerel olarak (localStorage) saklanır ve asla yazara gönderilmez veya paylaşılmaz.</p><p>Uygulama, eğitim içeriği oluşturmak amacıyla girdiğiniz metni üçüncü taraf yapay zeka sağlayıcılarına (örneğin ChatGPT, Claude, Gemini) gönderebilir. Bu hizmetlerin kendi gizlilik politikaları vardır ve bunları incelemenizi öneririz.</p><p>Uygulama, standart barındırma (GitHub Pages) dışında takip çerezleri veya üçüncü taraf analiz araçları kullanmaz.</p><p>Gönüllü bağışlar için, ödeme bilgilerini kendi gizlilik politikasına göre işleyen Ko-fi platformunu kullanıyoruz.</p>',
+  footerSub:"10 dil · 3 seviye · 6 AI platformu", footerTermsLink:'Kullanım Koşulları', footerPrivacyLink:'Gizlilik Politikası', termsTitle:'Kullanım Koşulları', termsBody:'<p>Bu uygulama (Contexta), açık veya zımni hiçbir garanti olmaksızın "olduğu gibi" sunulmaktadır. Yazar, uygulamanın sürekli kullanılabilirliğini, hatasız çalışmasını veya güvenliğini garanti etmez.</p><p>Uygulamayı kullanarak, bunu kendi sorumluluğunuzda yaptığınızı kabul edersiniz. Yazar, uygulamanın kullanımından kaynaklanan doğrudan veya dolaylı zararlardan, veri kaybından veya başka herhangi bir hasardan sorumlu değildir.</p><p>Uygulama, eğitim içeriği oluşturmak için üçüncü taraf yapay zeka araçlarını kullanır. Yazar, oluşturulan içeriğin belirli bir amaca uygunluğunu, doğruluğunu veya eksiksizliğini garanti etmez.</p><p>Ko-fi üzerinden yapılan bağışlar gönüllüdür ve belirli hizmetler veya garantiler için herhangi bir hak oluşturmaz.</p><p>Bu koşullar zaman zaman değişebilir. Uygulamayı kullanmaya devam etmeniz, geçerli koşulların kabul edildiği anlamına gelir.</p>', privacyTitle:'Gizlilik Politikası', privacyBody:'<p>Bu uygulama, sunucuda hiçbir kişisel veri saklamaz. Tüm veriler (kelime geçmişi, dil ayarları vb.) yalnızca tarayıcınızda yerel olarak (localStorage) saklanır ve asla yazara gönderilmez veya paylaşılmaz.</p><p>Uygulama, eğitim içeriği oluşturmak amacıyla girdiğiniz metni üçüncü taraf yapay zeka sağlayıcılarına (örneğin ChatGPT) gönderebilir. Bu hizmetlerin kendi gizlilik politikaları vardır ve bunları incelemenizi öneririz.</p><p>Uygulama, standart barındırma (GitHub Pages) dışında takip çerezleri veya üçüncü taraf analiz araçları kullanmaz.</p><p>Gönüllü bağışlar için, ödeme bilgilerini kendi gizlilik politikasına göre işleyen Ko-fi platformunu kullanıyoruz.</p>',
   nav3:'AI', nav4:'☕',
   h2:'Seviye seç', h4:'AI asistanı aç',
   pill2:'B1–B2 Orta', pill3:'C1–C2 İleri', pill4:'10 dil',
@@ -5531,6 +5588,8 @@ tr:{
   advVerbLabel:'⚡ Fiil öbeği (ipucu)', advTopicLabel:'🗂 Konu (ipucu)',
   genSendBtn:'▶ Bağlam oluştur',
   genHintSmall:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
+  clipboardHintDesktop:'📋 Prompt panoya kopyalandı — ChatGPT/Copilot metin olmadan açılırsa yapıştır (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompt panoya kopyalandı — ChatGPT/Copilot metin olmadan açılırsa, alanı basılı tut ve Yapıştır\'ı seç',
   genErrEmpty2:'Pratik yapmak istediğin durumu veya niyeti yaz.',
   exChip0:'takım çalışması', exChip1:'yemek',
   exChip2:'çatışma çöz', exChip3:'seyahat', exChip4:'iş görüşmesi',
@@ -5540,7 +5599,7 @@ tr:{
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
   dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
-  aiHint:'Uygulama yapay zeka asistanlarıyla çalışır — ChatGPT, Claude, Copilot.'
+  aiHint:'Uygulama yapay zeka asistanlarıyla çalışır — ChatGPT, Copilot.'
 },
 uk:{
   webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
@@ -5572,7 +5631,7 @@ uk:{
   coffeeBtn:"Підтримати розвиток",
   coffeeP:"Contexta допомагає тобі? Підтримай мене кавою на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — кожен внесок може просунути Contexta вперед.",
   footerP:"Створено за допомогою Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 мов · 3 рівні · 6 AI платформ", footerTermsLink:'Умови використання', footerPrivacyLink:'Політика конфіденційності', termsTitle:'Умови використання', termsBody:'<p>Цей застосунок (Contexta) надається "як є", без будь-яких гарантій, явних чи неявних. Автор не гарантує безперервну доступність, безпомилкову роботу чи безпеку застосунку.</p><p>Використовуючи застосунок, ви погоджуєтесь робити це на власний ризик. Автор не несе відповідальності за будь-які прямі чи непрямі збитки, втрату даних або інші наслідки, пов\'язані з використанням застосунку.</p><p>Застосунок використовує сторонні AI-інструменти для генерування навчального контенту. Автор не гарантує точність, повноту чи придатність згенерованого контенту для будь-якої конкретної мети.</p><p>Внески через Ko-fi є добровільними і не створюють жодного права на конкретні послуги чи гарантії.</p><p>Ці умови можуть час від часу змінюватися. Подальше використання застосунку означає прийняття чинних умов.</p>', privacyTitle:'Політика конфіденційності', privacyBody:'<p>Цей застосунок не зберігає жодних особистих даних на сервері. Усі дані (історія слів, налаштування мови тощо) зберігаються лише локально у вашому браузері (localStorage) і ніколи не надсилаються автору й не передаються йому.</p><p>Застосунок може надсилати введений вами текст стороннім постачальникам AI (наприклад, ChatGPT, Claude, Gemini) для генерування навчального контенту. Ці служби мають власні політики конфіденційності, які ми радимо переглянути.</p><p>Застосунок не використовує відстежувальні файли cookie чи сторонні аналітичні інструменти, окрім стандартного хостингу (GitHub Pages).</p><p>Для добровільних внесків ми використовуємо платформу Ko-fi, яка обробляє платіжну інформацію відповідно до власної політики конфіденційності.</p>',
+  footerSub:"10 мов · 3 рівні · 6 AI платформ", footerTermsLink:'Умови використання', footerPrivacyLink:'Політика конфіденційності', termsTitle:'Умови використання', termsBody:'<p>Цей застосунок (Contexta) надається "як є", без будь-яких гарантій, явних чи неявних. Автор не гарантує безперервну доступність, безпомилкову роботу чи безпеку застосунку.</p><p>Використовуючи застосунок, ви погоджуєтесь робити це на власний ризик. Автор не несе відповідальності за будь-які прямі чи непрямі збитки, втрату даних або інші наслідки, пов\'язані з використанням застосунку.</p><p>Застосунок використовує сторонні AI-інструменти для генерування навчального контенту. Автор не гарантує точність, повноту чи придатність згенерованого контенту для будь-якої конкретної мети.</p><p>Внески через Ko-fi є добровільними і не створюють жодного права на конкретні послуги чи гарантії.</p><p>Ці умови можуть час від часу змінюватися. Подальше використання застосунку означає прийняття чинних умов.</p>', privacyTitle:'Політика конфіденційності', privacyBody:'<p>Цей застосунок не зберігає жодних особистих даних на сервері. Усі дані (історія слів, налаштування мови тощо) зберігаються лише локально у вашому браузері (localStorage) і ніколи не надсилаються автору й не передаються йому.</p><p>Застосунок може надсилати введений вами текст стороннім постачальникам AI (наприклад, ChatGPT) для генерування навчального контенту. Ці служби мають власні політики конфіденційності, які ми радимо переглянути.</p><p>Застосунок не використовує відстежувальні файли cookie чи сторонні аналітичні інструменти, окрім стандартного хостингу (GitHub Pages).</p><p>Для добровільних внесків ми використовуємо платформу Ko-fi, яка обробляє платіжну інформацію відповідно до власної політики конфіденційності.</p>',
   nav1:'Промпти', nav3:'ШІ', nav4:'☕',
   h1:'Як це працює?', h2:'Вибери рівень', h4:'Відкрити AI-асистента',
   pill2:'B1–B2 Середній рівень', pill3:'C1–C2 Просунутий', pill4:'10 мов',
@@ -5607,6 +5666,8 @@ uk:{
   advVerbLabel:'⚡ Фразове дієслово (підказка)', advTopicLabel:'🗂 Тема (підказка)',
   genSendBtn:'▶ Згенерувати контекст',
   genHintSmall:'💡 ChatGPT відкриється з промптом — просто натисни Enter',
+  clipboardHintDesktop:'📋 Промпт скопійовано в буфер обміну — якщо ChatGPT/Copilot відкрився без тексту, встав його (Ctrl+V)',
+  clipboardHintMobile:'📋 Промпт скопійовано в буфер обміну — якщо ChatGPT/Copilot відкрився без тексту, натисни й утримуй поле, потім вибери Вставити',
   genErrEmpty:'Напиши ситуацію або намір, який хочеш попрактикувати.',
   exChip0:'робота в команді', exChip1:'замовити їжу',
   exChip2:'вирішити конфлікт', exChip3:'подорожі', exChip4:'співбесіда',
@@ -5619,7 +5680,7 @@ uk:{
   grammarHint:'Вибери граматичну тему — вона буде включена в контекст діалогів і речень з поясненням.',
   grammarSearchPh:'🔍 Шукати тему…',
   dialogLengthHint:'Визначає довжину кожного діалогу.',
-  aiHint:'Додаток працює з ШІ-асистентами — ChatGPT, Claude, Copilot.'
+  aiHint:'Додаток працює з ШІ-асистентами — ChatGPT, Copilot.'
 },
 id:{
   webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
@@ -5651,7 +5712,7 @@ id:{
   coffeeBtn:"Dukung pengembangan",
   coffeeP:"Apakah Contexta membantumu? Dukung saya dengan kopi di <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — setiap kontribusi dapat memajukan Contexta.",
   footerP:"Dibuat dengan Claude AI (Anthropic) · claude.ai",
-  footerSub:"10 bahasa · 3 level · 6 platform AI", footerTermsLink:'Ketentuan Penggunaan', footerPrivacyLink:'Kebijakan Privasi', termsTitle:'Ketentuan Penggunaan', termsBody:'<p>Aplikasi ini (Contexta) disediakan "sebagaimana adanya", tanpa jaminan apa pun, baik tersurat maupun tersirat. Penulis tidak menjamin ketersediaan yang berkelanjutan, operasi yang bebas dari kesalahan, atau keamanan aplikasi.</p><p>Dengan menggunakan aplikasi ini, Anda setuju untuk melakukannya atas risiko Anda sendiri. Penulis tidak bertanggung jawab atas kerugian langsung atau tidak langsung, kehilangan data, atau kerugian lain yang timbul dari penggunaan aplikasi.</p><p>Aplikasi ini menggunakan alat AI pihak ketiga untuk menghasilkan konten pembelajaran. Penulis tidak menjamin keakuratan, kelengkapan, atau kesesuaian konten yang dihasilkan untuk tujuan tertentu.</p><p>Kontribusi melalui Ko-fi bersifat sukarela dan tidak menimbulkan hak atas layanan atau jaminan tertentu.</p><p>Ketentuan ini dapat berubah dari waktu ke waktu. Penggunaan aplikasi yang berkelanjutan berarti Anda menyetujui ketentuan yang berlaku saat ini.</p>', privacyTitle:'Kebijakan Privasi', privacyBody:'<p>Aplikasi ini tidak menyimpan data pribadi apa pun di server. Semua data (riwayat kosakata, pengaturan bahasa, dll.) hanya disimpan secara lokal di browser Anda (localStorage) dan tidak pernah dikirim atau dibagikan kepada penulis.</p><p>Aplikasi ini dapat mengirimkan teks yang Anda masukkan ke penyedia AI pihak ketiga (misalnya ChatGPT, Claude, Gemini) untuk menghasilkan konten pembelajaran. Layanan ini memiliki kebijakan privasi masing-masing yang kami sarankan untuk Anda tinjau.</p><p>Aplikasi ini tidak menggunakan cookie pelacakan atau alat analitik pihak ketiga di luar hosting standar (GitHub Pages).</p><p>Untuk kontribusi sukarela, kami menggunakan platform Ko-fi, yang memproses informasi pembayaran sesuai dengan kebijakan privasinya sendiri.</p>',
+  footerSub:"10 bahasa · 3 level · 6 platform AI", footerTermsLink:'Ketentuan Penggunaan', footerPrivacyLink:'Kebijakan Privasi', termsTitle:'Ketentuan Penggunaan', termsBody:'<p>Aplikasi ini (Contexta) disediakan "sebagaimana adanya", tanpa jaminan apa pun, baik tersurat maupun tersirat. Penulis tidak menjamin ketersediaan yang berkelanjutan, operasi yang bebas dari kesalahan, atau keamanan aplikasi.</p><p>Dengan menggunakan aplikasi ini, Anda setuju untuk melakukannya atas risiko Anda sendiri. Penulis tidak bertanggung jawab atas kerugian langsung atau tidak langsung, kehilangan data, atau kerugian lain yang timbul dari penggunaan aplikasi.</p><p>Aplikasi ini menggunakan alat AI pihak ketiga untuk menghasilkan konten pembelajaran. Penulis tidak menjamin keakuratan, kelengkapan, atau kesesuaian konten yang dihasilkan untuk tujuan tertentu.</p><p>Kontribusi melalui Ko-fi bersifat sukarela dan tidak menimbulkan hak atas layanan atau jaminan tertentu.</p><p>Ketentuan ini dapat berubah dari waktu ke waktu. Penggunaan aplikasi yang berkelanjutan berarti Anda menyetujui ketentuan yang berlaku saat ini.</p>', privacyTitle:'Kebijakan Privasi', privacyBody:'<p>Aplikasi ini tidak menyimpan data pribadi apa pun di server. Semua data (riwayat kosakata, pengaturan bahasa, dll.) hanya disimpan secara lokal di browser Anda (localStorage) dan tidak pernah dikirim atau dibagikan kepada penulis.</p><p>Aplikasi ini dapat mengirimkan teks yang Anda masukkan ke penyedia AI pihak ketiga (misalnya ChatGPT) untuk menghasilkan konten pembelajaran. Layanan ini memiliki kebijakan privasi masing-masing yang kami sarankan untuk Anda tinjau.</p><p>Aplikasi ini tidak menggunakan cookie pelacakan atau alat analitik pihak ketiga di luar hosting standar (GitHub Pages).</p><p>Untuk kontribusi sukarela, kami menggunakan platform Ko-fi, yang memproses informasi pembayaran sesuai dengan kebijakan privasinya sendiri.</p>',
   nav1:'Prompt', nav3:'AI', nav4:'☕',
   h1:'Bagaimana cara kerjanya?', h2:'Pilih level', h4:'Buka asisten AI',
   pill2:'B1–B2 Menengah', pill3:'C1–C2 Mahir', pill4:'10 bahasa',
@@ -5686,6 +5747,8 @@ id:{
   advVerbLabel:'⚡ Phrasal verb (petunjuk)', advTopicLabel:'🗂 Topik (petunjuk)',
   genSendBtn:'▶ Buat konteks',
   genHintSmall:'💡 ChatGPT akan terbuka dengan prompt — cukup tekan Enter',
+  clipboardHintDesktop:'📋 Prompt sudah disalin ke clipboard — jika ChatGPT/Copilot terbuka tanpa teks, tempel (Ctrl+V)',
+  clipboardHintMobile:'📋 Prompt sudah disalin ke clipboard — jika ChatGPT/Copilot terbuka tanpa teks, tahan kolomnya lalu pilih Tempel',
   genErrEmpty:'Tulis situasi atau niat yang ingin kamu latih.',
   exChip0:'kerja tim', exChip1:'pesan makanan',
   exChip2:'selesaikan konflik', exChip3:'perjalanan', exChip4:'wawancara kerja',
@@ -5698,7 +5761,7 @@ id:{
   grammarHint:'Pilih topik tata bahasa — akan disertakan dalam konteks dialog dan kalimat dengan penjelasan.',
   grammarSearchPh:'🔍 Cari topik…',
   dialogLengthHint:'Menentukan panjang setiap dialog.',
-  aiHint:'Aplikasi bekerja dengan asisten AI — ChatGPT, Claude, Copilot.'
+  aiHint:'Aplikasi bekerja dengan asisten AI — ChatGPT, Copilot.'
 }
 }; // end T
 
@@ -8347,24 +8410,34 @@ function genHistoryRender() {
   }
 }
 
-function genHistoryAddManual() {
+function genHistoryCommitManual() {
   var inp = document.getElementById('genHistoryManualInput');
-  if (!inp) return;
+  if (!inp) return false;
   var word = inp.value.trim();
-  if (!word) return;
+  if (!word) return false;
   genHistoryAdd(word);
   inp.value = '';
-  inp.style.display = 'none';
+  return true;
+}
+
+function genHistoryAddManual() {
+  genHistoryCommitManual();
+}
+
+function genHistoryInputBlur() {
+  genHistoryCommitManual();
+  var inp = document.getElementById('genHistoryManualInput');
+  if (inp) inp.style.display = 'none';
 }
 
 function genHistoryToggleInput() {
   var inp = document.getElementById('genHistoryManualInput');
   if (!inp) return;
-  if (inp.style.display === 'none' || !inp.style.display) {
+  if (inp.style.display === 'inline-block') {
+    inp.style.display = 'none';
+  } else {
     inp.style.display = 'inline-block';
     inp.focus();
-  } else {
-    inp.style.display = 'none';
   }
 }
 
@@ -8584,20 +8657,50 @@ function genGenerate() {
   if (sendBtn) sendBtn.classList.remove('loading');
 }
 
+var clipboardHintTimer = null;
+
+function showClipboardHint() {
+  var box = document.getElementById('genClipboardHint');
+  var txt = document.getElementById('genClipboardHintText');
+  if (!box || !txt) return;
+  clearTimeout(clipboardHintTimer);
+  var isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var tr = T[webLang] || T.cz;
+  txt.textContent = isDesktop ? tr.clipboardHintDesktop : tr.clipboardHintMobile;
+  box.classList.add('visible');
+}
+function hideClipboardHint() {
+  var box = document.getElementById('genClipboardHint');
+  if (box) box.classList.remove('visible');
+  clearTimeout(clipboardHintTimer);
+}
+document.addEventListener('visibilitychange', function() {
+  var box = document.getElementById('genClipboardHint');
+  if (!box) return;
+  if (document.visibilityState === 'hidden') {
+    if (box.classList.contains('visible')) {
+      clearTimeout(clipboardHintTimer);
+      clipboardHintTimer = setTimeout(hideClipboardHint, 20000);
+    }
+  } else {
+    clearTimeout(clipboardHintTimer);
+  }
+});
+
 function genOpen(ai, promptText) {
   var enc = encodeURIComponent(promptText);
   var urls = {
     chatgpt: 'https://chatgpt.com/?q=' + enc,
-    claude:  'https://claude.ai/new?q=' + enc,
     copilot: 'https://copilot.microsoft.com/?q=' + enc,
   };
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(promptText).catch(function(){});
   }
+  showClipboardHint();
   var LIMIT = 6000;
   var url = urls[ai] || urls.chatgpt;
   if (enc.length > LIMIT) {
-    var base = { chatgpt:'https://chatgpt.com/', claude:'https://claude.ai/new', copilot:'https://copilot.microsoft.com/' };
+    var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
     url = base[ai] || base.chatgpt;
   }
   window.open(url, '_blank');
