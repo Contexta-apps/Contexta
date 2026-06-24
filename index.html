@@ -8606,7 +8606,7 @@ function genGenerate() {
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. If "' + intent + '" has multiple common meanings, list 2-4 different ' + toName + ' equivalents here instead of one fixed translation (e.g. "akvizice / nákup / pořízení"), and use a different one of these in each dialogue below.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a), format:\n' +
     '1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n2.\n(etc.)\n\n' +
@@ -8619,18 +8619,15 @@ function genGenerate() {
     '- LEVEL COMPLIANCE: every sentence, every dialogue turn, and every translation must strictly match level ' + cefrLevel + '. Vocabulary, grammar structures, and sentence complexity must all be appropriate for this level — no exceptions.\n' +
     '\n' +
     'KEY PRINCIPLE — "' + intent + '":\n' +
-    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
-    '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, or expresses irony/sarcasm.\n' +
-    'NEVER insert "' + intent + '" just to fulfil a quota, when it sounds unnatural, or when it has no communicative function.\n' +
+    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur — if "' + intent + '" has multiple common meanings, choose situations that cover different meanings, not just the most common one. Only then write the sentence.\n' +
+    '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, expresses irony/sarcasm, or is used in a plain descriptive sense that represents a different common meaning from the most frequent one.\n' +
+    'NEVER force "' + intent + '" into a turn where it sounds unnatural or has no communicative function — across all examples it should appear in varied pragmatic functions (reaction, contrast, confirmation, attitude, irony), not always the same one.\n' +
     'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
-    'If "' + intent + '" has multiple meanings, each dialogue reflects one distinct meaning — chosen by context, not by rotation.\n' +
     'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
-    '"' + intent + '" in dialogues: use only in turns where it naturally belongs as part of a reaction or statement — not forced into every turn.\n' +
-    'Across all examples, "' + intent + '" must appear in varied pragmatic functions — not only logical deduction, but also: reaction to new information, contrast with expectation, expression of speaker\'s attitude or stance.\n' +
     '\n' +
     (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
     '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. If the source uses past simple, the translation must use past simple (or the closest equivalent). If the source uses present perfect, future, or progressive aspect, the translation must reflect the same temporal meaning. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction. This rule applies to every sentence and every dialogue turn without exception.\n' +
-    '- Translate meaning, not words; do not preserve lexical structure.\n' +
+    '- Translate meaning, not words; do not preserve lexical structure — especially for "' + intent + '": if it has multiple common meanings, use the ' + toName + ' word that fits each situation, not one fixed equivalent.\n' +
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
