@@ -2819,6 +2819,7 @@ img { max-width: 100%; height: auto; }
 .gen-history-top {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .gen-history-bottom {
@@ -2826,6 +2827,8 @@ img { max-width: 100%; height: auto; }
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
+  overflow: hidden;
 }
 .gen-history-label {
   font-size: .72rem;
@@ -2840,17 +2843,19 @@ img { max-width: 100%; height: auto; }
   font-size: .72rem;
   font-weight: 600;
   color: rgba(255,255,255,.45);
-  white-space: nowrap;
-  flex-shrink: 0;
+  min-width: 0;
   margin-left: auto;
 }
 .gen-history-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  display: block;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 .gen-history-chip {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 6px 6px 0;
   padding: 5px 12px;
   border-radius: 20px;
   font-size: .78rem;
@@ -2862,10 +2867,12 @@ img { max-width: 100%; height: auto; }
   transition: all .15s;
   font-family: 'Inter', sans-serif;
   min-height: 32px;
+  min-width: 0;
   max-width: 100%;
   white-space: normal;
   word-break: break-word;
   overflow-wrap: anywhere;
+  overflow: hidden;
 }
 .gen-history-chip:hover {
   border-color: var(--gold);
@@ -5986,6 +5993,9 @@ function applyWebLang() {
 
   // ── Přizpůsob viditelnost chipů šířce řádku ──
   requestAnimationFrame(fitChipRow);
+
+  // ── Aktualizuj překlad v sekci Probíraná slova ──
+  if (typeof genHistoryRender === 'function') genHistoryRender();
 }
 
 // ── Skryj chipy co se nevejdou na řádek (pouze mobil) ──
@@ -7269,6 +7279,7 @@ function selectTopic(item, e) {
 // Hlavní level výběr (3 tlačítka v generátoru)
 function selectGenLevel(cefr, lv, btn) {
   selectedCEFR = cefr;
+  try { localStorage.setItem('gen_cefr_level_v1', cefr); } catch(e) {}
   // aktivuj tlačítko
   document.querySelectorAll('.gen-chip-level').forEach(function(t){ t.classList.remove('active'); });
   if (btn) btn.classList.add('active');
@@ -8443,6 +8454,34 @@ function genHistoryToggleInput() {
 
 // Init při načtení stránky
 window.addEventListener('DOMContentLoaded', function() { genHistoryRender(); });
+
+// Obnova uložené úrovně (CEFR + náhodná anglická slova) po načtení stránky
+window.addEventListener('DOMContentLoaded', function() {
+  try {
+    var savedCEFR = localStorage.getItem('gen_cefr_level_v1');
+    if (savedCEFR) {
+      selectedCEFR = savedCEFR;
+      var cefrOrder = ['A1-A2', 'B1-B2', 'C1-C2'];
+      var idx = cefrOrder.indexOf(savedCEFR);
+      var chipBtns = document.querySelectorAll('.gen-chip-level');
+      if (idx > -1 && chipBtns[idx]) {
+        chipBtns.forEach(function(t){ t.classList.remove('active'); });
+        chipBtns[idx].classList.add('active');
+      }
+    }
+  } catch(e) {}
+  try {
+    var savedVtLevel = localStorage.getItem('gen_vt_level_v1');
+    if (savedVtLevel) {
+      vtLevel = savedVtLevel;
+      var vtBtn = document.querySelector('.vt-level-btn[data-level="' + savedVtLevel + '"]');
+      if (vtBtn) {
+        document.querySelectorAll('.vt-level-btn').forEach(function(b){ b.classList.remove('vt-active'); });
+        vtBtn.classList.add('vt-active');
+      }
+    }
+  } catch(e) {}
+});
 // ────────────────────────────────────────────────────────────────
 
 function genGenerate() {
@@ -8590,6 +8629,13 @@ function genGenerate() {
 
   var webLangName = GEN_NAMES[webLang] || webLang;
 
+  // Sense-selection rule, scaled to CEFR level (which meanings of "intent" are in scope)
+  var senseLevelRule =
+    cefrLevel === 'A1-A2' ? 'Use only the most frequent everyday meaning(s); ignore figurative, idiomatic, technical or specialized senses.' :
+    cefrLevel === 'B1-B2' ? 'Use common everyday meanings plus other senses natives regularly use; figurative/idiomatic only if clear from context.' :
+    cefrLevel === 'C1-C2' ? 'Cover the full range of common meanings incl. figurative, idiomatic, professional senses; exclude only archaic/dictionary-only ones.' :
+    'Match sense selection to level ' + cefrLevel + '.';
+
   var prompt =
     'Create language learning content.\n' +
     'Source language (interface / web language): ' + webLangName + '\n' +
@@ -8619,15 +8665,16 @@ function genGenerate() {
     '- LEVEL COMPLIANCE: every sentence, every dialogue turn, and every translation must strictly match level ' + cefrLevel + '. Vocabulary, grammar structures, and sentence complexity must all be appropriate for this level — no exceptions.\n' +
     '\n' +
     'KEY PRINCIPLE — "' + intent + '":\n' +
-    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur — if "' + intent + '" has multiple common meanings, choose situations that cover different meanings, not just the most common one. Only then write the sentence.\n' +
+    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
+    'SENSE SELECTION (mandatory): if "' + intent + '" has multiple meanings, rank them by real-world frequency/naturalness for native speakers — never by dictionary listings or translation-induced senses. ' + senseLevelRule + ' Before finalizing each example, check: would a native speaker actually pick "' + intent + '" here, or would another word be preferred? If so, discard that meaning or rewrite — never force it in just because it\'s theoretically possible.\n' +
     '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, expresses irony/sarcasm, or is used in a plain descriptive sense that represents a different common meaning from the most frequent one.\n' +
     'NEVER force "' + intent + '" into a turn where it sounds unnatural or has no communicative function — across all examples it should appear in varied pragmatic functions (reaction, contrast, confirmation, attitude, irony), not always the same one.\n' +
     'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
     'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
     '\n' +
     (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
-    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. If the source uses past simple, the translation must use past simple (or the closest equivalent). If the source uses present perfect, future, or progressive aspect, the translation must reflect the same temporal meaning. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction. This rule applies to every sentence and every dialogue turn without exception.\n' +
-    '- Translate meaning, not words; do not preserve lexical structure — especially for "' + intent + '": if it has multiple common meanings, use the ' + toName + ' word that fits each situation, not one fixed equivalent.\n' +
+    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction.\n' +
+    '- Translate meaning, not words; do not preserve lexical structure.\n' +
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
@@ -8939,6 +8986,7 @@ function vtSelectLevel(btn) {
   document.querySelectorAll('.vt-level-btn').forEach(function(b) { b.classList.remove('vt-active'); });
   btn.classList.add('vt-active');
   vtLevel = btn.dataset.level;
+  try { localStorage.setItem('gen_vt_level_v1', vtLevel); } catch(e) {}
 }
 
 function vtPickRandom() {
@@ -9130,6 +9178,8 @@ function wsSelect(value, label, el) {
   var qlt = document.getElementById('quickLevelLabelText');
   if (qlt) qlt.textContent = label;
   document.querySelectorAll('.quicklevel-item').forEach(function(t){ t.classList.toggle('selected', t.getAttribute('data-value') === value); });
+  // Ulož volbu úrovně do localStorage
+  try { localStorage.setItem('quickLevel_value', value); localStorage.setItem('quickLevel_label', label); } catch(e) {}
 }
 
 document.addEventListener('click', function(e) {
@@ -9237,7 +9287,18 @@ function insertRandomInspiration() {
 }
 
 // Inicializace labelu po načtení stránky
-document.addEventListener('DOMContentLoaded', function() { updateSplitSourceLabel(); });
+document.addEventListener('DOMContentLoaded', function() {
+  updateSplitSourceLabel();
+  // Obnov uloženou úroveň "Náhodné anglické slovo"
+  try {
+    var savedVal = localStorage.getItem('quickLevel_value');
+    var savedLbl = localStorage.getItem('quickLevel_label');
+    if (savedVal) {
+      var srcOpt = document.querySelector('.gen-word-source-opt[data-value="' + savedVal + '"]');
+      wsSelect(savedVal, savedLbl || savedVal, srcOpt);
+    }
+  } catch(e) {}
+});
 
 
 </script>
