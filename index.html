@@ -3027,19 +3027,6 @@ img { max-width: 100%; height: auto; }
 .clear-input:hover { color: rgba(255,255,255,.9); }
 .clear-input:active { opacity: .7; }
 .clear-input.visible { display: flex; }
-.tts-btn {
-  width: 30px; height: 30px;
-  border: none; background: transparent;
-  color: rgba(255,255,255,.5);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  touch-action: manipulation;
-  transition: color .18s;
-  flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-.tts-btn:hover { color: var(--gold-lt); }
-.tts-btn.speaking { color: var(--gold); }
 
 .toolbar-ukázka {
   position: absolute;
@@ -3759,13 +3746,6 @@ h1[data-t="heroH"] {
         <div id="onbDemoOutput" style="display:none;"></div>
         <div class="prompt-box-toolbar">
           <button class="clear-input" id="clearInputBtn" onclick="clearPracticeInput()" title="Smazat">×</button>
-          <button class="tts-btn" id="ttsBtn" onclick="speakInput()" title="Přečíst nahlas">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-            </svg>
-          </button>
           <button class="gen-ex-chip toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
           <button class="generate-mini" id="generateMiniBtn" onclick="genGenerate()" title="Generovat dialog">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -9608,21 +9588,6 @@ function openLegalModal(type) {
   }
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-}
-function speakInput() {
-  var text = (document.getElementById('practiceInput').value || '').trim();
-  if (!text || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  var btn = document.getElementById('ttsBtn');
-  var utt = new SpeechSynthesisUtterance(text);
-  var langMap = { en:'en-US', de:'de-DE', fr:'fr-FR', es:'es-ES', it:'it-IT',
-                  pt:'pt-PT', ru:'ru-RU', pl:'pl-PL', nl:'nl-NL', cz:'cs-CZ',
-                  sk:'sk-SK', uk:'uk-UA', zh:'zh-CN', ja:'ja-JP', ko:'ko-KR' };
-  var code = (typeof getGenToLang === 'function') ? getGenToLang() : 'en';
-  utt.lang = langMap[code] || 'en-US';
-  utt.onstart = function() { if(btn) btn.classList.add('speaking'); };
-  utt.onend = utt.onerror = function() { if(btn) btn.classList.remove('speaking'); };
-  window.speechSynthesis.speak(utt);
 }
 function closeLegalModal() {
   var overlay = document.getElementById('legalModalOverlay');
