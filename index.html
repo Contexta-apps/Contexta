@@ -8656,7 +8656,7 @@ function genGenerate() {
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). One turn per line - never combine. Format:\n' +
     '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\n' +
-    'FORBIDDEN: "' + fromLabel + ' a) ... b) ... a) ..." on one line. Every turn on its own line - no exceptions.\n\n' +
+    'FORBIDDEN: "' + fromLabel + ' a) ... b) ... a) ..." on one line. Every turn on its own line - no exceptions. If you cannot guarantee this exact line-by-line format, output nothing instead of violating it.\n\n' +
 
     'RULES:\n' +
     '- 3 turns: a) question b) answer a) reaction (not just "ok"/"got it")\n' +
