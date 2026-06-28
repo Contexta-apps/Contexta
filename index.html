@@ -8654,9 +8654,9 @@ function genGenerate() {
     'OUTPUT:\n' +
     '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. If "' + intent + '" has multiple common meanings, list 2-4 different ' + toName + ' equivalents here instead of one fixed translation (e.g. "akvizice / nákup / pořízení"), and use a different one of these in each dialogue below.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
-    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). MANDATORY LAYOUT - every turn on its own separate line, never combine multiple turns on one line. Format:\n' +
-    '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\nEach new dialogue starts on a new line.\n' +
-    'FORBIDDEN FORMAT - never write it like this: "' + fromLabel + ' a) ... b) ... a) ..." or "' + toLabel + ' a) ... b) ... a) ...". Every turn must always be on its own line. Never use tables or any other layout.\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). One turn per line - never combine. Format:\n' +
+    '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\n' +
+    'FORBIDDEN: "' + fromLabel + ' a) ... b) ... a) ..." on one line. Every turn on its own line - no exceptions.\n\n' +
 
     'RULES:\n' +
     '- 3 turns: a) question b) answer a) reaction (not just "ok"/"got it")\n' +
