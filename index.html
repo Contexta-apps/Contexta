@@ -8367,6 +8367,16 @@ function genHistoryToggleCollapse() {
   genHistoryCollapsed = !genHistoryCollapsed;
   var row = document.getElementById('genHistoryRow');
   if (row) row.classList.toggle('collapsed', genHistoryCollapsed);
+  if (row && !genHistoryCollapsed) {
+    requestAnimationFrame(function() {
+      var rect = row.getBoundingClientRect();
+      var margin = 12;
+      var overflow = rect.bottom - (window.innerHeight - margin);
+      if (overflow > 0) {
+        window.scrollBy({ top: overflow, behavior: 'smooth' });
+      }
+    });
+  }
 }
 
 function genHistoryRemove(word) {
