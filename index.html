@@ -2886,15 +2886,24 @@ img { max-width: 100%; height: auto; }
 .gen-history-clear {
   background: none;
   border: none;
-  color: rgba(255,255,255,.25);
+  color: rgba(255,255,255,.5);
   cursor: pointer;
-  font-size: .85rem;
-  padding: 2px 4px;
+  font-size: 1rem;
+  padding: 2px 6px;
   flex-shrink: 0;
   transition: color .15s;
   line-height: 1;
+  font-weight: 600;
 }
-.gen-history-clear:hover { color: rgba(255,255,255,.6); }
+.gen-history-clear:hover { color: rgba(255,255,255,.9); }
+.gen-history-chip-x {
+  margin-left: 6px;
+  font-size: .7rem;
+  opacity: .45;
+  transition: opacity .15s;
+  pointer-events: none;
+}
+.gen-history-chip:hover .gen-history-chip-x { opacity: 1; }
 @media (max-width: 767px) {
   .gen-history-row { padding: 7px 10px; gap: 6px; }
   .gen-history-chip { font-size: .75rem; padding: 4px 10px; min-height: 30px; }
@@ -8321,6 +8330,12 @@ function genHistoryClear() {
   genHistoryRender();
 }
 
+function genHistoryRemove(word) {
+  var list = genHistoryLoad().filter(function(w){ return w !== word; });
+  genHistorySave(list);
+  genHistoryRender();
+}
+
 var GEN_HISTORY_VISIBLE = 12;
 var genHistoryExpanded = false;
 
@@ -8405,7 +8420,17 @@ function genHistoryRender() {
   visible.forEach(function(word) {
     var btn = document.createElement('button');
     btn.className = 'gen-history-chip';
-    btn.textContent = word;
+    var txt = document.createTextNode(word);
+    var x = document.createElement('span');
+    x.className = 'gen-history-chip-x';
+    x.textContent = '✕';
+    x.style.pointerEvents = 'auto';
+    x.onclick = function(e) {
+      e.stopPropagation();
+      genHistoryRemove(word);
+    };
+    btn.appendChild(txt);
+    btn.appendChild(x);
     btn.onclick = function() {
       var inp = document.getElementById('practiceInput');
       if (inp) { inp.value = word; onIntentInput(inp); inp.focus(); }
