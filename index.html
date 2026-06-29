@@ -8785,15 +8785,15 @@ function genOpen(ai, promptText) {
     chatgpt: 'https://chatgpt.com/?q=' + enc,
     copilot: 'https://copilot.microsoft.com/?q=' + enc,
   };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(promptText).catch(function(){});
-  }
-  showClipboardHint();
   var LIMIT = 12000;
   var url = urls[ai] || urls.chatgpt;
   if (enc.length > LIMIT) {
     var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
     url = base[ai] || base.chatgpt;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(promptText).catch(function(){});
+    }
+    showClipboardHint();
   }
   window.open(url, '_blank');
 }
