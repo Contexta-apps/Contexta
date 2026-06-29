@@ -8789,7 +8789,7 @@ function genOpen(ai, promptText) {
     navigator.clipboard.writeText(promptText).catch(function(){});
   }
   showClipboardHint();
-  var LIMIT = 6000;
+  var LIMIT = 12000;
   var url = urls[ai] || urls.chatgpt;
   if (enc.length > LIMIT) {
     var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
