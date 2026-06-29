@@ -8348,19 +8348,12 @@ function genHistorySave(list) {
 
 function genHistoryAdd(word) {
   if (!word) return;
-  var row = document.getElementById('genHistoryRow');
-  var heightBefore = row ? row.offsetHeight : 0;
   var list = genHistoryLoad();
   list = list.filter(function(w){ return w !== word; }); // dedup
   list.unshift(word);
   if (list.length > GEN_HISTORY_MAX) list = list.slice(0, GEN_HISTORY_MAX);
   genHistorySave(list);
   genHistoryRender();
-  if (row) {
-    var heightAfter = row.offsetHeight;
-    var grew = heightAfter - heightBefore;
-    if (grew > 0) window.scrollBy({ top: grew, behavior: 'smooth' });
-  }
 }
 
 function genHistoryClear() {
@@ -8491,6 +8484,16 @@ function genHistoryRender() {
     more.onclick = function() { genHistoryExpanded = !genHistoryExpanded; genHistoryRender(); };
     wrap.appendChild(more);
   }
+  // Pokud box "Probíraná slova" přesahuje dolní okraj obrazovky (hodně slov pod sebou),
+  // automaticky odscrolluj nahoru tak, aby byl celý vidět.
+  requestAnimationFrame(function() {
+    var rect = row.getBoundingClientRect();
+    var margin = 12;
+    var overflow = rect.bottom - (window.innerHeight - margin);
+    if (overflow > 0) {
+      window.scrollBy({ top: overflow, behavior: 'smooth' });
+    }
+  });
 }
 
 function genHistoryCommitManual() {
