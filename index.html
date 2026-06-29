@@ -8699,7 +8699,7 @@ function genGenerate() {
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. If "' + intent + '" has multiple common meanings, list 2-4 different ' + toName + ' equivalents here instead of one fixed translation (e.g. "akvizice / nákup / pořízení") - true synonyms of the same meaning only, never hyponyms/subtypes of a hypernym (e.g. "kniha" -> book, NOT novel/textbook/volume), and use a different one of these in each dialogue below.\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. If "' + intent + '" has multiple common meanings, list 2-4 different ' + toName + ' equivalents here instead of one fixed translation (e.g. "akvizice / nákup / pořízení") - only if truly different meanings, or synonyms of one meaning - never narrower/broader words of one meaning (kniha: book only - not novel/textbook/publication), and use a different one of these in each dialogue below.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\n\n' +
