@@ -8699,7 +8699,7 @@ function genGenerate() {
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. If "' + intent + '" has multiple common meanings, list 2-4 different ' + toName + ' equivalents here instead of one fixed translation (e.g. "akvizice / nákup / pořízení") - only if truly different meanings, or synonyms of one meaning - never narrower/broader words of one meaning (kniha: book only - not novel/textbook/publication), and use a different one of these in each dialogue below.\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\n\n' +
@@ -8727,7 +8727,7 @@ function genGenerate() {
 
     (needsTranslation
       ? 'NOTE: "' + intent + '" is given in English. Translate it appropriately into both ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) - it must not stay untranslated in either language.\n\n'
-      : 'Keep each block strictly in its own language (' + fromLabel + ' = ' + fromName + ' only, ' + toLabel + ' = ' + toName + ' only) - no mixing.\n\n') +
+      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output.\n\n') +
 
     'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
