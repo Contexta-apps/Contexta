@@ -2904,9 +2904,21 @@ img { max-width: 100%; height: auto; }
   pointer-events: none;
 }
 .gen-history-chip:hover .gen-history-chip-x { opacity: 1; }
+.gen-history-arrow {
+  margin-left: auto;
+  display: inline-block;
+  font-size: .6rem;
+  color: var(--gold);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.gen-history-row:not(.collapsed) .gen-history-arrow { transform: rotate(180deg); }
+.gen-history-row.collapsed .gen-history-bottom { display: none; }
+
 @media (max-width: 767px) {
   .gen-history-row { padding: 7px 10px; gap: 6px; }
   .gen-history-chip { font-size: .75rem; padding: 4px 10px; min-height: 30px; }
+  .gen-history-chip-remove { opacity: 1; pointer-events: auto; }
 }
 
 /* ── gen-topic-inline spacing ── */
@@ -3794,9 +3806,10 @@ h1[data-t="heroH"] {
       </div>
       <!-- Probíraná slova ── -->
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
-        <div class="gen-history-top">
+        <div class="gen-history-top" onclick="genHistoryToggleCollapse()" style="cursor:pointer;">
           <span class="gen-history-label" data-translate="historyLabel">📚 Probíraná slova</span>
           <span class="gen-history-streak" id="genHistoryStreak"></span>
+          <span class="gen-history-arrow" id="genHistoryArrow">▼</span>
         </div>
         <div class="gen-history-bottom">
           <div class="gen-history-chips" id="genHistoryChips"></div>
@@ -8330,6 +8343,14 @@ function genHistoryClear() {
   genHistoryRender();
 }
 
+var genHistoryCollapsed = (window.innerWidth < 768);
+
+function genHistoryToggleCollapse() {
+  genHistoryCollapsed = !genHistoryCollapsed;
+  var row = document.getElementById('genHistoryRow');
+  if (row) row.classList.toggle('collapsed', genHistoryCollapsed);
+}
+
 function genHistoryRemove(word) {
   var list = genHistoryLoad().filter(function(w){ return w !== word; });
   genHistorySave(list);
@@ -8413,6 +8434,7 @@ function genHistoryRender() {
   if (!row || !wrap) return;
   if (!list.length) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
+  row.classList.toggle('collapsed', genHistoryCollapsed);
   var streakEl = document.getElementById('genHistoryStreak');
   if (streakEl) streakEl.textContent = '📦 ' + wordsCountLabel(list.length);
   wrap.innerHTML = '';
