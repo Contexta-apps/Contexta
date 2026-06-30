@@ -8615,14 +8615,10 @@ function checkLangMismatchHint() {
       for (var code in LANG_DIACRITICS) {
         if (code !== fromLang && LANG_DIACRITICS[code].test(intent)) { mismatch = true; break; }
       }
-      // Pokud je slovo čistě ASCII (bez diakritiky) a jazyk A diakritiku obvykle používá,
-      // je to nejednoznačné, ale stále stojí za upozornění (kromě angličtiny/indonéštiny).
-      if (!mismatch) {
-        var isPureAscii = /^[a-zA-Z][a-zA-Z\s'-]*$/.test(intent);
-        if (isPureAscii && fromLang !== 'en' && fromLang !== 'id' && LANG_DIACRITICS[fromLang]) {
-          mismatch = true;
-        }
-      }
+      // Pozn.: ASCII slovo bez diakritiky je ve spoustě jazyků naprosto validní
+      // (např. "parola" v italštině), proto se zde už nevyhodnocuje jako mismatch.
+      // Varování se nyní spouští jen tehdy, když slovo jednoznačně obsahuje
+      // diakritiku patřící jinému jazyku — to je spolehlivý signál bez falešných poplachů.
     }
   }
 
