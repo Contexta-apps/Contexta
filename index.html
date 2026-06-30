@@ -8837,6 +8837,9 @@ document.addEventListener('visibilitychange', function() {
     clearTimeout(clipboardHintTimer);
   }
 });
+window.addEventListener('pageshow', function() {
+  if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
+});
 
 function genOpen(ai, promptText) {
   var enc = encodeURIComponent(promptText);
