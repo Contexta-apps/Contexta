@@ -2070,37 +2070,6 @@ img { max-width: 100%; height: auto; }
 
 
 
-/* ── AI Extrakce (navržený kontext) ── */
-.gen-ai-extract {
-  margin: 0 28px 4px;
-  padding: 14px 16px;
-  background: rgba(201,151,58,.07);
-  border: 1px solid rgba(201,151,58,.22);
-  border-radius: 12px;
-}
-.gen-extract-header {
-  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
-}
-.gen-extract-icon { font-size: .9rem; color: var(--gold); }
-.gen-extract-title { font-size: .75rem; font-weight: 700; color: var(--gold-lt); text-transform: uppercase; letter-spacing: .06em; flex: 1; }
-.gen-extract-reset {
-  background: none; border: none; color: rgba(255,255,255,.35);
-  cursor: pointer; font-size: .85rem; padding: 2px 6px; border-radius: 4px;
-  transition: color .15s;
-}
-.gen-extract-reset:hover { color: #fff; }
-.gen-extract-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.gen-extract-pill {
-  display: flex; align-items: center; gap: 6px;
-  padding: 5px 12px; border-radius: 8px;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
-}
-.gen-extract-pill-key {
-  font-size: .65rem; font-weight: 800; color: var(--gold);
-  text-transform: uppercase; letter-spacing: .08em; flex-shrink: 0;
-}
-.gen-extract-pill-val { font-size: .8rem; color: rgba(255,255,255,.85); font-weight: 500; }
-
 /* ── Tuning (chips row) ── */
 .gen-tuning {
   display: flex; flex-direction: column; gap: 12px;
@@ -3395,7 +3364,6 @@ h1[data-t="heroH"] {
   .gen-lang-row-inline { padding: 10px 32px; }
   .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 32px; padding-right: 32px; }
   .gen-advanced-wrap .gen-grammar-header { padding-left: 32px; padding-right: 32px; }
-  .gen-ai-extract { margin-left: 32px; margin-right: 32px; }
 
   /* ── Config block: 2-column grid ── */
   .gen-config-block .gen-tuning-row {
@@ -3443,7 +3411,6 @@ h1[data-t="heroH"] {
   .gen-card .gen-send-row { padding: 18px 48px 26px; }
   .gen-card .gen-error { margin: 0 48px 4px; }
   .gen-card .gen-clipboard-hint { margin: 0 48px 4px; }
-  .gen-ai-extract { margin-left: 48px; margin-right: 48px; }
 
   /* ── Tuning řádky: inline ── */
   .gen-tuning { flex-direction: column; gap: 10px; }
@@ -3820,29 +3787,6 @@ h1[data-t="heroH"] {
       </div>
     </div>
 
-    <!-- ── AI návrh kontextu ── -->
-    <div class="gen-ai-extract" id="genAiExtract" style="display:none;">
-      <div class="gen-extract-header">
-        <span class="gen-extract-icon">✦</span>
-        <span class="gen-extract-title" data-translate="extractTitle">Navržený kontext</span>
-        <button class="gen-extract-reset" onclick="resetIntent()">✕</button>
-      </div>
-      <div class="gen-extract-pills">
-        <div class="gen-extract-pill">
-          <span class="gen-extract-pill-key" data-translate="extractKeyTema">TÉMA</span>
-          <span class="gen-extract-pill-val" id="extractTema">—</span>
-        </div>
-        <div class="gen-extract-pill">
-          <span class="gen-extract-pill-key" data-translate="extractKeyAkce">AKCE</span>
-          <span class="gen-extract-pill-val" id="extractAkce">—</span>
-        </div>
-        <div class="gen-extract-pill">
-          <span class="gen-extract-pill-key" data-translate="extractKeySituace">SITUACE</span>
-          <span class="gen-extract-pill-val" id="extractSituace">—</span>
-        </div>
-      </div>
-
-    </div>
 
     <!-- ══ JAZYK — hned pod textovým polem ══ -->
     <div class="gen-lang-row-inline">
@@ -6283,43 +6227,11 @@ function onIntentInput(el) {
     mini.classList.toggle('visible', hasText);
   }
   checkLangMismatchHint();
-  clearTimeout(intentTimer);
-  var val = el.value.trim();
-  if (val.length > 8) {
-    intentTimer = setTimeout(function(){ showExtract(val); }, 600);
-  } else {
-    hideExtract();
-  }
-}
-
-function showExtract(intent) {
-  // Jednoduchá lokální extrakce — klíčová slova z věty
-  var words = intent.split(/\s+/);
-  // TÉMA: první podstatné jméno / klíčové slovo
-  var stopwords = ['na','v','z','do','se','si','o','k','a','i','je','jsou','to','ve','za','při','pro'];
-  var content_words = words.filter(function(w){ return w.length > 3 && !stopwords.includes(w.toLowerCase()); });
-  var tema = content_words[content_words.length-1] || words[0] || intent;
-  // AKCE: hledáme sloveso (naivně — slova na -at/-it/-ovat/-ět)
-  var akce = words.find(function(w){ return /[aeiou](t|vat|nout)$/i.test(w); }) || content_words[0] || words[0];
-  // SITUACE: zkrácení na max 5 slov
-  var situace = words.slice(0, 5).join(' ') + (words.length > 5 ? '…' : '');
-
-  document.getElementById('extractTema').textContent = tema;
-  document.getElementById('extractAkce').textContent = akce;
-  document.getElementById('extractSituace').textContent = situace;
-  var panel = document.getElementById('genAiExtract');
-  if (panel) panel.style.display = 'block';
-}
-
-function hideExtract() {
-  var panel = document.getElementById('genAiExtract');
-  if (panel) panel.style.display = 'none';
 }
 
 function resetIntent() {
   var el = document.getElementById('practiceInput');
   if (el) { el.value = ''; el.focus(); }
-  hideExtract();
 }
 
 function selectStyle(style, btn) {
