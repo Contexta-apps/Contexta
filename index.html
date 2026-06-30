@@ -6256,6 +6256,7 @@ function onIntentInput(el) {
   if (mini) {
     mini.classList.toggle('visible', hasText);
   }
+  checkLangMismatchHint();
   clearTimeout(intentTimer);
   var val = el.value.trim();
   if (val.length > 8) {
