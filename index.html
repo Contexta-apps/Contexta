@@ -7511,6 +7511,7 @@ function selectGenLang(side, code, e) {
       applyWebLang();
       updateOnbBtn();
     }
+    checkLangMismatchHint();
   }
 }
 
@@ -7539,6 +7540,7 @@ function swapLangs() {
     applyWebLang();
     updateOnbBtn();
   }
+  checkLangMismatchHint();
 }
 // (syncGenFromLang, onFromLangChange, onToLangChange, swapLangs
 //  are now defined above in the GEN LANG DROPDOWNS section)
@@ -8348,12 +8350,19 @@ function genHistorySave(list) {
 
 function genHistoryAdd(word) {
   if (!word) return;
+  var row = document.getElementById('genHistoryRow');
+  var heightBefore = row ? row.offsetHeight : 0;
   var list = genHistoryLoad();
   list = list.filter(function(w){ return w !== word; }); // dedup
   list.unshift(word);
   if (list.length > GEN_HISTORY_MAX) list = list.slice(0, GEN_HISTORY_MAX);
   genHistorySave(list);
   genHistoryRender();
+  if (row) {
+    var heightAfter = row.offsetHeight;
+    var grew = heightAfter - heightBefore;
+    if (grew > 0) window.scrollBy({ top: grew, behavior: 'smooth' });
+  }
 }
 
 function genHistoryClear() {
@@ -8367,14 +8376,9 @@ function genHistoryToggleCollapse() {
   genHistoryCollapsed = !genHistoryCollapsed;
   var row = document.getElementById('genHistoryRow');
   if (row) row.classList.toggle('collapsed', genHistoryCollapsed);
-  if (row && !genHistoryCollapsed) {
+  if (!genHistoryCollapsed && row) {
     requestAnimationFrame(function() {
-      var rect = row.getBoundingClientRect();
-      var margin = 12;
-      var overflow = rect.bottom - (window.innerHeight - margin);
-      if (overflow > 0) {
-        window.scrollBy({ top: overflow, behavior: 'smooth' });
-      }
+      row.scrollIntoView({behavior: 'smooth', block: 'end'});
     });
   }
 }
@@ -8491,19 +8495,18 @@ function genHistoryRender() {
     var more = document.createElement('button');
     more.className = 'gen-history-chip gen-history-more';
     more.textContent = genHistoryExpanded ? '▲ méně' : '+ ' + (list.length - GEN_HISTORY_VISIBLE) + ' další';
-    more.onclick = function() { genHistoryExpanded = !genHistoryExpanded; genHistoryRender(); };
+    more.onclick = function() {
+      genHistoryExpanded = !genHistoryExpanded;
+      genHistoryRender();
+      if (genHistoryExpanded) {
+        requestAnimationFrame(function() {
+          var moreBtn = wrap.querySelector('.gen-history-more');
+          (moreBtn || wrap).scrollIntoView({behavior: 'smooth', block: 'end'});
+        });
+      }
+    };
     wrap.appendChild(more);
   }
-  // Pokud box "Probíraná slova" přesahuje dolní okraj obrazovky (hodně slov pod sebou),
-  // automaticky odscrolluj nahoru tak, aby byl celý vidět.
-  requestAnimationFrame(function() {
-    var rect = row.getBoundingClientRect();
-    var margin = 12;
-    var overflow = rect.bottom - (window.innerHeight - margin);
-    if (overflow > 0) {
-      window.scrollBy({ top: overflow, behavior: 'smooth' });
-    }
-  });
 }
 
 function genHistoryCommitManual() {
@@ -8569,6 +8572,24 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 // ────────────────────────────────────────────────────────────────
 
+function checkLangMismatchHint() {
+  var intentEl = document.getElementById('practiceInput');
+  var intent   = intentEl ? intentEl.value.trim().toLowerCase() : '';
+  var fromLang = getGenFromLang();
+  var _errEl = document.getElementById('genError');
+  if (!_errEl) return;
+  var _looksEnglishWord = /^[a-zA-Z][a-zA-Z\s'-]*$/.test(intent);
+  if (_looksEnglishWord && fromLang !== 'en') {
+    var _hint = (T[webLang] || T.cz).langMismatchHint || '⚠️ The word looks English — is Language A set correctly?';
+    _errEl.style.display = 'block';
+    _errEl.style.color = '#c9973a';
+    _errEl.textContent = _hint;
+  } else {
+    _errEl.style.display = 'none';
+    _errEl.style.color = '';
+  }
+}
+
 function genGenerate() {
   // ── Hlavní vstup: záměr ──
   var intentEl = document.getElementById('practiceInput');
@@ -8593,17 +8614,7 @@ function genGenerate() {
   }
 
   // Lang mismatch warning
-  var _errEl = document.getElementById('genError');
-  var _looksEnglishWord = /^[a-zA-Z][a-zA-Z\s'-]*$/.test(intent);
-  if (_looksEnglishWord && fromLang !== 'en') {
-    var _hint = (T[webLang] || T.cz).langMismatchHint || '⚠️ The word looks English — is Language A set correctly?';
-    _errEl.style.display = 'block';
-    _errEl.style.color = '#c9973a';
-    _errEl.textContent = _hint;
-  } else {
-    _errEl.style.display = 'none';
-    _errEl.style.color = '';
-  }
+  checkLangMismatchHint();
 
   // CEFR-specific grammar guidance
   var cefrLevel = selectedCEFR || 'A1-A2';
