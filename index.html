@@ -4071,6 +4071,32 @@ const LANG_LIST = [
   {code:'kr', label:'한국어',      flag:'🇰🇷'},
 ];
 
+// ── Diakritika typická pro jednotlivé jazyky (pro detekci nesouladu se zadaným slovem) ──
+const LANG_DIACRITICS = {
+  cz: /[ěščřžýáíéůúďťňĚŠČŘŽÝÁÍÉŮÚĎŤŇ]/,
+  sk: /[ľĺŕäôěščřžýáíéůúďťňĽĹŔÄÔĚŠČŘŽÝÁÍÉŮÚĎŤŇ]/,
+  de: /[äöüßÄÖÜ]/,
+  fr: /[éèêëàâîïôûùçœÉÈÊËÀÂÎÏÔÛÙÇŒ]/,
+  es: /[ñáéíóúü¿¡ÑÁÉÍÓÚÜ]/,
+  it: /[àèéìòùÀÈÉÌÒÙ]/,
+  pt: /[ãõáéíóúâêôçÃÕÁÉÍÓÚÂÊÔÇ]/,
+  pl: /[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/,
+  sv: /[åäöÅÄÖ]/,
+  tr: /[çğıöşüÇĞİÖŞÜ]/,
+  nl: /[ëïĳÏËĲ]/,
+  ru: /[а-яёА-ЯЁ]/,
+  uk: /[а-щьюяіїєґА-ЩЬЮЯІЇЄҐ]/,
+  cn: /[\u4e00-\u9fff]/,
+  jp: /[\u3040-\u30ff\u4e00-\u9fff]/,
+  kr: /[\uac00-\ud7af]/
+};
+const LANG_NATIVE_NAMES = {
+  cz:'čeština', en:'angličtina/English', de:'Deutsch', fr:'Français', es:'Español',
+  it:'Italiano', pt:'Português', pl:'Polski', sk:'Slovenčina', nl:'Nederlands',
+  sv:'Svenska', tr:'Türkçe', ru:'Русский', uk:'Українська', id:'Bahasa Indonesia',
+  cn:'中文', jp:'日本語', kr:'한국어'
+};
+
 // ── Vlajka jako Twemoji obrázek (spolehlivé i na Windows) ──
 var FLAG_URLS = {
   'en': 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ec-1f1e7.svg',
@@ -8572,31 +8598,6 @@ window.addEventListener('DOMContentLoaded', function() {
   } catch(e) {}
 });
 // ────────────────────────────────────────────────────────────────
-
-const LANG_DIACRITICS = {
-  cz: /[ěščřžýáíéůúďťňĚŠČŘŽÝÁÍÉŮÚĎŤŇ]/,
-  sk: /[ľĺŕäôěščřžýáíéůúďťňĽĹŔÄÔĚŠČŘŽÝÁÍÉŮÚĎŤŇ]/,
-  de: /[äöüßÄÖÜ]/,
-  fr: /[éèêëàâîïôûùçœÉÈÊËÀÂÎÏÔÛÙÇŒ]/,
-  es: /[ñáéíóúü¿¡ÑÁÉÍÓÚÜ]/,
-  it: /[àèéìòùÀÈÉÌÒÙ]/,
-  pt: /[ãõáéíóúâêôçÃÕÁÉÍÓÚÂÊÔÇ]/,
-  pl: /[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/,
-  sv: /[åäöÅÄÖ]/,
-  tr: /[çğıöşüÇĞİÖŞÜ]/,
-  nl: /[ëïĳÏËĲ]/,
-  ru: /[а-яёА-ЯЁ]/,
-  uk: /[а-щьюяіїєґА-ЩЬЮЯІЇЄҐ]/,
-  cn: /[\u4e00-\u9fff]/,
-  jp: /[\u3040-\u30ff\u4e00-\u9fff]/,
-  kr: /[\uac00-\ud7af]/
-};
-const LANG_NATIVE_NAMES = {
-  cz:'čeština', en:'angličtina/English', de:'Deutsch', fr:'Français', es:'Español',
-  it:'Italiano', pt:'Português', pl:'Polski', sk:'Slovenčina', nl:'Nederlands',
-  sv:'Svenska', tr:'Türkçe', ru:'Русский', uk:'Українська', id:'Bahasa Indonesia',
-  cn:'中文', jp:'日本語', kr:'한국어'
-};
 
 function checkLangMismatchHint() {
   var intentEl = document.getElementById('practiceInput');
