@@ -8715,11 +8715,11 @@ function genGenerate() {
     'OUTPUT:\n' +
     '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
-    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each 3 turns (a-b-a). STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
-    '🧩 1.\n' + fromLabel + '\na) ...\nb) ...\na) ...\n\n' + toLabel + '\na) ...\nb) ...\na) ...\n\n🧩 2.\n(etc.)\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
+    '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
 
     'RULES:\n' +
-    '- 3 turns: a) question b) answer a) reaction (not just "ok"/"got it")\n' +
+    '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
     '- Each dialogue = different situation about "' + intent + '"\n' +
     '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
     '- Keep ONE word per referent within a dialogue - no mid-dialogue switching.\n' +
