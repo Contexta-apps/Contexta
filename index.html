@@ -8720,6 +8720,8 @@ function genGenerate() {
 
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
+    '- NEVER write mirrored/symmetric turns — a turn must NOT just repeat the previous line with "too/also/as well" (or the equivalent in ' + toName + '). Each turn must add new information, a reaction, a contrast, a follow-up detail, or a natural human response — not an echo.\n' +
+    '- Vary sentence openings and structures across turns within the same dialogue; avoid reusing the same verb phrase pattern back-to-back.\n' +
     '- Each dialogue = different situation about "' + intent + '"\n' +
     '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
     '- Keep ONE word per referent within a dialogue - no mid-dialogue switching.\n' +
@@ -8804,9 +8806,12 @@ function genOpen(ai, promptText) {
   };
   var LIMIT = 12000;
   var url = urls[ai] || urls.chatgpt;
-  if (enc.length > LIMIT) {
+  // Copilot nepodporuje předvyplnění promptu přes URL parametr ?q= jako ChatGPT,
+  // proto pro něj prompt VŽDY zkopírujeme do schránky (nejen při překročení LIMIT).
+  var needsClipboard = (enc.length > LIMIT) || (ai === 'copilot');
+  if (needsClipboard) {
     var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
-    url = base[ai] || base.chatgpt;
+    if (enc.length > LIMIT) url = base[ai] || base.chatgpt;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(promptText).catch(function(){});
     }
