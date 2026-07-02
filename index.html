@@ -6242,6 +6242,7 @@ function selectStyle(style, btn) {
 
 function selectLength(val, btn) {
   dialogLength = val;
+  try { localStorage.setItem('gen_dialog_length_v1', val); } catch(e) {}
   document.querySelectorAll('.gen-chip-count').forEach(function(b){ b.classList.remove('active'); });
   if (btn) btn.classList.add('active');
 }
@@ -8508,6 +8509,19 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     }
   } catch(e) {}
+  try {
+    var savedDialogLength = localStorage.getItem('gen_dialog_length_v1');
+    if (savedDialogLength) {
+      dialogLength = savedDialogLength;
+      var lengthOrder = ['short', 'medium', 'long'];
+      var lIdx = lengthOrder.indexOf(savedDialogLength);
+      var lengthBtns = document.querySelectorAll('.gen-chip-count');
+      if (lIdx > -1 && lengthBtns[lIdx]) {
+        lengthBtns.forEach(function(b){ b.classList.remove('active'); });
+        lengthBtns[lIdx].classList.add('active');
+      }
+    }
+  } catch(e) {}
 });
 // ────────────────────────────────────────────────────────────────
 
@@ -8647,7 +8661,7 @@ function genGenerate() {
   var dialogLengthMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
     'medium': { label: 'Delší (5 výměn: a–b–a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (10 výměn: a–b–a–b–a–b–a–b–a–b, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na)\nb) ← potvrzovací odpověď celou větou' }
+    'long':   { label: 'Nejdelší (9 výměn: a–b–a–b–a–b–a–b–a, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
   };
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
 
@@ -8722,6 +8736,9 @@ function genGenerate() {
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
     '- NEVER write mirrored/symmetric turns — a turn must NOT just repeat the previous line with "too/also/as well" (or the equivalent in ' + toName + '). Each turn must add new information, a reaction, a contrast, a follow-up detail, or a natural human response — not an echo.\n' +
+    '- Every turn must directly react to, answer, or build on what the PREVIOUS speaker just said — never state an unrelated fact next to it. Example:\n' +
+    '    ✅ a) I heard the meeting got moved to Friday. b) Really? That changes my whole schedule.\n' +
+    '    ❌ a) The meeting got moved to Friday. b) The office is on the third floor. (unrelated fact, not a reaction)\n' +
     '- Vary sentence openings and structures across turns within the same dialogue; avoid reusing the same verb phrase pattern back-to-back.\n' +
     '- Each dialogue = different situation about "' + intent + '"\n' +
     '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
@@ -9082,7 +9099,7 @@ function vtGenerate(verb, level) {
   var dlMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
     'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (10 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na)\nb) ← potvrzovací odpověď celou větou' }
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
@@ -9100,6 +9117,9 @@ function vtGenerate(verb, level) {
     'PRAVIDLA:\n' +
     '- Každý dialog musí obsahovat sloveso "' + verb + '" v přirozené situaci.\n' +
     '- Různé situace: práce, cestování, každodenní život.\n' +
+    '- Každá replika musí přímo reagovat na to, co právě řekl druhý mluvčí — ne uvádět vedle sebe nesouvisející fakta. Příklad:\n' +
+    '    ✅ a) Skoro jsem dnes ráno nestihl vlak. b) Nakonec jsi ho stihl chytit?\n' +
+    '    ❌ a) Skoro jsem dnes ráno nestihl vlak. b) Nádraží bylo dnes plné lidí. (nesouvisející fakt, ne reakce)\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova. Použij přirozený ekvivalent v cílovém jazyce.\n' +
     '- CÍLOVÉ SLOVESO "' + verb + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
@@ -9117,7 +9137,7 @@ function vtGeneratePhrasal(pv) {
   var dlMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
     'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (10 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na)\nb) ← potvrzovací odpověď celou větou' }
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
@@ -9135,6 +9155,9 @@ function vtGeneratePhrasal(pv) {
     'PRAVIDLA:\n' +
     '- Každý dialog musí obsahovat frázové sloveso "' + pv + '" v přirozené situaci.\n' +
     '- Různé situace: práce, cestování, každodenní život.\n' +
+    '- Každá replika musí přímo reagovat na to, co právě řekl druhý mluvčí — ne uvádět vedle sebe nesouvisející fakta. Příklad:\n' +
+    '    ✅ a) Skoro jsem dnes ráno nestihl vlak. b) Nakonec jsi ho stihl chytit?\n' +
+    '    ❌ a) Skoro jsem dnes ráno nestihl vlak. b) Nádraží bylo dnes plné lidí. (nesouvisející fakt, ne reakce)\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
     '- Frázová slovesa překládej jako celek — nikdy doslova. Nejprve urči jejich skutečný kontextový význam, pak použij přirozený idiomatický ekvivalent v cílovém jazyce. Nesmí znít jako přeloženo strojově.\n' +
     '- CÍLOVÉ FRÁZOVÉ SLOVESO "' + pv + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
