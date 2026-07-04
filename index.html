@@ -8660,8 +8660,8 @@ function genGenerate() {
 
   var dialogLengthMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: a–b–a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (9 výměn: a–b–a–b–a–b–a–b–a, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
+    'medium': { label: 'Delší (5 výměn: a–b–a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' },
+    'long':   { label: 'Nejdelší (9 výměn: a–b–a–b–a–b–a–b–a, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' }
   };
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
 
@@ -8742,6 +8742,9 @@ function genGenerate() {
     '- Once a personal experience (a class, trip, job, event) is established as belonging to one speaker, that speaker must keep describing it in first person ("I") — never let a follow-up question with "you" cause the OTHER speaker to describe it as their own experience. Example:\n' +
     '    ✅ a) Did you enjoy the cooking class? b) I did. What surprised ME the most was that it was hands-on...\n' +
     '    ❌ a) Did you enjoy the cooking class? b) I did. What surprised YOU the most? a) It is hands-on... (experience wrongly shifted to a)\n' +
+    '- The final confirming line must react to the line DIRECTLY before it, not restate or confirm the speaker\'s own earlier line. Example:\n' +
+    '    ✅ a) That\'s risky. b) You\'re right, I\'ll start the backup now. a) Great, that sounds much safer.\n' +
+    '    ❌ a) That\'s risky. b) You\'re right, I\'ll start the backup now. a) Yes, I feel much better once everything is backed up. (confirms a\'s own earlier point, not b\'s reply)\n' +
     '- Vary sentence openings and structures across turns within the same dialogue; avoid reusing the same verb phrase pattern back-to-back.\n' +
     '- Each dialogue = different situation about "' + intent + '"\n' +
     '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
@@ -9101,8 +9104,8 @@ function vtGenerate(verb, level) {
 
   var dlMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
+    'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' },
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
@@ -9124,6 +9127,9 @@ function vtGenerate(verb, level) {
     '    ✅ a) Skoro jsem dnes ráno nestihl vlak. b) Nakonec jsi ho stihl chytit?\n' +
     '    ❌ a) Skoro jsem dnes ráno nestihl vlak. b) Nádraží bylo dnes plné lidí. (nesouvisející fakt, ne reakce)\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
+    '- Poslední (potvrzovací) replika musí reagovat na BEZPROSTŘEDNĚ PŘEDCHOZÍ repliku druhého mluvčího, ne jen shrnovat vlastní dřívější výrok. Příklad:\n' +
+    '    ✅ a) To zní riskantně. b) Máš pravdu, hned to zazálohuji. a) Fajn, to zní mnohem bezpečněji.\n' +
+    '    ❌ a) To zní riskantně. b) Máš pravdu, hned to zazálohuji. a) Ano, jsem rád, že mám všechno zazálohované. (potvrzuje vlastní starší větu, ne repliku b))\n' +
     '- Frázová slovesa, idiomy a víceslovné výrazy překládej jako celek — nikdy doslova. Použij přirozený ekvivalent v cílovém jazyce.\n' +
     '- CÍLOVÉ SLOVESO "' + verb + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
     '- Má-li sloveso více významů/vazeb, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
@@ -9139,8 +9145,8 @@ function vtGeneratePhrasal(pv) {
 
   var dlMap = {
     'short':  { label: 'Krátké (3 výměny: a–b–a)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou' }
+    'medium': { label: 'Delší (5 výměn: a–b–a–b–a)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' },
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
@@ -9162,6 +9168,9 @@ function vtGeneratePhrasal(pv) {
     '    ✅ a) Skoro jsem dnes ráno nestihl vlak. b) Nakonec jsi ho stihl chytit?\n' +
     '    ❌ a) Skoro jsem dnes ráno nestihl vlak. b) Nádraží bylo dnes plné lidí. (nesouvisející fakt, ne reakce)\n' +
     '- Přirozený jazyk, ne doslovné překlady.\n' +
+    '- Poslední (potvrzovací) replika musí reagovat na BEZPROSTŘEDNĚ PŘEDCHOZÍ repliku druhého mluvčího, ne jen shrnovat vlastní dřívější výrok. Příklad:\n' +
+    '    ✅ a) To zní riskantně. b) Máš pravdu, hned to zazálohuji. a) Fajn, to zní mnohem bezpečněji.\n' +
+    '    ❌ a) To zní riskantně. b) Máš pravdu, hned to zazálohuji. a) Ano, jsem rád, že mám všechno zazálohované. (potvrzuje vlastní starší větu, ne repliku b))\n' +
     '- Frázová slovesa překládej jako celek — nikdy doslova. Nejprve urči jejich skutečný kontextový význam, pak použij přirozený idiomatický ekvivalent v cílovém jazyce. Nesmí znít jako přeloženo strojově.\n' +
     '- CÍLOVÉ FRÁZOVÉ SLOVESO "' + pv + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
     '- Má-li více významů, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
