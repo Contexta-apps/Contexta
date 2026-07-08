@@ -1018,6 +1018,16 @@ img { max-width: 100%; height: auto; }
 }
 .gen-error.visible { display: block; }
 
+.gen-chatgpt-fallback {
+  text-align: center; padding-top: 6px;
+}
+.gen-chatgpt-fallback a {
+  font-size: .72rem; color: rgba(255,255,255,.65);
+  text-decoration: underline; text-decoration-color: rgba(255,255,255,.35);
+  cursor: pointer;
+}
+.gen-chatgpt-fallback a:hover { color: var(--gold); text-decoration-color: var(--gold); }
+
 .gen-clipboard-hint {
   display: none; margin-top: 10px;
 }
@@ -3967,6 +3977,9 @@ h1[data-t="heroH"] {
     <div class="gen-hint-small" style="text-align:center;font-size:.75rem;color:rgba(255,255,255,.3);padding-top:6px;">
       <span data-translate="genHintSmall">💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter</span>
     </div>
+    <div class="gen-chatgpt-fallback" id="genChatgptFallback" style="display:none;">
+      <a href="#" id="genChatgptFallbackLink" onclick="handleChatgptFallback(event)" data-translate="chatgptFallbackLink">💻 Pokud se ChatGPT neotevře správně, přepněte na Copilot a vložte prompt zkratkou Ctrl+V.</a>
+    </div>
     <div class="footer-legal">
       <a href="#" onclick="openLegalModal('terms');return false;" data-translate="footerTermsLink">Podmínky používání</a>
       <span class="footer-dot">·</span>
@@ -4346,6 +4359,7 @@ cz:{
   genHintSmall:'💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter',
   clipboardHintDesktop:'📋 Prompt je zkopírovaný do schránky — pokud se ChatGPT/Copilot neotevře s textem, vlož ho (Ctrl+V)',
   clipboardHintMobile:'📋 Prompt je zkopírovaný do schránky — pokud se ChatGPT/Copilot neotevře s textem, podrž prst v poli a vyber Vložit',
+  chatgptFallbackLink:'💻 Pokud se ChatGPT neotevře správně, přepněte na Copilot a vložte prompt zkratkou Ctrl+V.',
   langMismatchHint:'⚠️ Slovo nevypadá jako {lang} — je jazyk A nastaven správně?',
   genErrEmpty:'Napiš situaci nebo záměr, který chceš procvičit.',
   exChip0:'pracovat v týmu', exChip1:'objednat jídlo',
@@ -4439,6 +4453,7 @@ en:{
   genHintSmall:'💡 ChatGPT opens with the prompt ready — just press Enter',
   clipboardHintDesktop:'📋 The prompt is copied to your clipboard — if ChatGPT/Copilot opens without it, paste it in (Ctrl+V)',
   clipboardHintMobile:'📋 The prompt is copied to your clipboard — if ChatGPT/Copilot opens without it, press and hold the field and tap Paste',
+  chatgptFallbackLink:"💻 If ChatGPT doesn't work, switch to Copilot and paste the prompt with Ctrl+V.",
   langMismatchHint:'⚠️ The word doesn\'t look like {lang} — is Language A set correctly?',
   genErrEmpty:'Write a situation or intention you want to practise.',
   exChip0:'working in a team', exChip1:'food',
@@ -4532,6 +4547,7 @@ de:{
   genHintSmall:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
   clipboardHintDesktop:'📋 Der Prompt wurde in die Zwischenablage kopiert — falls ChatGPT/Copilot ihn nicht zeigt, einfügen mit (Strg+V)',
   clipboardHintMobile:'📋 Der Prompt wurde in die Zwischenablage kopiert — falls ChatGPT/Copilot ihn nicht zeigt, Feld gedrückt halten und Einfügen wählen',
+  chatgptFallbackLink:'💻 Falls ChatGPT nicht funktioniert, wechseln Sie zu Copilot und fügen Sie den Prompt mit Strg+V ein.',
   langMismatchHint:'⚠️ Das Wort sieht nicht wie {lang} aus — ist Sprache A korrekt eingestellt?',
   genErrEmpty:'Bitte eine Situation oder Absicht eingeben.',
   exChip0:'im Team arbeiten', exChip1:'Essen',
@@ -4618,6 +4634,7 @@ fr:{
   genHintSmall:"💡 ChatGPT s'ouvre avec le prompt prêt — appuie sur Entrée",
   clipboardHintDesktop:"📋 Le prompt est copié dans le presse-papiers — si ChatGPT/Copilot s'ouvre sans texte, colle-le (Ctrl+V)",
   clipboardHintMobile:"📋 Le prompt est copié dans le presse-papiers — si ChatGPT/Copilot s'ouvre sans texte, maintiens le champ et choisis Coller",
+  chatgptFallbackLink:'💻 Si ChatGPT ne fonctionne pas, passez à Copilot et collez le prompt avec Ctrl+V.',
   langMismatchHint:'⚠️ Le mot ne ressemble pas à du {lang} — la langue A est-elle correctement définie?',
   genErrEmpty2:"Écris une situation ou une intention à pratiquer.",
   exChip0:"travailler en équipe", exChip1:"repas",
@@ -4708,6 +4725,7 @@ es:{
   genHintSmall:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
   clipboardHintDesktop:'📋 El prompt se copió al portapapeles — si ChatGPT/Copilot se abre sin texto, pégalo (Ctrl+V)',
   clipboardHintMobile:'📋 El prompt se copió al portapapeles — si ChatGPT/Copilot se abre sin texto, mantén pulsado el campo y elige Pegar',
+  chatgptFallbackLink:'💻 Si ChatGPT no funciona, cambia a Copilot y pega el prompt con Ctrl+V.',
   langMismatchHint:'⚠️ La palabra no parece {lang} — ¿está el idioma A configurado correctamente?',
   genErrEmpty2:'Escribe una situación o intención que quieras practicar.',
   exChip0:'trabajar en equipo', exChip1:'comida',
@@ -4795,6 +4813,7 @@ it:{
   genHintSmall:'💡 ChatGPT si apre con il prompt — premi solo Invio',
   clipboardHintDesktop:'📋 Il prompt è stato copiato negli appunti — se ChatGPT/Copilot si apre senza testo, incollalo (Ctrl+V)',
   clipboardHintMobile:'📋 Il prompt è stato copiato negli appunti — se ChatGPT/Copilot si apre senza testo, tieni premuto il campo e scegli Incolla',
+  chatgptFallbackLink:'💻 Se ChatGPT non funziona, passa a Copilot e incolla il prompt con Ctrl+V.',
   langMismatchHint:'⚠️ La parola non sembra {lang} — la lingua A è impostata correttamente?',
   genErrEmpty2:'Scrivi una situazione o intenzione da praticare.',
   exChip0:'lavorare in team', exChip1:'cibo',
@@ -4881,6 +4900,7 @@ pt:{
   genHintSmall:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
   clipboardHintDesktop:'📋 O prompt foi copiado para a área de transferência — se o ChatGPT/Copilot abrir sem texto, cole-o (Ctrl+V)',
   clipboardHintMobile:'📋 O prompt foi copiado para a área de transferência — se o ChatGPT/Copilot abrir sem texto, mantenha o campo pressionado e toque em Colar',
+  chatgptFallbackLink:'💻 Se o ChatGPT não funcionar, mude para o Copilot e cole o prompt com Ctrl+V.',
   langMismatchHint:'⚠️ A palavra não parece {lang} — o idioma A está configurado corretamente?',
   genErrEmpty2:'Escreva uma situação ou intenção que deseja praticar.',
   exChip0:'trabalhar em equipe', exChip1:'comida',
@@ -4968,6 +4988,7 @@ pl:{
   genHintSmall:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
   clipboardHintDesktop:'📋 Prompt został skopiowany do schowka — jeśli ChatGPT/Copilot otworzy się bez tekstu, wklej go (Ctrl+V)',
   clipboardHintMobile:'📋 Prompt został skopiowany do schowka — jeśli ChatGPT/Copilot otworzy się bez tekstu, przytrzymaj pole i wybierz Wklej',
+  chatgptFallbackLink:'💻 Jeśli ChatGPT nie działa, przełącz się na Copilot i wklej prompt skrótem Ctrl+V.',
   langMismatchHint:'⚠️ Słowo nie wygląda na {lang} — czy język A jest ustawiony poprawnie?',
   genErrEmpty2:'Napisz sytuację lub zamiar, który chcesz ćwiczyć.',
   exChip0:'praca zespołowa', exChip1:'jedzenie',
@@ -5055,6 +5076,7 @@ cn:{
   genHintSmall:'💡 ChatGPT将携带提示词打开 — 只需按Enter',
   clipboardHintDesktop:'📋 提示词已复制到剪贴板 — 如果ChatGPT/Copilot打开后没有文字，请粘贴（Ctrl+V）',
   clipboardHintMobile:'📋 提示词已复制到剪贴板 — 如果ChatGPT/Copilot打开后没有文字，请长按输入框并选择粘贴',
+  chatgptFallbackLink:'💻 如果ChatGPT无法使用，请切换到Copilot，并用Ctrl+V粘贴提示词。',
   langMismatchHint:'⚠️ 这个词看起来不像{lang} — 语言A设置是否正确?',
   genErrEmpty2:'请输入您想练习的情境或意图。',
   exChip0:'团队合作', exChip1:'点餐',
@@ -5142,6 +5164,7 @@ jp:{
   genHintSmall:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
   clipboardHintDesktop:'📋 プロンプトはクリップボードにコピーされました — ChatGPT/Copilotが空で開いた場合は貼り付けてください（Ctrl+V）',
   clipboardHintMobile:'📋 プロンプトはクリップボードにコピーされました — ChatGPT/Copilotが空で開いた場合は、入力欄を長押しして貼り付けを選んでください',
+  chatgptFallbackLink:'💻 ChatGPTが動作しない場合は、Copilotに切り替えてCtrl+Vでプロンプトを貼り付けてください。',
   langMismatchHint:'⚠️ 単語が{lang}に見えません — 言語Aは正しく設定されていますか?',
   genErrEmpty2:'練習したい状況や意図を入力してください。',
   exChip0:'チームで働く', exChip1:'食事',
@@ -5229,6 +5252,7 @@ kr:{
   genHintSmall:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
   clipboardHintDesktop:'📋 프롬프트가 클립보드에 복사되었습니다 — ChatGPT/Copilot가 빈 화면으로 열리면 붙여넣기 하세요 (Ctrl+V)',
   clipboardHintMobile:'📋 프롬프트가 클립보드에 복사되었습니다 — ChatGPT/Copilot가 빈 화면으로 열리면 입력란을 길게 눌러 붙여넣기를 선택하세요',
+  chatgptFallbackLink:'💻 ChatGPT가 작동하지 않으면 Copilot으로 전환한 후 Ctrl+V로 프롬프트를 붙여넣으세요.',
   langMismatchHint:'⚠️ 단어가 {lang}처럼 보이지 않습니다 — 언어 A가 올바르게 설정되어 있나요?',
   genErrEmpty2:'연습하고 싶은 상황이나 의도를 입력해 주세요.',
   exChip0:'팀으로 일하기', exChip1:'음식',
@@ -5305,6 +5329,7 @@ sk:{
   genHintSmall:'💡 ChatGPT sa otvorí s hotovým promptom — stačí stlačiť Enter',
   clipboardHintDesktop:'📋 Prompt bol skopírovaný do schránky — ak sa ChatGPT/Copilot otvorí bez textu, vlož ho (Ctrl+V)',
   clipboardHintMobile:'📋 Prompt bol skopírovaný do schránky — ak sa ChatGPT/Copilot otvorí bez textu, podrž prst v poli a vyber Prilepiť',
+  chatgptFallbackLink:'💻 Ak ChatGPT nefunguje, prepnite na Copilot a vložte prompt skratkou Ctrl+V.',
   langMismatchHint:'⚠️ Slovo nevyzerá ako {lang} — je jazyk A nastavený správne?',
   genErrEmpty2:'Napíš situáciu alebo zámer, ktorý chceš precvičiť.',
   exChip0:'pracovať v tíme', exChip1:'jedlo',
@@ -5381,6 +5406,7 @@ nl:{
   genHintSmall:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
   clipboardHintDesktop:'📋 De prompt is gekopieerd naar het klembord — als ChatGPT/Copilot zonder tekst opent, plak hem (Ctrl+V)',
   clipboardHintMobile:'📋 De prompt is gekopieerd naar het klembord — als ChatGPT/Copilot zonder tekst opent, houd het veld ingedrukt en kies Plakken',
+  chatgptFallbackLink:'💻 Als ChatGPT niet werkt, schakel over naar Copilot en plak de prompt met Ctrl+V.',
   langMismatchHint:'⚠️ Het woord lijkt geen {lang} te zijn — is taal A correct ingesteld?',
   genErrEmpty2:'Schrijf de situatie of intentie die je wilt oefenen.',
   exChip0:'samenwerken', exChip1:'eten',
@@ -5457,6 +5483,7 @@ sv:{
   genHintSmall:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
   clipboardHintDesktop:'📋 Prompten har kopierats till urklipp — om ChatGPT/Copilot öppnas utan text, klistra in den (Ctrl+V)',
   clipboardHintMobile:'📋 Prompten har kopierats till urklipp — om ChatGPT/Copilot öppnas utan text, håll inne fältet och välj Klistra in',
+  chatgptFallbackLink:'💻 Om ChatGPT inte fungerar, byt till Copilot och klistra in prompten med Ctrl+V.',
   langMismatchHint:'⚠️ Ordet ser inte ut som {lang} — är språk A korrekt inställt?',
   genErrEmpty2:'Skriv situationen eller avsikten du vill öva.',
   exChip0:'teamarbete', exChip1:'mat',
@@ -5528,6 +5555,7 @@ ru:{
   genHintSmall:'💡 ChatGPT откроется с промптом — просто нажми Enter',
   clipboardHintDesktop:'📋 Промпт скопирован в буфер обмена — если ChatGPT/Copilot открылся без текста, вставь его (Ctrl+V)',
   clipboardHintMobile:'📋 Промпт скопирован в буфер обмена — если ChatGPT/Copilot открылся без текста, нажми и удерживай поле, затем выбери Вставить',
+  chatgptFallbackLink:'💻 Если ChatGPT не работает, переключитесь на Copilot и вставьте промпт сочетанием Ctrl+V.',
   langMismatchHint:'⚠️ Слово не похоже на {lang} — язык A настроен правильно?',
   genErrEmpty2:'Напиши ситуацию или намерение для практики.',
   exChip0:'командная работа', exChip1:'еда',
@@ -5604,6 +5632,7 @@ tr:{
   genHintSmall:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
   clipboardHintDesktop:'📋 Prompt panoya kopyalandı — ChatGPT/Copilot metin olmadan açılırsa yapıştır (Ctrl+V)',
   clipboardHintMobile:'📋 Prompt panoya kopyalandı — ChatGPT/Copilot metin olmadan açılırsa, alanı basılı tut ve Yapıştır\'ı seç',
+  chatgptFallbackLink:'💻 ChatGPT çalışmazsa Copilot\'a geçin ve prompt\'u Ctrl+V ile yapıştırın.',
   langMismatchHint:'⚠️ Kelime {lang} gibi görünmüyor — Dil A doğru ayarlanmış mı?',
   genErrEmpty2:'Pratik yapmak istediğin durumu veya niyeti yaz.',
   exChip0:'takım çalışması', exChip1:'yemek',
@@ -5683,6 +5712,7 @@ uk:{
   genHintSmall:'💡 ChatGPT відкриється з промптом — просто натисни Enter',
   clipboardHintDesktop:'📋 Промпт скопійовано в буфер обміну — якщо ChatGPT/Copilot відкрився без тексту, встав його (Ctrl+V)',
   clipboardHintMobile:'📋 Промпт скопійовано в буфер обміну — якщо ChatGPT/Copilot відкрився без тексту, натисни й утримуй поле, потім вибери Вставити',
+  chatgptFallbackLink:'💻 Якщо ChatGPT не працює, перемкніться на Copilot і вставте промпт комбінацією Ctrl+V.',
   langMismatchHint:'⚠️ Слово не схоже на {lang} — мова A налаштована правильно?',
   genErrEmpty:'Напиши ситуацію або намір, який хочеш попрактикувати.',
   exChip0:'робота в команді', exChip1:'замовити їжу',
@@ -5765,6 +5795,7 @@ id:{
   genHintSmall:'💡 ChatGPT akan terbuka dengan prompt — cukup tekan Enter',
   clipboardHintDesktop:'📋 Prompt sudah disalin ke clipboard — jika ChatGPT/Copilot terbuka tanpa teks, tempel (Ctrl+V)',
   clipboardHintMobile:'📋 Prompt sudah disalin ke clipboard — jika ChatGPT/Copilot terbuka tanpa teks, tahan kolomnya lalu pilih Tempel',
+  chatgptFallbackLink:'💻 Jika ChatGPT tidak berfungsi, beralihlah ke Copilot dan tempel prompt dengan Ctrl+V.',
   langMismatchHint:'⚠️ Kata ini tidak terlihat seperti {lang} — apakah Bahasa A sudah disetel dengan benar?',
   genErrEmpty:'Tulis situasi atau niat yang ingin kamu latih.',
   exChip0:'kerja tim', exChip1:'pesan makanan',
@@ -8785,8 +8816,27 @@ function genGenerate() {
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
   if (sendBtn) sendBtn.classList.add('loading');
+  window.lastGenPrompt = prompt;
   genOpen(currentAI, prompt);
   if (sendBtn) sendBtn.classList.remove('loading');
+  showChatgptFallbackIfNeeded();
+}
+
+function showChatgptFallbackIfNeeded() {
+  var el = document.getElementById('genChatgptFallback');
+  if (!el) return;
+  var isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  el.style.display = (isDesktop && currentAI === 'chatgpt') ? 'block' : 'none';
+}
+
+function handleChatgptFallback(e) {
+  e.preventDefault();
+  if (window.lastGenPrompt && navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(window.lastGenPrompt).catch(function(){});
+  }
+  window.open('https://copilot.microsoft.com/', '_blank');
+  var el = document.getElementById('genChatgptFallback');
+  if (el) el.style.display = 'none';
 }
 
 var clipboardHintTimer = null;
