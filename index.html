@@ -8289,6 +8289,11 @@ var currentAI = 'chatgpt';
 
 function selectAI(aiKey, name, cls, el) {
   currentAI = aiKey;
+  // Pokud si uživatel v pokročilém nastavení ručně vybere zpět ChatGPT,
+  // zrušit trvalé přepnutí na Copilot uložené přes "ChatGPT se neotevřel?" odkaz.
+  if (aiKey === 'chatgpt') {
+    try { localStorage.removeItem('gen_ai_pc_fallback'); } catch(e) {}
+  }
   // Najdi SVG z kliknute moznosti a zkopiruj ho do buttonu
   var svg = el.querySelector('svg');
   var iconWrap = document.getElementById('aiSelectedIcon');
@@ -8304,6 +8309,19 @@ function selectAI(aiKey, name, cls, el) {
   var arrow2 = document.querySelector('#aiWrap .arrow');
   if (arrow2) arrow2.style.transform = 'rotate(0deg)';
 }
+
+// Pokud uživatel na tomto PC už dřív kliknul na "ChatGPT se neotevřel?",
+// respektovat to i po zavření/obnovení stránky (jen na desktopu — jen zde k problému dochází).
+(function restoreAiFallback() {
+  var isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!isDesktop) return;
+  var saved;
+  try { saved = localStorage.getItem('gen_ai_pc_fallback'); } catch(e) { saved = null; }
+  if (saved === 'copilot') {
+    var copilotOpt = document.querySelector('.ai-opt[onclick*="copilot"]');
+    if (copilotOpt) selectAI('copilot', 'Copilot', 'copilot', copilotOpt);
+  }
+})();
 
 // ── Probíraná slova (history) ──────────────────────────────────
 var GEN_HISTORY_KEY = 'gen_history_v1';
@@ -8835,6 +8853,11 @@ function handleChatgptFallback(e) {
     navigator.clipboard.writeText(window.lastGenPrompt).catch(function(){});
   }
   window.open('https://copilot.microsoft.com/', '_blank');
+  // Přepnout appku (vč. přepínače v pokročilém nastavení) natrvalo na Copilot,
+  // aby se příště generovalo rovnou do Copilotu bez nutnosti znovu klikat na tento odkaz.
+  var copilotOpt = document.querySelector('.ai-opt[onclick*="copilot"]');
+  if (copilotOpt) selectAI('copilot', 'Copilot', 'copilot', copilotOpt);
+  try { localStorage.setItem('gen_ai_pc_fallback', 'copilot'); } catch(e) {}
   var el = document.getElementById('genChatgptFallback');
   if (el) el.style.display = 'none';
 }
