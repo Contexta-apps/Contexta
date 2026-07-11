@@ -8708,9 +8708,9 @@ function genGenerate() {
     '- Vary tone: some casual, some slightly surprised, some joking\n\n';
 
   var dialogLengthMap = {
-    'short':  { label: 'Krátké (3 výměny: a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na) ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: a–b–a–b–a, poslední a) je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' },
-    'long':   { label: 'Nejdelší (9 výměn: a–b–a–b–a–b–a–b–a, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'a)\nb)\na)\nb)\na)\nb)\na)\nb)\na) ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku b) (ne na vlastní dřívější a))' }
+    'short':  { label: 'Krátké (3 výměny: Ⓐ–Ⓑ–Ⓐ, poslední Ⓐ je potvrzovací odpověď celou větou)', exchanges: 'Ⓐ\nⒷ\nⒶ ← potvrzovací odpověď celou větou' },
+    'medium': { label: 'Delší (5 výměn: Ⓐ–Ⓑ–Ⓐ–Ⓑ–Ⓐ, poslední Ⓐ je potvrzovací odpověď celou větou)', exchanges: 'Ⓐ\nⒷ\nⒶ\nⒷ\nⒶ ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku Ⓑ (ne na vlastní dřívější Ⓐ)' },
+    'long':   { label: 'Nejdelší (9 výměn: Ⓐ–Ⓑ–Ⓐ–Ⓑ–Ⓐ–Ⓑ–Ⓐ–Ⓑ–Ⓐ, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'Ⓐ\nⒷ\nⒶ\nⒷ\nⒶ\nⒷ\nⒶ\nⒷ\nⒶ ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku Ⓑ (ne na vlastní dřívější Ⓐ)' }
   };
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
 
@@ -8747,6 +8747,15 @@ function genGenerate() {
   var fromLabel = (GEN_LABEL[fromLang] || fromLang.toUpperCase()) + ':';
   var toLabel   = (GEN_LABEL[toLang]   || toLang.toUpperCase())   + ':';
 
+  // Předpočítaná rotační řada indexů equivalentů (žádná aritmetika pro model, jen kopírování hotové řady)
+  function buildRotationSeq(n, dialogs) {
+    var seq = [];
+    for (var i = 0; i < dialogs; i++) seq.push((i % n) + 1);
+    return seq.join(',');
+  }
+  var rotationSeq3 = buildRotationSeq(3, totalDialogs);
+  var rotationSeq2 = buildRotationSeq(2, totalDialogs);
+
   // Přeložená forma slova pro fromLabel část — AI dostane hotový fakt
   var intentInFromLang = intent; // výchozí = zadané slovo
   // Pokud jazyk A není angličtina a slovo vypadá anglicky (jen ASCII), upozorni AI explicitně
@@ -8762,6 +8771,7 @@ function genGenerate() {
     'Match sense selection to level ' + cefrLevel + '.';
 
   var prompt =
+    'RULE: Never ask a clarifying question. Decide ambiguous cases yourself and output the FULL content directly.\n' +
     'Create language learning content.\n' +
     'Source language (interface / web language): ' + webLangName + '\n' +
     'SYSTEM RULE: All error messages, warnings, validation messages, and system feedback must be written in ' + webLangName + ' only — never in Language A or Language B.\n' +
@@ -8774,49 +8784,51 @@ function genGenerate() {
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
-    'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
+    'Labels (fixed): ' + fromLabel + ' and ' + toLabel + ' — these two short codes are used ONLY inside this instructions text below, to refer to "the ' + fromName + ' language" and "the ' + toName + ' language" concisely (e.g. when a rule says "no plain text label like ' + fromLabel + '"). They are NOT a format to reproduce in your output. Do not print these codes anywhere in the actual generated content — the output uses Ⓐ/Ⓑ exclusively, never these codes.\n\n' +
 
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
-    '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
-    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
-    '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
+    '0)+1) INTRO (single unified step — pick EXACTLY ONE of these two branches, never both):\n' +
+    'BRANCH A — "' + intent + '" has genuinely multiple distinct meanings in ' + toName + ' (different concept/category, not just intensity or register variants like "grande" vs. "enorme"): write ONLY this single line, then skip straight to step 2 — no "' + fromLabel + '"/"' + toLabel + '" topic line, no explanations, no bullets, just a plain comma-separated list of 2-3 ' + toName + ' equivalents (never the word "' + intent + '" itself):\n' +
+    '🔤 **"' + intent + '"** — [equivalent 1], [equivalent 2], [equivalent 3 if a genuinely distinct 3rd meaning exists]\n' +
+    '───────────────\n' +
+    'BRANCH B — "' + intent + '" has only ONE clear meaning in ' + toName + ': skip BRANCH A entirely (no heading, bold text, or separator), and instead write just one topic line using Ⓐ/Ⓑ (never plain text labels): Ⓐ [topic in ' + fromName + '] Ⓑ [topic in ' + toName + '].\n' +
+    'When "' + intent + '" has multiple meanings: assign them to dialogues in STRICT ROTATING ORDER — dialogue 1 = equivalent 1, dialogue 2 = equivalent 2, dialogue 3 = equivalent 3 (if it exists), dialogue 4 = equivalent 1 again, dialogue 5 = equivalent 2, and so on, cycling through the same fixed order for all ' + totalDialogs + ' dialogues without exception. This rotation by itself guarantees even use and rules out using the same equivalent twice in a row — do not deviate from it. Use this exact index sequence — do not calculate it, just follow it left to right, one index per dialogue: if you wrote 3 equivalents, use ' + rotationSeq3 + '; if you wrote 2 equivalents, use ' + rotationSeq2 + ' — index 1 = your first equivalent, 2 = second, 3 = third. Look up dialogue N\'s index in this sequence, THEN invent a situation that naturally fits that equivalent — never pick the situation first and force the equivalent afterward. Do not print this sequence, the rotation table, any step numbers, or any other planning/meta text — the visible output contains only the 🔤 header and the numbered Ⓐ/Ⓑ dialogues, nothing else.\n\n' +
+    '2) 3 example sentences (each pair on 2 lines, blank line between). Copy this formatting literally — use Ⓐ for every ' + fromName + ' sentence and Ⓑ for every ' + toName + ' translation, do NOT use plain text labels like "' + fromLabel + '" or "' + toLabel + '":\n' + 'Ⓐ sentence\nⒷ translation\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRUCTURE (critical): each dialogue = TWO complete separate blocks — the FULL ' + fromName + ' exchange (uninterrupted), a blank line, then the FULL ' + toName + ' exchange (uninterrupted translation). Never alternate or merge ' + fromName + ' and ' + toName + ' lines together — each block stays 100% separate, one sentence per line. The second block must mirror the exact same Ⓐ/Ⓑ speaker sequence as the first block, line by line — never label every line of a block with only Ⓑ or only Ⓐ. Use these formatting characters literally (🧩, numbered emoji 1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟, Ⓐ, Ⓑ) — never plain labels like "' + fromLabel + '", "' + toLabel + '", "1.", "a)" or "b)". Every dialogue from 1 to ' + totalDialogs + ' needs its own "🧩 [number]" heading:\n' +
+    '🧩 1️⃣\n' + dlInfo.exchanges + '\n\n' + dlInfo.exchanges + '\n\n🧩 2️⃣\n(etc., using 3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟 for dialogues 3-' + totalDialogs + ', each with its own heading and both complete blocks)\n\n' +
 
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
     '- NEVER write mirrored/symmetric turns — a turn must NOT just repeat the previous line with "too/also/as well" (or the equivalent in ' + toName + '). Each turn must add new information, a reaction, a contrast, a follow-up detail, or a natural human response — not an echo.\n' +
     '- Every turn must directly react to, answer, or build on what the PREVIOUS speaker just said — never state an unrelated fact next to it. Example:\n' +
     '    ✅ a) I heard the meeting got moved to Friday. b) Really? That changes my whole schedule.\n' +
-    '    ❌ a) The meeting got moved to Friday. b) The office is on the third floor. (unrelated fact, not a reaction)\n' +
     '- Once a personal experience (a class, trip, job, event) is established as belonging to one speaker, that speaker must keep describing it in first person ("I") — never let a follow-up question with "you" cause the OTHER speaker to describe it as their own experience. Example:\n' +
     '    ✅ a) Did you enjoy the cooking class? b) I did. What surprised ME the most was that it was hands-on...\n' +
-    '    ❌ a) Did you enjoy the cooking class? b) I did. What surprised YOU the most? a) It is hands-on... (experience wrongly shifted to a)\n' +
     '- The final confirming line must react to the line DIRECTLY before it, not restate or confirm the speaker\'s own earlier line. Example:\n' +
     '    ✅ a) That\'s risky. b) You\'re right, I\'ll start the backup now. a) Great, that sounds much safer.\n' +
-    '    ❌ a) That\'s risky. b) You\'re right, I\'ll start the backup now. a) Yes, I feel much better once everything is backed up. (confirms a\'s own earlier point, not b\'s reply)\n' +
     '- Vary sentence openings and structures across turns within the same dialogue; avoid reusing the same verb phrase pattern back-to-back.\n' +
     '- Each dialogue = different situation about "' + intent + '"\n' +
     '- Each language block is an independent natural version of the same situation - NOT a literal translation of the other block.\n' +
-    '- Keep ONE word per referent within a dialogue - no mid-dialogue switching.\n' +
-    '- Literal target word (no pronoun) in 5+/10 dialogues, both blocks.\n' +
+    '- Use ONLY the one equivalent assigned to this dialogue by the rotation, in every line of both language blocks — never mix in a second equivalent partway through the same dialogue.\n' +
+    '- In 5+/10 dialogues, use the specific equivalent word instead of a vague pronoun — the correct ' + fromName + ' word in every ' + fromLabel + ' line, the correct ' + toName + ' equivalent in every ' + toLabel + ' line. NEVER insert a ' + toName + ' word into an ' + fromLabel + ' line, or an ' + fromName + ' word into a ' + toLabel + ' line — each line stays 100% single-language, applying every time this equivalent repeats, even the 5th time it appears in this output. NATURALNESS OVERRIDES LITERALNESS: if the literal noun equivalent would sound stiff or unnatural in a given sentence (e.g. forcing an abstract noun where a native speaker would use a verb or different construction), rephrase naturally so only the MEANING of the target word is preserved there — do not force the same part of speech just to hit the literal-equivalent count.\n' +
     '- Natural native-speaker language; every sentence, turn, and translation must strictly match level ' + cefrLevel + ' (vocabulary, grammar, complexity) - no exceptions.\n' +
     '\n' +
     'KEY PRINCIPLE — "' + intent + '":\n' +
-    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
-    'SENSE SELECTION (mandatory): if "' + intent + '" has multiple meanings, rank them by real-world frequency/naturalness for native speakers — never by dictionary listings or translation-induced senses. ' + senseLevelRule + ' Before finalizing each example, check: would a native speaker actually pick "' + intent + '" here, or would another word be preferred? If so, discard that meaning or rewrite — never force it in just because it\'s theoretically possible.\n' +
+    'Do NOT start by writing a sentence. If "' + intent + '" has multiple meanings, the equivalent for this dialogue is already fixed by the assignment made in step 0)+1) above — start from THAT equivalent, then create a real communicative situation where it would naturally occur. Only then write the sentence.\n' +
+    'SENSE SELECTION (mandatory): if the assigned equivalent sounds forced, rephrase the situation to fit it naturally — only swap to a different equivalent as a last resort, keeping the spread from step 0)+1) even. ' + senseLevelRule + ' Check: would a native speaker actually pick "' + intent + '" here? If not, rewrite.\n' +
     '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, expresses irony/sarcasm, or is used in a plain descriptive sense that represents a different common meaning from the most frequent one.\n' +
     'NEVER force "' + intent + '" into a turn where it sounds unnatural or has no communicative function — across all examples it should appear in varied pragmatic functions (reaction, contrast, confirmation, attitude, irony), not always the same one.\n' +
     'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
     'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
     '\n' +
-    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
+    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSES: the 3 example sentences in step 2 are, in this exact order, sentence 1 = present, sentence 2 = past, sentence 3 = future. For the ' + totalDialogs + ' dialogues in step 3, use a natural mix of present, past, and future tense across the set — whichever tense best fits each situation — but make sure future tense appears in at least 2-3 of the dialogues, not just present and past; do not skip future tense entirely.\n') +
     '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction.\n' +
     '- Translate meaning, not words; do not preserve lexical structure.\n' +
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
-      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error.\n\n'
-      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output.\n\n') +
+      ? 'NOTE: "' + intent + '" may be in any language — use the correct translation in ' + fromName + ' (' + fromLabel + ') and ' + toName + ' (' + toLabel + ') blocks, never the untranslated original if it doesn\'t belong there.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only, every ' + toLabel + ' line = ' + toName + ' only — wrong language is a critical error. If a ' + toName + ' equivalent has no single obvious ' + fromName + ' gloss (e.g. a slang/register word), still translate it with the closest natural ' + fromName + ' word or short phrase in the ' + fromLabel + ' line — never leave the ' + toName + ' word itself sitting inside a ' + fromLabel + ' sentence.\n' + 'NO CROSS-BLOCK COPYING: even an identical-seeming line (confirming reply, recurring reaction, equivalents list) must be independently composed in its own block\'s language — never copy a sentence from one block into the other as-is. Re-read every line before output to confirm zero cross-language words.\n\n'
+      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + ', every ' + toLabel + ' line ONLY ' + toName + ' — using the wrong language is a critical error. If a ' + toName + ' equivalent has no single obvious ' + fromName + ' gloss (e.g. a slang/register word), still translate it with the closest natural ' + fromName + ' word or short phrase in the ' + fromLabel + ' line — never leave the ' + toName + ' word itself sitting inside a ' + fromLabel + ' sentence.\n' + 'NO CROSS-BLOCK COPYING: even an identical-seeming line (confirming reply, recurring reaction, equivalents list) must be independently composed in its own block\'s language — never copy a sentence from one block into the other as-is. Re-read every line before output to confirm zero cross-language words.\n\n') +
 
     'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
