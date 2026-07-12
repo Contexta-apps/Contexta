@@ -8779,14 +8779,6 @@ function genGenerate() {
     'Number of dialogues: ' + totalDialogs + '\n' +
     'Length: ' + dlInfo.label + '\n';
 
-  if (dialogLength === 'long') {
-    prompt +=
-      '\n' +
-      'DŮLEŽITÉ – DÉLKA ODPOVĚDI:\n' +
-      '- Pokud se celý obsah (' + totalDialogs + ' dlouhých dialogů) nevejde do jedné odpovědi, rozděl výstup do více navazujících zpráv a pokračuj v dalších zprávách AUTOMATICKY, bez ptaní a bez čekání na potvrzení, dokud nebude vše hotové.\n' +
-      '- Rozděl přibližně rovnoměrně (např. část 1: dialogy 1-4, část 2: dialogy 5-7, část 3: dialogy 8-10), podle skutečné potřeby.\n';
-  }
-
   // Uložit do Probíraných slov
   genHistoryAdd(intent);
 
