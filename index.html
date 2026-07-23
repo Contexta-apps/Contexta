@@ -5945,6 +5945,21 @@ function applyWebLang() {
     if (t[k] !== undefined) el.textContent = t[k];
   });
 
+  // ── Popisek tlačítka "Náhodné anglické slovo" (zdroj/úroveň) — dotáhni z právě přeložené položky v seznamu ──
+  const _wsSel = document.getElementById('wordSourceSelect');
+  const _wsVal = _wsSel ? _wsSel.value : '';
+  if (_wsVal) {
+    const _wsOpt = document.querySelector('.gen-word-source-opt[data-value="' + _wsVal + '"]')
+                || document.querySelector('.quicklevel-item[data-value="' + _wsVal + '"]');
+    if (_wsOpt) {
+      const _wsLabel = _wsOpt.textContent.trim();
+      const _wsBtnLabel = document.getElementById('wordSourceBtnLabel');
+      if (_wsBtnLabel) _wsBtnLabel.textContent = _wsLabel;
+      const _qltText = document.getElementById('quickLevelLabelText');
+      if (_qltText) _qltText.textContent = _wsLabel;
+    }
+  }
+
   // ── Placeholdery ──
   // Hlavní intent textarea
   const gi = document.getElementById('practiceInput') || document.getElementById('genIntent');
