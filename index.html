@@ -9407,22 +9407,6 @@ function insertRandomTopic() {
 function insertRandomInspiration() {
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
 
-  // Každých 5 kliknutí zkusit slovo z uživatelské historie
-  if (!insertRandomInspiration._clickCount) insertRandomInspiration._clickCount = 0;
-  insertRandomInspiration._clickCount++;
-  if (insertRandomInspiration._clickCount % 5 === 0) {
-    var histList = genHistoryLoad();
-    if (!insertRandomInspiration._historyUsed) insertRandomInspiration._historyUsed = [];
-    var histAvail = histList.filter(function(w) { return insertRandomInspiration._historyUsed.indexOf(w) === -1; });
-    if (!histAvail.length) { insertRandomInspiration._historyUsed = []; histAvail = histList.slice(); }
-    if (histAvail.length) {
-      var pick = histAvail[Math.floor(Math.random() * histAvail.length)];
-      insertRandomInspiration._historyUsed.push(pick);
-      _insertWord(pick);
-      return;
-    }
-  }
-
   var sel = document.getElementById('wordSourceSelect');
   var source = sel ? sel.value : '';
 
