@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -9462,6 +9463,16 @@ function insertRandomTopic() {
   _insertWord(label);
 }
 
+// Zdroje typu verbs_* obsahují holá slovesa (např. "wreck"). Bez kontextu
+// je AI může vyhodnotit jako podstatné jméno ("vrak" místo "zničit").
+// Prefix "to " jednoznačně označí infinitiv, aniž by se měnil prompt.
+function _applyVerbPrefix(word, source) {
+  if (!word || !source) return word;
+  if (source.indexOf('verbs_') !== 0) return word;
+  if (/^to\s/i.test(word)) return word;
+  return 'to ' + word;
+}
+
 function insertRandomInspiration() {
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
 
@@ -9471,7 +9482,7 @@ function insertRandomInspiration() {
   if (!source) { _insertFromTopics(lang); return; }
 
   if (_wordSourceCache[source]) {
-    _insertWord(_pickFromList(_wordSourceCache[source]));
+    _insertWord(_applyVerbPrefix(_pickFromList(_wordSourceCache[source]), source));
     return;
   }
 
@@ -9490,7 +9501,7 @@ function insertRandomInspiration() {
       console.log('[WordSource] data:', data);
       if (Array.isArray(data) && data.length) {
         _wordSourceCache[source] = data;
-        _insertWord(_pickFromList(data));
+        _insertWord(_applyVerbPrefix(_pickFromList(data), source));
       } else {
         console.log('[WordSource] empty or invalid, fallback');
         _insertFromTopics(lang);
