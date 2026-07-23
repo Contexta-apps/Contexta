@@ -1647,6 +1647,12 @@ img { max-width: 100%; height: auto; }
   background: rgba(201,151,58,.1);
 }
 .tree-item.selected .tree-item-bullet { content: '✓'; opacity: 1; color: var(--gold); }
+.topic-reset-option {
+  padding-left: 14px;
+  font-style: italic;
+  border-top: none;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
 
 
 /* ── Topic/quicklevel dropdown – centrované na mobilu, zarovnané vlevo, menší ── */
@@ -7183,8 +7189,13 @@ function buildTopicDrop() {
   var list = document.getElementById('topicList');
   if (!list) return;
   var lang = (typeof webLang !== 'undefined') ? webLang : 'cz';
+  var _tReset = (T[lang] || T.cz).topicDropDefault || '— vybrat téma —';
+  var resetItem = '<div class="tree-item topic-option topic-reset-option" data-value="" onclick="selectTopicReset(event)">' +
+    '<span class="tree-item-bullet">✕</span>' +
+    '<span class="tree-item-label">' + escapeTopicHtml(_tReset) + '</span>' +
+    '</div>';
 
-  list.innerHTML = TOPICS.map(function(cat) {
+  list.innerHTML = resetItem + TOPICS.map(function(cat) {
     var catLabel = getTopicStr(cat.cat, lang);
 
     var subs = cat.subs.map(function(sub) {
@@ -7280,6 +7291,27 @@ function toggleTopicDrop(e) {
   var topicBtnEl = document.getElementById('topicBtn');
   if (topicBtnEl) topicBtnEl.classList.toggle('open', opening);
   if (topicBtnEl) topicBtnEl.setAttribute('aria-expanded', opening ? 'true' : 'false');
+}
+
+function selectTopicReset(e) {
+  e.stopPropagation();
+  selectedTopic = '';
+  var _t = T[webLang] || T.cz;
+  var _default = _t.topicDropDefault || '— vybrat téma —';
+
+  var topicBtn = document.getElementById('topicBtn');
+  if (topicBtn) topicBtn.classList.remove('active-topic', 'open');
+  var topicBtnLabel = document.getElementById('topicBtnLabel');
+  if (topicBtnLabel) topicBtnLabel.textContent = _default;
+
+  var quickTopicLabel = document.getElementById('quickTopicLabelText');
+  if (quickTopicLabel) quickTopicLabel.textContent = _default;
+  var quickBtn = document.getElementById('quickTopicLabel');
+  if (quickBtn) quickBtn.classList.remove('active-topic', 'open');
+
+  var list = document.getElementById('topicList');
+  if (list) { list.style.display = 'none'; }
+  resetTopicTree();
 }
 
 function selectTopic(item, e) {
@@ -9357,6 +9389,17 @@ function wsSelect(value, label, el) {
   document.querySelectorAll('.quicklevel-item').forEach(function(t){ t.classList.toggle('selected', t.getAttribute('data-value') === value); });
   // Ulož volbu úrovně do localStorage
   try { localStorage.setItem('quickLevel_value', value); localStorage.setItem('quickLevel_label', label); } catch(e) {}
+
+  // Reset dříve vybraného tématu, aby se nekombinovalo se zdrojem slov (viz clearPracticeInput)
+  selectedTopic = '';
+  var topicBtnEl = document.getElementById('topicBtn');
+  var topicBtnLabelEl = document.getElementById('topicBtnLabel');
+  var quickTopicLabelEl = document.getElementById('quickTopicLabelText');
+  var _tTopic = (typeof T !== 'undefined' && typeof webLang !== 'undefined') ? (T[webLang] || T.cz) : null;
+  var _topicDefault = (_tTopic && _tTopic.topicDropDefault) || '— vybrat téma —';
+  if (topicBtnEl) topicBtnEl.classList.remove('active-topic');
+  if (topicBtnLabelEl) topicBtnLabelEl.textContent = _topicDefault;
+  if (quickTopicLabelEl) quickTopicLabelEl.textContent = _topicDefault;
 }
 
 document.addEventListener('click', function(e) {
