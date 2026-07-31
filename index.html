@@ -8838,9 +8838,11 @@ function genGenerate() {
     'Language B: ' + toName + '\n' +
     'Topic/target word: ' + intent + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
-    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' : '') +
+    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
+      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "💬 ".\n'
+      : '') +
     (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
-      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní), uveď ho jako "Phrasal verb: [ekvivalent]". Pokud žádný přirozený ekvivalent neexistuje, tento řádek vynech.\n') +
+      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
