@@ -8813,6 +8813,10 @@ function genGenerate() {
   var wordSourceVal    = wordSourceEl ? wordSourceEl.value : '';
   var isVerbSource     = wordSourceVal.indexOf('verbs_') === 0;
   var isEnglishInvolved = (fromLang === 'en' || toLang === 'en');
+  // Kategorie "frázová slovesa" (náhodné anglické slovo) = zadaný výraz UŽ JE frázové sloveso.
+  // V tom případě se nemá přidávat žádná bonusová věta navíc — výstup má být stejný
+  // jako u ostatních slovních druhů (3 ukázkové věty, 10 dialogů).
+  var isPhrasalVerbCategory = (wordSourceVal === 'phrasal_verbs');
 
   if (!intent) {
     var err = document.getElementById('genError');
@@ -8959,11 +8963,11 @@ function genGenerate() {
     'Language B: ' + toName + '\n' +
     'Topic/target word: ' + intent + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
-    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
-      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "💬 ".\n'
+    (assistVerb && !isPhrasalVerbCategory ? 'Phrasal verb: ' + assistVerb + '\n' +
+      'V CELÉM výstupu vytvoř CELKEM PŘESNĚ 1 (jednu jedinou, ne více) dodatečnou větu (+ překlad, stejný formát) používající frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Nikdy nevytvářej tuto dodatečnou větu ke každé z příkladových vět zvlášť — je to jen JEDNA věta navíc za celý výstup. Označ ji na začátku prefixem "💬 ".\n'
       : '') +
-    (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
-      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
+    (assistVerb || !isVerbSource || !isEnglishInvolved || isPhrasalVerbCategory ? '' :
+      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a v CELÉM výstupu vytvoř CELKEM PŘESNĚ 1 (jednu jedinou, ne více) dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Nikdy tuto větu nevytvářej opakovaně ke každé příkladové větě. Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
