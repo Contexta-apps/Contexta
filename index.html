@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -2062,6 +2063,32 @@ img { max-width: 100%; height: auto; }
   border-top: 1px solid rgba(255,255,255,.08); margin-top: 4px;
 }
 .quicklevel-group-label:first-child { border-top: none; margin-top: 0; }
+.ql-level-row {
+  display: flex; justify-content: space-between; gap: 4px;
+  padding: 10px 12px 6px;
+}
+.ql-level-circle {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  cursor: pointer; touch-action: manipulation; flex: 1;
+}
+.ql-level-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--gold); background: transparent;
+  transition: background .15s, border-color .15s;
+}
+.ql-level-circle.selected .ql-level-dot { background: var(--gold); }
+.ql-level-txt { font-size: .66rem; color: rgba(255,255,255,.55); }
+.ql-level-circle.selected .ql-level-txt { color: var(--gold-lt); font-weight: 600; }
+.ql-level-row.ql-disabled .ql-level-dot { border-color: rgba(255,255,255,.2); background: transparent; }
+.ql-level-row.ql-disabled .ql-level-circle.selected .ql-level-dot { background: rgba(255,255,255,.2); }
+.ql-level-row.ql-disabled .ql-level-txt,
+.ql-level-row.ql-disabled .ql-level-circle.selected .ql-level-txt { color: rgba(255,255,255,.3); }
+.ql-info {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.4); color: rgba(255,255,255,.55);
+  font-size: .6rem; flex-shrink: 0; cursor: help;
+}
 .gen-quickpick-btn {
   width: 100%; padding: 8px 8px; border-radius: 10px;
   border: 1.5px solid rgba(201,151,58,.55);
@@ -3782,27 +3809,35 @@ h1[data-t="heroH"] {
           <button class="gen-quickpick-btn" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodné anglické slovo</button>
           <div class="quicklevel-select-wrap" id="quickLevelWrap">
             <button class="gen-quickpick-label gen-quickpick-label--dd" id="quickLevelLabel" type="button" onclick="toggleQuickLevelDrop(event)" aria-haspopup="listbox" aria-expanded="false">
-              <span id="quickLevelLabelText">A1</span>
+              <span id="quickLevelLabelText" data-translate="quickLevelPlaceholder">vyber kategorii</span>
               <span class="arrow">▾</span>
             </button>
             <div class="topic-dropdown quicklevel-dropdown" id="quickLevelList" style="display:none;">
-              <div class="quicklevel-group-label" data-translate="quickLevelGroupLevels">úrovně</div>
-              <div class="tree-item quicklevel-item selected" data-value="A1" onclick="selectQuickLevel('A1','A1',this)">A1</div>
-              <div class="tree-item quicklevel-item" data-value="A2" onclick="selectQuickLevel('A2','A2',this)">A2</div>
-              <div class="tree-item quicklevel-item" data-value="B1" onclick="selectQuickLevel('B1','B1',this)">B1</div>
-              <div class="tree-item quicklevel-item" data-value="B2" onclick="selectQuickLevel('B2','B2',this)">B2</div>
-              <div class="tree-item quicklevel-item" data-value="C1" onclick="selectQuickLevel('C1','C1',this)">C1</div>
-              <div class="tree-item quicklevel-item" data-value="C2" onclick="selectQuickLevel('C2','C2',this)">C2</div>
-              <div class="quicklevel-group-label" data-translate="quickLevelGroupVerbs">slovesa</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_a1" data-translate="quickLevelVerbsA1" onclick="selectQuickLevel('verbs_a1',this.textContent,this)">slovesa A1</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_a2" data-translate="quickLevelVerbsA2" onclick="selectQuickLevel('verbs_a2',this.textContent,this)">slovesa A2</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_b1" data-translate="quickLevelVerbsB1" onclick="selectQuickLevel('verbs_b1',this.textContent,this)">slovesa B1</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_b2" data-translate="quickLevelVerbsB2" onclick="selectQuickLevel('verbs_b2',this.textContent,this)">slovesa B2</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_c1" data-translate="quickLevelVerbsC1" onclick="selectQuickLevel('verbs_c1',this.textContent,this)">slovesa C1</div>
-              <div class="tree-item quicklevel-item" data-value="verbs_c2" data-translate="quickLevelVerbsC2" onclick="selectQuickLevel('verbs_c2',this.textContent,this)">slovesa C2</div>
+              <div class="quicklevel-group-label" data-translate="quickLevelGroupLevels" style="border-top:none;margin-top:0;">úrovně</div>
+              <div class="ql-level-row" id="qlLevelRow">
+                <div class="ql-level-circle" data-level="a1" onclick="qlSelectLevel('a1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">A1</span></div>
+                <div class="ql-level-circle" data-level="a2" onclick="qlSelectLevel('a2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">A2</span></div>
+                <div class="ql-level-circle selected" data-level="b1" onclick="qlSelectLevel('b1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">B1</span></div>
+                <div class="ql-level-circle" data-level="b2" onclick="qlSelectLevel('b2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">B2</span></div>
+                <div class="ql-level-circle" data-level="c1" onclick="qlSelectLevel('c1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">C1</span></div>
+                <div class="ql-level-circle" data-level="c2" onclick="qlSelectLevel('c2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">C2</span></div>
+              </div>
+              <div class="tree-item quicklevel-item" data-prefix="verbs" onclick="qlSelectCategory('verbs','Slovesa',this)" data-translate="quickLevelGroupVerbs">slovesa</div>
+              <div class="tree-item quicklevel-item" data-prefix="nouns" onclick="qlSelectCategory('nouns','Podstatná jména',this)" data-translate="quickLevelNouns">podstatná jména</div>
+              <div class="tree-item quicklevel-item" data-prefix="adjectives" onclick="qlSelectCategory('adjectives','Přídavná jména',this)" data-translate="quickLevelAdjectives">přídavná jména</div>
+              <div class="tree-item quicklevel-item" data-prefix="adverbs" onclick="qlSelectCategory('adverbs','Příslovce',this)" data-translate="quickLevelAdverbs">příslovce</div>
               <div class="quicklevel-group-label" data-translate="quickLevelGroupOther">ostatní</div>
-              <div class="tree-item quicklevel-item" data-value="phrasal_verbs" data-translate="quickLevelPhrasalVerbs" onclick="selectQuickLevel('phrasal_verbs',this.textContent,this)">frázová slovesa</div>
-              <div class="tree-item quicklevel-item" data-value="idioms" data-translate="quickLevelIdioms" onclick="selectQuickLevel('idioms',this.textContent,this)">idiomy</div>
+              <div class="tree-item quicklevel-item" data-prefix="collocations" onclick="qlSelectCategory('collocations','Kolokace',this)">
+                <span style="display:flex;align-items:center;gap:6px;"><span data-translate="quickLevelCollocations">kolokace</span><span class="ql-info" data-translate-title="quickLevelCollocationsInfo" title="ustálené dvojice slov">i</span></span>
+              </div>
+              <div class="tree-item quicklevel-item" data-prefix="noun_phrases" onclick="qlSelectCategory('noun_phrases','Ustálená spojení',this)">
+                <span style="display:flex;align-items:center;gap:6px;"><span data-translate="quickLevelNounPhrases">ustálená spojení</span><span class="ql-info" data-translate-title="quickLevelNounPhrasesInfo" title="ustálená víceslovná spojení s podstatným jménem, např. bus stop, credit card">i</span></span>
+              </div>
+              <div class="tree-item quicklevel-item" data-value="phrasal_verbs" data-translate="quickLevelPhrasalVerbs" onclick="qlSelectFixed('phrasal_verbs',this.textContent,this)">frázová slovesa</div>
+              <div class="tree-item quicklevel-item" data-value="idioms" data-translate="quickLevelIdioms" onclick="qlSelectFixed('idioms',this.textContent,this)">idiomy</div>
+              <div class="tree-item quicklevel-item" data-value="discourse_markers" onclick="qlSelectFixed('discourse_markers',this.querySelector('[data-translate]').textContent,this)">
+                <span style="display:flex;align-items:center;gap:6px;"><span data-translate="quickLevelDiscourseMarkers">diskurzní konektory</span><span class="ql-info" data-translate-title="quickLevelDiscourseMarkersInfo" title="slova a spojení propojující věty a myšlenky, např. however, in fact, on the other hand">i</span></span>
+              </div>
             </div>
           </div>
         </div>
@@ -3872,12 +3907,12 @@ h1[data-t="heroH"] {
               <div class="gen-tuning-chips">
                 <div class="gen-word-source-wrap" id="wordSourceWrap" style="position:relative;">
                   <button type="button" class="gen-word-source-btn" id="wordSourceBtn" onclick="event.stopPropagation();wsToggle()" aria-haspopup="listbox" aria-expanded="false">
-                    <span id="wordSourceBtnLabel">A1</span>
+                    <span id="wordSourceBtnLabel" data-translate="quickLevelPlaceholder">vyber kategorii</span>
                     <span class="arrow">▾</span>
                   </button>
                   <div class="gen-word-source-list" id="wordSourceList" role="listbox" style="display:none;">
                     <div class="gen-word-source-group-label">CEFR</div>
-                    <div class="gen-word-source-opt selected" data-value="A1" onclick="wsSelect('A1','A1',this)">A1</div>
+                    <div class="gen-word-source-opt" data-value="A1" onclick="wsSelect('A1','A1',this)">A1</div>
                     <div class="gen-word-source-opt" data-value="A2" onclick="wsSelect('A2','A2',this)">A2</div>
                     <div class="gen-word-source-opt" data-value="B1" onclick="wsSelect('B1','B1',this)">B1</div>
                     <div class="gen-word-source-opt" data-value="B2" onclick="wsSelect('B2','B2',this)">B2</div>
@@ -3890,6 +3925,7 @@ h1[data-t="heroH"] {
                     <div class="gen-word-source-opt" data-value="business" onclick="wsSelect('business','business',this)">business</div>
                     <div class="gen-word-source-opt" data-value="phrasal_verbs" onclick="wsSelect('phrasal_verbs','phrasal_verbs',this)">phrasal_verbs</div>
                     <div class="gen-word-source-opt" data-value="idioms" onclick="wsSelect('idioms','idioms',this)">idioms</div>
+                    <div class="gen-word-source-opt" data-value="discourse_markers" onclick="wsSelect('discourse_markers','discourse_markers',this)">discourse_markers</div>
                     <div class="gen-word-source-opt" data-value="toefl" onclick="wsSelect('toefl','toefl',this)">toefl</div>
                     <div class="gen-word-source-opt" data-value="ielts" onclick="wsSelect('ielts','ielts',this)">ielts</div>
                     <div class="gen-word-source-opt" data-value="" data-translate="wordSourceTopicsOpt" onclick="wsSelect('','— témata aplikace —',this)">— témata aplikace —</div>
@@ -3911,6 +3947,7 @@ h1[data-t="heroH"] {
                     <option value="business">business</option>
                     <option value="phrasal_verbs">phrasal_verbs</option>
                     <option value="idioms">idioms</option>
+                    <option value="discourse_markers">discourse_markers</option>
                     <option value="toefl">toefl</option>
                     <option value="ielts">ielts</option>
                   </optgroup>
@@ -3922,7 +3959,47 @@ h1[data-t="heroH"] {
                     <option value="verbs_c1">verbs_c1</option>
                     <option value="verbs_c2">verbs_c2</option>
                   </optgroup>
-                  <option value="" data-translate="wordSourceTopicsOpt">— témata aplikace —</option>
+                  <optgroup label="Collocations">
+                    <option value="collocations_a1">collocations_a1</option>
+                    <option value="collocations_a2">collocations_a2</option>
+                    <option value="collocations_b1">collocations_b1</option>
+                    <option value="collocations_b2">collocations_b2</option>
+                    <option value="collocations_c1">collocations_c1</option>
+                    <option value="collocations_c2">collocations_c2</option>
+                  </optgroup>
+                  <optgroup label="Nouns">
+                    <option value="nouns_a1">nouns_a1</option>
+                    <option value="nouns_a2">nouns_a2</option>
+                    <option value="nouns_b1">nouns_b1</option>
+                    <option value="nouns_b2">nouns_b2</option>
+                    <option value="nouns_c1">nouns_c1</option>
+                    <option value="nouns_c2">nouns_c2</option>
+                  </optgroup>
+                  <optgroup label="Noun phrases">
+                    <option value="noun_phrases_a1">noun_phrases_a1</option>
+                    <option value="noun_phrases_a2">noun_phrases_a2</option>
+                    <option value="noun_phrases_b1">noun_phrases_b1</option>
+                    <option value="noun_phrases_b2">noun_phrases_b2</option>
+                    <option value="noun_phrases_c1">noun_phrases_c1</option>
+                    <option value="noun_phrases_c2">noun_phrases_c2</option>
+                  </optgroup>
+                  <optgroup label="Adjectives">
+                    <option value="adjectives_a1">adjectives_a1</option>
+                    <option value="adjectives_a2">adjectives_a2</option>
+                    <option value="adjectives_b1">adjectives_b1</option>
+                    <option value="adjectives_b2">adjectives_b2</option>
+                    <option value="adjectives_c1">adjectives_c1</option>
+                    <option value="adjectives_c2">adjectives_c2</option>
+                  </optgroup>
+                  <optgroup label="Adverbs">
+                    <option value="adverbs_a1">adverbs_a1</option>
+                    <option value="adverbs_a2">adverbs_a2</option>
+                    <option value="adverbs_b1">adverbs_b1</option>
+                    <option value="adverbs_b2">adverbs_b2</option>
+                    <option value="adverbs_c1">adverbs_c1</option>
+                    <option value="adverbs_c2">adverbs_c2</option>
+                  </optgroup>
+                  <option value="" data-translate="wordSourceTopicsOpt" selected>— témata aplikace —</option>
                 </select>
               </div>
             </div>
@@ -4372,7 +4449,7 @@ cz:{
   intentPlaceholder:'Zadej slovo, téma nebo situaci, kterou chceš procvičit…',
   verbSearchPh:'🔍 Hledat frázové sloveso…',
   verbDropDefault:'— vybrat —',
-  topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —', quickLevelPhrasalVerbs:'frázová slovesa', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'slovesa A1', quickLevelVerbsA2:'slovesa A2', quickLevelVerbsB1:'slovesa B1', quickLevelVerbsB2:'slovesa B2', quickLevelVerbsC1:'slovesa C1', quickLevelVerbsC2:'slovesa C2', quickLevelGroupLevels:'úrovně', quickLevelGroupVerbs:'slovesa', quickLevelGroupOther:'ostatní',
+  topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —', quickLevelPhrasalVerbs:'frázová slovesa', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'slovesa A1', quickLevelVerbsA2:'slovesa A2', quickLevelVerbsB1:'slovesa B1', quickLevelVerbsB2:'slovesa B2', quickLevelVerbsC1:'slovesa C1', quickLevelVerbsC2:'slovesa C2', quickLevelGroupLevels:'úrovně', quickLevelGroupVerbs:'slovesa', quickLevelGroupOther:'ostatní', quickLevelCollocations:'kolokace', quickLevelNouns:'podstatná jména', quickLevelAdjectives:'přídavná jména', quickLevelAdverbs:'příslovce', quickLevelNounPhrases:'ustálená spojení', quickLevelDiscourseMarkers:'diskurzní konektory', quickLevelCollocationsInfo:'ustálené dvojice slov', quickLevelNounPhrasesInfo:'ustálená víceslovná spojení s podstatným jménem, např. bus stop, credit card', quickLevelDiscourseMarkersInfo:'slova a spojení propojující věty a myšlenky, např. however, in fact, on the other hand', quickLevelPlaceholder:'vyber kategorii',
   lvChip0:'A1–A2', lvChipSub0:'Začátečník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -4467,7 +4544,7 @@ en:{
   intentPlaceholder:'Enter a word, topic or situation you want to practice…',
   verbSearchPh:'🔍 Search phrasal verb…',
   verbDropDefault:'— select —',
-  topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —', quickLevelPhrasalVerbs:'phrasal verbs', quickLevelIdioms:'idioms', quickLevelVerbsA1:'verbs A1', quickLevelVerbsA2:'verbs A2', quickLevelVerbsB1:'verbs B1', quickLevelVerbsB2:'verbs B2', quickLevelVerbsC1:'verbs C1', quickLevelVerbsC2:'verbs C2', quickLevelGroupLevels:'levels', quickLevelGroupVerbs:'verbs', quickLevelGroupOther:'other',
+  topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —', quickLevelPhrasalVerbs:'phrasal verbs', quickLevelIdioms:'idioms', quickLevelVerbsA1:'verbs A1', quickLevelVerbsA2:'verbs A2', quickLevelVerbsB1:'verbs B1', quickLevelVerbsB2:'verbs B2', quickLevelVerbsC1:'verbs C1', quickLevelVerbsC2:'verbs C2', quickLevelGroupLevels:'levels', quickLevelGroupVerbs:'verbs', quickLevelGroupOther:'other', quickLevelCollocations:'collocations', quickLevelNouns:'nouns', quickLevelAdjectives:'adjectives', quickLevelAdverbs:'adverbs', quickLevelNounPhrases:'noun phrases', quickLevelDiscourseMarkers:'discourse markers', quickLevelCollocationsInfo:'fixed word pairs', quickLevelNounPhrasesInfo:'fixed multi-word noun expressions, e.g. bus stop, credit card', quickLevelDiscourseMarkersInfo:'words and phrases that connect sentences and ideas, e.g. however, in fact, on the other hand', quickLevelPlaceholder:'choose category',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Intermediate',
   lvChip2:'C1–C2', lvChipSub2:'Advanced',
@@ -4560,7 +4637,7 @@ de:{
   intentPlaceholder:'Gib ein Wort, Thema oder eine Situation ein, die du üben möchtest…',
   verbSearchPh:'🔍 Phrasal Verb suchen…',
   verbDropDefault:'— auswählen —',
-  topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —', quickLevelPhrasalVerbs:'Phrasal Verbs', quickLevelIdioms:'Redewendungen', quickLevelVerbsA1:'Verben A1', quickLevelVerbsA2:'Verben A2', quickLevelVerbsB1:'Verben B1', quickLevelVerbsB2:'Verben B2', quickLevelVerbsC1:'Verben C1', quickLevelVerbsC2:'Verben C2', quickLevelGroupLevels:'Stufen', quickLevelGroupVerbs:'Verben', quickLevelGroupOther:'Sonstiges',
+  topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —', quickLevelPhrasalVerbs:'Phrasal Verbs', quickLevelIdioms:'Redewendungen', quickLevelVerbsA1:'Verben A1', quickLevelVerbsA2:'Verben A2', quickLevelVerbsB1:'Verben B1', quickLevelVerbsB2:'Verben B2', quickLevelVerbsC1:'Verben C1', quickLevelVerbsC2:'Verben C2', quickLevelGroupLevels:'Stufen', quickLevelGroupVerbs:'Verben', quickLevelGroupOther:'Sonstiges', quickLevelCollocations:'Kollokationen', quickLevelNouns:'Substantive', quickLevelAdjectives:'Adjektive', quickLevelAdverbs:'Adverbien', quickLevelNounPhrases:'Nominalphrasen', quickLevelDiscourseMarkers:'Diskursmarker', quickLevelCollocationsInfo:'feste Wortpaare', quickLevelNounPhrasesInfo:'feste mehrteilige Nominalausdrücke, z. B. bus stop, credit card', quickLevelDiscourseMarkersInfo:'Wörter und Wendungen, die Sätze und Gedanken verbinden, z. B. however, in fact, on the other hand', quickLevelPlaceholder:'Kategorie wählen',
   lvChip0:'A1–A2', lvChipSub0:'Anfänger',
   lvChip1:'B1–B2', lvChipSub1:'Mittelstufe',
   lvChip2:'C1–C2', lvChipSub2:'Fortgeschritten',
@@ -4650,7 +4727,7 @@ fr:{
   intentPlaceholder:"Écris un mot, un sujet ou une situation que tu veux pratiquer…",
   verbSearchPh:"🔍 Rechercher un verbe phrasé…",
   verbDropDefault:"— sélectionner —",
-  topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes', quickLevelVerbsA1:'verbes A1', quickLevelVerbsA2:'verbes A2', quickLevelVerbsB1:'verbes B1', quickLevelVerbsB2:'verbes B2', quickLevelVerbsC1:'verbes C1', quickLevelVerbsC2:'verbes C2', quickLevelGroupLevels:'niveaux', quickLevelGroupVerbs:'verbes', quickLevelGroupOther:'autre',
+  topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes', quickLevelVerbsA1:'verbes A1', quickLevelVerbsA2:'verbes A2', quickLevelVerbsB1:'verbes B1', quickLevelVerbsB2:'verbes B2', quickLevelVerbsC1:'verbes C1', quickLevelVerbsC2:'verbes C2', quickLevelGroupLevels:'niveaux', quickLevelGroupVerbs:'verbes', quickLevelGroupOther:'autre', quickLevelCollocations:'collocations', quickLevelNouns:'noms', quickLevelAdjectives:'adjectifs', quickLevelAdverbs:'adverbes', quickLevelNounPhrases:'groupes nominaux', quickLevelDiscourseMarkers:'marqueurs de discours', quickLevelCollocationsInfo:'paires de mots figées', quickLevelNounPhrasesInfo:'expressions nominales figées à plusieurs mots, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'mots et expressions qui relient les phrases et les idées, ex. however, in fact, on the other hand', quickLevelPlaceholder:'choisir une catégorie',
   lvChipSub0:"Débutant", lvChipSub1:"Intermédiaire", lvChipSub2:"Avancé",
   styleLabel:"🎭 Style",
   styleNormal:"courant", styleFormal:"formel", styleSlang:"argot", styleHumor:"humoristique",
@@ -4738,7 +4815,7 @@ es:{
   intentPlaceholder:'Escribe una palabra, tema o situación que quieras practicar…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— seleccionar —',
-  topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —', quickLevelPhrasalVerbs:'verbos frasales', quickLevelIdioms:'modismos', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'niveles', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'otro',
+  topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —', quickLevelPhrasalVerbs:'verbos frasales', quickLevelIdioms:'modismos', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'niveles', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'otro', quickLevelCollocations:'colocaciones', quickLevelNouns:'sustantivos', quickLevelAdjectives:'adjetivos', quickLevelAdverbs:'adverbios', quickLevelNounPhrases:'sintagmas nominales', quickLevelDiscourseMarkers:'marcadores discursivos', quickLevelCollocationsInfo:'pares fijos de palabras', quickLevelNounPhrasesInfo:'expresiones nominales fijas de varias palabras, ej. bus stop, credit card', quickLevelDiscourseMarkersInfo:'palabras y expresiones que conectan oraciones e ideas, ej. however, in fact, on the other hand', quickLevelPlaceholder:'elegir categoría',
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzado',
@@ -4825,7 +4902,7 @@ it:{
   intentPlaceholder:'Scrivi una parola, un argomento o una situazione che vuoi praticare…',
   verbSearchPh:'🔍 Cerca verbo frasale…',
   verbDropDefault:'— seleziona —',
-  topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —", quickLevelPhrasalVerbs:'verbi frasali', quickLevelIdioms:'modi di dire', quickLevelVerbsA1:'verbi A1', quickLevelVerbsA2:'verbi A2', quickLevelVerbsB1:'verbi B1', quickLevelVerbsB2:'verbi B2', quickLevelVerbsC1:'verbi C1', quickLevelVerbsC2:'verbi C2', quickLevelGroupLevels:'livelli', quickLevelGroupVerbs:'verbi', quickLevelGroupOther:'altro',
+  topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —", quickLevelPhrasalVerbs:'verbi frasali', quickLevelIdioms:'modi di dire', quickLevelVerbsA1:'verbi A1', quickLevelVerbsA2:'verbi A2', quickLevelVerbsB1:'verbi B1', quickLevelVerbsB2:'verbi B2', quickLevelVerbsC1:'verbi C1', quickLevelVerbsC2:'verbi C2', quickLevelGroupLevels:'livelli', quickLevelGroupVerbs:'verbi', quickLevelGroupOther:'altro', quickLevelCollocations:'collocazioni', quickLevelNouns:'sostantivi', quickLevelAdjectives:'aggettivi', quickLevelAdverbs:'avverbi', quickLevelNounPhrases:'sintagmi nominali', quickLevelDiscourseMarkers:'connettivi testuali', quickLevelCollocationsInfo:'coppie fisse di parole', quickLevelNounPhrasesInfo:'espressioni nominali fisse composte da più parole, es. bus stop, credit card', quickLevelDiscourseMarkersInfo:'parole ed espressioni che collegano frasi e idee, es. however, in fact, on the other hand', quickLevelPlaceholder:'scegli categoria',
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzato',
@@ -4911,7 +4988,7 @@ pt:{
   intentPlaceholder:'Escreva uma palavra, tema ou situação que queira praticar…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— selecionar —',
-  topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —', quickLevelPhrasalVerbs:'verbos frasais', quickLevelIdioms:'expressões idiomáticas', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'níveis', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'outro',
+  topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —', quickLevelPhrasalVerbs:'verbos frasais', quickLevelIdioms:'expressões idiomáticas', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'níveis', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'outro', quickLevelCollocations:'colocações', quickLevelNouns:'substantivos', quickLevelAdjectives:'adjetivos', quickLevelAdverbs:'advérbios', quickLevelNounPhrases:'sintagmas nominais', quickLevelDiscourseMarkers:'marcadores discursivos', quickLevelCollocationsInfo:'pares fixos de palavras', quickLevelNounPhrasesInfo:'expressões nominais fixas de várias palavras, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'palavras e expressões que conectam frases e ideias, ex. however, in fact, on the other hand', quickLevelPlaceholder:'escolher categoria',
   lvChip0:'A1–A2', lvChipSub0:'Iniciante',
   lvChip1:'B1–B2', lvChipSub1:'Intermediário',
   lvChip2:'C1–C2', lvChipSub2:'Avançado',
@@ -4998,7 +5075,7 @@ pl:{
   intentPlaceholder:'Wpisz słowo, temat lub sytuację, którą chcesz przećwiczyć…',
   verbSearchPh:'🔍 Szukaj czasownika frazowego…',
   verbDropDefault:'— wybierz —',
-  topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —', quickLevelPhrasalVerbs:'czasowniki złożone', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'czasowniki A1', quickLevelVerbsA2:'czasowniki A2', quickLevelVerbsB1:'czasowniki B1', quickLevelVerbsB2:'czasowniki B2', quickLevelVerbsC1:'czasowniki C1', quickLevelVerbsC2:'czasowniki C2', quickLevelGroupLevels:'poziomy', quickLevelGroupVerbs:'czasowniki', quickLevelGroupOther:'inne',
+  topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —', quickLevelPhrasalVerbs:'czasowniki złożone', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'czasowniki A1', quickLevelVerbsA2:'czasowniki A2', quickLevelVerbsB1:'czasowniki B1', quickLevelVerbsB2:'czasowniki B2', quickLevelVerbsC1:'czasowniki C1', quickLevelVerbsC2:'czasowniki C2', quickLevelGroupLevels:'poziomy', quickLevelGroupVerbs:'czasowniki', quickLevelGroupOther:'inne', quickLevelCollocations:'kolokacje', quickLevelNouns:'rzeczowniki', quickLevelAdjectives:'przymiotniki', quickLevelAdverbs:'przysłówki', quickLevelNounPhrases:'frazy rzeczownikowe', quickLevelDiscourseMarkers:'łączniki dyskursywne', quickLevelCollocationsInfo:'stałe pary wyrazowe', quickLevelNounPhrasesInfo:'utrwalone wyrażenia rzeczownikowe wielowyrazowe, np. bus stop, credit card', quickLevelDiscourseMarkersInfo:'słowa i wyrażenia łączące zdania i myśli, np. however, in fact, on the other hand', quickLevelPlaceholder:'wybierz kategorię',
   lvChip0:'A1–A2', lvChipSub0:'Początkujący',
   lvChip1:'B1–B2', lvChipSub1:'Średniozaawansowany',
   lvChip2:'C1–C2', lvChipSub2:'Zaawansowany',
@@ -5085,7 +5162,7 @@ cn:{
   intentPlaceholder:'输入你想练习的单词、主题或情境…',
   verbSearchPh:'🔍 搜索短语动词…',
   verbDropDefault:'— 选择 —',
-  topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —', quickLevelPhrasalVerbs:'短语动词', quickLevelIdioms:'习语', quickLevelVerbsA1:'动词 A1', quickLevelVerbsA2:'动词 A2', quickLevelVerbsB1:'动词 B1', quickLevelVerbsB2:'动词 B2', quickLevelVerbsC1:'动词 C1', quickLevelVerbsC2:'动词 C2', quickLevelGroupLevels:'级别', quickLevelGroupVerbs:'动词', quickLevelGroupOther:'其他',
+  topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —', quickLevelPhrasalVerbs:'短语动词', quickLevelIdioms:'习语', quickLevelVerbsA1:'动词 A1', quickLevelVerbsA2:'动词 A2', quickLevelVerbsB1:'动词 B1', quickLevelVerbsB2:'动词 B2', quickLevelVerbsC1:'动词 C1', quickLevelVerbsC2:'动词 C2', quickLevelGroupLevels:'级别', quickLevelGroupVerbs:'动词', quickLevelGroupOther:'其他', quickLevelCollocations:'搭配', quickLevelNouns:'名词', quickLevelAdjectives:'形容词', quickLevelAdverbs:'副词', quickLevelNounPhrases:'名词短语', quickLevelDiscourseMarkers:'语篇标记', quickLevelCollocationsInfo:'固定词组搭配', quickLevelNounPhrasesInfo:'固定的多词名词短语，例如 bus stop, credit card', quickLevelDiscourseMarkersInfo:'连接句子和想法的词语，例如 however, in fact, on the other hand', quickLevelPlaceholder:'选择类别',
   lvChip0:'A1–A2', lvChipSub0:'初学者',
   lvChip1:'B1–B2', lvChipSub1:'中级',
   lvChip2:'C1–C2', lvChipSub2:'高级',
@@ -5172,7 +5249,7 @@ jp:{
   intentPlaceholder:'練習したい単語、テーマ、または状況を入力…',
   verbSearchPh:'🔍 句動詞を検索…',
   verbDropDefault:'— 選択 —',
-  topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —', quickLevelPhrasalVerbs:'句動詞', quickLevelIdioms:'イディオム', quickLevelVerbsA1:'動詞 A1', quickLevelVerbsA2:'動詞 A2', quickLevelVerbsB1:'動詞 B1', quickLevelVerbsB2:'動詞 B2', quickLevelVerbsC1:'動詞 C1', quickLevelVerbsC2:'動詞 C2', quickLevelGroupLevels:'レベル', quickLevelGroupVerbs:'動詞', quickLevelGroupOther:'その他',
+  topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —', quickLevelPhrasalVerbs:'句動詞', quickLevelIdioms:'イディオム', quickLevelVerbsA1:'動詞 A1', quickLevelVerbsA2:'動詞 A2', quickLevelVerbsB1:'動詞 B1', quickLevelVerbsB2:'動詞 B2', quickLevelVerbsC1:'動詞 C1', quickLevelVerbsC2:'動詞 C2', quickLevelGroupLevels:'レベル', quickLevelGroupVerbs:'動詞', quickLevelGroupOther:'その他', quickLevelCollocations:'コロケーション', quickLevelNouns:'名詞', quickLevelAdjectives:'形容詞', quickLevelAdverbs:'副詞', quickLevelNounPhrases:'名詞句', quickLevelDiscourseMarkers:'ディスコースマーカー', quickLevelCollocationsInfo:'決まった単語の組み合わせ', quickLevelNounPhrasesInfo:'bus stopやcredit cardのような複数語からなる定型的な名詞表現', quickLevelDiscourseMarkersInfo:'however, in fact, on the other handのように文や考えをつなぐ語句', quickLevelPlaceholder:'カテゴリーを選択',
   lvChip0:'A1–A2', lvChipSub0:'初心者',
   lvChip1:'B1–B2', lvChipSub1:'中級',
   lvChip2:'C1–C2', lvChipSub2:'上級',
@@ -5259,7 +5336,7 @@ kr:{
   intentPlaceholder:'연습하고 싶은 단어, 주제 또는 상황을 입력하세요…',
   verbSearchPh:'🔍 구동사 검색…',
   verbDropDefault:'— 선택 —',
-  topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —', quickLevelPhrasalVerbs:'구동사', quickLevelIdioms:'관용구', quickLevelVerbsA1:'동사 A1', quickLevelVerbsA2:'동사 A2', quickLevelVerbsB1:'동사 B1', quickLevelVerbsB2:'동사 B2', quickLevelVerbsC1:'동사 C1', quickLevelVerbsC2:'동사 C2', quickLevelGroupLevels:'레벨', quickLevelGroupVerbs:'동사', quickLevelGroupOther:'기타',
+  topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —', quickLevelPhrasalVerbs:'구동사', quickLevelIdioms:'관용구', quickLevelVerbsA1:'동사 A1', quickLevelVerbsA2:'동사 A2', quickLevelVerbsB1:'동사 B1', quickLevelVerbsB2:'동사 B2', quickLevelVerbsC1:'동사 C1', quickLevelVerbsC2:'동사 C2', quickLevelGroupLevels:'레벨', quickLevelGroupVerbs:'동사', quickLevelGroupOther:'기타', quickLevelCollocations:'연어', quickLevelNouns:'명사', quickLevelAdjectives:'형용사', quickLevelAdverbs:'부사', quickLevelNounPhrases:'명사구', quickLevelDiscourseMarkers:'담화 표지', quickLevelCollocationsInfo:'고정된 단어 짝', quickLevelNounPhrasesInfo:'bus stop, credit card처럼 여러 단어로 이루어진 고정 명사 표현', quickLevelDiscourseMarkersInfo:'however, in fact, on the other hand처럼 문장과 생각을 연결하는 단어와 표현', quickLevelPlaceholder:'카테고리 선택',
   lvChip0:'A1–A2', lvChipSub0:'초보자',
   lvChip1:'B1–B2', lvChipSub1:'중급자',
   lvChip2:'C1–C2', lvChipSub2:'고급자',
@@ -5335,7 +5412,7 @@ sk:{
   intentLabel:'💬 Čo chceš precvičiť?',
   intentPlaceholder:'Napíš slovo, tému alebo situáciu, ktorú chceš cvičiť…',
   verbSearchPh:'🔍 Hľadať frázové sloveso…',
-  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —', quickLevelPhrasalVerbs:'frázové slovesá', quickLevelIdioms:'idiómy', quickLevelVerbsA1:'slovesá A1', quickLevelVerbsA2:'slovesá A2', quickLevelVerbsB1:'slovesá B1', quickLevelVerbsB2:'slovesá B2', quickLevelVerbsC1:'slovesá C1', quickLevelVerbsC2:'slovesá C2', quickLevelGroupLevels:'úrovne', quickLevelGroupVerbs:'slovesá', quickLevelGroupOther:'ostatné',
+  verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —', quickLevelPhrasalVerbs:'frázové slovesá', quickLevelIdioms:'idiómy', quickLevelVerbsA1:'slovesá A1', quickLevelVerbsA2:'slovesá A2', quickLevelVerbsB1:'slovesá B1', quickLevelVerbsB2:'slovesá B2', quickLevelVerbsC1:'slovesá C1', quickLevelVerbsC2:'slovesá C2', quickLevelGroupLevels:'úrovne', quickLevelGroupVerbs:'slovesá', quickLevelGroupOther:'ostatné', quickLevelCollocations:'kolokácie', quickLevelNouns:'podstatné mená', quickLevelAdjectives:'prídavné mená', quickLevelAdverbs:'príslovky', quickLevelNounPhrases:'menné spojenia', quickLevelDiscourseMarkers:'diskurzné konektory', quickLevelCollocationsInfo:'ustálené dvojice slov', quickLevelNounPhrasesInfo:'ustálené viacslovné spojenia s podstatným menom, napr. bus stop, credit card', quickLevelDiscourseMarkersInfo:'slová a spojenia spájajúce vety a myšlienky, napr. however, in fact, on the other hand', quickLevelPlaceholder:'vyber kategóriu',
   lvChip0:'A1–A2', lvChipSub0:'Začiatočník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
@@ -5411,7 +5488,7 @@ nl:{
   intentLabel:'💬 Wat wil je oefenen?',
   intentPlaceholder:'Voer een woord, onderwerp of situatie in die je wilt oefenen…',
   verbSearchPh:'🔍 Zoek werkwoordgroep…',
-  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —', quickLevelPhrasalVerbs:'voorzetselwerkwoorden', quickLevelIdioms:'idiomen', quickLevelVerbsA1:'werkwoorden A1', quickLevelVerbsA2:'werkwoorden A2', quickLevelVerbsB1:'werkwoorden B1', quickLevelVerbsB2:'werkwoorden B2', quickLevelVerbsC1:'werkwoorden C1', quickLevelVerbsC2:'werkwoorden C2', quickLevelGroupLevels:'niveaus', quickLevelGroupVerbs:'werkwoorden', quickLevelGroupOther:'overig',
+  verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —', quickLevelPhrasalVerbs:'voorzetselwerkwoorden', quickLevelIdioms:'idiomen', quickLevelVerbsA1:'werkwoorden A1', quickLevelVerbsA2:'werkwoorden A2', quickLevelVerbsB1:'werkwoorden B1', quickLevelVerbsB2:'werkwoorden B2', quickLevelVerbsC1:'werkwoorden C1', quickLevelVerbsC2:'werkwoorden C2', quickLevelGroupLevels:'niveaus', quickLevelGroupVerbs:'werkwoorden', quickLevelGroupOther:'overig', quickLevelCollocations:'collocaties', quickLevelNouns:'zelfstandige naamwoorden', quickLevelAdjectives:'bijvoeglijke naamwoorden', quickLevelAdverbs:'bijwoorden', quickLevelNounPhrases:'naamwoordgroepen', quickLevelDiscourseMarkers:'signaalwoorden', quickLevelCollocationsInfo:'vaste woordcombinaties', quickLevelNounPhrasesInfo:'vaste meerwoordige naamwoorduitdrukkingen, bijv. bus stop, credit card', quickLevelDiscourseMarkersInfo:'woorden en uitdrukkingen die zinnen en ideeën verbinden, bijv. however, in fact, on the other hand', quickLevelPlaceholder:'kies categorie',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Gevorderd',
   lvChip2:'C1–C2', lvChipSub2:'Vorderend',
@@ -5487,7 +5564,7 @@ sv:{
   intentLabel:'💬 Vad vill du öva?',
   intentPlaceholder:'Skriv ett ord, ämne eller situation du vill öva på…',
   verbSearchPh:'🔍 Sök frasverb…',
-  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —', quickLevelPhrasalVerbs:'frasala verb', quickLevelIdioms:'idiom', quickLevelVerbsA1:'verb A1', quickLevelVerbsA2:'verb A2', quickLevelVerbsB1:'verb B1', quickLevelVerbsB2:'verb B2', quickLevelVerbsC1:'verb C1', quickLevelVerbsC2:'verb C2', quickLevelGroupLevels:'nivåer', quickLevelGroupVerbs:'verb', quickLevelGroupOther:'övrigt',
+  verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —', quickLevelPhrasalVerbs:'frasala verb', quickLevelIdioms:'idiom', quickLevelVerbsA1:'verb A1', quickLevelVerbsA2:'verb A2', quickLevelVerbsB1:'verb B1', quickLevelVerbsB2:'verb B2', quickLevelVerbsC1:'verb C1', quickLevelVerbsC2:'verb C2', quickLevelGroupLevels:'nivåer', quickLevelGroupVerbs:'verb', quickLevelGroupOther:'övrigt', quickLevelCollocations:'kollokationer', quickLevelNouns:'substantiv', quickLevelAdjectives:'adjektiv', quickLevelAdverbs:'adverb', quickLevelNounPhrases:'nominalfraser', quickLevelDiscourseMarkers:'diskursmarkörer', quickLevelCollocationsInfo:'fasta ordpar', quickLevelNounPhrasesInfo:'fasta flerordiga substantivuttryck, t.ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'ord och uttryck som binder ihop meningar och tankar, t.ex. however, in fact, on the other hand', quickLevelPlaceholder:'välj kategori',
   lvChip0:'A1–A2', lvChipSub0:'Nybörjare',
   lvChip1:'B1–B2', lvChipSub1:'Medelnivå',
   lvChip2:'C1–C2', lvChipSub2:'Avancerad',
@@ -5558,7 +5635,7 @@ ru:{
   intentLabel:'💬 Что хочешь практиковать?',
   intentPlaceholder:'Напиши слово, тему или ситуацию, которую хочешь попрактиковать…',
   verbSearchPh:'🔍 Поиск фразового глагола…',
-  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —', quickLevelPhrasalVerbs:'фразовые глаголы', quickLevelIdioms:'идиомы', quickLevelVerbsA1:'глаголы A1', quickLevelVerbsA2:'глаголы A2', quickLevelVerbsB1:'глаголы B1', quickLevelVerbsB2:'глаголы B2', quickLevelVerbsC1:'глаголы C1', quickLevelVerbsC2:'глаголы C2', quickLevelGroupLevels:'уровни', quickLevelGroupVerbs:'глаголы', quickLevelGroupOther:'другое',
+  verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —', quickLevelPhrasalVerbs:'фразовые глаголы', quickLevelIdioms:'идиомы', quickLevelVerbsA1:'глаголы A1', quickLevelVerbsA2:'глаголы A2', quickLevelVerbsB1:'глаголы B1', quickLevelVerbsB2:'глаголы B2', quickLevelVerbsC1:'глаголы C1', quickLevelVerbsC2:'глаголы C2', quickLevelGroupLevels:'уровни', quickLevelGroupVerbs:'глаголы', quickLevelGroupOther:'другое', quickLevelCollocations:'коллокации', quickLevelNouns:'существительные', quickLevelAdjectives:'прилагательные', quickLevelAdverbs:'наречия', quickLevelNounPhrases:'именные словосочетания', quickLevelDiscourseMarkers:'дискурсивные маркеры', quickLevelCollocationsInfo:'устойчивые пары слов', quickLevelNounPhrasesInfo:'устойчивые многословные именные сочетания, напр. bus stop, credit card', quickLevelDiscourseMarkersInfo:'слова и выражения, связывающие предложения и мысли, напр. however, in fact, on the other hand', quickLevelPlaceholder:'выбрать категорию',
   lvChip0:'A1–A2', lvChipSub0:'Начинающий',
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
@@ -5634,7 +5711,7 @@ tr:{
   intentLabel:'💬 Ne pratik yapmak istiyorsun?',
   intentPlaceholder:'Pratik yapmak istediğin kelime, konu veya durumu yaz…',
   verbSearchPh:'🔍 Fiil öbeği ara…',
-  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —', quickLevelPhrasalVerbs:'deyimsel fiiller', quickLevelIdioms:'deyimler', quickLevelVerbsA1:'fiiller A1', quickLevelVerbsA2:'fiiller A2', quickLevelVerbsB1:'fiiller B1', quickLevelVerbsB2:'fiiller B2', quickLevelVerbsC1:'fiiller C1', quickLevelVerbsC2:'fiiller C2', quickLevelGroupLevels:'seviyeler', quickLevelGroupVerbs:'fiiller', quickLevelGroupOther:'diğer',
+  verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —', quickLevelPhrasalVerbs:'deyimsel fiiller', quickLevelIdioms:'deyimler', quickLevelVerbsA1:'fiiller A1', quickLevelVerbsA2:'fiiller A2', quickLevelVerbsB1:'fiiller B1', quickLevelVerbsB2:'fiiller B2', quickLevelVerbsC1:'fiiller C1', quickLevelVerbsC2:'fiiller C2', quickLevelGroupLevels:'seviyeler', quickLevelGroupVerbs:'fiiller', quickLevelGroupOther:'diğer', quickLevelCollocations:'eş dizimler', quickLevelNouns:'isimler', quickLevelAdjectives:'sıfatlar', quickLevelAdverbs:'zarflar', quickLevelNounPhrases:'ad öbekleri', quickLevelDiscourseMarkers:'söylem belirteçleri', quickLevelCollocationsInfo:'kalıplaşmış kelime çiftleri', quickLevelNounPhrasesInfo:'bus stop, credit card gibi kalıplaşmış çok kelimeli ad öbekleri', quickLevelDiscourseMarkersInfo:'however, in fact, on the other hand gibi cümleleri ve fikirleri birbirine bağlayan sözcük ve ifadeler', quickLevelPlaceholder:'kategori seç',
   lvChip0:'A1–A2', lvChipSub0:'Başlangıç',
   lvChip1:'B1–B2', lvChipSub1:'Orta',
   lvChip2:'C1–C2', lvChipSub2:'İleri',
@@ -5713,7 +5790,7 @@ uk:{
   intentLabel:'💬 Що хочеш попрактикувати?',
   intentPlaceholder:'Напиши слово, тему або ситуацію, яку хочеш попрактикувати…',
   verbSearchPh:'🔍 Шукати фразове дієслово…',
-  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —', quickLevelPhrasalVerbs:'фразові дієслова', quickLevelIdioms:'ідіоми', quickLevelVerbsA1:'дієслова A1', quickLevelVerbsA2:'дієслова A2', quickLevelVerbsB1:'дієслова B1', quickLevelVerbsB2:'дієслова B2', quickLevelVerbsC1:'дієслова C1', quickLevelVerbsC2:'дієслова C2', quickLevelGroupLevels:'рівні', quickLevelGroupVerbs:'дієслова', quickLevelGroupOther:'інше',
+  verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —', quickLevelPhrasalVerbs:'фразові дієслова', quickLevelIdioms:'ідіоми', quickLevelVerbsA1:'дієслова A1', quickLevelVerbsA2:'дієслова A2', quickLevelVerbsB1:'дієслова B1', quickLevelVerbsB2:'дієслова B2', quickLevelVerbsC1:'дієслова C1', quickLevelVerbsC2:'дієслова C2', quickLevelGroupLevels:'рівні', quickLevelGroupVerbs:'дієслова', quickLevelGroupOther:'інше', quickLevelCollocations:'колокації', quickLevelNouns:'іменники', quickLevelAdjectives:'прикметники', quickLevelAdverbs:'прислівники', quickLevelNounPhrases:'іменникові словосполучення', quickLevelDiscourseMarkers:'дискурсивні маркери', quickLevelCollocationsInfo:'усталені пари слів', quickLevelNounPhrasesInfo:'усталені багатослівні іменникові словосполучення, напр. bus stop, credit card', quickLevelDiscourseMarkersInfo:'слова та вирази, що пов\'язують речення й думки, напр. however, in fact, on the other hand', quickLevelPlaceholder:'вибрати категорію',
   lvChip0:'A1–A2', lvChipSub0:'Початківець',
   lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
   lvChip2:'C1–C2', lvChipSub2:'Просунутий',
@@ -5795,7 +5872,7 @@ id:{
   intentLabel:'💬 Apa yang ingin kamu latih?',
   intentPlaceholder:'Tulis kata, topik atau situasi yang ingin Anda latih…',
   verbSearchPh:'🔍 Cari phrasal verb…',
-  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —', quickLevelPhrasalVerbs:'kata kerja frasa', quickLevelIdioms:'idiom', quickLevelVerbsA1:'kata kerja A1', quickLevelVerbsA2:'kata kerja A2', quickLevelVerbsB1:'kata kerja B1', quickLevelVerbsB2:'kata kerja B2', quickLevelVerbsC1:'kata kerja C1', quickLevelVerbsC2:'kata kerja C2', quickLevelGroupLevels:'level', quickLevelGroupVerbs:'kata kerja', quickLevelGroupOther:'lainnya',
+  verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —', quickLevelPhrasalVerbs:'kata kerja frasa', quickLevelIdioms:'idiom', quickLevelVerbsA1:'kata kerja A1', quickLevelVerbsA2:'kata kerja A2', quickLevelVerbsB1:'kata kerja B1', quickLevelVerbsB2:'kata kerja B2', quickLevelVerbsC1:'kata kerja C1', quickLevelVerbsC2:'kata kerja C2', quickLevelGroupLevels:'level', quickLevelGroupVerbs:'kata kerja', quickLevelGroupOther:'lainnya', quickLevelCollocations:'kolokasi', quickLevelNouns:'kata benda', quickLevelAdjectives:'kata sifat', quickLevelAdverbs:'kata keterangan', quickLevelNounPhrases:'frasa nomina', quickLevelDiscourseMarkers:'penanda wacana', quickLevelCollocationsInfo:'pasangan kata tetap', quickLevelNounPhrasesInfo:'ungkapan kata benda tetap yang terdiri dari beberapa kata, misalnya bus stop, credit card', quickLevelDiscourseMarkersInfo:'kata dan frasa yang menghubungkan kalimat dan gagasan, misalnya however, in fact, on the other hand', quickLevelPlaceholder:'pilih kategori',
   lvChip0:'A1–A2', lvChipSub0:'Pemula',
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
@@ -5943,6 +6020,12 @@ function applyWebLang() {
   document.querySelectorAll('[data-translate]').forEach(el => {
     const k = el.getAttribute('data-translate');
     if (t[k] !== undefined) el.textContent = t[k];
+  });
+
+  // ── data-translate-title prvky (tooltipy / title atribut) ──
+  document.querySelectorAll('[data-translate-title]').forEach(el => {
+    const k = el.getAttribute('data-translate-title');
+    if (t[k] !== undefined) el.title = t[k];
   });
 
   // ── Popisek tlačítka "Náhodné anglické slovo" (zdroj/úroveň) — dotáhni z právě přeložené položky v seznamu ──
@@ -7404,6 +7487,44 @@ function toggleQuickLevelDrop(e) {
     e.preventDefault();
   }, { passive: false });
 })();
+
+var _qlLevel = 'b1';
+
+function qlSelectLevel(level, el) {
+  _qlLevel = level;
+  document.querySelectorAll('.ql-level-circle').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  var row = document.getElementById('qlLevelRow');
+  if (row) row.classList.remove('ql-disabled');
+}
+
+function qlGetCategoryLabel(el) {
+  // Vrátí aktuálně zobrazený (tedy správně přeložený) text kategorie,
+  // ne natvrdo napsaný český label z onclick atributu.
+  var target = el.hasAttribute('data-translate') ? el : el.querySelector('[data-translate]');
+  return (target ? target.textContent : el.textContent).trim();
+}
+
+function qlSelectCategory(prefix, label, el) {
+  document.querySelectorAll('.quicklevel-item').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  var row = document.getElementById('qlLevelRow');
+  if (row) row.classList.remove('ql-disabled');
+  var levelLabel = _qlLevel.toUpperCase();
+  var value = prefix ? (prefix + '_' + _qlLevel) : levelLabel;
+  var translatedLabel = qlGetCategoryLabel(el);
+  var fullLabel = prefix ? (translatedLabel + ' ' + levelLabel) : levelLabel;
+  el.setAttribute('data-value', value);
+  selectQuickLevel(value, fullLabel, el);
+}
+
+function qlSelectFixed(value, label, el) {
+  document.querySelectorAll('.quicklevel-item').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  var row = document.getElementById('qlLevelRow');
+  if (row) row.classList.add('ql-disabled');
+  selectQuickLevel(value, label, el);
+}
 
 function selectQuickLevel(value, label, el) {
   // Najdi odpovídající položku v "Zdroj slovíček" a deleguj na stávající logiku (wsSelect)
@@ -9417,8 +9538,6 @@ function wsSelect(value, label, el) {
 
   // Reset dříve vybraného tématu, aby se nekombinovalo se zdrojem slov (viz clearPracticeInput)
   selectedTopic = '';
-  // Reset ručně vybraného frázového slovesa, aby se nepřenášelo mezi kategoriemi
-  selectedVerb = '';
   var topicBtnEl = document.getElementById('topicBtn');
   var topicBtnLabelEl = document.getElementById('topicBtnLabel');
   var quickTopicLabelEl = document.getElementById('quickTopicLabelText');
@@ -9485,6 +9604,21 @@ function _applyVerbPrefix(word, source) {
 }
 
 function insertRandomInspiration() {
+  // Zdrojem je vždy anglické slovo -> jazyk "z" přepni na angličtinu,
+  // ale bez zásahu do jazyka celého UI (webLang zůstává beze změny).
+  if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en') {
+    var _prevFromLang = genFromLangVal;
+    genFromLangVal = 'en';
+    if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
+    // Pokud je cílový jazyk taky angličtina, přepni ho na jazyk, který byl předtím ve "z"
+    // (jinak by v obou kolonkách zůstala angličtina).
+    if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
+      genToLangVal = _prevFromLang;
+      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
+    }
+    if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
+  }
+
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
 
   var sel = document.getElementById('wordSourceSelect');
