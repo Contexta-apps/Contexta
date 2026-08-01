@@ -6312,6 +6312,19 @@ function clearPracticeInput() {
   var el = document.getElementById('practiceInput');
   if (el) { el.value = ''; el.focus(); onIntentInput(el); }
 
+  // Vrať jazyk A/B zpět na stav před vložením náhodného anglického slova
+  // (viz insertRandomInspiration) — jinak zůstane displej trvale přepnutý na angličtinu.
+  if (_rndInspirationPrevLangs) {
+    genFromLangVal = _rndInspirationPrevLangs.from;
+    genToLangVal   = _rndInspirationPrevLangs.to;
+    if (typeof updateGenLangBtn === 'function') {
+      updateGenLangBtn('from', genFromLangVal);
+      updateGenLangBtn('to', genToLangVal);
+    }
+    _rndInspirationPrevLangs = null;
+    if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
+  }
+
   // Reset roletky Téma
   selectedTopic = '';
   var topicBtn = document.getElementById('topicBtn');
@@ -7489,6 +7502,10 @@ function toggleQuickLevelDrop(e) {
 })();
 
 var _qlLevel = 'b1';
+// Aktuálně vybraná kategorie závislá na úrovni (např. "verbs"), pokud nějaká je.
+// Umožňuje qlSelectLevel() přepočítat a propsat hodnotu při změně úrovně.
+var _qlActiveCategoryPrefix = null;
+var _qlActiveCategoryEl = null;
 
 function qlSelectLevel(level, el) {
   _qlLevel = level;
@@ -7496,6 +7513,12 @@ function qlSelectLevel(level, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
+  // Pokud je právě aktivní kategorie závislá na úrovni (např. "Slovesa"),
+  // je potřeba ji přepočítat na novou úroveň a propsat do zdroje slov
+  // (jinak zůstane v selectu/na obrazovce stará úroveň, viz #bugfix level-switch).
+  if (_qlActiveCategoryPrefix && _qlActiveCategoryEl) {
+    qlSelectCategory(_qlActiveCategoryPrefix, qlGetCategoryLabel(_qlActiveCategoryEl), _qlActiveCategoryEl);
+  }
 }
 
 function qlGetCategoryLabel(el) {
@@ -7510,6 +7533,8 @@ function qlSelectCategory(prefix, label, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
+  _qlActiveCategoryPrefix = prefix;
+  _qlActiveCategoryEl = el;
   var levelLabel = _qlLevel.toUpperCase();
   var value = prefix ? (prefix + '_' + _qlLevel) : levelLabel;
   var translatedLabel = qlGetCategoryLabel(el);
@@ -7523,6 +7548,8 @@ function qlSelectFixed(value, label, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.add('ql-disabled');
+  _qlActiveCategoryPrefix = null;
+  _qlActiveCategoryEl = null;
   selectQuickLevel(value, label, el);
 }
 
@@ -8961,7 +8988,7 @@ function genGenerate() {
     'SYSTEM RULE: All error messages, warnings, validation messages, and system feedback must be written in ' + webLangName + ' only — never in Language A or Language B.\n' +
     'Language A: ' + fromName + '\n' +
     'Language B: ' + toName + '\n' +
-    'Topic/target word: ' + intent + '\n' +
+    'Topic/target word: ' + buildTargetHint(intent, isVerbSource) + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
     (assistVerb && !isPhrasalVerbCategory ? 'Phrasal verb: ' + assistVerb + '\n' +
       'Right after point 2) (the 3 example sentences) and BEFORE the dialogues (point 3), insert EXACTLY 1 (one single) extra sentence pair using the phrasal verb "' + assistVerb + '" instead of "' + intent + '", same meaning. Format MUST exactly mirror the pairs from point 2: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence — it is only ONE extra pair for the whole output.\n'
@@ -9600,6 +9627,50 @@ function insertRandomTopic() {
 // Zdroje typu verbs_* obsahují holá slovesa (např. "wreck"). Bez kontextu
 // je AI může vyhodnotit jako podstatné jméno ("vrak" místo "zničit").
 // Prefix "to " jednoznačně označí infinitiv, aniž by se měnil prompt.
+// Homografy mezi anglickými slovesy (stejný pravopis, různá výslovnost/význam),
+// které matou hlasový režim AI asistentů (např. "tear" = trhat vs. slza).
+// Hint se přidává POUZE do řádku "Topic/target word:" v promptu (viz genGenerate),
+// nikde jinde se proměnná intent nemění.
+// Seznam ověřen proti skutečnému obsahu verbs_a1–c2.json (26 skutečných heteronymů).
+var _homographHints = {
+  'close':     '(shut, not "close by"/near)',
+  'live':      '(reside, not a "live" broadcast)',
+  'lead':      '(guide, not the metal)',
+  'record':    '(document, not a vinyl record)',
+  'refuse':    '(decline, not garbage/trash)',
+  'row':       '(argue, not a line/boat row)',
+  'increase':  '(grow, not the noun "an increase")',
+  'object':    '(protest, not a thing)',
+  'present':   '(give/introduce, not "gift"/"now")',
+  'produce':   '(make, not vegetables)',
+  'protest':   '(object, not a demonstration)',
+  'reject':    '(turn down, not a defective item)',
+  'suspect':   '(believe guilty, not "a suspect")',
+  'transfer':  '(move, not the noun "a transfer")',
+  'transport': '(carry, not the noun "transport")',
+  'insert':    '(put in, not a printed insert)',
+  'permit':    '(allow, not a document/license)',
+  'recall':    '(remember, not "a product recall")',
+  'update':    '(bring up to date, not the noun "an update")',
+  'wind':      '(twist/coil, not the weather)',
+  'conduct':   '(direct/carry out, not behavior)',
+  'convert':   '(change, not "a convert")',
+  'extract':   '(pull out, not the noun "an extract")',
+  'project':   '(plan/protrude, not the noun "a project")',
+  'subject':   '(subject someone to, not the noun/adjective)',
+  'tear':      '(rip, not cry)',
+  'console':   '(comfort, not a control panel)',
+  'exploit':   '(use/take advantage of, not a heroic deed)',
+  'attribute': '(credit to, not the noun "a quality")'
+};
+
+function buildTargetHint(word, isVerbSource) {
+  if (!word || !isVerbSource) return word;
+  var key = String(word).replace(/^to\s+/i, '').trim().toLowerCase();
+  var hint = _homographHints[key];
+  return hint ? word + ' ' + hint : word;
+}
+
 function _applyVerbPrefix(word, source) {
   if (!word || !source) return word;
   if (source.indexOf('verbs_') !== 0) return word;
@@ -9607,10 +9678,18 @@ function _applyVerbPrefix(word, source) {
   return 'to ' + word;
 }
 
+// Zachycuje jazyky A/B tak, jak byly nastavené TĚSNĚ PŘED prvním vložením
+// náhodného anglického slova. clearPracticeInput() je použije k návratu
+// na původní jazyk displeje po smazání slova křížkem.
+var _rndInspirationPrevLangs = null;
+
 function insertRandomInspiration() {
   // Zdrojem je vždy anglické slovo -> jazyk "z" přepni na angličtinu,
   // ale bez zásahu do jazyka celého UI (webLang zůstává beze změny).
   if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en') {
+    if (!_rndInspirationPrevLangs) {
+      _rndInspirationPrevLangs = { from: genFromLangVal, to: genToLangVal };
+    }
     var _prevFromLang = genFromLangVal;
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
