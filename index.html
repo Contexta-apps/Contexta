@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -8997,10 +8996,10 @@ function genGenerate() {
     'Topic/target word: ' + buildTargetHint(intent, isVerbSource) + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
     (assistVerb && !isPhrasalVerbCategory ? 'Phrasal verb: ' + assistVerb + '\n' +
-      'Right after point 2) (the 3 example sentences) and BEFORE the dialogues (point 3), insert EXACTLY 1 (one single) extra sentence pair using the phrasal verb "' + assistVerb + '" instead of "' + intent + '", same meaning. Format MUST exactly mirror the pairs from point 2: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence — it is only ONE extra pair for the whole output.\n'
+      'Right after the 3 example sentences and BEFORE the dialogues, insert EXACTLY 1 (one single) extra sentence pair using the phrasal verb "' + assistVerb + '" instead of "' + intent + '", same meaning. Format MUST exactly mirror the example-sentence pairs: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence — it is only ONE extra pair for the whole output.\n'
       : '') +
     (assistVerb || !isVerbSource || !isEnglishInvolved || isPhrasalVerbCategory ? '' :
-      'If "' + intent + '" has a common, naturally used phrasal equivalent (not rare/literary): state it as a line "Phrasal verb: [equivalent]", then right after point 2) (the 3 example sentences) and BEFORE the dialogues (point 3), insert EXACTLY 1 (one single) extra sentence pair using this phrasal verb instead of "' + intent + '". Format MUST exactly mirror the pairs from point 2: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence. If no natural equivalent exists, skip both.\n') +
+      'If "' + intent + '" has a common, naturally used phrasal equivalent (not rare/literary): state it as a line "Phrasal verb: [equivalent]", then right after the 3 example sentences and BEFORE the dialogues, insert EXACTLY 1 (one single) extra sentence pair using this phrasal verb instead of "' + intent + '". Format MUST exactly mirror the example-sentence pairs: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence. If no natural equivalent exists, skip both.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
@@ -9008,9 +9007,10 @@ function genGenerate() {
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
-    '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
-    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
+    'Start your response directly with the content below — do not print "1)", "2)", "3)" or any other step labels/numbers, they are structural instructions for you only, not visible text.\n' +
+    'FIRST, a line: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
+    'THEN, 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
+    'FINALLY, ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
 
     'RULES:\n' +
