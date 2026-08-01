@@ -1,0 +1,108 @@
+{
+  "tear": [
+    { "id": "tear_1", "hint": "rip something", "exclude": "cry", "cs": "trhat" },
+    { "id": "tear_2", "hint": "cry, produce tears", "exclude": "rip", "cs": "slzet" }
+  ],
+  "wind": [
+    { "id": "wind_1", "hint": "coil, twist, wind a road/clock", "exclude": "knock breath out", "cs": "vinout se, natáhnout" },
+    { "id": "wind_2", "hint": "knock the breath out of someone", "exclude": "coil, twist", "cs": "vyrazit dech" }
+  ],
+  "row": [
+    { "id": "row_1", "hint": "row a boat", "exclude": "argue", "cs": "veslovat" },
+    { "id": "row_2", "hint": "argue, quarrel", "exclude": "row a boat", "cs": "hádat se" }
+  ],
+  "run": [
+    { "id": "run_1", "hint": "jog, move fast on foot", "exclude": "manage a business, liquid flowing", "cs": "běžet" },
+    { "id": "run_2", "hint": "manage/operate a business", "exclude": "jog, liquid flowing", "cs": "řídit, provozovat" },
+    { "id": "run_3", "hint": "liquid flowing", "exclude": "jog, manage a business", "cs": "téct" }
+  ],
+  "break": [
+    { "id": "break_1", "hint": "physically break an object", "exclude": "break a rule, stop working", "cs": "rozbít" },
+    { "id": "break_2", "hint": "break a rule or law", "exclude": "physically break, stop working", "cs": "porušit" },
+    { "id": "break_3", "hint": "stop working, break down", "exclude": "physically break, break a rule", "cs": "přestat fungovat, pokazit se" }
+  ],
+  "get": [
+    { "id": "get_1", "hint": "obtain, receive something", "exclude": "become, understand, arrive", "cs": "dostat, sehnat" },
+    { "id": "get_2", "hint": "become a certain state", "exclude": "obtain, understand, arrive", "cs": "stát se (get tired, get angry)" },
+    { "id": "get_3", "hint": "understand", "exclude": "obtain, become, arrive", "cs": "pochopit" },
+    { "id": "get_4", "hint": "arrive somewhere", "exclude": "obtain, become, understand", "cs": "dostat se, dorazit" }
+  ],
+  "take": [
+    { "id": "take_1", "hint": "take a physical object", "exclude": "take time, take transport, take medicine", "cs": "vzít" },
+    { "id": "take_2", "hint": "take time, an activity requires time", "exclude": "take an object, take transport", "cs": "trvat (it takes an hour)" },
+    { "id": "take_3", "hint": "take a bus/train/taxi", "exclude": "take an object, take time", "cs": "jet (dopravním prostředkem)" }
+  ],
+  "make": [
+    { "id": "make_1", "hint": "create, produce something", "exclude": "make someone do something, make a decision", "cs": "vyrobit, udělat" },
+    { "id": "make_2", "hint": "force/cause someone to do something", "exclude": "create an object, make a decision", "cs": "přinutit" },
+    { "id": "make_3", "hint": "make a decision", "exclude": "create an object, force someone", "cs": "rozhodnout se" }
+  ],
+  "hold": [
+    { "id": "hold_1", "hint": "physically grasp/hold something", "exclude": "hold a meeting, hold an opinion", "cs": "držet" },
+    { "id": "hold_2", "hint": "hold/organise a meeting or event", "exclude": "physically grasp, hold an opinion", "cs": "konat, pořádat" },
+    { "id": "hold_3", "hint": "hold an opinion or belief", "exclude": "physically grasp, hold a meeting", "cs": "zastávat (názor)" }
+  ],
+  "draw": [
+    { "id": "draw_1", "hint": "draw a picture", "exclude": "pull something, tie in sport", "cs": "kreslit" },
+    { "id": "draw_2", "hint": "pull, draw curtains/a gun", "exclude": "draw a picture, tie in sport", "cs": "táhnout, vytáhnout" },
+    { "id": "draw_3", "hint": "end in a tie in a sports match", "exclude": "draw a picture, pull something", "cs": "remízovat" }
+  ],
+  "catch": [
+    { "id": "catch_1", "hint": "catch a thrown object", "exclude": "catch a bus, catch a cold, understand", "cs": "chytit" },
+    { "id": "catch_2", "hint": "catch a bus/train, be in time for it", "exclude": "catch an object, catch a cold, understand", "cs": "stihnout" },
+    { "id": "catch_3", "hint": "catch a cold/illness", "exclude": "catch an object, catch a bus, understand", "cs": "chytit (nemoc)" },
+    { "id": "catch_4", "hint": "understand what someone said", "exclude": "catch an object, catch a bus, catch a cold", "cs": "zachytit, pochopit" }
+  ],
+  "fall": [
+    { "id": "fall_1", "hint": "physically fall down", "exclude": "fall asleep/in love, prices falling", "cs": "spadnout" },
+    { "id": "fall_2", "hint": "fall asleep, fall in love, fall ill", "exclude": "physically fall down, prices falling", "cs": "upadnout do stavu" },
+    { "id": "fall_3", "hint": "prices or numbers decreasing", "exclude": "physically fall down, fall asleep/in love", "cs": "klesat" }
+  ],
+  "charge": [
+    { "id": "charge_1", "hint": "charge someone money", "exclude": "charge a battery, charge at, accuse", "cs": "účtovat" },
+    { "id": "charge_2", "hint": "charge a battery/device", "exclude": "charge money, charge at, accuse", "cs": "nabít" },
+    { "id": "charge_3", "hint": "charge/rush at someone or something", "exclude": "charge money, charge a battery, accuse", "cs": "zaútočit, vyrazit" },
+    { "id": "charge_4", "hint": "formally accuse someone of a crime", "exclude": "charge money, charge a battery, charge at", "cs": "obvinit" }
+  ],
+  "treat": [
+    { "id": "treat_1", "hint": "treat a person kindly/badly", "exclude": "treat a patient, treat a topic", "cs": "zacházet s (někým)" },
+    { "id": "treat_2", "hint": "medically treat a patient", "exclude": "treat someone kindly, treat a topic", "cs": "léčit" },
+    { "id": "treat_3", "hint": "treat a topic, deal with a subject", "exclude": "treat someone kindly, treat a patient", "cs": "pojednávat o" }
+  ],
+  "serve": [
+    { "id": "serve_1", "hint": "serve food or drink", "exclude": "serve a purpose, serve in the army, serve a sentence", "cs": "podávat, obsluhovat" },
+    { "id": "serve_2", "hint": "serve a purpose, be useful for", "exclude": "serve food, serve in the army, serve a sentence", "cs": "sloužit (účelu)" },
+    { "id": "serve_3", "hint": "serve a prison sentence", "exclude": "serve food, serve a purpose, serve in the army", "cs": "odpykat si (trest)" }
+  ],
+  "mean": [
+    { "id": "mean_1", "hint": "words meaning, definition", "exclude": "intend to do something", "cs": "znamenat" },
+    { "id": "mean_2", "hint": "intend to do something", "exclude": "words meaning", "cs": "mít v úmyslu" }
+  ],
+  "move": [
+    { "id": "move_1", "hint": "physically move, shift position", "exclude": "move house, move emotionally", "cs": "pohnout, hýbat" },
+    { "id": "move_2", "hint": "move house, relocate", "exclude": "physically move, move emotionally", "cs": "přestěhovat se" },
+    { "id": "move_3", "hint": "move someone emotionally", "exclude": "physically move, move house", "cs": "dojmout" }
+  ],
+  "order": [
+    { "id": "order_1", "hint": "order food or goods", "exclude": "order someone to do something", "cs": "objednat" },
+    { "id": "order_2", "hint": "command, order someone to do something", "exclude": "order food/goods", "cs": "nařídit" }
+  ],
+  "sound": [
+    { "id": "sound_1", "hint": "make a noise/sound", "exclude": "seem, appear to be", "cs": "znít" },
+    { "id": "sound_2", "hint": "seem, appear to be a certain way", "exclude": "make a noise", "cs": "zdát se, vypadat" }
+  ],
+  "tie": [
+    { "id": "tie_1", "hint": "tie a knot/tie shoelaces", "exclude": "tie in a competition", "cs": "svázat, zavázat" },
+    { "id": "tie_2", "hint": "end in a tie in a competition", "exclude": "tie a knot", "cs": "remízovat" }
+  ],
+  "blow": [
+    { "id": "blow_1", "hint": "wind blowing, or blow air", "exclude": "explode, blow a chance", "cs": "foukat" },
+    { "id": "blow_2", "hint": "explode, blow something up", "exclude": "wind blowing, blow a chance", "cs": "vyhodit do povětří" },
+    { "id": "blow_3", "hint": "blow a chance/opportunity, fail", "exclude": "wind blowing, explode", "cs": "promarnit (příležitost)" }
+  ],
+  "mark": [
+    { "id": "mark_1", "hint": "grade/mark a test or exam", "exclude": "mark a location, mark an anniversary", "cs": "opravit, obodovat (test)" },
+    { "id": "mark_2", "hint": "physically mark, put a mark on something", "exclude": "grade a test, mark an anniversary", "cs": "označit" },
+    { "id": "mark_3", "hint": "mark/celebrate an anniversary or occasion", "exclude": "grade a test, mark a location", "cs": "oslavit (výročí)" }
+  ]
+}
