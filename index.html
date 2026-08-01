@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -2126,6 +2127,8 @@ img { max-width: 100%; height: auto; }
 }
 .gen-tuning-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .gen-tuning-hint { font-size: .68rem; color: rgba(255,255,255,.3); margin-top: 2px; padding-left: 2px; }
+.gen-tuning-note { padding-top: 2px; }
+.gen-words-total { font-size: .68rem; color: rgba(255,255,255,.35); }
 .gen-word-source-select {
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.18);
@@ -4003,6 +4006,9 @@ h1[data-t="heroH"] {
                 </select>
               </div>
             </div>
+            <div class="gen-tuning-row gen-tuning-note">
+              <span class="gen-words-total" data-translate="wordsTotalLabel">📚 Databáze obsahuje přes 8 000 slov a frází</span>
+            </div>
             <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="styleLabel">🎭 Styl</span>
               <div class="gen-tuning-chips">
@@ -4433,7 +4439,7 @@ cz:{
   s4:'AI platforem',
   recLabel:'⭐ Doporučeno',
   lockDesc:'Přístup po Pay me coffee.',
-  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavení',
+  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavení', wordsTotalLabel:'📚 Databáze obsahuje přes 8 000 slov a frází',
   genH:'Vytvoř dialog v ChatGPT',
   genLead:'Vyber jazyky, zadej slovo — ChatGPT se otevře s hotovým promptem.',
   genLangL:'1️⃣ Jazyk ze kterého překládám → do kterého překládám',
@@ -4527,7 +4533,7 @@ en:{
   s4:'AI platforms',
   recLabel:'⭐ Recommended',
   lockDesc:'Access after Pay me coffee.',
-  genTag:'⚙ Prompt Generator', advancedToggleLabel:'⚙ Advanced settings',
+  genTag:'⚙ Prompt Generator', advancedToggleLabel:'⚙ Advanced settings', wordsTotalLabel:'📚 Database contains over 8,000 words and phrases',
   genH:'Create a dialogue in ChatGPT',
   genLead:'Choose languages, enter a word — ChatGPT opens with a ready prompt.',
   genLangL:'1️⃣ Language I translate from → into',
@@ -4620,7 +4626,7 @@ de:{
   s4:'KI-Plattformen',
   recLabel:'⭐ Empfohlen',
   lockDesc:'Zugang nach Pay me coffee.',
-  genTag:'⚙ Prompt-Generator', advancedToggleLabel:'⚙ Erweiterte Einstellungen',
+  genTag:'⚙ Prompt-Generator', advancedToggleLabel:'⚙ Erweiterte Einstellungen', wordsTotalLabel:'📚 Die Datenbank enthält über 8.000 Wörter und Redewendungen',
   genH:'Dialog in ChatGPT erstellen',
   genLead:'Sprachen wählen, Wort eingeben — ChatGPT öffnet sich mit fertigem Prompt.',
   genLangL:'1️⃣ Ausgangssprache → Zielsprache',
@@ -4709,7 +4715,7 @@ fr:{
   s4:'Plateformes IA',
   recLabel:'⭐ Recommandé',
   lockDesc:'Accès après Pay me coffee.',
-  genTag:'⚙ Générateur de prompt', advancedToggleLabel:'⚙ Paramètres avancés',
+  genTag:'⚙ Générateur de prompt', advancedToggleLabel:'⚙ Paramètres avancés', wordsTotalLabel:'📚 La base de données contient plus de 8 000 mots et expressions',
   lblVerb:'⚡ Verbes phrasés', lblTopic:'🗂 Sujet', editDetails:'⚙ Modifier les détails',
   genH:'Créer un dialogue dans ChatGPT',
   genLead:'Choisissez les langues, entrez un mot — ChatGPT s\'ouvre avec le prompt prêt.',
@@ -4798,7 +4804,7 @@ es:{
   s4:'Plataformas IA',
   recLabel:'⭐ Recomendado',
   lockDesc:'Acceso después de Pay me coffee.',
-  genTag:'⚙ Generador de prompt', advancedToggleLabel:'⚙ Configuración avanzada',
+  genTag:'⚙ Generador de prompt', advancedToggleLabel:'⚙ Configuración avanzada', wordsTotalLabel:'📚 La base de datos contiene más de 8000 palabras y frases',
   lblVerb:'⚡ Verbos frasales', lblTopic:'🗂 Tema', editDetails:'⚙ Editar detalles',
   genH:'Crear un diálogo en ChatGPT',
   genLead:'Elige idiomas, escribe una palabra — ChatGPT se abre con el prompt listo.',
@@ -4885,7 +4891,7 @@ it:{
   s4:'Piattaforme IA',
   recLabel:'⭐ Consigliato',
   lockDesc:'Accesso dopo Pay me coffee.',
-  genTag:'⚙ Generatore di prompt', advancedToggleLabel:'⚙ Impostazioni avanzate',
+  genTag:'⚙ Generatore di prompt', advancedToggleLabel:'⚙ Impostazioni avanzate', wordsTotalLabel:'📚 Il database contiene oltre 8.000 parole e frasi',
   lblVerb:'⚡ Verbi frasali', lblTopic:'🗂 Argomento', editDetails:'⚙ Modifica dettagli',
   genH:'Crea un dialogo in ChatGPT',
   genLead:'Scegli le lingue, inserisci una parola — ChatGPT si apre con il prompt pronto.',
@@ -4972,7 +4978,7 @@ pt:{
   s4:'Plataformas IA',
   recLabel:'⭐ Recomendado',
   lockDesc:'Acesso após Pay me coffee.',
-  genTag:'⚙ Gerador de prompt', advancedToggleLabel:'⚙ Configurações avançadas',
+  genTag:'⚙ Gerador de prompt', advancedToggleLabel:'⚙ Configurações avançadas', wordsTotalLabel:'📚 A base de dados contém mais de 8.000 palavras e frases',
   lblVerb:'⚡ Verbos frasais', lblTopic:'🗂 Tema', editDetails:'⚙ Editar detalhes',
   genH:'Criar um diálogo no ChatGPT',
   genLead:'Escolha idiomas, escreva uma palavra — ChatGPT abre com o prompt pronto.',
@@ -5058,7 +5064,7 @@ pl:{
   s4:'Platformy AI',
   recLabel:'⭐ Polecane',
   lockDesc:'Dostęp po Pay me coffee.',
-  genTag:'⚙ Generator promptu', advancedToggleLabel:'⚙ Ustawienia zaawansowane',
+  genTag:'⚙ Generator promptu', advancedToggleLabel:'⚙ Ustawienia zaawansowane', wordsTotalLabel:'📚 Baza danych zawiera ponad 8000 słów i zwrotów',
   lblVerb:'⚡ Czasowniki frazowe', lblTopic:'🗂 Temat', editDetails:'⚙ Edytuj szczegóły',
   genH:'Stwórz dialog w ChatGPT',
   genLead:'Wybierz języki, wpisz słowo — ChatGPT otworzy się z gotowym promptem.',
@@ -5145,7 +5151,7 @@ cn:{
   s4:'AI平台',
   recLabel:'⭐ 推荐',
   lockDesc:'Pay me coffee后访问。',
-  genTag:'⚙ 提示词生成器', advancedToggleLabel:'⚙ 高级设置',
+  genTag:'⚙ 提示词生成器', advancedToggleLabel:'⚙ 高级设置', wordsTotalLabel:'📚 词库包含超过 8000 个单词和短语',
   lblVerb:'⚡ 短语动词', lblTopic:'🗂 主题', editDetails:'⚙ 编辑详情',
   genH:'在ChatGPT中创建对话',
   genLead:'选择语言，输入单词 — ChatGPT将携带提示词打开。',
@@ -5232,7 +5238,7 @@ jp:{
   s4:'AIプラットフォーム',
   recLabel:'⭐ おすすめ',
   lockDesc:'Pay me coffeeの後にアクセス。',
-  genTag:'⚙ プロンプトジェネレーター', advancedToggleLabel:'⚙ 詳細設定',
+  genTag:'⚙ プロンプトジェネレーター', advancedToggleLabel:'⚙ 詳細設定', wordsTotalLabel:'📚 データベースには8,000語以上の単語とフレーズが含まれています',
   lblVerb:'⚡ 句動詞', lblTopic:'🗂 テーマ', editDetails:'⚙ 詳細を編集',
   genH:'ChatGPTでダイアログを作成',
   genLead:'言語を選んで単語を入力 — ChatGPTがプロンプト付きで開きます。',
@@ -5319,7 +5325,7 @@ kr:{
   s4:'AI 플랫폼',
   recLabel:'⭐ 추천',
   lockDesc:'Pay me coffee 후 접근.',
-  genTag:'⚙ 프롬프트 생성기', advancedToggleLabel:'⚙ 고급 설정',
+  genTag:'⚙ 프롬프트 생성기', advancedToggleLabel:'⚙ 고급 설정', wordsTotalLabel:'📚 데이터베이스에는 8,000개 이상의 단어와 구문이 있습니다',
   lblVerb:'⚡ 구동사', lblTopic:'🗂 주제', editDetails:'⚙ 세부 정보 편집',
   genH:'ChatGPT에서 대화 만들기',
   genLead:'언어를 선택하고 단어를 입력하세요 — ChatGPT가 프롬프트와 함께 열립니다.',
@@ -5397,7 +5403,7 @@ sk:{
   pill2:'B1–B2 Pokročilejší', pill3:'C1–C2 Pokročilý', pill4:'10 jazykov',
   s2:'Dialógov / slovo', s3:'Úrovne', s4:'AI platforiem',
   recLabel:'⭐ Odporúčané', lockDesc:'Prístup po Pay me coffee.',
-  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavenia', lblVerb:'⚡ Frázové slovesá', lblTopic:'🗂 Téma', editDetails:'⚙ Upraviť detaily',
+  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavenia', wordsTotalLabel:'📚 Databáza obsahuje viac ako 8 000 slov a fráz', lblVerb:'⚡ Frázové slovesá', lblTopic:'🗂 Téma', editDetails:'⚙ Upraviť detaily',
   genH:'Vytvor dialóg v ChatGPT',
   genLead:'Vyber jazyky, zadaj slovo — ChatGPT sa otvorí s hotovým promptom.',
   genLangL:'1️⃣ Jazyk z ktorého prekladám → do ktorého prekladám',
@@ -5473,7 +5479,7 @@ nl:{
   pill2:'B1–B2 Gevorderd', pill3:'C1–C2 Vorderend', pill4:'10 talen',
   s2:'Dialogen / woord', s3:'Niveaus', s4:'AI-platforms',
   recLabel:'⭐ Aanbevolen', lockDesc:'Toegang na Pay me coffee.',
-  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Geavanceerde instellingen', lblVerb:'⚡ Werkwoordgroepen', lblTopic:'🗂 Onderwerp', editDetails:'⚙ Details bewerken',
+  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Geavanceerde instellingen', wordsTotalLabel:'📚 De database bevat meer dan 8.000 woorden en zinnen', lblVerb:'⚡ Werkwoordgroepen', lblTopic:'🗂 Onderwerp', editDetails:'⚙ Details bewerken',
   genH:'Maak een dialoog in ChatGPT',
   genLead:'Kies talen, voer een woord in — ChatGPT opent met een kant-en-klare prompt.',
   genLangL:'1️⃣ Taal van → Taal naar',
@@ -5549,7 +5555,7 @@ sv:{
   pill2:'B1–B2 Medelnivå', pill3:'C1–C2 Avancerad', pill4:'10 språk',
   s2:'Dialoger / ord', s3:'Nivåer', s4:'AI-plattformar',
   recLabel:'⭐ Rekommenderas', lockDesc:'Åtkomst efter Pay me coffee.',
-  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Avancerade inställningar', lblVerb:'⚡ Frasverb', lblTopic:'🗂 Ämne', editDetails:'⚙ Redigera detaljer',
+  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Avancerade inställningar', wordsTotalLabel:'📚 Databasen innehåller över 8 000 ord och fraser', lblVerb:'⚡ Frasverb', lblTopic:'🗂 Ämne', editDetails:'⚙ Redigera detaljer',
   genH:'Skapa en dialog i ChatGPT',
   genLead:'Välj språk, ange ett ord — ChatGPT öppnas med en färdig prompt.',
   genLangL:'1️⃣ Källspråk → Målspråk',
@@ -5620,7 +5626,7 @@ ru:{
   coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
   footerP:"Создано с помощью Claude AI (Anthropic) · claude.ai",
   footerSub:"10 языков · 3 уровня · 6 AI платформ", footerTermsLink:'Условия использования', footerPrivacyLink:'Политика конфиденциальности', termsTitle:'Условия использования', termsBody:'<p>Это приложение (Contexta) предоставляется «как есть», без каких-либо гарантий, явных или подразумеваемых. Автор не гарантирует непрерывную доступность, безошибочную работу или безопасность приложения.</p><p>Используя приложение, вы соглашаетесь делать это на собственный риск. Автор не несёт ответственности за любой прямой или косвенный ущерб, потерю данных или иной вред, возникший в результате использования приложения.</p><p>Приложение использует сторонние AI-инструменты для генерации обучающего контента. Автор не гарантирует точность, полноту или пригодность сгенерированного контента для какой-либо конкретной цели.</p><p>Пожертвования через Ko-fi являются добровольными и не создают права на какие-либо конкретные услуги или гарантии.</p><p>Эти условия могут время от времени изменяться. Продолжение использования приложения означает согласие с действующими условиями.</p>', privacyTitle:'Политика конфиденциальности', privacyBody:'<p>Это приложение не хранит никаких персональных данных на сервере. Все данные (история словарного запаса, языковые настройки и т.д.) хранятся только локально в вашем браузере (localStorage) и никогда не отправляются и не передаются автору.</p><p>Приложение может отправлять введённый вами текст сторонним поставщикам AI (например, ChatGPT) для генерации обучающего контента. У этих сервисов есть собственная политика конфиденциальности, которую мы рекомендуем изучить.</p><p>Приложение не использует отслеживающие куки или сторонние аналитические инструменты помимо стандартного хостинга (GitHub Pages).</p><p>Для добровольных пожертвований мы используем платформу Ko-fi, которая обрабатывает платёжную информацию в соответствии со своей собственной политикой конфиденциальности.</p>',
-  genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
+  genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', wordsTotalLabel:'📚 База данных содержит более 8000 слов и фраз', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
   genH:'Создать диалог в ChatGPT',
   genLead:'Выбери языки, введи слово — ChatGPT откроется с готовым промптом.',
   genLangL:'1️⃣ Исходный язык → Целевой язык',
@@ -5696,7 +5702,7 @@ tr:{
   pill2:'B1–B2 Orta', pill3:'C1–C2 İleri', pill4:'10 dil',
   s2:'Diyalog / kelime', s3:'Seviyeler', s4:'AI platformları',
   recLabel:'⭐ Önerilen', lockDesc:'Pay me coffee sonrası erişim.',
-  genTag:'⚙ Prompt oluşturucu', advancedToggleLabel:'⚙ Gelişmiş ayarlar', lblVerb:'⚡ Fiil öbekleri', lblTopic:'🗂 Konu', editDetails:'⚙ Ayrıntıları düzenle',
+  genTag:'⚙ Prompt oluşturucu', advancedToggleLabel:'⚙ Gelişmiş ayarlar', wordsTotalLabel:'📚 Veritabanı 8.000\'den fazla kelime ve ifade içeriyor', lblVerb:'⚡ Fiil öbekleri', lblTopic:'🗂 Konu', editDetails:'⚙ Ayrıntıları düzenle',
   genH:'ChatGPT\'de diyalog oluştur',
   genLead:'Dilleri seç, kelime gir — ChatGPT hazır promptla açılır.',
   genLangL:'1️⃣ Kaynak dil → Hedef dil',
@@ -5774,7 +5780,7 @@ uk:{
   s2:'Діалогів / слово', s3:'Рівні', s4:'AI платформи',
   recLabel:'⭐ Рекомендовано',
   lockDesc:'Доступ після Pay me coffee.',
-  genTag:'⚙ Генератор промптів', advancedToggleLabel:'⚙ Розширені налаштування',
+  genTag:'⚙ Генератор промптів', advancedToggleLabel:'⚙ Розширені налаштування', wordsTotalLabel:'📚 База даних містить понад 8000 слів і фраз',
   genH:'Створи діалог у ChatGPT',
   genLead:'Вибери мови, введи слово — ChatGPT відкриється з готовим промптом.',
   genLangL:'1️⃣ Мова, з якої перекладаю → на яку перекладаю',
@@ -5856,7 +5862,7 @@ id:{
   s2:'Dialog / kata', s3:'Level', s4:'Platform AI',
   recLabel:'⭐ Direkomendasikan',
   lockDesc:'Akses setelah Pay me coffee.',
-  genTag:'⚙ Generator Prompt', advancedToggleLabel:'⚙ Pengaturan lanjutan',
+  genTag:'⚙ Generator Prompt', advancedToggleLabel:'⚙ Pengaturan lanjutan', wordsTotalLabel:'📚 Database berisi lebih dari 8.000 kata dan frasa',
   genH:'Buat dialog di ChatGPT',
   genLead:'Pilih bahasa, masukkan kata — ChatGPT akan terbuka dengan prompt siap pakai.',
   genLangL:'1️⃣ Bahasa yang kuterjemahkan dari → ke',
@@ -9754,6 +9760,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedVal) {
       var srcOpt = document.querySelector('.gen-word-source-opt[data-value="' + savedVal + '"]');
       wsSelect(savedVal, savedLbl || savedVal, srcOpt);
+      // #bugfix level-switch: wsSelect() jen nastaví text popisku, ale neobnoví
+      // _qlLevel/_qlActiveCategoryPrefix/_qlActiveCategoryEl. Bez toho qlSelectLevel()
+      // po kliknutí na jinou úroveň (A1–C2) neví, že má label přepočítat, a starý
+      // popisek (např. "Slovesa B1") zůstane viset i po výběru B2.
+      var m = /^([a-z_]+)_(a1|a2|b1|b2|c1|c2)$/.exec(savedVal);
+      if (m) {
+        var savedPrefix = m[1], savedLevel = m[2];
+        _qlLevel = savedLevel;
+        var catEl = document.querySelector('.quicklevel-item[data-prefix="' + savedPrefix + '"]');
+        if (catEl) {
+          _qlActiveCategoryPrefix = savedPrefix;
+          _qlActiveCategoryEl = catEl;
+          catEl.setAttribute('data-value', savedVal);
+          catEl.classList.add('selected');
+        }
+        var levelEl = document.querySelector('.ql-level-circle[data-level="' + savedLevel + '"]');
+        if (levelEl) {
+          document.querySelectorAll('.ql-level-circle').forEach(function(c) { c.classList.remove('selected'); });
+          levelEl.classList.add('selected');
+        }
+      }
     }
   } catch(e) {}
 });
