@@ -2126,8 +2126,6 @@ img { max-width: 100%; height: auto; }
 }
 .gen-tuning-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .gen-tuning-hint { font-size: .68rem; color: rgba(255,255,255,.3); margin-top: 2px; padding-left: 2px; }
-.gen-tuning-note { padding-top: 2px; }
-.gen-words-total { font-size: .68rem; color: rgba(255,255,255,.35); }
 .gen-word-source-select {
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.18);
@@ -2219,6 +2217,21 @@ img { max-width: 100%; height: auto; }
 }
 .gen-chip-sub { font-size: .65rem; font-weight: 500; opacity: .75; margin-left: 4px; }
 .gen-chip-level.active .gen-chip-sub { opacity: .7; }
+
+/* FIX: na mobilu sjednotit šířku tlačítek stylu/délky dialogu (dlouhé texty, např. indonéština, rozbíjely souměrnost) */
+@media (max-width: 768px) {
+  .gen-chip-style, .gen-chip-count {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
 
 /* Jazykový chip — přepoužije gen-lang-dd-btn styly, jen kompaktnější */
 .gen-lang-chip {
@@ -4005,9 +4018,6 @@ h1[data-t="heroH"] {
                 </select>
               </div>
             </div>
-            <div class="gen-tuning-row gen-tuning-note">
-              <span class="gen-words-total" data-translate="wordsTotalLabel">📚 Databáze obsahuje přes 8 000 slov a frází</span>
-            </div>
             <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="styleLabel">🎭 Styl</span>
               <div class="gen-tuning-chips">
@@ -4438,7 +4448,7 @@ cz:{
   s4:'AI platforem',
   recLabel:'⭐ Doporučeno',
   lockDesc:'Přístup po Pay me coffee.',
-  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavení', wordsTotalLabel:'📚 Databáze obsahuje přes 8 000 slov a frází',
+  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavení',
   genH:'Vytvoř dialog v ChatGPT',
   genLead:'Vyber jazyky, zadej slovo — ChatGPT se otevře s hotovým promptem.',
   genLangL:'1️⃣ Jazyk ze kterého překládám → do kterého překládám',
@@ -4532,7 +4542,7 @@ en:{
   s4:'AI platforms',
   recLabel:'⭐ Recommended',
   lockDesc:'Access after Pay me coffee.',
-  genTag:'⚙ Prompt Generator', advancedToggleLabel:'⚙ Advanced settings', wordsTotalLabel:'📚 Database contains over 8,000 words and phrases',
+  genTag:'⚙ Prompt Generator', advancedToggleLabel:'⚙ Advanced settings',
   genH:'Create a dialogue in ChatGPT',
   genLead:'Choose languages, enter a word — ChatGPT opens with a ready prompt.',
   genLangL:'1️⃣ Language I translate from → into',
@@ -4625,7 +4635,7 @@ de:{
   s4:'KI-Plattformen',
   recLabel:'⭐ Empfohlen',
   lockDesc:'Zugang nach Pay me coffee.',
-  genTag:'⚙ Prompt-Generator', advancedToggleLabel:'⚙ Erweiterte Einstellungen', wordsTotalLabel:'📚 Die Datenbank enthält über 8.000 Wörter und Redewendungen',
+  genTag:'⚙ Prompt-Generator', advancedToggleLabel:'⚙ Erweiterte Einstellungen',
   genH:'Dialog in ChatGPT erstellen',
   genLead:'Sprachen wählen, Wort eingeben — ChatGPT öffnet sich mit fertigem Prompt.',
   genLangL:'1️⃣ Ausgangssprache → Zielsprache',
@@ -4714,7 +4724,7 @@ fr:{
   s4:'Plateformes IA',
   recLabel:'⭐ Recommandé',
   lockDesc:'Accès après Pay me coffee.',
-  genTag:'⚙ Générateur de prompt', advancedToggleLabel:'⚙ Paramètres avancés', wordsTotalLabel:'📚 La base de données contient plus de 8 000 mots et expressions',
+  genTag:'⚙ Générateur de prompt', advancedToggleLabel:'⚙ Paramètres avancés',
   lblVerb:'⚡ Verbes phrasés', lblTopic:'🗂 Sujet', editDetails:'⚙ Modifier les détails',
   genH:'Créer un dialogue dans ChatGPT',
   genLead:'Choisissez les langues, entrez un mot — ChatGPT s\'ouvre avec le prompt prêt.',
@@ -4803,7 +4813,7 @@ es:{
   s4:'Plataformas IA',
   recLabel:'⭐ Recomendado',
   lockDesc:'Acceso después de Pay me coffee.',
-  genTag:'⚙ Generador de prompt', advancedToggleLabel:'⚙ Configuración avanzada', wordsTotalLabel:'📚 La base de datos contiene más de 8000 palabras y frases',
+  genTag:'⚙ Generador de prompt', advancedToggleLabel:'⚙ Configuración avanzada',
   lblVerb:'⚡ Verbos frasales', lblTopic:'🗂 Tema', editDetails:'⚙ Editar detalles',
   genH:'Crear un diálogo en ChatGPT',
   genLead:'Elige idiomas, escribe una palabra — ChatGPT se abre con el prompt listo.',
@@ -4890,7 +4900,7 @@ it:{
   s4:'Piattaforme IA',
   recLabel:'⭐ Consigliato',
   lockDesc:'Accesso dopo Pay me coffee.',
-  genTag:'⚙ Generatore di prompt', advancedToggleLabel:'⚙ Impostazioni avanzate', wordsTotalLabel:'📚 Il database contiene oltre 8.000 parole e frasi',
+  genTag:'⚙ Generatore di prompt', advancedToggleLabel:'⚙ Impostazioni avanzate',
   lblVerb:'⚡ Verbi frasali', lblTopic:'🗂 Argomento', editDetails:'⚙ Modifica dettagli',
   genH:'Crea un dialogo in ChatGPT',
   genLead:'Scegli le lingue, inserisci una parola — ChatGPT si apre con il prompt pronto.',
@@ -4977,7 +4987,7 @@ pt:{
   s4:'Plataformas IA',
   recLabel:'⭐ Recomendado',
   lockDesc:'Acesso após Pay me coffee.',
-  genTag:'⚙ Gerador de prompt', advancedToggleLabel:'⚙ Configurações avançadas', wordsTotalLabel:'📚 A base de dados contém mais de 8.000 palavras e frases',
+  genTag:'⚙ Gerador de prompt', advancedToggleLabel:'⚙ Configurações avançadas',
   lblVerb:'⚡ Verbos frasais', lblTopic:'🗂 Tema', editDetails:'⚙ Editar detalhes',
   genH:'Criar um diálogo no ChatGPT',
   genLead:'Escolha idiomas, escreva uma palavra — ChatGPT abre com o prompt pronto.',
@@ -5063,7 +5073,7 @@ pl:{
   s4:'Platformy AI',
   recLabel:'⭐ Polecane',
   lockDesc:'Dostęp po Pay me coffee.',
-  genTag:'⚙ Generator promptu', advancedToggleLabel:'⚙ Ustawienia zaawansowane', wordsTotalLabel:'📚 Baza danych zawiera ponad 8000 słów i zwrotów',
+  genTag:'⚙ Generator promptu', advancedToggleLabel:'⚙ Ustawienia zaawansowane',
   lblVerb:'⚡ Czasowniki frazowe', lblTopic:'🗂 Temat', editDetails:'⚙ Edytuj szczegóły',
   genH:'Stwórz dialog w ChatGPT',
   genLead:'Wybierz języki, wpisz słowo — ChatGPT otworzy się z gotowym promptem.',
@@ -5150,7 +5160,7 @@ cn:{
   s4:'AI平台',
   recLabel:'⭐ 推荐',
   lockDesc:'Pay me coffee后访问。',
-  genTag:'⚙ 提示词生成器', advancedToggleLabel:'⚙ 高级设置', wordsTotalLabel:'📚 词库包含超过 8000 个单词和短语',
+  genTag:'⚙ 提示词生成器', advancedToggleLabel:'⚙ 高级设置',
   lblVerb:'⚡ 短语动词', lblTopic:'🗂 主题', editDetails:'⚙ 编辑详情',
   genH:'在ChatGPT中创建对话',
   genLead:'选择语言，输入单词 — ChatGPT将携带提示词打开。',
@@ -5237,7 +5247,7 @@ jp:{
   s4:'AIプラットフォーム',
   recLabel:'⭐ おすすめ',
   lockDesc:'Pay me coffeeの後にアクセス。',
-  genTag:'⚙ プロンプトジェネレーター', advancedToggleLabel:'⚙ 詳細設定', wordsTotalLabel:'📚 データベースには8,000語以上の単語とフレーズが含まれています',
+  genTag:'⚙ プロンプトジェネレーター', advancedToggleLabel:'⚙ 詳細設定',
   lblVerb:'⚡ 句動詞', lblTopic:'🗂 テーマ', editDetails:'⚙ 詳細を編集',
   genH:'ChatGPTでダイアログを作成',
   genLead:'言語を選んで単語を入力 — ChatGPTがプロンプト付きで開きます。',
@@ -5324,7 +5334,7 @@ kr:{
   s4:'AI 플랫폼',
   recLabel:'⭐ 추천',
   lockDesc:'Pay me coffee 후 접근.',
-  genTag:'⚙ 프롬프트 생성기', advancedToggleLabel:'⚙ 고급 설정', wordsTotalLabel:'📚 데이터베이스에는 8,000개 이상의 단어와 구문이 있습니다',
+  genTag:'⚙ 프롬프트 생성기', advancedToggleLabel:'⚙ 고급 설정',
   lblVerb:'⚡ 구동사', lblTopic:'🗂 주제', editDetails:'⚙ 세부 정보 편집',
   genH:'ChatGPT에서 대화 만들기',
   genLead:'언어를 선택하고 단어를 입력하세요 — ChatGPT가 프롬프트와 함께 열립니다.',
@@ -5402,7 +5412,7 @@ sk:{
   pill2:'B1–B2 Pokročilejší', pill3:'C1–C2 Pokročilý', pill4:'10 jazykov',
   s2:'Dialógov / slovo', s3:'Úrovne', s4:'AI platforiem',
   recLabel:'⭐ Odporúčané', lockDesc:'Prístup po Pay me coffee.',
-  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavenia', wordsTotalLabel:'📚 Databáza obsahuje viac ako 8 000 slov a fráz', lblVerb:'⚡ Frázové slovesá', lblTopic:'🗂 Téma', editDetails:'⚙ Upraviť detaily',
+  genTag:'⚙ Generátor promptu', advancedToggleLabel:'⚙ Pokročilé nastavenia', lblVerb:'⚡ Frázové slovesá', lblTopic:'🗂 Téma', editDetails:'⚙ Upraviť detaily',
   genH:'Vytvor dialóg v ChatGPT',
   genLead:'Vyber jazyky, zadaj slovo — ChatGPT sa otvorí s hotovým promptom.',
   genLangL:'1️⃣ Jazyk z ktorého prekladám → do ktorého prekladám',
@@ -5478,7 +5488,7 @@ nl:{
   pill2:'B1–B2 Gevorderd', pill3:'C1–C2 Vorderend', pill4:'10 talen',
   s2:'Dialogen / woord', s3:'Niveaus', s4:'AI-platforms',
   recLabel:'⭐ Aanbevolen', lockDesc:'Toegang na Pay me coffee.',
-  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Geavanceerde instellingen', wordsTotalLabel:'📚 De database bevat meer dan 8.000 woorden en zinnen', lblVerb:'⚡ Werkwoordgroepen', lblTopic:'🗂 Onderwerp', editDetails:'⚙ Details bewerken',
+  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Geavanceerde instellingen', lblVerb:'⚡ Werkwoordgroepen', lblTopic:'🗂 Onderwerp', editDetails:'⚙ Details bewerken',
   genH:'Maak een dialoog in ChatGPT',
   genLead:'Kies talen, voer een woord in — ChatGPT opent met een kant-en-klare prompt.',
   genLangL:'1️⃣ Taal van → Taal naar',
@@ -5554,7 +5564,7 @@ sv:{
   pill2:'B1–B2 Medelnivå', pill3:'C1–C2 Avancerad', pill4:'10 språk',
   s2:'Dialoger / ord', s3:'Nivåer', s4:'AI-plattformar',
   recLabel:'⭐ Rekommenderas', lockDesc:'Åtkomst efter Pay me coffee.',
-  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Avancerade inställningar', wordsTotalLabel:'📚 Databasen innehåller över 8 000 ord och fraser', lblVerb:'⚡ Frasverb', lblTopic:'🗂 Ämne', editDetails:'⚙ Redigera detaljer',
+  genTag:'⚙ Promptgenerator', advancedToggleLabel:'⚙ Avancerade inställningar', lblVerb:'⚡ Frasverb', lblTopic:'🗂 Ämne', editDetails:'⚙ Redigera detaljer',
   genH:'Skapa en dialog i ChatGPT',
   genLead:'Välj språk, ange ett ord — ChatGPT öppnas med en färdig prompt.',
   genLangL:'1️⃣ Källspråk → Målspråk',
@@ -5625,7 +5635,7 @@ ru:{
   coffeeP:"Помогает тебе Contexta? Поддержи меня кофе на <a href=\"https://ko-fi.com/Contexta\" target=\"_blank\" rel=\"noopener\">Ko-fi</a> — каждый взнос может продвинуть Contexta вперёд.",
   footerP:"Создано с помощью Claude AI (Anthropic) · claude.ai",
   footerSub:"10 языков · 3 уровня · 6 AI платформ", footerTermsLink:'Условия использования', footerPrivacyLink:'Политика конфиденциальности', termsTitle:'Условия использования', termsBody:'<p>Это приложение (Contexta) предоставляется «как есть», без каких-либо гарантий, явных или подразумеваемых. Автор не гарантирует непрерывную доступность, безошибочную работу или безопасность приложения.</p><p>Используя приложение, вы соглашаетесь делать это на собственный риск. Автор не несёт ответственности за любой прямой или косвенный ущерб, потерю данных или иной вред, возникший в результате использования приложения.</p><p>Приложение использует сторонние AI-инструменты для генерации обучающего контента. Автор не гарантирует точность, полноту или пригодность сгенерированного контента для какой-либо конкретной цели.</p><p>Пожертвования через Ko-fi являются добровольными и не создают права на какие-либо конкретные услуги или гарантии.</p><p>Эти условия могут время от времени изменяться. Продолжение использования приложения означает согласие с действующими условиями.</p>', privacyTitle:'Политика конфиденциальности', privacyBody:'<p>Это приложение не хранит никаких персональных данных на сервере. Все данные (история словарного запаса, языковые настройки и т.д.) хранятся только локально в вашем браузере (localStorage) и никогда не отправляются и не передаются автору.</p><p>Приложение может отправлять введённый вами текст сторонним поставщикам AI (например, ChatGPT) для генерации обучающего контента. У этих сервисов есть собственная политика конфиденциальности, которую мы рекомендуем изучить.</p><p>Приложение не использует отслеживающие куки или сторонние аналитические инструменты помимо стандартного хостинга (GitHub Pages).</p><p>Для добровольных пожертвований мы используем платформу Ko-fi, которая обрабатывает платёжную информацию в соответствии со своей собственной политикой конфиденциальности.</p>',
-  genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', wordsTotalLabel:'📚 База данных содержит более 8000 слов и фраз', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
+  genTag:'⚙ Генератор промптов', advancedToggleLabel:'⚙ Расширенные настройки', lblVerb:'⚡ Фразовые глаголы', lblTopic:'🗂 Тема', editDetails:'⚙ Настройки',
   genH:'Создать диалог в ChatGPT',
   genLead:'Выбери языки, введи слово — ChatGPT откроется с готовым промптом.',
   genLangL:'1️⃣ Исходный язык → Целевой язык',
@@ -5701,7 +5711,7 @@ tr:{
   pill2:'B1–B2 Orta', pill3:'C1–C2 İleri', pill4:'10 dil',
   s2:'Diyalog / kelime', s3:'Seviyeler', s4:'AI platformları',
   recLabel:'⭐ Önerilen', lockDesc:'Pay me coffee sonrası erişim.',
-  genTag:'⚙ Prompt oluşturucu', advancedToggleLabel:'⚙ Gelişmiş ayarlar', wordsTotalLabel:'📚 Veritabanı 8.000\'den fazla kelime ve ifade içeriyor', lblVerb:'⚡ Fiil öbekleri', lblTopic:'🗂 Konu', editDetails:'⚙ Ayrıntıları düzenle',
+  genTag:'⚙ Prompt oluşturucu', advancedToggleLabel:'⚙ Gelişmiş ayarlar', lblVerb:'⚡ Fiil öbekleri', lblTopic:'🗂 Konu', editDetails:'⚙ Ayrıntıları düzenle',
   genH:'ChatGPT\'de diyalog oluştur',
   genLead:'Dilleri seç, kelime gir — ChatGPT hazır promptla açılır.',
   genLangL:'1️⃣ Kaynak dil → Hedef dil',
@@ -5779,7 +5789,7 @@ uk:{
   s2:'Діалогів / слово', s3:'Рівні', s4:'AI платформи',
   recLabel:'⭐ Рекомендовано',
   lockDesc:'Доступ після Pay me coffee.',
-  genTag:'⚙ Генератор промптів', advancedToggleLabel:'⚙ Розширені налаштування', wordsTotalLabel:'📚 База даних містить понад 8000 слів і фраз',
+  genTag:'⚙ Генератор промптів', advancedToggleLabel:'⚙ Розширені налаштування',
   genH:'Створи діалог у ChatGPT',
   genLead:'Вибери мови, введи слово — ChatGPT відкриється з готовим промптом.',
   genLangL:'1️⃣ Мова, з якої перекладаю → на яку перекладаю',
@@ -5861,7 +5871,7 @@ id:{
   s2:'Dialog / kata', s3:'Level', s4:'Platform AI',
   recLabel:'⭐ Direkomendasikan',
   lockDesc:'Akses setelah Pay me coffee.',
-  genTag:'⚙ Generator Prompt', advancedToggleLabel:'⚙ Pengaturan lanjutan', wordsTotalLabel:'📚 Database berisi lebih dari 8.000 kata dan frasa',
+  genTag:'⚙ Generator Prompt', advancedToggleLabel:'⚙ Pengaturan lanjutan',
   genH:'Buat dialog di ChatGPT',
   genLead:'Pilih bahasa, masukkan kata — ChatGPT akan terbuka dengan prompt siap pakai.',
   genLangL:'1️⃣ Bahasa yang kuterjemahkan dari → ke',
@@ -6316,19 +6326,6 @@ var intentTimer = null;
 function clearPracticeInput() {
   var el = document.getElementById('practiceInput');
   if (el) { el.value = ''; el.focus(); onIntentInput(el); }
-
-  // Vrať jazyk A/B zpět na stav před vložením náhodného anglického slova
-  // (viz insertRandomInspiration) — jinak zůstane displej trvale přepnutý na angličtinu.
-  if (_rndInspirationPrevLangs) {
-    genFromLangVal = _rndInspirationPrevLangs.from;
-    genToLangVal   = _rndInspirationPrevLangs.to;
-    if (typeof updateGenLangBtn === 'function') {
-      updateGenLangBtn('from', genFromLangVal);
-      updateGenLangBtn('to', genToLangVal);
-    }
-    _rndInspirationPrevLangs = null;
-    if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
-  }
 
   // Reset roletky Téma
   selectedTopic = '';
@@ -7507,10 +7504,6 @@ function toggleQuickLevelDrop(e) {
 })();
 
 var _qlLevel = 'b1';
-// Aktuálně vybraná kategorie závislá na úrovni (např. "verbs"), pokud nějaká je.
-// Umožňuje qlSelectLevel() přepočítat a propsat hodnotu při změně úrovně.
-var _qlActiveCategoryPrefix = null;
-var _qlActiveCategoryEl = null;
 
 function qlSelectLevel(level, el) {
   _qlLevel = level;
@@ -7518,12 +7511,6 @@ function qlSelectLevel(level, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
-  // Pokud je právě aktivní kategorie závislá na úrovni (např. "Slovesa"),
-  // je potřeba ji přepočítat na novou úroveň a propsat do zdroje slov
-  // (jinak zůstane v selectu/na obrazovce stará úroveň, viz #bugfix level-switch).
-  if (_qlActiveCategoryPrefix && _qlActiveCategoryEl) {
-    qlSelectCategory(_qlActiveCategoryPrefix, qlGetCategoryLabel(_qlActiveCategoryEl), _qlActiveCategoryEl);
-  }
 }
 
 function qlGetCategoryLabel(el) {
@@ -7538,8 +7525,6 @@ function qlSelectCategory(prefix, label, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
-  _qlActiveCategoryPrefix = prefix;
-  _qlActiveCategoryEl = el;
   var levelLabel = _qlLevel.toUpperCase();
   var value = prefix ? (prefix + '_' + _qlLevel) : levelLabel;
   var translatedLabel = qlGetCategoryLabel(el);
@@ -7553,8 +7538,6 @@ function qlSelectFixed(value, label, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.add('ql-disabled');
-  _qlActiveCategoryPrefix = null;
-  _qlActiveCategoryEl = null;
   selectQuickLevel(value, label, el);
 }
 
@@ -8845,10 +8828,6 @@ function genGenerate() {
   var wordSourceVal    = wordSourceEl ? wordSourceEl.value : '';
   var isVerbSource     = wordSourceVal.indexOf('verbs_') === 0;
   var isEnglishInvolved = (fromLang === 'en' || toLang === 'en');
-  // Kategorie "frázová slovesa" (náhodné anglické slovo) = zadaný výraz UŽ JE frázové sloveso.
-  // V tom případě se nemá přidávat žádná bonusová věta navíc — výstup má být stejný
-  // jako u ostatních slovních druhů (3 ukázkové věty, 10 dialogů).
-  var isPhrasalVerbCategory = (wordSourceVal === 'phrasal_verbs');
 
   if (!intent) {
     var err = document.getElementById('genError');
@@ -8993,13 +8972,13 @@ function genGenerate() {
     'SYSTEM RULE: All error messages, warnings, validation messages, and system feedback must be written in ' + webLangName + ' only — never in Language A or Language B.\n' +
     'Language A: ' + fromName + '\n' +
     'Language B: ' + toName + '\n' +
-    'Topic/target word: ' + buildTargetHint(intent, isVerbSource) + '\n' +
+    'Topic/target word: ' + intent + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
-    (assistVerb && !isPhrasalVerbCategory ? 'Phrasal verb: ' + assistVerb + '\n' +
-      'Right after the 3 example sentences and BEFORE the dialogues, insert EXACTLY 1 (one single) extra sentence pair using the phrasal verb "' + assistVerb + '" instead of "' + intent + '", same meaning. Format MUST exactly mirror the example-sentence pairs: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence — it is only ONE extra pair for the whole output.\n'
+    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
+      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "💬 ".\n'
       : '') +
-    (assistVerb || !isVerbSource || !isEnglishInvolved || isPhrasalVerbCategory ? '' :
-      'If "' + intent + '" has a common, naturally used phrasal equivalent (not rare/literary): state it as a line "Phrasal verb: [equivalent]", then right after the 3 example sentences and BEFORE the dialogues, insert EXACTLY 1 (one single) extra sentence pair using this phrasal verb instead of "' + intent + '". Format MUST exactly mirror the example-sentence pairs: one line "💬 ' + fromLabel + ' [sentence in ' + fromName + ']" followed directly by one line "' + toLabel + ' [translation in ' + toName + ']" — never both lines in the same language. NEVER place this sentence after the dialogues or inside any dialogue turn (🧩). NEVER create it repeatedly for each example sentence. If no natural equivalent exists, skip both.\n') +
+    (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
+      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
@@ -9007,10 +8986,9 @@ function genGenerate() {
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
     'OUTPUT:\n' +
-    'Start your response directly with the content below — do not print "1)", "2)", "3)" or any other step labels/numbers, they are structural instructions for you only, not visible text.\n' +
-    'FIRST, a line: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
-    'THEN, 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
-    'FINALLY, ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
+    '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
 
     'RULES:\n' +
@@ -9633,50 +9611,6 @@ function insertRandomTopic() {
 // Zdroje typu verbs_* obsahují holá slovesa (např. "wreck"). Bez kontextu
 // je AI může vyhodnotit jako podstatné jméno ("vrak" místo "zničit").
 // Prefix "to " jednoznačně označí infinitiv, aniž by se měnil prompt.
-// Homografy mezi anglickými slovesy (stejný pravopis, různá výslovnost/význam),
-// které matou hlasový režim AI asistentů (např. "tear" = trhat vs. slza).
-// Hint se přidává POUZE do řádku "Topic/target word:" v promptu (viz genGenerate),
-// nikde jinde se proměnná intent nemění.
-// Seznam ověřen proti skutečnému obsahu verbs_a1–c2.json (26 skutečných heteronymů).
-var _homographHints = {
-  'close':     '(shut, not "close by"/near)',
-  'live':      '(reside, not a "live" broadcast)',
-  'lead':      '(guide, not the metal)',
-  'record':    '(document, not a vinyl record)',
-  'refuse':    '(decline, not garbage/trash)',
-  'row':       '(argue, not a line/boat row)',
-  'increase':  '(grow, not the noun "an increase")',
-  'object':    '(protest, not a thing)',
-  'present':   '(give/introduce, not "gift"/"now")',
-  'produce':   '(make, not vegetables)',
-  'protest':   '(object, not a demonstration)',
-  'reject':    '(turn down, not a defective item)',
-  'suspect':   '(believe guilty, not "a suspect")',
-  'transfer':  '(move, not the noun "a transfer")',
-  'transport': '(carry, not the noun "transport")',
-  'insert':    '(put in, not a printed insert)',
-  'permit':    '(allow, not a document/license)',
-  'recall':    '(remember, not "a product recall")',
-  'update':    '(bring up to date, not the noun "an update")',
-  'wind':      '(twist/coil, not the weather)',
-  'conduct':   '(direct/carry out, not behavior)',
-  'convert':   '(change, not "a convert")',
-  'extract':   '(pull out, not the noun "an extract")',
-  'project':   '(plan/protrude, not the noun "a project")',
-  'subject':   '(subject someone to, not the noun/adjective)',
-  'tear':      '(rip, not cry)',
-  'console':   '(comfort, not a control panel)',
-  'exploit':   '(use/take advantage of, not a heroic deed)',
-  'attribute': '(credit to, not the noun "a quality")'
-};
-
-function buildTargetHint(word, isVerbSource) {
-  if (!word || !isVerbSource) return word;
-  var key = String(word).replace(/^to\s+/i, '').trim().toLowerCase();
-  var hint = _homographHints[key];
-  return hint ? word + ' ' + hint : word;
-}
-
 function _applyVerbPrefix(word, source) {
   if (!word || !source) return word;
   if (source.indexOf('verbs_') !== 0) return word;
@@ -9684,18 +9618,10 @@ function _applyVerbPrefix(word, source) {
   return 'to ' + word;
 }
 
-// Zachycuje jazyky A/B tak, jak byly nastavené TĚSNĚ PŘED prvním vložením
-// náhodného anglického slova. clearPracticeInput() je použije k návratu
-// na původní jazyk displeje po smazání slova křížkem.
-var _rndInspirationPrevLangs = null;
-
 function insertRandomInspiration() {
   // Zdrojem je vždy anglické slovo -> jazyk "z" přepni na angličtinu,
   // ale bez zásahu do jazyka celého UI (webLang zůstává beze změny).
   if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en') {
-    if (!_rndInspirationPrevLangs) {
-      _rndInspirationPrevLangs = { from: genFromLangVal, to: genToLangVal };
-    }
     var _prevFromLang = genFromLangVal;
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
@@ -9760,27 +9686,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedVal) {
       var srcOpt = document.querySelector('.gen-word-source-opt[data-value="' + savedVal + '"]');
       wsSelect(savedVal, savedLbl || savedVal, srcOpt);
-      // #bugfix level-switch: wsSelect() jen nastaví text popisku, ale neobnoví
-      // _qlLevel/_qlActiveCategoryPrefix/_qlActiveCategoryEl. Bez toho qlSelectLevel()
-      // po kliknutí na jinou úroveň (A1–C2) neví, že má label přepočítat, a starý
-      // popisek (např. "Slovesa B1") zůstane viset i po výběru B2.
-      var m = /^([a-z_]+)_(a1|a2|b1|b2|c1|c2)$/.exec(savedVal);
-      if (m) {
-        var savedPrefix = m[1], savedLevel = m[2];
-        _qlLevel = savedLevel;
-        var catEl = document.querySelector('.quicklevel-item[data-prefix="' + savedPrefix + '"]');
-        if (catEl) {
-          _qlActiveCategoryPrefix = savedPrefix;
-          _qlActiveCategoryEl = catEl;
-          catEl.setAttribute('data-value', savedVal);
-          catEl.classList.add('selected');
-        }
-        var levelEl = document.querySelector('.ql-level-circle[data-level="' + savedLevel + '"]');
-        if (levelEl) {
-          document.querySelectorAll('.ql-level-circle').forEach(function(c) { c.classList.remove('selected'); });
-          levelEl.classList.add('selected');
-        }
-      }
     }
   } catch(e) {}
 });
