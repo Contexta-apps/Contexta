@@ -9116,19 +9116,19 @@ function genGenerate() {
     'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
     '\n' +
     (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
-    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction.\n' +
+    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction. Within dialogues, each reply must also be grammatically and temporally consistent with the previous reply. Do not change tense merely to create variety. A tense change is allowed only when the meaning or time frame genuinely changes. Example: ❌ A: Did you find anything unusual? B: I have noticed a small mistake. ✅ A: Have you found anything unusual? B: I have noticed a small mistake.\n' +
     '- Translate meaning, not words; do not preserve lexical structure.\n' +
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
-      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error.\n\n'
-      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output.\n\n') +
+      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error. This also applies to the final GRAMMAR explanation section — it must be written in ' + webLangName + '.\n\n'
+      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output. This also applies to the final GRAMMAR explanation section — it must be written in ' + webLangName + '.\n\n') +
 
     'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
     (selectedGrammar
       ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\n' +
-        'Use it naturally in the ' + fromLabel + ' examples and dialogues. At the end add a section titled "GRAMMAR: ' + selectedGrammar.name + '" with a short explanation in ' + fromName + ' (3-5 sentences) and 3 more example sentences.\n\n'
+        'Use it naturally in the ' + fromLabel + ' examples and dialogues. At the end add a section titled "GRAMMAR: ' + selectedGrammar.name + '" with a short explanation in ' + webLangName + ' (3-5 sentences) and 3 more example sentences.\n\n'
       : '') +
 
     'Number of dialogues: ' + totalDialogs + '\n' +
