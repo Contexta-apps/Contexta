@@ -8838,6 +8838,10 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 // ────────────────────────────────────────────────────────────────
 
+// Jazyky bez definované diakritiky (LANG_DIACRITICS), kde by ASCII kontrola
+// dávala falešné poplachy při každém slově -> auto-switch se pro ně přeskakuje.
+var LANG_SKIP_AUTOSWITCH = { id: true };
+
 function checkLangMismatchHint() {
   var intentEl = document.getElementById('practiceInput');
   var intent   = intentEl ? intentEl.value.trim() : '';
@@ -8845,20 +8849,48 @@ function checkLangMismatchHint() {
   var _errEl = document.getElementById('genError');
   if (!_errEl) return;
 
+  // Lazy-load anglického slovníku při prvním psaní (jednou, pak z cache).
+  if (intent && !_enWordSet && !_enWordSetLoading) _loadEnglishWordSet();
+
   var mismatch = false;
+  var autoSwitchToEnglish = false;
+
   if (intent) {
     // Pokud slovo obsahuje znaky typické pro jazyk A, je vše v pořádku.
     var matchesFromLang = LANG_DIACRITICS[fromLang] ? LANG_DIACRITICS[fromLang].test(intent) : false;
     if (!matchesFromLang) {
-      // Zkontroluj, jestli slovo neodpovídá typickým znakům JINÉHO jazyka.
+      // Zkontroluj, jestli slovo neodpovídá typickým znakům JINÉHO (ne anglického) jazyka.
+      var matchesOtherLang = false;
       for (var code in LANG_DIACRITICS) {
-        if (code !== fromLang && LANG_DIACRITICS[code].test(intent)) { mismatch = true; break; }
+        if (code !== fromLang && LANG_DIACRITICS[code].test(intent)) { matchesOtherLang = true; break; }
       }
-      // Pozn.: ASCII slovo bez diakritiky je ve spoustě jazyků naprosto validní
-      // (např. "parola" v italštině), proto se zde už nevyhodnocuje jako mismatch.
-      // Varování se nyní spouští jen tehdy, když slovo jednoznačně obsahuje
-      // diakritiku patřící jinému jazyku — to je spolehlivý signál bez falešných poplachů.
+      if (matchesOtherLang) {
+        // Jednoznačně cizí diakritika, ale ne anglická -> jen varování, nepřepínat.
+        mismatch = true;
+      } else if (fromLang !== 'en' && !LANG_SKIP_AUTOSWITCH[fromLang]) {
+        // Čisté ASCII slovo bez jakékoli diakritiky. Ověř proti anglickému
+        // slovníku (poslední slovo/fráze); není-li nalezeno nebo slovník ještě
+        // není načtený, defaultně to appka bere jako angličtinu (nejčastější use-case).
+        var words = intent.toLowerCase().split(/\s+/).filter(Boolean);
+        var lastWord = words[words.length - 1] || '';
+        if (lastWord.length > 1) {
+          autoSwitchToEnglish = true; // slovník (pokud načtený) tohle jen potvrzuje, jinak odhad
+        }
+      }
     }
+  }
+
+  if (autoSwitchToEnglish) {
+    var _prevFromLang = genFromLangVal;
+    genFromLangVal = 'en';
+    if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
+    if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
+      genToLangVal = _prevFromLang;
+      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
+    }
+    _errEl.style.display = 'none';
+    _errEl.style.color = '';
+    return;
   }
 
   if (mismatch) {
@@ -9511,6 +9543,48 @@ function vtGeneratePhrasal(pv) {
 
 /* ── ✨ Náhodná inspirace ── */
 var _wordSourceCache = {};
+
+// ── Anglický slovník pro auto-detekci jazyka A v practiceInput ──
+var _enWordSet = null;
+var _enWordSetLoading = false;
+var EN_WORD_SET_CACHE_KEY = 'contexta_en_word_set_v1';
+var EN_WORD_SOURCES = ['A1','A2','B1','B2','C1','C2','top500','top1000','top3000',
+  'business','phrasal_verbs','idioms','discourse_markers','toefl','ielts',
+  'verbs_a1','verbs_a2','verbs_b1','verbs_b2','verbs_c1','verbs_c2',
+  'collocations_a1','collocations_a2','collocations_b1','collocations_b2','collocations_c1','collocations_c2',
+  'nouns_a1','nouns_a2','nouns_b1','nouns_b2','nouns_c1','nouns_c2',
+  'noun_phrases_a1','noun_phrases_a2','noun_phrases_b1','noun_phrases_b2','noun_phrases_c1','noun_phrases_c2',
+  'adjectives_a1','adjectives_a2','adjectives_b1','adjectives_b2','adjectives_c1','adjectives_c2',
+  'adverbs_a1','adverbs_a2','adverbs_b1','adverbs_b2','adverbs_c1','adverbs_c2'];
+
+function _loadEnglishWordSet() {
+  if (_enWordSet || _enWordSetLoading) return;
+  try {
+    var cached = localStorage.getItem(EN_WORD_SET_CACHE_KEY);
+    if (cached) { _enWordSet = new Set(JSON.parse(cached)); return; }
+  } catch (e) {}
+  _enWordSetLoading = true;
+  var merged = new Set();
+  var pending = EN_WORD_SOURCES.length;
+  EN_WORD_SOURCES.forEach(function(source) {
+    fetch('data/' + source.toLowerCase() + '.json')
+      .then(function(r) { return r.ok ? r.json() : []; })
+      .then(function(data) {
+        if (Array.isArray(data)) {
+          data.forEach(function(w) { if (typeof w === 'string') merged.add(w.trim().toLowerCase()); });
+        }
+      })
+      .catch(function() {})
+      .then(function() {
+        pending--;
+        if (pending === 0) {
+          _enWordSet = merged;
+          _enWordSetLoading = false;
+          try { localStorage.setItem(EN_WORD_SET_CACHE_KEY, JSON.stringify(Array.from(merged))); } catch (e) {}
+        }
+      });
+  });
+}
 
 function _pickFromList(list) {
   if (!list || !list.length) return null;
