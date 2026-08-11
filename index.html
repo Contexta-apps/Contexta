@@ -3754,6 +3754,12 @@ h1[data-t="heroH"] {
   .gen-advanced-wrap {
     scroll-margin-top: 12px;
   }
+  /* Fix: na dotyku zůstává :hover "zaseknutý" po tapnutí – tlačítko
+     by pak vypadalo bíle místo zlatě. Na mobilu proto barvu vynutíme. */
+  .gen-advanced-wrap > .gen-advanced-toggle,
+  .gen-advanced-wrap > .gen-advanced-toggle:hover {
+    color: var(--gold-lt);
+  }
 }
 </style>
 <body>
