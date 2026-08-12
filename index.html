@@ -8873,14 +8873,15 @@ function checkLangMismatchHint() {
       if (matchesOtherLang) {
         // Jednoznačně cizí diakritika, ale ne anglická -> jen varování, nepřepínat.
         mismatch = true;
-      } else if (fromLang !== 'en' && !LANG_SKIP_AUTOSWITCH[fromLang]) {
-        // Čisté ASCII slovo bez jakékoli diakritiky. Ověř proti anglickému
-        // slovníku (poslední slovo/fráze); není-li nalezeno nebo slovník ještě
-        // není načtený, defaultně to appka bere jako angličtinu (nejčastější use-case).
+      } else if (fromLang !== 'en' && !LANG_SKIP_AUTOSWITCH[fromLang] && _enWordSet) {
+        // Čisté ASCII slovo bez jakékoli diakritiky. Přepni na angličtinu jen
+        // pokud je slovo skutečně v anglickém slovníku (ne jen podle chybějící
+        // diakritiky) - jinak by se běžná ASCII slova z jiných jazyků (např. CZ
+        // "kolo", "rezerva") mylně přepínala na angličtinu.
         var words = intent.toLowerCase().split(/\s+/).filter(Boolean);
         var lastWord = words[words.length - 1] || '';
-        if (lastWord.length > 1) {
-          autoSwitchToEnglish = true; // slovník (pokud načtený) tohle jen potvrzuje, jinak odhad
+        if (lastWord.length > 1 && _enWordSet.has(lastWord)) {
+          autoSwitchToEnglish = true;
         }
       }
     }
@@ -9587,6 +9588,7 @@ function _loadEnglishWordSet() {
           _enWordSet = merged;
           _enWordSetLoading = false;
           try { localStorage.setItem(EN_WORD_SET_CACHE_KEY, JSON.stringify(Array.from(merged))); } catch (e) {}
+          if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
         }
       });
   });
