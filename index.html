@@ -7692,10 +7692,6 @@ var GEN_LANGS = ['en','de','fr','es','it','pt','cz','pl','sk','nl','sv','tr','uk
 
 var genFromLangVal = (typeof webLang !== 'undefined') ? webLang : 'en';
 var genToLangVal   = (genFromLangVal === 'en') ? 'cz' : 'en';
-// Samostatná paměť posledního ne-anglického "from" jazyka. Na rozdíl od webLang
-// (jazyk rozhraní appky) se NEpřepisuje automaticky spolu s webLang - slouží jen
-// jako záložní cíl pro auto-switch, když je aktuálně "from" i webLang shodně 'en'.
-var lastNonEnFromLang = (genFromLangVal !== 'en') ? genFromLangVal : 'cz';
 
 function buildGenLangDropdowns() {
   ['from','to'].forEach(function(side) {
@@ -7759,7 +7755,6 @@ function selectGenLang(side, code, e) {
     }
   }
   if (side === 'from') genFromLangVal = code; else genToLangVal = code;
-  if (side === 'from' && code !== 'en') lastNonEnFromLang = code;
   updateGenLangBtn(side, code);
   // close dropdown
   var btn  = document.getElementById(side + 'LangBtn');
@@ -7794,7 +7789,6 @@ function swapLangs() {
   var tmp = genFromLangVal;
   genFromLangVal = genToLangVal;
   genToLangVal   = tmp;
-  if (genFromLangVal !== 'en') lastNonEnFromLang = genFromLangVal;
   updateGenLangBtn('from', genFromLangVal);
   updateGenLangBtn('to',   genToLangVal);
   // sync webLang
@@ -8866,7 +8860,6 @@ function checkLangMismatchHint() {
 
   var mismatch = false;
   var autoSwitchToEnglish = false;
-  var autoSwitchToWebLang = false;
 
   if (intent) {
     // Pokud slovo obsahuje znaky typické pro jazyk A, je vše v pořádku.
@@ -8890,40 +8883,17 @@ function checkLangMismatchHint() {
         if (lastWord.length > 1 && _enWordSet.has(lastWord)) {
           autoSwitchToEnglish = true;
         }
-      } else if (fromLang === 'en' && lastNonEnFromLang && lastNonEnFromLang !== 'en' && _enWordSet) {
-        // Opačný směr: je nastavená angličtina, ale slovo v anglickém slovníku
-        // není -> nejspíš jde o naposledy zvolený jiný jazyk, přepni zpět na něj.
-        // (webLang se nepoužívá, protože se sám sesynchronizuje s fromLang.)
-        var words2 = intent.toLowerCase().split(/\s+/).filter(Boolean);
-        var lastWord2 = words2[words2.length - 1] || '';
-        if (lastWord2.length > 1 && !_enWordSet.has(lastWord2)) {
-          autoSwitchToWebLang = true;
-        }
       }
     }
   }
 
   if (autoSwitchToEnglish) {
     var _prevFromLang = genFromLangVal;
-    if (_prevFromLang !== 'en') lastNonEnFromLang = _prevFromLang;
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
     if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
       genToLangVal = _prevFromLang;
       if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
-    }
-    _errEl.style.display = 'none';
-    _errEl.style.color = '';
-    return;
-  }
-
-  if (autoSwitchToWebLang) {
-    var _prevFromLang2 = genFromLangVal;
-    genFromLangVal = lastNonEnFromLang;
-    if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', lastNonEnFromLang);
-    if (typeof genToLangVal !== 'undefined' && genToLangVal === lastNonEnFromLang) {
-      genToLangVal = _prevFromLang2;
-      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang2);
     }
     _errEl.style.display = 'none';
     _errEl.style.color = '';
