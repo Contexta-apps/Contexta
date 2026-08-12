@@ -9082,7 +9082,7 @@ function genGenerate() {
       : '') +
     (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
       'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
-    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\nUse the target grammar naturally; never force it where natural English requires another form.\n' : '') +
+    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\nUse the target grammar naturally; never force it where natural English requires another form (e.g. do not add WILL in every clause of a sentence if some clauses are naturally present tense).\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
 
