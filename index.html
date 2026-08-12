@@ -8860,6 +8860,7 @@ function checkLangMismatchHint() {
 
   var mismatch = false;
   var autoSwitchToEnglish = false;
+  var autoSwitchToWebLang = false;
 
   if (intent) {
     // Pokud slovo obsahuje znaky typické pro jazyk A, je vše v pořádku.
@@ -8883,6 +8884,14 @@ function checkLangMismatchHint() {
         if (lastWord.length > 1 && _enWordSet.has(lastWord)) {
           autoSwitchToEnglish = true;
         }
+      } else if (fromLang === 'en' && webLang !== 'en' && _enWordSet) {
+        // Opačný směr: je nastavená angličtina, ale slovo v anglickém slovníku
+        // není -> nejspíš jde o jazyk rozhraní (webLang), přepni zpět na něj.
+        var words2 = intent.toLowerCase().split(/\s+/).filter(Boolean);
+        var lastWord2 = words2[words2.length - 1] || '';
+        if (lastWord2.length > 1 && !_enWordSet.has(lastWord2)) {
+          autoSwitchToWebLang = true;
+        }
       }
     }
   }
@@ -8894,6 +8903,19 @@ function checkLangMismatchHint() {
     if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
       genToLangVal = _prevFromLang;
       if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
+    }
+    _errEl.style.display = 'none';
+    _errEl.style.color = '';
+    return;
+  }
+
+  if (autoSwitchToWebLang) {
+    var _prevFromLang2 = genFromLangVal;
+    genFromLangVal = webLang;
+    if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', webLang);
+    if (typeof genToLangVal !== 'undefined' && genToLangVal === webLang) {
+      genToLangVal = _prevFromLang2;
+      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang2);
     }
     _errEl.style.display = 'none';
     _errEl.style.color = '';
