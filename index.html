@@ -7575,6 +7575,8 @@ function toggleQuickLevelDrop(e) {
 })();
 
 var _qlLevel = 'b1';
+var _qlSelectedCategoryPrefix = null;
+var _qlSelectedCategoryEl = null;
 
 function qlSelectLevel(level, el) {
   _qlLevel = level;
@@ -7582,6 +7584,11 @@ function qlSelectLevel(level, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
+  // Pokud je aktuálně vybraná kategorie závislá na úrovni (např. adjectives_b1),
+  // po změně úrovně ji přepočítat, aby odpovídala nově zvolené úrovni.
+  if (_qlSelectedCategoryPrefix && _qlSelectedCategoryEl) {
+    qlSelectCategory(_qlSelectedCategoryPrefix, null, _qlSelectedCategoryEl);
+  }
 }
 
 function qlGetCategoryLabel(el) {
@@ -7601,6 +7608,8 @@ function qlSelectCategory(prefix, label, el) {
   var translatedLabel = qlGetCategoryLabel(el);
   var fullLabel = prefix ? (translatedLabel + ' ' + levelLabel) : levelLabel;
   el.setAttribute('data-value', value);
+  _qlSelectedCategoryPrefix = prefix;
+  _qlSelectedCategoryEl = el;
   selectQuickLevel(value, fullLabel, el);
 }
 
@@ -7609,6 +7618,9 @@ function qlSelectFixed(value, label, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.add('ql-disabled');
+  // Pevná kategorie nezávisí na úrovni, takže se dál nemá přepočítávat.
+  _qlSelectedCategoryPrefix = null;
+  _qlSelectedCategoryEl = null;
   selectQuickLevel(value, label, el);
 }
 
@@ -9600,7 +9612,7 @@ function _pickFromList(list) {
   var key = list.length + '_' + (list[0] || '');
   if (!_pickFromList._hist[key]) _pickFromList._hist[key] = [];
   var h = _pickFromList._hist[key];
-  var block = Math.min(20, Math.max(1, Math.floor(list.length * 0.15)));
+  var block = Math.min(Math.ceil(list.length * 0.6), Math.max(8, Math.floor(list.length * 0.15)));
   var avail = list.filter(function(w) { return h.indexOf(w) === -1; });
   if (!avail.length) { _pickFromList._hist[key] = []; avail = list.slice(); }
   var pick = avail[Math.floor(Math.random() * avail.length)];
