@@ -9210,7 +9210,7 @@ function genOpen(ai, promptText) {
     chatgpt: 'https://chatgpt.com/?q=' + enc,
     copilot: 'https://copilot.microsoft.com/?q=' + enc,
   };
-  var LIMIT = 12000;
+  var LIMIT = 20000;
   var url = urls[ai] || urls.chatgpt;
   // Copilot nepodporuje předvyplnění promptu přes URL parametr ?q= jako ChatGPT,
   // proto pro něj prompt VŽDY zkopírujeme do schránky (nejen při překročení LIMIT).
