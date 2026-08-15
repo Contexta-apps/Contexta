@@ -9151,7 +9151,11 @@ function genGenerate() {
       : '') +
 
     'Number of dialogues: ' + totalDialogs + '\n' +
-    'Length: ' + dlInfo.label + '\n';
+    'Length: ' + dlInfo.label + '\n' +
+
+    (currentAI === 'chatgpt'
+      ? '\nDisplay format: Please use canvas for this response, but keep following the formatting rules above exactly (no Markdown, no tables).\n'
+      : '');
 
   // Uložit do Probíraných slov
   genHistoryAdd(intent);
