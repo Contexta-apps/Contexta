@@ -9101,11 +9101,14 @@ function genGenerate() {
 
     'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
 
+    'INTERNAL DRAFTING STEP (mandatory, do NOT show this draft in your visible answer): Before writing anything visible, silently compose the full set of example sentences and dialogues for "' + intent + '" in your head, exactly as they will appear below. Only after that internal draft is complete, write your visible answer below — starting with Line 1 — based on what that finished draft actually contains, not on a plan made before drafting it.\n\n' +
+
     'OUTPUT:\n' +
-    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Only if "' + intent + '" has genuinely DIFFERENT core meanings (not register variants, not genre subtypes), list 2-3 ' + toName + ' equivalents — e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). When listing multiple equivalents, use a different one in each dialogue below.\n' +
+    '1) Line 1: ' + fromLabel + ' [topic in ' + fromName + '] - ' + toLabel + ' [topic in ' + toName + ']. Do NOT default to generic dictionary translations. Base this line ONLY on your finished internal draft above — list the ' + toName + ' equivalents that draft actually uses, ordered by real-world frequency/naturalness for native speakers (same ranking as SENSE SELECTION below). e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). Cap at 5 equivalents even if more distinct senses occur. Every equivalent listed on Line 1 must actually appear in at least one example below — never list a sense your draft does not use, and never omit a sense your draft does use.\n' +
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
+    '4) After ALL dialogues, add one blank line, then a final verification line starting with "✅ ' + toName + ' equivalents actually used: ". Re-read everything you wrote above (sentences + dialogues) and list every distinct core meaning of "' + intent + '" that ACTUALLY appears there, ordered by real-world frequency/naturalness for native speakers. This is a factual check of your own text above, not a new plan — it must exactly match what you actually wrote, with nothing omitted and nothing added that is not really used above.\n\n' +
 
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
