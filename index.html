@@ -9108,7 +9108,6 @@ function genGenerate() {
     '2) 3 example sentences (each pair on 2 lines, blank line between):\n' + fromLabel + ' sentence\n' + toLabel + ' translation\n\n' +
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
-    '4) After ALL dialogues, add one blank line, then a final verification line starting with "✅ ' + toName + ' equivalents actually used: ". Re-read everything you wrote above (sentences + dialogues) and list every distinct core meaning of "' + intent + '" that ACTUALLY appears there, ordered by real-world frequency/naturalness for native speakers. This is a factual check of your own text above, not a new plan — it must exactly match what you actually wrote, with nothing omitted and nothing added that is not really used above.\n\n' +
 
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
