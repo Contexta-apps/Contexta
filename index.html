@@ -9029,9 +9029,9 @@ function genGenerate() {
     '- Vary tone: some casual, some slightly surprised, some joking\n\n';
 
   var dialogLengthMap = {
-    'short':  { label: 'Krátké (3 výměny: A–B–A, poslední replika A je potvrzovací odpověď celou větou)', exchanges: 'A:\nB:\nA: ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: A–B–A–B–A, poslední replika A je potvrzovací odpověď celou větou)', exchanges: 'A:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
-    'long':   { label: 'Nejdelší (9 výměn: A–B–A–B–A–B–A–B–A, poslední replika je potvrzovací odpověď celou větou)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
+    'short':  { label: 'Krátké (3 výměny: A–B–A, poslední replika A je reakce (ne shrnutí) celou větou)', exchanges: 'A:\nB:\nA: ← reakce (ne shrnutí) celou větou' },
+    'medium': { label: 'Delší (5 výměn: A–B–A–B–A, poslední replika A je reakce (ne shrnutí) celou větou)', exchanges: 'A:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
+    'long':   { label: 'Nejdelší (9 výměn: A–B–A–B–A–B–A–B–A, poslední replika je reakce (ne shrnutí) celou větou)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
   };
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
 
@@ -9489,9 +9489,9 @@ function vtGenerate(verb, level) {
   var toLang   = LANG_LIST.find(function(l){ return l.code === genToLangVal;   }) || {label:'English'};
 
   var dlMap = {
-    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA: ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
-    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
+    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA: ← reakce (ne shrnutí) celou větou' },
+    'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
@@ -9530,9 +9530,9 @@ function vtGeneratePhrasal(pv) {
   var toLang   = LANG_LIST.find(function(l){ return l.code === genToLangVal;   }) || {label:'English'};
 
   var dlMap = {
-    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA: ← potvrzovací odpověď celou větou' },
-    'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
-    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← potvrzovací odpověď celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
+    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA: ← reakce (ne shrnutí) celou větou' },
+    'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' },
+    'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA: ← reakce (ne shrnutí) celou větou, reagující na PŘEDCHOZÍ repliku B (ne na vlastní dřívější repliku A)' }
   };
   var dl = dlMap[dialogLength] || dlMap['medium'];
 
