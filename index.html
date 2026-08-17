@@ -9142,8 +9142,8 @@ function genGenerate() {
     '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
 
     (needsTranslation
-      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error. This also applies to the final GRAMMAR explanation section — it must be written in ' + webLangName + '.\n\n'
-      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output. This also applies to the final GRAMMAR explanation section — it must be written in ' + webLangName + '.\n\n') +
+      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error.\n\n'
+      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output.\n\n') +
 
     'Forbidden: full language names, tables, Markdown, pipe characters (|). Sentence and translation must not be on the same line.\n\n' +
 
