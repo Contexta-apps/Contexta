@@ -2271,8 +2271,8 @@ img { max-width: 100%; height: auto; }
 .gen-advanced-wrap { padding: 10px 0 4px; }
 .gen-advanced-toggle {
   background: none; border: none; color: rgba(255,255,255,.35);
-  font-size: .76rem; font-weight: 600; cursor: pointer;
-  font-family: 'Inter', sans-serif; padding: 4px 0;
+  font-size: .8rem; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; padding: 4px 0;
   display: flex; align-items: center; gap: 6px;
   transition: color .15s;
 }
@@ -2307,6 +2307,7 @@ img { max-width: 100%; height: auto; }
   transition: background .15s;
 }
 .gen-grammar-header:hover { background: rgba(201,151,58,.1); }
+.gen-grammar-block--main .gen-grammar-header { padding-left: 12px; }
 .gen-grammar-icon { font-size: 1rem; flex-shrink: 0; }
 .gen-grammar-title {
   font-size: .8rem; font-weight: 700;
@@ -2819,7 +2820,7 @@ img { max-width: 100%; height: auto; }
 }
 .gen-advanced-wrap > .gen-advanced-toggle {
   width: 100%;
-  padding: 16px 20px;
+  padding: 16px 40px;
   justify-content: space-between;
   font-size: .85rem;
   font-weight: 600;
@@ -2837,7 +2838,7 @@ img { max-width: 100%; height: auto; }
   border: none;
   border-top: .5px solid #2e3a55;
   background: transparent;
-  padding: 4px 20px 20px;
+  padding: 4px 28px 20px;
   gap: 0;
 }
 .gen-advanced-wrap .gen-config-block:first-child {
@@ -2852,6 +2853,9 @@ img { max-width: 100%; height: auto; }
 .gen-advanced-wrap .gen-config-block {
   padding: 0 0 18px;
   border-bottom: none;
+}
+.gen-advanced-wrap .gen-config-block:last-child {
+  padding-bottom: 0;
 }
 .gen-advanced-wrap .gen-config-block + .gen-config-block {
   margin-top: 4px !important;
@@ -2949,21 +2953,6 @@ img { max-width: 100%; height: auto; }
 }
 .gen-advanced-wrap .gen-advanced {
   padding-bottom: 6px;
-}
-.gen-advanced-wrap .footer-legal {
-  margin-top: 4px;
-}
-.footer-legal-mobile-only {
-  display: block;
-}
-@media (max-width: 768px) {
-  .gen-advanced-wrap .footer-legal {
-    display: none;
-  }
-  .gen-card .footer-legal-mobile-only {
-    display: block;
-    margin-top: 6px;
-  }
 }
 .gen-card .gen-send-row {
   padding-top: 10px;
@@ -3588,7 +3577,7 @@ h1[data-t="heroH"] {
   .gen-config-block { padding: 0 32px 4px; }
   .gen-hero-header { padding: 24px 32px 28px; }
   .gen-lang-row-inline { padding: 10px 32px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 32px; padding-right: 32px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 44px; padding-right: 44px; }
   .gen-advanced-wrap .gen-advanced { padding-left: 32px; padding-right: 32px; }
   .gen-advanced-wrap .gen-grammar-header { padding-left: 32px; padding-right: 32px; }
 
@@ -3653,7 +3642,7 @@ h1[data-t="heroH"] {
   /* ── Config block max-width pro lepší čitelnost ── */
   .gen-config-block { padding: 0 48px 4px; }
   .gen-lang-row-inline { padding: 10px 48px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 48px; padding-right: 48px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 60px; padding-right: 60px; }
   .gen-advanced-wrap .gen-grammar-header { padding-left: 48px; padding-right: 48px; }
   .gen-advanced-wrap .gen-advanced { padding-left: 48px; padding-right: 48px; }
 
@@ -3728,7 +3717,7 @@ h1[data-t="heroH"] {
   /* ── Generator config block ── */
   .gen-config-block { padding: 0 80px 8px; }
   .gen-lang-row-inline { padding: 10px 80px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 80px; padding-right: 80px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 92px; padding-right: 92px; }
   .gen-advanced-wrap .gen-grammar-header { padding-left: 80px; padding-right: 80px; }
   .gen-advanced-wrap .gen-advanced { padding-left: 80px; padding-right: 80px; }
 
@@ -4099,7 +4088,7 @@ h1[data-t="heroH"] {
         <div class="gen-config-block">
           <div class="gen-tuning" id="genTuning">
             <div class="gen-tuning-row">
-              <span class="gen-tuning-label" data-translate="levelLabel">📊 Úroveň</span>
+              <span class="gen-tuning-label" data-translate="levelLabel">Úroveň</span>
               <div class="gen-tuning-chips" id="genLevelTabs">
                 <button class="gen-chip-level active" onclick="selectGenLevel('A1-A2','a',this)">A1–A2 <span class="gen-chip-sub" data-translate="lvChipSub0">Začátečník</span></button>
                 <button class="gen-chip-level" onclick="selectGenLevel('B1-B2','b',this)">B1–B2 <span class="gen-chip-sub" data-translate="lvChipSub1">Pokročilejší</span></button>
@@ -4107,7 +4096,7 @@ h1[data-t="heroH"] {
               </div>
             </div>
             <div class="gen-tuning-row">
-              <span class="gen-tuning-label gen-word-source-label" data-translate="wordSourceLabel">📖 Zdroj slovíček</span>
+              <span class="gen-tuning-label gen-word-source-label" data-translate="wordSourceLabel">Zdroj slovíček</span>
               <div class="gen-tuning-chips">
                 <div class="gen-word-source-wrap" id="wordSourceWrap" style="position:relative;">
                   <button type="button" class="gen-word-source-btn" id="wordSourceBtn" onclick="event.stopPropagation();wsToggle()" aria-haspopup="listbox" aria-expanded="false">
@@ -4209,7 +4198,7 @@ h1[data-t="heroH"] {
               <div class="gen-tuning-hint" data-translate="advWordSourceHint">Databáze obsahuje 8 000 slov a frází.</div>
             </div>
             <div class="gen-tuning-row">
-              <span class="gen-tuning-label" data-translate="styleLabel">🎭 Styl</span>
+              <span class="gen-tuning-label" data-translate="styleLabel">Styl</span>
               <div class="gen-tuning-chips">
                 <button class="gen-chip-style active" onclick="selectStyle('casual',this)" data-translate="styleNormal">běžná</button>
                 <button class="gen-chip-style" onclick="selectStyle('formal',this)" data-translate="styleFormal">formální</button>
@@ -4218,7 +4207,7 @@ h1[data-t="heroH"] {
               </div>
             </div>
             <div class="gen-tuning-row">
-              <span class="gen-tuning-label" data-translate="advCountLabel">📏 Délka dialogů</span>
+              <span class="gen-tuning-label" data-translate="advCountLabel">Délka dialogů</span>
               <div class="gen-tuning-chips">
                 <button class="gen-chip-count active" onclick="selectLength('short',this)" data-translate="lengthShort">Krátké</button>
                 <button class="gen-chip-count" onclick="selectLength('medium',this)" data-translate="lengthMedium">Delší</button>
@@ -4272,7 +4261,7 @@ h1[data-t="heroH"] {
     <div class="gen-hint-small" style="text-align:center;font-size:.75rem;color:rgba(255,255,255,.3);padding-top:6px;">
       <span data-translate="genHintSmall">💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter</span>
     </div>
-    <div class="footer-legal footer-legal-mobile-only">
+    <div class="footer-legal" id="genFooterLegal" style="display:none;">
       <a href="#" onclick="openLegalModal('terms');return false;" data-translate="footerTermsLink">Podmínky používání</a>
       <span class="footer-dot">·</span>
       <a href="#" onclick="openLegalModal('privacy');return false;" data-translate="footerPrivacyLink">Ochrana soukromí</a>
@@ -4591,7 +4580,7 @@ cz:{
   lvLabel0:"Začátečník", lvLabel1:"Pokročilejší", lvLabel2:"Pokročilý",
   lblVerb:'⚡ Frázová slovesa', lblTopic:'🗂 Téma', editDetails:'⚙ Upravit detaily',
   lockTitle:"Prompt je uzamčen", lockDesc:"Přístup po Pay me coffee.",
-  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Učit se v kontextu", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodné téma", manualTopicLabel:"▾ Vybrat téma manuálně", wordSourceLabel:"📖 Zdroj slovíček", advWordSourceHint:"Databáze obsahuje 8 000 slov a frází.", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
+  tag3:"Cestovat", sampleBtn:"Ukázka", sampleWord:"Učit se v kontextu", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodné téma", manualTopicLabel:"▾ Vybrat téma manuálně", wordSourceLabel:"Zdroj slovíček", advWordSourceHint:"Databáze obsahuje 8 000 slov a frází.", historyLabel:"📚 Probíraná slova", h3:"Zadej slovo, větu nebo frázi",
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
@@ -4636,11 +4625,11 @@ cz:{
   lvChip0:'A1–A2', lvChipSub0:'Začátečník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
-  styleLabel:'🎭 Styl',
+  styleLabel:'Styl',
   styleNormal:'běžná', styleFormal:'formální', styleSlang:'slang', styleHumor:'humorná',
   langLabel:'🌍 Jazyk',
-  levelLabel:'📊 Úroveň',
-  advCountLabel:'📏 Délka dialogů',
+  levelLabel:'Úroveň',
+  advCountLabel:'Délka dialogů',
   lengthShort:'Krátké',
   lengthMedium:'Delší',
   lengthLong:'Nejdelší',
@@ -4685,7 +4674,7 @@ en:{
   lblVerb:'⚡ Phrasal verbs', lblTopic:'🗂 Topic', editDetails:'⚙ Edit details',
   lvTabs:["A1–A2 · Beginner","B1–B2 · Intermediate","C1–C2 · Advanced"],
   lockTitle:"Prompt is locked", lockDesc:"Access after Pay me coffee.",
-  tag3:"Travel", sampleBtn:"Example", sampleWord:"Learning in context", randomChipLabel:"✨ Random English word", randomTopicLabel:"🗂 Random topic", manualTopicLabel:"▾ Choose topic manually", wordSourceLabel:"📖 Word source", advWordSourceHint:"The database contains 8,000 words and phrases.", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
+  tag3:"Travel", sampleBtn:"Example", sampleWord:"Learning in context", randomChipLabel:"✨ Random English word", randomTopicLabel:"🗂 Random topic", manualTopicLabel:"▾ Choose topic manually", wordSourceLabel:"Word source", advWordSourceHint:"The database contains 8,000 words and phrases.", historyLabel:"📚 Words practiced", h3:"Enter a word, sentence or phrase",
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
@@ -4731,11 +4720,11 @@ en:{
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Intermediate',
   lvChip2:'C1–C2', lvChipSub2:'Advanced',
-  styleLabel:'🎭 Style',
+  styleLabel:'Style',
   styleNormal:'casual', styleFormal:'formal', styleSlang:'slang', styleHumor:'humorous',
   langLabel:'🌍 Language',
-  levelLabel:'📊 Level',
-  advCountLabel:'🔢 Number of dialogues',
+  levelLabel:'Level',
+  advCountLabel:'Number of dialogues',
   lengthShort:'Short', lengthMedium:'Longer', lengthLong:'Longest',
   advVerbLabel:'⚡ Phrasal verb (hint)',
   advTopicLabel:'🗂 Topic (hint)',
@@ -4778,7 +4767,7 @@ de:{
   lblVerb:'⚡ Phrasal Verben', lblTopic:'🗂 Thema', editDetails:'⚙ Details bearbeiten',
   lvTabs:["A1–A2 · Anfänger","B1–B2 · Mittelstufe","C1–C2 · Fortgeschritten"],
   lockTitle:"Prompt ist gesperrt", lockDesc:"Zugang nach Pay me coffee.",
-  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Lernen im Kontext", randomChipLabel:"✨ Zufälliges englisches Wort", randomTopicLabel:"🗂 Zufälliges Thema", manualTopicLabel:"▾ Thema manuell wählen", wordSourceLabel:"📖 Wortquelle", advWordSourceHint:"Die Datenbank enthält 8.000 Wörter und Phrasen.", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
+  tag3:"Reisen", sampleBtn:"Beispiel", sampleWord:"Lernen im Kontext", randomChipLabel:"✨ Zufälliges englisches Wort", randomTopicLabel:"🗂 Zufälliges Thema", manualTopicLabel:"▾ Thema manuell wählen", wordSourceLabel:"Wortquelle", advWordSourceHint:"Die Datenbank enthält 8.000 Wörter und Phrasen.", historyLabel:"📚 Geübte Wörter", h3:"Gib ein Wort, einen Satz oder eine Phrase ein",
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
@@ -4824,11 +4813,11 @@ de:{
   lvChip0:'A1–A2', lvChipSub0:'Anfänger',
   lvChip1:'B1–B2', lvChipSub1:'Mittelstufe',
   lvChip2:'C1–C2', lvChipSub2:'Fortgeschritten',
-  styleLabel:'🎭 Stil',
+  styleLabel:'Stil',
   styleNormal:'alltäglich', styleFormal:'formell', styleSlang:'Slang', styleHumor:'humorvoll',
   langLabel:'🌍 Sprache',
-  levelLabel:'📊 Niveau',
-  advCountLabel:'🔢 Anzahl der Dialoge',
+  levelLabel:'Niveau',
+  advCountLabel:'Anzahl der Dialoge',
   lengthShort:'Kurz', lengthMedium:'Länger', lengthLong:'Längste',
   advVerbLabel:'⚡ Phrasal Verb (Hinweis)',
   advTopicLabel:'🗂 Thema (Hinweis)',
@@ -4867,7 +4856,7 @@ fr:{
   lead2:"Après le paiement tu recevras le prompt et tu le colleras comme premier message dans l'IA.",
   lvTabs:["A1–A2 · Débutant","B1–B2 · Intermédiaire","C1–C2 · Avancé"],
   lockTitle:"Prompt verrouillé", lockDesc:"Accès après Pay me coffee.",
-  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Apprendre en contexte", randomChipLabel:"✨ Mot anglais aléatoire", randomTopicLabel:"🗂 Sujet aléatoire", manualTopicLabel:"▾ Choisir un sujet manuellement", wordSourceLabel:"📖 Source de mots", advWordSourceHint:"La base de données contient 8 000 mots et expressions.", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
+  tag3:"Voyager", sampleBtn:"Exemple", sampleWord:"Apprendre en contexte", randomChipLabel:"✨ Mot anglais aléatoire", randomTopicLabel:"🗂 Sujet aléatoire", manualTopicLabel:"▾ Choisir un sujet manuellement", wordSourceLabel:"Source de mots", advWordSourceHint:"La base de données contient 8 000 mots et expressions.", historyLabel:"📚 Mots pratiqués", h3:"Entre un mot, une phrase ou une expression",
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
@@ -4912,10 +4901,10 @@ fr:{
   verbDropDefault:"— sélectionner —",
   topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes', quickLevelVerbsA1:'verbes A1', quickLevelVerbsA2:'verbes A2', quickLevelVerbsB1:'verbes B1', quickLevelVerbsB2:'verbes B2', quickLevelVerbsC1:'verbes C1', quickLevelVerbsC2:'verbes C2', quickLevelGroupLevels:'niveaux', quickLevelGroupVerbs:'verbes', quickLevelGroupOther:'autre', quickLevelCollocations:'collocations', quickLevelNouns:'noms', quickLevelAdjectives:'adjectifs', quickLevelAdverbs:'adverbes', quickLevelNounPhrases:'groupes nominaux', quickLevelDiscourseMarkers:'marqueurs de discours', quickLevelCollocationsInfo:'paires de mots figées', quickLevelNounPhrasesInfo:'expressions nominales figées à plusieurs mots, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'mots et expressions qui relient les phrases et les idées, ex. however, in fact, on the other hand', quickLevelPlaceholder:'choisir une catégorie',
   lvChipSub0:"Débutant", lvChipSub1:"Intermédiaire", lvChipSub2:"Avancé",
-  styleLabel:"🎭 Style",
+  styleLabel:"Style",
   styleNormal:"courant", styleFormal:"formel", styleSlang:"argot", styleHumor:"humoristique",
-  langLabel:"🌍 Langue", levelLabel:"📊 Niveau",
-  advCountLabel:"🔢 Nombre de dialogues",
+  langLabel:"🌍 Langue", levelLabel:"Niveau",
+  advCountLabel:"Nombre de dialogues",
   lengthShort:"Court", lengthMedium:"Plus long", lengthLong:"Le plus long",
   advVerbLabel:"⚡ Verbe phrasé (indice)", advTopicLabel:"🗂 Sujet (indice)",
   genSendBtn:"▶ Générer le contexte",
@@ -4956,7 +4945,7 @@ es:{
   lead2:"Después del pago recibirás el prompt y lo pegarás como primer mensaje en la IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acceso tras Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Aprender en contexto", randomChipLabel:"✨ Palabra aleatoria en inglés", randomTopicLabel:"🗂 Tema aleatorio", manualTopicLabel:"▾ Elegir tema manualmente", wordSourceLabel:"📖 Fuente de palabras", advWordSourceHint:"La base de datos contiene 8000 palabras y frases.", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
+  tag3:"Viajar", sampleBtn:"Ejemplo", sampleWord:"Aprender en contexto", randomChipLabel:"✨ Palabra aleatoria en inglés", randomTopicLabel:"🗂 Tema aleatorio", manualTopicLabel:"▾ Elegir tema manualmente", wordSourceLabel:"Fuente de palabras", advWordSourceHint:"La base de datos contiene 8000 palabras y frases.", historyLabel:"📚 Palabras practicadas", h3:"Escribe una palabra, frase o expresión",
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
@@ -5002,10 +4991,10 @@ es:{
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzado',
-  styleLabel:'🎭 Estilo',
+  styleLabel:'Estilo',
   styleNormal:'cotidiano', styleFormal:'formal', styleSlang:'argot', styleHumor:'humorístico',
-  langLabel:'🌍 Idioma', levelLabel:'📊 Nivel',
-  advCountLabel:'🔢 Número de diálogos',
+  langLabel:'🌍 Idioma', levelLabel:'Nivel',
+  advCountLabel:'Número de diálogos',
   lengthShort:'Corto', lengthMedium:'Más largo', lengthLong:'El más largo',
   advVerbLabel:'⚡ Verbo frasal (pista)', advTopicLabel:'🗂 Tema (pista)',
   genSendBtn:'▶ Generar contexto',
@@ -5043,7 +5032,7 @@ it:{
   lead2:"Dopo il pagamento riceverai il prompt e lo incollerai come primo messaggio nell'IA.",
   lvTabs:["A1–A2 · Principiante","B1–B2 · Intermedio","C1–C2 · Avanzato"],
   lockTitle:"Prompt bloccato", lockDesc:"Accesso dopo Pay me coffee.",
-  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Imparare nel contesto", randomChipLabel:"✨ Parola inglese casuale", randomTopicLabel:"🗂 Argomento casuale", manualTopicLabel:"▾ Scegli argomento manualmente", wordSourceLabel:"📖 Fonte delle parole", advWordSourceHint:"Il database contiene 8.000 parole e frasi.", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
+  tag3:"Viaggiare", sampleBtn:"Esempio", sampleWord:"Imparare nel contesto", randomChipLabel:"✨ Parola inglese casuale", randomTopicLabel:"🗂 Argomento casuale", manualTopicLabel:"▾ Scegli argomento manualmente", wordSourceLabel:"Fonte delle parole", advWordSourceHint:"Il database contiene 8.000 parole e frasi.", historyLabel:"📚 Parole praticate", h3:"Inserisci una parola, una frase o un'espressione",
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
@@ -5089,10 +5078,10 @@ it:{
   lvChip0:'A1–A2', lvChipSub0:'Principiante',
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzato',
-  styleLabel:'🎭 Stile',
+  styleLabel:'Stile',
   styleNormal:'quotidiano', styleFormal:'formale', styleSlang:'slang', styleHumor:'umoristico',
-  langLabel:'🌍 Lingua', levelLabel:'📊 Livello',
-  advCountLabel:'🔢 Numero di dialoghi',
+  langLabel:'🌍 Lingua', levelLabel:'Livello',
+  advCountLabel:'Numero di dialoghi',
   lengthShort:'Breve', lengthMedium:'Più lungo', lengthLong:'Il più lungo',
   advVerbLabel:'⚡ Verbo frasale (suggerimento)', advTopicLabel:'🗂 Argomento (suggerimento)',
   genSendBtn:'▶ Genera contesto',
@@ -5130,7 +5119,7 @@ pt:{
   lead2:"Após o pagamento você receberá o prompt e o colará como primeira mensagem na IA.",
   lvTabs:["A1–A2 · Iniciante","B1–B2 · Intermediário","C1–C2 · Avançado"],
   lockTitle:"Prompt bloqueado", lockDesc:"Acesso após Pay me coffee.",
-  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Aprender no contexto", randomChipLabel:"✨ Palavra aleatória em inglês", randomTopicLabel:"🗂 Tema aleatório", manualTopicLabel:"▾ Escolher tema manualmente", wordSourceLabel:"📖 Fonte de palavras", advWordSourceHint:"O banco de dados contém 8.000 palavras e frases.", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
+  tag3:"Viajar", sampleBtn:"Exemplo", sampleWord:"Aprender no contexto", randomChipLabel:"✨ Palavra aleatória em inglês", randomTopicLabel:"🗂 Tema aleatório", manualTopicLabel:"▾ Escolher tema manualmente", wordSourceLabel:"Fonte de palavras", advWordSourceHint:"O banco de dados contém 8.000 palavras e frases.", historyLabel:"📚 Palavras praticadas", h3:"Digite uma palavra, frase ou expressão",
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
@@ -5175,10 +5164,10 @@ pt:{
   lvChip0:'A1–A2', lvChipSub0:'Iniciante',
   lvChip1:'B1–B2', lvChipSub1:'Intermediário',
   lvChip2:'C1–C2', lvChipSub2:'Avançado',
-  styleLabel:'🎭 Estilo',
+  styleLabel:'Estilo',
   styleNormal:'cotidiano', styleFormal:'formal', styleSlang:'gíria', styleHumor:'humorístico',
-  langLabel:'🌍 Idioma', levelLabel:'📊 Nível',
-  advCountLabel:'🔢 Número de diálogos',
+  langLabel:'🌍 Idioma', levelLabel:'Nível',
+  advCountLabel:'Número de diálogos',
   lengthShort:'Curto', lengthMedium:'Mais longo', lengthLong:'O mais longo',
   advVerbLabel:'⚡ Verbo frasal (dica)', advTopicLabel:'🗂 Tema (dica)',
   genSendBtn:'▶ Gerar contexto',
@@ -5216,7 +5205,7 @@ pl:{
   lead2:"Po wpłacie otrzymasz prompt i wkleisz go jako pierwszą wiadomość do AI.",
   lvTabs:["A1–A2 · Początkujący","B1–B2 · Średniozaawansowany","C1–C2 · Zaawansowany"],
   lockTitle:"Prompt jest zablokowany", lockDesc:"Dostęp po Pay me coffee.",
-  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Uczenie się w kontekście", randomChipLabel:"✨ Losowe słowo angielskie", randomTopicLabel:"🗂 Losowy temat", manualTopicLabel:"▾ Wybierz temat ręcznie", wordSourceLabel:"📖 Źródło słów", advWordSourceHint:"Baza danych zawiera 8000 słów i zwrotów.", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
+  tag3:"Podróżować", sampleBtn:"Przykład", sampleWord:"Uczenie się w kontekście", randomChipLabel:"✨ Losowe słowo angielskie", randomTopicLabel:"🗂 Losowy temat", manualTopicLabel:"▾ Wybierz temat ręcznie", wordSourceLabel:"Źródło słów", advWordSourceHint:"Baza danych zawiera 8000 słów i zwrotów.", historyLabel:"📚 Ćwiczone słowa", h3:"Wpisz słowo, zdanie lub frazę",
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
@@ -5262,10 +5251,10 @@ pl:{
   lvChip0:'A1–A2', lvChipSub0:'Początkujący',
   lvChip1:'B1–B2', lvChipSub1:'Średniozaawansowany',
   lvChip2:'C1–C2', lvChipSub2:'Zaawansowany',
-  styleLabel:'🎭 Styl',
+  styleLabel:'Styl',
   styleNormal:'codzienny', styleFormal:'formalny', styleSlang:'slang', styleHumor:'humorystyczny',
-  langLabel:'🌍 Język', levelLabel:'📊 Poziom',
-  advCountLabel:'🔢 Liczba dialogów',
+  langLabel:'🌍 Język', levelLabel:'Poziom',
+  advCountLabel:'Liczba dialogów',
   lengthShort:'Krótkie', lengthMedium:'Dłuższe', lengthLong:'Najdłuższe',
   advVerbLabel:'⚡ Czasownik frazowy (podpowiedź)', advTopicLabel:'🗂 Temat (podpowiedź)',
   genSendBtn:'▶ Wygeneruj kontekst',
@@ -5303,7 +5292,7 @@ cn:{
   lead2:"付款后你将收到提示词，并将其作为第一条消息粘贴到AI中。",
   lvTabs:["A1–A2 · 初学者","B1–B2 · 中级","C1–C2 · 高级"],
   lockTitle:"提示词已锁定", lockDesc:"Pay me coffee后即可访问。",
-  tag3:"旅行", sampleBtn:"示例", sampleWord:"在语境中学习", randomChipLabel:"✨ 随机英语单词", randomTopicLabel:"🗂 随机主题", manualTopicLabel:"▾ 手动选择主题", wordSourceLabel:"📖 词汇来源", advWordSourceHint:"数据库包含 8000 个单词和短语。", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
+  tag3:"旅行", sampleBtn:"示例", sampleWord:"在语境中学习", randomChipLabel:"✨ 随机英语单词", randomTopicLabel:"🗂 随机主题", manualTopicLabel:"▾ 手动选择主题", wordSourceLabel:"词汇来源", advWordSourceHint:"数据库包含 8000 个单词和短语。", historyLabel:"📚 练习过的词", h3:"输入一个单词、句子或短语",
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
@@ -5349,10 +5338,10 @@ cn:{
   lvChip0:'A1–A2', lvChipSub0:'初学者',
   lvChip1:'B1–B2', lvChipSub1:'中级',
   lvChip2:'C1–C2', lvChipSub2:'高级',
-  styleLabel:'🎭 风格',
+  styleLabel:'风格',
   styleNormal:'日常', styleFormal:'正式', styleSlang:'俚语', styleHumor:'幽默',
-  langLabel:'🌍 语言', levelLabel:'📊 级别',
-  advCountLabel:'🔢 对话数量',
+  langLabel:'🌍 语言', levelLabel:'级别',
+  advCountLabel:'对话数量',
   lengthShort:'短', lengthMedium:'较长', lengthLong:'最长',
   advVerbLabel:'⚡ 短语动词（提示）', advTopicLabel:'🗂 主题（提示）',
   genSendBtn:'▶ 生成语境',
@@ -5390,7 +5379,7 @@ jp:{
   lead2:"支払い後にプロンプトを受け取り、AIに最初のメッセージとして貼り付けます。",
   lvTabs:["A1–A2 · 初心者","B1–B2 · 中級","C1–C2 · 上級"],
   lockTitle:"プロンプトはロック中", lockDesc:"Pay me coffeeの後にアクセスできます。",
-  tag3:"旅行する", sampleBtn:"例", sampleWord:"文脈で学ぶ", randomChipLabel:"✨ ランダムな英単語", randomTopicLabel:"🗂 ランダムなテーマ", manualTopicLabel:"▾ テーマを手動で選択", wordSourceLabel:"📖 単語ソース", advWordSourceHint:"データベースには8,000の単語とフレーズが含まれています。", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
+  tag3:"旅行する", sampleBtn:"例", sampleWord:"文脈で学ぶ", randomChipLabel:"✨ ランダムな英単語", randomTopicLabel:"🗂 ランダムなテーマ", manualTopicLabel:"▾ テーマを手動で選択", wordSourceLabel:"単語ソース", advWordSourceHint:"データベースには8,000の単語とフレーズが含まれています。", historyLabel:"📚 練習した単語", h3:"単語、文、またはフレーズを入力してください",
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
@@ -5436,10 +5425,10 @@ jp:{
   lvChip0:'A1–A2', lvChipSub0:'初心者',
   lvChip1:'B1–B2', lvChipSub1:'中級',
   lvChip2:'C1–C2', lvChipSub2:'上級',
-  styleLabel:'🎭 スタイル',
+  styleLabel:'スタイル',
   styleNormal:'日常', styleFormal:'フォーマル', styleSlang:'スラング', styleHumor:'ユーモア',
-  langLabel:'🌍 言語', levelLabel:'📊 レベル',
-  advCountLabel:'🔢 ダイアログ数',
+  langLabel:'🌍 言語', levelLabel:'レベル',
+  advCountLabel:'ダイアログ数',
   lengthShort:'短め', lengthMedium:'長め', lengthLong:'最長',
   advVerbLabel:'⚡ 句動詞（ヒント）', advTopicLabel:'🗂 テーマ（ヒント）',
   genSendBtn:'▶ コンテキストを生成',
@@ -5477,7 +5466,7 @@ kr:{
   lead2:"결제 후 프롬프트를 받아 AI에 첫 번째 메시지로 붙여넣으세요.",
   lvTabs:["A1–A2 · 초보자","B1–B2 · 중급자","C1–C2 · 고급자"],
   lockTitle:"프롬프트가 잠겨 있습니다", lockDesc:"Pay me coffee 후 접근 가능합니다.",
-  tag3:"여행하다", sampleBtn:"예시", sampleWord:"맥락 속에서 배우기", randomChipLabel:"✨ 무작위 영어 단어", randomTopicLabel:"🗂 무작위 주제", manualTopicLabel:"▾ 주제 직접 선택", wordSourceLabel:"📖 단어 출처", advWordSourceHint:"데이터베이스에는 8,000개의 단어와 구문이 있습니다.", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
+  tag3:"여행하다", sampleBtn:"예시", sampleWord:"맥락 속에서 배우기", randomChipLabel:"✨ 무작위 영어 단어", randomTopicLabel:"🗂 무작위 주제", manualTopicLabel:"▾ 주제 직접 선택", wordSourceLabel:"단어 출처", advWordSourceHint:"데이터베이스에는 8,000개의 단어와 구문이 있습니다.", historyLabel:"📚 연습한 단어", h3:"단어, 문장 또는 구문을 입력하세요",
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
@@ -5523,10 +5512,10 @@ kr:{
   lvChip0:'A1–A2', lvChipSub0:'초보자',
   lvChip1:'B1–B2', lvChipSub1:'중급자',
   lvChip2:'C1–C2', lvChipSub2:'고급자',
-  styleLabel:'🎭 스타일',
+  styleLabel:'스타일',
   styleNormal:'일상', styleFormal:'격식', styleSlang:'슬랭', styleHumor:'유머',
-  langLabel:'🌍 언어', levelLabel:'📊 레벨',
-  advCountLabel:'🔢 대화 수',
+  langLabel:'🌍 언어', levelLabel:'레벨',
+  advCountLabel:'대화 수',
   lengthShort:'짧게', lengthMedium:'길게', lengthLong:'가장 길게',
   advVerbLabel:'⚡ 구동사 (힌트)', advTopicLabel:'🗂 주제 (힌트)',
   genSendBtn:'▶ 컨텍스트 생성',
@@ -5564,7 +5553,7 @@ sk:{
   lead2:"Po zaplatení dostaneš prompt a vložíš ho ako prvú správu do AI.",
   lvTabs:["A1–A2 · Začiatočník","B1–B2 · Pokročilejší","C1–C2 · Pokročilý"],
   lockTitle:"Prompt je uzamknutý", lockDesc:"Prístup po Pay me coffee.",
-  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Učenie sa v kontexte", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodná téma", manualTopicLabel:"▾ Vybrať tému manuálne", wordSourceLabel:"📖 Zdroj slovíčok", advWordSourceHint:"Databáza obsahuje 8 000 slov a fráz.", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
+  tag3:"Cestovať", sampleBtn:"Ukážka", sampleWord:"Učenie sa v kontexte", randomChipLabel:"✨ Náhodné anglické slovo", randomTopicLabel:"🗂 Náhodná téma", manualTopicLabel:"▾ Vybrať tému manuálne", wordSourceLabel:"Zdroj slovíčok", advWordSourceHint:"Databáza obsahuje 8 000 slov a fráz.", historyLabel:"📚 Precvičované slová", h3:"Zadaj slovo, vetu alebo frázu",
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
@@ -5599,10 +5588,10 @@ sk:{
   lvChip0:'A1–A2', lvChipSub0:'Začiatočník',
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
-  styleLabel:'🎭 Štýl',
+  styleLabel:'Štýl',
   styleNormal:'bežná', styleFormal:'formálna', styleSlang:'slang', styleHumor:'humorná',
-  langLabel:'🌍 Jazyk', levelLabel:'📊 Úroveň',
-  advCountLabel:'🔢 Počet dialógov',
+  langLabel:'🌍 Jazyk', levelLabel:'Úroveň',
+  advCountLabel:'Počet dialógov',
   lengthShort:'Krátke', lengthMedium:'Dlhšie', lengthLong:'Najdlhšie',
   advVerbLabel:'⚡ Frázové sloveso (nápoveda)', advTopicLabel:'🗂 Téma (nápoveda)',
   genSendBtn:'▶ Generovať kontext',
@@ -5640,7 +5629,7 @@ nl:{
   lead2:"Na betaling ontvang je de prompt en plak je die als eerste bericht in de AI.",
   lvTabs:["A1–A2 · Beginner","B1–B2 · Gevorderd","C1–C2 · Vorderend"],
   lockTitle:"Prompt is vergrendeld", lockDesc:"Toegang na Pay me coffee.",
-  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Leren in context", randomChipLabel:"✨ Willekeurig Engels woord", randomTopicLabel:"🗂 Willekeurig onderwerp", manualTopicLabel:"▾ Onderwerp handmatig kiezen", wordSourceLabel:"📖 Woordbron", advWordSourceHint:"De database bevat 8.000 woorden en zinnen.", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
+  tag3:"Reizen", sampleBtn:"Voorbeeld", sampleWord:"Leren in context", randomChipLabel:"✨ Willekeurig Engels woord", randomTopicLabel:"🗂 Willekeurig onderwerp", manualTopicLabel:"▾ Onderwerp handmatig kiezen", wordSourceLabel:"Woordbron", advWordSourceHint:"De database bevat 8.000 woorden en zinnen.", historyLabel:"📚 Geoefende woorden", h3:"Voer een woord, zin of uitdrukking in",
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
@@ -5675,10 +5664,10 @@ nl:{
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
   lvChip1:'B1–B2', lvChipSub1:'Gevorderd',
   lvChip2:'C1–C2', lvChipSub2:'Vorderend',
-  styleLabel:'🎭 Stijl',
+  styleLabel:'Stijl',
   styleNormal:'normaal', styleFormal:'formeel', styleSlang:'slang', styleHumor:'humoristisch',
-  langLabel:'🌍 Taal', levelLabel:'📊 Niveau',
-  advCountLabel:'🔢 Aantal dialogen',
+  langLabel:'🌍 Taal', levelLabel:'Niveau',
+  advCountLabel:'Aantal dialogen',
   lengthShort:'Kort', lengthMedium:'Langer', lengthLong:'Langst',
   advVerbLabel:'⚡ Werkwoordgroep (hint)', advTopicLabel:'🗂 Onderwerp (hint)',
   genSendBtn:'▶ Context genereren',
@@ -5716,7 +5705,7 @@ sv:{
   lead2:"Efter betalning får du prompten och klistrar in den som första meddelande i AI:n.",
   lvTabs:["A1–A2 · Nybörjare","B1–B2 · Medelnivå","C1–C2 · Avancerad"],
   lockTitle:"Prompt är låst", lockDesc:"Åtkomst efter Pay me coffee.",
-  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Lära sig i kontext", randomChipLabel:"✨ Slumpmässigt engelskt ord", randomTopicLabel:"🗂 Slumpmässigt ämne", manualTopicLabel:"▾ Välj ämne manuellt", wordSourceLabel:"📖 Ordkälla", advWordSourceHint:"Databasen innehåller 8 000 ord och fraser.", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
+  tag3:"Resa", sampleBtn:"Exempel", sampleWord:"Lära sig i kontext", randomChipLabel:"✨ Slumpmässigt engelskt ord", randomTopicLabel:"🗂 Slumpmässigt ämne", manualTopicLabel:"▾ Välj ämne manuellt", wordSourceLabel:"Ordkälla", advWordSourceHint:"Databasen innehåller 8 000 ord och fraser.", historyLabel:"📚 Övade ord", h3:"Ange ett ord, mening eller fras",
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
@@ -5751,10 +5740,10 @@ sv:{
   lvChip0:'A1–A2', lvChipSub0:'Nybörjare',
   lvChip1:'B1–B2', lvChipSub1:'Medelnivå',
   lvChip2:'C1–C2', lvChipSub2:'Avancerad',
-  styleLabel:'🎭 Stil',
+  styleLabel:'Stil',
   styleNormal:'vardaglig', styleFormal:'formell', styleSlang:'slang', styleHumor:'humoristisk',
-  langLabel:'🌍 Språk', levelLabel:'📊 Nivå',
-  advCountLabel:'🔢 Antal dialoger',
+  langLabel:'🌍 Språk', levelLabel:'Nivå',
+  advCountLabel:'Antal dialoger',
   lengthShort:'Kort', lengthMedium:'Längre', lengthLong:'Längst',
   advVerbLabel:'⚡ Frasverb (ledtråd)', advTopicLabel:'🗂 Ämne (ledtråd)',
   genSendBtn:'▶ Generera kontext',
@@ -5792,7 +5781,7 @@ ru:{
   lead2:"После оплаты ты получишь промпт и вставишь его как первое сообщение в AI.",
   lvTabs:["A1–A2 · Начинающий","B1–B2 · Средний","C1–C2 · Продвинутый"],
   lockTitle:"Промпт заблокирован", lockDesc:"Доступ после угощения кофе.",
-  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Изучение в контексте", randomChipLabel:"✨ Случайное английское слово", randomTopicLabel:"🗂 Случайная тема", manualTopicLabel:"▾ Выбрать тему вручную", wordSourceLabel:"📖 Источник слов", advWordSourceHint:"База данных содержит 8 000 слов и фраз.", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
+  tag3:"Путешествовать", sampleBtn:"Пример", sampleWord:"Изучение в контексте", randomChipLabel:"✨ Случайное английское слово", randomTopicLabel:"🗂 Случайная тема", manualTopicLabel:"▾ Выбрать тему вручную", wordSourceLabel:"Источник слов", advWordSourceHint:"База данных содержит 8 000 слов и фраз.", historyLabel:"📚 Изученные слова", h3:"Введи слово, фразу или выражение",
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
@@ -5822,10 +5811,10 @@ ru:{
   lvChip0:'A1–A2', lvChipSub0:'Начинающий',
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
-  styleLabel:'🎭 Стиль',
+  styleLabel:'Стиль',
   styleNormal:'обычный', styleFormal:'официальный', styleSlang:'сленг', styleHumor:'юмор',
-  langLabel:'🌍 Язык', levelLabel:'📊 Уровень',
-  advCountLabel:'🔢 Количество диалогов',
+  langLabel:'🌍 Язык', levelLabel:'Уровень',
+  advCountLabel:'Количество диалогов',
   lengthShort:'Короткий', lengthMedium:'Длиннее', lengthLong:'Самый длинный',
   advVerbLabel:'⚡ Фразовый глагол (подсказка)', advTopicLabel:'🗂 Тема (подсказка)',
   genSendBtn:'▶ Создать контекст',
@@ -5863,7 +5852,7 @@ tr:{
   lead2:"Ödeme sonrası promptu alacaksın ve AI'ya ilk mesaj olarak yapıştıracaksın.",
   lvTabs:["A1–A2 · Başlangıç","B1–B2 · Orta","C1–C2 · İleri"],
   lockTitle:"Prompt kilitli", lockDesc:"Pay me coffee sonrası erişim.",
-  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Bağlam içinde öğrenmek", randomChipLabel:"✨ Rastgele İngilizce kelime", randomTopicLabel:"🗂 Rastgele konu", manualTopicLabel:"▾ Konuyu manuel seç", wordSourceLabel:"📖 Kelime kaynağı", advWordSourceHint:"Veritabanı 8.000 kelime ve ifade içerir.", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
+  tag3:"Seyahat etmek", sampleBtn:"Örnek", sampleWord:"Bağlam içinde öğrenmek", randomChipLabel:"✨ Rastgele İngilizce kelime", randomTopicLabel:"🗂 Rastgele konu", manualTopicLabel:"▾ Konuyu manuel seç", wordSourceLabel:"Kelime kaynağı", advWordSourceHint:"Veritabanı 8.000 kelime ve ifade içerir.", historyLabel:"📚 Çalışılan kelimeler", h3:"Bir kelime, cümle veya ifade gir",
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
@@ -5898,10 +5887,10 @@ tr:{
   lvChip0:'A1–A2', lvChipSub0:'Başlangıç',
   lvChip1:'B1–B2', lvChipSub1:'Orta',
   lvChip2:'C1–C2', lvChipSub2:'İleri',
-  styleLabel:'🎭 Stil',
+  styleLabel:'Stil',
   styleNormal:'gündelik', styleFormal:'resmi', styleSlang:'argo', styleHumor:'mizahi',
-  langLabel:'🌍 Dil', levelLabel:'📊 Seviye',
-  advCountLabel:'🔢 Diyalog sayısı',
+  langLabel:'🌍 Dil', levelLabel:'Seviye',
+  advCountLabel:'Diyalog sayısı',
   lengthShort:'Kısa', lengthMedium:'Uzun', lengthLong:'En uzun',
   advVerbLabel:'⚡ Fiil öbeği (ipucu)', advTopicLabel:'🗂 Konu (ipucu)',
   genSendBtn:'▶ Bağlam oluştur',
@@ -5940,7 +5929,7 @@ uk:{
   lvLabel0:"Початківець", lvLabel1:"Середній рівень", lvLabel2:"Просунутий",
   lblVerb:'⚡ Фразові дієслова', lblTopic:'🗂 Тема', editDetails:'⚙ Змінити деталі',
   lockTitle:"Промпт заблоковано", lockDesc:"Доступ після Pay me coffee.",
-  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Навчання в контексті", randomChipLabel:"✨ Випадкове англійське слово", randomTopicLabel:"🗂 Випадкова тема", manualTopicLabel:"▾ Обрати тему вручну", wordSourceLabel:"📖 Джерело слів", advWordSourceHint:"База даних містить 8 000 слів і фраз.", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
+  tag3:"Подорожі", sampleBtn:"Приклад", sampleWord:"Навчання в контексті", randomChipLabel:"✨ Випадкове англійське слово", randomTopicLabel:"🗂 Випадкова тема", manualTopicLabel:"▾ Обрати тему вручну", wordSourceLabel:"Джерело слів", advWordSourceHint:"База даних містить 8 000 слів і фраз.", historyLabel:"📚 Вивчені слова", h3:"Введи слово, речення або фразу",
   lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
   dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
   lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
@@ -5977,10 +5966,10 @@ uk:{
   lvChip0:'A1–A2', lvChipSub0:'Початківець',
   lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
   lvChip2:'C1–C2', lvChipSub2:'Просунутий',
-  styleLabel:'🎭 Стиль',
+  styleLabel:'Стиль',
   styleNormal:'звичайний', styleFormal:'формальний', styleSlang:'сленг', styleHumor:'гумористичний',
-  langLabel:'🌍 Мова', levelLabel:'📊 Рівень',
-  advCountLabel:'🔢 Кількість діалогів',
+  langLabel:'🌍 Мова', levelLabel:'Рівень',
+  advCountLabel:'Кількість діалогів',
   lengthShort:'Короткі', lengthMedium:'Довші', lengthLong:'Найдовші',
   advVerbLabel:'⚡ Фразове дієслово (підказка)', advTopicLabel:'🗂 Тема (підказка)',
   genSendBtn:'▶ Згенерувати контекст',
@@ -6022,7 +6011,7 @@ id:{
   lvLabel0:"Pemula", lvLabel1:"Menengah", lvLabel2:"Mahir",
   lblVerb:'⚡ Phrasal verb', lblTopic:'🗂 Topik', editDetails:'⚙ Edit detail',
   lockTitle:"Prompt terkunci", lockDesc:"Akses setelah Pay me coffee.",
-  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Belajar dalam konteks", randomChipLabel:"✨ Kata acak bahasa Inggris", randomTopicLabel:"🗂 Topik acak", manualTopicLabel:"▾ Pilih topik manual", wordSourceLabel:"📖 Sumber kata", advWordSourceHint:"Database berisi 8.000 kata dan frasa.", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
+  tag3:"Perjalanan", sampleBtn:"Contoh", sampleWord:"Belajar dalam konteks", randomChipLabel:"✨ Kata acak bahasa Inggris", randomTopicLabel:"🗂 Topik acak", manualTopicLabel:"▾ Pilih topik manual", wordSourceLabel:"Sumber kata", advWordSourceHint:"Database berisi 8.000 kata dan frasa.", historyLabel:"📚 Kata yang dipelajari", h3:"Masukkan kata, kalimat atau frasa",
   lead3:"Klik dialog untuk membuka dan memutar audio.",
   dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
   lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
@@ -6059,10 +6048,10 @@ id:{
   lvChip0:'A1–A2', lvChipSub0:'Pemula',
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
-  styleLabel:'🎭 Gaya',
+  styleLabel:'Gaya',
   styleNormal:'biasa', styleFormal:'formal', styleSlang:'slang', styleHumor:'humor',
-  langLabel:'🌍 Bahasa', levelLabel:'📊 Level',
-  advCountLabel:'🔢 Jumlah dialog',
+  langLabel:'🌍 Bahasa', levelLabel:'Level',
+  advCountLabel:'Jumlah dialog',
   lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
   advVerbLabel:'⚡ Phrasal verb (petunjuk)', advTopicLabel:'🗂 Topik (petunjuk)',
   genSendBtn:'▶ Buat konteks',
@@ -6576,6 +6565,8 @@ function toggleAdvanced(btn) {
   btn.classList.toggle('open');
   var panel = document.getElementById('genAdvanced');
   if (panel) panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  var legal = document.getElementById('genFooterLegal');
+  if (legal) legal.style.display = panel && panel.style.display === 'none' ? 'none' : 'block';
 }
 
 // ── Mobile: smooth scroll to advanced panel after animation ──
