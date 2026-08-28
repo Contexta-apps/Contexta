@@ -6589,13 +6589,17 @@ function setIntent(btn) {
   insertToPractice(btn.textContent.trim());
 }
 
-function onIntentInput(el) {
+function onIntentInput(el, isProgrammatic) {
   var btn = document.getElementById('clearInputBtn');
   var mini = document.getElementById('generateMiniBtn');
   var hasText = el.value.length > 0;
   if (btn) btn.classList.toggle('visible', hasText);
   if (mini) {
     mini.classList.toggle('visible', hasText);
+  }
+  if (!isProgrammatic) {
+    // Uzivatel sam do pole zasahl -> auto-text jiz neplati (nema se pri odskrtnuti jevu mazat)
+    grammarAutoText = null;
   }
   checkLangMismatchHint();
 }
@@ -6649,6 +6653,7 @@ var selectedCEFR = 'A1-A2';
 // GRAMMAR SELECTOR – data + build + toggle + select
 // ═══════════════════════════════════════════════════════
 var selectedGrammar = null; // { name, prompt }
+var grammarAutoText = null; // text, ktery appka sama vepsala do practiceInput pri vyberu gram. jevu
 
 // Překlady názvů úrovní, témat a položek (indexy odpovídají GRAMMAR_DATA)
 var GRAMMAR_TRANSLATIONS = {
@@ -7263,6 +7268,15 @@ function filterGrammar(q) {
 
 function selectGrammar(item, btn) {
   selectedGrammar = item;
+  var intentEl = document.getElementById('practiceInput');
+  if (intentEl && intentEl.value.trim() === '') {
+    var autoText = (T[webLang] || T.cz).grammarAutoIntent
+      ? (T[webLang] || T.cz).grammarAutoIntent.replace('{grammar}', item.name)
+      : item.name;
+    intentEl.value = autoText;
+    grammarAutoText = autoText;
+    if (typeof onIntentInput === 'function') onIntentInput(intentEl, true);
+  }
   var badge = document.getElementById('grammarBadge');
   if (badge) { badge.textContent = item.name; badge.style.display = 'inline-block'; }
   var hdrClear = document.getElementById('grammarHdrClear');
@@ -7277,6 +7291,12 @@ function selectGrammar(item, btn) {
 
 function clearGrammar() {
   selectedGrammar = null;
+  var intentEl = document.getElementById('practiceInput');
+  if (intentEl && grammarAutoText !== null && intentEl.value === grammarAutoText) {
+    intentEl.value = '';
+    if (typeof onIntentInput === 'function') onIntentInput(intentEl, true);
+  }
+  grammarAutoText = null;
   var badge = document.getElementById('grammarBadge');
   if (badge) { badge.textContent = ''; badge.style.display = 'none'; }
   var hdrClear = document.getElementById('grammarHdrClear');
@@ -9208,6 +9228,8 @@ function genGenerate() {
       ? (T[webLang] || T.cz).grammarAutoIntent.replace('{grammar}', selectedGrammar.name)
       : selectedGrammar.name;
     intentEl.value = intent;
+    grammarAutoText = intent;
+    if (typeof onIntentInput === 'function') onIntentInput(intentEl, true);
   }
 
   if (!intent) {
