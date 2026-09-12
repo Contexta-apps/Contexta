@@ -3989,7 +3989,7 @@ h1[data-t="heroH"] {
             <div class="topic-dropdown" id="topicList" style="display:none;"></div>
           </div>
         </div>
-        <div class="gen-quickpick-box">
+        <div class="gen-quickpick-box" id="englishWordBox">
           <button class="gen-quickpick-btn" id="randomInspirationBtn" data-translate="randomChipLabel" onclick="insertRandomInspiration()">✨ Náhodné anglické slovo</button>
           <div class="quicklevel-select-wrap" id="quickLevelWrap">
             <button class="gen-quickpick-label gen-quickpick-label--dd" id="quickLevelLabel" type="button" onclick="toggleQuickLevelDrop(event)" aria-haspopup="listbox" aria-expanded="false">
@@ -8038,6 +8038,17 @@ function updateGenLangBtn(side, code) {
   if (listEl) listEl.querySelectorAll('.gen-lang-opt').forEach(function(o) {
     o.classList.toggle('selected', o.getAttribute('data-code') === code);
   });
+  // Anglická gramatika a náhodné anglické slovo dávají smysl jen
+  // pro uživatele, co se učí angličtinu (cílový jazyk = 'to').
+  if (side === 'to') updateEnglishOnlyVisibility(code);
+}
+
+function updateEnglishOnlyVisibility(toLangCode) {
+  var isEnglish = (toLangCode === 'en');
+  var wordBox = document.getElementById('englishWordBox');
+  var grammarBlock = document.getElementById('genGrammarBlock');
+  if (wordBox) wordBox.style.display = isEnglish ? '' : 'none';
+  if (grammarBlock) grammarBlock.style.display = isEnglish ? '' : 'none';
 }
 
 function toggleGenLangDd(side, e) {
