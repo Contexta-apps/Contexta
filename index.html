@@ -3171,7 +3171,7 @@ img { max-width: 100%; height: auto; }
   border: none;
   border-radius: 0;
   box-shadow: none;
-  padding: 16px 18px 8px;
+  padding: 34px 18px 8px;
   min-height: 70px;
 }
 .prompt-box .gen-primary-input:focus {
@@ -3238,14 +3238,26 @@ img { max-width: 100%; height: auto; }
 
 .toolbar-ukázka {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 10px;
+  right: 14px;
+  z-index: 2;
   pointer-events: auto;
-  opacity: .6;
-  font-size: .62rem;
-  padding: 2px 9px;
+  opacity: .75;
+  font-size: .68rem;
+  font-weight: 600;
+  padding: 0;
   white-space: nowrap;
+  background: transparent;
+  border: none;
+  color: var(--gold-lt);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 0;
 }
+.toolbar-ukázka:hover { opacity: 1; background: transparent; color: var(--gold-lt); border-color: transparent; }
 
 /* ══ CONTEXTA BRAND A ══ */
 .brand-a-hero {
@@ -3955,7 +3967,7 @@ h1[data-t="heroH"] {
     <div class="gen-hero-header">
       <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
       <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
-      <p class="hero-ai-hint" data-i18n="aiHint">Vytvoří 3 příkladové věty a 10 procvičovacích dialogů — poháněno ChatGPT / Copilotem.</p>
+      <p class="hero-ai-hint" data-i18n="aiHint">Vytvoří 3 příkladové věty a 10 procvičovacích dialogů přes tvůj ChatGPT nebo Copilot.</p>
     </div>
 
     <!-- ══ BLOK 1: HLAVNÍ VÝRAZ — nejdůležitější prvek ══ -->
@@ -3965,13 +3977,13 @@ h1[data-t="heroH"] {
         <label class="gen-primary-label" for="genIntent" data-t="intentLabel" data-translate="intentLabel">Hlavní výraz pro mini-dialogy</label>
       </div>
       <div class="prompt-box" style="position:relative;">
+        <button class="toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
         <textarea class="gen-primary-input" id="practiceInput" rows="2"
           placeholder="Zadej slovo, téma nebo situaci, kterou chceš procvičit…"
           maxlength="400" oninput="onIntentInput(this)"></textarea>
         <div id="onbDemoOutput" style="display:none;"></div>
         <div class="prompt-box-toolbar">
           <button class="clear-input" id="clearInputBtn" onclick="clearPracticeInput()" title="Smazat">×</button>
-          <button class="gen-ex-chip toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
           <button class="generate-mini" id="generateMiniBtn" onclick="genGenerate()" title="Generovat dialog">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
           </button>
@@ -4667,7 +4679,7 @@ cz:{
   grammarClearBtn:'✕ zrušit',
   grammarSearchPh:'🔍 Hledat téma…',
   dialogLengthHint:'Určuje délku každého dialogu.',
-  aiHint:'Vytvoří 3 příkladové věty a 10 procvičovacích dialogů — poháněno ChatGPT / Copilotem.'
+  aiHint:'Vytvoří 3 příkladové věty a 10 procvičovacích dialogů přes tvůj ChatGPT nebo Copilot.'
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -4763,7 +4775,7 @@ en:{
   grammarClearBtn:'✕ clear',
   grammarSearchPh:'🔍 Search topic…',
   dialogLengthHint:'Sets the length of each dialogue.',
-  aiHint:'Builds 3 example sentences + 10 practice dialogues, powered by ChatGPT / Copilot.'
+  aiHint:'Builds 3 example sentences + 10 practice dialogues via your ChatGPT or Copilot.'
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -4859,7 +4871,7 @@ de:{
   grammarClearBtn:'✕ entfernen',
   grammarSearchPh:'🔍 Thema suchen…',
   dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
-  aiHint:'Erstellt 3 Beispielsätze und 10 Übungsdialoge — angetrieben von ChatGPT / Copilot.'
+  aiHint:'Erstellt 3 Beispielsätze und 10 Übungsdialoge über deinen ChatGPT oder Copilot.'
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -4948,7 +4960,7 @@ fr:{
   grammarClearBtn:'✕ effacer',
   grammarSearchPh:'🔍 Rechercher un sujet…',
   dialogLengthHint:'Définit la longueur de chaque dialogue.',
-  aiHint:'Crée 3 phrases d\'exemple et 10 dialogues d\'entraînement — propulsé par ChatGPT / Copilot.'
+  aiHint:'Crée 3 phrases d\'exemple et 10 dialogues d\'entraînement via votre ChatGPT ou Copilot.'
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
@@ -5038,7 +5050,7 @@ es:{
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
   dialogLengthHint:'Determina la longitud de cada diálogo.',
-  aiHint:'Crea 3 frases de ejemplo y 10 diálogos de práctica — impulsado por ChatGPT / Copilot.'
+  aiHint:'Crea 3 frases de ejemplo y 10 diálogos de práctica a través de tu ChatGPT o Copilot.'
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
@@ -5128,7 +5140,7 @@ it:{
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
   dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
-  aiHint:'Crea 3 frasi di esempio e 10 dialoghi di pratica — basato su ChatGPT / Copilot.'
+  aiHint:'Crea 3 frasi di esempio e 10 dialoghi di pratica tramite il tuo ChatGPT o Copilot.'
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
@@ -5217,7 +5229,7 @@ pt:{
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
   dialogLengthHint:'Define o comprimento de cada diálogo.',
-  aiHint:'Cria 3 frases de exemplo e 10 diálogos de prática — com tecnologia ChatGPT / Copilot.'
+  aiHint:'Cria 3 frases de exemplo e 10 diálogos de prática através do seu ChatGPT ou Copilot.'
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
@@ -5307,7 +5319,7 @@ pl:{
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
   dialogLengthHint:'Określa długość każdego dialogu.',
-  aiHint:'Tworzy 3 przykładowe zdania i 10 dialogów ćwiczeniowych — napędzane przez ChatGPT / Copilot.'
+  aiHint:'Tworzy 3 przykładowe zdania i 10 dialogów ćwiczeniowych przez Twój ChatGPT lub Copilot.'
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
@@ -5397,7 +5409,7 @@ cn:{
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
   dialogLengthHint:'设置每段对话的长度。',
-  aiHint:'生成3个例句和10段练习对话 — 由 ChatGPT / Copilot 驱动。'
+  aiHint:'通过你自己的 ChatGPT 或 Copilot 生成3个例句和10段练习对话。'
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
@@ -5487,7 +5499,7 @@ jp:{
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
   dialogLengthHint:'各ダイアログの長さを設定します。',
-  aiHint:'3つの例文と10個の練習ダイアログを作成 — ChatGPT / Copilot 搭載。'
+  aiHint:'あなたのChatGPTまたはCopilotで3つの例文と10個の練習ダイアログを作成。'
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
@@ -5577,7 +5589,7 @@ kr:{
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
   dialogLengthHint:'각 대화의 길이를 설정합니다.',
-  aiHint:'예문 3개와 연습 대화 10개를 생성합니다 — ChatGPT / Copilot 기반.'
+  aiHint:'당신의 ChatGPT 또는 Copilot을 통해 예문 3개와 연습 대화 10개를 생성합니다.'
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
@@ -5656,7 +5668,7 @@ sk:{
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
   dialogLengthHint:'Určuje dĺžku každého dialógu.',
-  aiHint:'Vytvorí 3 príkladové vety a 10 precvičovacích dialógov — poháňané ChatGPT / Copilotom.'
+  aiHint:'Vytvorí 3 príkladové vety a 10 precvičovacích dialógov cez tvoj ChatGPT alebo Copilot.'
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
@@ -5735,7 +5747,7 @@ nl:{
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
   dialogLengthHint:'Stelt de lengte van elk dialoog in.',
-  aiHint:'Maakt 3 voorbeeldzinnen en 10 oefendialogen — aangedreven door ChatGPT / Copilot.'
+  aiHint:'Maakt 3 voorbeeldzinnen en 10 oefendialogen via jouw ChatGPT of Copilot.'
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
@@ -5814,7 +5826,7 @@ sv:{
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
   dialogLengthHint:'Anger längden på varje dialog.',
-  aiHint:'Skapar 3 exempelmeningar och 10 övningsdialoger — drivs av ChatGPT / Copilot.'
+  aiHint:'Skapar 3 exempelmeningar och 10 övningsdialoger via din ChatGPT eller Copilot.'
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
@@ -5888,7 +5900,7 @@ ru:{
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
   dialogLengthHint:'Определяет длину каждого диалога.',
-  aiHint:'Создаёт 3 примера предложений и 10 диалогов для практики — на основе ChatGPT / Copilot.'
+  aiHint:'Создаёт 3 примера предложений и 10 диалогов для практики через ваш ChatGPT или Copilot.'
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
@@ -5967,7 +5979,7 @@ tr:{
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
   dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
-  aiHint:'3 örnek cümle ve 10 alıştırma diyaloğu oluşturur — ChatGPT / Copilot destekli.'
+  aiHint:'3 örnek cümle ve 10 alıştırma diyaloğu kendi ChatGPT veya Copilot\'unuz üzerinden oluşturur.'
 },
 uk:{
   webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
@@ -6052,7 +6064,7 @@ uk:{
   grammarClearBtn:'✕ скасувати',
   grammarSearchPh:'🔍 Шукати тему…',
   dialogLengthHint:'Визначає довжину кожного діалогу.',
-  aiHint:'Створює 3 приклади речень і 10 діалогів для практики — на основі ChatGPT / Copilot.'
+  aiHint:'Створює 3 приклади речень і 10 діалогів для практики через ваш ChatGPT або Copilot.'
 },
 id:{
   webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
@@ -6137,7 +6149,7 @@ id:{
   grammarClearBtn:'✕ hapus',
   grammarSearchPh:'🔍 Cari topik…',
   dialogLengthHint:'Menentukan panjang setiap dialog.',
-  aiHint:'Membuat 3 kalimat contoh dan 10 dialog latihan — didukung oleh ChatGPT / Copilot.'
+  aiHint:'Membuat 3 kalimat contoh dan 10 dialog latihan melalui ChatGPT atau Copilot Anda.'
 }
 }; // end T
 
