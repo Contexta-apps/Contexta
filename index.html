@@ -9297,14 +9297,9 @@ function checkLangMismatchHint() {
     }
   }
 
-  if (autoSwitchToEnglish) {
-    var _prevFromLang = genFromLangVal;
+  if (autoSwitchToEnglish && genToLangVal !== 'en') {
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
-    if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
-      genToLangVal = _prevFromLang;
-      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
-    }
     _errEl.style.display = 'none';
     _errEl.style.color = '';
     return;
@@ -10195,16 +10190,10 @@ function _applyVerbPrefix(word, source) {
 function insertRandomInspiration() {
   // Zdrojem je vždy anglické slovo -> jazyk "z" přepni na angličtinu,
   // ale bez zásahu do jazyka celého UI (webLang zůstává beze změny).
-  if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en') {
+  if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en' && genToLangVal !== 'en') {
     var _prevFromLang = genFromLangVal;
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
-    // Pokud je cílový jazyk taky angličtina, přepni ho na jazyk, který byl předtím ve "z"
-    // (jinak by v obou kolonkách zůstala angličtina).
-    if (typeof genToLangVal !== 'undefined' && genToLangVal === 'en') {
-      genToLangVal = _prevFromLang;
-      if (typeof updateGenLangBtn === 'function') updateGenLangBtn('to', _prevFromLang);
-    }
     if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
   }
 
