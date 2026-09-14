@@ -3970,8 +3970,20 @@ h1[data-t="heroH"] {
   }
   /* Fix: label "Jaké slovo chceš procvičit?" byl na mobilu nepřiměřeně
      velký (1.05rem) a zalamoval se na 2 řádky. Sjednoceno s velikostí
-     ostatních popisků (.gen-grammar-title = .8rem) a vynuceno na 1 řádek. */
+     ostatních popisků (.gen-grammar-title = .8rem) a vynuceno na 1 řádek.
+     display:block + min-width:0 + flex-shrink jsou nutné, protože label
+     je flex položka vedle ikony – bez nich se nemůže zmenšit a text
+     přeteče mimo kartu (dřív to vypadalo jako useknuté "procvičit"). */
+  .gen-primary-header {
+    flex-wrap: nowrap;
+  }
+  .gen-primary-icon {
+    flex-shrink: 0;
+  }
   .gen-primary-label {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: .8rem;
     white-space: nowrap;
     overflow: hidden;
