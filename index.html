@@ -1593,7 +1593,7 @@ img { max-width: 100%; height: auto; }
 .topic-dropdown {
   position: absolute; top: calc(100% + 6px); bottom: auto; left: 0; right: 0;
   background: linear-gradient(180deg, #212c4a, #1a2035);
-  border: 1.5px solid rgba(201,151,58,.5);
+  border: 1.5px solid rgba(255,255,255,.1);
   border-radius: 16px;
   box-shadow: 0 16px 48px rgba(0,0,0,.55);
   z-index: 600;
@@ -2761,19 +2761,24 @@ img { max-width: 100%; height: auto; }
   background: linear-gradient(90deg, var(--gold) 0%, transparent 80%);
   border-radius: 0;
 }
-.gen-primary-header { display: none; }
+.gen-primary-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
 .gen-primary-icon {
-  color: rgba(255,255,255,.25);
-  font-size: .8rem;
+  color: var(--gold-lt);
+  font-size: 1rem;
   flex-shrink: 0;
-  opacity: .7;
+  opacity: .85;
 }
 .gen-primary-label {
   font-family: 'DM Sans', sans-serif;
-  font-size: .72rem; font-weight: 600;
-  color: rgba(255,255,255,.45);
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--gold-lt);
+  text-transform: none;
+  letter-spacing: normal;
 }
 .gen-primary-input {
   width: 100%;
@@ -3326,6 +3331,15 @@ h1[data-t="heroH"] {
   margin-top: 10px;
   opacity: 0;
   animation: subtitleFade 1.4s ease 0.9s forwards;
+}
+.hero-ai-motto {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  font-weight: 700;
+  color: var(--gold-lt);
+  letter-spacing: 0.2px;
+  margin-bottom: 5px;
 }
 .hero-sub {
   font-family: 'Poppins', 'DM Sans', sans-serif;
@@ -3985,19 +3999,19 @@ h1[data-t="heroH"] {
     <div class="gen-hero-header">
       <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
       <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
-      <p class="hero-ai-hint" data-i18n="aiHint">Potřebuješ ChatGPT nebo Copilot.</p>
+      <p class="hero-ai-hint" data-i18n="aiHint"><span class="hero-ai-motto">„Slova ožijí ve větách“</span>Vyžaduje ChatGPT/Copilot.</p>
     </div>
 
     <!-- ══ BLOK 1: HLAVNÍ VÝRAZ — nejdůležitější prvek ══ -->
     <div class="gen-primary-block">
       <div class="gen-primary-header">
         <span class="gen-primary-icon">✦</span>
-        <label class="gen-primary-label" for="genIntent" data-t="intentLabel" data-translate="intentLabel">Hlavní výraz pro mini-dialogy</label>
+        <label class="gen-primary-label" for="genIntent" data-t="intentLabel" data-translate="intentLabel">Jaké slovo chceš procvičit?</label>
       </div>
       <div class="prompt-box" style="position:relative;">
         <button class="toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
         <textarea class="gen-primary-input" id="practiceInput" rows="2"
-          placeholder="Zadej slovo, téma nebo situaci, kterou chceš procvičit…"
+          placeholder="Zadej slovo, téma nebo situaci…"
           maxlength="400" oninput="onIntentInput(this)"></textarea>
         <div id="onbDemoOutput" style="display:none;"></div>
         <div class="prompt-box-toolbar">
@@ -4636,7 +4650,7 @@ cz:{
   lead3:"Klikni na dialog pro rozbalení a přehrání zvuku.",
   dWord:"look forward to", dMeaning:"= těšit se na něco · A1–A2", webLabel:"CZ",
   lead4:"Doporučujeme ChatGPT – jako jediný nabízí přehrávání hlasem přímo v aplikaci.",
-  aiBtn:"💬 Otevřít AI asistenta", recLabel:"⭐ Doporučeno",
+  aiBtn:"⭐ Otevřít AI asistenta", recLabel:"⭐ Doporučeno",
   audioNote:'V ChatGPT si lze zapnout přehrávání hlasem – slyšíte <span class="hl">správnou výslovnost</span>.',
   coffeeH:"Líbí se ti Contexta?",
   coffeeBtn:"Podpoř vývoj",
@@ -4669,8 +4683,8 @@ cz:{
   heroSubTagline:'Jedno slovo. Deset kontextů. Nezapomeneš.',
   examplesLabel:'Příklady:',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCE', extractKeySituace:'SITUACE',
-  intentLabel:'💬 Co chceš procvičit?',
-  intentPlaceholder:'Zadej slovo, téma nebo situaci, kterou chceš procvičit…',
+  intentLabel:'Jaké slovo nebo téma chceš procvičit?',
+  intentPlaceholder:'Zadej slovo, téma nebo situaci…',
   verbSearchPh:'🔍 Hledat frázové sloveso…',
   verbDropDefault:'— vybrat —',
   topicDropDefault:'— vybrat téma —', wordSourceTopicsOpt:'— témata aplikace —', quickLevelPhrasalVerbs:'frázová slovesa', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'slovesa A1', quickLevelVerbsA2:'slovesa A2', quickLevelVerbsB1:'slovesa B1', quickLevelVerbsB2:'slovesa B2', quickLevelVerbsC1:'slovesa C1', quickLevelVerbsC2:'slovesa C2', quickLevelGroupLevels:'úrovně', quickLevelGroupVerbs:'slovesa', quickLevelGroupOther:'ostatní', quickLevelCollocations:'kolokace', quickLevelNouns:'podstatná jména', quickLevelAdjectives:'přídavná jména', quickLevelAdverbs:'příslovce', quickLevelNounPhrases:'ustálená spojení', quickLevelDiscourseMarkers:'diskurzní konektory', quickLevelCollocationsInfo:'ustálené dvojice slov', quickLevelNounPhrasesInfo:'ustálená víceslovná spojení s podstatným jménem, např. bus stop, credit card', quickLevelDiscourseMarkersInfo:'slova a spojení propojující věty a myšlenky, např. however, in fact, on the other hand', quickLevelPlaceholder:'vybrat kategorii',
@@ -4707,7 +4721,7 @@ cz:{
   grammarClearBtn:'✕ zrušit',
   grammarSearchPh:'🔍 Hledat téma…',
   dialogLengthHint:'Určuje délku každého dialogu.',
-  aiHint:'Vytvoří 3 příkladové věty a 10 procvičovacích dialogů.<br>Potřebuješ ChatGPT nebo Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">„Slova ožijí ve větách“</span>Vyžaduje ChatGPT/Copilot.'
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -4733,7 +4747,7 @@ en:{
   lead3:"Click a dialogue to expand and play audio.",
   dWord:"look forward to", dMeaning:"= look forward to · A1–A2", webLabel:"EN",
   lead4:"We recommend ChatGPT – the only one with built-in voice playback.",
-  aiBtn:"💬 Open an AI assistant", recLabel:"⭐ Recommended",
+  aiBtn:"⭐ Open an AI assistant", recLabel:"⭐ Recommended",
   audioNote:'In ChatGPT you can enable voice playback – hear <span class="hl">correct pronunciation</span>.',
   coffeeH:"Do you like Contexta?",
   coffeeBtn:"Support development",
@@ -4767,8 +4781,8 @@ en:{
   heroTagline:'Mini dialogues in context · Levels A1–C2 · More than 15 languages · Real-life situations · Natural communication · 10 dialogues per generation',
   examplesLabel:'Examples:',
   extractKeyTema:'TOPIC', extractKeyAkce:'ACTION', extractKeySituace:'SITUATION',
-  intentLabel:'💬 What do you want to practise?',
-  intentPlaceholder:'Enter a word, topic or situation you want to practice…',
+  intentLabel:'What word or topic do you want to practise?',
+  intentPlaceholder:'Enter a word, topic or situation…',
   verbSearchPh:'🔍 Search phrasal verb…',
   verbDropDefault:'— select —',
   topicDropDefault:'— select topic —', wordSourceTopicsOpt:'— app topics —', quickLevelPhrasalVerbs:'phrasal verbs', quickLevelIdioms:'idioms', quickLevelVerbsA1:'verbs A1', quickLevelVerbsA2:'verbs A2', quickLevelVerbsB1:'verbs B1', quickLevelVerbsB2:'verbs B2', quickLevelVerbsC1:'verbs C1', quickLevelVerbsC2:'verbs C2', quickLevelGroupLevels:'levels', quickLevelGroupVerbs:'verbs', quickLevelGroupOther:'other', quickLevelCollocations:'collocations', quickLevelNouns:'nouns', quickLevelAdjectives:'adjectives', quickLevelAdverbs:'adverbs', quickLevelNounPhrases:'noun phrases', quickLevelDiscourseMarkers:'discourse markers', quickLevelCollocationsInfo:'fixed word pairs', quickLevelNounPhrasesInfo:'fixed multi-word noun expressions, e.g. bus stop, credit card', quickLevelDiscourseMarkersInfo:'words and phrases that connect sentences and ideas, e.g. however, in fact, on the other hand', quickLevelPlaceholder:'choose category',
@@ -4803,7 +4817,7 @@ en:{
   grammarClearBtn:'✕ clear',
   grammarSearchPh:'🔍 Search topic…',
   dialogLengthHint:'Sets the length of each dialogue.',
-  aiHint:'Builds 3 example sentences + 10 practice dialogues.<br>Requires ChatGPT or Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">“Words come alive in sentences.”</span>Requires ChatGPT/Copilot.'
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -4829,7 +4843,7 @@ de:{
   lead3:"Klicke zum Aufklappen und Abspielen.",
   dWord:"look forward to", dMeaning:"= sich freuen auf · A1–A2", webLabel:"DE",
   lead4:"Wir empfehlen ChatGPT – der einzige mit eingebauter Sprachausgabe.",
-  aiBtn:"💬 KI-Assistenten öffnen", recLabel:"⭐ Empfohlen",
+  aiBtn:"⭐ KI-Assistenten öffnen", recLabel:"⭐ Empfohlen",
   audioNote:'In ChatGPT kann die Sprachausgabe aktiviert werden – du hörst <span class="hl">die richtige Aussprache</span>.',
   coffeeH:"Gefällt dir Contexta?",
   coffeeBtn:"Entwicklung unterstützen",
@@ -4863,8 +4877,8 @@ de:{
   heroTagline:'Mini-Dialoge im Kontext · Niveaus A1–C2 · Mehr als 15 Sprachen · Reale Situationen · Natürliche Kommunikation · 10 Dialoge pro Generierung',
   examplesLabel:'Beispiele:',
   extractKeyTema:'THEMA', extractKeyAkce:'AKTION', extractKeySituace:'SITUATION',
-  intentLabel:'💬 Was möchtest du üben?',
-  intentPlaceholder:'Gib ein Wort, Thema oder eine Situation ein, die du üben möchtest…',
+  intentLabel:'Welches Wort oder Thema möchtest du üben?',
+  intentPlaceholder:'Gib ein Wort, Thema oder eine Situation ein…',
   verbSearchPh:'🔍 Phrasal Verb suchen…',
   verbDropDefault:'— auswählen —',
   topicDropDefault:'— Thema auswählen —', wordSourceTopicsOpt:'— Themen der App —', quickLevelPhrasalVerbs:'Phrasal Verbs', quickLevelIdioms:'Redewendungen', quickLevelVerbsA1:'Verben A1', quickLevelVerbsA2:'Verben A2', quickLevelVerbsB1:'Verben B1', quickLevelVerbsB2:'Verben B2', quickLevelVerbsC1:'Verben C1', quickLevelVerbsC2:'Verben C2', quickLevelGroupLevels:'Stufen', quickLevelGroupVerbs:'Verben', quickLevelGroupOther:'Sonstiges', quickLevelCollocations:'Kollokationen', quickLevelNouns:'Substantive', quickLevelAdjectives:'Adjektive', quickLevelAdverbs:'Adverbien', quickLevelNounPhrases:'Nominalphrasen', quickLevelDiscourseMarkers:'Diskursmarker', quickLevelCollocationsInfo:'feste Wortpaare', quickLevelNounPhrasesInfo:'feste mehrteilige Nominalausdrücke, z. B. bus stop, credit card', quickLevelDiscourseMarkersInfo:'Wörter und Wendungen, die Sätze und Gedanken verbinden, z. B. however, in fact, on the other hand', quickLevelPlaceholder:'Kategorie wählen',
@@ -4899,7 +4913,7 @@ de:{
   grammarClearBtn:'✕ entfernen',
   grammarSearchPh:'🔍 Thema suchen…',
   dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
-  aiHint:'Erstellt 3 Beispielsätze und 10 Übungsdialoge.<br>Du brauchst ChatGPT oder Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">„Wörter werden in Sätzen lebendig.“</span>Erfordert ChatGPT/Copilot.'
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -4921,7 +4935,7 @@ fr:{
   lead3:"Clique pour développer et écouter.",
   dWord:"look forward to", dMeaning:"= se réjouir de · A1–A2", webLabel:"FR",
   lead4:"Nous recommandons ChatGPT – le seul avec lecture audio intégrée.",
-  aiBtn:"💬 Ouvrir un assistant IA", recLabel:"⭐ Recommandé",
+  aiBtn:"⭐ Ouvrir un assistant IA", recLabel:"⭐ Recommandé",
   audioNote:'Dans ChatGPT, la lecture audio peut être activée – tu entends <span class="hl">la bonne prononciation</span>.',
   coffeeH:"Aimes-tu Contexta ?",
   coffeeBtn:"Soutenir le développement",
@@ -4956,8 +4970,8 @@ fr:{
   heroTagline:'Mini-dialogues en contexte · Niveaux A1–C2 · Plus de 15 langues · Situations réelles · Communication naturelle · 10 dialogues par génération',
   examplesLabel:'Exemples:',
   extractKeyTema:'SUJET', extractKeyAkce:'ACTION', extractKeySituace:'SITUATION',
-  intentLabel:"💬 Que veux-tu pratiquer ?",
-  intentPlaceholder:"Écris un mot, un sujet ou une situation que tu veux pratiquer…",
+  intentLabel:"Quel mot ou sujet veux-tu pratiquer ?",
+  intentPlaceholder:"Écris un mot, un sujet ou une situation…",
   verbSearchPh:"🔍 Rechercher un verbe phrasé…",
   verbDropDefault:"— sélectionner —",
   topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes', quickLevelVerbsA1:'verbes A1', quickLevelVerbsA2:'verbes A2', quickLevelVerbsB1:'verbes B1', quickLevelVerbsB2:'verbes B2', quickLevelVerbsC1:'verbes C1', quickLevelVerbsC2:'verbes C2', quickLevelGroupLevels:'niveaux', quickLevelGroupVerbs:'verbes', quickLevelGroupOther:'autre', quickLevelCollocations:'collocations', quickLevelNouns:'noms', quickLevelAdjectives:'adjectifs', quickLevelAdverbs:'adverbes', quickLevelNounPhrases:'groupes nominaux', quickLevelDiscourseMarkers:'marqueurs de discours', quickLevelCollocationsInfo:'paires de mots figées', quickLevelNounPhrasesInfo:'expressions nominales figées à plusieurs mots, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'mots et expressions qui relient les phrases et les idées, ex. however, in fact, on the other hand', quickLevelPlaceholder:'choisir une catégorie',
@@ -4988,7 +5002,7 @@ fr:{
   grammarClearBtn:'✕ effacer',
   grammarSearchPh:'🔍 Rechercher un sujet…',
   dialogLengthHint:'Définit la longueur de chaque dialogue.',
-  aiHint:'Crée 3 phrases d\'exemple et 10 dialogues d\'entraînement.<br>ChatGPT ou Copilot nécessaire.'
+  aiHint:'<span class=\"hero-ai-motto\">« Les mots prennent vie dans les phrases. »</span>Nécessite ChatGPT/Copilot.'
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
@@ -5014,7 +5028,7 @@ es:{
   lead3:"Haz clic para expandir y reproducir.",
   dWord:"look forward to", dMeaning:"= tener ganas de · A1–A2", webLabel:"ES",
   lead4:"Recomendamos ChatGPT – el único con reproducción de voz integrada.",
-  aiBtn:"💬 Abrir asistente IA", recLabel:"⭐ Recomendado",
+  aiBtn:"⭐ Abrir asistente IA", recLabel:"⭐ Recomendado",
   audioNote:'En ChatGPT se puede activar la reproducción de voz – escuchas <span class="hl">la pronunciación correcta</span>.',
   coffeeH:"¿Te gusta Contexta?",
   coffeeBtn:"Apoyar el desarrollo",
@@ -5048,8 +5062,8 @@ es:{
   heroSubTagline:'Una palabra. Diez contextos. No lo olvidarás.',
   heroTagline:'Mini diálogos em contexto · Níveis A1–C2 · Mais de 15 idiomas · Situações reais · Comunicação natural · 10 diálogos por geração',
   examplesLabel:'Ejemplos:',
-  intentLabel:'💬 ¿Qué quieres practicar?',
-  intentPlaceholder:'Escribe una palabra, tema o situación que quieras practicar…',
+  intentLabel:'¿Qué palabra o tema quieres practicar?',
+  intentPlaceholder:'Escribe una palabra, tema o situación…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— seleccionar —',
   topicDropDefault:'— elegir tema —', wordSourceTopicsOpt:'— temas de la app —', quickLevelPhrasalVerbs:'verbos frasales', quickLevelIdioms:'modismos', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'niveles', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'otro', quickLevelCollocations:'colocaciones', quickLevelNouns:'sustantivos', quickLevelAdjectives:'adjetivos', quickLevelAdverbs:'adverbios', quickLevelNounPhrases:'sintagmas nominales', quickLevelDiscourseMarkers:'marcadores discursivos', quickLevelCollocationsInfo:'pares fijos de palabras', quickLevelNounPhrasesInfo:'expresiones nominales fijas de varias palabras, ej. bus stop, credit card', quickLevelDiscourseMarkersInfo:'palabras y expresiones que conectan oraciones e ideas, ej. however, in fact, on the other hand', quickLevelPlaceholder:'elegir categoría',
@@ -5078,7 +5092,7 @@ es:{
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
   dialogLengthHint:'Determina la longitud de cada diálogo.',
-  aiHint:'Crea 3 frases de ejemplo y 10 diálogos de práctica.<br>Necesitas ChatGPT o Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">«Las palabras cobran vida en las frases.»</span>Requiere ChatGPT/Copilot.'
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
@@ -5104,7 +5118,7 @@ it:{
   lead3:"Clicca per espandere e ascoltare.",
   dWord:"look forward to", dMeaning:"= non vedere l'ora · A1–A2", webLabel:"IT",
   lead4:"Consigliamo ChatGPT – il solo con riproduzione vocale integrata.",
-  aiBtn:"💬 Aprire un assistente IA", recLabel:"⭐ Consigliato",
+  aiBtn:"⭐ Aprire un assistente IA", recLabel:"⭐ Consigliato",
   audioNote:'In ChatGPT è possibile attivare la riproduzione vocale – senti <span class="hl">la pronuncia corretta</span>.',
   coffeeH:"Ti piace Contexta?",
   coffeeBtn:"Supporta lo sviluppo",
@@ -5138,8 +5152,8 @@ it:{
   heroSubTagline:'Una parola. Dieci contesti. Non te la scorderai.',
   heroTagline:'Mini dialoghi in contesto · Livelli A1–C2 · Più di 15 lingue · Situazioni reali · Comunicazione naturale · 10 dialoghi per generazione',
   examplesLabel:'Esempi:',
-  intentLabel:'💬 Cosa vuoi praticare?',
-  intentPlaceholder:'Scrivi una parola, un argomento o una situazione che vuoi praticare…',
+  intentLabel:'Quale parola o argomento vuoi praticare?',
+  intentPlaceholder:'Scrivi una parola, un argomento o una situazione…',
   verbSearchPh:'🔍 Cerca verbo frasale…',
   verbDropDefault:'— seleziona —',
   topicDropDefault:'— scegli argomento —', wordSourceTopicsOpt:"— argomenti dell'app —", quickLevelPhrasalVerbs:'verbi frasali', quickLevelIdioms:'modi di dire', quickLevelVerbsA1:'verbi A1', quickLevelVerbsA2:'verbi A2', quickLevelVerbsB1:'verbi B1', quickLevelVerbsB2:'verbi B2', quickLevelVerbsC1:'verbi C1', quickLevelVerbsC2:'verbi C2', quickLevelGroupLevels:'livelli', quickLevelGroupVerbs:'verbi', quickLevelGroupOther:'altro', quickLevelCollocations:'collocazioni', quickLevelNouns:'sostantivi', quickLevelAdjectives:'aggettivi', quickLevelAdverbs:'avverbi', quickLevelNounPhrases:'sintagmi nominali', quickLevelDiscourseMarkers:'connettivi testuali', quickLevelCollocationsInfo:'coppie fisse di parole', quickLevelNounPhrasesInfo:'espressioni nominali fisse composte da più parole, es. bus stop, credit card', quickLevelDiscourseMarkersInfo:'parole ed espressioni che collegano frasi e idee, es. however, in fact, on the other hand', quickLevelPlaceholder:'scegli categoria',
@@ -5168,7 +5182,7 @@ it:{
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
   dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
-  aiHint:'Crea 3 frasi di esempio e 10 dialoghi di pratica.<br>Serve ChatGPT o Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">«Le parole prendono vita nelle frasi.»</span>Richiede ChatGPT/Copilot.'
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
@@ -5194,7 +5208,7 @@ pt:{
   lead3:"Clique para expandir e ouvir.",
   dWord:"look forward to", dMeaning:"= aguardar com ansiedade · A1–A2", webLabel:"PT",
   lead4:"Recomendamos ChatGPT – o único com reprodução de voz integrada.",
-  aiBtn:"💬 Abrir assistente IA", recLabel:"⭐ Recomendado",
+  aiBtn:"⭐ Abrir assistente IA", recLabel:"⭐ Recomendado",
   audioNote:'No ChatGPT é possível ativar a reprodução de voz – você ouve <span class="hl">a pronúncia correta</span>.',
   coffeeH:"Gostaste do Contexta?",
   coffeeBtn:"Apoiar o desenvolvimento",
@@ -5227,8 +5241,8 @@ pt:{
   fBrand:'Aprende palavras no contexto dos diálogos',
   heroSubTagline:'Uma palavra. Dez contextos. Você não vai esquecer.',
   examplesLabel:'Exemplos:',
-  intentLabel:'💬 O que você quer praticar?',
-  intentPlaceholder:'Escreva uma palavra, tema ou situação que queira praticar…',
+  intentLabel:'Que palavra ou tema você quer praticar?',
+  intentPlaceholder:'Escreva uma palavra, tema ou situação…',
   verbSearchPh:'🔍 Buscar verbo frasal…',
   verbDropDefault:'— selecionar —',
   topicDropDefault:'— escolher tema —', wordSourceTopicsOpt:'— tópicos do app —', quickLevelPhrasalVerbs:'verbos frasais', quickLevelIdioms:'expressões idiomáticas', quickLevelVerbsA1:'verbos A1', quickLevelVerbsA2:'verbos A2', quickLevelVerbsB1:'verbos B1', quickLevelVerbsB2:'verbos B2', quickLevelVerbsC1:'verbos C1', quickLevelVerbsC2:'verbos C2', quickLevelGroupLevels:'níveis', quickLevelGroupVerbs:'verbos', quickLevelGroupOther:'outro', quickLevelCollocations:'colocações', quickLevelNouns:'substantivos', quickLevelAdjectives:'adjetivos', quickLevelAdverbs:'advérbios', quickLevelNounPhrases:'sintagmas nominais', quickLevelDiscourseMarkers:'marcadores discursivos', quickLevelCollocationsInfo:'pares fixos de palavras', quickLevelNounPhrasesInfo:'expressões nominais fixas de várias palavras, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'palavras e expressões que conectam frases e ideias, ex. however, in fact, on the other hand', quickLevelPlaceholder:'escolher categoria',
@@ -5257,7 +5271,7 @@ pt:{
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
   dialogLengthHint:'Define o comprimento de cada diálogo.',
-  aiHint:'Cria 3 frases de exemplo e 10 diálogos de prática.<br>Você precisa do ChatGPT ou Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">«As palavras ganham vida em frases.»</span>Requer ChatGPT/Copilot.'
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
@@ -5283,7 +5297,7 @@ pl:{
   lead3:"Kliknij, aby rozwinąć i odtworzyć.",
   dWord:"look forward to", dMeaning:"= cieszyć się na coś · A1–A2", webLabel:"PL",
   lead4:"Polecamy ChatGPT – jako jedyny oferuje odtwarzanie głosowe.",
-  aiBtn:"💬 Otwórz asystenta AI", recLabel:"⭐ Polecane",
+  aiBtn:"⭐ Otwórz asystenta AI", recLabel:"⭐ Polecane",
   audioNote:'W ChatGPT można włączyć odtwarzanie głosowe – słyszysz <span class="hl">właściwą wymowę</span>.',
   coffeeH:"Podoba ci się Contexta?",
   coffeeBtn:"Wesprzyj rozwój",
@@ -5317,8 +5331,8 @@ pl:{
   heroSubTagline:'Jedno słowo. Dziesięć kontekstów. Nie zapomnisz.',
   heroTagline:'Mini dialogi w kontekście · Poziomy A1–C2 · Ponad 15 języków · Realne sytuacje · Naturalna komunikacja · 10 dialogów na generowanie',
   examplesLabel:'Przykłady:',
-  intentLabel:'💬 Co chcesz ćwiczyć?',
-  intentPlaceholder:'Wpisz słowo, temat lub sytuację, którą chcesz przećwiczyć…',
+  intentLabel:'Jakie słowo lub temat chcesz ćwiczyć?',
+  intentPlaceholder:'Wpisz słowo, temat lub sytuację…',
   verbSearchPh:'🔍 Szukaj czasownika frazowego…',
   verbDropDefault:'— wybierz —',
   topicDropDefault:'— wybierz temat —', wordSourceTopicsOpt:'— tematy aplikacji —', quickLevelPhrasalVerbs:'czasowniki złożone', quickLevelIdioms:'idiomy', quickLevelVerbsA1:'czasowniki A1', quickLevelVerbsA2:'czasowniki A2', quickLevelVerbsB1:'czasowniki B1', quickLevelVerbsB2:'czasowniki B2', quickLevelVerbsC1:'czasowniki C1', quickLevelVerbsC2:'czasowniki C2', quickLevelGroupLevels:'poziomy', quickLevelGroupVerbs:'czasowniki', quickLevelGroupOther:'inne', quickLevelCollocations:'kolokacje', quickLevelNouns:'rzeczowniki', quickLevelAdjectives:'przymiotniki', quickLevelAdverbs:'przysłówki', quickLevelNounPhrases:'frazy rzeczownikowe', quickLevelDiscourseMarkers:'łączniki dyskursywne', quickLevelCollocationsInfo:'stałe pary wyrazowe', quickLevelNounPhrasesInfo:'utrwalone wyrażenia rzeczownikowe wielowyrazowe, np. bus stop, credit card', quickLevelDiscourseMarkersInfo:'słowa i wyrażenia łączące zdania i myśli, np. however, in fact, on the other hand', quickLevelPlaceholder:'wybierz kategorię',
@@ -5347,7 +5361,7 @@ pl:{
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
   dialogLengthHint:'Określa długość każdego dialogu.',
-  aiHint:'Tworzy 3 przykładowe zdania i 10 dialogów ćwiczeniowych.<br>Potrzebujesz ChatGPT lub Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">„Słowa ożywają w zdaniach.”</span>Wymaga ChatGPT/Copilot.'
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
@@ -5373,7 +5387,7 @@ cn:{
   lead3:"点击展开并播放。",
   dWord:"look forward to", dMeaning:"= 期待 / 盼望 · A1–A2", webLabel:"中文",
   lead4:"推荐ChatGPT – 唯一内置语音播放功能的。",
-  aiBtn:"💬 打开AI助手", recLabel:"⭐ 推荐",
+  aiBtn:"⭐ 打开AI助手", recLabel:"⭐ 推荐",
   audioNote:'在ChatGPT中可以开启语音播放 – 听到<span class="hl">正确发音</span>。',
   coffeeH:"你喜欢Contexta吗？",
   coffeeBtn:"支持开发",
@@ -5407,8 +5421,8 @@ cn:{
   heroSubTagline:'一个单词，十个语境，永远记住。',
   heroTagline:'情境迷你对话 · A1–C2 级别 · 超过15种语言 · 真实场景 · 自然交流 · 每次生成10段对话',
   examplesLabel:'示例：',
-  intentLabel:'💬 你想练习什么？',
-  intentPlaceholder:'输入你想练习的单词、主题或情境…',
+  intentLabel:'你想练习哪个单词或主题？',
+  intentPlaceholder:'输入单词、主题或情境…',
   verbSearchPh:'🔍 搜索短语动词…',
   verbDropDefault:'— 选择 —',
   topicDropDefault:'— 选择主题 —', wordSourceTopicsOpt:'— 应用主题 —', quickLevelPhrasalVerbs:'短语动词', quickLevelIdioms:'习语', quickLevelVerbsA1:'动词 A1', quickLevelVerbsA2:'动词 A2', quickLevelVerbsB1:'动词 B1', quickLevelVerbsB2:'动词 B2', quickLevelVerbsC1:'动词 C1', quickLevelVerbsC2:'动词 C2', quickLevelGroupLevels:'级别', quickLevelGroupVerbs:'动词', quickLevelGroupOther:'其他', quickLevelCollocations:'搭配', quickLevelNouns:'名词', quickLevelAdjectives:'形容词', quickLevelAdverbs:'副词', quickLevelNounPhrases:'名词短语', quickLevelDiscourseMarkers:'语篇标记', quickLevelCollocationsInfo:'固定词组搭配', quickLevelNounPhrasesInfo:'固定的多词名词短语，例如 bus stop, credit card', quickLevelDiscourseMarkersInfo:'连接句子和想法的词语，例如 however, in fact, on the other hand', quickLevelPlaceholder:'选择类别',
@@ -5437,7 +5451,7 @@ cn:{
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
   dialogLengthHint:'设置每段对话的长度。',
-  aiHint:'生成3个例句和10段练习对话。<br>你需要 ChatGPT 或 Copilot。'
+  aiHint:'<span class=\"hero-ai-motto\">“词语在句子中活起来。”</span>需要 ChatGPT/Copilot。'
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
@@ -5463,7 +5477,7 @@ jp:{
   lead3:"クリックして展開・再生できます。",
   dWord:"look forward to", dMeaning:"= 楽しみにする · A1–A2", webLabel:"JP",
   lead4:"ChatGPTをお勧めします – 唯一の内蔵音声再生機能があります。",
-  aiBtn:"💬 AIアシスタントを開く", recLabel:"⭐ おすすめ",
+  aiBtn:"⭐ AIアシスタントを開く", recLabel:"⭐ おすすめ",
   audioNote:'ChatGPTでボイス再生をオンにできます – <span class="hl">正しい発音</span>が聞けます。',
   coffeeH:"Contextaはいかがですか？",
   coffeeBtn:"開発をサポート",
@@ -5497,8 +5511,8 @@ jp:{
   heroSubTagline:'一つの単語。十の文脈。忘れない。',
   heroTagline:'コンテキストのミニ会話 · レベルA1–C2 · 15以上の言語 · 実際の場面 · 自然なコミュニケーション · 1回の生成で10の会話',
   examplesLabel:'例：',
-  intentLabel:'💬 何を練習したいですか？',
-  intentPlaceholder:'練習したい単語、テーマ、または状況を入力…',
+  intentLabel:'どの単語またはテーマを練習したいですか？',
+  intentPlaceholder:'単語、テーマ、または状況を入力…',
   verbSearchPh:'🔍 句動詞を検索…',
   verbDropDefault:'— 選択 —',
   topicDropDefault:'— テーマを選択 —', wordSourceTopicsOpt:'— アプリのテーマ —', quickLevelPhrasalVerbs:'句動詞', quickLevelIdioms:'イディオム', quickLevelVerbsA1:'動詞 A1', quickLevelVerbsA2:'動詞 A2', quickLevelVerbsB1:'動詞 B1', quickLevelVerbsB2:'動詞 B2', quickLevelVerbsC1:'動詞 C1', quickLevelVerbsC2:'動詞 C2', quickLevelGroupLevels:'レベル', quickLevelGroupVerbs:'動詞', quickLevelGroupOther:'その他', quickLevelCollocations:'コロケーション', quickLevelNouns:'名詞', quickLevelAdjectives:'形容詞', quickLevelAdverbs:'副詞', quickLevelNounPhrases:'名詞句', quickLevelDiscourseMarkers:'ディスコースマーカー', quickLevelCollocationsInfo:'決まった単語の組み合わせ', quickLevelNounPhrasesInfo:'bus stopやcredit cardのような複数語からなる定型的な名詞表現', quickLevelDiscourseMarkersInfo:'however, in fact, on the other handのように文や考えをつなぐ語句', quickLevelPlaceholder:'カテゴリーを選択',
@@ -5527,7 +5541,7 @@ jp:{
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
   dialogLengthHint:'各ダイアログの長さを設定します。',
-  aiHint:'例文3つと練習ダイアログ10個を作成します。<br>ChatGPTまたはCopilotが必要です。'
+  aiHint:'<span class=\"hero-ai-motto\">「言葉は文の中で息づく。」</span>ChatGPT/Copilotが必要です。'
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
@@ -5553,7 +5567,7 @@ kr:{
   lead3:"클릭하여 펼치고 재생하세요.",
   dWord:"look forward to", dMeaning:"= 기대하다 · A1–A2", webLabel:"KR",
   lead4:"ChatGPT를 추천합니다 – 유일하게 내장 음성 재생 기능이 있습니다.",
-  aiBtn:"💬 AI 어시스턴트 열기", recLabel:"⭐ 추천",
+  aiBtn:"⭐ AI 어시스턴트 열기", recLabel:"⭐ 추천",
   audioNote:'ChatGPT에서 음성 재생을 켤 수 있습니다 – <span class="hl">올바른 발음</span>을 들을 수 있습니다.',
   coffeeH:"Contexta가 마음에 드세요?",
   coffeeBtn:"개발 후원하기",
@@ -5587,8 +5601,8 @@ kr:{
   heroSubTagline:'한 단어. 열 개의 맥락. 잊지 않는다.',
   heroTagline:'맥락 속 미니 대화 · A1–C2 수준 · 15개 이상의 언어 · 실제 상황 · 자연스러운 소통 · 생성당 10개 대화',
   examplesLabel:'예시:',
-  intentLabel:'💬 무엇을 연습하고 싶으신가요?',
-  intentPlaceholder:'연습하고 싶은 단어, 주제 또는 상황을 입력하세요…',
+  intentLabel:'어떤 단어 또는 주제를 연습하고 싶으신가요?',
+  intentPlaceholder:'단어, 주제 또는 상황을 입력하세요…',
   verbSearchPh:'🔍 구동사 검색…',
   verbDropDefault:'— 선택 —',
   topicDropDefault:'— 주제 선택 —', wordSourceTopicsOpt:'— 앱 주제 —', quickLevelPhrasalVerbs:'구동사', quickLevelIdioms:'관용구', quickLevelVerbsA1:'동사 A1', quickLevelVerbsA2:'동사 A2', quickLevelVerbsB1:'동사 B1', quickLevelVerbsB2:'동사 B2', quickLevelVerbsC1:'동사 C1', quickLevelVerbsC2:'동사 C2', quickLevelGroupLevels:'레벨', quickLevelGroupVerbs:'동사', quickLevelGroupOther:'기타', quickLevelCollocations:'연어', quickLevelNouns:'명사', quickLevelAdjectives:'형용사', quickLevelAdverbs:'부사', quickLevelNounPhrases:'명사구', quickLevelDiscourseMarkers:'담화 표지', quickLevelCollocationsInfo:'고정된 단어 짝', quickLevelNounPhrasesInfo:'bus stop, credit card처럼 여러 단어로 이루어진 고정 명사 표현', quickLevelDiscourseMarkersInfo:'however, in fact, on the other hand처럼 문장과 생각을 연결하는 단어와 표현', quickLevelPlaceholder:'카테고리 선택',
@@ -5617,7 +5631,7 @@ kr:{
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
   dialogLengthHint:'각 대화의 길이를 설정합니다.',
-  aiHint:'예문 3개와 연습 대화 10개를 생성합니다.<br>ChatGPT 또는 Copilot이 필요합니다.'
+  aiHint:'<span class=\"hero-ai-motto\">“단어는 문장 속에서 살아난다.”</span>ChatGPT/Copilot이 필요합니다.'
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
@@ -5643,7 +5657,7 @@ sk:{
   lead3:"Klikni na dialóg pre rozbalenie a prehranie zvuku.",
   dWord:"look forward to", dMeaning:"= tešiť sa na niečo · A1–A2", webLabel:"SK",
   lead4:"Odporúčame ChatGPT – ako jediný ponúka prehrávanie hlasom priamo v aplikácii.",
-  aiBtn:"💬 Otvoriť AI asistenta", recLabel:"⭐ Odporúčané",
+  aiBtn:"⭐ Otvoriť AI asistenta", recLabel:"⭐ Odporúčané",
   audioNote:'V ChatGPT si možno zapnúť prehrávanie hlasom – počuješ <span class="hl">správnu výslovnosť</span>.',
   coffeeH:"Páči sa ti Contexta?",
   coffeeBtn:"Podporiť vývoj",
@@ -5667,8 +5681,8 @@ sk:{
   heroSubTagline:'Jedno slovo. Desať kontextov. Nezabudneš.',
   heroTagline:'Mini dialógy v kontexte · Úrovne A1–C2 · Viac ako 15 jazykov · Reálne situácie · Prirodzená komunikácia · 10 dialógov v každom generovaní',
   examplesLabel:'Príklady:',
-  intentLabel:'💬 Čo chceš precvičiť?',
-  intentPlaceholder:'Napíš slovo, tému alebo situáciu, ktorú chceš cvičiť…',
+  intentLabel:'Aké slovo alebo tému chceš precvičiť?',
+  intentPlaceholder:'Napíš slovo, tému alebo situáciu…',
   verbSearchPh:'🔍 Hľadať frázové sloveso…',
   verbDropDefault:'— vybrať —', topicDropDefault:'— vybrať tému —', wordSourceTopicsOpt:'— témy aplikácie —', quickLevelPhrasalVerbs:'frázové slovesá', quickLevelIdioms:'idiómy', quickLevelVerbsA1:'slovesá A1', quickLevelVerbsA2:'slovesá A2', quickLevelVerbsB1:'slovesá B1', quickLevelVerbsB2:'slovesá B2', quickLevelVerbsC1:'slovesá C1', quickLevelVerbsC2:'slovesá C2', quickLevelGroupLevels:'úrovne', quickLevelGroupVerbs:'slovesá', quickLevelGroupOther:'ostatné', quickLevelCollocations:'kolokácie', quickLevelNouns:'podstatné mená', quickLevelAdjectives:'prídavné mená', quickLevelAdverbs:'príslovky', quickLevelNounPhrases:'menné spojenia', quickLevelDiscourseMarkers:'diskurzné konektory', quickLevelCollocationsInfo:'ustálené dvojice slov', quickLevelNounPhrasesInfo:'ustálené viacslovné spojenia s podstatným menom, napr. bus stop, credit card', quickLevelDiscourseMarkersInfo:'slová a spojenia spájajúce vety a myšlienky, napr. however, in fact, on the other hand', quickLevelPlaceholder:'vybrať kategóriu',
   lvChip0:'A1–A2', lvChipSub0:'Začiatočník',
@@ -5696,7 +5710,7 @@ sk:{
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
   dialogLengthHint:'Určuje dĺžku každého dialógu.',
-  aiHint:'Vytvorí 3 príkladové vety a 10 precvičovacích dialógov.<br>Potrebuješ ChatGPT alebo Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">„Slová ožívajú vo vetách.“</span>Vyžaduje ChatGPT/Copilot.'
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
@@ -5722,7 +5736,7 @@ nl:{
   lead3:"Klik om uit te vouwen en audio af te spelen.",
   dWord:"look forward to", dMeaning:"= uitkijken naar · A1–A2", webLabel:"NL",
   lead4:"Aanbevolen: ChatGPT – de enige met ingebouwde spraakweergave.",
-  aiBtn:"💬 AI-assistent openen", recLabel:"⭐ Aanbevolen",
+  aiBtn:"⭐ AI-assistent openen", recLabel:"⭐ Aanbevolen",
   audioNote:'In ChatGPT kun je spraakweergave inschakelen – je hoort de <span class="hl">juiste uitspraak</span>.',
   coffeeH:"Vind je Contexta goed?",
   coffeeBtn:"Ondersteun ontwikkeling",
@@ -5746,8 +5760,8 @@ nl:{
   heroSubTagline:'Eén woord. Tien contexten. Je vergeet het niet.',
   heroTagline:'Mini-dialogen in context · Niveaus A1–C2 · Meer dan 15 talen · Echte situaties · Natuurlijke communicatie · 10 dialogen per generatie',
   examplesLabel:'Voorbeelden:',
-  intentLabel:'💬 Wat wil je oefenen?',
-  intentPlaceholder:'Voer een woord, onderwerp of situatie in die je wilt oefenen…',
+  intentLabel:'Welk woord of onderwerp wil je oefenen?',
+  intentPlaceholder:'Voer een woord, onderwerp of situatie in…',
   verbSearchPh:'🔍 Zoek werkwoordgroep…',
   verbDropDefault:'— selecteren —', topicDropDefault:'— onderwerp selecteren —', wordSourceTopicsOpt:'— app-onderwerpen —', quickLevelPhrasalVerbs:'voorzetselwerkwoorden', quickLevelIdioms:'idiomen', quickLevelVerbsA1:'werkwoorden A1', quickLevelVerbsA2:'werkwoorden A2', quickLevelVerbsB1:'werkwoorden B1', quickLevelVerbsB2:'werkwoorden B2', quickLevelVerbsC1:'werkwoorden C1', quickLevelVerbsC2:'werkwoorden C2', quickLevelGroupLevels:'niveaus', quickLevelGroupVerbs:'werkwoorden', quickLevelGroupOther:'overig', quickLevelCollocations:'collocaties', quickLevelNouns:'zelfstandige naamwoorden', quickLevelAdjectives:'bijvoeglijke naamwoorden', quickLevelAdverbs:'bijwoorden', quickLevelNounPhrases:'naamwoordgroepen', quickLevelDiscourseMarkers:'signaalwoorden', quickLevelCollocationsInfo:'vaste woordcombinaties', quickLevelNounPhrasesInfo:'vaste meerwoordige naamwoorduitdrukkingen, bijv. bus stop, credit card', quickLevelDiscourseMarkersInfo:'woorden en uitdrukkingen die zinnen en ideeën verbinden, bijv. however, in fact, on the other hand', quickLevelPlaceholder:'kies categorie',
   lvChip0:'A1–A2', lvChipSub0:'Beginner',
@@ -5775,7 +5789,7 @@ nl:{
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
   dialogLengthHint:'Stelt de lengte van elk dialoog in.',
-  aiHint:'Maakt 3 voorbeeldzinnen en 10 oefendialogen.<br>Je hebt ChatGPT of Copilot nodig.'
+  aiHint:'<span class=\"hero-ai-motto\">„Woorden komen tot leven in zinnen.”</span>Vereist ChatGPT/Copilot.'
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
@@ -5801,7 +5815,7 @@ sv:{
   lead3:"Klicka för att expandera och spela upp ljud.",
   dWord:"look forward to", dMeaning:"= se fram emot · A1–A2", webLabel:"SV",
   lead4:"Rekommenderas: ChatGPT – den enda med inbyggd röstuppspelning.",
-  aiBtn:"💬 Öppna AI-assistent", recLabel:"⭐ Rekommenderas",
+  aiBtn:"⭐ Öppna AI-assistent", recLabel:"⭐ Rekommenderas",
   audioNote:'I ChatGPT kan du aktivera röstuppspelning – du hör <span class="hl">korrekt uttal</span>.',
   coffeeH:"Gillar du Contexta?",
   coffeeBtn:"Stöd utvecklingen",
@@ -5825,8 +5839,8 @@ sv:{
   heroSubTagline:'Ett ord. Tio sammanhang. Du glömmer det inte.',
   heroTagline:'Minidialoger i kontext · Nivåer A1–C2 · Fler än 15 språk · Verkliga situationer · Naturlig kommunikation · 10 dialoger per generering',
   examplesLabel:'Exempel:',
-  intentLabel:'💬 Vad vill du öva?',
-  intentPlaceholder:'Skriv ett ord, ämne eller situation du vill öva på…',
+  intentLabel:'Vilket ord eller ämne vill du öva på?',
+  intentPlaceholder:'Skriv ett ord, ämne eller situation…',
   verbSearchPh:'🔍 Sök frasverb…',
   verbDropDefault:'— välj —', topicDropDefault:'— välj ämne —', wordSourceTopicsOpt:'— app-ämnen —', quickLevelPhrasalVerbs:'frasala verb', quickLevelIdioms:'idiom', quickLevelVerbsA1:'verb A1', quickLevelVerbsA2:'verb A2', quickLevelVerbsB1:'verb B1', quickLevelVerbsB2:'verb B2', quickLevelVerbsC1:'verb C1', quickLevelVerbsC2:'verb C2', quickLevelGroupLevels:'nivåer', quickLevelGroupVerbs:'verb', quickLevelGroupOther:'övrigt', quickLevelCollocations:'kollokationer', quickLevelNouns:'substantiv', quickLevelAdjectives:'adjektiv', quickLevelAdverbs:'adverb', quickLevelNounPhrases:'nominalfraser', quickLevelDiscourseMarkers:'diskursmarkörer', quickLevelCollocationsInfo:'fasta ordpar', quickLevelNounPhrasesInfo:'fasta flerordiga substantivuttryck, t.ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'ord och uttryck som binder ihop meningar och tankar, t.ex. however, in fact, on the other hand', quickLevelPlaceholder:'välj kategori',
   lvChip0:'A1–A2', lvChipSub0:'Nybörjare',
@@ -5854,7 +5868,7 @@ sv:{
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
   dialogLengthHint:'Anger längden på varje dialog.',
-  aiHint:'Skapar 3 exempelmeningar och 10 övningsdialoger.<br>Du behöver ChatGPT eller Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">”Orden får liv i meningar.”</span>Kräver ChatGPT/Copilot.'
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
@@ -5880,7 +5894,7 @@ ru:{
   lead3:"Нажми, чтобы раскрыть и прослушать.",
   dWord:"look forward to", dMeaning:"= с нетерпением ждать чего-либо · A1–A2", webLabel:"RU",
   lead4:"Рекомендуется: ChatGPT — единственная платформа со встроенным голосовым воспроизведением.",
-  aiBtn:"💬 Открыть AI ассистента", recLabel:"⭐ Рекомендуется",
+  aiBtn:"⭐ Открыть AI ассистента", recLabel:"⭐ Рекомендуется",
   audioNote:'В ChatGPT можно включить голосовое воспроизведение — <span class="hl">услышишь правильное произношение</span>.',
   coffeeH:"Нравится Contexta?",
   coffeeBtn:"Поддержать разработку",
@@ -5899,8 +5913,8 @@ ru:{
   heroSubTagline:'Одно слово. Десять контекстов. Не забудешь.',
   heroTagline:'Мини-диалоги в контексте · Уровни A1–C2 · Более 15 языков · Реальные ситуации · Естественное общение · 10 диалогов за генерацию',
   examplesLabel:'Примеры:',
-  intentLabel:'💬 Что хочешь практиковать?',
-  intentPlaceholder:'Напиши слово, тему или ситуацию, которую хочешь попрактиковать…',
+  intentLabel:'Какое слово или тему хочешь попрактиковать?',
+  intentPlaceholder:'Напиши слово, тему или ситуацию…',
   verbSearchPh:'🔍 Поиск фразового глагола…',
   verbDropDefault:'— выбрать —', topicDropDefault:'— выбрать тему —', wordSourceTopicsOpt:'— темы приложения —', quickLevelPhrasalVerbs:'фразовые глаголы', quickLevelIdioms:'идиомы', quickLevelVerbsA1:'глаголы A1', quickLevelVerbsA2:'глаголы A2', quickLevelVerbsB1:'глаголы B1', quickLevelVerbsB2:'глаголы B2', quickLevelVerbsC1:'глаголы C1', quickLevelVerbsC2:'глаголы C2', quickLevelGroupLevels:'уровни', quickLevelGroupVerbs:'глаголы', quickLevelGroupOther:'другое', quickLevelCollocations:'коллокации', quickLevelNouns:'существительные', quickLevelAdjectives:'прилагательные', quickLevelAdverbs:'наречия', quickLevelNounPhrases:'именные словосочетания', quickLevelDiscourseMarkers:'дискурсивные маркеры', quickLevelCollocationsInfo:'устойчивые пары слов', quickLevelNounPhrasesInfo:'устойчивые многословные именные сочетания, напр. bus stop, credit card', quickLevelDiscourseMarkersInfo:'слова и выражения, связывающие предложения и мысли, напр. however, in fact, on the other hand', quickLevelPlaceholder:'выбрать категорию',
   lvChip0:'A1–A2', lvChipSub0:'Начинающий',
@@ -5928,7 +5942,7 @@ ru:{
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
   dialogLengthHint:'Определяет длину каждого диалога.',
-  aiHint:'Создаёт 3 примера предложений и 10 диалогов для практики.<br>Нужен ChatGPT или Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">«Слова оживают в предложениях.»</span>Требуется ChatGPT/Copilot.'
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
@@ -5954,7 +5968,7 @@ tr:{
   lead3:"Genişletmek ve ses çalmak için tıkla.",
   dWord:"look forward to", dMeaning:"= bir şeyi sabırsızlıkla beklemek · A1–A2", webLabel:"TR",
   lead4:"Önerilen: ChatGPT – yerleşik sesli oynatma özelliğine sahip tek platform.",
-  aiBtn:"💬 AI asistanı aç", recLabel:"⭐ Önerilen",
+  aiBtn:"⭐ AI asistanı aç", recLabel:"⭐ Önerilen",
   audioNote:'ChatGPT\'de sesli oynatmayı etkinleştirebilirsin – <span class="hl">doğru telaffuzu</span> duyarsın.',
   coffeeH:"Contexta'yı beğendin mi?",
   coffeeBtn:"Geliştirmeyi destekle",
@@ -5978,8 +5992,8 @@ tr:{
   heroSubTagline:'Bir kelime. On bağlam. Unutmayacaksın.',
   heroTagline:'Bağlamda mini diyaloglar · A1–C2 seviyeleri · 15’ten fazla dil · Gerçek durumlar · Doğal iletişim · Her oluşturmada 10 diyalog',
   examplesLabel:'Örnekler:',
-  intentLabel:'💬 Ne pratik yapmak istiyorsun?',
-  intentPlaceholder:'Pratik yapmak istediğin kelime, konu veya durumu yaz…',
+  intentLabel:'Hangi kelime veya konuyu pratik yapmak istiyorsun?',
+  intentPlaceholder:'Kelime, konu veya durum yaz…',
   verbSearchPh:'🔍 Fiil öbeği ara…',
   verbDropDefault:'— seç —', topicDropDefault:'— konu seç —', wordSourceTopicsOpt:'— uygulama konuları —', quickLevelPhrasalVerbs:'deyimsel fiiller', quickLevelIdioms:'deyimler', quickLevelVerbsA1:'fiiller A1', quickLevelVerbsA2:'fiiller A2', quickLevelVerbsB1:'fiiller B1', quickLevelVerbsB2:'fiiller B2', quickLevelVerbsC1:'fiiller C1', quickLevelVerbsC2:'fiiller C2', quickLevelGroupLevels:'seviyeler', quickLevelGroupVerbs:'fiiller', quickLevelGroupOther:'diğer', quickLevelCollocations:'eş dizimler', quickLevelNouns:'isimler', quickLevelAdjectives:'sıfatlar', quickLevelAdverbs:'zarflar', quickLevelNounPhrases:'ad öbekleri', quickLevelDiscourseMarkers:'söylem belirteçleri', quickLevelCollocationsInfo:'kalıplaşmış kelime çiftleri', quickLevelNounPhrasesInfo:'bus stop, credit card gibi kalıplaşmış çok kelimeli ad öbekleri', quickLevelDiscourseMarkersInfo:'however, in fact, on the other hand gibi cümleleri ve fikirleri birbirine bağlayan sözcük ve ifadeler', quickLevelPlaceholder:'kategori seç',
   lvChip0:'A1–A2', lvChipSub0:'Başlangıç',
@@ -6007,7 +6021,7 @@ tr:{
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
   dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
-  aiHint:'3 örnek cümle ve 10 alıştırma diyaloğu oluşturur.<br>ChatGPT veya Copilot gerekir.'
+  aiHint:'<span class=\"hero-ai-motto\">“Kelimeler cümlelerde hayat bulur.”</span>ChatGPT/Copilot gerektirir.'
 },
 uk:{
   webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
@@ -6033,7 +6047,7 @@ uk:{
   lead3:"Натисни на діалог, щоб розгорнути та відтворити аудіо.",
   dWord:"look forward to", dMeaning:"= чекати з нетерпінням · A1–A2", webLabel:"UK",
   lead4:"Рекомендуємо ChatGPT – єдиний з вбудованим голосовим відтворенням.",
-  aiBtn:"💬 Відкрити AI-асистента", recLabel:"⭐ Рекомендовано",
+  aiBtn:"⭐ Відкрити AI-асистента", recLabel:"⭐ Рекомендовано",
   audioNote:'У ChatGPT можна увімкнути голосове відтворення – чуй <span class="hl">правильну вимову</span>.',
   coffeeH:"Подобається Contexta?",
   coffeeBtn:"Підтримати розвиток",
@@ -6059,8 +6073,8 @@ uk:{
   heroTagline:'Міні-діалоги в контексті · Рівні A1–C2 · Більше 15 мов · Реальні ситуації · Природне спілкування · 10 діалогів на генерацію',
   examplesLabel:'Приклади:',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДІЯ', extractKeySituace:'СИТУАЦІЯ',
-  intentLabel:'💬 Що хочеш попрактикувати?',
-  intentPlaceholder:'Напиши слово, тему або ситуацію, яку хочеш попрактикувати…',
+  intentLabel:'Яке слово чи тему хочеш попрактикувати?',
+  intentPlaceholder:'Напиши слово, тему або ситуацію…',
   verbSearchPh:'🔍 Шукати фразове дієслово…',
   verbDropDefault:'— вибрати —', topicDropDefault:'— вибрати тему —', wordSourceTopicsOpt:'— теми застосунку —', quickLevelPhrasalVerbs:'фразові дієслова', quickLevelIdioms:'ідіоми', quickLevelVerbsA1:'дієслова A1', quickLevelVerbsA2:'дієслова A2', quickLevelVerbsB1:'дієслова B1', quickLevelVerbsB2:'дієслова B2', quickLevelVerbsC1:'дієслова C1', quickLevelVerbsC2:'дієслова C2', quickLevelGroupLevels:'рівні', quickLevelGroupVerbs:'дієслова', quickLevelGroupOther:'інше', quickLevelCollocations:'колокації', quickLevelNouns:'іменники', quickLevelAdjectives:'прикметники', quickLevelAdverbs:'прислівники', quickLevelNounPhrases:'іменникові словосполучення', quickLevelDiscourseMarkers:'дискурсивні маркери', quickLevelCollocationsInfo:'усталені пари слів', quickLevelNounPhrasesInfo:'усталені багатослівні іменникові словосполучення, напр. bus stop, credit card', quickLevelDiscourseMarkersInfo:'слова та вирази, що пов\'язують речення й думки, напр. however, in fact, on the other hand', quickLevelPlaceholder:'вибрати категорію',
   lvChip0:'A1–A2', lvChipSub0:'Початківець',
@@ -6092,7 +6106,7 @@ uk:{
   grammarClearBtn:'✕ скасувати',
   grammarSearchPh:'🔍 Шукати тему…',
   dialogLengthHint:'Визначає довжину кожного діалогу.',
-  aiHint:'Створює 3 приклади речень і 10 діалогів для практики.<br>Потрібен ChatGPT або Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">«Слова оживають у реченнях.»</span>Потрібен ChatGPT/Copilot.'
 },
 id:{
   webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
@@ -6118,7 +6132,7 @@ id:{
   lead3:"Klik dialog untuk membuka dan memutar audio.",
   dWord:"look forward to", dMeaning:"= menantikan sesuatu · A1–A2", webLabel:"ID",
   lead4:"Kami merekomendasikan ChatGPT – satu-satunya dengan pemutaran suara bawaan.",
-  aiBtn:"💬 Buka asisten AI", recLabel:"⭐ Direkomendasikan",
+  aiBtn:"⭐ Buka asisten AI", recLabel:"⭐ Direkomendasikan",
   audioNote:'Di ChatGPT kamu dapat mengaktifkan pemutaran suara – dengar <span class="hl">pengucapan yang benar</span>.',
   coffeeH:"Apakah kamu suka Contexta?",
   coffeeBtn:"Dukung pengembangan",
@@ -6144,8 +6158,8 @@ id:{
   heroTagline:'Mini-dialog dalam konteks · Level A1–C2 · Lebih dari 15 bahasa · Situasi nyata · Komunikasi alami · 10 dialog per generasi',
   examplesLabel:'Contoh:',
   extractKeyTema:'TOPIK', extractKeyAkce:'AKSI', extractKeySituace:'SITUASI',
-  intentLabel:'💬 Apa yang ingin kamu latih?',
-  intentPlaceholder:'Tulis kata, topik atau situasi yang ingin Anda latih…',
+  intentLabel:'Kata atau topik apa yang ingin kamu latih?',
+  intentPlaceholder:'Tulis kata, topik atau situasi…',
   verbSearchPh:'🔍 Cari phrasal verb…',
   verbDropDefault:'— pilih —', topicDropDefault:'— pilih topik —', wordSourceTopicsOpt:'— topik aplikasi —', quickLevelPhrasalVerbs:'kata kerja frasa', quickLevelIdioms:'idiom', quickLevelVerbsA1:'kata kerja A1', quickLevelVerbsA2:'kata kerja A2', quickLevelVerbsB1:'kata kerja B1', quickLevelVerbsB2:'kata kerja B2', quickLevelVerbsC1:'kata kerja C1', quickLevelVerbsC2:'kata kerja C2', quickLevelGroupLevels:'level', quickLevelGroupVerbs:'kata kerja', quickLevelGroupOther:'lainnya', quickLevelCollocations:'kolokasi', quickLevelNouns:'kata benda', quickLevelAdjectives:'kata sifat', quickLevelAdverbs:'kata keterangan', quickLevelNounPhrases:'frasa nomina', quickLevelDiscourseMarkers:'penanda wacana', quickLevelCollocationsInfo:'pasangan kata tetap', quickLevelNounPhrasesInfo:'ungkapan kata benda tetap yang terdiri dari beberapa kata, misalnya bus stop, credit card', quickLevelDiscourseMarkersInfo:'kata dan frasa yang menghubungkan kalimat dan gagasan, misalnya however, in fact, on the other hand', quickLevelPlaceholder:'pilih kategori',
   lvChip0:'A1–A2', lvChipSub0:'Pemula',
@@ -6177,7 +6191,7 @@ id:{
   grammarClearBtn:'✕ hapus',
   grammarSearchPh:'🔍 Cari topik…',
   dialogLengthHint:'Menentukan panjang setiap dialog.',
-  aiHint:'Membuat 3 kalimat contoh dan 10 dialog latihan.<br>Anda memerlukan ChatGPT atau Copilot.'
+  aiHint:'<span class=\"hero-ai-motto\">“Kata-kata menjadi hidup dalam kalimat.”</span>Memerlukan ChatGPT/Copilot.'
 }
 }; // end T
 
@@ -8745,7 +8759,7 @@ var VERB_CATEGORIES = [
     verbs: PV_LEVELS.pv_very_common.map(function(v){ return [v, PV_CZ[v] || '']; })
   },
   {
-    label: '💬 Common  (B1)',
+    label: '⭐ Common  (B1)',
     verbs: PV_LEVELS.pv_common.map(function(v){ return [v, PV_CZ[v] || '']; })
   },
   {
@@ -9523,10 +9537,10 @@ function genGenerate() {
     'Topic/target word: ' + intent + '\n' +
     (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
     (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
-      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "💬 ".\n'
+      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "⭐ ".\n'
       : '') +
     (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
-      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "💬 ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
+      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "⭐ ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\nUse the target grammar naturally; never force it where natural English requires another form (e.g. do not add WILL in every clause of a sentence if some clauses are naturally present tense).\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
@@ -9799,7 +9813,7 @@ document.addEventListener('click', function(e) {
     <div id="vtControls">
       <div id="vtModeToggle">
         <button class="vt-mode-btn vt-active" data-mode="verbs"   onclick="vtSetMode(this)">🔤 Verbs</button>
-        <button class="vt-mode-btn"           data-mode="phrasal" onclick="vtSetMode(this)">💬 Phrasal verbs</button>
+        <button class="vt-mode-btn"           data-mode="phrasal" onclick="vtSetMode(this)">⭐ Phrasal verbs</button>
       </div>
       <button class="vt-level-btn vt-active" data-level="S1"  onclick="vtSelectLevel(this)">S1 <span style="opacity:.6;font-weight:400">Top 50</span></button>
       <button class="vt-level-btn"           data-level="S2"  onclick="vtSelectLevel(this)">S2 <span style="opacity:.6;font-weight:400">51–150</span></button>
