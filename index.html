@@ -1543,7 +1543,7 @@ img { max-width: 100%; height: auto; }
 .gen-ai-selected:hover { border-color: rgba(201,151,58,.5); }
 .gen-ai-select-wrap.open .gen-ai-selected { border-color: var(--gold); }
 .gen-ai-select-wrap.open .arrow { transform: rotate(180deg); }
-.gen-ai-select-wrap .arrow { transition: transform .2s ease; display: inline-block; }
+.gen-ai-select-wrap .arrow { font-size: .6rem; color: var(--gold); transition: transform .2s ease; display: inline-block; }
 .ai-icon-wrap { display: flex; align-items: center; flex-shrink: 0; }
 .ai-icon-wrap svg { display: block; }
 #aiSelectedName { flex: 1; }
@@ -2920,6 +2920,11 @@ img { max-width: 100%; height: auto; }
   padding-bottom: 0;
 }
 .gen-advanced-wrap .gen-config-block + .gen-config-block {
+  margin-top: 4px !important;
+  padding-top: 18px;
+  border-top: .5px solid #2e3a55;
+}
+.gen-advanced-wrap .gen-grammar-block + .gen-config-block {
   margin-top: 4px !important;
   padding-top: 18px;
   border-top: .5px solid #2e3a55;
@@ -4729,7 +4734,7 @@ cz:{
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
   styleLabel:'Styl',
-  styleNormal:'běžná', styleFormal:'formální', styleSlang:'slang', styleHumor:'humorná',
+  styleNormal:'Běžná', styleFormal:'Formální', styleSlang:'Slang', styleHumor:'Humorná',
   langLabel:'🌍 Jazyk',
   levelLabel:'Úroveň',
   advCountLabel:'Délka dialogů',
@@ -4827,7 +4832,7 @@ en:{
   lvChip1:'B1–B2', lvChipSub1:'Intermediate',
   lvChip2:'C1–C2', lvChipSub2:'Advanced',
   styleLabel:'Style',
-  styleNormal:'casual', styleFormal:'formal', styleSlang:'slang', styleHumor:'humorous',
+  styleNormal:'Casual', styleFormal:'Formal', styleSlang:'Slang', styleHumor:'Humorous',
   langLabel:'🌍 Language',
   levelLabel:'Level',
   advCountLabel:'Number of dialogues',
@@ -4923,7 +4928,7 @@ de:{
   lvChip1:'B1–B2', lvChipSub1:'Mittelstufe',
   lvChip2:'C1–C2', lvChipSub2:'Fortgeschritten',
   styleLabel:'Stil',
-  styleNormal:'alltäglich', styleFormal:'formell', styleSlang:'Slang', styleHumor:'humorvoll',
+  styleNormal:'Alltäglich', styleFormal:'Formell', styleSlang:'Slang', styleHumor:'Humorvoll',
   langLabel:'🌍 Sprache',
   levelLabel:'Niveau',
   advCountLabel:'Anzahl der Dialoge',
@@ -5014,7 +5019,7 @@ fr:{
   topicDropDefault:"— choisir un sujet —", wordSourceTopicsOpt:"— sujets de l'application —", quickLevelPhrasalVerbs:'verbes à particule', quickLevelIdioms:'idiomes', quickLevelVerbsA1:'verbes A1', quickLevelVerbsA2:'verbes A2', quickLevelVerbsB1:'verbes B1', quickLevelVerbsB2:'verbes B2', quickLevelVerbsC1:'verbes C1', quickLevelVerbsC2:'verbes C2', quickLevelGroupLevels:'niveaux', quickLevelGroupVerbs:'verbes', quickLevelGroupOther:'autre', quickLevelCollocations:'collocations', quickLevelNouns:'noms', quickLevelAdjectives:'adjectifs', quickLevelAdverbs:'adverbes', quickLevelNounPhrases:'groupes nominaux', quickLevelDiscourseMarkers:'marqueurs de discours', quickLevelCollocationsInfo:'paires de mots figées', quickLevelNounPhrasesInfo:'expressions nominales figées à plusieurs mots, ex. bus stop, credit card', quickLevelDiscourseMarkersInfo:'mots et expressions qui relient les phrases et les idées, ex. however, in fact, on the other hand', quickLevelPlaceholder:'choisir une catégorie',
   lvChipSub0:"Débutant", lvChipSub1:"Intermédiaire", lvChipSub2:"Avancé",
   styleLabel:"Style",
-  styleNormal:"courant", styleFormal:"formel", styleSlang:"argot", styleHumor:"humoristique",
+  styleNormal:"Courant", styleFormal:"Formel", styleSlang:"Argot", styleHumor:"Humoristique",
   langLabel:"🌍 Langue", levelLabel:"Niveau",
   advCountLabel:"Nombre de dialogues",
   lengthShort:"Court", lengthMedium:"Plus long", lengthLong:"Le plus long",
@@ -5108,7 +5113,7 @@ es:{
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzado',
   styleLabel:'Estilo',
-  styleNormal:'cotidiano', styleFormal:'formal', styleSlang:'argot', styleHumor:'humorístico',
+  styleNormal:'Cotidiano', styleFormal:'Formal', styleSlang:'Argot', styleHumor:'Humorístico',
   langLabel:'🌍 Idioma', levelLabel:'Nivel',
   advCountLabel:'Número de diálogos',
   lengthShort:'Corto', lengthMedium:'Más largo', lengthLong:'El más largo',
@@ -5198,7 +5203,7 @@ it:{
   lvChip1:'B1–B2', lvChipSub1:'Intermedio',
   lvChip2:'C1–C2', lvChipSub2:'Avanzato',
   styleLabel:'Stile',
-  styleNormal:'quotidiano', styleFormal:'formale', styleSlang:'slang', styleHumor:'umoristico',
+  styleNormal:'Quotidiano', styleFormal:'Formale', styleSlang:'Slang', styleHumor:'Umoristico',
   langLabel:'🌍 Lingua', levelLabel:'Livello',
   advCountLabel:'Numero di dialoghi',
   lengthShort:'Breve', lengthMedium:'Più lungo', lengthLong:'Il più lungo',
@@ -5287,7 +5292,7 @@ pt:{
   lvChip1:'B1–B2', lvChipSub1:'Intermediário',
   lvChip2:'C1–C2', lvChipSub2:'Avançado',
   styleLabel:'Estilo',
-  styleNormal:'cotidiano', styleFormal:'formal', styleSlang:'gíria', styleHumor:'humorístico',
+  styleNormal:'Cotidiano', styleFormal:'Formal', styleSlang:'Gíria', styleHumor:'Humorístico',
   langLabel:'🌍 Idioma', levelLabel:'Nível',
   advCountLabel:'Número de diálogos',
   lengthShort:'Curto', lengthMedium:'Mais longo', lengthLong:'O mais longo',
@@ -5377,7 +5382,7 @@ pl:{
   lvChip1:'B1–B2', lvChipSub1:'Średniozaawansowany',
   lvChip2:'C1–C2', lvChipSub2:'Zaawansowany',
   styleLabel:'Styl',
-  styleNormal:'codzienny', styleFormal:'formalny', styleSlang:'slang', styleHumor:'humorystyczny',
+  styleNormal:'Codzienny', styleFormal:'Formalny', styleSlang:'Slang', styleHumor:'Humorystyczny',
   langLabel:'🌍 Język', levelLabel:'Poziom',
   advCountLabel:'Liczba dialogów',
   lengthShort:'Krótkie', lengthMedium:'Dłuższe', lengthLong:'Najdłuższe',
@@ -5726,7 +5731,7 @@ sk:{
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
   styleLabel:'Štýl',
-  styleNormal:'bežná', styleFormal:'formálna', styleSlang:'slang', styleHumor:'humorná',
+  styleNormal:'Bežná', styleFormal:'Formálna', styleSlang:'Slang', styleHumor:'Humorná',
   langLabel:'🌍 Jazyk', levelLabel:'Úroveň',
   advCountLabel:'Počet dialógov',
   lengthShort:'Krátke', lengthMedium:'Dlhšie', lengthLong:'Najdlhšie',
@@ -5805,7 +5810,7 @@ nl:{
   lvChip1:'B1–B2', lvChipSub1:'Gevorderd',
   lvChip2:'C1–C2', lvChipSub2:'Vorderend',
   styleLabel:'Stijl',
-  styleNormal:'normaal', styleFormal:'formeel', styleSlang:'slang', styleHumor:'humoristisch',
+  styleNormal:'Normaal', styleFormal:'Formeel', styleSlang:'Slang', styleHumor:'Humoristisch',
   langLabel:'🌍 Taal', levelLabel:'Niveau',
   advCountLabel:'Aantal dialogen',
   lengthShort:'Kort', lengthMedium:'Langer', lengthLong:'Langst',
@@ -5884,7 +5889,7 @@ sv:{
   lvChip1:'B1–B2', lvChipSub1:'Medelnivå',
   lvChip2:'C1–C2', lvChipSub2:'Avancerad',
   styleLabel:'Stil',
-  styleNormal:'vardaglig', styleFormal:'formell', styleSlang:'slang', styleHumor:'humoristisk',
+  styleNormal:'Vardaglig', styleFormal:'Formell', styleSlang:'Slang', styleHumor:'Humoristisk',
   langLabel:'🌍 Språk', levelLabel:'Nivå',
   advCountLabel:'Antal dialoger',
   lengthShort:'Kort', lengthMedium:'Längre', lengthLong:'Längst',
@@ -5958,7 +5963,7 @@ ru:{
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
   styleLabel:'Стиль',
-  styleNormal:'обычный', styleFormal:'официальный', styleSlang:'сленг', styleHumor:'юмор',
+  styleNormal:'Обычный', styleFormal:'Официальный', styleSlang:'Сленг', styleHumor:'Юмор',
   langLabel:'🌍 Язык', levelLabel:'Уровень',
   advCountLabel:'Количество диалогов',
   lengthShort:'Короткий', lengthMedium:'Длиннее', lengthLong:'Самый длинный',
@@ -6037,7 +6042,7 @@ tr:{
   lvChip1:'B1–B2', lvChipSub1:'Orta',
   lvChip2:'C1–C2', lvChipSub2:'İleri',
   styleLabel:'Stil',
-  styleNormal:'gündelik', styleFormal:'resmi', styleSlang:'argo', styleHumor:'mizahi',
+  styleNormal:'Gündelik', styleFormal:'Resmi', styleSlang:'Argo', styleHumor:'Mizahi',
   langLabel:'🌍 Dil', levelLabel:'Seviye',
   advCountLabel:'Diyalog sayısı',
   lengthShort:'Kısa', lengthMedium:'Uzun', lengthLong:'En uzun',
@@ -6118,7 +6123,7 @@ uk:{
   lvChip1:'B1–B2', lvChipSub1:'Середній рівень',
   lvChip2:'C1–C2', lvChipSub2:'Просунутий',
   styleLabel:'Стиль',
-  styleNormal:'звичайний', styleFormal:'формальний', styleSlang:'сленг', styleHumor:'гумористичний',
+  styleNormal:'Звичайний', styleFormal:'Формальний', styleSlang:'Сленг', styleHumor:'Гумористичний',
   langLabel:'🌍 Мова', levelLabel:'Рівень',
   advCountLabel:'Кількість діалогів',
   lengthShort:'Короткі', lengthMedium:'Довші', lengthLong:'Найдовші',
@@ -6203,7 +6208,7 @@ id:{
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
   styleLabel:'Gaya',
-  styleNormal:'biasa', styleFormal:'formal', styleSlang:'slang', styleHumor:'humor',
+  styleNormal:'Biasa', styleFormal:'Formal', styleSlang:'Slang', styleHumor:'Humor',
   langLabel:'🌍 Bahasa', levelLabel:'Level',
   advCountLabel:'Jumlah dialog',
   lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
