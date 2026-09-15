@@ -140,7 +140,7 @@ html {
   gap: 5px;
   font-size: .72rem;
   font-weight: 500;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.45);
   background: none;
   border: none;
   cursor: pointer;
@@ -149,8 +149,16 @@ html {
   transition: color .2s ease, opacity .2s ease;
   line-height: 1;
 }
+.coffee-footer-emoji {
+  filter: grayscale(1) brightness(2.2);
+}
+.coffee-footer-text {
+  text-decoration: underline;
+}
+.coffee-footer-btn:hover .coffee-footer-text {
+  color: var(--ink-light);
+}
 .coffee-footer-btn:hover {
-  color: var(--gold-lt);
   opacity: 1;
 }
 .coffee-nav-panel--footer {
@@ -2880,9 +2888,27 @@ img { max-width: 100%; height: auto; }
 .gen-advanced-wrap .gen-config-block:first-child {
   padding-top: 12px;
 }
+.gen-advanced-wrap .gen-grammar-block {
+  background: transparent;
+  border: .5px solid rgba(201,151,58,.35);
+  border-radius: 9px;
+}
 .gen-advanced-wrap .gen-grammar-header {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 14px 16px;
+  background: transparent;
+}
+.gen-advanced-wrap .gen-grammar-title {
+  font-size: .95rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  text-transform: none;
+  letter-spacing: normal;
+}
+@media (max-width: 768px) {
+  .gen-advanced-wrap .gen-grammar-block {
+    border-width: 1px;
+    border-color: rgba(201,151,58,.55);
+  }
 }
 
 /* ── Redesign panelu: label nad chips, chips v gridu (viz advanced_settings_redesign) ── */
@@ -3193,7 +3219,7 @@ img { max-width: 100%; height: auto; }
 
 .prompt-box {
   background: rgba(0,0,0,.3);
-  border: 1.5px solid rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.12);
   border-radius: 20px;
   transition: border-color .2s, background .2s, box-shadow .2s;
 }
@@ -3330,15 +3356,6 @@ h1[data-t="heroH"] {
   margin-top: 10px;
   opacity: 0;
   animation: subtitleFade 1.4s ease 0.9s forwards;
-}
-.hero-ai-motto {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1rem, 2.6vw, 1.25rem);
-  font-weight: 700;
-  color: var(--gold-lt);
-  letter-spacing: 0.2px;
-  margin-bottom: 5px;
 }
 .hero-sub {
   font-family: 'Poppins', 'DM Sans', sans-serif;
@@ -4019,7 +4036,7 @@ h1[data-t="heroH"] {
     <div class="gen-hero-header">
       <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
       <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
-      <p class="hero-ai-hint" data-i18n="aiHint"><span class="hero-ai-motto">„Slova ožijí ve větách“</span>Vyžaduje ChatGPT/Copilot.</p>
+      <p class="hero-ai-hint" data-i18n="aiHint">Vyžaduje ChatGPT/Copilot.</p>
     </div>
 
     <!-- ══ BLOK 1: HLAVNÍ VÝRAZ — nejdůležitější prvek ══ -->
@@ -4090,27 +4107,6 @@ h1[data-t="heroH"] {
         </div>
       </div>
 
-      <!-- BLOK: ANGLICKÁ GRAMATIKA -->
-      <div class="gen-grammar-block gen-grammar-block--main" id="genGrammarBlock">
-        <div class="gen-grammar-header" onclick="toggleGrammarPanel(this)">
-          <span class="gen-grammar-title" data-translate="grammarLabel">📘 Anglická gramatika v kontextu</span>
-          <span class="gen-grammar-badge" id="grammarBadge" style="display:none"></span>
-          <button class="gen-grammar-hdr-clear" id="grammarHdrClear" style="display:none" onclick="event.stopPropagation();clearGrammar()" title="Zrušit výběr">✕</button>
-          <span class="gen-grammar-arrow">▼</span>
-        </div>
-        <div class="gen-grammar-panel" id="genGrammarPanel" style="display:none">
-          <div class="gen-grammar-hint" data-translate="grammarHint">Vyber gramatický jev — bude zahrnut do kontextu vět a dialogů.</div>
-          <div class="gen-grammar-search-wrap">
-            <input class="gen-grammar-search" id="grammarSearch" type="text" placeholder="Hledat téma…" oninput="filterGrammar(this.value)">
-          </div>
-          <div class="gen-grammar-menu" id="grammarMenu"></div>
-          <div class="gen-grammar-selected-row" id="grammarSelectedRow" style="display:none">
-            <span class="gen-grammar-sel-label" id="grammarSelectedLabel"></span>
-            <button class="gen-grammar-clear" onclick="clearGrammar()" data-translate="grammarClearBtn">✕ zrušit</button>
-          </div>
-        </div>
-      </div>
-
       <!-- Probíraná slova ── -->
       <div class="gen-history-row" id="genHistoryRow" style="display:none;">
         <div class="gen-history-top" onclick="genHistoryToggleCollapse()" style="cursor:pointer;">
@@ -4159,6 +4155,27 @@ h1[data-t="heroH"] {
         <span data-translate="advancedToggleLabel">⚙ Pokročilé nastavení</span> <span class="gen-advanced-arrow">▼</span>
       </button>
       <div class="gen-advanced" id="genAdvanced" style="display:none;">
+
+        <!-- BLOK: ANGLICKÁ GRAMATIKA -->
+        <div class="gen-grammar-block gen-grammar-block--main" id="genGrammarBlock">
+          <div class="gen-grammar-header" onclick="toggleGrammarPanel(this)">
+            <span class="gen-grammar-title" data-translate="grammarLabel">📘 Anglická gramatika v kontextu</span>
+            <span class="gen-grammar-badge" id="grammarBadge" style="display:none"></span>
+            <button class="gen-grammar-hdr-clear" id="grammarHdrClear" style="display:none" onclick="event.stopPropagation();clearGrammar()" title="Zrušit výběr">✕</button>
+            <span class="gen-grammar-arrow">▼</span>
+          </div>
+          <div class="gen-grammar-panel" id="genGrammarPanel" style="display:none">
+            <div class="gen-grammar-hint" data-translate="grammarHint">Vyber gramatický jev — bude zahrnut do kontextu vět a dialogů.</div>
+            <div class="gen-grammar-search-wrap">
+              <input class="gen-grammar-search" id="grammarSearch" type="text" placeholder="Hledat téma…" oninput="filterGrammar(this.value)">
+            </div>
+            <div class="gen-grammar-menu" id="grammarMenu"></div>
+            <div class="gen-grammar-selected-row" id="grammarSelectedRow" style="display:none">
+              <span class="gen-grammar-sel-label" id="grammarSelectedLabel"></span>
+              <button class="gen-grammar-clear" onclick="clearGrammar()" data-translate="grammarClearBtn">✕ zrušit</button>
+            </div>
+          </div>
+        </div>
 
         <!-- BLOK 3: KONFIGURACE -->
         <div class="gen-config-block">
@@ -4345,7 +4362,7 @@ h1[data-t="heroH"] {
 
     <!-- ══ PODPOŘ VÝVOJ — nenápadně ve footeru ══ -->
     <div class="coffee-nav-wrap coffee-footer-wrap">
-      <button class="coffee-footer-btn" onclick="toggleCoffeePanel(event)" aria-label="Podpoř vývoj">☕ <span data-t="coffeeBtn">Podpoř vývoj</span></button>
+      <button class="coffee-footer-btn" onclick="toggleCoffeePanel(event)" aria-label="Podpoř vývoj"><span class="coffee-footer-emoji">☕</span> <span class="coffee-footer-text" data-t="coffeeBtn">Podpoř vývoj</span></button>
       <div class="coffee-nav-panel coffee-nav-panel--footer" id="coffeeNavPanel">
         <span class="coffee-emoji">☕</span>
         <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
@@ -4736,12 +4753,12 @@ cz:{
   extractTitle:'Navržený kontext',
   extractTema:'TÉMA', extractAkce:'AKCE', extractSituace:'SITUACE',
   webLangLabel:'Jazyk webu',
-  grammarLabel:'📘 Anglická gramatika v kontextu',
+  grammarLabel:'Anglická gramatika v kontextu',
   grammarHint:'Vyber gramatický jev — bude zahrnut do kontextu vět a dialogů.',
   grammarClearBtn:'✕ zrušit',
   grammarSearchPh:'🔍 Hledat téma…',
   dialogLengthHint:'Určuje délku každého dialogu.',
-  aiHint:'<span class=\"hero-ai-motto\">„Slova ožijí ve větách“</span>Vyžaduje ChatGPT/Copilot.'
+  aiHint:'Vyžaduje ChatGPT/Copilot.'
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -4832,12 +4849,12 @@ en:{
   extractTitle:'Suggested context',
   extractTema:'TOPIC', extractAkce:'ACTION', extractSituace:'SITUATION',
   webLangLabel:'Web language',
-  grammarLabel:'📘 English grammar in context',
+  grammarLabel:'English grammar in context',
   grammarHint:'Select a grammar topic — it will be included in the context of sentences and dialogues with an explanation.',
   grammarClearBtn:'✕ clear',
   grammarSearchPh:'🔍 Search topic…',
   dialogLengthHint:'Sets the length of each dialogue.',
-  aiHint:'<span class=\"hero-ai-motto\">“Words come alive in sentences.”</span>Requires ChatGPT/Copilot.'
+  aiHint:'Requires ChatGPT/Copilot.'
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -4928,12 +4945,12 @@ de:{
   extractTitle:'Vorgeschlagener Kontext',
   extractTema:'THEMA', extractAkce:'AKTION', extractSituace:'SITUATION',
   webLangLabel:'Webseitensprache',
-  grammarLabel:'📘 Englische Grammatik im Kontext',
+  grammarLabel:'Englische Grammatik im Kontext',
   grammarHint:'Wähle ein Grammatikthema — es wird in den Kontext der Sätze und Dialoge mit Erklärung einbezogen.',
   grammarClearBtn:'✕ entfernen',
   grammarSearchPh:'🔍 Thema suchen…',
   dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
-  aiHint:'<span class=\"hero-ai-motto\">„Wörter werden in Sätzen lebendig.“</span>Erfordert ChatGPT/Copilot.'
+  aiHint:'Erfordert ChatGPT/Copilot.'
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -5017,16 +5034,16 @@ fr:{
   extractTitle:"Contexte suggéré",
   extractKeyTema:"SUJET", extractKeyAkce:"ACTION", extractKeySituace:"SITUATION",
   webLangLabel:"Langue du site",
-  grammarLabel:'📘 Grammaire anglaise en contexte',
+  grammarLabel:'Grammaire anglaise en contexte',
   grammarHint:"Sélectionnez un sujet de grammaire — il sera inclus dans le contexte des phrases et des dialogues avec une explication.",
   grammarClearBtn:'✕ effacer',
   grammarSearchPh:'🔍 Rechercher un sujet…',
   dialogLengthHint:'Définit la longueur de chaque dialogue.',
-  aiHint:'<span class=\"hero-ai-motto\">« Les mots prennent vie dans les phrases. »</span>Nécessite ChatGPT/Copilot.'
+  aiHint:'Nécessite ChatGPT/Copilot.'
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
-  grammarLabel:'📘 Gramática inglesa en contexto',
+  grammarLabel:'Gramática inglesa en contexto',
   grammarHint:'Selecciona un tema gramatical — se incluirá en el contexto de las frases y los diálogos con una explicación.',
   grammarClearBtn:'✕ borrar',
   grammarSearchPh:'🔍 Buscar tema…',
@@ -5112,11 +5129,11 @@ es:{
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
   dialogLengthHint:'Determina la longitud de cada diálogo.',
-  aiHint:'<span class=\"hero-ai-motto\">«Las palabras cobran vida en las frases.»</span>Requiere ChatGPT/Copilot.'
+  aiHint:'Requiere ChatGPT/Copilot.'
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
-  grammarLabel:'📘 Grammatica inglese in contesto',
+  grammarLabel:'Grammatica inglese in contesto',
   grammarHint:'Seleziona un argomento grammaticale — verrà incluso nel contesto delle frasi e dei dialoghi con una spiegazione.',
   grammarClearBtn:'✕ rimuovi',
   grammarSearchPh:'🔍 Cerca argomento…',
@@ -5202,11 +5219,11 @@ it:{
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
   dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
-  aiHint:'<span class=\"hero-ai-motto\">«Le parole prendono vita nelle frasi.»</span>Richiede ChatGPT/Copilot.'
+  aiHint:'Richiede ChatGPT/Copilot.'
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
-  grammarLabel:'📘 Gramática inglesa em contexto',
+  grammarLabel:'Gramática inglesa em contexto',
   grammarHint:'Seleciona um tópico gramatical — será incluído no contexto das frases e diálogos com uma explicação.',
   grammarClearBtn:'✕ remover',
   grammarSearchPh:'🔍 Pesquisar tema…',
@@ -5291,11 +5308,11 @@ pt:{
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
   dialogLengthHint:'Define o comprimento de cada diálogo.',
-  aiHint:'<span class=\"hero-ai-motto\">«As palavras ganham vida em frases.»</span>Requer ChatGPT/Copilot.'
+  aiHint:'Requer ChatGPT/Copilot.'
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
-  grammarLabel:'📘 Gramatyka ang. w kontekście',
+  grammarLabel:'Gramatyka ang. w kontekście',
   grammarHint:'Wybierz temat gramatyczny — zostanie uwzględniony w kontekście zdań i dialogów z wyjaśnieniem.',
   grammarClearBtn:'✕ usuń',
   grammarSearchPh:'🔍 Szukaj tematu…',
@@ -5381,11 +5398,11 @@ pl:{
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
   dialogLengthHint:'Określa długość każdego dialogu.',
-  aiHint:'<span class=\"hero-ai-motto\">„Słowa ożywają w zdaniach.”</span>Wymaga ChatGPT/Copilot.'
+  aiHint:'Wymaga ChatGPT/Copilot.'
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
-  grammarLabel:'📘 情景英语语法',
+  grammarLabel:'情景英语语法',
   grammarHint:'选择一个语法主题——它将被纳入例句和对话的上下文中并附有解释。',
   grammarClearBtn:'✕ 清除',
   grammarSearchPh:'🔍 搜索主题…',
@@ -5471,11 +5488,11 @@ cn:{
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
   dialogLengthHint:'设置每段对话的长度。',
-  aiHint:'<span class=\"hero-ai-motto\">“词语在句子中活起来。”</span>需要 ChatGPT/Copilot。'
+  aiHint:'需要 ChatGPT/Copilot。'
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
-  grammarLabel:'📘 文脈で学ぶ英文法',
+  grammarLabel:'文脈で学ぶ英文法',
   grammarHint:'grammarのトピックを選んでください — 例文とダイアログに説明付きで含まれます。',
   grammarClearBtn:'✕ クリア',
   grammarSearchPh:'🔍 トピック検索…',
@@ -5561,11 +5578,11 @@ jp:{
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
   dialogLengthHint:'各ダイアログの長さを設定します。',
-  aiHint:'<span class=\"hero-ai-motto\">「言葉は文の中で息づく。」</span>ChatGPT/Copilotが必要です。'
+  aiHint:'ChatGPT/Copilotが必要です。'
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
-  grammarLabel:'📘 맥락 속 영어 문법',
+  grammarLabel:'맥락 속 영어 문법',
   grammarHint:'문법 주제를 선택하세요 — 예문과 대화에 설명과 함께 포함됩니다.',
   grammarClearBtn:'✕ 지우기',
   grammarSearchPh:'🔍 주제 검색…',
@@ -5651,11 +5668,11 @@ kr:{
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
   dialogLengthHint:'각 대화의 길이를 설정합니다.',
-  aiHint:'<span class=\"hero-ai-motto\">“단어는 문장 속에서 살아난다.”</span>ChatGPT/Copilot이 필요합니다.'
+  aiHint:'ChatGPT/Copilot이 필요합니다.'
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
-  grammarLabel:'📘 Anglická gramatika v kontexte',
+  grammarLabel:'Anglická gramatika v kontexte',
   grammarHint:'Vyber gramatický jav — bude zahrnutý do kontextu viet a dialógov s vysvetlením.',
   grammarClearBtn:'✕ zrušiť',
   grammarSearchPh:'🔍 Hľadať tému…',
@@ -5730,11 +5747,11 @@ sk:{
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
   dialogLengthHint:'Určuje dĺžku každého dialógu.',
-  aiHint:'<span class=\"hero-ai-motto\">„Slová ožívajú vo vetách.“</span>Vyžaduje ChatGPT/Copilot.'
+  aiHint:'Vyžaduje ChatGPT/Copilot.'
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
-  grammarLabel:'📘 Engelse grammatica in context',
+  grammarLabel:'Engelse grammatica in context',
   grammarHint:'Kies een grammaticaonderwerp — het wordt opgenomen in de context van zinnen en dialogen met een uitleg.',
   grammarClearBtn:'✕ wissen',
   grammarSearchPh:'🔍 Zoek onderwerp…',
@@ -5809,11 +5826,11 @@ nl:{
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
   dialogLengthHint:'Stelt de lengte van elk dialoog in.',
-  aiHint:'<span class=\"hero-ai-motto\">„Woorden komen tot leven in zinnen.”</span>Vereist ChatGPT/Copilot.'
+  aiHint:'Vereist ChatGPT/Copilot.'
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
-  grammarLabel:'📘 Engelsk grammatik i kontext',
+  grammarLabel:'Engelsk grammatik i kontext',
   grammarHint:'Välj ett grammatikämne — det inkluderas i meningarnas och dialogernas kontext med en förklaring.',
   grammarClearBtn:'✕ rensa',
   grammarSearchPh:'🔍 Sök ämne…',
@@ -5888,11 +5905,11 @@ sv:{
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
   dialogLengthHint:'Anger längden på varje dialog.',
-  aiHint:'<span class=\"hero-ai-motto\">”Orden får liv i meningar.”</span>Kräver ChatGPT/Copilot.'
+  aiHint:'Kräver ChatGPT/Copilot.'
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
-  grammarLabel:'📘 Англ. грамматика в контексте',
+  grammarLabel:'Англ. грамматика в контексте',
   grammarHint:'Выберите грамматическую тему — она будет включена в контекст предложений и диалогов с объяснением.',
   grammarClearBtn:'✕ очистить',
   grammarSearchPh:'🔍 Поиск темы…',
@@ -5962,11 +5979,11 @@ ru:{
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
   dialogLengthHint:'Определяет длину каждого диалога.',
-  aiHint:'<span class=\"hero-ai-motto\">«Слова оживают в предложениях.»</span>Требуется ChatGPT/Copilot.'
+  aiHint:'Требуется ChatGPT/Copilot.'
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
-  grammarLabel:'📘 Bağlamda İngilizce dilbilgisi',
+  grammarLabel:'Bağlamda İngilizce dilbilgisi',
   grammarHint:'Bir dilbilgisi konusu seçin — cümleler ve diyalogların bağlamına açıklamayla birlikte dahil edilecektir.',
   grammarClearBtn:'✕ temizle',
   grammarSearchPh:'🔍 Konu ara…',
@@ -6041,7 +6058,7 @@ tr:{
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
   dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
-  aiHint:'<span class=\"hero-ai-motto\">“Kelimeler cümlelerde hayat bulur.”</span>ChatGPT/Copilot gerektirir.'
+  aiHint:'ChatGPT/Copilot gerektirir.'
 },
 uk:{
   webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
@@ -6121,12 +6138,12 @@ uk:{
   extractTitle:'Запропонований контекст',
   extractTema:'ТЕМА', extractAkce:'ДІЯ', extractSituace:'СИТУАЦІЯ',
   webLangLabel:'Мова сайту',
-  grammarLabel:'📘 Англійська граматика в контексті',
+  grammarLabel:'Англійська граматика в контексті',
   grammarHint:'Вибери граматичну тему — вона буде включена в контекст речень і діалогів з поясненням.',
   grammarClearBtn:'✕ скасувати',
   grammarSearchPh:'🔍 Шукати тему…',
   dialogLengthHint:'Визначає довжину кожного діалогу.',
-  aiHint:'<span class=\"hero-ai-motto\">«Слова оживають у реченнях.»</span>Потрібен ChatGPT/Copilot.'
+  aiHint:'Потрібен ChatGPT/Copilot.'
 },
 id:{
   webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
@@ -6206,12 +6223,12 @@ id:{
   extractTitle:'Konteks yang disarankan',
   extractTema:'TOPIK', extractAkce:'AKSI', extractSituace:'SITUASI',
   webLangLabel:'Bahasa situs',
-  grammarLabel:'📘 Gramatika Inggris kontekstual',
+  grammarLabel:'Gramatika Inggris kontekstual',
   grammarHint:'Pilih topik tata bahasa — akan disertakan dalam konteks kalimat dan dialog dengan penjelasan.',
   grammarClearBtn:'✕ hapus',
   grammarSearchPh:'🔍 Cari topik…',
   dialogLengthHint:'Menentukan panjang setiap dialog.',
-  aiHint:'<span class=\"hero-ai-motto\">“Kata-kata menjadi hidup dalam kalimat.”</span>Memerlukan ChatGPT/Copilot.'
+  aiHint:'Memerlukan ChatGPT/Copilot.'
 }
 }; // end T
 
