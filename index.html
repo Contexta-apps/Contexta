@@ -167,6 +167,61 @@ html {
   right: 50%;
   transform: translateX(50%);
 }
+/* ── Podpoř vývoj: ikonka vedle názvu v hero hlavičce ── */
+.hero-title-row {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .hero-title-row { margin: 0 auto; } /* hlavička je na mobilu centrovaná */
+}
+.coffee-hero-wrap { position: static; }
+.coffee-hero-btn {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 5px;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s ease, filter .2s ease;
+}
+.coffee-hero-btn:hover {
+  transform: translateY(-50%) scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(201,151,58,.55));
+}
+.coffee-hero-btn:active {
+  transform: translateY(-50%) scale(.94);
+}
+.coffee-hero-btn:focus { outline: none; }
+.coffee-hero-btn:focus-visible {
+  outline: 2px solid rgba(201,151,58,.7);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+.coffee-nav-panel--hero {
+  top: calc(100% + 8px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  text-align: center;
+}
+.gen-card > .gen-hint-small { padding-bottom: 12px; }
+@media (max-width: 767px) {
+  #generator { padding-bottom: 0; }
+}
 .paypal-donate-btn {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 10px;
@@ -2721,6 +2776,9 @@ img { max-width: 100%; height: auto; }
   padding: 0;
   overflow: visible;
 }
+@media (max-width: 767px) {
+  .gen-card { border-radius: 0; }
+}
 
 /* ── Hero header uvnitř gen-card ── */
 .gen-hero-header {
@@ -4018,6 +4076,13 @@ h1[data-t="heroH"] {
     color: var(--gold-lt);
   }
 }
+
+/* ── Mobile: menší odsazení kolem Pokročilého nastavení ── */
+@media (max-width: 767px) {
+  .gen-advanced-wrap { margin: 6px 0 2px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-top: 12px; padding-bottom: 12px; }
+  .gen-card .gen-send-row { padding-top: 10px; }
+}
 </style>
 <body>
 <div class="page-wrapper">
@@ -4040,7 +4105,18 @@ h1[data-t="heroH"] {
 
     <!-- ══ HERO HEADER ══ -->
     <div class="gen-hero-header">
-      <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
+      <div class="hero-title-row">
+        <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
+        <!-- ══ PODPOŘ VÝVOJ — ikonka vedle názvu ══ -->
+        <div class="coffee-nav-wrap coffee-hero-wrap">
+          <button class="coffee-hero-btn" type="button" onclick="toggleCoffeePanel(event)" title="Podpoř vývoj" data-translate-title="coffeeBtn"><span class="coffee-hero-emoji" aria-hidden="true">☕</span></button>
+          <div class="coffee-nav-panel coffee-nav-panel--hero" id="coffeeNavPanel">
+            <span class="coffee-emoji">☕</span>
+            <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
+            <p data-t="coffeeP">Pomáhá ti Contexta? Podpoř mě kávou na <a href="https://ko-fi.com/Contexta" target="_blank" rel="noopener">Ko-fi</a> — každý příspěvek může Contextu posunout dál.</p>
+          </div>
+        </div>
+      </div>
       <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
       <p class="hero-ai-hint" data-i18n="aiHint">Vyžaduje ChatGPT/Copilot.</p>
     </div>
@@ -4366,15 +4442,6 @@ h1[data-t="heroH"] {
       <a href="#" onclick="openLegalModal('privacy');return false;" data-translate="footerPrivacyLink">Ochrana soukromí</a>
     </div>
 
-    <!-- ══ PODPOŘ VÝVOJ — nenápadně ve footeru ══ -->
-    <div class="coffee-nav-wrap coffee-footer-wrap">
-      <button class="coffee-footer-btn" onclick="toggleCoffeePanel(event)" aria-label="Podpoř vývoj"><span class="coffee-footer-emoji">☕</span> <span class="coffee-footer-text" data-t="coffeeBtn">Podpoř vývoj</span></button>
-      <div class="coffee-nav-panel coffee-nav-panel--footer" id="coffeeNavPanel">
-        <span class="coffee-emoji">☕</span>
-        <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
-        <p data-t="coffeeP">Pomáhá ti Contexta? Podpoř mě kávou na <a href="https://ko-fi.com/Contexta" target="_blank" rel="noopener">Ko-fi</a> — každý příspěvek může Contextu posunout dál.</p>
-      </div>
-    </div>
     <div style="display:none;">
       <button id="onbReplayBtn" onclick="toggleOnboarding()">Deaktivovat ukázku</button>
     </div>
