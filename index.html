@@ -182,7 +182,7 @@ html {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  margin-left: 4.5px;
+  margin-left: 3.5px;
   width: 38px;
   height: 38px;
   display: inline-flex;
@@ -4086,6 +4086,16 @@ h1[data-t="heroH"] {
   .gen-advanced-wrap > .gen-advanced-toggle { padding-top: 12px; padding-bottom: 12px; }
   .gen-card .gen-send-row { padding-top: 10px; }
   body { background: var(--navy-dk); } /* pod kartou nesmí prosvítat krémové pozadí */
+  /* Bez boxu Probíraná slova: karta vyplní obrazovku, tlačítko sedí dole
+     a odstup pod ním odpovídá odstupu nad názvem. Bez spodní čáry karty. */
+  .gen-card {
+    border-bottom: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .gen-card .gen-send-row { margin-top: auto; padding-bottom: 24px; }
 }
 </style>
 <body>
