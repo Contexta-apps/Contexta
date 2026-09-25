@@ -10411,6 +10411,15 @@ function insertRandomInspiration() {
     genFromLangVal = 'en';
     if (typeof updateGenLangBtn === 'function') updateGenLangBtn('from', 'en');
     if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
+  } else if (typeof genFromLangVal !== 'undefined' && genFromLangVal !== 'en' && genToLangVal === 'en') {
+    // Cílový jazyk je už angličtina, ale vkládané slovo je taky anglické ->
+    // prohoď směr, aby EN bylo zdrojem (Language A) a původní zdroj se stal
+    // cílem (Language B). Bez zásahu do webLang, stejně jako výše.
+    var _prevFromLang2 = genFromLangVal;
+    genFromLangVal = 'en';
+    genToLangVal = _prevFromLang2;
+    if (typeof updateGenLangBtn === 'function') { updateGenLangBtn('from', 'en'); updateGenLangBtn('to', _prevFromLang2); }
+    if (typeof checkLangMismatchHint === 'function') checkLangMismatchHint();
   }
 
   var lang = (typeof getGenFromLang === 'function') ? getGenFromLang() : 'cz';
