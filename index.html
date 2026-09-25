@@ -2108,6 +2108,15 @@ img { max-width: 100%; height: auto; }
   position: relative;
   overflow: hidden;
 }
+/* PC/laptop fix: overflow:hidden výše ořezával otevřenou roletku
+   Náhodné téma / Náhodné slovo (na desktopu je .topic-dropdown
+   position:absolute uvnitř tohoto boxu). Na mobilu (≤767px) se
+   dropdown přepíná na position:fixed a z boxu tak jako tak "uteče",
+   proto se tam nic nemění – tady jen povolíme přetečení, když je
+   konkrétní roletka otevřená. */
+@media (min-width: 768px) {
+  .gen-quickpick-box.dropdown-open { overflow: visible; }
+}
 .gen-quickpick-label {
   font-size: .72rem; color: rgba(255,255,255,.55);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -3731,9 +3740,15 @@ h1[data-t="heroH"] {
   .gen-config-block { padding: 0 32px 4px; }
   .gen-hero-header { padding: 24px 32px 28px; }
   .gen-lang-row-inline { padding: 10px 32px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 44px; padding-right: 44px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 48px; padding-right: 48px; }
   .gen-advanced-wrap .gen-advanced { padding-left: 32px; padding-right: 32px; }
-  .gen-advanced-wrap .gen-grammar-header { padding-left: 32px; padding-right: 32px; }
+  /* .gen-grammar-header je vnořený uvnitř .gen-advanced, který výše
+     už má padding 32px – vlastní padding-left/right headeru (viz
+     základní pravidlo .gen-advanced-wrap .gen-grammar-header, 16px)
+     se k tomu přičítal, takže šipka byla odsazená mnohem víc než
+     u ostatních dvou. Přebito na desktopu nebylo potřeba, proto tu
+     override záměrně chybí – header zůstává na 32+16=48px, stejně
+     jako toggle a ChatGPT výběr. */
 
   /* ── Config block: 2-column grid ── */
   .gen-config-block .gen-tuning-row {
@@ -3796,8 +3811,10 @@ h1[data-t="heroH"] {
   /* ── Config block max-width pro lepší čitelnost ── */
   .gen-config-block { padding: 0 48px 4px; }
   .gen-lang-row-inline { padding: 10px 48px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 60px; padding-right: 60px; }
-  .gen-advanced-wrap .gen-grammar-header { padding-left: 48px; padding-right: 48px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 64px; padding-right: 64px; }
+  /* .gen-grammar-header override odstraněn – zdvojoval padding
+     s rodičem .gen-advanced (viz vysvětlení u 768px breakpointu výše).
+     Zůstává na 48(rodič)+16(vlastní)=64px, stejně jako toggle a ChatGPT. */
   .gen-advanced-wrap .gen-advanced { padding-left: 48px; padding-right: 48px; }
 
   /* ── Send button: šířka auto ── */
@@ -3871,8 +3888,10 @@ h1[data-t="heroH"] {
   /* ── Generator config block ── */
   .gen-config-block { padding: 0 80px 8px; }
   .gen-lang-row-inline { padding: 10px 80px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 92px; padding-right: 92px; }
-  .gen-advanced-wrap .gen-grammar-header { padding-left: 80px; padding-right: 80px; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding-left: 96px; padding-right: 96px; }
+  /* .gen-grammar-header override odstraněn – zdvojoval padding
+     s rodičem .gen-advanced (viz vysvětlení u 768px breakpointu výše).
+     Zůstává na 80(rodič)+16(vlastní)=96px, stejně jako toggle a ChatGPT. */
   .gen-advanced-wrap .gen-advanced { padding-left: 80px; padding-right: 80px; }
 
   /* ── Generator send row ── */
@@ -4033,19 +4052,31 @@ h1[data-t="heroH"] {
     box-shadow: 0 0 40px rgba(201, 151, 58, 0.15);
   }
 }
-  /* ── AI dropdown: otevírá se nahoru na desktopu ── */
+/* ── AI dropdown (ChatGPT/Copilot výběr): jen PC/laptop ── */
+@media (min-width: 768px) {
+  /* otevírá se nahoru na desktopu */
   #aiList {
     bottom: calc(100% + 4px) !important;
     top: auto !important;
     z-index: 9999 !important;
   }
 
-  /* ── AI dropdown šipka ── */
-  #aiWrap.open .arrow {
+  /* Šipka: PC/laptop fix - roletka se vždy otevírá NAHORU (viz #aiList
+     výše), ale šipka v klidovém stavu dřív ukazovala dolů (▼), což
+     opticky slibovalo otevření dolů. Teď ukazuje rovnou nahoru a po
+     otevření se "sklopí" dolů. Mobil má vlastní blok níže a sem se
+     nezasahuje. */
+  #aiWrap:not(.open) .arrow {
     transform: rotate(180deg) !important;
     display: inline-block;
     transition: transform .2s;
   }
+  #aiWrap.open .arrow {
+    transform: rotate(0deg) !important;
+    display: inline-block;
+    transition: transform .2s;
+  }
+}
 /* ── Mobile: scroll to Pokročilé nastavení after open ── */
 @media (max-width: 767px) {
   .gen-advanced-wrap {
@@ -7947,6 +7978,9 @@ function toggleTopicDrop(e) {
   var topicBtnEl = document.getElementById('topicBtn');
   if (topicBtnEl) topicBtnEl.classList.toggle('open', opening);
   if (topicBtnEl) topicBtnEl.setAttribute('aria-expanded', opening ? 'true' : 'false');
+  var topicBox = document.getElementById('topicWrap');
+  topicBox = topicBox && topicBox.closest('.gen-quickpick-box');
+  if (topicBox) topicBox.classList.toggle('dropdown-open', opening);
 }
 
 function selectTopicReset(e) {
@@ -7967,6 +8001,9 @@ function selectTopicReset(e) {
 
   var list = document.getElementById('topicList');
   if (list) { list.style.display = 'none'; }
+  var _resetBox = document.getElementById('topicWrap');
+  _resetBox = _resetBox && _resetBox.closest('.gen-quickpick-box');
+  if (_resetBox) _resetBox.classList.remove('dropdown-open');
   resetTopicTree();
 }
 
@@ -7984,6 +8021,9 @@ function selectTopic(item, e) {
   if (topicBtn) topicBtn.classList.remove('open');
   var list = document.getElementById('topicList');
   if (list) list.style.display = 'none';
+  var _selBox = document.getElementById('topicWrap');
+  _selBox = _selBox && _selBox.closest('.gen-quickpick-box');
+  if (_selBox) _selBox.classList.remove('dropdown-open');
   document.querySelectorAll('.tree-item').forEach(function(el) {
     var lbl = el.querySelector('.tree-item-label');
     el.classList.toggle('selected', lbl && lbl.textContent.trim() === item);
@@ -8023,13 +8063,20 @@ function toggleQuickLevelDrop(e) {
   var opening = list.style.display !== 'block';
   // Zavři ostatní dropdowny
   var topicList = document.getElementById('topicList');
-  if (topicList) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); }
+  if (topicList) {
+    topicList.style.display = 'none';
+    var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open');
+    var _tw=document.getElementById('topicWrap'); var _tbox=_tw && _tw.closest('.gen-quickpick-box'); if(_tbox) _tbox.classList.remove('dropdown-open');
+  }
   var langEl = document.getElementById('langWrap');
   if (langEl) langEl.classList.remove('open');
   list.style.display = opening ? 'block' : 'none';
   if (opening) positionDropdownDesktop(document.getElementById('quickLevelWrap'), list);
   var labelBtn = document.getElementById('quickLevelLabel');
   if (labelBtn) { labelBtn.classList.toggle('open', opening); labelBtn.setAttribute('aria-expanded', opening ? 'true' : 'false'); }
+  var qlBox = document.getElementById('quickLevelWrap');
+  qlBox = qlBox && qlBox.closest('.gen-quickpick-box');
+  if (qlBox) qlBox.classList.toggle('dropdown-open', opening);
 }
 
 // Scroll kolečkem myši uvnitř seznamu na desktopu – jakmile seznam dojede na svůj
@@ -8104,6 +8151,9 @@ function selectQuickLevel(value, label, el) {
   if (list) list.style.display = 'none';
   var labelBtn = document.getElementById('quickLevelLabel');
   if (labelBtn) { labelBtn.classList.remove('open'); labelBtn.setAttribute('aria-expanded', 'false'); }
+  var _qlSelBox = document.getElementById('quickLevelWrap');
+  _qlSelBox = _qlSelBox && _qlSelBox.closest('.gen-quickpick-box');
+  if (_qlSelBox) _qlSelBox.classList.remove('dropdown-open');
 }
 
 function setGenMode(mode) {
@@ -8133,10 +8183,10 @@ document.addEventListener('click', function(e) {
   if (aiWrapEl && aiListEl && !aiWrapEl.contains(e.target)) { aiListEl.style.display = 'none'; aiWrapEl.classList.remove('open'); var _ar=aiWrapEl.querySelector('.arrow'); if(_ar) _ar.style.transform='rotate(0deg)'; }
   var topicWrap = document.getElementById('topicWrap');
   var topicList = document.getElementById('topicList');
-  if (topicWrap && topicList && !topicWrap.contains(e.target)) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); resetTopicTree(); }
+  if (topicWrap && topicList && !topicWrap.contains(e.target)) { topicList.style.display = 'none'; var _tb=document.getElementById('topicBtn'); if(_tb) _tb.classList.remove('open'); resetTopicTree(); var _tbox=topicWrap.closest('.gen-quickpick-box'); if(_tbox) _tbox.classList.remove('dropdown-open'); }
   var quickLevelWrap = document.getElementById('quickLevelWrap');
   var quickLevelList = document.getElementById('quickLevelList');
-  if (quickLevelWrap && quickLevelList && !quickLevelWrap.contains(e.target)) { quickLevelList.style.display = 'none'; var _qlb=document.getElementById('quickLevelLabel'); if(_qlb) _qlb.classList.remove('open'); }
+  if (quickLevelWrap && quickLevelList && !quickLevelWrap.contains(e.target)) { quickLevelList.style.display = 'none'; var _qlb=document.getElementById('quickLevelLabel'); if(_qlb) _qlb.classList.remove('open'); var _qlbox=quickLevelWrap.closest('.gen-quickpick-box'); if(_qlbox) _qlbox.classList.remove('dropdown-open'); }
   var verbWrap = document.getElementById('verbWrap');
   var verbDd   = document.getElementById('verbDropList');
   if (verbDd && (!verbWrap || !verbWrap.contains(e.target))) {
