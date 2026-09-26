@@ -9731,6 +9731,8 @@ function genGenerate() {
     '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks. Format:\n' +
     '🧩 1.\n' + fromLabel + '\n' + dlInfo.exchanges + '\n\n' + toLabel + '\n' + dlInfo.exchanges + '\n\n🧩 2.\n(etc.)\n\n' +
 
+    'DIALOGUE BLOCK ORDER: within each dialogue, write the FULL ' + fromLabel + ' block first (all turns, each on its own line), then one blank line, then the FULL ' + toLabel + ' block (all turns, each on its own line) — matching the order shown in the Format example above. Do not interleave ' + fromLabel + '/' + toLabel + ' line by line. No Markdown formatting characters (no **, no *, no #) anywhere in the output — separation is achieved only through line order and the blank line, never through bold or italic markup.\n\n' +
+
     'RULES:\n' +
     '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
     '- NEVER write mirrored/symmetric turns — a turn must NOT just repeat the previous line with "too/also/as well" (or the equivalent in ' + toName + '). Each turn must add new information, a reaction, a contrast, a follow-up detail, or a natural human response — not an echo.\n' +
