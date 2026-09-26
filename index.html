@@ -4117,16 +4117,13 @@ h1[data-t="heroH"] {
   .gen-advanced-wrap > .gen-advanced-toggle { padding-top: 12px; padding-bottom: 12px; }
   .gen-card .gen-send-row { padding-top: 10px; }
   body { background: var(--navy-dk); } /* pod kartou nesmí prosvítat krémové pozadí */
-  /* Bez boxu Probíraná slova: karta vyplní obrazovku, tlačítko sedí dole
-     a odstup pod ním odpovídá odstupu nad názvem. Bez spodní čáry karty. */
+  /* FIX: karta se dřív natahovala na 100dvh a tlačítko bylo margin-top:auto
+     přilepené dolů, což bez boxu Probíraná slova dělalo obrovskou prázdnou
+     mezeru (viz Chrome screenshot). Karta teď má výšku podle obsahu. */
   .gen-card {
     border-bottom: none;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
   }
-  .gen-card .gen-send-row { margin-top: auto; padding-bottom: 24px; }
+  .gen-card .gen-send-row { padding-bottom: 24px; }
 }
 </style>
 <body>
@@ -9877,6 +9874,13 @@ if (_pi && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       genGenerate();
     }
   });
+}
+
+// FIX: pokud textarea při načtení stránky už obsahuje text (zůstal tam
+// z minula), ale žádný 'input' event se nespustil, křížek a šipka
+// zůstávaly skryté. Stav tlačítek proto po načtení srovnáme ručně.
+if (_pi && _pi.value.length > 0) {
+  onIntentInput(_pi, true);
 }
 
 // ═══════════════════════════════════════════════════════
