@@ -3122,7 +3122,12 @@ img { max-width: 100%; height: auto; }
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
-  margin-top: 10px;
+  /* FIX: margin-top zvětšen z 10px na 21px. Celkový rozestup nad boxem
+     (margin-bottom .gen-quickpick-row 6px + toto 21px = 27px) teď
+     odpovídá rozestupu pod boxem po začátek jazykového řádku
+     (16px padding .gen-primary-block + 1px dělicí čára + 10px padding
+     .gen-lang-row-inline ≈ 27px). */
+  margin-top: 21px;
   padding: 8px 12px;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
