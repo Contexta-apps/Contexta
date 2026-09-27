@@ -3013,10 +3013,13 @@ img { max-width: 100%; height: auto; }
   color: #7a8299;
   font-weight: 600;
 }
-.gen-advanced-wrap .gen-tuning-chips:has(> .gen-chip-level),
 .gen-advanced-wrap .gen-tuning-chips:has(> .gen-chip-count) {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gen-advanced-wrap .gen-tuning-chips:has(> .gen-chip-level) {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .gen-advanced-wrap .gen-tuning-chips:has(> .gen-chip-style) {
   display: grid;
@@ -3028,6 +3031,10 @@ img { max-width: 100%; height: auto; }
   border-radius: 9px;
   text-align: center;
   padding: 10px 4px;
+}
+.gen-advanced-wrap .gen-chip-level {
+  padding: 7px 2px;
+  font-size: .72rem;
 }
 .gen-advanced-wrap .gen-chip-level:not(.active),
 .gen-advanced-wrap .gen-chip-style:not(.active),
@@ -4208,9 +4215,9 @@ h1[data-t="heroH"] {
             <div class="topic-dropdown quicklevel-dropdown" id="quickLevelList" style="display:none;">
               <div class="quicklevel-group-label" data-translate="quickLevelGroupLevels" style="border-top:none;margin-top:0;">úrovně</div>
               <div class="ql-level-row" id="qlLevelRow">
-                <div class="ql-level-circle" data-level="a1" onclick="qlSelectLevel('a1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">A1</span></div>
+                <div class="ql-level-circle selected" data-level="a1" onclick="qlSelectLevel('a1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">A1</span></div>
                 <div class="ql-level-circle" data-level="a2" onclick="qlSelectLevel('a2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">A2</span></div>
-                <div class="ql-level-circle selected" data-level="b1" onclick="qlSelectLevel('b1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">B1</span></div>
+                <div class="ql-level-circle" data-level="b1" onclick="qlSelectLevel('b1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">B1</span></div>
                 <div class="ql-level-circle" data-level="b2" onclick="qlSelectLevel('b2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">B2</span></div>
                 <div class="ql-level-circle" data-level="c1" onclick="qlSelectLevel('c1',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">C1</span></div>
                 <div class="ql-level-circle" data-level="c2" onclick="qlSelectLevel('c2',this)"><span class="ql-level-dot"></span><span class="ql-level-txt">C2</span></div>
@@ -4312,9 +4319,12 @@ h1[data-t="heroH"] {
             <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="levelLabel">Úroveň</span>
               <div class="gen-tuning-chips" id="genLevelTabs">
-                <button class="gen-chip-level active" onclick="selectGenLevel('A1-A2','a',this)">A1–A2 <span class="gen-chip-sub" data-translate="lvChipSub0">Začátečník</span></button>
-                <button class="gen-chip-level" onclick="selectGenLevel('B1-B2','b',this)">B1–B2 <span class="gen-chip-sub" data-translate="lvChipSub1">Pokročilejší</span></button>
-                <button class="gen-chip-level" onclick="selectGenLevel('C1-C2','c',this)">C1–C2 <span class="gen-chip-sub" data-translate="lvChipSub2">Pokročilý</span></button>
+                <button class="gen-chip-level active" data-level="a1" onclick="selectGenFineLevel('a1',this)">A1</button>
+                <button class="gen-chip-level" data-level="a2" onclick="selectGenFineLevel('a2',this)">A2</button>
+                <button class="gen-chip-level" data-level="b1" onclick="selectGenFineLevel('b1',this)">B1</button>
+                <button class="gen-chip-level" data-level="b2" onclick="selectGenFineLevel('b2',this)">B2</button>
+                <button class="gen-chip-level" data-level="c1" onclick="selectGenFineLevel('c1',this)">C1</button>
+                <button class="gen-chip-level" data-level="c2" onclick="selectGenFineLevel('c2',this)">C2</button>
               </div>
             </div>
             <div class="gen-tuning-row">
@@ -6895,6 +6905,8 @@ function toggleAdvanced(btn) {
 // ─── Mode toggle ───
 var genMode = 'word';
 var selectedCEFR = 'A1-A2';
+// Mapování jemné úrovně (a1..c2) na CEFR pásmo používané generátorem promptu (beze změny logiky promptu)
+var FINE_TO_CEFR_RANGE = { a1:'A1-A2', a2:'A1-A2', b1:'B1-B2', b2:'B1-B2', c1:'C1-C2', c2:'C1-C2' };
 
 // ═══════════════════════════════════════════════════════
 // GRAMMAR SELECTOR – data + build + toggle + select
@@ -8057,6 +8069,35 @@ function setCEFR(level, el) {
   if (el) el.classList.add('active');
 }
 
+// Výběr jedné ze 6 jemných úrovní (A1..C2) v Pokročilém nastavení.
+// Sama funkce nemění, jak se generuje prompt (dál se používá CEFR pásmo přes FINE_TO_CEFR_RANGE) –
+// pouze navíc synchronizuje zvýraznění se sekcí Náhodné slovo EN (._qlLevel / .ql-level-circle).
+function selectGenFineLevel(fine, btn) {
+  _qlLevel = fine;
+  selectedCEFR = FINE_TO_CEFR_RANGE[fine] || selectedCEFR;
+  try { localStorage.setItem('gen_cefr_level_v1', selectedCEFR); } catch(e) {}
+  try { localStorage.setItem('gen_fine_level_v1', fine); } catch(e) {}
+  // aktivuj tlačítko v Pokročilém nastavení
+  document.querySelectorAll('.gen-chip-level').forEach(function(t){ t.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  // synchronizuj i malé CEFR tabs (u sloveso módu) – stejná logika jako dřív
+  document.querySelectorAll('.gen-cefr-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.gen-cefr-tab').forEach(function(t){
+    if (t.textContent.trim().replace('–','-') === selectedCEFR) t.classList.add('active');
+  });
+  // synchronizuj zvýraznění v Náhodné slovo EN (beze změny jeho vlastní logiky výběru slov)
+  var circle = document.querySelector('.ql-level-circle[data-level="' + fine + '"]');
+  if (circle) {
+    document.querySelectorAll('.ql-level-circle').forEach(function(c){ c.classList.remove('selected'); });
+    circle.classList.add('selected');
+    var row = document.getElementById('qlLevelRow');
+    if (row) row.classList.remove('ql-disabled');
+    if (_qlSelectedCategoryPrefix && _qlSelectedCategoryEl) {
+      qlSelectCategory(_qlSelectedCategoryPrefix, null, _qlSelectedCategoryEl);
+    }
+  }
+}
+
 // ── Quickpick roletka úrovně (téma A1▾ styl) ──
 function toggleQuickLevelDrop(e) {
   if (e) e.stopPropagation();
@@ -8095,7 +8136,7 @@ function toggleQuickLevelDrop(e) {
   }, { passive: false });
 })();
 
-var _qlLevel = 'b1';
+var _qlLevel = 'a1';
 var _qlSelectedCategoryPrefix = null;
 var _qlSelectedCategoryEl = null;
 
@@ -8105,6 +8146,17 @@ function qlSelectLevel(level, el) {
   el.classList.add('selected');
   var row = document.getElementById('qlLevelRow');
   if (row) row.classList.remove('ql-disabled');
+  // synchronizuj Pokročilé nastavení (sdílená úroveň) – beze změny logiky výběru kategorie slov níže
+  selectedCEFR = FINE_TO_CEFR_RANGE[level] || selectedCEFR;
+  try { localStorage.setItem('gen_cefr_level_v1', selectedCEFR); } catch(e) {}
+  try { localStorage.setItem('gen_fine_level_v1', level); } catch(e) {}
+  document.querySelectorAll('.gen-chip-level').forEach(function(t){ t.classList.remove('active'); });
+  var advBtn = document.querySelector('.gen-chip-level[data-level="' + level + '"]');
+  if (advBtn) advBtn.classList.add('active');
+  document.querySelectorAll('.gen-cefr-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.gen-cefr-tab').forEach(function(t){
+    if (t.textContent.trim().replace('–','-') === selectedCEFR) t.classList.add('active');
+  });
   // Pokud je aktuálně vybraná kategorie závislá na úrovni (např. adjectives_b1),
   // po změně úrovně ji přepočítat, aby odpovídala nově zvolené úrovni.
   if (_qlSelectedCategoryPrefix && _qlSelectedCategoryEl) {
@@ -8267,17 +8319,20 @@ function updateGenLangBtn(side, code) {
   if (listEl) listEl.querySelectorAll('.gen-lang-opt').forEach(function(o) {
     o.classList.toggle('selected', o.getAttribute('data-code') === code);
   });
-  // Anglická gramatika a náhodné anglické slovo dávají smysl jen
-  // pro uživatele, co se učí angličtinu (cílový jazyk = 'to').
-  if (side === 'to') updateEnglishOnlyVisibility(code);
+  // Zobrazení "Náhodné slovo EN" a "Anglické gramatiky" (viz funkce níže).
+  updateEnglishOnlyVisibility();
 }
 
-function updateEnglishOnlyVisibility(toLangCode) {
-  var isEnglish = (toLangCode === 'en');
+function updateEnglishOnlyVisibility() {
   var wordBox = document.getElementById('englishWordBox');
   var grammarBlock = document.getElementById('genGrammarBlock');
-  if (wordBox) wordBox.style.display = isEnglish ? '' : 'none';
-  if (grammarBlock) grammarBlock.style.display = isEnglish ? '' : 'none';
+  // Náhodné slovo EN je použitelné anglické slovo jako vstup i výstup studia,
+  // proto stačí, aby angličtina byla na kterékoli straně (zdroj i cíl).
+  var wordBoxVisible = (genFromLangVal === 'en' || genToLangVal === 'en');
+  // Anglická gramatika dává smysl jen když se uživatel učí anglicky (cílový jazyk).
+  var grammarVisible = (genToLangVal === 'en');
+  if (wordBox) wordBox.style.display = wordBoxVisible ? '' : 'none';
+  if (grammarBlock) grammarBlock.style.display = grammarVisible ? '' : 'none';
 }
 
 function toggleGenLangDd(side, e) {
@@ -9421,16 +9476,24 @@ window.addEventListener('DOMContentLoaded', function() { genHistoryRender(); });
 // Obnova uložené úrovně (CEFR + náhodná anglická slova) po načtení stránky
 window.addEventListener('DOMContentLoaded', function() {
   try {
-    var savedCEFR = localStorage.getItem('gen_cefr_level_v1');
-    if (savedCEFR) {
-      selectedCEFR = savedCEFR;
-      var cefrOrder = ['A1-A2', 'B1-B2', 'C1-C2'];
-      var idx = cefrOrder.indexOf(savedCEFR);
-      var chipBtns = document.querySelectorAll('.gen-chip-level');
-      if (idx > -1 && chipBtns[idx]) {
-        chipBtns.forEach(function(t){ t.classList.remove('active'); });
-        chipBtns[idx].classList.add('active');
+    var savedFine = localStorage.getItem('gen_fine_level_v1');
+    if (savedFine) {
+      _qlLevel = savedFine;
+      selectedCEFR = FINE_TO_CEFR_RANGE[savedFine] || selectedCEFR;
+      var advBtn = document.querySelector('.gen-chip-level[data-level="' + savedFine + '"]');
+      if (advBtn) {
+        document.querySelectorAll('.gen-chip-level').forEach(function(t){ t.classList.remove('active'); });
+        advBtn.classList.add('active');
       }
+      var circle = document.querySelector('.ql-level-circle[data-level="' + savedFine + '"]');
+      if (circle) {
+        document.querySelectorAll('.ql-level-circle').forEach(function(c){ c.classList.remove('selected'); });
+        circle.classList.add('selected');
+      }
+    } else {
+      // Zpětná kompatibilita se starším uložením (jen CEFR pásmo, bez jemné úrovně)
+      var savedCEFR = localStorage.getItem('gen_cefr_level_v1');
+      if (savedCEFR) { selectedCEFR = savedCEFR; }
     }
   } catch(e) {}
   try {
