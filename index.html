@@ -10756,21 +10756,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var fromDlg = (D[fromCode] && D[fromCode][0]) ? D[fromCode][0] : null;
     var toDlg   = (D[toCode]   && D[toCode][0])   ? D[toCode][0]   : null;
 
-    var fromHtml = fromDlg
-      ? 'a) ' + fromDlg[0] + '<br>b) ' + fromDlg[1] + '<br>a) ' + fromDlg[2]
-      : '(ukázka nedostupná)';
-    var toHtml = toDlg
-      ? 'a) ' + toDlg[0] + '<br>b) ' + toDlg[1] + '<br>a) ' + toDlg[2]
-      : '(preview unavailable)';
+    var html;
+    if (fromDlg && toDlg) {
+      var spk = ['A', 'B', 'A'];
+      var n = Math.min(fromDlg.length, toDlg.length, spk.length);
+      html = '<div style="text-align:center;line-height:1;margin-bottom:4px;">🧩</div>';
+      for (var i = 0; i < n; i++) {
+        // učený jazyk (toCode) tučně, pod ním překlad (fromCode) kurzívou
+        html += '<strong>' + spk[i] + ': ' + toDlg[i] + '</strong><br>' +
+                '<em style="color:#555;">' + spk[i] + ': ' + fromDlg[i] + '</em><br>';
+      }
+    } else {
+      html = '(preview unavailable)';
+    }
 
     el.style.display = 'block';
     el.innerHTML =
       '<div class="onb-demo-card">' +
-        '<div class="onb-demo-header">ChatGPT 🧩</div>' +
-        '<strong>' + fromLabel + ':</strong><br>' +
-        fromHtml + '<br><br>' +
-        '<strong>' + toLabel + ':</strong><br>' +
-        toHtml +
+        html +
       '</div>';
   }
 
