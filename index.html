@@ -745,6 +745,13 @@ h2 {
 .dconv-line.side-a .dconv-text { color: var(--ink-light); font-weight: 500; }
 .dconv-line.side-b .dconv-text { color: var(--navy);      font-weight: 600; }
 
+/* Proložený dialog: výukový jazyk nahoře (tučně), překlad pod ním (kurzívou, světlejší) */
+.dconv-line.dconv-learn { margin-bottom: 2px; }
+.dconv-line.dconv-learn .dconv-text { color: var(--navy); font-weight: 700; }
+.dconv-line.dconv-web { margin-bottom: 12px; }
+.dconv-line.dconv-web .dconv-text { color: var(--ink-light); font-weight: 400; font-style: italic; font-size: .8rem; }
+.dconv-line.dconv-web .dconv-speaker { opacity: .45; }
+
 .dconv-audio-row {
   display: flex; gap: 8px;
   padding: 6px 18px 10px;
@@ -6702,33 +6709,30 @@ function renderDialogs(t) {
     const wTxt = (wQ+' '+wA).replace(/'/g,"&#39;").replace(/"/g,'&quot;');
     const lTxt = (lQ+' '+lA).replace(/'/g,"&#39;").replace(/"/g,'&quot;');
 
-    const wBlock =
-      `<div class="dconv-line side-a"><span class="dconv-speaker">a</span><span class="dconv-text">${wQ}</span></div>` +
-      `<div class="dconv-line side-b"><span class="dconv-speaker">b</span><span class="dconv-text">${wA}</span></div>`;
-
-    const lBlock =
-      `<div class="dconv-line side-a"><span class="dconv-speaker">a</span><span class="dconv-text">${lQ}</span></div>` +
-      `<div class="dconv-line side-b"><span class="dconv-speaker">b</span><span class="dconv-text">${lA}</span></div>`;
+    // Proložení: výukový jazyk nahoře, hned pod ním překlad do jazyka webu; projdou se všechny repliky
+    let pairs = '';
+    const turns = Math.max(wD.length, lD.length);
+    for (let k = 0; k < turns; k++) {
+      const side = k % 2 === 0 ? 'side-a' : 'side-b';
+      const sp   = k % 2 === 0 ? 'a' : 'b';
+      if (lD[k]) pairs += `<div class="dconv-line dconv-learn ${side}"><span class="dconv-speaker">${sp}</span><span class="dconv-text">${lD[k]}</span></div>`;
+      if (wD[k]) pairs += `<div class="dconv-line dconv-web ${side}"><span class="dconv-speaker">${sp}</span><span class="dconv-text">${wD[k]}</span></div>`;
+    }
 
     return `
 <div class="dialog-row" id="dr${i}">
   <div class="dialog-row-header" onclick="toggleDialog(${i})">
     <span class="dialog-row-num">${num}</span>
-    <span class="dialog-row-preview"><strong>${wQ}</strong>&ensp;/&ensp;${lQ}</span>
+    <span class="dialog-row-preview"><strong>${lQ}</strong>&ensp;/&ensp;${wQ}</span>
     <span class="dialog-row-arrow">▶</span>
   </div>
   <div class="dialog-row-body">
     <div class="dconv-block">
-      <div class="dconv-lang dconv-lang-w">${wFlag} ${wLabel}</div>
-      ${wBlock}
-    </div>
-    <div class="dconv-block dconv-block-sep">
-      <div class="dconv-lang dconv-lang-l">${lFlag} ${lLabel}</div>
-      ${lBlock}
+      ${pairs}
     </div>
     <div class="dconv-audio-row">
-      <button class="audio-btn" onclick="playAudio('${wTxt}','${webLang}',event)" title="▶ ${wLabel}">▶ ${wFlag}</button>
       <button class="audio-btn" onclick="playAudio('${lTxt}','${learnLang}',event)" title="▶ ${lLabel}">▶ ${lFlag}</button>
+      <button class="audio-btn" onclick="playAudio('${wTxt}','${webLang}',event)" title="▶ ${wLabel}">▶ ${wFlag}</button>
     </div>
   </div>
 </div>`;
@@ -9721,6 +9725,8 @@ function genGenerate() {
   var dlInfo = dialogLengthMap[dialogLength] || dialogLengthMap['medium'];
   var dlExchangesBold   = dlInfo.exchanges.split('\n').map(function(l){ return l ? '**' + l + '**' : l; }).join('\n');
   var dlExchangesItalic = dlInfo.exchanges.split('\n').map(function(l){ return l ? '_'  + l + '_'  : l; }).join('\n');
+  // Proložený formát: každá replika = řádek ve výukovém jazyce (tučně) + hned pod ním překlad (kurzívou)
+  var dlInterleaved     = dlInfo.exchanges.split('\n').map(function(l){ return l ? '**' + l + '**\n_' + l + '_' : l; }).join('\n');
 
   var exampleSentencesBlock =
     '══════════════════════════════════════\n' +
@@ -9769,164 +9775,89 @@ function genGenerate() {
     cefrLevel === 'C1-C2' ? 'Cover the full range of common meanings incl. figurative, idiomatic, professional senses; exclude only archaic/dictionary-only ones.' :
     'Match sense selection to level ' + cefrLevel + '.';
 
-  // ── Prompt de luxe 6: pomocné hodnoty pro placeholdery ──
-  var promptTurns = ({ short: 3, medium: 5, long: 9 })[dialogLength] || 5;
-  var promptStyle = selectedStyle === 'casual'
-    ? 'casual spoken language (use contractions like didn\'t, I\'ll, don\'t; short natural reactions like "Oh no", "Ouch", "Seriously?")'
-    : selectedStyle;
-  var lvl = ({
-    'A1-A2': { allowed: 'present simple, present continuous, past simple, basic questions, can/should, going to',
-               forbidden: 'passive voice, perfect tenses, conditionals, participle clauses',
-               target: 'past simple, going to, can/should', len: '4-8' },
-    'B1-B2': { allowed: 'all A1-A2 structures, present perfect, past continuous, 1st and 2nd conditionals, reported speech, passive voice, relative clauses',
-               forbidden: 'inversion, advanced modal nuance, participle clauses',
-               target: 'present perfect, past continuous, 1st and 2nd conditionals, reported speech, passive voice, relative clauses', len: '6-12' },
-    'C1-C2': { allowed: 'all B1-B2 structures, inversion, participle clauses, advanced modal nuance, mixed conditionals, cleft sentences, idiomatic expressions, discourse markers',
-               forbidden: 'none; never forced or academic phrasing',
-               target: 'inversion, participle clauses, advanced modal nuance, mixed conditionals, cleft sentences', len: '8-16' }
-  })[cefrLevel] || { allowed: 'structures matching level ' + cefrLevel, forbidden: 'structures above level ' + cefrLevel, target: 'structures matching level ' + cefrLevel, len: '6-12' };
-  var promptTarget = selectedGrammar ? selectedGrammar.name + ': ' + selectedGrammar.prompt : lvl.target;
+  var prompt =
+    'Create language learning content.\n' +
+    'Source language (interface / web language): ' + webLangName + '\n' +
+    'SYSTEM RULE: All error messages, warnings, validation messages, and system feedback must be written in ' + webLangName + ' only — never in Language A or Language B.\n' +
+    'Language A: ' + fromName + '\n' +
+    'Language B: ' + toName + '\n' +
+    'Topic/target word: ' + intent + '\n' +
+    (assistTopic ? 'Context: ' + assistTopic + '\n' : '') +
+    (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
+      'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "⭐ ".\n'
+      : '') +
+    (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
+      'Pokud "' + intent + '" má běžný, přirozeně používaný frázový ekvivalent (ne vzácný/knižní): uveď ho jako řádek "Phrasal verb: [ekvivalent]" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s tímto frázovým slovesem místo "' + intent + '", označenou prefixem "⭐ ". Pokud žádný přirozený ekvivalent neexistuje, obojí vynech.\n') +
+    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\nUse the target grammar naturally; never force it where natural English requires another form (e.g. do not add WILL in every clause of a sentence if some clauses are naturally present tense).\n' : '') +
+    'Level: ' + cefrLevel + '\n' +
+    'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
+
+    'Labels (fixed): ' + fromLabel + ' and ' + toLabel + '\n\n' +
+
+    'INTERNAL DRAFTING STEP (mandatory, do NOT show this draft in your visible answer): Before writing anything visible, silently compose the full set of example sentences and dialogues for "' + intent + '" in your head, exactly as they will appear below. Only after that internal draft is complete, write your visible answer below — starting with Line 1 — based on what that finished draft actually contains, not on a plan made before drafting it.\n\n' +
+
+    'OUTPUT — TEXT EMPHASIS RULE (applies to every line below): the ' + toName + ' side (the language being learned) is always marked in **bold** using double-asterisks; the ' + fromName + ' side (the already-known / base language) is always marked in italics using underscores (_..._), NOT asterisks. This is role-based, not tied to a specific language — it must still be ' + toName + '=bold/' + fromName + '=underscore-italic even though the app supports 18 languages and roles can flip per user. CRITICAL: the bold/italic marker must wrap the ENTIRE line — the label (if any) AND the sentence/turn text together as one wrapped unit, e.g. "**' + toLabel + ' full sentence here.**" and "_' + fromLabel + ' full translation here._" — never just the label with the rest of the line left unformatted outside the markers.\n\n' +
+
+    '1) First line of your visible answer — output ONLY the content itself, never the words "Line 1", "1)", or any other label/number, and no ' + fromLabel + '/' + toLabel + ' prefixes on this line: **[topic in ' + toName + ', bold]** — _[topic in ' + fromName + ', underscore-italic]_. Example shape: **invade** — _napadnout / vtrhnout_. Do NOT default to generic dictionary translations. Base this line ONLY on your finished internal draft above — list the ' + toName + ' equivalents that draft actually uses, ordered by real-world frequency/naturalness for native speakers (same ranking as SENSE SELECTION below). e.g. "nákup" → "purchase / acquisition" (truly different domains). Single-meaning words get ONE translation only — e.g. "kniha" → "book" (never: book/novel/volume/ledger). Cap at 5 equivalents even if more distinct senses occur. Every equivalent listed on this line must actually appear in at least one example below — never list a sense your draft does not use, and never omit a sense your draft does use.\n' +
+    '2) 3 example sentences. STRICT FORMAT — each pair is exactly 2 separate lines, ' + toName + ' (target) line FIRST, ' + fromName + ' (source) line SECOND, blank line between pairs. The WHOLE line (label + sentence) is wrapped, not just the label:\n**' + toLabel + ' target-language sentence, all of it inside the bold markers.**\n_' + fromLabel + ' source-language translation, all of it inside the underscore markers._\n(the ' + fromLabel + ' line always starts on its own new line below the ' + toLabel + ' line — never appended on the same line — see LINE-BREAK RULE below)\n\n' +
+    '3) ' + totalDialogs + ' dialogues (1-' + totalDialogs + '), each with this exact exchange structure: ' + dlInfo.exchanges.replace(/\n/g, ' ') + '. STRICT: each sentence on its own line, never merge lines or use compact blocks, never as a bulleted/numbered list. Format:\n' +
+    '🧩 **1**\n' + dlInterleaved + '\n\n🧩 **2**\n(etc.)\n' +
+    '(every turn is exactly TWO consecutive lines: first the ' + toName + ' — target — version of the turn, the FULL line wrapped in ** ** ; immediately below it, with no blank line between, the same turn translated into ' + fromName + ' — source —, the FULL line wrapped in _ _ ; the speaker letter (A:/B:) is repeated on both lines; no ' + fromLabel + '/' + toLabel + ' text labels inside the dialogue, bold/underscore-italic alone marks which language is which; the translation must correspond exactly to the line directly above it — do not omit, merge, split or freely rephrase; do NOT render the dialogue as a bulleted or numbered list — plain consecutive lines only, no •, -, +, or "1." markers before any turn)\n\n' +
+
+    'LINE-BREAK RULE (critical, applies everywhere above — example sentences AND every dialogue turn): a plain single line break is often rendered as just a soft wrap (space) in chat interfaces, which silently merges two lines into one. To prevent this, end EVERY individual line (the ' + toLabel + ' sentence, the ' + fromLabel + ' translation, and every single bold/underscore-italic A:/B: turn in a dialogue) with two trailing spaces before the line break — an invisible Markdown hard line break, in addition to the ** / _ emphasis already required above. This must add no visible symbol beyond the required bold/underscore markers, and no extra blank line beyond what is specified above.\n\n' +
+
+    'DIALOGUE LINE ORDER: within each dialogue, write every turn as a pair — the ' + toName + ' (target, bold) line first, then directly beneath it the same turn in ' + fromName + ' (source, underscore-italic). Alternate line by line through the whole dialogue (target, source, target, source, …). Do NOT group all target turns into one block followed by all source turns.\n\n' +
+
+    'RULES:\n' +
+    '- Follow the exchange structure above exactly for every dialogue (do not shorten it): last line is a confirming full-sentence reply\n' +
+    '- NEVER write mirrored/symmetric turns — a turn must NOT just repeat the previous line with "too/also/as well" (or the equivalent in ' + toName + '). Each turn must add new information, a reaction, a contrast, a follow-up detail, or a natural human response — not an echo.\n' +
+    '- Every turn must directly react to, answer, or build on what the PREVIOUS speaker just said — never state an unrelated fact next to it. Example:\n' +
+    '    ✅ A: I heard the meeting got moved to Friday. B: Really? That changes my whole schedule.\n' +
+    '    ❌ A: The meeting got moved to Friday. B: The office is on the third floor. (unrelated fact, not a reaction)\n' +
+    '- Once a personal experience (a class, trip, job, event) is established as belonging to one speaker, that speaker must keep describing it in first person ("I") — never let a follow-up question with "you" cause the OTHER speaker to describe it as their own experience. Example:\n' +
+    '    ✅ A: Did you enjoy the cooking class? B: I did. What surprised ME the most was that it was hands-on...\n' +
+    '    ❌ A: Did you enjoy the cooking class? B: I did. What surprised YOU the most? A: It is hands-on... (experience wrongly shifted to A)\n' +
+    '- The final confirming line must react to the line DIRECTLY before it, not restate or confirm the speaker\'s own earlier line. Example:\n' +
+    '    ✅ A: That\'s risky. B: You\'re right, I\'ll start the backup now. A: Great, that sounds much safer.\n' +
+    '    ❌ A: That\'s risky. B: You\'re right, I\'ll start the backup now. A: Yes, I feel much better once everything is backed up. (confirms A\'s own earlier point, not B\'s reply)\n' +
+    '- Vary sentence openings and structures across turns within the same dialogue; avoid reusing the same verb phrase pattern back-to-back.\n' +
+    '- Each dialogue = different situation about "' + intent + '"\n' +
+    '- Each translation line must express the same meaning and details as the line directly above it, in natural phrasing of its own language (not a word-for-word copy of the sentence structure).\n' +
+    '- Keep ONE word per referent within a dialogue - no mid-dialogue switching.\n' +
+    '- Literal target word (no pronoun) in 5+/10 dialogues, in both languages.\n' +
+    '- Natural native-speaker language; every sentence, turn, and translation must strictly match level ' + cefrLevel + ' (vocabulary, grammar, complexity) - no exceptions.\n' +
+    '\n' +
+    'KEY PRINCIPLE — "' + intent + '":\n' +
+    'Do NOT start by writing a sentence. First create a real communicative situation where "' + intent + '" would naturally occur. Only then write the sentence.\n' +
+    'SENSE SELECTION (mandatory): if "' + intent + '" has multiple meanings, rank them by real-world frequency/naturalness for native speakers — never by dictionary listings or translation-induced senses. ' + senseLevelRule + ' Before finalizing each example, check: would a native speaker actually pick "' + intent + '" here, or would another word be preferred? If so, discard that meaning or rewrite — never force it in just because it\'s theoretically possible.\n' +
+    '"' + intent + '" may appear ONLY when it: expresses a reaction, draws a conclusion, confirms information, emphasises an attitude, expresses irony/sarcasm, or is used in a plain descriptive sense that represents a different common meaning from the most frequent one.\n' +
+    'NEVER force "' + intent + '" into a turn where it sounds unnatural or has no communicative function — across all examples it should appear in varied pragmatic functions (reaction, contrast, confirmation, attitude, irony), not always the same one.\n' +
+    'Each example must show a DIFFERENT situation and a DIFFERENT use of "' + intent + '".\n' +
+    'Translation must preserve the meaning of the whole situation. The target-language equivalent must sound like natural spoken language, not a dictionary entry.\n' +
+    '\n' +
+    (selectedGrammar ? '- Tenses: use naturally as required by the grammar focus.\n' : '- TENSE DISTRIBUTION — sentences: 1 present / 1 past / 1 future (in that order). Dialogues: 4 present / 3 past / 3 future (in that order).\n') +
+    '- TENSE & ASPECT PRESERVATION (mandatory): Every translation must preserve the tense, aspect, and temporal meaning of the source. Shifting tense or aspect in translation is an error — even when a different tense might sound more natural. Use target-language equivalents when they exist; when they do not, preserve temporal meaning using the most natural available construction. Within dialogues, each reply must also be grammatically and temporally consistent with the previous reply. Do not change tense merely to create variety. A tense change is allowed only when the meaning or time frame genuinely changes. Example: ❌ A: Did you find anything unusual? B: I have noticed a small mistake. ✅ A: Have you found anything unusual? B: I have noticed a small mistake.\n' +
+    '- Translate meaning, not words; do not preserve lexical structure. Do not omit specific nouns, names, brands, or quantities from the source — preserve all meaning-bearing details while translating naturally.\n' +
+    '- Goal: real-world usage in context, not dictionary equivalence.\n\n' +
+
+    (needsTranslation
+      ? 'NOTE: "' + intent + '" may be in any language. Use the correct translation in ' + fromName + ' (' + fromLabel + ' blocks) and ' + toName + ' (' + toLabel + ' blocks) — never use the original untranslated word if it does not belong to that language.\n' + 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line = ' + fromName + ' only. Every ' + toLabel + ' line = ' + toName + ' only. Wrong language in any line = critical error.\n\n'
+      : 'STRICT LANGUAGE RULE: Every ' + fromLabel + ' line must contain ONLY ' + fromName + '. Every ' + toLabel + ' line must contain ONLY ' + toName + '. Using a word from the wrong language in any line is a critical error — check every line before output.\n\n') +
+
+    'Forbidden: full language names, tables, ' + fromLabel + '/' + toLabel + ' text prefixes inside dialogues, bullet points or numbered lists of any kind (no •, -, +, "1.", "2." before any sentence or turn — every line is a plain standalone line), other visible Markdown symbols (#, >, |). The ** bold markers and _ underscore-italic markers required by the TEXT EMPHASIS RULE above, and the invisible two-space hard break from the LINE-BREAK RULE, are not forbidden — they are required. Do NOT use single asterisks (*) for italics anywhere — italics use underscores (_..._) only, to avoid being misread as a bullet list.\n\n' +
+
+    (selectedGrammar
+      ? 'GRAMMAR FOCUS - "' + selectedGrammar.name + '": ' + selectedGrammar.prompt + '\n' +
+        'Use it naturally in the ' + fromLabel + ' examples and dialogues. Do NOT add any explanation section, summary, or extra example sentences about this grammar point at the end — only use it naturally within the sentences and dialogues above.\n\n'
+      : '') +
+
+    'Number of dialogues: ' + totalDialogs + '\n' +
+    'Length: ' + dlInfo.label + '\n' +
 
-  var prompt = `Create language-learning content for the word "${intent}".
-
-INPUT
-
-Language A (language of the word): ${fromName}
-
-Language B (translation language): ${toName}
-
-Level: ${cefrLevel}
-
-Style: ${promptStyle}
-
-Dialogue length: ${promptTurns} turns (A, B, A, B ... always ending on A)
-
-Interface language for any error or warning message: ${webLangName} only.
-
-LEVEL GRAMMAR (apply silently, never label or explain grammar; all Language A text)
-
-Allowed: ${lvl.allowed}
-
-Forbidden: ${lvl.forbidden}
-
-Target structures: ${promptTarget}
-
-Sentence length: ${lvl.len} words per turn.
-
-- Each target structure appears in about 4-6 of the 10 dialogues, not in all of them. Other dialogues use other allowed structures.
-
-- A target structure must be motivated by the situation. A past tense needs a clear earlier event; a deduction needs a clue in an earlier turn. If no natural clue exists, use another structure.
-
-- Dialogues must not share one skeleton. Vary where the target structures fall and how the dialogues end.
-
-- If a structure does not fit the word or the situation, use a simpler allowed structure. Naturalness beats grammar coverage.
-
-PLAN SILENTLY BEFORE WRITING (never show the plan)
-
-1. Choose the 1-5 most frequent everyday senses of "${intent}" and their ${toName} equivalents.
-
-2. List 13 different situations (3 sentences + 10 dialogues). No two share a scenario, key phrase or props.
-
-3. Assign each dialogue a tense, and fix each speaker's role (who owns the item, who drives, who babysits).
-
-Then write. Every sense from step 1 must appear in the text, and no other sense may appear.
-
-OUTPUT (in this exact order, nothing else, no intro, no closing remarks)
-
-Line 1: ONLY the content, no label. Uppercase, format: **WORD** — EQUIVALENT / EQUIVALENT
-
-The word is bold, the equivalents are plain text. List the senses from your plan, most frequent first, max 5.
-
-Then 3 example sentences in the order present, past, future. Each is two lines, with a blank line between pairs. Each sentence must be understandable on its own, without extra context:
-
-**sentence in ${fromName}**
-
-_translation in ${toName}_
-
-No labels (EN:, CS: etc.).
-
-Then 10 dialogues in this format:
-
-🧩 **1**
-
-**A: turn in ${fromName}**
-
-**B: turn in ${fromName}**
-
-**A: turn in ${fromName}**
-
-(all ${promptTurns} turns, each on its own line)
-
-_A: turn in ${toName}_
-
-_B: turn in ${toName}_
-
-_A: turn in ${toName}_
-
-(the same number of turns)
-
-FORMAT RULES
-
-- Language A lines are wrapped entirely in ** **, Language B lines entirely in _ _ (underscores, never single asterisks). The marker wraps the whole line including "A:" / "B:".
-
-- Every line ends with two trailing spaces (hard line break).
-
-- Each turn is its own line. No bullets, numbering, tables, headers, quotes or other Markdown. No EN:/CS: prefixes.
-
-- A blank line follows every 🧩 heading.
-
-- Full Language A block first, one blank line, then full Language B block. Never interleave. Every turn is complete text.
-
-- Every Language B line starts with the label A: or B: (Latin letters), exactly like the Language A line it translates. A Language B line without its label is an error.
-
-TENSE
-
-- Sentences: 1 present, 1 past, 1 future.
-
-- Dialogues 1-4 present, 5-7 past, 8-10 future, unless a target structure requires otherwise. A target structure takes priority over this default distribution, and its dialogues are tensed accordingly. The tense of the FIRST turn defines the dialogue. Later turns shift only when the time frame genuinely changes (for example a past event told inside a present-tense dialogue).
-
-- Future dialogues are stories about a concrete upcoming event, not advice sessions.
-
-DIALOGUE QUALITY
-
-- Every turn reacts to the previous turn and adds new information. No echoes ("me too", "also").
-
-- Keep each situation simple and plausible: one clear event, one clear reaction. Check who meets whom and who knows what.
-
-- A speaker states only what they could know at that moment. Roles never swap.
-
-- A personal experience stays in first person for its owner.
-
-- The last turn reacts to the turn directly before it. It is a reaction, never the speaker's own plan, hope or summary.
-
-- Vary sentence openings. Do not repeat the same verb phrase in consecutive turns.
-
-- Vary plots, endings and key vocabulary across dialogues; do not repeat the same adjective or arc (e.g. mistake, apology, reassurance) in every dialogue.
-
-- Use one word per referent within a dialogue.
-
-- The word itself (not a pronoun) appears literally in at least 5 of 10 dialogues, in both languages, and only where a native speaker would really choose it. If a native speaker would normally use a different word in that situation, choose another situation instead of forcing the word.
-
-- No sentence or situation from the examples reappears in a dialogue.
-
-- If the word is a verb of motion, use basic verb + preposition patterns (across, along, through, past, towards) in 3-4 dialogues and at most 1 sentence. Translate them naturally, not word for word.
-
-TRANSLATION
-
-- The Language B version of every sentence and dialogue is natural spoken language describing the SAME situation: same facts, people, roles, time frame and details (quantities, names, adverbs like "usually"). Word order and phrasing follow natural Language B, not the Language A structure.
-
-- Keep the temporal meaning; if Language B has no equivalent form, use its natural way of expressing it.
-
-- Every Language A line is only Language A, every Language B line only Language B. A translation is never a copy of the Language A text.
-
-- Idioms and phrasal verbs: translate the meaning, never word for word. The header lists 2-3 equivalents that match the exact meaning, not a broader or different one. In each dialogue use the one that fits what happens (e.g. "reveal a secret" only if a secret is revealed) or a natural rephrasing; no single equivalent in more than 4 dialogues.
-
-All text must strictly match level ${cefrLevel} in vocabulary, grammar and complexity.
-
-FINAL CHECK (silent, before sending): every Language B line in all 10 dialogues, including the first line of each, starts with A: or B:; no single idiom equivalent appears in more than 4 dialogues; the last turn of every dialogue reacts to the previous turn and is not a plan.` +
     (currentAI === 'chatgpt'
-      ? '\nDisplay format: Please use canvas for this response, applying the two-trailing-spaces rule above (invisible hard breaks) so every line renders correctly in canvas, but otherwise keep following the formatting rules above exactly (only ** bold / * italic as specified, no other Markdown, no tables).\n'
+      ? '\nDisplay format: Please use canvas for this response, applying the LINE-BREAK RULE above (invisible two-space hard breaks) so every line renders correctly in canvas, but otherwise keep following the formatting rules above exactly (only ** bold / * italic as specified, no other Markdown, no tables).\n'
       : '');
+
   // Uložit do Probíraných slov (jen pokud šlo o skutečně napsaný záměr, ne auto-placeholder)
   if (!isAutoGeneratedIntent) genHistoryAdd(intent);
 
