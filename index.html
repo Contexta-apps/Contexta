@@ -9819,8 +9819,6 @@ function genGenerate() {
     (assistVerb  ? 'Phrasal verb: ' + assistVerb + '\n' +
       'Navíc k příkladovým větám vytvoř JEDNU dodatečnou větu (+ překlad, stejný formát), která použije frázové sloveso "' + assistVerb + '" místo "' + intent + '" ve stejném významu. Označ ji na začátku prefixem "⭐ ".\n'
       : '') +
-    (assistVerb || !isVerbSource || !isEnglishInvolved ? '' :
-      'Pokud "' + intent + '" má běžnou, přirozeně používanou alternativu se stejným významem (frázové sloveso, nebo obyčejné slovo; ne vzácné/knižní, ne jen jiný tvar téhož slova): uveď ji jako řádek "Alternative: [alternativa] — [stručný význam v jazyce ' + fromName + ']" a k příkladovým větám přidej JEDNU dodatečnou větu (+ překlad, stejný formát) s touto alternativou místo "' + intent + '", označenou prefixem "⭐ ". Pokud žádná přesná alternativa neexistuje, obojí vynech.\n') +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.name + '\nUse the target grammar naturally; never force it where natural English requires another form (e.g. do not add WILL in every clause of a sentence if some clauses are naturally present tense).\n' : '') +
     'Level: ' + cefrLevel + '\n' +
     'Style: ' + (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle) + '\n\n' +
@@ -10796,7 +10794,7 @@ document.addEventListener('DOMContentLoaded', function() {
       for (var i = 0; i < n; i++) {
         // učený jazyk (toCode) tučně, pod ním překlad (fromCode) kurzívou
         html += '<strong>' + spk[i] + ': ' + toDlg[i] + '</strong><br>' +
-                '<em style="color:#555;">' + spk[i] + ': ' + fromDlg[i] + '</em><br>';
+                '<em style="color:#555;">' + fromDlg[i] + '</em><br>';
       }
     } else {
       html = '(preview unavailable)';
