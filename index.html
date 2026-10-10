@@ -9698,12 +9698,18 @@ function _buildStoryPrompt(situation, toName, fromName, storyTitle) {
     'B1-B2':'Level rules: medium-length sentences including compound sentences, past simple and past continuous, occasional past perfect, reported speech and relative clauses.',
     'C1-C2':'Level rules: varied sentence structures, rich vocabulary, idiomatic expressions and discourse markers, a natural style that never feels forced or academic.'
   })[lvl] || '';
+  // Při zvoleném gram. jevu úroveň jen sjednotí délku vět a slovní zásobu (bez výčtu časů, aby se nebila s jevem)
+  if (selectedGrammar) _lvlRules = ({
+    'A1-A2':'Level rules: short sentences (about 8-10 words) and the most common vocabulary.',
+    'B1-B2':'Level rules: medium-length sentences, including compound sentences, and everyday vocabulary with some less common words.',
+    'C1-C2':'Level rules: varied sentence structures, rich vocabulary, idiomatic expressions and discourse markers, a natural style that never feels forced or academic.'
+  })[lvl] || '';
   return 'Write a short story about this situation: ' + situation + '\n' +
     'Language A (being learned): ' + toName + '. Language B (known): ' + fromName + '. Level: ' + lvl + '. Style: ' + selectedStyle + '.\n' +
     'Length: about 26 sentences in Language A, about ' + _w[0] + ' words (Chinese/Japanese: about ' + _w[1] + ' characters). Language B is a faithful translation of the same length.\n' +
     (_lvlRules ? _lvlRules + '\n' : '') +
     '7-9 short paragraphs of 3-4 sentences, a finished story with a clear ending; the last sentence must be complete.\n' +
-    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.prompt + ' Apply it to the story in Language A: use it in about 4-6 sentences, only where it sounds natural (for example in the characters\' speech or where the time frame fits). All other sentences stay at the chosen level. Do not explain the grammar and do not add any grammar notes.\n' : '') +
+    (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.prompt + ' This grammar focus has priority over the level rules. Use it clearly in about 4-6 sentences of Language A, where it sounds natural (usually in the characters\' direct speech, thoughts or comments; the narration may stay in the simple past unless the focus is itself a narrative tense). Do not replace it with a similar structure or another tense of the same family. All other sentences stay at the chosen level. Do not explain the grammar and do not add grammar notes. Before answering, silently check that at least 4 sentences clearly contain the target structure and that it is used correctly; fix any that do not.\n' : '') +
     'Translation rule: Language B translates Language A sentence by sentence, faithfully: same subject, names and details. Never invent, rename or change a character; every character has ONE simple name (easy to decline in Language B) used consistently in both languages.\n' +
     (storyTitle ? 'Title: the very first line of your answer is exactly **' + storyTitle + '** (bold, nothing else on that line, no translation), then one blank line, then the story.\n' : '') +
     'Format: every sentence of Language A on its own line, the WHOLE line in **bold**; directly below it its translation in Language B, the WHOLE line in _underscore-italics_. One blank line between sentence pairs, one extra blank line between paragraphs. End every line with two spaces (invisible hard line break). No other labels, numbering, bullets, tables or comments.\n';
