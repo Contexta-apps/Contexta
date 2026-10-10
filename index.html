@@ -4179,7 +4179,7 @@ h1[data-t="heroH"] {
         </div>
       </div>
       <p class="hero-sub-tagline" data-t="heroSubTagline" style="font-size: clamp(12px, 3.5vw, 18px);">Jedno slovo. Deset kontextů. Nezapomeneš.</p>
-      <p class="hero-ai-hint" data-i18n="aiHint">Vyžaduje ChatGPT/Copilot.</p>
+      <p class="hero-ai-hint" data-i18n="aiHint">Potřebuješ ChatGPT nebo Copilot.</p>
     </div>
 
     <!-- ══ BLOK 1: HLAVNÍ VÝRAZ — nejdůležitější prvek ══ -->
@@ -4189,7 +4189,7 @@ h1[data-t="heroH"] {
         <label class="gen-primary-label" for="genIntent" data-t="intentLabel" data-translate="intentLabel">Co chceš procvičit?</label>
       </div>
       <div class="prompt-box" style="position:relative;">
-        <button class="toolbar-ukázka" id="onbChipBtn" onclick="toggleOnboarding()">▶ Ukázka</button>
+        <button type="button" class="toolbar-ukázka howto-chip" id="howtoChipBtn" onclick="howToOpen(false)" aria-label="?">?</button>
         <textarea class="gen-primary-input" id="practiceInput" rows="2"
           placeholder="Zadej slovo → dialogy&#10;Popiš situaci → příběh"
           maxlength="400" oninput="onIntentInput(this)"></textarea>
@@ -4876,6 +4876,10 @@ cz:{
   advVerbLabel:'⚡ Frázové sloveso (nápověda)',
   advTopicLabel:'🗂 Téma (nápověda)',
   genSendBtn:'▶ Vygenerovat kontext',
+  howToTitle:"Jak na to", howToIntro:"",
+  howToNeed:"Potřebuješ ChatGPT nebo Copilot.",
+  howTo1:"Napiš slovo nebo situaci a stiskni ↑ nebo **Vygenerovat kontext**.", howTo2:"Otevře se ChatGPT s připraveným zadáním. Stiskni **Odeslat** (↑).",
+  howToCopilot:"Používáš Copilot? Zadání se nevloží samo. Podrž prst v poli pro psaní, vyber **Vložit** a potom stiskni **Odeslat**.", howToOk:"Rozumím",
   genHintSmall:'💡 ChatGPT se otevře s hotovým promptem — stačí stisknout Enter',
   genHintSmallDesktop:'💡 Prompt se zkopíruje do schránky — stačí vložit Ctrl+V',
   clipboardHintDesktop:'📋 Prompt je zkopírovaný do schránky — pokud se ChatGPT/Copilot neotevře s textem, vlož ho (Ctrl+V)',
@@ -4895,7 +4899,7 @@ cz:{
   grammarClearBtn:'✕ zrušit',
   grammarSearchPh:'🔍 Hledat téma…',
   storyTitle:'PŘÍBĚH', dialogLengthHint:'Určuje délku každého dialogu.',
-  aiHint:'Vyžaduje ChatGPT/Copilot.'
+  aiHint:'Potřebuješ ChatGPT nebo Copilot.'
 },
 en:{
   webLangLabel:"Web language", learnLangLabel:"I'm learning",
@@ -4972,6 +4976,10 @@ en:{
   advVerbLabel:'⚡ Phrasal verb (hint)',
   advTopicLabel:'🗂 Topic (hint)',
   genSendBtn:'▶ Generate Context',
+  howToTitle:"How it works", howToIntro:"",
+  howToNeed:"You need ChatGPT or Copilot.",
+  howTo1:"Type a word or situation and press ↑ or **Generate Context**.", howTo2:"ChatGPT opens with the prompt ready. Press **Send** (↑).",
+  howToCopilot:"Using Copilot? The prompt isn't pasted automatically. Press and hold the text field, choose **Paste**, then press **Send**.", howToOk:"Got it",
   genHintSmall:'💡 ChatGPT opens with the prompt ready — just press Enter',
   genHintSmallDesktop:'💡 The prompt will be copied to your clipboard — just paste with Ctrl+V',
   clipboardHintDesktop:'📋 The prompt is copied to your clipboard — if ChatGPT/Copilot opens without it, paste it in (Ctrl+V)',
@@ -4991,7 +4999,7 @@ en:{
   grammarClearBtn:'✕ clear',
   grammarSearchPh:'🔍 Search topic…',
   storyTitle:'STORY', dialogLengthHint:'Sets the length of each dialogue.',
-  aiHint:'Requires ChatGPT/Copilot.'
+  aiHint:'You need ChatGPT or Copilot.'
 },
 de:{
   webLangLabel:"Webseitensprache", learnLangLabel:"Ich lerne",
@@ -5068,6 +5076,10 @@ de:{
   advVerbLabel:'⚡ Phrasal Verb (Hinweis)',
   advTopicLabel:'🗂 Thema (Hinweis)',
   genSendBtn:'▶ Kontext generieren',
+  howToTitle:"So geht's", howToIntro:"",
+  howToNeed:"Du brauchst ChatGPT oder Copilot.",
+  howTo1:"Schreibe ein Wort oder eine Situation und drücke ↑ oder **Kontext generieren**.", howTo2:"ChatGPT öffnet sich mit dem fertigen Prompt. Drücke **Senden** (↑).",
+  howToCopilot:"Du nutzt Copilot? Der Prompt wird nicht automatisch eingefügt. Halte den Finger im Eingabefeld gedrückt, wähle **Einfügen** und drücke dann **Senden**.", howToOk:"Verstanden",
   genHintSmall:'💡 ChatGPT öffnet sich mit dem Prompt — einfach Enter drücken',
   genHintSmallDesktop:'💡 Der Prompt wird in die Zwischenablage kopiert — einfach mit Strg+V einfügen',
   clipboardHintDesktop:'📋 Der Prompt wurde in die Zwischenablage kopiert — falls ChatGPT/Copilot ihn nicht zeigt, einfügen mit (Strg+V)',
@@ -5087,7 +5099,7 @@ de:{
   grammarClearBtn:'✕ entfernen',
   grammarSearchPh:'🔍 Thema suchen…',
   storyTitle:'GESCHICHTE', dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
-  aiHint:'Erfordert ChatGPT/Copilot.'
+  aiHint:'Du brauchst ChatGPT oder Copilot.'
 },
 fr:{
   webLangLabel:"Langue du site", learnLangLabel:"J'apprends",
@@ -5157,6 +5169,10 @@ fr:{
   lengthShort:"Court", lengthMedium:"Plus long", lengthLong:"Le plus long",
   advVerbLabel:"⚡ Verbe phrasé (indice)", advTopicLabel:"🗂 Sujet (indice)",
   genSendBtn:"▶ Générer le contexte",
+  howToTitle:"Mode d'emploi", howToIntro:"",
+  howToNeed:"Il te faut ChatGPT ou Copilot.",
+  howTo1:"Écris un mot ou une situation, puis appuie sur ↑ ou sur **Générer le contexte**.", howTo2:"ChatGPT s'ouvre avec la consigne prête. Appuie sur **Envoyer** (↑).",
+  howToCopilot:"Tu utilises Copilot ? La consigne ne se colle pas toute seule. Maintiens ton doigt dans le champ de saisie, choisis **Coller**, puis appuie sur **Envoyer**.", howToOk:"Compris",
   genHintSmall:"💡 ChatGPT s'ouvre avec le prompt prêt — appuie sur Entrée",
   genHintSmallDesktop:"💡 Le prompt sera copié dans le presse-papiers — colle-le avec Ctrl+V",
   clipboardHintDesktop:"📋 Le prompt est copié dans le presse-papiers — si ChatGPT/Copilot s'ouvre sans texte, colle-le (Ctrl+V)",
@@ -5176,7 +5192,7 @@ fr:{
   grammarClearBtn:'✕ effacer',
   grammarSearchPh:'🔍 Rechercher un sujet…',
   storyTitle:'HISTOIRE', dialogLengthHint:'Définit la longueur de chaque dialogue.',
-  aiHint:'Nécessite ChatGPT/Copilot.'
+  aiHint:'Il te faut ChatGPT ou Copilot.'
 },
 es:{
   webLangLabel:"Idioma del sitio", learnLangLabel:"Estoy aprendiendo",
@@ -5251,6 +5267,10 @@ es:{
   lengthShort:'Corto', lengthMedium:'Más largo', lengthLong:'El más largo',
   advVerbLabel:'⚡ Verbo frasal (pista)', advTopicLabel:'🗂 Tema (pista)',
   genSendBtn:'▶ Generar contexto',
+  howToTitle:"Cómo funciona", howToIntro:"",
+  howToNeed:"Necesitas ChatGPT o Copilot.",
+  howTo1:"Escribe una palabra o una situación y pulsa ↑ o **Generar contexto**.", howTo2:"Se abre ChatGPT con el prompt listo. Pulsa **Enviar** (↑).",
+  howToCopilot:"¿Usas Copilot? El prompt no se pega solo. Mantén pulsado el campo de texto, elige **Pegar** y luego pulsa **Enviar**.", howToOk:"Entendido",
   genHintSmall:'💡 ChatGPT se abre con el prompt — solo pulsa Enter',
   genHintSmallDesktop:'💡 El prompt se copiará al portapapeles — pégalo con Ctrl+V',
   clipboardHintDesktop:'📋 El prompt se copió al portapapeles — si ChatGPT/Copilot se abre sin texto, pégalo (Ctrl+V)',
@@ -5266,7 +5286,7 @@ es:{
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
   storyTitle:'HISTORIA', dialogLengthHint:'Determina la longitud de cada diálogo.',
-  aiHint:'Requiere ChatGPT/Copilot.'
+  aiHint:'Necesitas ChatGPT o Copilot.'
 },
 it:{
   webLangLabel:"Lingua del sito", learnLangLabel:"Sto imparando",
@@ -5341,6 +5361,10 @@ it:{
   lengthShort:'Breve', lengthMedium:'Più lungo', lengthLong:'Il più lungo',
   advVerbLabel:'⚡ Verbo frasale (suggerimento)', advTopicLabel:'🗂 Argomento (suggerimento)',
   genSendBtn:'▶ Genera contesto',
+  howToTitle:"Come funziona", howToIntro:"",
+  howToNeed:"Ti serve ChatGPT o Copilot.",
+  howTo1:"Scrivi una parola o una situazione e premi ↑ oppure **Genera contesto**.", howTo2:"Si apre ChatGPT con il prompt pronto. Premi **Invia** (↑).",
+  howToCopilot:"Usi Copilot? Il prompt non viene incollato da solo. Tieni premuto il campo di testo, scegli **Incolla** e poi premi **Invia**.", howToOk:"Ho capito",
   genHintSmall:'💡 ChatGPT si apre con il prompt — premi solo Invio',
   genHintSmallDesktop:'💡 Il prompt verrà copiato negli appunti — incollalo con Ctrl+V',
   clipboardHintDesktop:'📋 Il prompt è stato copiato negli appunti — se ChatGPT/Copilot si apre senza testo, incollalo (Ctrl+V)',
@@ -5356,7 +5380,7 @@ it:{
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
   storyTitle:'STORIA', dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
-  aiHint:'Richiede ChatGPT/Copilot.'
+  aiHint:'Ti serve ChatGPT o Copilot.'
 },
 pt:{
   webLangLabel:"Idioma do site", learnLangLabel:"Estou aprendendo",
@@ -5430,6 +5454,10 @@ pt:{
   lengthShort:'Curto', lengthMedium:'Mais longo', lengthLong:'O mais longo',
   advVerbLabel:'⚡ Verbo frasal (dica)', advTopicLabel:'🗂 Tema (dica)',
   genSendBtn:'▶ Gerar contexto',
+  howToTitle:"Como funciona", howToIntro:"",
+  howToNeed:"Você precisa do ChatGPT ou do Copilot.",
+  howTo1:"Escreva uma palavra ou situação e pressione ↑ ou **Gerar contexto**.", howTo2:"O ChatGPT abre com o prompt pronto. Pressione **Enviar** (↑).",
+  howToCopilot:"Está usando o Copilot? O prompt não é colado sozinho. Mantenha o dedo pressionado no campo de texto, escolha **Colar** e depois pressione **Enviar**.", howToOk:"Entendi",
   genHintSmall:'💡 ChatGPT abre com o prompt — basta pressionar Enter',
   genHintSmallDesktop:'💡 O prompt será copiado para a área de transferência — cole com Ctrl+V',
   clipboardHintDesktop:'📋 O prompt foi copiado para a área de transferência — se o ChatGPT/Copilot abrir sem texto, cole-o (Ctrl+V)',
@@ -5445,7 +5473,7 @@ pt:{
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
   storyTitle:'HISTÓRIA', dialogLengthHint:'Define o comprimento de cada diálogo.',
-  aiHint:'Requer ChatGPT/Copilot.'
+  aiHint:'Você precisa do ChatGPT ou do Copilot.'
 },
 pl:{
   webLangLabel:"Język strony", learnLangLabel:"Uczę się",
@@ -5520,6 +5548,10 @@ pl:{
   lengthShort:'Krótkie', lengthMedium:'Dłuższe', lengthLong:'Najdłuższe',
   advVerbLabel:'⚡ Czasownik frazowy (podpowiedź)', advTopicLabel:'🗂 Temat (podpowiedź)',
   genSendBtn:'▶ Wygeneruj kontekst',
+  howToTitle:"Jak to działa", howToIntro:"",
+  howToNeed:"Potrzebujesz ChatGPT lub Copilota.",
+  howTo1:"Wpisz słowo lub sytuację i naciśnij ↑ albo **Wygeneruj kontekst**.", howTo2:"Otworzy się ChatGPT z gotowym poleceniem. Naciśnij **Wyślij** (↑).",
+  howToCopilot:"Używasz Copilota? Polecenie nie wklei się samo. Przytrzymaj palec w polu tekstowym, wybierz **Wklej**, a potem naciśnij **Wyślij**.", howToOk:"Rozumiem",
   genHintSmall:'💡 ChatGPT otworzy się z promptem — wystarczy wcisnąć Enter',
   genHintSmallDesktop:'💡 Prompt zostanie skopiowany do schowka — wystarczy wkleić Ctrl+V',
   clipboardHintDesktop:'📋 Prompt został skopiowany do schowka — jeśli ChatGPT/Copilot otworzy się bez tekstu, wklej go (Ctrl+V)',
@@ -5535,7 +5567,7 @@ pl:{
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
   storyTitle:'OPOWIADANIE', dialogLengthHint:'Określa długość każdego dialogu.',
-  aiHint:'Wymaga ChatGPT/Copilot.'
+  aiHint:'Potrzebujesz ChatGPT lub Copilota.'
 },
 cn:{
   webLangLabel:"网站语言", learnLangLabel:"我在学",
@@ -5610,6 +5642,10 @@ cn:{
   lengthShort:'短', lengthMedium:'较长', lengthLong:'最长',
   advVerbLabel:'⚡ 短语动词（提示）', advTopicLabel:'🗂 主题（提示）',
   genSendBtn:'▶ 生成语境',
+  howToTitle:"使用方法", howToIntro:"",
+  howToNeed:"你需要 ChatGPT 或 Copilot。",
+  howTo1:"输入一个词或一种情境，然后点按 ↑ 或「**生成语境**」。", howTo2:"ChatGPT 会打开并带有准备好的提示词。点按“**发送**”（↑）。",
+  howToCopilot:"使用 Copilot？提示词不会自动**粘贴**。在输入框中长按，选择“**粘贴**”，然后点按“**发送**”。", howToOk:"知道了",
   genHintSmall:'💡 ChatGPT将携带提示词打开 — 只需按Enter',
   genHintSmallDesktop:'💡 提示词将被复制到剪贴板 — 粘贴即可（Ctrl+V）',
   clipboardHintDesktop:'📋 提示词已复制到剪贴板 — 如果ChatGPT/Copilot打开后没有文字，请粘贴（Ctrl+V）',
@@ -5625,7 +5661,7 @@ cn:{
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
   storyTitle:'故事', dialogLengthHint:'设置每段对话的长度。',
-  aiHint:'需要 ChatGPT/Copilot。'
+  aiHint:'你需要 ChatGPT 或 Copilot。'
 },
 jp:{
   webLangLabel:"サイトの言語", learnLangLabel:"学習言語",
@@ -5700,6 +5736,10 @@ jp:{
   lengthShort:'短め', lengthMedium:'長め', lengthLong:'最長',
   advVerbLabel:'⚡ 句動詞（ヒント）', advTopicLabel:'🗂 テーマ（ヒント）',
   genSendBtn:'▶ コンテキストを生成',
+  howToTitle:"使い方", howToIntro:"",
+  howToNeed:"ChatGPT または Copilot が必要です。",
+  howTo1:"単語や状況を入力して、↑ または「**コンテキストを生成**」をタップします。", howTo2:"用意されたプロンプトが入った状態で ChatGPT が開きます。「**送信**」（↑）をタップします。",
+  howToCopilot:"Copilot をお使いですか？プロンプトは自動では**貼り付け**られません。入力欄を長押しして「**貼り付け**」を選び、「**送信**」をタップします。", howToOk:"分かりました",
   genHintSmall:'💡 ChatGPTがプロンプト付きで開きます — Enterを押すだけ',
   genHintSmallDesktop:'💡 プロンプトはクリップボードにコピーされます — 貼り付けるだけ（Ctrl+V）',
   clipboardHintDesktop:'📋 プロンプトはクリップボードにコピーされました — ChatGPT/Copilotが空で開いた場合は貼り付けてください（Ctrl+V）',
@@ -5715,7 +5755,7 @@ jp:{
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
   storyTitle:'物語', dialogLengthHint:'各ダイアログの長さを設定します。',
-  aiHint:'ChatGPT/Copilotが必要です。'
+  aiHint:'ChatGPT または Copilot が必要です。'
 },
 kr:{
   webLangLabel:"웹사이트 언어", learnLangLabel:"학습 언어",
@@ -5790,6 +5830,10 @@ kr:{
   lengthShort:'짧게', lengthMedium:'길게', lengthLong:'가장 길게',
   advVerbLabel:'⚡ 구동사 (힌트)', advTopicLabel:'🗂 주제 (힌트)',
   genSendBtn:'▶ 컨텍스트 생성',
+  howToTitle:"사용 방법", howToIntro:"",
+  howToNeed:"ChatGPT 또는 Copilot이 필요합니다.",
+  howTo1:"단어나 상황을 입력하고 ↑ 또는 「**컨텍스트 생성**」을 탭하세요.", howTo2:"준비된 프롬프트와 함께 ChatGPT가 열립니다. **보내기**(↑)를 탭하세요.",
+  howToCopilot:"Copilot을 사용하나요? 프롬프트가 자동으로 붙여넣어지지 않습니다. 입력란을 길게 누르고 **붙여넣기**를 선택한 다음 **보내기**를 탭하세요.", howToOk:"확인",
   genHintSmall:'💡 ChatGPT가 프롬프트와 함께 열립니다 — Enter만 누르세요',
   genHintSmallDesktop:'💡 프롬프트가 클립보드에 복사됩니다 — 붙여넣기만 하세요 (Ctrl+V)',
   clipboardHintDesktop:'📋 프롬프트가 클립보드에 복사되었습니다 — ChatGPT/Copilot가 빈 화면으로 열리면 붙여넣기 하세요 (Ctrl+V)',
@@ -5805,7 +5849,7 @@ kr:{
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
   storyTitle:'이야기', dialogLengthHint:'각 대화의 길이를 설정합니다.',
-  aiHint:'ChatGPT/Copilot이 필요합니다.'
+  aiHint:'ChatGPT 또는 Copilot이 필요합니다.'
 },
 sk:{
   webLangLabel:"Jazyk webu", learnLangLabel:"Učím sa",
@@ -5869,6 +5913,10 @@ sk:{
   lengthShort:'Krátke', lengthMedium:'Dlhšie', lengthLong:'Najdlhšie',
   advVerbLabel:'⚡ Frázové sloveso (nápoveda)', advTopicLabel:'🗂 Téma (nápoveda)',
   genSendBtn:'▶ Generovať kontext',
+  howToTitle:"Ako na to", howToIntro:"",
+  howToNeed:"Potrebuješ ChatGPT alebo Copilot.",
+  howTo1:"Napíš slovo alebo situáciu a stlač ↑ alebo **Generovať kontext**.", howTo2:"Otvorí sa ChatGPT s pripraveným zadaním. Stlač **Odoslať** (↑).",
+  howToCopilot:"Používaš Copilot? Zadanie sa nevloží samo. Podrž prst v poli na písanie, vyber **Prilepiť** a potom stlač **Odoslať**.", howToOk:"Rozumiem",
   genHintSmall:'💡 ChatGPT sa otvorí s hotovým promptom — stačí stlačiť Enter',
   genHintSmallDesktop:'💡 Prompt sa skopíruje do schránky — stačí vložiť Ctrl+V',
   clipboardHintDesktop:'📋 Prompt bol skopírovaný do schránky — ak sa ChatGPT/Copilot otvorí bez textu, vlož ho (Ctrl+V)',
@@ -5884,7 +5932,7 @@ sk:{
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
   storyTitle:'PRÍBEH', dialogLengthHint:'Určuje dĺžku každého dialógu.',
-  aiHint:'Vyžaduje ChatGPT/Copilot.'
+  aiHint:'Potrebuješ ChatGPT alebo Copilot.'
 },
 nl:{
   webLangLabel:"Taal website", learnLangLabel:"Ik leer",
@@ -5948,6 +5996,10 @@ nl:{
   lengthShort:'Kort', lengthMedium:'Langer', lengthLong:'Langst',
   advVerbLabel:'⚡ Werkwoordgroep (hint)', advTopicLabel:'🗂 Onderwerp (hint)',
   genSendBtn:'▶ Context genereren',
+  howToTitle:"Zo werkt het", howToIntro:"",
+  howToNeed:"Je hebt ChatGPT of Copilot nodig.",
+  howTo1:"Typ een woord of situatie en druk op ↑ of op **Context genereren**.", howTo2:"ChatGPT opent met de opdracht klaar. Druk op **Verzenden** (↑).",
+  howToCopilot:"Gebruik je Copilot? De opdracht wordt niet vanzelf geplakt. Houd je vinger ingedrukt in het tekstveld, kies **Plakken** en druk daarna op **Verzenden**.", howToOk:"Begrepen",
   genHintSmall:'💡 ChatGPT opent met de prompt — druk gewoon op Enter',
   genHintSmallDesktop:'💡 De prompt wordt naar het klembord gekopieerd — plak met Ctrl+V',
   clipboardHintDesktop:'📋 De prompt is gekopieerd naar het klembord — als ChatGPT/Copilot zonder tekst opent, plak hem (Ctrl+V)',
@@ -5963,7 +6015,7 @@ nl:{
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
   storyTitle:'VERHAAL', dialogLengthHint:'Stelt de lengte van elk dialoog in.',
-  aiHint:'Vereist ChatGPT/Copilot.'
+  aiHint:'Je hebt ChatGPT of Copilot nodig.'
 },
 sv:{
   webLangLabel:"Webbspråk", learnLangLabel:"Jag lär mig",
@@ -6027,6 +6079,10 @@ sv:{
   lengthShort:'Kort', lengthMedium:'Längre', lengthLong:'Längst',
   advVerbLabel:'⚡ Frasverb (ledtråd)', advTopicLabel:'🗂 Ämne (ledtråd)',
   genSendBtn:'▶ Generera kontext',
+  howToTitle:"Så här gör du", howToIntro:"",
+  howToNeed:"Du behöver ChatGPT eller Copilot.",
+  howTo1:"Skriv ett ord eller en situation och tryck på ↑ eller på **Generera kontext**.", howTo2:"ChatGPT öppnas med uppgiften klar. Tryck på **Skicka** (↑).",
+  howToCopilot:"Använder du Copilot? Uppgiften klistras inte in automatiskt. Håll fingret nedtryckt i textfältet, välj **Klistra in** och tryck sedan på **Skicka**.", howToOk:"Jag förstår",
   genHintSmall:'💡 ChatGPT öppnas med prompten — tryck bara på Enter',
   genHintSmallDesktop:'💡 Prompten kopieras till urklipp — klistra in med Ctrl+V',
   clipboardHintDesktop:'📋 Prompten har kopierats till urklipp — om ChatGPT/Copilot öppnas utan text, klistra in den (Ctrl+V)',
@@ -6042,7 +6098,7 @@ sv:{
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
   storyTitle:'BERÄTTELSE', dialogLengthHint:'Anger längden på varje dialog.',
-  aiHint:'Kräver ChatGPT/Copilot.'
+  aiHint:'Du behöver ChatGPT eller Copilot.'
 },
 ru:{
   webLangLabel:"Язык сайта", learnLangLabel:"Изучаю",
@@ -6101,6 +6157,10 @@ ru:{
   lengthShort:'Короткий', lengthMedium:'Длиннее', lengthLong:'Самый длинный',
   advVerbLabel:'⚡ Фразовый глагол (подсказка)', advTopicLabel:'🗂 Тема (подсказка)',
   genSendBtn:'▶ Создать контекст',
+  howToTitle:"Как это работает", howToIntro:"",
+  howToNeed:"Тебе нужен ChatGPT или Copilot.",
+  howTo1:"Напиши слово или ситуацию и нажми ↑ или «**Создать контекст**».", howTo2:"ChatGPT откроется с готовым запросом. Нажми «**Отправить**» (↑).",
+  howToCopilot:"Используешь Copilot? Запрос не вставится сам. Нажми и удерживай поле ввода, выбери «**Вставить**», затем нажми «**Отправить**».", howToOk:"Понятно",
   genHintSmall:'💡 ChatGPT откроется с промптом — просто нажми Enter',
   genHintSmallDesktop:'💡 Промпт скопируется в буфер обмена — просто вставь (Ctrl+V)',
   clipboardHintDesktop:'📋 Промпт скопирован в буфер обмена — если ChatGPT/Copilot открылся без текста, вставь его (Ctrl+V)',
@@ -6116,7 +6176,7 @@ ru:{
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
   storyTitle:'РАССКАЗ', dialogLengthHint:'Определяет длину каждого диалога.',
-  aiHint:'Требуется ChatGPT/Copilot.'
+  aiHint:'Тебе нужен ChatGPT или Copilot.'
 },
 tr:{
   webLangLabel:"Web dili", learnLangLabel:"Öğreniyorum",
@@ -6180,6 +6240,10 @@ tr:{
   lengthShort:'Kısa', lengthMedium:'Uzun', lengthLong:'En uzun',
   advVerbLabel:'⚡ Fiil öbeği (ipucu)', advTopicLabel:'🗂 Konu (ipucu)',
   genSendBtn:'▶ Bağlam oluştur',
+  howToTitle:"Nasıl yapılır", howToIntro:"",
+  howToNeed:"ChatGPT veya Copilot'a ihtiyacın var.",
+  howTo1:"Bir kelime veya durum yaz ve ↑ simgesine ya da **Bağlam oluştur** düğmesine bas.", howTo2:"ChatGPT hazır istemle açılır. **Gönder** (↑) düğmesine bas.",
+  howToCopilot:"Copilot mu kullanıyorsun? İstem kendiliğinden yapıştırılmaz. Yazma alanına basılı tut, **Yapıştır**'ı seç ve ardından **Gönder**'e bas.", howToOk:"Anladım",
   genHintSmall:'💡 ChatGPT promptla açılır — sadece Enter\'a bas',
   genHintSmallDesktop:'💡 Prompt panoya kopyalanacak — sadece yapıştır (Ctrl+V)',
   clipboardHintDesktop:'📋 Prompt panoya kopyalandı — ChatGPT/Copilot metin olmadan açılırsa yapıştır (Ctrl+V)',
@@ -6195,7 +6259,7 @@ tr:{
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
   storyTitle:'HİKAYE', dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
-  aiHint:'ChatGPT/Copilot gerektirir.'
+  aiHint:'ChatGPT veya Copilot\'a ihtiyacın var.'
 },
 uk:{
   webLangLabel:"Мова сайту", learnLangLabel:"Я вивчаю",
@@ -6261,6 +6325,10 @@ uk:{
   lengthShort:'Короткі', lengthMedium:'Довші', lengthLong:'Найдовші',
   advVerbLabel:'⚡ Фразове дієслово (підказка)', advTopicLabel:'🗂 Тема (підказка)',
   genSendBtn:'▶ Згенерувати контекст',
+  howToTitle:"Як це робити", howToIntro:"",
+  howToNeed:"Тобі потрібен ChatGPT або Copilot.",
+  howTo1:"Напиши слово або ситуацію і натисни ↑ або «**Згенерувати контекст**».", howTo2:"ChatGPT відкриється з готовим запитом. Натисни «**Надіслати**» (↑).",
+  howToCopilot:"Користуєшся Copilot? Запит не вставиться сам. Натисни й утримуй поле введення, вибери «**Вставити**», а потім натисни «**Надіслати**».", howToOk:"Зрозуміло",
   genHintSmall:'💡 ChatGPT відкриється з промптом — просто натисни Enter',
   genHintSmallDesktop:'💡 Промпт скопіюється в буфер обміну — просто встав (Ctrl+V)',
   clipboardHintDesktop:'📋 Промпт скопійовано в буфер обміну — якщо ChatGPT/Copilot відкрився без тексту, встав його (Ctrl+V)',
@@ -6280,7 +6348,7 @@ uk:{
   grammarClearBtn:'✕ скасувати',
   grammarSearchPh:'🔍 Шукати тему…',
   storyTitle:'ІСТОРІЯ', dialogLengthHint:'Визначає довжину кожного діалогу.',
-  aiHint:'Потрібен ChatGPT/Copilot.'
+  aiHint:'Тобі потрібен ChatGPT або Copilot.'
 },
 id:{
   webLangLabel:"Bahasa situs", learnLangLabel:"Saya belajar",
@@ -6346,6 +6414,10 @@ id:{
   lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
   advVerbLabel:'⚡ Phrasal verb (petunjuk)', advTopicLabel:'🗂 Topik (petunjuk)',
   genSendBtn:'▶ Buat konteks',
+  howToTitle:"Cara pakai", howToIntro:"",
+  howToNeed:"Kamu butuh ChatGPT atau Copilot.",
+  howTo1:"Tulis kata atau situasi, lalu tekan ↑ atau **Buat konteks**.", howTo2:"ChatGPT terbuka dengan prompt yang sudah siap. Tekan **Kirim** (↑).",
+  howToCopilot:"Pakai Copilot? Prompt tidak ditempel otomatis. Tahan jari di kolom teks, pilih **Tempel**, lalu tekan **Kirim**.", howToOk:"Mengerti",
   genHintSmall:'💡 ChatGPT akan terbuka dengan prompt — cukup tekan Enter',
   genHintSmallDesktop:'💡 Prompt akan disalin ke clipboard — cukup tempel (Ctrl+V)',
   clipboardHintDesktop:'📋 Prompt sudah disalin ke clipboard — jika ChatGPT/Copilot terbuka tanpa teks, tempel (Ctrl+V)',
@@ -6365,7 +6437,7 @@ id:{
   grammarClearBtn:'✕ hapus',
   grammarSearchPh:'🔍 Cari topik…',
   storyTitle:'CERITA', dialogLengthHint:'Menentukan panjang setiap dialog.',
-  aiHint:'Memerlukan ChatGPT/Copilot.'
+  aiHint:'Kamu butuh ChatGPT atau Copilot.'
 }
 }; // end T
 
@@ -10706,7 +10778,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('load', function () {
     updateOnbBtn();
-    if (!localStorage.getItem(SEEN_KEY)) startOnboarding(false);
   });
 
   window.startOnboarding = function (forced) {
@@ -10887,6 +10958,80 @@ function closeLegalModal() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLegalModal();
 });
+</script>
+
+<style>
+.howto-help{margin-left:6px;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid rgba(201,151,58,.55);background:transparent;color:var(--gold-lt);font:700 .72rem/1 'Inter',sans-serif;cursor:pointer;vertical-align:middle}
+.howto-help:hover{background:rgba(201,151,58,.15)}
+.howto-chip{top:12px;right:18px;width:22px;height:22px;box-sizing:border-box;justify-content:center;border:1px solid rgba(201,151,58,.4);border-radius:50%;opacity:1;font-size:.75rem;line-height:1}
+.howto-chip::before{content:'';position:absolute;inset:-9px}
+.howto-chip:hover{border-color:rgba(201,151,58,.4);background:rgba(201,151,58,.15)}
+.howto-overlay{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:rgba(20,24,40,.8);padding:24px 24px calc(24px + env(safe-area-inset-bottom,0px))}
+.howto-overlay[hidden]{display:none}
+.howto-card{width:100%;max-width:320px;max-height:calc(100% - 8px);overflow-y:auto;box-sizing:border-box;background:var(--navy-lt);color:#fff;border:1px solid rgba(201,151,58,.35);border-radius:24px;padding:16px;font-family:'Inter',sans-serif}
+.howto-title{margin:0 0 10px;color:#ffd23f;font-size:1rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.howto-need{margin:0 0 8px;font-size:1rem;line-height:1.35;font-weight:700}
+.howto-intro{margin:0 0 16px;font-size:.95rem;line-height:1.5;font-weight:400;color:rgba(255,255,255,.8)}
+.howto-intro:empty{display:none}
+.howto-step b,.howto-copilot b{font-weight:700;color:var(--gold)}
+.howto-step{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;font-size:.9rem;line-height:1.45}
+.howto-arrow{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--gold);color:#000;vertical-align:-4px;margin:0 2px}
+.howto-num{flex:0 0 26px;height:26px;box-sizing:border-box;border-radius:50%;background:transparent;border:1.5px solid #ffd23f;color:#ffd23f;font-weight:800;display:flex;align-items:center;justify-content:center}
+.howto-copilot{margin:6px 0 18px;padding-top:12px;border-top:1px solid var(--gold);font-size:.85rem;line-height:1.5;color:rgba(255,255,255,.8)}
+.howto-ok{width:100%;padding:13px 20px;border:0;border-radius:16px;background:var(--gold);color:#000;font:800 1rem 'Inter',sans-serif;cursor:pointer}
+@media (min-width:600px){.howto-overlay{align-items:center}}
+</style>
+<div class="howto-overlay" id="howToOverlay" role="dialog" aria-modal="true" aria-labelledby="howToTitle" hidden>
+  <div class="howto-card">
+    <h2 class="howto-title" id="howToTitle"></h2>
+    <p class="howto-need" id="howToNeed"></p>
+    <p class="howto-intro" id="howToIntro"></p>
+    <div class="howto-step"><span class="howto-num">1</span><span id="howTo1"></span></div>
+    <div class="howto-step"><span class="howto-num">2</span><span id="howTo2"></span></div>
+    <p class="howto-copilot" id="howToCopilot"></p>
+    <button type="button" class="howto-ok" id="howToOk" onclick="howToClose()"></button>
+  </div>
+</div>
+<script>
+// Karta „Jak na to“: při prvním generování, pak jen přes ikonu ?
+(function () {
+  var KEY = 'contexta_howto_seen', pending = false;
+  var ids = ['howToTitle','howToNeed','howToIntro','howTo1','howTo2','howToCopilot','howToOk'];
+  function seen() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function mark() { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
+  function fill() {
+    var t = {}, c = {};
+    try { t = T[webLang] || {}; c = T.cz || {}; } catch (e) {}
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var txt = t[id] || c[id] || '';
+      if (id === 'howTo1' || id === 'howTo2' || id === 'howToCopilot') {
+        var arrow = '<span class="howto-arrow" role="img" aria-label="↑"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span>';
+        el.innerHTML = txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/[(（]\s*↑\s*[)）]/g, '↑').replace(/↑/g, arrow);
+      } else {
+        el.textContent = txt;
+      }
+    });
+  }
+  window.howToOpen = function (runAfter) {
+    pending = !!runAfter; fill();
+    document.getElementById('howToOverlay').hidden = false;
+    document.getElementById('howToOk').focus();
+  };
+  window.howToClose = function () {
+    document.getElementById('howToOverlay').hidden = true;
+    mark();
+    if (pending) { pending = false; origGenerate(); }
+  };
+  var origGenerate = window.genGenerate;
+  window.genGenerate = function () {
+    var el = document.getElementById('practiceInput');
+    var hasInput = (el && el.value.trim()) || (typeof selectedGrammar !== 'undefined' && selectedGrammar);
+    if (!seen() && hasInput) { window.howToOpen(true); return; }
+    return origGenerate.apply(this, arguments);
+  };
+})();
 </script>
 </body>
 </html>
