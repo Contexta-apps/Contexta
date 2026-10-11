@@ -218,6 +218,12 @@ html {
   max-width: calc(100vw - 32px);
   text-align: center;
 }
+@media (min-width: 1024px) {
+  .coffee-hero-btn { font-size: clamp(1.92rem, 3.2vw, 2.72rem); width: 1.6em; height: 1.6em; }
+}
+@media (min-width: 1440px) {
+  .coffee-hero-btn { font-size: clamp(2.4rem, 2.56vw, 3.2rem); }
+}
 .gen-card > .gen-hint-small { padding-bottom: 12px; }
 @media (max-width: 767px) {
   #generator { padding-bottom: 0; }
@@ -2928,7 +2934,6 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ── Inspirace block ── */
-}
 
 /* ── Override: gen-advanced-wrap ── */
 /* Redesign dle mockupu advanced_settings_redesign: tmavě modrá karta, zaoblené rohy, tenké okraje */
@@ -11032,8 +11037,8 @@ document.addEventListener('keydown', function(e) {
 .howto-qmark{flex:0 0 22px;width:22px;height:22px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,151,58,.4);border-radius:50%;color:var(--gold-lt);font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;line-height:1}
 .howto-arr{display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;margin:0 2px;border-radius:50%;color:#000;font-weight:800;line-height:1;vertical-align:middle}
 .howto-arr.a1{background:var(--gold)}
-.howto-arr.a2{background:#ef876c;color:#fff}
-.howto-more{margin-top:4px;padding-top:14px;border-top:1px solid var(--gold)}
+.howto-arr.a2{background:#b96646;color:#fff}
+.howto-more{margin:4px 0 10px;padding-top:14px;border-top:1px solid var(--gold)}
 .howto-card{padding-bottom:0}
 .howto-okwrap{position:sticky;bottom:0;margin-top:14px;padding:14px 0 16px;background:var(--navy-lt);box-shadow:0 -10px 10px var(--navy-lt)}
 @media (min-width:600px){.howto-overlay{align-items:center}}
