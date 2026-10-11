@@ -218,8 +218,11 @@ html {
   max-width: calc(100vw - 32px);
   text-align: center;
 }
+.coffee-hero-svg { display: none; width: 1em; height: 1em; overflow: visible; }
 @media (min-width: 1024px) {
   .coffee-hero-btn { font-size: clamp(1.92rem, 3.2vw, 2.72rem); width: 1.6em; height: 1.6em; }
+  .coffee-hero-emoji { display: none; }
+  .coffee-hero-svg { display: block; }
 }
 @media (min-width: 1440px) {
   .coffee-hero-btn { font-size: clamp(2.4rem, 2.56vw, 3.2rem); }
@@ -4175,7 +4178,7 @@ h1[data-t="heroH"] {
         <h1 data-t="heroH">CONTEXT<span class="brand-a-hero">A</span></h1>
         <!-- ══ PODPOŘ VÝVOJ — ikonka vedle názvu ══ -->
         <div class="coffee-nav-wrap coffee-hero-wrap">
-          <button class="coffee-hero-btn" type="button" onclick="toggleCoffeePanel(event)" title="Podpoř vývoj" data-translate-title="coffeeBtn"><span class="coffee-hero-emoji" aria-hidden="true">☕</span></button>
+          <button class="coffee-hero-btn" type="button" onclick="toggleCoffeePanel(event)" title="Podpoř vývoj" data-translate-title="coffeeBtn"><span class="coffee-hero-emoji" aria-hidden="true">☕</span><svg class="coffee-hero-svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g fill="none" stroke="#d6dae8" stroke-width="2.2" stroke-linecap="round" opacity=".85"><path d="M24 19 C21 15 27 12 24 7"/><path d="M32 19 C29 14 35 11 32 5"/><path d="M40 19 C37 15 43 12 40 7"/></g><ellipse cx="32" cy="50" rx="27" ry="8" fill="#dcdce4"/><ellipse cx="32" cy="48.5" rx="20" ry="5.5" fill="#f3f3f7"/><path d="M50 30 C61 30 61 43 49 43" fill="none" stroke="#f3f3f7" stroke-width="4.5" stroke-linecap="round"/><path d="M13 28 C13 42 21 49 32 49 C43 49 51 42 51 28 Z" fill="#fafafc" stroke="#c9c9d3" stroke-width=".8"/><ellipse cx="32" cy="28" rx="19" ry="6" fill="#fafafc" stroke="#c9c9d3" stroke-width=".8"/><ellipse cx="32" cy="28.6" rx="16" ry="4.6" fill="#5b3724"/><ellipse cx="27" cy="27.4" rx="6" ry="1.4" fill="#8a5a3c"/></svg></button>
           <div class="coffee-nav-panel coffee-nav-panel--hero" id="coffeeNavPanel">
             <span class="coffee-emoji">☕</span>
             <h3 data-t="coffeeH">Líbí se ti Contexta?</h3>
@@ -11040,6 +11043,7 @@ document.addEventListener('keydown', function(e) {
 .howto-arr.a2{background:#b96646;color:#fff}
 .howto-more{margin:4px 0 10px;padding-top:14px;border-top:1px solid var(--gold)}
 .howto-card{padding-bottom:0}
+@media (min-width:1024px){.howto-card{max-width:540px}}
 .howto-okwrap{position:sticky;bottom:0;margin-top:14px;padding:14px 0 16px;background:var(--navy-lt);box-shadow:0 -10px 10px var(--navy-lt)}
 @media (min-width:600px){.howto-overlay{align-items:center}}
 </style>
