@@ -3201,6 +3201,8 @@ img { max-width: 100%; height: auto; }
   color: rgba(255,255,255,.45);
   min-width: 0;
   margin-left: auto;
+  position: relative;
+  left: 1mm; /* text o 1 mm doprava po odebrání ikonky */
 }
 .gen-history-chips {
   display: block;
@@ -3285,9 +3287,11 @@ img { max-width: 100%; height: auto; }
 .gen-history-row.collapsed .gen-history-bottom { display: none; }
 
 @media (max-width: 767px) {
-  .gen-history-row { padding: 7px 10px; gap: 6px; }
+  .gen-history-row { padding: 2px 4px; margin-top: 10px; margin-bottom: -6px; gap: 4px; background: none; border: 0; border-radius: 0; } /* mobil: bez rámečku/boxu, menší svislé odsazení */
   .gen-history-chip { font-size: .75rem; padding: 4px 10px; min-height: 30px; }
   .gen-history-chip-remove { opacity: 1; pointer-events: auto; }
+  /* mobil: "N slov celkem" blíž k šipce (ne úplně) – uprav hodnotu left podle chuti */
+  .gen-history-streak { left: 34px; white-space: nowrap; }
 }
 
 /* ── gen-topic-inline spacing ── */
@@ -4183,8 +4187,10 @@ h1[data-t="heroH"] {
 
 /* ── Mobile: menší odsazení kolem Pokročilého nastavení ── */
 @media (max-width: 767px) {
-  .gen-advanced-wrap { margin: 6px 0 2.5px; }
-  .gen-advanced-wrap > .gen-advanced-toggle { padding-top: 12px; padding-bottom: 12px; }
+  /* Pokročilé nastavení (mobil): bez rámečku a boxu, odsazení zleva/zprava 28px jako ostatní bloky; svislé mezery beze změny */
+  .gen-advanced-wrap { margin: 0 28px 2.5px; border: 0; background: none; border-radius: 0; }
+  .gen-advanced-wrap > .gen-advanced-toggle { padding: 12px 4px; }
+  .gen-advanced-wrap .gen-advanced { padding-left: 4px; padding-right: 4px; }
   .gen-card .gen-send-row { padding-top: 10px; }
   body { background: var(--navy-dk); } /* pod kartou nesmí prosvítat krémové pozadí */
   /* FIX: karta se dřív natahovala na 100dvh a tlačítko bylo margin-top:auto
@@ -9669,7 +9675,7 @@ function genHistoryRender() {
   row.classList.toggle('collapsed', genHistoryCollapsed);
   var dueCount = list.filter(genHistoryIsDue).length;
   var streakEl = document.getElementById('genHistoryStreak');
-  if (streakEl) streakEl.textContent = '📦 ' + wordsCountLabel(list.length) + (dueCount ? ' · ' + dueCountLabel(dueCount) : '');
+  if (streakEl) streakEl.textContent = (dueCount && !window.matchMedia('(max-width: 767px)').matches) ? dueCountLabel(dueCount) : '';
   wrap.innerHTML = '';
   var visible = genHistoryExpanded ? list : list.slice(0, GEN_HISTORY_VISIBLE);
   visible.forEach(function(entry) {
