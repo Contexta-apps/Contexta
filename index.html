@@ -1437,7 +1437,9 @@ img { max-width: 100%; height: auto; }
 .gen-lang-dd-btn.open  { border-color: var(--gold); background: rgba(255,255,255,.09); }
 .gen-lang-dd-btn-inner { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .gen-lang-dd-flag  { width: 22px; height: 16px; object-fit: cover; border-radius: 2px; flex-shrink: 0; line-height: 1; vertical-align: middle; }
-.gen-lang-dd-name  { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gen-lang-dd-name  { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  /* rezerva kolem textu, aby overflow:hidden neořízl háčky a čárky (Č, š, ç, g…); záporný margin ji vyruší, takže se velikost tlačítka nemění */
+  padding: .3em 2px; margin: -.3em -2px; }
 .gen-lang-dd-arrow {
   font-size: .6rem; color: var(--gold); opacity: .7; flex-shrink: 0;
   transition: transform .18s;
