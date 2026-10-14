@@ -1403,7 +1403,7 @@ img { max-width: 100%; height: auto; }
 .gen-lang-row-inline {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   padding: 10px 28px;
   border-bottom: 1px solid rgba(255,255,255,.07);
   background: var(--navy-lt);
@@ -1420,7 +1420,7 @@ img { max-width: 100%; height: auto; }
 
 /* ── Custom gen-lang dropdown (nahrazuje <select>) ── */
 .gen-lang-dd {
-  position: relative; flex: 1; min-width: 0;
+  position: relative; flex: 1 1 0; min-width: 0;
 }
 .gen-lang-dd-btn {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
@@ -2388,6 +2388,21 @@ img { max-width: 100%; height: auto; }
 .gen-lang-chip {
   padding: 6px 12px !important; border-radius: 20px !important;
   font-size: .8rem !important;
+}
+/* Kompaktní roletky jen pro mobil – PC zůstává beze změny */
+@media (max-width: 767px) {
+  .gen-lang-chip {
+    padding: 6px 8px !important;
+    font-size: .75rem !important; gap: 5px !important;
+  }
+  .gen-lang-row-inline .gen-tuning-chips { width: 100%; flex-wrap: nowrap; gap: 5px; }
+  .gen-lang-row-inline .gen-swap-btn { width: 30px; min-width: 0; font-size: 1.1rem; }
+  .gen-lang-chip .gen-lang-dd-flag { width: 18px; height: 13px; }
+}
+/* PC/laptop: obě roletky stejně široké podle nejdelšího názvu jazyka (šířku nastavuje JS: syncGenLangBtnWidth) */
+@media (min-width: 768px) {
+  .gen-lang-row-inline .gen-tuning-chips { width: auto; flex-wrap: nowrap; }
+  .gen-lang-row-inline .gen-lang-dd { flex: 0 0 var(--gen-lang-btn-w, auto); min-width: 0; }
 }
 
 /* ── Rozšířený režim ── */
@@ -4575,7 +4590,7 @@ const LANG_LIST = [
   {code:'sv', label:'Svenska',    flag:'🇸🇪'},
   {code:'tr', label:'Türkçe',     flag:'🇹🇷'},
   {code:'uk', label:'Українська', flag:'🇺🇦'},
-  {code:'id', label:'Bahasa Indonesia', flag:'🇮🇩'},
+  {code:'id', label:'Indonesia', flag:'🇮🇩'},
   {code:'ru', label:'Русский',    flag:'🇷🇺'},
   {code:'cn', label:'中文',        flag:'🇨🇳'},
   {code:'jp', label:'日本語',      flag:'🇯🇵'},
@@ -4910,7 +4925,7 @@ cz:{
   advVerbLabel:'⚡ Frázové sloveso (nápověda)',
   advTopicLabel:'🗂 Téma (nápověda)',
   genSendBtn:'▶ Vygenerovat kontext',
-  howToTitle:"Jak na to", howToIntro:"Contexta je jazyková aplikace, kterou si můžeš přidat na plochu.",
+  howToTitle:"Jak na to", howToIntro:"", howToH6:"Přidání na plochu.", howToF6:"Přidej si Contextu na plochu a otevírej ji jako aplikaci.",
   howToNeed:"Potřebuješ ChatGPT nebo Copilot.",
   howTo1:"Napiš slovo nebo situaci do textového pole a stiskni tlačítko se šipkou ↑ nebo Vygenerovat kontext.", howTo2:"Otevře se ChatGPT s připraveným zadáním. Stiskni tlačítko Odeslat ↑.",
   howToCopilot:"Používáš Copilot? Zadání se nevloží samo. Podrž prst v poli pro psaní, vyber Vložit a potom stiskni Odeslat.", howToOk:"Rozumím",
@@ -5016,7 +5031,7 @@ en:{
   advVerbLabel:'⚡ Phrasal verb (hint)',
   advTopicLabel:'🗂 Topic (hint)',
   genSendBtn:'▶ Generate Context',
-  howToTitle:"How it works", howToIntro:"Contexta is a language app you can add to your home screen.",
+  howToTitle:"How it works", howToIntro:"", howToH6:"Add to home screen.", howToF6:"Add Contexta to your home screen and open it like an app.",
   howToNeed:"You need ChatGPT or Copilot.",
   howTo1:"Type a word or situation into the text field and press the arrow button ↑ or Generate Context.", howTo2:"ChatGPT opens with the prompt ready. Press the Send button ↑.",
   howToCopilot:"Using Copilot? The prompt isn't pasted automatically. Press and hold the text field, choose Paste, then press Send.", howToOk:"Got it",
@@ -5122,7 +5137,7 @@ de:{
   advVerbLabel:'⚡ Phrasal Verb (Hinweis)',
   advTopicLabel:'🗂 Thema (Hinweis)',
   genSendBtn:'▶ Kontext generieren',
-  howToTitle:"So geht's", howToIntro:"Contexta ist eine Sprach-App, die du dir auf den Startbildschirm legen kannst.",
+  howToTitle:"So geht's", howToIntro:"", howToH6:"Auf den Startbildschirm.", howToF6:"Lege Contexta auf deinen Startbildschirm und öffne sie wie eine App.",
   howToNeed:"Du brauchst ChatGPT oder Copilot.",
   howTo1:"Schreibe ein Wort oder eine Situation ins Textfeld und drücke den Pfeil-Button ↑ oder Kontext generieren.", howTo2:"ChatGPT öffnet sich mit dem fertigen Prompt. Drücke den Button Senden ↑.",
   howToCopilot:"Du nutzt Copilot? Der Prompt wird nicht automatisch eingefügt. Halte den Finger im Eingabefeld gedrückt, wähle Einfügen und drücke dann Senden.", howToOk:"Verstanden",
@@ -5221,7 +5236,7 @@ fr:{
   lengthShort:"Court", lengthMedium:"Plus long", lengthLong:"Le plus long",
   advVerbLabel:"⚡ Verbe phrasé (indice)", advTopicLabel:"🗂 Sujet (indice)",
   genSendBtn:"▶ Générer le contexte",
-  howToTitle:"Mode d'emploi", howToIntro:"Contexta est une application de langues que tu peux ajouter à ton écran d'accueil.",
+  howToTitle:"Mode d'emploi", howToIntro:"", howToH6:"Sur l'écran d'accueil.", howToF6:"Ajoute Contexta à ton écran d'accueil et ouvre-la comme une application.",
   howToNeed:"Il te faut ChatGPT ou Copilot.",
   howTo1:"Écris un mot ou une situation dans le champ de texte, puis appuie sur le bouton flèche ↑ ou sur Générer le contexte.", howTo2:"ChatGPT s'ouvre avec la consigne prête. Appuie sur le bouton Envoyer ↑.",
   howToCopilot:"Tu utilises Copilot ? La consigne ne se colle pas toute seule. Maintiens ton doigt dans le champ de saisie, choisis Coller, puis appuie sur Envoyer.", howToOk:"Compris",
@@ -5326,7 +5341,7 @@ es:{
   lengthShort:'Corto', lengthMedium:'Más largo', lengthLong:'El más largo',
   advVerbLabel:'⚡ Verbo frasal (pista)', advTopicLabel:'🗂 Tema (pista)',
   genSendBtn:'▶ Generar contexto',
-  howToTitle:"Cómo funciona", howToIntro:"Contexta es una aplicación de idiomas que puedes añadir a tu pantalla de inicio.",
+  howToTitle:"Cómo funciona", howToIntro:"", howToH6:"En la pantalla de inicio.", howToF6:"Añade Contexta a tu pantalla de inicio y ábrela como una aplicación.",
   howToNeed:"Necesitas ChatGPT o Copilot.",
   howTo1:"Escribe una palabra o una situación en el campo de texto y pulsa el botón de la flecha ↑ o Generar contexto.", howTo2:"Se abre ChatGPT con el prompt listo. Pulsa el botón Enviar ↑.",
   howToCopilot:"¿Usas Copilot? El prompt no se pega solo. Mantén pulsado el campo de texto, elige Pegar y luego pulsa Enviar.", howToOk:"Entendido",
@@ -5426,7 +5441,7 @@ it:{
   lengthShort:'Breve', lengthMedium:'Più lungo', lengthLong:'Il più lungo',
   advVerbLabel:'⚡ Verbo frasale (suggerimento)', advTopicLabel:'🗂 Argomento (suggerimento)',
   genSendBtn:'▶ Genera contesto',
-  howToTitle:"Come funziona", howToIntro:"Contexta è un'app per imparare le lingue che puoi aggiungere alla schermata Home.",
+  howToTitle:"Come funziona", howToIntro:"", howToH6:"Sulla schermata Home.", howToF6:"Aggiungi Contexta alla schermata Home e aprila come un'app.",
   howToNeed:"Ti serve ChatGPT o Copilot.",
   howTo1:"Scrivi una parola o una situazione nel campo di testo e premi il pulsante con la freccia ↑ oppure Genera contesto.", howTo2:"Si apre ChatGPT con il prompt pronto. Premi il pulsante Invia ↑.",
   howToCopilot:"Usi Copilot? Il prompt non viene incollato da solo. Tieni premuto il campo di testo, scegli Incolla e poi premi Invia.", howToOk:"Ho capito",
@@ -5525,7 +5540,7 @@ pt:{
   lengthShort:'Curto', lengthMedium:'Mais longo', lengthLong:'O mais longo',
   advVerbLabel:'⚡ Verbo frasal (dica)', advTopicLabel:'🗂 Tema (dica)',
   genSendBtn:'▶ Gerar contexto',
-  howToTitle:"Como funciona", howToIntro:"Contexta é um aplicativo de idiomas que você pode adicionar à tela inicial.",
+  howToTitle:"Como funciona", howToIntro:"", howToH6:"Na tela inicial.", howToF6:"Adicione o Contexta à tela inicial e abra-o como um aplicativo.",
   howToNeed:"Você precisa do ChatGPT ou do Copilot.",
   howTo1:"Escreva uma palavra ou situação no campo de texto e pressione o botão com a seta ↑ ou Gerar contexto.", howTo2:"O ChatGPT abre com o prompt pronto. Pressione o botão Enviar ↑.",
   howToCopilot:"Está usando o Copilot? O prompt não é colado sozinho. Mantenha o dedo pressionado no campo de texto, escolha Colar e depois pressione Enviar.", howToOk:"Entendi",
@@ -5625,7 +5640,7 @@ pl:{
   lengthShort:'Krótkie', lengthMedium:'Dłuższe', lengthLong:'Najdłuższe',
   advVerbLabel:'⚡ Czasownik frazowy (podpowiedź)', advTopicLabel:'🗂 Temat (podpowiedź)',
   genSendBtn:'▶ Wygeneruj kontekst',
-  howToTitle:"Jak to działa", howToIntro:"Contexta to aplikacja językowa, którą możesz dodać do ekranu głównego.",
+  howToTitle:"Jak to działa", howToIntro:"", howToH6:"Na ekranie głównym.", howToF6:"Dodaj Contextę do ekranu głównego i otwieraj ją jak aplikację.",
   howToNeed:"Potrzebujesz ChatGPT lub Copilota.",
   howTo1:"Wpisz słowo lub sytuację w polu tekstowym i naciśnij przycisk ze strzałką ↑ albo Wygeneruj kontekst.", howTo2:"Otworzy się ChatGPT z gotowym poleceniem. Naciśnij przycisk Wyślij ↑.",
   howToCopilot:"Używasz Copilota? Polecenie nie wklei się samo. Przytrzymaj palec w polu tekstowym, wybierz Wklej, a potem naciśnij Wyślij.", howToOk:"Rozumiem",
@@ -5725,7 +5740,7 @@ cn:{
   lengthShort:'短', lengthMedium:'较长', lengthLong:'最长',
   advVerbLabel:'⚡ 短语动词（提示）', advTopicLabel:'🗂 主题（提示）',
   genSendBtn:'▶ 生成语境',
-  howToTitle:"使用方法", howToIntro:"Contexta 是一款语言学习应用，你可以把它添加到主屏幕。",
+  howToTitle:"使用方法", howToIntro:"", howToH6:"添加到主屏幕。", howToF6:"把 Contexta 添加到主屏幕，像应用一样打开。",
   howToNeed:"你需要 ChatGPT 或 Copilot。",
   howTo1:"在文本框中输入一个词或一种情境，然后按带箭头的按钮 ↑ 或「生成语境」。", howTo2:"ChatGPT 会打开并带有准备好的提示词。按“发送”按钮 ↑。",
   howToCopilot:"使用 Copilot？提示词不会自动粘贴。在输入框中长按，选择“粘贴”，然后按“发送”。", howToOk:"知道了",
@@ -5825,7 +5840,7 @@ jp:{
   lengthShort:'短め', lengthMedium:'長め', lengthLong:'最長',
   advVerbLabel:'⚡ 句動詞（ヒント）', advTopicLabel:'🗂 テーマ（ヒント）',
   genSendBtn:'▶ コンテキストを生成',
-  howToTitle:"使い方", howToIntro:"Contextaは、ホーム画面に追加できる語学アプリです。",
+  howToTitle:"使い方", howToIntro:"", howToH6:"ホーム画面に追加。", howToF6:"Contextaをホーム画面に追加すれば、アプリのように開けます。",
   howToNeed:"ChatGPT または Copilot が必要です。",
   howTo1:"テキスト欄に単語や状況を入力して、矢印ボタン ↑ または「コンテキストを生成」を押します。", howTo2:"用意されたプロンプトが入った状態で ChatGPT が開きます。「送信」ボタン ↑ を押します。",
   howToCopilot:"Copilot をお使いですか？プロンプトは自動では貼り付けられません。入力欄を長押しして「貼り付け」を選び、「送信」を押します。", howToOk:"分かりました",
@@ -5925,7 +5940,7 @@ kr:{
   lengthShort:'짧게', lengthMedium:'길게', lengthLong:'가장 길게',
   advVerbLabel:'⚡ 구동사 (힌트)', advTopicLabel:'🗂 주제 (힌트)',
   genSendBtn:'▶ 컨텍스트 생성',
-  howToTitle:"사용 방법", howToIntro:"Contexta는 홈 화면에 추가할 수 있는 언어 학습 앱입니다.",
+  howToTitle:"사용 방법", howToIntro:"", howToH6:"홈 화면에 추가.", howToF6:"Contexta를 홈 화면에 추가하면 앱처럼 열 수 있습니다.",
   howToNeed:"ChatGPT 또는 Copilot이 필요합니다.",
   howTo1:"텍스트 입력란에 단어나 상황을 입력하고 화살표 버튼 ↑ 또는 「컨텍스트 생성」을 누르세요.", howTo2:"준비된 프롬프트와 함께 ChatGPT가 열립니다. 보내기 버튼 ↑를 누르세요.",
   howToCopilot:"Copilot을 사용하나요? 프롬프트가 자동으로 붙여넣어지지 않습니다. 입력란을 길게 누르고 붙여넣기를 선택한 다음 보내기를 누르세요.", howToOk:"확인",
@@ -6014,7 +6029,7 @@ sk:{
   lengthShort:'Krátke', lengthMedium:'Dlhšie', lengthLong:'Najdlhšie',
   advVerbLabel:'⚡ Frázové sloveso (nápoveda)', advTopicLabel:'🗂 Téma (nápoveda)',
   genSendBtn:'▶ Generovať kontext',
-  howToTitle:"Ako na to", howToIntro:"Contexta je jazyková aplikácia, ktorú si môžeš pridať na plochu.",
+  howToTitle:"Ako na to", howToIntro:"", howToH6:"Pridanie na plochu.", howToF6:"Pridaj si Contextu na plochu a otváraj ju ako aplikáciu.",
   howToNeed:"Potrebuješ ChatGPT alebo Copilot.",
   howTo1:"Do textového poľa napíš slovo alebo situáciu a stlač tlačidlo so šípkou ↑ alebo Generovať kontext.", howTo2:"Otvorí sa ChatGPT s pripraveným zadaním. Stlač tlačidlo Odoslať ↑.",
   howToCopilot:"Používaš Copilot? Zadanie sa nevloží samo. Podrž prst v poli na písanie, vyber Prilepiť a potom stlač Odoslať.", howToOk:"Rozumiem",
@@ -6103,7 +6118,7 @@ nl:{
   lengthShort:'Kort', lengthMedium:'Langer', lengthLong:'Langst',
   advVerbLabel:'⚡ Werkwoordgroep (hint)', advTopicLabel:'🗂 Onderwerp (hint)',
   genSendBtn:'▶ Context genereren',
-  howToTitle:"Zo werkt het", howToIntro:"Contexta is een taalapp die je aan je startscherm kunt toevoegen.",
+  howToTitle:"Zo werkt het", howToIntro:"", howToH6:"Op je startscherm.", howToF6:"Voeg Contexta toe aan je startscherm en open haar als een app.",
   howToNeed:"Je hebt ChatGPT of Copilot nodig.",
   howTo1:"Typ een woord of situatie in het tekstveld en druk op de pijlknop ↑ of op Context genereren.", howTo2:"ChatGPT opent met de opdracht klaar. Druk op de knop Verzenden ↑.",
   howToCopilot:"Gebruik je Copilot? De opdracht wordt niet vanzelf geplakt. Houd je vinger ingedrukt in het tekstveld, kies Plakken en druk daarna op Verzenden.", howToOk:"Begrepen",
@@ -6192,7 +6207,7 @@ sv:{
   lengthShort:'Kort', lengthMedium:'Längre', lengthLong:'Längst',
   advVerbLabel:'⚡ Frasverb (ledtråd)', advTopicLabel:'🗂 Ämne (ledtråd)',
   genSendBtn:'▶ Generera kontext',
-  howToTitle:"Så här gör du", howToIntro:"Contexta är en språkapp som du kan lägga till på hemskärmen.",
+  howToTitle:"Så här gör du", howToIntro:"", howToH6:"På hemskärmen.", howToF6:"Lägg till Contexta på hemskärmen och öppna den som en app.",
   howToNeed:"Du behöver ChatGPT eller Copilot.",
   howTo1:"Skriv ett ord eller en situation i textfältet och tryck på pilknappen ↑ eller på Generera kontext.", howTo2:"ChatGPT öppnas med uppgiften klar. Tryck på knappen Skicka ↑.",
   howToCopilot:"Använder du Copilot? Uppgiften klistras inte in automatiskt. Håll fingret nedtryckt i textfältet, välj Klistra in och tryck sedan på Skicka.", howToOk:"Jag förstår",
@@ -6276,7 +6291,7 @@ ru:{
   lengthShort:'Короткий', lengthMedium:'Длиннее', lengthLong:'Самый длинный',
   advVerbLabel:'⚡ Фразовый глагол (подсказка)', advTopicLabel:'🗂 Тема (подсказка)',
   genSendBtn:'▶ Создать контекст',
-  howToTitle:"Как это работает", howToIntro:"Contexta — языковое приложение, которое можно добавить на главный экран.",
+  howToTitle:"Как это работает", howToIntro:"", howToH6:"На главном экране.", howToF6:"Добавь Contexta на главный экран и открывай как приложение.",
   howToNeed:"Тебе нужен ChatGPT или Copilot.",
   howTo1:"Напиши слово или ситуацию в текстовом поле и нажми кнопку со стрелкой ↑ или «Создать контекст».", howTo2:"ChatGPT откроется с готовым запросом. Нажми кнопку «Отправить» ↑.",
   howToCopilot:"Используешь Copilot? Запрос не вставится сам. Нажми и удерживай поле ввода, выбери «Вставить», затем нажми «Отправить».", howToOk:"Понятно",
@@ -6365,7 +6380,7 @@ tr:{
   lengthShort:'Kısa', lengthMedium:'Uzun', lengthLong:'En uzun',
   advVerbLabel:'⚡ Fiil öbeği (ipucu)', advTopicLabel:'🗂 Konu (ipucu)',
   genSendBtn:'▶ Bağlam oluştur',
-  howToTitle:"Nasıl yapılır", howToIntro:"Contexta, ana ekranına ekleyebileceğin bir dil uygulamasıdır.",
+  howToTitle:"Nasıl yapılır", howToIntro:"", howToH6:"Ana ekranda.", howToF6:"Contexta'yı ana ekranına ekle ve bir uygulama gibi aç.",
   howToNeed:"ChatGPT veya Copilot'a ihtiyacın var.",
   howTo1:"Metin alanına bir kelime veya durum yaz ve oklu ↑ düğmesine ya da Bağlam oluştur düğmesine bas.", howTo2:"ChatGPT hazır istemle açılır. Gönder ↑ düğmesine bas.",
   howToCopilot:"Copilot mu kullanıyorsun? İstem kendiliğinden yapıştırılmaz. Yazma alanına basılı tut, Yapıştır'ı seç ve ardından Gönder'e bas.", howToOk:"Anladım",
@@ -6455,7 +6470,7 @@ uk:{
   lengthShort:'Короткі', lengthMedium:'Довші', lengthLong:'Найдовші',
   advVerbLabel:'⚡ Фразове дієслово (підказка)', advTopicLabel:'🗂 Тема (підказка)',
   genSendBtn:'▶ Згенерувати контекст',
-  howToTitle:"Як це робити", howToIntro:"Contexta — мовний застосунок, який можна додати на головний екран.",
+  howToTitle:"Як це робити", howToIntro:"", howToH6:"На головному екрані.", howToF6:"Додай Contexta на головний екран і відкривай як застосунок.",
   howToNeed:"Тобі потрібен ChatGPT або Copilot.",
   howTo1:"Напиши слово або ситуацію в текстовому полі і натисни кнопку зі стрілкою ↑ або «Згенерувати контекст».", howTo2:"ChatGPT відкриється з готовим запитом. Натисни кнопку «Надіслати» ↑.",
   howToCopilot:"Користуєшся Copilot? Запит не вставиться сам. Натисни й утримуй поле введення, вибери «Вставити», а потім натисни «Надіслати».", howToOk:"Зрозуміло",
@@ -6550,7 +6565,7 @@ id:{
   lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
   advVerbLabel:'⚡ Phrasal verb (petunjuk)', advTopicLabel:'🗂 Topik (petunjuk)',
   genSendBtn:'▶ Buat konteks',
-  howToTitle:"Cara pakai", howToIntro:"Contexta adalah aplikasi bahasa yang bisa kamu tambahkan ke layar utama.",
+  howToTitle:"Cara pakai", howToIntro:"", howToH6:"Di layar utama.", howToF6:"Tambahkan Contexta ke layar utama dan buka seperti aplikasi.",
   howToNeed:"Kamu butuh ChatGPT atau Copilot.",
   howTo1:"Tulis kata atau situasi di kolom teks, lalu tekan tombol panah ↑ atau Buat konteks.", howTo2:"ChatGPT terbuka dengan prompt yang sudah siap. Tekan tombol Kirim ↑.",
   howToCopilot:"Pakai Copilot? Prompt tidak ditempel otomatis. Tahan jari di kolom teks, pilih Tempel, lalu tekan Kirim.", howToOk:"Mengerti",
@@ -8524,7 +8539,43 @@ function buildGenLangDropdowns() {
   });
   updateGenLangBtn('from', genFromLangVal);
   updateGenLangBtn('to',   genToLangVal);
+  syncGenLangBtnWidth();
 }
+
+// PC/laptop (>=768 px): obě jazykové roletky dostanou stejnou šířku podle nejdelšího názvu jazyka.
+// Na mobilu se proměnná odstraní a platí stávající kompaktní vzhled.
+function syncGenLangBtnWidth() {
+  var row   = document.querySelector('.gen-lang-row-inline');
+  var btn   = document.getElementById('fromLangBtn');
+  var nameEl = document.getElementById('fromLangName');
+  if (!row || !btn || !nameEl) return;
+  if (window.innerWidth < 768) { row.style.removeProperty('--gen-lang-btn-w'); return; }
+  var cs = getComputedStyle(nameEl);
+  var probe = document.createElement('span');
+  probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;left:-9999px;top:0;';
+  probe.style.fontFamily    = cs.fontFamily;
+  probe.style.fontSize      = cs.fontSize;
+  probe.style.fontWeight    = cs.fontWeight;
+  probe.style.letterSpacing = cs.letterSpacing;
+  document.body.appendChild(probe);
+  var maxText = 0;
+  LANG_LIST.forEach(function(l) {
+    if (GEN_LANGS.indexOf(l.code) === -1) return;
+    probe.textContent = l.label;
+    maxText = Math.max(maxText, probe.getBoundingClientRect().width);
+  });
+  document.body.removeChild(probe);
+  var bcs   = getComputedStyle(btn);
+  var flag  = btn.querySelector('.gen-lang-dd-flag');
+  var arrow = btn.querySelector('.gen-lang-dd-arrow');
+  var extra = (parseFloat(bcs.paddingLeft) || 0) + (parseFloat(bcs.paddingRight) || 0)
+            + (parseFloat(bcs.borderLeftWidth) || 0) + (parseFloat(bcs.borderRightWidth) || 0)
+            + 2 * (parseFloat(bcs.columnGap) || 0)
+            + (flag ? flag.offsetWidth : 0) + (arrow ? arrow.offsetWidth : 0);
+  row.style.setProperty('--gen-lang-btn-w', Math.ceil(maxText + extra + 4) + 'px');
+}
+window.addEventListener('resize', syncGenLangBtnWidth);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncGenLangBtnWidth);
 
 function updateGenLangBtn(side, code) {
   var lang = LANG_LIST.find(function(l){ return l.code === code; });
@@ -11141,6 +11192,7 @@ document.addEventListener('keydown', function(e) {
 .howto-title{margin:0;color:#f5c84c;font-size:1rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
 .howto-need{margin:0 0 8px;font-size:1rem;line-height:1.35;font-weight:700}
 .howto-intro{margin:0 0 16px;font-size:.95rem;line-height:1.5;font-weight:400;color:rgba(255,255,255,.8)}
+.howto-intro:empty{display:none}
 .howto-step{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;font-size:.9rem;line-height:1.45}
 .howto-num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--gold);color:#000;font-weight:800;display:flex;align-items:center;justify-content:center}
 .howto-copilot{margin:6px 0 18px;padding-top:12px;border-top:1px solid var(--gold);font-size:.85rem;line-height:1.5;color:rgba(255,255,255,.8)}
@@ -11178,6 +11230,7 @@ button.howto-qmark{position:relative;padding:0;background:transparent;cursor:poi
     <div class="howto-step"><span class="howto-num">3</span><span><b id="howToH3"></b> <span id="howToF3"></span></span></div>
     <div class="howto-step"><span class="howto-num">4</span><span><b id="howToH4"></b> <span id="howToF4"></span></span></div>
     <div class="howto-step"><span class="howto-num">5</span><span><b id="howToH5"></b> <span id="howToF5"></span></span></div>
+    <div class="howto-step"><span class="howto-num">6</span><span><b id="howToH6"></b> <span id="howToF6"></span></span></div>
     <p class="howto-ai" id="howToAi"></p>
     <div class="howto-contact">
       <p class="howto-note"><span aria-hidden="true">📩</span> <span id="howToMailT"></span> <a href="mailto:contexta.eu@gmail.com">contexta.eu@gmail.com</a>.</p>
@@ -11190,7 +11243,7 @@ button.howto-qmark{position:relative;padding:0;background:transparent;cursor:poi
 // Karta „Jak na to“: při prvním generování, pak jen přes ikonu ?
 (function () {
   var KEY = 'contexta_howto_seen', pending = false;
-  var ids = ['howToTitle','howToNeed','howToIntro','howTo1','howTo2','howToCopilot','howToOffer','howToH1','howToF1','howToH2','howToF2','howToH3','howToF3','howToH4','howToF4','howToH5','howToF5','howToAi','howToMailT','howToCoffee','howToOk'];
+  var ids = ['howToTitle','howToNeed','howToIntro','howTo1','howTo2','howToCopilot','howToOffer','howToH1','howToF1','howToH2','howToF2','howToH3','howToF3','howToH4','howToF4','howToH5','howToF5','howToH6','howToF6','howToAi','howToMailT','howToCoffee','howToOk'];
   function seen() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
   function mark() { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
   function fill() {
