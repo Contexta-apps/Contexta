@@ -11734,7 +11734,7 @@ var _storyTypedValue = null;
   if (el) el.addEventListener('input', function() { _storyTypedValue = el.value; });
 })();
 
-// Frázová slovesa (např. "come up with") nejsou situace → nemají spouštět příběh
+// Frázová slovesa (např. "come up with", "She dealt with him") nejsou situace → dialogy
 var _pvSet = new Set(Object.keys(PV_TRANSLATIONS)); // okamžitá záloha (offline)
 fetch('data/phrasal_verbs.json')
   .then(function(r) { return r.ok ? r.json() : []; })
@@ -11745,12 +11745,65 @@ fetch('data/phrasal_verbs.json')
   })
   .catch(function() {});
 
+var _PV_IRREG = {
+  blow:['blew','blown'], break:['broke','broken'], bring:['brought'], build:['built'], burn:['burnt'],
+  catch:['caught'], come:['came'], deal:['dealt'], do:['did','done','does'], draw:['drew','drawn'],
+  fall:['fell','fallen'], find:['found'], get:['got','gotten'], give:['gave','given'], go:['went','gone','goes'],
+  grow:['grew','grown'], hang:['hung'], hold:['held'], keep:['kept'], lay:['laid'], leave:['left'],
+  light:['lit'], make:['made'], run:['ran'], speak:['spoke','spoken'], stand:['stood'], stick:['stuck'],
+  take:['took','taken'], think:['thought'], throw:['threw','thrown'], wake:['woke','woken'],
+  wear:['wore','worn'], write:['wrote','written'], show:['shown'], pay:['paid'], sell:['sold']
+};
+function _pvForms(v) {
+  var f = [v], last = v.charAt(v.length - 1), pre = v.charAt(v.length - 2);
+  var cons = !/[aeiou]/.test(last);
+  // 3. osoba
+  if (/(s|x|z|ch|sh|o)$/.test(v)) f.push(v + 'es');
+  else if (last === 'y' && !/[aeiou]/.test(pre)) f.push(v.slice(0, -1) + 'ies');
+  else f.push(v + 's');
+  // -ing
+  if (/ie$/.test(v)) f.push(v.slice(0, -2) + 'ying');
+  else if (last === 'e' && !/ee$/.test(v)) f.push(v.slice(0, -1) + 'ing');
+  else { f.push(v + 'ing'); if (cons) f.push(v + last + 'ing'); }
+  // -ed
+  if (last === 'e') f.push(v + 'd');
+  else if (last === 'y' && !/[aeiou]/.test(pre)) f.push(v.slice(0, -1) + 'ied');
+  else { f.push(v + 'ed'); if (cons) f.push(v + last + 'ed'); }
+  return f.concat(_PV_IRREG[v] || []);
+}
+var _pvIdx = null, _pvIdxSize = -1;
+function _pvBuildIdx() {
+  _pvIdx = Object.create(null);
+  _pvSet.forEach(function(p) {
+    var a = p.split(/\s+/);
+    if (a.length < 2) return;
+    _pvForms(a[0]).forEach(function(f) { (_pvIdx[f] = _pvIdx[f] || []).push(a.slice(1)); });
+  });
+  _pvIdxSize = _pvSet.size;
+}
+// true, pokud text obsahuje frázové sloveso (i časované), slova se porovnávají celá
+function _hasPhrasalVerb(t) {
+  if (_pvIdx === null || _pvIdxSize !== _pvSet.size) _pvBuildIdx();
+  var w = t.toLowerCase().match(/[a-z']+/g);
+  if (!w) return false;
+  for (var i = 0; i < w.length; i++) {
+    var c = _pvIdx[w[i]];
+    if (!c) continue;
+    for (var k = 0; k < c.length; k++) {
+      var r = c[k], ok = true;
+      for (var j = 0; j < r.length; j++) { if (w[i + 1 + j] !== r[j]) { ok = false; break; } }
+      if (ok) return true;
+    }
+  }
+  return false;
+}
+
 function _isStorySituation(el) {
   if (!el || _storyTypedValue === null || el.value !== _storyTypedValue) return false;
   var t = el.value.trim();
-  var _norm = t.toLowerCase().replace(/^to\s+/, '').replace(/[.!?,;:]+$/, '');
-  if (_pvSet.has(_norm)) return false;
   var words = t.split(/\s+/).filter(Boolean).length;
+  // krátký text (1–5 slov) s frázovým slovesem → dialogy
+  if (words <= 5 && _hasPhrasalVerb(t)) return false;
   // jazyky bez mezer mezi slovy (zh/ja/ko): záloha podle počtu znaků
   return words >= 3 || (/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(t) && t.length >= 12);
 }
