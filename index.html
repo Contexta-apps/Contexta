@@ -4424,7 +4424,7 @@ h1[data-t="heroH"] {
                     <div class="gen-word-source-opt" data-value="discourse_markers" onclick="wsSelect('discourse_markers','discourse_markers',this)">discourse_markers</div>
                     <div class="gen-word-source-opt" data-value="toefl" onclick="wsSelect('toefl','toefl',this)">toefl</div>
                     <div class="gen-word-source-opt" data-value="ielts" onclick="wsSelect('ielts','ielts',this)">ielts</div>
-                    <div class="gen-word-source-opt" data-value="" data-translate="wordSourceTopicsOpt" onclick="wsSelect('','— témata aplikace —',this)">— témata aplikace —</div>
+                    <div class="gen-word-source-opt" data-value="topics" data-translate="wordSourceTopicsOpt" onclick="wsSelect('topics','— témata aplikace —',this)">— témata aplikace —</div>
                   </div>
                 </div>
                 <select class="gen-word-source-select" id="wordSourceSelect" onchange="updateSplitSourceLabel()" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
@@ -4498,7 +4498,8 @@ h1[data-t="heroH"] {
                     <option value="adverbs_c1">adverbs_c1</option>
                     <option value="adverbs_c2">adverbs_c2</option>
                   </optgroup>
-                  <option value="" data-translate="wordSourceTopicsOpt" selected>— témata aplikace —</option>
+                  <option value="" selected hidden></option>
+                  <option value="topics" data-translate="wordSourceTopicsOpt">— témata aplikace —</option>
                 </select>
               </div>
               <div class="gen-tuning-hint" data-translate="advWordSourceHint">Databáze obsahuje 8 000 slov a frází.</div>
@@ -12608,6 +12609,26 @@ function _insertWord(word) {
   }
 }
 
+// Náhodné slovo + téma: v poli jsou obě hodnoty ("slovo, téma"), téma jde do promptu i jako "Context:"
+var _lastRandomWord = '';
+function _insertWordWithTopic(word) {
+  var input = document.getElementById('practiceInput');
+  if (!input || !word) return;
+  _lastRandomWord = word;
+  input.value = selectedTopic ? word + ', ' + selectedTopic : word;
+  if (typeof onIntentInput === 'function') onIntentInput(input);
+  input.focus();
+}
+function _insertTopicKeepWord(label) {
+  var input = document.getElementById('practiceInput');
+  if (!input || !label) return;
+  var cur = input.value.trim().toLowerCase();
+  var keep = (_lastRandomWord && cur.indexOf(_lastRandomWord.toLowerCase()) === 0) ? _lastRandomWord : '';
+  input.value = keep ? keep + ', ' + label : label;
+  if (typeof onIntentInput === 'function') onIntentInput(input);
+  input.focus();
+}
+
 function _insertFromTopics(lang) {
   var list = [];
   if (typeof TOPICS !== 'undefined') {
@@ -12688,16 +12709,7 @@ function wsSelect(value, label, el) {
   // Ulož volbu úrovně do localStorage
   try { localStorage.setItem('quickLevel_value', value); localStorage.setItem('quickLevel_label', label); } catch(e) {}
 
-  // Reset dříve vybraného tématu, aby se nekombinovalo se zdrojem slov (viz clearPracticeInput)
-  selectedTopic = '';
-  var topicBtnEl = document.getElementById('topicBtn');
-  var topicBtnLabelEl = document.getElementById('topicBtnLabel');
-  var quickTopicLabelEl = document.getElementById('quickTopicLabelText');
-  var _tTopic = (typeof T !== 'undefined' && typeof webLang !== 'undefined') ? (T[webLang] || T.cz) : null;
-  var _topicDefault = (_tTopic && _tTopic.topicDropDefault) || '— vybrat téma —';
-  if (topicBtnEl) topicBtnEl.classList.remove('active-topic');
-  if (topicBtnLabelEl) topicBtnLabelEl.textContent = _topicDefault;
-  if (quickTopicLabelEl) quickTopicLabelEl.textContent = _topicDefault;
+  // Vybrané téma se při změně zdroje slov nemaže: slovo a téma lze kombinovat
 }
 
 document.addEventListener('click', function(e) {
@@ -12742,7 +12754,7 @@ function insertRandomTopic() {
     var lbl = el.querySelector('.tree-item-label');
     el.classList.toggle('selected', lbl && lbl.textContent.trim() === label);
   });
-  _insertWord(label);
+  _insertTopicKeepWord(label);
 }
 
 // Zdroje typu verbs_* obsahují holá slovesa (např. "wreck"). Bez kontextu
@@ -12770,10 +12782,12 @@ function insertRandomInspiration() {
   var sel = document.getElementById('wordSourceSelect');
   var source = sel ? sel.value : '';
 
-  if (!source) { _insertFromTopics(lang); return; }
+  // Volba "témata aplikace" losuje téma; když není vybráno nic ("vyber kategorii"), losuje se slovo podle zapnuté úrovně
+  if (source === 'topics') { _insertFromTopics(lang); return; }
+  if (!source) { source = (typeof _qlLevel === 'string' && _qlLevel) ? _qlLevel.toUpperCase() : 'A1'; }
 
   if (_wordSourceCache[source]) {
-    _insertWord(_applyVerbPrefix(_pickFromList(_wordSourceCache[source]), source));
+    _insertWordWithTopic(_applyVerbPrefix(_pickFromList(_wordSourceCache[source]), source));
     return;
   }
 
@@ -12792,7 +12806,7 @@ function insertRandomInspiration() {
       console.log('[WordSource] data:', data);
       if (Array.isArray(data) && data.length) {
         _wordSourceCache[source] = data;
-        _insertWord(_applyVerbPrefix(_pickFromList(data), source));
+        _insertWordWithTopic(_applyVerbPrefix(_pickFromList(data), source));
       } else {
         console.log('[WordSource] empty or invalid, fallback');
         _insertFromTopics(lang);
