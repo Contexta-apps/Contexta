@@ -4415,6 +4415,9 @@ h1[data-t="heroH"] {
                     <div class="gen-word-source-opt" data-value="top500" onclick="wsSelect('top500','top500',this)">top500</div>
                     <div class="gen-word-source-opt" data-value="top1000" onclick="wsSelect('top1000','top1000',this)">top1000</div>
                     <div class="gen-word-source-opt" data-value="top3000" onclick="wsSelect('top3000','top3000',this)">top3000</div>
+                    <div class="gen-word-source-opt" data-value="freq500" onclick="wsSelect('freq500','freq500',this)">freq500</div>
+                    <div class="gen-word-source-opt" data-value="freq1000" onclick="wsSelect('freq1000','freq1000',this)">freq1000</div>
+                    <div class="gen-word-source-opt" data-value="freq3000" onclick="wsSelect('freq3000','freq3000',this)">freq3000</div>
                     <div class="gen-word-source-opt" data-value="business" onclick="wsSelect('business','business',this)">business</div>
                     <div class="gen-word-source-opt" data-value="phrasal_verbs" onclick="wsSelect('phrasal_verbs','phrasal_verbs',this)">phrasal_verbs</div>
                     <div class="gen-word-source-opt" data-value="idioms" onclick="wsSelect('idioms','idioms',this)">idioms</div>
@@ -4437,6 +4440,9 @@ h1[data-t="heroH"] {
                     <option value="top500">top500</option>
                     <option value="top1000">top1000</option>
                     <option value="top3000">top3000</option>
+                    <option value="freq500">freq500</option>
+                    <option value="freq1000">freq1000</option>
+                    <option value="freq3000">freq3000</option>
                     <option value="business">business</option>
                     <option value="phrasal_verbs">phrasal_verbs</option>
                     <option value="idioms">idioms</option>
@@ -12089,6 +12095,9 @@ function genGenerate() {
     'Number of dialogues: ' + totalDialogs + '\n' +
     'Length: ' + dlInfo.label + '\n' +
 
+    'FLASHCARDS (final step, after the last dialogue): then create INTERACTIVE FLASHCARDS (tap-to-flip cards, using the flashcards feature if it is available) with exactly 12 cards taken from the dialogues above: 6 cards for the target word "' + intent + '" (the word itself plus different phrases and collocations in which it is used, each different from the others) and 6 cards for other useful words or expressions from the dialogues (not very basic words the learner already knows, no repeats). FRONT = the ' + toName + ' word or expression, BACK = its ' + fromName + ' meaning. Prefer useful phrases and collocations over very basic single words, and translate each card exactly as it is used in the dialogue, not as a dictionary entry. '
+    + 'If interactive flashcards are not available, write them as plain text instead: a line with only the emoji "🃏", then each card as 2 lines (front **bold**, back _underscore-italics_), one blank line between cards, no numbering, bullets or tables. '
+    + 'The flashcards are NOT part of the dialogue format above, so they are exempt from the formatting restrictions, and they do not need a separate offer or explanation (at most one short sentence in ' + webLangName + ').\n\n' +
     (currentAI === 'chatgpt'
       ? '\nDisplay format: Please use canvas for this response, applying the LINE-BREAK RULE above (invisible two-space hard breaks) so every line renders correctly in canvas, but otherwise keep following the formatting rules above exactly (only ** bold / * italic as specified, no other Markdown, no tables).\n'
       : '');
@@ -12179,7 +12188,7 @@ function genOpen(ai, promptText) {
     var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
     if (((enc.length + _extra) > LIMIT) || (ai === 'chatgpt' && !isMobileDevice())) url = base[ai] || base.chatgpt;
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(promptText).catch(function(){});
+      navigator.clipboard.writeText(ai === 'chatgpt' ? (_chatgptPreviewHeader() + promptText + _chatgptPreviewFooter()) : promptText).catch(function(){});
     }
     showClipboardHint();
   }
