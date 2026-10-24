@@ -11863,6 +11863,9 @@ function _buildStoryPrompt(situation, toName, fromName, storyTitle) {
     'Format: every sentence of Language A on its own line, the WHOLE line in **bold**; directly below it its translation in Language B, the WHOLE line in _underscore-italics_. One blank line between sentence pairs, one extra blank line between paragraphs. End every line with two spaces (invisible hard line break). No other labels, numbering, bullets, tables or comments.\n';
 }
 
+// Skrytí písmen mluvčích A/B v dialozích (hlasové čtení je jinak čte). Nastav na false pro vypnutí.
+var HIDE_SPEAKER_LETTERS = true;
+
 function genGenerate() {
   // ── Hlavní vstup: záměr ──
   var intentEl = document.getElementById('practiceInput');
@@ -12043,9 +12046,10 @@ function genGenerate() {
     'Match sense selection to level ' + cefrLevel + '.';
 
   // ── Prompt v2 (podle „Nový prompt“) ──────────────────────────────────────
-  // Odsazení překladů na mobilu (blockquote „> “). Nastav na false pro vypnutí.
+  // Odsazení překladů na mobilu (odrážka „- “ místo citace). Nastav na false pro vypnutí.
   var MOBILE_QUOTE_TRANSLATIONS = true;
   var useQuote = MOBILE_QUOTE_TRANSLATIONS && isMobileDevice() && currentAI === 'chatgpt';
+  var noSpk = HIDE_SPEAKER_LETTERS && isMobileDevice() && currentAI === 'chatgpt';
 
   // Délka dialogu: jediný zdroj pravdy = dialogLength
   var nTurns = dialogLength === 'short' ? 3 : dialogLength === 'long' ? 9 : 5;
@@ -12075,14 +12079,15 @@ function genGenerate() {
     `Level: ${cefrLevel}\n` +
     `Style: ${styleName}\n` +
     `Number of dialogues: ${totalDialogs}\n` +
-    `Length: ${nTurns} turns: ${turnPattern}`
+    `Length: ${nTurns} turns: ${turnPattern}` +
+    (noSpk ? ` (A and B are only your internal names for the two speakers: never write the letters A or B as speaker labels in the output)` : ``)
   );
 
   P.push(`INTERNAL DRAFTING STEP (mandatory, never shown): Before writing anything visible, silently compose all example sentences and dialogues exactly as they will appear. Then check the draft: every sense of the word used in it is listed on the first line, no listed sense is missing from the draft, the word occurs as required, and no sentence is repeated. Only then write the visible answer, starting with the first line.`);
 
   P.push(`LEVEL AND STYLE: The Level and Style given above apply to every sentence, turn and translation, including the vocabulary around the target word. Natural language means natural for that Style.`);
 
-  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** ** (including the speaker letter). Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error.` +
+  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** **${noSpk ? '' : ' (including the speaker letter)'}. Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error.` +
     (needsTranslation ? `\nNOTE: "${intent}" may be given in any language. Use its correct translation in ${fromName} (_ lines) and ${toName} (** lines); never use the untranslated original where it does not belong.` : ''));
 
   P.push(
@@ -12092,17 +12097,17 @@ function genGenerate() {
     `3) ${totalDialogs} dialogues. Each dialogue is formatted exactly like this:\n\n` +
     `---\n\n` +
     `🧩 **N** · _SHORT LABEL IN CAPITALS_\n\n` +
-    `**A: target-language turn**\n` +
-    (useQuote ? `> _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
-    `**B: target-language turn**\n` +
-    (useQuote ? `> _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+    `**${noSpk ? '' : 'A: '}target-language turn**\n` +
+    (useQuote ? `- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+    `**${noSpk ? '' : 'B: '}target-language turn**\n` +
+    (useQuote ? `- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
     `(and so on)`
   );
 
   P.push(
-    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words in ${fromName}, in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is exactly two consecutive lines (target line, then translation line, no blank line between). The speaker letter appears only on the target line. The number of turns is exactly the one given in Length, alternating A and B, starting and ending with A; never use any fixed template. ` +
+    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words in ${fromName}, in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is exactly two consecutive lines (target line, then translation line, no blank line between). ${noSpk ? 'No speaker letters, names or markers of any kind in front of the turns: every target line starts directly with the sentence itself. ' : 'The speaker letter appears only on the target line. '}The number of turns is exactly the one given in Length, ${noSpk ? 'alternating the two speakers, the first and last turn belonging to the same speaker' : 'alternating A and B, starting and ending with A'}; never use any fixed template. ` +
     (useQuote
-      ? `No bullets, no numbering, no tables, no # or | symbols, no other Markdown. The ONLY exception: every translation line (in the example sentences and in the dialogues) starts with "> " directly before the opening underscore. `
+      ? `No other bullets, no numbering, no tables, no # or | symbols, no other Markdown. The ONLY exception: every translation line (in the example sentences and in the dialogues) starts with "- " (hyphen and space) directly before the opening underscore. `
       : `No bullets, no numbering, no tables, no > or # or | symbols, no other Markdown. `) +
     `End EVERY line (except the --- line) with two trailing spaces (invisible hard line break), so lines never merge.`
   );
@@ -12142,7 +12147,7 @@ function genGenerate() {
     `(2) the same 4 reversed: FRONT = a short ${toName} sentence from the dialogues with the expression replaced by ______ (the expression itself must not appear on the front), (for a sentence card the blank replaces the target word), followed by its ${fromName} meaning in brackets in italics; the front MUST contain ______; BACK = the missing expression. ` +
     `(3) 4 other useful phrases or collocations from the dialogues (not basic single words, no repeats, wording exactly as in the dialogues): FRONT = ${toName}, BACK = ${fromName}. ` +
     `Translate each card as used in the dialogue, not as a dictionary entry. ${toName} is always **bold** and ${fromName} always _underscore-italics_, on both sides of every card. ` +
-    `If interactive flashcards are not available, write them as plain text: a line with only the emoji 🃏, then each card as 2 lines (front, back), one blank line between cards, no numbering, bullets or tables` + (useQuote ? ` and no "> "` : ``) + `. ` +
+    `If interactive flashcards are not available, write them as plain text: a line with only the emoji 🃏, then each card as 2 lines (front, back), one blank line between cards, no numbering, bullets or tables` + (useQuote ? ` and no "- "` : ``) + `. ` +
     `Flashcards are exempt from the dialogue format. Add one short sentence in ${webLangName} asking the learner to say or write the answer before looking at the other side and to mark ✓ only if it was correct. No other explanation.`
   );
 
@@ -13092,11 +13097,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var html;
     if (fromDlg && toDlg) {
       var spk = ['A', 'B', 'A'];
+      var hideSpk = HIDE_SPEAKER_LETTERS && isMobileDevice() && currentAI === 'chatgpt';
       var n = Math.min(fromDlg.length, toDlg.length, spk.length);
       html = '<div style="text-align:center;line-height:1;margin-bottom:4px;">🧩</div>';
       for (var i = 0; i < n; i++) {
         // učený jazyk (toCode) tučně, pod ním překlad (fromCode) kurzívou
-        html += '<strong>' + spk[i] + ': ' + toDlg[i] + '</strong><br>' +
+        var pre = hideSpk ? '' : spk[i] + ': ';
+        html += '<strong>' + pre + toDlg[i] + '</strong><br>' +
                 '<em style="color:#555;">' + fromDlg[i] + '</em><br>';
       }
     } else {
