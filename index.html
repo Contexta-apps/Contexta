@@ -12046,8 +12046,8 @@ function genGenerate() {
     'Match sense selection to level ' + cefrLevel + '.';
 
   // ── Prompt v2 (podle „Nový prompt“) ──────────────────────────────────────
-  // Odsazení překladů na mobilu (odrážka „- “ místo citace). Nastav na false pro vypnutí.
-  var MOBILE_QUOTE_TRANSLATIONS = true;
+  // Odsazení překladů na mobilu (odrážka „- “). ChatGPT na mobilu odrážku nevykresluje, proto je zatím false. Překlad = kurzíva pod větou.
+  var MOBILE_QUOTE_TRANSLATIONS = false;
   var useQuote = MOBILE_QUOTE_TRANSLATIONS && isMobileDevice() && currentAI === 'chatgpt';
   var noSpk = HIDE_SPEAKER_LETTERS && isMobileDevice() && currentAI === 'chatgpt';
 
