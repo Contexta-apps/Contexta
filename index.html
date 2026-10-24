@@ -12087,7 +12087,7 @@ function genGenerate() {
 
   P.push(`LEVEL AND STYLE: The Level and Style given above apply to every sentence, turn and translation, including the vocabulary around the target word. Natural language means natural for that Style.`);
 
-  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** **${noSpk ? '' : ' (including the speaker letter)'}. Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error.` +
+  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** **${noSpk ? '' : ' (including the speaker letter)'}. Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers${useQuote ? ' (the only exception: the leading "- " of a translation line stays OUTSIDE the underscores, written exactly as - _translation_ and never as _- translation_)' : ''}. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error.` +
     (needsTranslation ? `\nNOTE: "${intent}" may be given in any language. Use its correct translation in ${fromName} (_ lines) and ${toName} (** lines); never use the untranslated original where it does not belong.` : ''));
 
   P.push(
