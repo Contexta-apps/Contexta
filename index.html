@@ -12093,21 +12093,21 @@ function genGenerate() {
   P.push(
     `OUTPUT, in this order:\n\n` +
     `1) First line: the target word in capital letters in **bold**, then —, then the source-language equivalents in _underscore-italics_ (**TARGET WORD** — _equivalents_). Capitals only if the script has them; capitals are used only here and in dialogue labels. List only the source-language equivalents your finished draft actually uses (including distinct senses if the dialogues use them), most frequent first, maximum 5, each with a different meaning; never repeat or rephrase one. A single-meaning word or phrase gets exactly ONE equivalent: never add variants or extensions of it, and use that same equivalent in the translations. No label, no number.\n\n` +
-    `2) Three example sentences. Each pair = target line, then directly below it the translation line, blank line between pairs; no speaker letters. Place the word in different positions in the sentence and, where the word has them, in different common senses. Situations must differ from all dialogues.\n\n` +
+    `2) Three example sentences. Each pair = target line, then ${useQuote ? 'a blank line, then' : 'directly below it'} the translation line, blank line between pairs; no speaker letters. Place the word in different positions in the sentence and, where the word has them, in different common senses. Situations must differ from all dialogues.\n\n` +
     `3) ${totalDialogs} dialogues. Each dialogue is formatted exactly like this:\n\n` +
     `---\n\n` +
     `🧩 **N** · _SHORT LABEL IN CAPITALS_\n\n` +
     `**${noSpk ? '' : 'A: '}target-language turn**\n` +
-    (useQuote ? `- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+    (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
     `**${noSpk ? '' : 'B: '}target-language turn**\n` +
-    (useQuote ? `- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+    (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
     `(and so on)`
   );
 
   P.push(
-    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words in ${fromName}, in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is exactly two consecutive lines (target line, then translation line, no blank line between). ${noSpk ? 'No speaker letters, names or markers of any kind in front of the turns: every target line starts directly with the sentence itself. ' : 'The speaker letter appears only on the target line. '}The number of turns is exactly the one given in Length, ${noSpk ? 'alternating the two speakers, the first and last turn belonging to the same speaker' : 'alternating A and B, starting and ending with A'}; never use any fixed template. ` +
+    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words in ${fromName}, in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is ${useQuote ? 'a target line, then one blank line, then the translation line as a bullet' : 'exactly two consecutive lines (target line, then translation line, no blank line between)'}. ${noSpk ? 'No speaker letters, names or markers of any kind in front of the turns: every target line starts directly with the sentence itself. ' : 'The speaker letter appears only on the target line. '}The number of turns is exactly the one given in Length, ${noSpk ? 'alternating the two speakers, the first and last turn belonging to the same speaker' : 'alternating A and B, starting and ending with A'}; never use any fixed template. ` +
     (useQuote
-      ? `No other bullets, no numbering, no tables, no # or | symbols, no other Markdown. The ONLY exception: every translation line (in the example sentences and in the dialogues) starts with "- " (hyphen and space) directly before the opening underscore. `
+      ? `No other bullets, no numbering, no tables, no # or | symbols, no other Markdown. The ONLY exception: every translation line (in the example sentences and in the dialogues) starts with "- " (hyphen and space) directly before the opening underscore, exactly like this: - _translation_ (hyphen, space, underscore, text, underscore; no space after the first underscore). `
       : `No bullets, no numbering, no tables, no > or # or | symbols, no other Markdown. `) +
     `End EVERY line (except the --- line) with two trailing spaces (invisible hard line break), so lines never merge.`
   );
