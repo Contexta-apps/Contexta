@@ -12049,7 +12049,7 @@ function genGenerate() {
   // Odsazení překladů na mobilu (odrážka „- “). ChatGPT na mobilu odrážku nevykresluje, proto je zatím false. Překlad = kurzíva pod větou.
   var MOBILE_QUOTE_TRANSLATIONS = false;
   var useQuote = MOBILE_QUOTE_TRANSLATIONS && isMobileDevice() && currentAI === 'chatgpt';
-  var noSpk = HIDE_SPEAKER_LETTERS && isMobileDevice() && currentAI === 'chatgpt';
+  var noSpk = HIDE_SPEAKER_LETTERS && (currentAI === 'chatgpt' || currentAI === 'copilot');
 
   // Délka dialogu: jediný zdroj pravdy = dialogLength
   var nTurns = dialogLength === 'short' ? 3 : dialogLength === 'long' ? 9 : 5;
@@ -13097,7 +13097,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var html;
     if (fromDlg && toDlg) {
       var spk = ['A', 'B', 'A'];
-      var hideSpk = HIDE_SPEAKER_LETTERS && isMobileDevice() && currentAI === 'chatgpt';
+      var hideSpk = HIDE_SPEAKER_LETTERS && (currentAI === 'chatgpt' || currentAI === 'copilot');
       var n = Math.min(fromDlg.length, toDlg.length, spk.length);
       html = '<div style="text-align:center;line-height:1;margin-bottom:4px;">🧩</div>';
       for (var i = 0; i < n; i++) {
