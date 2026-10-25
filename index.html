@@ -13207,13 +13207,18 @@ document.addEventListener('keydown', function(e) {
 .howto-chip:hover{border-color:rgba(201,151,58,.4);background:rgba(201,151,58,.15)}
 .howto-overlay{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:rgba(20,24,40,.8);padding:24px 24px calc(24px + env(safe-area-inset-bottom,0px))}
 .howto-overlay[hidden]{display:none}
-.howto-card{width:100%;max-width:320px;max-height:calc(100% - 8px);overflow-y:auto;box-sizing:border-box;background:var(--navy-lt);color:#fff;border:1px solid rgba(201,151,58,.35);border-radius:24px;padding:16px;font-family:'Inter',sans-serif}
-.howto-title{margin:0;color:#f5c84c;font-size:1rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.howto-card{width:100%;max-width:320px;max-height:calc(100% - 8px);overflow-y:auto;box-sizing:border-box;background:#232b45;color:#fff;border:1px solid rgba(201,151,58,.35);border-radius:20px;padding:20px;font-family:Roboto,'Inter',sans-serif}
+.howto-title{margin:0;color:#e0b95a;font-size:1rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
 .howto-need{margin:0 0 8px;font-size:1rem;line-height:1.35;font-weight:700}
 .howto-intro{margin:0 0 16px;font-size:.95rem;line-height:1.5;font-weight:400;color:rgba(255,255,255,.8)}
 .howto-intro:empty{display:none}
 .howto-step{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px;font-size:.9rem;line-height:1.45}
-#howToH1{color:#8fd3ff}
+.howto-feat{gap:12px;padding:8px;margin:0 0 8px;font-size:16px}
+.howto-feat .howto-num{flex:0 0 32px;width:32px;height:32px;background:#c19a47;color:#14161f;font-weight:700}
+.howto-feat>span:last-child{color:#aeb4c6;font-size:16px;line-height:1.45}
+.howto-feat b{color:#d3d8e6;font-weight:700}
+.howto-feat.howto-main b{color:#e0b95a}
+#howToOffer{font-size:22px;font-weight:700;margin-bottom:16px}
 .howto-num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--gold);color:#000;font-weight:800;display:flex;align-items:center;justify-content:center}
 .howto-copilot{margin:6px 0 18px;padding-top:12px;border-top:1px solid var(--gold);font-size:.85rem;line-height:1.5;color:rgba(255,255,255,.8)}
 .howto-ok{width:100%;padding:13px 20px;border:0;border-radius:16px;background:var(--gold);color:#000;font:800 1rem 'Inter',sans-serif;cursor:pointer}
@@ -13227,13 +13232,14 @@ document.addEventListener('keydown', function(e) {
 button.howto-qmark{position:relative;padding:0;background:transparent;cursor:pointer}
 .howto-qmark::before{content:'';position:absolute;inset:-11px}
 .howto-qmark:hover{background:rgba(201,151,58,.15)}
+.howto-nb{white-space:nowrap}
 .howto-arr{display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;margin:0 2px;border-radius:50%;color:#000;font-weight:800;line-height:1;vertical-align:middle}
 .howto-arr.a1{background:var(--gold)}
 .howto-arr.a2{background:#b96646;color:#fff}
 .howto-more{margin:4px 0 10px;padding-top:14px;border-top:1px solid var(--gold)}
 .howto-card{padding-bottom:0}
 @media (min-width:1024px){.howto-card{max-width:540px}}
-.howto-okwrap{position:sticky;bottom:0;margin-top:14px;padding:14px 0 16px;background:var(--navy-lt);box-shadow:0 -10px 10px var(--navy-lt)}
+.howto-okwrap{position:sticky;bottom:0;margin-top:14px;padding:14px 0 16px;background:#232b45;box-shadow:0 -10px 10px #232b45}
 @media (min-width:600px){.howto-overlay{align-items:center}}
 </style>
 <div class="howto-overlay" id="howToOverlay" role="dialog" aria-modal="true" aria-labelledby="howToTitle" hidden>
@@ -13245,13 +13251,13 @@ button.howto-qmark{position:relative;padding:0;background:transparent;cursor:poi
     <div class="howto-step"><span class="howto-num">2</span><span id="howTo2"></span></div>
     <p class="howto-copilot" id="howToCopilot"></p>
     <h3 class="howto-title howto-more" id="howToOffer"></h3>
-    <div class="howto-step"><span class="howto-num">1</span><span><b id="howToH1"></b> <span id="howToF1"></span></span></div>
-    <div class="howto-step"><span class="howto-num">2</span><span><b id="howToH7"></b> <span id="howToF7"></span></span></div>
-    <div class="howto-step"><span class="howto-num">3</span><span><b id="howToH2"></b> <span id="howToF2"></span></span></div>
-    <div class="howto-step"><span class="howto-num">4</span><span><b id="howToH3"></b> <span id="howToF3"></span></span></div>
-    <div class="howto-step"><span class="howto-num">5</span><span><b id="howToH4"></b> <span id="howToF4"></span></span></div>
-    <div class="howto-step"><span class="howto-num">6</span><span><b id="howToH5"></b> <span id="howToF5"></span></span></div>
-    <div class="howto-step"><span class="howto-num">7</span><span><b id="howToH6"></b> <span id="howToF6"></span></span></div>
+    <div class="howto-step howto-feat howto-main"><span class="howto-num">1</span><span><b id="howToH1"></b> <span id="howToF1"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">2</span><span><b id="howToH7"></b> <span id="howToF7"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">3</span><span><b id="howToH2"></b> <span id="howToF2"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">4</span><span><b id="howToH3"></b> <span id="howToF3"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">5</span><span><b id="howToH4"></b> <span id="howToF4"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">6</span><span><b id="howToH5"></b> <span id="howToF5"></span></span></div>
+    <div class="howto-step howto-feat"><span class="howto-num">7</span><span><b id="howToH6"></b> <span id="howToF6"></span></span></div>
     <p class="howto-ai" id="howToAi"></p>
     <div class="howto-contact">
       <p class="howto-note"><span aria-hidden="true">📩</span> <span id="howToMailT"></span> <a href="mailto:contexta.eu@gmail.com">contexta.eu@gmail.com</a>.</p>
@@ -13273,7 +13279,7 @@ button.howto-qmark{position:relative;padding:0;background:transparent;cursor:poi
     ids.forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.textContent = t[id] || c[id] || '';
-      if (el && (id === 'howTo1' || id === 'howTo2')) el.innerHTML = el.innerHTML.replace('↑', '<span class="howto-arr ' + (id === 'howTo1' ? 'a1' : 'a2') + '">↑</span>');
+      if (el && (id === 'howTo1' || id === 'howTo2')) el.innerHTML = el.innerHTML.replace(/↑([.。．!！?？,，、:：;；)）」』»”’…]*)/, '<span class="howto-nb"><span class="howto-arr ' + (id === 'howTo1' ? 'a1' : 'a2') + '">↑</span>$1</span>');
     });
     var q = document.getElementById('howToQ'), ok = document.getElementById('howToOk');
     if (q && ok && ok.textContent) q.setAttribute('aria-label', ok.textContent);
