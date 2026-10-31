@@ -12219,6 +12219,16 @@ function genGenerate() {
     `Flashcards are exempt from the dialogue format. Before sending, count the cards: 4 + 4 + 4 = exactly 12, never 11 and never 13. Add one short sentence in ${webLangName} asking the learner to say or write the answer before looking at the other side and to mark ✓ only if it was correct. No other explanation.`
   );
 
+  P.push(
+    `QUIZ (final step, after the flashcards; directly before it a line with only ---, with a blank line before and after it): create an INTERACTIVE MULTIPLE-CHOICE QUIZ with the quiz tool, never as plain text. ` +
+    `Title: "Mini test ${cefrLevel.replace('-', '–')}", subtitle: "Mini test: " followed by the target word in capital letters (the same target word as on the first line). ` +
+    `Exactly 10 questions (count them before sending). Each question = one sentence in ${fromName} followed by exactly 3 ${toName} options, only one of them correct. ` +
+    `Use only the words and phrases from this lesson. The wrong options must be plausible confusions of the same meaning (for example similar verbs, prepositions or word forms), never obvious nonsense. The correct option rotates between position 1, 2 and 3. ` +
+    `After each answer immediately show whether it was correct and a one-sentence explanation in ${webLangName}. Show a running counter of answered questions (for example 0/10) and, at the end, the score (for example 9/10) and a "Try again" button, all in ${webLangName}. ` +
+    `Only simple multiple choice: no true/false, no fill-in, no flashcards, no other question types. ` +
+    `Only if the quiz tool returns an error or is not available in this chat, write the quiz as plain text: numbered questions with options a), b), c), then the correct answers with the one-sentence explanations.`
+  );
+
   if (currentAI === 'chatgpt') {
     P.push(`Display format: Please use canvas for this response, applying the line-break rule (two trailing spaces) so every line renders correctly, but otherwise follow the formatting rules above exactly (no tables). Output text only, never an image or graphic.`);
   }
