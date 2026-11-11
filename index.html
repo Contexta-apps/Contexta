@@ -3055,7 +3055,7 @@ img { max-width: 100%; height: auto; }
 }
 .gen-advanced-wrap .gen-tuning-chips:has(> .gen-chip-style) {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .gen-advanced-wrap .gen-chip-level,
 .gen-advanced-wrap .gen-chip-style,
@@ -4515,10 +4515,9 @@ h1[data-t="heroH"] {
             <div class="gen-tuning-row">
               <span class="gen-tuning-label" data-translate="styleLabel">Styl</span>
               <div class="gen-tuning-chips">
-                <button class="gen-chip-style active" onclick="selectStyle('casual',this)" data-translate="styleNormal">běžná</button>
+                <button class="gen-chip-style active" onclick="selectStyle('casual',this)" data-translate="styleNormal">běžný</button>
                 <button class="gen-chip-style" onclick="selectStyle('formal',this)" data-translate="styleFormal">formální</button>
-                <button class="gen-chip-style" onclick="selectStyle('slang',this)" data-translate="styleSlang">slang</button>
-                <button class="gen-chip-style" onclick="selectStyle('humor',this)" data-translate="styleHumor">humorná</button>
+                <button class="gen-chip-style" onclick="selectStyle('humor',this)" data-translate="styleHumor">humorný</button>
               </div>
             </div>
             <div class="gen-tuning-row">
@@ -4995,7 +4994,7 @@ cz:{
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
   styleLabel:'Styl',
-  styleNormal:'Běžná', styleFormal:'Formální', styleSlang:'Slang', styleHumor:'Humorná',
+  styleNormal:'Běžný', styleFormal:'Formální', styleSlang:'Slang', styleHumor:'Humorný',
   langLabel:'🌍 Jazyk',
   levelLabel:'Úroveň',
   advCountLabel:'Délka dialogů',
@@ -5031,7 +5030,7 @@ cz:{
   grammarClearBtn:'✕ zrušit',
   chatgptPreviewHint:'Stiskni šipku v textovém poli a počkej na vygenerování obsahu. Text si můžeš přečíst, poslechnout a taky o něm mluvit s AI hlasovým modelem.',
   grammarSearchPh:'🔍 Hledat téma…',
-  storyTitle:'PŘÍBĚH', exTitle:'PŘÍKLADOVÉ VĚTY', dlTitle:'DIALOGY', dialogLengthHint:'Určuje délku každého dialogu.',
+  storyTitle:'PŘÍBĚH', exTitle:'PŘÍKLADOVÉ VĚTY', dlTitle:'DIALOGY', dlTitleShort:'MINIKONTEXTY', dialogLengthHint:'Určuje délku každého dialogu.',
   aiHint:'Potřebuješ ChatGPT nebo Copilot.',
   heroAbility:'Uč se jazyky s AI. Čti. Poslouchej. Mluv.',
   heroNeed:'Obsah vzniká ve tvém ChatGPT.'
@@ -5137,7 +5136,7 @@ en:{
   grammarClearBtn:'✕ clear',
   chatgptPreviewHint:'Press the arrow in the text box and wait for the content to be generated. You can read the text, listen to it, and also talk about it with an AI voice model.',
   grammarSearchPh:'🔍 Search topic…',
-  storyTitle:'STORY', exTitle:'EXAMPLE SENTENCES', dlTitle:'DIALOGUES', dialogLengthHint:'Sets the length of each dialogue.',
+  storyTitle:'STORY', exTitle:'EXAMPLE SENTENCES', dlTitle:'DIALOGUES', dlTitleShort:'MINI CONTEXTS', dialogLengthHint:'Sets the length of each dialogue.',
   aiHint:'You need ChatGPT or Copilot.',
   heroAbility:'Learn languages with AI. Read. Listen. Speak.',
   heroNeed:'Your content is created in your ChatGPT.'
@@ -5243,7 +5242,7 @@ de:{
   grammarClearBtn:'✕ entfernen',
   chatgptPreviewHint:'Drücke auf den Pfeil im Textfeld und warte, bis der Inhalt erstellt wurde. Du kannst den Text lesen, anhören und auch mit einem KI-Sprachmodell darüber sprechen.',
   grammarSearchPh:'🔍 Thema suchen…',
-  storyTitle:'GESCHICHTE', exTitle:'BEISPIELSÄTZE', dlTitle:'DIALOGE', dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
+  storyTitle:'GESCHICHTE', exTitle:'BEISPIELSÄTZE', dlTitle:'DIALOGE', dlTitleShort:'MINI-KONTEXTE', dialogLengthHint:'Legt die Länge jedes Dialogs fest.',
   aiHint:'Du brauchst ChatGPT oder Copilot.',
   heroAbility:'Lerne Sprachen mit KI. Lies. Hör zu. Sprich.',
   heroNeed:'Der Inhalt entsteht in deinem ChatGPT.'
@@ -5342,7 +5341,7 @@ fr:{
   grammarClearBtn:'✕ effacer',
   chatgptPreviewHint:'Appuie sur la flèche dans le champ de texte et attends que le contenu soit généré. Tu peux lire le texte, l\'écouter et aussi en parler avec un modèle vocal IA.',
   grammarSearchPh:'🔍 Rechercher un sujet…',
-  storyTitle:'HISTOIRE', exTitle:'EXEMPLES DE PHRASES', dlTitle:'DIALOGUES', dialogLengthHint:'Définit la longueur de chaque dialogue.',
+  storyTitle:'HISTOIRE', exTitle:'EXEMPLES DE PHRASES', dlTitle:'DIALOGUES', dlTitleShort:'MINI-CONTEXTES', dialogLengthHint:'Définit la longueur de chaque dialogue.',
   aiHint:'Il te faut ChatGPT ou Copilot.',
   heroAbility:'Apprends les langues avec l\'IA. Lis. Écoute. Parle.',
   heroNeed:'Le contenu naît dans ton ChatGPT.'
@@ -5442,7 +5441,7 @@ es:{
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'ACCIÓN', extractSituace:'SITUACIÓN',
   extractKeyTema:'TEMA', extractKeyAkce:'ACCIÓN', extractKeySituace:'SITUACIÓN',
-  storyTitle:'HISTORIA', exTitle:'FRASES DE EJEMPLO', dlTitle:'DIÁLOGOS', dialogLengthHint:'Determina la longitud de cada diálogo.',
+  storyTitle:'HISTORIA', exTitle:'FRASES DE EJEMPLO', dlTitle:'DIÁLOGOS', dlTitleShort:'MINICONTEXTOS', dialogLengthHint:'Determina la longitud de cada diálogo.',
   aiHint:'Necesitas ChatGPT o Copilot.',
   heroAbility:'Aprende idiomas con la IA. Lee. Escucha. Habla.',
   heroNeed:'El contenido se crea en tu ChatGPT.'
@@ -5542,7 +5541,7 @@ it:{
   extractTitle:'Contesto suggerito',
   extractTema:'TEMA', extractAkce:'AZIONE', extractSituace:'SITUAZIONE',
   extractKeyTema:'TEMA', extractKeyAkce:'AZIONE', extractKeySituace:'SITUAZIONE',
-  storyTitle:'STORIA', exTitle:'FRASI DI ESEMPIO', dlTitle:'DIALOGHI', dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
+  storyTitle:'STORIA', exTitle:'FRASI DI ESEMPIO', dlTitle:'DIALOGHI', dlTitleShort:'MINI-CONTESTI', dialogLengthHint:'Imposta la lunghezza di ogni dialogo.',
   aiHint:'Ti serve ChatGPT o Copilot.',
   heroAbility:'Impara le lingue con l\'IA. Leggi. Ascolta. Parla.',
   heroNeed:'Il contenuto nasce nel tuo ChatGPT.'
@@ -5641,7 +5640,7 @@ pt:{
   extractTitle:'Contexto sugerido',
   extractTema:'TEMA', extractAkce:'AÇÃO', extractSituace:'SITUAÇÃO',
   extractKeyTema:'TEMA', extractKeyAkce:'AÇÃO', extractKeySituace:'SITUAÇÃO',
-  storyTitle:'HISTÓRIA', exTitle:'FRASES DE EXEMPLO', dlTitle:'DIÁLOGOS', dialogLengthHint:'Define o comprimento de cada diálogo.',
+  storyTitle:'HISTÓRIA', exTitle:'FRASES DE EXEMPLO', dlTitle:'DIÁLOGOS', dlTitleShort:'MINICONTEXTOS', dialogLengthHint:'Define o comprimento de cada diálogo.',
   aiHint:'Você precisa do ChatGPT ou do Copilot.',
   heroAbility:'Aprenda idiomas com a IA. Leia. Ouça. Fale.',
   heroNeed:'O conteúdo é criado no seu ChatGPT.'
@@ -5741,7 +5740,7 @@ pl:{
   extractTitle:'Sugerowany kontekst',
   extractTema:'TEMAT', extractAkce:'AKCJA', extractSituace:'SYTUACJA',
   extractKeyTema:'TEMAT', extractKeyAkce:'AKCJA', extractKeySituace:'SYTUACJA',
-  storyTitle:'OPOWIADANIE', exTitle:'PRZYKŁADOWE ZDANIA', dlTitle:'DIALOGI', dialogLengthHint:'Określa długość każdego dialogu.',
+  storyTitle:'OPOWIADANIE', exTitle:'PRZYKŁADOWE ZDANIA', dlTitle:'DIALOGI', dlTitleShort:'MINIKONTEKSTY', dialogLengthHint:'Określa długość każdego dialogu.',
   aiHint:'Potrzebujesz ChatGPT lub Copilota.',
   heroAbility:'Ucz się języków z AI. Czytaj. Słuchaj. Mów.',
   heroNeed:'Treść powstaje w twoim ChatGPT.'
@@ -5841,7 +5840,7 @@ cn:{
   extractTitle:'建议的背景',
   extractTema:'主题', extractAkce:'动作', extractSituace:'情境',
   extractKeyTema:'主题', extractKeyAkce:'动作', extractKeySituace:'情境',
-  storyTitle:'故事', exTitle:'例句', dlTitle:'对话', dialogLengthHint:'设置每段对话的长度。',
+  storyTitle:'故事', exTitle:'例句', dlTitle:'对话', dlTitleShort:'迷你语境', dialogLengthHint:'设置每段对话的长度。',
   aiHint:'你需要 ChatGPT 或 Copilot。',
   heroAbility:'与 AI 一起学语言。阅读。聆听。开口说。',
   heroNeed:'内容在你的 ChatGPT 中生成。'
@@ -5941,7 +5940,7 @@ jp:{
   extractTitle:'提案されたコンテキスト',
   extractTema:'テーマ', extractAkce:'アクション', extractSituace:'状況',
   extractKeyTema:'テーマ', extractKeyAkce:'アクション', extractKeySituace:'状況',
-  storyTitle:'物語', exTitle:'例文', dlTitle:'ダイアログ', dialogLengthHint:'各ダイアログの長さを設定します。',
+  storyTitle:'物語', exTitle:'例文', dlTitle:'ダイアログ', dlTitleShort:'ミニ文脈', dialogLengthHint:'各ダイアログの長さを設定します。',
   aiHint:'ChatGPT または Copilot が必要です。',
   heroAbility:'AIで語学を学ぼう。読む。聞く。話す。',
   heroNeed:'コンテンツはあなたの ChatGPT で作られます。'
@@ -6041,7 +6040,7 @@ kr:{
   extractTitle:'제안된 맥락',
   extractTema:'주제', extractAkce:'행동', extractSituace:'상황',
   extractKeyTema:'주제', extractKeyAkce:'행동', extractKeySituace:'상황',
-  storyTitle:'이야기', exTitle:'예문', dlTitle:'대화', dialogLengthHint:'각 대화의 길이를 설정합니다.',
+  storyTitle:'이야기', exTitle:'예문', dlTitle:'대화', dlTitleShort:'미니 문맥', dialogLengthHint:'각 대화의 길이를 설정합니다.',
   aiHint:'ChatGPT 또는 Copilot이 필요합니다.',
   heroAbility:'AI와 함께 언어를 배우세요. 읽기. 듣기. 말하기.',
   heroNeed:'콘텐츠는 내 ChatGPT에서 만들어집니다.'
@@ -6103,7 +6102,7 @@ sk:{
   lvChip1:'B1–B2', lvChipSub1:'Pokročilejší',
   lvChip2:'C1–C2', lvChipSub2:'Pokročilý',
   styleLabel:'Štýl',
-  styleNormal:'Bežná', styleFormal:'Formálna', styleSlang:'Slang', styleHumor:'Humorná',
+  styleNormal:'Bežný', styleFormal:'Formálny', styleSlang:'Slang', styleHumor:'Humorný',
   langLabel:'🌍 Jazyk', levelLabel:'Úroveň',
   advCountLabel:'Počet dialógov',
   lengthShort:'Krátke', lengthMedium:'Dlhšie', lengthLong:'Najdlhšie',
@@ -6130,7 +6129,7 @@ sk:{
   extractTitle:'Navrhovaný kontext',
   extractTema:'TÉMA', extractAkce:'AKCIA', extractSituace:'SITUÁCIA',
   extractKeyTema:'TÉMA', extractKeyAkce:'AKCIA', extractKeySituace:'SITUÁCIA',
-  storyTitle:'PRÍBEH', exTitle:'PRÍKLADOVÉ VETY', dlTitle:'DIALÓGY', dialogLengthHint:'Určuje dĺžku každého dialógu.',
+  storyTitle:'PRÍBEH', exTitle:'PRÍKLADOVÉ VETY', dlTitle:'DIALÓGY', dlTitleShort:'MINIKONTEXTY', dialogLengthHint:'Určuje dĺžku každého dialógu.',
   aiHint:'Potrebuješ ChatGPT alebo Copilot.',
   heroAbility:'Uč sa jazyky s AI. Čítaj. Počúvaj. Hovor.',
   heroNeed:'Obsah vzniká vo tvojom ChatGPT.'
@@ -6219,7 +6218,7 @@ nl:{
   extractTitle:'Voorgestelde context',
   extractTema:'ONDERWERP', extractAkce:'ACTIE', extractSituace:'SITUATIE',
   extractKeyTema:'ONDERWERP', extractKeyAkce:'ACTIE', extractKeySituace:'SITUATIE',
-  storyTitle:'VERHAAL', exTitle:'VOORBEELDZINNEN', dlTitle:'DIALOGEN', dialogLengthHint:'Stelt de lengte van elk dialoog in.',
+  storyTitle:'VERHAAL', exTitle:'VOORBEELDZINNEN', dlTitle:'DIALOGEN', dlTitleShort:'MINICONTEXTEN', dialogLengthHint:'Stelt de lengte van elk dialoog in.',
   aiHint:'Je hebt ChatGPT of Copilot nodig.',
   heroAbility:'Leer talen met AI. Lees. Luister. Praat.',
   heroNeed:'De inhoud ontstaat in jouw ChatGPT.'
@@ -6308,7 +6307,7 @@ sv:{
   extractTitle:'Föreslagen kontext',
   extractTema:'ÄMNE', extractAkce:'HANDLING', extractSituace:'SITUATION',
   extractKeyTema:'ÄMNE', extractKeyAkce:'HANDLING', extractKeySituace:'SITUATION',
-  storyTitle:'BERÄTTELSE', exTitle:'EXEMPELMENINGAR', dlTitle:'DIALOGER', dialogLengthHint:'Anger längden på varje dialog.',
+  storyTitle:'BERÄTTELSE', exTitle:'EXEMPELMENINGAR', dlTitle:'DIALOGER', dlTitleShort:'MINIKONTEXTER', dialogLengthHint:'Anger längden på varje dialog.',
   aiHint:'Du behöver ChatGPT eller Copilot.',
   heroAbility:'Lär dig språk med AI. Läs. Lyssna. Prata.',
   heroNeed:'Innehållet skapas i din ChatGPT.'
@@ -6365,7 +6364,7 @@ ru:{
   lvChip1:'B1–B2', lvChipSub1:'Средний',
   lvChip2:'C1–C2', lvChipSub2:'Продвинутый',
   styleLabel:'Стиль',
-  styleNormal:'Обычный', styleFormal:'Официальный', styleSlang:'Сленг', styleHumor:'Юмор',
+  styleNormal:'Обычный', styleFormal:'Официальный', styleSlang:'Сленг', styleHumor:'Юмористический',
   langLabel:'🌍 Язык', levelLabel:'Уровень',
   advCountLabel:'Количество диалогов',
   lengthShort:'Короткий', lengthMedium:'Длиннее', lengthLong:'Самый длинный',
@@ -6392,7 +6391,7 @@ ru:{
   extractTitle:'Предложенный контекст',
   extractTema:'ТЕМА', extractAkce:'ДЕЙСТВИЕ', extractSituace:'СИТУАЦИЯ',
   extractKeyTema:'ТЕМА', extractKeyAkce:'ДЕЙСТВИЕ', extractKeySituace:'СИТУАЦИЯ',
-  storyTitle:'РАССКАЗ', exTitle:'ПРИМЕРЫ ПРЕДЛОЖЕНИЙ', dlTitle:'ДИАЛОГИ', dialogLengthHint:'Определяет длину каждого диалога.',
+  storyTitle:'РАССКАЗ', exTitle:'ПРИМЕРЫ ПРЕДЛОЖЕНИЙ', dlTitle:'ДИАЛОГИ', dlTitleShort:'МИНИ-КОНТЕКСТЫ', dialogLengthHint:'Определяет длину каждого диалога.',
   aiHint:'Тебе нужен ChatGPT или Copilot.',
   heroAbility:'Учи языки с ИИ. Читай. Слушай. Говори.',
   heroNeed:'Контент создаётся в твоём ChatGPT.'
@@ -6481,7 +6480,7 @@ tr:{
   extractTitle:'Önerilen bağlam',
   extractTema:'KONU', extractAkce:'EYLEM', extractSituace:'DURUM',
   extractKeyTema:'KONU', extractKeyAkce:'EYLEM', extractKeySituace:'DURUM',
-  storyTitle:'HİKAYE', exTitle:'ÖRNEK CÜMLELER', dlTitle:'DİYALOGLAR', dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
+  storyTitle:'HİKAYE', exTitle:'ÖRNEK CÜMLELER', dlTitle:'DİYALOGLAR', dlTitleShort:'MİNİ BAĞLAMLAR', dialogLengthHint:'Her diyaloğun uzunluğunu belirler.',
   aiHint:'ChatGPT veya Copilot\'a ihtiyacın var.',
   heroAbility:'Yapay zekâ ile dil öğren. Oku. Dinle. Konuş.',
   heroNeed:'İçerik senin ChatGPT\'nde oluşur.'
@@ -6576,7 +6575,7 @@ uk:{
   grammarClearBtn:'✕ скасувати',
   chatgptPreviewHint:'Натисни стрілку в текстовому полі та зачекай, поки вміст буде згенеровано. Текст можна прочитати, прослухати, а також обговорити його з голосовою моделлю ШІ.',
   grammarSearchPh:'🔍 Шукати тему…',
-  storyTitle:'ІСТОРІЯ', exTitle:'ПРИКЛАДИ РЕЧЕНЬ', dlTitle:'ДІАЛОГИ', dialogLengthHint:'Визначає довжину кожного діалогу.',
+  storyTitle:'ІСТОРІЯ', exTitle:'ПРИКЛАДИ РЕЧЕНЬ', dlTitle:'ДІАЛОГИ', dlTitleShort:'МІНІ-КОНТЕКСТИ', dialogLengthHint:'Визначає довжину кожного діалогу.',
   aiHint:'Тобі потрібен ChatGPT або Copilot.',
   heroAbility:'Вчи мови зі ШІ. Читай. Слухай. Говори.',
   heroNeed:'Контент створюється у твоєму ChatGPT.'
@@ -6639,7 +6638,7 @@ id:{
   lvChip1:'B1–B2', lvChipSub1:'Menengah',
   lvChip2:'C1–C2', lvChipSub2:'Mahir',
   styleLabel:'Gaya',
-  styleNormal:'Biasa', styleFormal:'Formal', styleSlang:'Slang', styleHumor:'Humor',
+  styleNormal:'Biasa', styleFormal:'Formal', styleSlang:'Slang', styleHumor:'Humoris',
   langLabel:'🌍 Bahasa', levelLabel:'Level',
   advCountLabel:'Jumlah dialog',
   lengthShort:'Pendek', lengthMedium:'Lebih panjang', lengthLong:'Terpanjang',
@@ -6671,7 +6670,7 @@ id:{
   grammarClearBtn:'✕ hapus',
   chatgptPreviewHint:'Tekan panah di kolom teks dan tunggu hingga konten selesai dibuat. Kamu bisa membaca teks, mendengarkannya, dan juga berbicara tentang teks itu dengan model suara AI.',
   grammarSearchPh:'🔍 Cari topik…',
-  storyTitle:'CERITA', exTitle:'KALIMAT CONTOH', dlTitle:'DIALOG', dialogLengthHint:'Menentukan panjang setiap dialog.',
+  storyTitle:'CERITA', exTitle:'KALIMAT CONTOH', dlTitle:'DIALOG', dlTitleShort:'MINI KONTEKS', dialogLengthHint:'Menentukan panjang setiap dialog.',
   aiHint:'Kamu butuh ChatGPT atau Copilot.',
   heroAbility:'Belajar bahasa dengan AI. Baca. Dengarkan. Bicara.',
   heroNeed:'Konten dibuat di ChatGPT milikmu.'
@@ -6855,7 +6854,7 @@ ro:{
   grammarClearBtn:"✕ șterge",
   chatgptPreviewHint:"Apasă săgeata din câmpul de text și așteaptă generarea conținutului. Poți citi textul, îl poți asculta și poți vorbi despre el cu un model vocal AI.",
   grammarSearchPh:"🔍 Caută subiect…",
-  storyTitle:"POVESTE", exTitle:"EXEMPLE DE PROPOZIȚII", dlTitle:"DIALOGURI",
+  storyTitle:"POVESTE", exTitle:"EXEMPLE DE PROPOZIȚII", dlTitle:"DIALOGURI", dlTitleShort:"MINICONTEXTE",
   dialogLengthHint:"Stabilește lungimea fiecărui dialog.",
   aiHint:"Ai nevoie de ChatGPT sau Copilot.",
   heroAbility:"Învață limbi cu AI. Citește. Ascultă. Vorbește.",
@@ -7040,7 +7039,7 @@ hu:{
   grammarClearBtn:"✕ törlés",
   chatgptPreviewHint:"Nyomd meg a nyilat a szövegmezőben, és várd meg, amíg a tartalom elkészül. Elolvashatod, meghallgathatod, és AI hangmodellel is beszélgethetsz róla.",
   grammarSearchPh:"🔍 Téma keresése…",
-  storyTitle:"TÖRTÉNET", exTitle:"PÉLDAMONDATOK", dlTitle:"PÁRBESZÉDEK",
+  storyTitle:"TÖRTÉNET", exTitle:"PÉLDAMONDATOK", dlTitle:"PÁRBESZÉDEK", dlTitleShort:"MINIKONTEXTUSOK",
   dialogLengthHint:"Beállítja az egyes párbeszédek hosszát.",
   aiHint:"ChatGPT-re vagy Copilotra van szükséged.",
   heroAbility:"Tanulj nyelveket AI-val. Olvass. Hallgass. Beszélj.",
@@ -7225,7 +7224,7 @@ el:{
   grammarClearBtn:"✕ διαγραφή",
   chatgptPreviewHint:"Πάτησε το βέλος στο πεδίο κειμένου και περίμενε να δημιουργηθεί το περιεχόμενο. Μπορείς να διαβάσεις το κείμενο, να το ακούσεις και να μιλήσεις γι' αυτό με ένα φωνητικό μοντέλο AI.",
   grammarSearchPh:"🔍 Αναζήτηση θέματος…",
-  storyTitle:"ΙΣΤΟΡΙΑ", exTitle:"ΠΑΡΑΔΕΙΓΜΑΤΑ ΠΡΟΤΑΣΕΩΝ", dlTitle:"ΔΙΑΛΟΓΟΙ",
+  storyTitle:"ΙΣΤΟΡΙΑ", exTitle:"ΠΑΡΑΔΕΙΓΜΑΤΑ ΠΡΟΤΑΣΕΩΝ", dlTitle:"ΔΙΑΛΟΓΟΙ", dlTitleShort:"ΜΙΝΙ ΣΥΜΦΡΑΖΟΜΕΝΑ",
   dialogLengthHint:"Ορίζει το μήκος κάθε διαλόγου.",
   aiHint:"Χρειάζεσαι ChatGPT ή Copilot.",
   heroAbility:"Μάθε γλώσσες με AI. Διάβασε. Άκουσε. Μίλησε.",
@@ -7410,7 +7409,7 @@ bg:{
   grammarClearBtn:"✕ изчисти",
   chatgptPreviewHint:"Натисни стрелката в текстовото поле и изчакай съдържанието да се генерира. Можеш да четеш текста, да го слушаш и да разговаряш за него с гласов ИИ модел.",
   grammarSearchPh:"🔍 Търси тема…",
-  storyTitle:"ИСТОРИЯ", exTitle:"ПРИМЕРНИ ИЗРЕЧЕНИЯ", dlTitle:"ДИАЛОЗИ",
+  storyTitle:"ИСТОРИЯ", exTitle:"ПРИМЕРНИ ИЗРЕЧЕНИЯ", dlTitle:"ДИАЛОЗИ", dlTitleShort:"МИНИКОНТЕКСТИ",
   dialogLengthHint:"Определя дължината на всеки диалог.",
   aiHint:"Трябва ти ChatGPT или Copilot.",
   heroAbility:"Учи езици с ИИ. Чети. Слушай. Говори.",
@@ -7595,7 +7594,7 @@ hr:{
   grammarClearBtn:"✕ očisti",
   chatgptPreviewHint:"Pritisni strelicu u tekstualnom polju i pričekaj da se sadržaj generira. Tekst možeš čitati, slušati i razgovarati o njemu s AI glasovnim modelom.",
   grammarSearchPh:"🔍 Traži temu…",
-  storyTitle:"PRIČA", exTitle:"PRIMJERI REČENICA", dlTitle:"DIJALOZI",
+  storyTitle:"PRIČA", exTitle:"PRIMJERI REČENICA", dlTitle:"DIJALOZI", dlTitleShort:"MINIKONTEKSTI",
   dialogLengthHint:"Određuje duljinu svakog dijaloga.",
   aiHint:"Treba ti ChatGPT ili Copilot.",
   heroAbility:"Uči jezike uz AI. Čitaj. Slušaj. Govori.",
@@ -7780,7 +7779,7 @@ da:{
   grammarClearBtn:"✕ ryd",
   chatgptPreviewHint:"Tryk på pilen i tekstfeltet, og vent, til indholdet er genereret. Du kan læse teksten, lytte til den og også tale om den med en AI-stemmemodel.",
   grammarSearchPh:"🔍 Søg emne…",
-  storyTitle:"HISTORIE", exTitle:"EKSEMPELSÆTNINGER", dlTitle:"DIALOGER",
+  storyTitle:"HISTORIE", exTitle:"EKSEMPELSÆTNINGER", dlTitle:"DIALOGER", dlTitleShort:"MINIKONTEKSTER",
   dialogLengthHint:"Bestemmer længden af hver dialog.",
   aiHint:"Du skal bruge ChatGPT eller Copilot.",
   heroAbility:"Lær sprog med AI. Læs. Lyt. Tal.",
@@ -7965,7 +7964,7 @@ fi:{
   grammarClearBtn:"✕ tyhjennä",
   chatgptPreviewHint:"Paina nuolta tekstiruudussa ja odota, että sisältö luodaan. Voit lukea tekstin, kuunnella sen ja keskustella siitä tekoälyn äänimallin kanssa.",
   grammarSearchPh:"🔍 Hae aihetta…",
-  storyTitle:"TARINA", exTitle:"ESIMERKKILAUSEET", dlTitle:"DIALOGIT",
+  storyTitle:"TARINA", exTitle:"ESIMERKKILAUSEET", dlTitle:"DIALOGIT", dlTitleShort:"MINIKONTEKSTIT",
   dialogLengthHint:"Määrittää kunkin dialogin pituuden.",
   aiHint:"Tarvitset ChatGPT:n tai Copilotin.",
   heroAbility:"Opi kieliä tekoälyn avulla. Lue. Kuuntele. Puhu.",
@@ -8150,7 +8149,7 @@ et:{
   grammarClearBtn:"✕ tühjenda",
   chatgptPreviewHint:"Vajuta tekstiväljal noolt ja oota, kuni sisu luuakse. Saad teksti lugeda, kuulata ja arutada seda TI häälmudeliga.",
   grammarSearchPh:"🔍 Otsi teemat…",
-  storyTitle:"LUGU", exTitle:"NÄIDISLAUSED", dlTitle:"DIALOOGID",
+  storyTitle:"LUGU", exTitle:"NÄIDISLAUSED", dlTitle:"DIALOOGID", dlTitleShort:"MINIKONTEKSTID",
   dialogLengthHint:"Määrab iga dialoogi pikkuse.",
   aiHint:"Vajad ChatGPT-d või Copilotit.",
   heroAbility:"Õpi keeli tehisintellekti abil. Loe. Kuula. Räägi.",
@@ -8335,7 +8334,7 @@ sl:{
   grammarClearBtn:"✕ počisti",
   chatgptPreviewHint:"Pritisni puščico v besedilnem polju in počakaj, da se vsebina ustvari. Besedilo lahko prebereš, poslušaš in se o njem pogovarjaš z glasovnim modelom UI.",
   grammarSearchPh:"🔍 Poišči temo…",
-  storyTitle:"ZGODBA", exTitle:"PRIMERI STAVKOV", dlTitle:"DIALOGI",
+  storyTitle:"ZGODBA", exTitle:"PRIMERI STAVKOV", dlTitle:"DIALOGI", dlTitleShort:"MINIKONTEKSTI",
   dialogLengthHint:"Določa dolžino posameznega dialoga.",
   aiHint:"Potrebuješ ChatGPT ali Copilot.",
   heroAbility:"Uči se jezikov z umetno inteligenco. Beri. Poslušaj. Govori.",
@@ -8806,6 +8805,12 @@ function playAudio(text, lang, event) {
 // GENERÁTOR v2 – Intent-first
 // ═══════════════════════════════════════════════════════
 var selectedStyle = 'casual';
+var _STYLE_DEFS = {
+  casual: 'casual, natural everyday conversation between friends or family who use informal "you"',
+  formal: 'formal and polite, as in professional or official situations; no slang or colloquial shortcuts',
+  humor: 'humor \u2014 warm, kind and smiling, like a cosy family sitcom: two people who like each other. The first speaker has one small everyday mishap or quirk (a different one in each dialogue: over-ambitious, stubborn, shy, messy, over-prepared) and laughs at herself; the second teases her gently and helps. The humour comes from the situation and self-irony, never from sarcasm or clever one-liners. Most turns are plain and friendly, with one or two light moments per dialogue. Everyday words only; nobody is mocked.'
+};
+function _styleDef(s) { return _STYLE_DEFS[s] || _STYLE_DEFS.casual; }
 var totalDialogs = 10;
 var dialogLength = 'short';
 var intentTimer = null;
@@ -9297,6 +9302,37 @@ GRAMMAR_TRANSLATIONS.lv = {"levels": ["Iesācējs", "Pamatlīmenis", "Vidējais 
 GRAMMAR_TRANSLATIONS.lt = {"levels": ["Pradedantysis", "Pradinis lygis", "Vidutinis lygis", "Aukštesnis vidutinis lygis", "Pažengęs", "Ekspertas"], "topics": [["Veiksmažodžiai BE ir HAVE", "Artikeliai (a/an/the)", "Daiktavardžiai", "Įvardžiai", "Present Simple", "Present Continuous", "Modaliniai veiksmažodžiai I", "Būsimasis laikas", "Žodžių tvarka", "Liepiamoji nuosaka"], ["Past Simple", "Būdvardžiai", "Kiekio žodžiai", "Modaliniai veiksmažodžiai II", "Netiesioginiai klausimai", "Būsimasis laikas", "Daiktavardžių skaičiuojamumas", "Praeities įpročiai"], ["Present Perfect", "Sąlygos sakiniai", "Bendratis ir gerundijus", "Neveikiamoji rūšis", "Laipsnio prieveiksmiai", "Past Perfect", "Too / enough / so / such", "Kauzatyvas", "BE USED TO / GET USED TO"], ["Netiesioginė kalba", "Santykiniai sakiniai", "Dalyviai", "Modaliniai veiksmažodžiai su perfekto bendratimi", "Akcentavimas", "Laikų derinimas", "Būsimasis laikas"], ["Veiksmo vaizdas", "Ypatingi sakiniai", "Gerundijus (pažengusiems)", "Žodžių darybos būdai", "Sakinių trumpinimas", "Amerikiečių anglų kalba", "Pasakojimo laikai", "Subjunktyvas"], ["Inversija", "Išskiriamieji sakiniai (cleft)", "Elipsė ir pakeitimas", "Nominalizacija", "Mišrūs sąlygos sakiniai", "Atsargi raiška (hedging)", "Pasakojimo laikai"]], "items": [[["Veiksmažodis BE (am/is/are)", "Veiksmažodis HAVE (have/has)", "Klausimai ir neiginiai su BE"], ["Neapibrėžtasis artikelis a/an", "Apibrėžtasis artikelis THE"], ["Daugiskaitos daiktavardžiai", "Skaičiai 1–999", "Kelintiniai skaitvardžiai"], ["Savybiniai būdvardžiai", "Savybinė forma ('s)"], ["Present Simple", "Klausimai ir neiginiai — Present Simple", "Question tags"], ["Present Continuous", "Present Continuous ir Simple palyginimas"], ["CAN, MUST, MAY"], ["Būsimasis laikas (WILL)", "Future Continuous", "THERE IS / THERE ARE"], ["Žodžių tvarka sakinyje"], ["Liepiamoji nuosaka (įsakymai ir nurodymai)"]], [["Past Simple — taisyklingieji veiksmažodžiai", "Netaisyklingieji veiksmažodžiai — Past Simple", "Past Simple neiginiai", "Neveikiamoji rūšis (pagrindai)", "Past Simple ir Past Continuous palyginimas"], ["Būdvardžių laipsniai (aukštesnysis ir aukščiausiasis)", "Prieveiksmiai", "AS...AS (lygybės palyginimas)"], ["MUCH, MANY, LITTLE, FEW", "EVERY, EACH, BOTH, ALL", "SOME, ANY ir jų sudėtiniai žodžiai"], ["SHOULD, WOULD, COULD"], ["Netiesioginiai klausimai"], ["WILL, GOING TO ir Present Continuous palyginimas", "Present Simple tvarkaraščiams ir grafikams"], ["Skaičiuojami ir neskaičiuojami daiktavardžiai"], ["USED TO (praeities įpročiai ir būsenos)"]], [["Present Perfect — forma ir vartojimas", "Present Perfect ir Past Simple palyginimas", "Present Perfect Continuous", "Present Perfect ir Present Perfect Continuous palyginimas"], ["Zero Conditional", "1st Conditional", "2nd Conditional", "3rd Conditional"], ["Tikslo bendratis", "Gerundijus I — pagrindinis vartojimas", "Papildinys + bendratis"], ["Neveikiamoji rūšis — visi laikai", "GOING TO — ketinimas"], ["Laipsnio prieveiksmiai"], ["Past Perfect — forma ir vartojimas", "Past Perfect ir Past Simple palyginimas", "Past Perfect Continuous"], ["TOO ir ENOUGH", "SO ir SUCH"], ["HAVE/GET something done"], ["BE USED TO, GET USED TO ir USED TO palyginimas"]], [["Netiesioginė kalba — pagrindai", "Netiesioginė kalba — klausimai ir įsakymai"], ["Santykiniai įvardžiai", "Ribojamieji ir neribojamieji santykiniai sakiniai"], ["Dalyvinės konstrukcijos"], ["Modalinis veiksmažodis + have + būtojo laiko dalyvis"], ["Išskiriamieji sakiniai (cleft)", "Sangrąžiniai įvardžiai"], ["Laikų derinimas", "Laiko sakiniai", "Būsimoji reikšmė laiko sakiniuose"], ["Future Perfect Simple — forma ir vartojimas", "Future Perfect Continuous — forma ir vartojimas", "Būsimieji laikai — kombinuotas vartojimas"]], [["Veiksmo vaizdas"], ["Linkėjimo sakiniai (wish)", "Šaukiamieji sakiniai"], ["Gerundijus II — pažengęs vartojimas"], ["Neiginiai priešdėliai", "Žodžių darybos apžvalga"], ["Sutrumpinti laiko ir priežasties sakiniai"], ["Amerikiečių ir britų anglų kalbos palyginimas"], ["Laikų kaita pasakojime"], ["Subjunktyvas (oficialūs reikalavimai ir norai)"]], [["Neiginio inversija", "Sąlygos inversija"], ["Išskiriamieji sakiniai (cleft)"], ["Pažengusi elipsė ir pakeitimas"], ["Nominalizacija formaliame stiliuje"], ["Mišrūs sąlygos sakiniai"], ["Atsargi raiška (hedging)"], ["Laisvoji netiesioginė kalba"]]]};
 GRAMMAR_TRANSLATIONS.mt = {"levels": ["Bidu", "Elementari", "Intermedju", "Intermedju Għoli", "Avvanzat", "Espert"], "topics": [["Verbi BE u HAVE", "Artikli (a/an/the)", "Nomi", "Pronomi", "Present Simple", "Present Continuous", "Verbi modali I", "Futur", "Ordni tal-kliem", "Imperattiv"], ["Past Simple", "Aġġettivi", "Kwantifikaturi", "Verbi modali II", "Mistoqsijiet indiretti", "Futur", "Għadd tan-nomi", "Drawwiet fil-passat"], ["Present Perfect", "Kondizzjonali", "Infinitiv u ġerundju", "Vuċi passiva", "Avverbji ta' grad", "Past Perfect", "Too / enough / so / such", "Kawżattiv", "BE USED TO / GET USED TO"], ["Diskors rappurtat", "Proposizzjonijiet relattivi", "Partiċipji", "Modali bl-infinitiv perfett", "Enfasi", "Konkordanza tal-ħinijiet", "Futur"], ["Aspett verbali", "Sentenzi speċjali", "Ġerundju avvanzat", "Formazzjoni tal-kliem", "Tnaqqis tas-sentenzi", "Ingliż Amerikan", "Ħinijiet narrattivi", "Konġuntiv"], ["Inversjoni", "Sentenzi maqsuma (cleft)", "Elliżi u sostituzzjoni", "Nominalizzazzjoni", "Kondizzjonali mħallta", "Hedging (espressjoni kawta)", "Ħinijiet narrattivi"]], "items": [[["Verb BE (am/is/are)", "Verb HAVE (have/has)", "Mistoqsijiet u negattivi bil-BE"], ["Artiklu indefinit a/an", "Artiklu definit THE"], ["Nomi fil-plural", "Numri 1–999", "Numri ordinali"], ["Aġġettivi possessivi", "Każ possessiv ('s)"], ["Present Simple", "Mistoqsijiet u negattivi — Present Simple", "Question tags"], ["Present Continuous", "Present Continuous vs. Simple"], ["CAN, MUST, MAY"], ["Futur (WILL)", "Future Continuous", "THERE IS / THERE ARE"], ["Ordni tal-kliem fis-sentenza"], ["Imperattiv (kmandi u struzzjonijiet)"]], [["Past Simple — verbi regolari", "Verbi irregolari — Past Simple", "Negattivi tal-Past Simple", "Vuċi passiva (bażika)", "Past Simple vs. Past Continuous"], ["Aġġettivi komparattivi u superlattivi", "Avverbji", "AS...AS (paragun ta' ugwaljanza)"], ["MUCH, MANY, LITTLE, FEW", "EVERY, EACH, BOTH, ALL", "SOME, ANY u l-kompożizzjonijiet tagħhom"], ["SHOULD, WOULD, COULD"], ["Mistoqsijiet indiretti"], ["WILL vs. GOING TO vs. Present Continuous", "Present Simple għal skedi u orarji"], ["Nomi li jingħaddu u li ma jingħaddux"], ["USED TO (drawwiet u stati fil-passat)"]], [["Present Perfect — forma u użu", "Present Perfect vs. Past Simple", "Present Perfect Continuous", "Present Perfect vs. Present Perfect Continuous"], ["Zero Conditional", "1st Conditional", "2nd Conditional", "3rd Conditional"], ["Infinitiv ta' skop", "Ġerundju I — użu bażiku", "Oġġett + infinitiv"], ["Vuċi passiva — il-ħinijiet kollha", "GOING TO — intenzjoni"], ["Avverbji ta' grad"], ["Past Perfect — forma u użu", "Past Perfect vs. Past Simple", "Past Perfect Continuous"], ["TOO u ENOUGH", "SO u SUCH"], ["HAVE/GET something done"], ["BE USED TO vs. GET USED TO vs. USED TO"]], [["Diskors rappurtat — bażi", "Diskors rappurtat — mistoqsijiet u kmandi"], ["Pronomi relattivi", "Proposizzjonijiet relattivi definitivi vs. mhux definitivi"], ["Proposizzjonijiet partiċipjali"], ["Modali + have + partiċipju passat"], ["Sentenzi maqsuma (cleft)", "Pronomi riflessivi"], ["Konkordanza tal-ħinijiet", "Proposizzjonijiet temporali", "Tifsira futura fi proposizzjonijiet temporali"], ["Future Perfect Simple — forma u użu", "Future Perfect Continuous — forma u użu", "Ħinijiet futuri — użu kombinat"]], [["Aspett verbali"], ["Sentenzi bil-wish", "Sentenzi esklamattivi"], ["Ġerundju II — użu avvanzat"], ["Prefissi negattivi", "Ħarsa ġenerali lejn il-formazzjoni tal-kliem"], ["Proposizzjonijiet temporali u kawżali mnaqqsa"], ["Ingliż Amerikan vs. Ingliż Brittaniku"], ["Bidliet tal-ħin fin-narrattiva"], ["Konġuntiv (rekwiżiti formali u xewqat)"]], [["Inversjoni negattiva", "Inversjoni kondizzjonali"], ["Sentenzi maqsuma (cleft)"], ["Elliżi u sostituzzjoni avvanzati"], ["Nominalizzazzjoni fi stil formali"], ["Kondizzjonali mħallta"], ["Lingwaġġ ta' hedging"], ["Stil indirett ħieles"]]]};
 GRAMMAR_TRANSLATIONS.bo = {"levels": ["འགོ་རྩོམ་པ།", "གཞི་རིམ།", "འབྲིང་རིམ།", "འབྲིང་རིམ་གོང་མ།", "མཐོ་རིམ།", "མཁས་པ།"], "topics": [["བྱ་ཚིག BE དང་ HAVE", "གདགས་ཚིག (a/an/the)", "མིང་ཚིག", "ཚབ་མིང་།", "Present Simple", "Present Continuous", "ནུས་ཚིག I", "མ་འོངས་དུས།", "ཚིག་གི་གོ་རིམ།", "བཀའ་ཚིག་གི་སྒྲ་ཚུལ།"], ["Past Simple", "ཁྱད་ཚིག", "གྲངས་ཚད་ཚིག", "ནུས་ཚིག II", "ངོ་སྤྲོད་མིན་པའི་དྲི་བ།", "མ་འོངས་དུས།", "མིང་ཚིག་གི་གྲངས་ལེན།", "འདས་པའི་གོམས་གཤིས།"], ["Present Perfect", "ཆ་རྐྱེན་ཚིག་གཏམ།", "Infinitive དང་ Gerund", "བྱ་ཚིག་ཚུལ་སྒྱུར།", "ཚད་ཀྱི་ཁྱད་ཚིག", "Past Perfect", "Too / enough / so / such", "སྐྱེད་བྱེད་ཚུལ།", "BE USED TO / GET USED TO"], ["གཞན་གྱི་ཚིག་བསྒྱུར།", "འབྲེལ་ཚིག་ཚིག་གཏམ།", "བྱ་ཚིག་ཆ་ཤས།", "ནུས་ཚིག་དང་ have + past participle", "གནད་འཛིན།", "དུས་ཚོད་ཀྱི་གོ་རིམ།", "མ་འོངས་དུས།"], ["བྱ་ཚིག་གི་ཁྱད་ཆོས།", "དམིགས་བསལ་ཚིག་གཏམ།", "Gerund མཐོ་རིམ།", "ཚིག་གསར་བཟོ།", "ཚིག་གཏམ་ཐུང་དུ་བསྡུ་བ།", "ཨ་མེ་རི་ཀའི་དབྱིན་ཡིག", "སྒྲུང་གི་དུས་ཚོད།", "Subjunctive"], ["Inversion", "Cleft ཚིག་གཏམ།", "ཚིག་སྐྱོན་དང་ཚབ་བརྗེ།", "མིང་ཚིག་ཏུ་སྒྱུར་བ།", "འདྲེས་མའི་ཆ་རྐྱེན་ཚིག་གཏམ།", "Hedging", "སྒྲུང་གི་དུས་ཚོད།"]], "items": [[["བྱ་ཚིག BE (am/is/are)", "བྱ་ཚིག HAVE (have/has)", "BE དང་བཅས་པའི་དྲི་བ་དང་དགག་ཚིག"], ["མ་ངེས་པའི་གདགས་ཚིག a/an", "ངེས་པའི་གདགས་ཚིག THE"], ["མང་གྲངས་ཀྱི་མིང་ཚིག", "གྲངས་ཀ 1–999", "གོ་རིམ་གྱི་གྲངས་ཀ"], ["བདག་དབང་གི་ཁྱད་ཚིག", "བདག་དབང་གི་རྣམ་པ། ('s)"], ["Present Simple", "དྲི་བ་དང་དགག་ཚིག — Present Simple", "Question tags"], ["Present Continuous", "Present Continuous vs. Simple"], ["CAN, MUST, MAY"], ["མ་འོངས་དུས། (WILL)", "Future Continuous", "THERE IS / THERE ARE"], ["ཚིག་གཏམ་ནང་གི་ཚིག་གི་གོ་རིམ།"], ["བཀའ་ཚིག་གི་སྒྲ་ཚུལ། (བཀའ་བརྡ་དང་ཁྲིད་ཡིག)"]], [["Past Simple — ཆད་ལྡན་གྱི་བྱ་ཚིག", "ཆད་མེད་བྱ་ཚིག — Past Simple", "Past Simple གི་དགག་ཚིག", "བྱ་ཚིག་ཚུལ་སྒྱུར། (གཞི་རིམ།)", "Past Simple vs. Past Continuous"], ["ཚད་བསྡུར་དང་ཆེས་ཚད་ཀྱི་ཁྱད་ཚིག", "ཁྱད་ཚིག", "AS...AS (མཉམ་པའི་ཚད་བསྡུར།)"], ["MUCH, MANY, LITTLE, FEW", "EVERY, EACH, BOTH, ALL", "SOME, ANY དང་དེའི་སྦྱར་ཚིག"], ["SHOULD, WOULD, COULD"], ["ངོ་སྤྲོད་མིན་པའི་དྲི་བ།"], ["WILL vs. GOING TO vs. Present Continuous", "དུས་ཚོད་རེའུ་མིག་གི་ཆེད་དུ་ Present Simple"], ["གྲངས་ཐུབ་དང་གྲངས་མི་ཐུབ་པའི་མིང་ཚིག"], ["USED TO (འདས་པའི་གོམས་གཤིས་དང་གནས་སྟངས།)"]], [["Present Perfect — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།", "Present Perfect vs. Past Simple", "Present Perfect Continuous", "Present Perfect vs. Present Perfect Continuous"], ["Zero Conditional", "1st Conditional", "2nd Conditional", "3rd Conditional"], ["དམིགས་ཡུལ་གྱི་ Infinitive", "Gerund I — རྨང་གཞིའི་སྤྱོད་ཚུལ།", "ལས་ཚིག + infinitive"], ["བྱ་ཚིག་ཚུལ་སྒྱུར། — དུས་ཚོད་ཀུན།", "GOING TO — བསམ་པ།"], ["ཚད་ཀྱི་ཁྱད་ཚིག"], ["Past Perfect — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།", "Past Perfect vs. Past Simple", "Past Perfect Continuous"], ["TOO དང་ ENOUGH", "SO དང་ SUCH"], ["HAVE/GET something done"], ["BE USED TO vs. GET USED TO vs. USED TO"]], [["གཞན་གྱི་ཚིག་བསྒྱུར། — གཞི་རིམ།", "གཞན་གྱི་ཚིག་བསྒྱུར། — དྲི་བ་དང་བཀའ་བརྡ།"], ["འབྲེལ་ཚབ།", "ངེས་འཛིན་དང་ངེས་འཛིན་མིན་པའི་འབྲེལ་ཚིག་ཚིག་གཏམ།"], ["བྱ་ཚིག་ཆ་ཤས་ཀྱི་ཚིག་གཏམ།"], ["ནུས་ཚིག + have + past participle"], ["Cleft ཚིག་གཏམ།", "རང་ཉིད་ཀྱི་ཚབ་མིང་།"], ["དུས་ཚོད་ཀྱི་གོ་རིམ།", "དུས་ཚིག་ཚིག་གཏམ།", "དུས་ཚིག་ཚིག་གཏམ་ནང་གི་མ་འོངས་དོན།"], ["Future Perfect Simple — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།", "Future Perfect Continuous — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།", "མ་འོངས་དུས་ཚོད། — ཟླ་སྒྲིལ་གྱི་སྤྱོད་ཚུལ།"]], [["བྱ་ཚིག་གི་ཁྱད་ཆོས།"], ["Wish ཚིག་གཏམ།", "འགེངས་སྒྲའི་ཚིག་གཏམ།"], ["Gerund II — མཐོ་རིམ་གྱི་སྤྱོད་ཚུལ།"], ["དགག་པའི་སྔོན་འཇུག", "ཚིག་གསར་བཟོའི་སྤྱི་མཐོང་།"], ["ཐུང་དུ་བསྡུས་པའི་དུས་ཚིག་དང་རྒྱུ་མཚན་གྱི་ཚིག་གཏམ།"], ["ཨ་མེ་རི་ཀ་དང་དབྱིན་ཇིའི་དབྱིན་ཡིག"], ["སྒྲུང་ནང་གི་དུས་ཚོད་ཀྱི་འགྱུར་བ།"], ["Subjunctive (ཆ་ཚང་དགོས་པའི་ཆ་རྐྱེན་དང་འདོད་པ།)"]], [["དགག་པའི་ Inversion", "ཆ་རྐྱེན་གྱི་ Inversion"], ["Cleft ཚིག་གཏམ།"], ["མཐོ་རིམ་གྱི་ཚིག་སྐྱོན་དང་ཚབ་བརྗེ།"], ["ཚད་ལྡན་ཡིག་སྤྱོད་ནང་མིང་ཚིག་ཏུ་སྒྱུར་བ།"], ["འདྲེས་མའི་ཆ་རྐྱེན་ཚིག་གཏམ།"], ["Hedging ཚིག་སྒྲ།"], ["རང་དབང་གི་ཐད་ཀར་མིན་པའི་བརྗོད་སྟངས།"]]]};
+
+// ── Doplnění překladů: názvy gramatických jevů a nápověda v poli (žádný míchaný jazyk) ──
+(function(){
+  var P={"de":{"t":[[2,0,"Perfekt"]],"i":[[0,7,1,"Verlaufsform Zukunft (Futur Verlaufsform)"],[2,0,0,"Perfekt — Bildung und Verwendung"],[2,0,1,"Perfekt vs. Vergangenheit"],[2,0,2,"Perfekt Verlaufsform"],[2,0,3,"Perfekt vs. Perfekt Verlaufsform"]]},"fr":{"t":[[2,0,"Parfait présent"]],"i":[[0,7,1,"Futur continu (Futur continu)"],[2,0,0,"Parfait présent — formation et usage"],[2,0,1,"Parfait présent vs. Passé simple"],[2,0,2,"Parfait présent continu"],[2,0,3,"Parfait présent vs. Parfait présent continu"]]},"es":{"t":[[2,0,"Presente perfecto"]],"i":[[0,4,2,"Coletillas interrogativas"],[0,7,1,"Futuro continuo (Futuro continuo)"],[2,0,0,"Presente perfecto — forma y uso"],[2,0,1,"Presente perfecto vs. Pasado simple"],[2,0,2,"Presente perfecto continuo"],[2,0,3,"Presente perfecto vs. Presente perfecto continuo"]]},"it":{"t":[[2,0,"Presente perfetto"]],"i":[[0,4,2,"Domande di conferma"],[0,7,1,"Futuro continuo (Futuro continuo)"],[2,0,0,"Presente perfetto — forma e uso"],[2,0,1,"Presente perfetto vs. Passato semplice"],[2,0,2,"Presente perfetto continuo"],[2,0,3,"Presente perfetto vs. Presente perfetto continuo"]]},"pt":{"t":[[2,0,"Presente perfeito"]],"i":[[0,4,2,"Perguntas de confirmação"],[0,7,1,"Futuro contínuo (Futuro contínuo)"],[2,0,0,"Presente perfeito — forma e uso"],[2,0,1,"Presente perfeito vs. Passado simples"],[2,0,2,"Presente perfeito contínuo"],[2,0,3,"Presente perfeito vs. Presente perfeito contínuo"]]},"pl":{"t":[[0,4,"Czas Czas teraźniejszy prosty"],[0,5,"Czas Czas teraźniejszy ciągły"],[1,0,"Czas Czas przeszły prosty"],[2,0,"Czas teraźniejszy dokonany"],[2,5,"Zaprzeszły (Czas zaprzeszły)"]],"i":[[0,4,0,"Czas teraźniejszy prosty"],[0,4,1,"Pytania i przeczenia — Czas teraźniejszy prosty"],[0,4,2,"Pytania rozłączne"],[0,5,0,"Czas teraźniejszy ciągły"],[0,5,1,"Czas teraźniejszy ciągły vs. Czas teraźniejszy prosty"],[0,7,1,"Czas przyszły ciągły (Czas przyszły ciągły)"],[1,0,0,"Czas przeszły prosty — czasowniki regularne"],[1,0,1,"Czasowniki nieregularne — Czas przeszły prosty"],[1,0,2,"Przeczenia w Czas przeszły prosty"],[1,0,4,"Czas przeszły prosty vs. Czas przeszły ciągły"],[1,5,0,"WILL vs. GOING TO vs. Czas teraźniejszy ciągły"],[1,5,1,"Czas teraźniejszy prosty dla rozkładów i harmonogramów"],[2,0,0,"Czas teraźniejszy dokonany — budowa i użycie"],[2,0,1,"Czas teraźniejszy dokonany vs. Czas przeszły prosty"],[2,0,2,"Czas teraźniejszy dokonany ciągły"],[2,0,3,"Czas teraźniejszy dokonany vs. Czas teraźniejszy dokonany ciągły"],[2,5,0,"Czas zaprzeszły — budowa i użycie"],[2,5,1,"Czas zaprzeszły vs. Czas przeszły prosty"],[2,5,2,"Czas zaprzeszły ciągły"]]},"nl":{"t":[[2,0,"Voltooid tegenwoordige tijd"]],"i":[[0,7,1,"Toekomende tijd continu (toekomende tijd continu)"],[1,5,0,"WILL vs. GOING TO vs. Tegenwoordige tijd continu"],[1,5,1,"Onvoltooid tegenwoordige tijd voor dienstregelingen en roosters"],[2,0,0,"Voltooid tegenwoordige tijd — vorm en gebruik"],[2,0,1,"Voltooid tegenwoordige tijd vs. verleden tijd"],[2,0,2,"Voltooid tegenwoordige tijd continu"],[2,0,3,"Voltooid tegenwoordige tijd vs. Voltooid tegenwoordige tijd continu"]]},"sv":{"t":[[2,0,"Perfekt"]],"i":[[0,7,1,"Pågående futurum (Futurum progressiv)"],[1,5,0,"WILL vs. GOING TO vs. Presens progressiv"],[2,0,0,"Perfekt — form och användning"],[2,0,1,"Perfekt vs. preteritum"],[2,0,2,"Perfekt progressiv"],[2,0,3,"Perfekt vs. Perfekt progressiv"]]},"ru":{"t":[[2,0,"Настоящее совершённое время"],[2,5,"Прошедшее совершенное (Прошедшее совершённое время)"]],"i":[[0,7,1,"Будущее длительное (Будущее длительное время)"],[1,5,0,"WILL vs. GOING TO vs. Настоящее длительное время"],[1,5,1,"Простое настоящее время для расписаний и графиков"],[2,0,0,"Настоящее совершённое время — форма и употребление"],[2,0,1,"Настоящее совершённое время vs. Прошедшее простое"],[2,0,2,"Настоящее совершённое длительное время"],[2,0,3,"Настоящее совершённое время vs. Настоящее совершённое длительное время"],[2,5,0,"Прошедшее совершённое время — форма и употребление"],[2,5,1,"Прошедшее совершённое время vs. Прошедшее простое"],[2,5,2,"Прошедшее совершённое длительное время"]]},"tr":{"t":[[2,0,"Tamamlanmış şimdiki zaman"],[2,5,"Tamamlanmış geçmiş zaman"]],"i":[[0,7,1,"Gelecek zaman sürekli (Sürekli gelecek zaman)"],[1,5,0,"WILL vs. GOING TO vs. Sürekli şimdiki zaman"],[1,5,1,"Tarife ve programlar için Basit şimdiki zaman"],[2,0,0,"Tamamlanmış şimdiki zaman — biçim ve kullanım"],[2,0,1,"Tamamlanmış şimdiki zaman vs. Geçmiş zaman"],[2,0,2,"Tamamlanmış sürekli şimdiki zaman"],[2,0,3,"Tamamlanmış şimdiki zaman vs. Tamamlanmış sürekli şimdiki zaman"],[2,5,0,"Tamamlanmış geçmiş zaman — biçim ve kullanım"],[2,5,1,"Tamamlanmış geçmiş zaman vs. Geçmiş zaman"],[2,5,2,"Tamamlanmış sürekli geçmiş zaman"]]},"uk":{"t":[[0,4,"Простий теперішній час"],[0,5,"Теперішній тривалий час"],[1,0,"Простий минулий час"],[2,0,"Теперішній доконаний час"],[2,5,"Передминулий час"]],"i":[[0,4,0,"Простий теперішній час"],[0,4,1,"Питання та заперечення — Простий теперішній час"],[0,5,0,"Теперішній тривалий час"],[0,5,1,"Теперішній тривалий час vs. Простий теперішній час"],[0,7,1,"Майбутній тривалий час (Майбутній тривалий час)"],[1,0,0,"Простий минулий час — правильні дієслова"],[1,0,1,"Неправильні дієслова — Простий минулий час"],[1,0,2,"Заперечення в Простий минулий час"],[1,0,4,"Простий минулий час vs. Минулий тривалий час"],[1,5,0,"WILL vs. GOING TO vs. Теперішній тривалий час"],[1,5,1,"Простий теперішній час для розкладів і графіків"],[2,0,0,"Теперішній доконаний час — форма та вживання"],[2,0,1,"Теперішній доконаний час vs. Простий минулий час"],[2,0,2,"Теперішній доконаний тривалий час"],[2,0,3,"Теперішній доконаний час vs. Теперішній доконаний тривалий час"],[2,5,0,"Передминулий час — форма та вживання"],[2,5,1,"Передминулий час vs. Простий минулий час"],[2,5,2,"Передминулий тривалий час"]]},"id":{"t":[[0,4,"Waktu kini sederhana"],[0,5,"Waktu kini berlangsung"],[1,0,"Waktu lampau sederhana"],[2,0,"Waktu kini sempurna"],[2,5,"Waktu lampau sempurna"],[4,7,"Subjungtif"]],"i":[[0,4,0,"Waktu kini sederhana"],[0,4,1,"Pertanyaan dan negasi — Waktu kini sederhana"],[0,4,2,"Pertanyaan penegas"],[0,5,0,"Waktu kini berlangsung"],[0,5,1,"Waktu kini berlangsung vs. Waktu kini sederhana"],[0,7,1,"Waktu depan berlangsung (waktu mendatang berlanjut)"],[1,0,0,"Waktu lampau sederhana — kata kerja beraturan"],[1,0,1,"Kata kerja tidak beraturan — Waktu lampau sederhana"],[1,0,2,"Negasi Waktu lampau sederhana"],[1,0,4,"Waktu lampau sederhana vs. Waktu lampau berlangsung"],[1,5,0,"WILL vs. GOING TO vs. Waktu kini berlangsung"],[1,5,1,"Waktu kini sederhana untuk jadwal dan agenda"],[2,0,0,"Waktu kini sempurna — bentuk dan penggunaan"],[2,0,1,"Waktu kini sempurna vs. Waktu lampau sederhana"],[2,0,2,"Waktu kini sempurna berlangsung"],[2,0,3,"Waktu kini sempurna vs. Waktu kini sempurna berlangsung"],[2,5,0,"Waktu lampau sempurna — bentuk dan penggunaan"],[2,5,1,"Waktu lampau sempurna vs. Waktu lampau sederhana"],[2,5,2,"Waktu lampau sempurna berlangsung"]]},"ro":{"t":[[0,4,"Prezent simplu"],[0,5,"Prezent continuu"],[1,0,"Trecut simplu"],[2,0,"Prezent perfect"],[2,5,"Mai mult ca perfect"]],"i":[[0,4,0,"Prezent simplu"],[0,4,1,"Întrebări și negații — Prezent simplu"],[0,4,2,"Întrebări disjunctive"],[0,5,0,"Prezent continuu"],[0,5,1,"Prezent continuu vs. Prezent simplu"],[0,7,1,"Viitor continuu"],[1,0,0,"Trecut simplu — verbe regulate"],[1,0,1,"Verbe neregulate — Trecut simplu"],[1,0,2,"Negația la Trecut simplu"],[1,0,4,"Trecut simplu vs. Trecut continuu"],[1,5,0,"WILL vs. GOING TO vs. Prezent continuu"],[1,5,1,"Prezent simplu pentru orare și programe"],[2,0,0,"Prezent perfect — formă și utilizare"],[2,0,1,"Prezent perfect vs. Trecut simplu"],[2,0,2,"Prezent perfect continuu"],[2,0,3,"Prezent perfect vs. Prezent perfect continuu"],[2,5,0,"Mai mult ca perfect — formă și utilizare"],[2,5,1,"Mai mult ca perfect vs. Trecut simplu"],[2,5,2,"Mai mult ca perfect continuu"]]},"hu":{"t":[[0,4,"Egyszerű jelen idő"],[0,5,"Folyamatos jelen idő"],[1,0,"Egyszerű múlt idő"],[2,0,"Befejezett jelen idő"],[2,5,"Befejezett múlt idő"]],"i":[[0,4,0,"Egyszerű jelen idő"],[0,4,1,"Kérdések és tagadás — Egyszerű jelen idő"],[0,4,2,"Visszakérdezések"],[0,5,0,"Folyamatos jelen idő"],[0,5,1,"Folyamatos jelen idő vs. Egyszerű jelen idő"],[0,7,1,"Folyamatos jövő idő"],[1,0,0,"Egyszerű múlt idő — szabályos igék"],[1,0,1,"Rendhagyó igék — Egyszerű múlt idő"],[1,0,2,"Tagadás Egyszerű múlt idő-ben"],[1,0,4,"Egyszerű múlt idő vs. Folyamatos múlt idő"],[1,5,0,"WILL vs. GOING TO vs. Folyamatos jelen idő"],[1,5,1,"Egyszerű jelen idő menetrendekhez és órarendekhez"],[2,0,0,"Befejezett jelen idő — alak és használat"],[2,0,1,"Befejezett jelen idő vs. Egyszerű múlt idő"],[2,0,2,"Folyamatos befejezett jelen idő"],[2,0,3,"Befejezett jelen idő vs. Folyamatos befejezett jelen idő"],[2,1,0,"Nulladik típusú feltételes mondat"],[2,5,0,"Befejezett múlt idő — alak és használat"],[2,5,1,"Befejezett múlt idő vs. Egyszerű múlt idő"],[2,5,2,"Folyamatos befejezett múlt idő"]]},"el":{"t":[[0,4,"Απλός ενεστώτας"],[0,5,"Συνεχής ενεστώτας"],[1,0,"Απλός αόριστος"],[2,0,"Ενεστώτας τέλειος"],[2,5,"Υπερσυντέλικος"]],"i":[[0,4,0,"Απλός ενεστώτας"],[0,4,1,"Ερωτήσεις και αρνήσεις — Απλός ενεστώτας"],[0,4,2,"Ερωτήσεις επιβεβαίωσης"],[0,5,0,"Συνεχής ενεστώτας"],[0,5,1,"Συνεχής ενεστώτας vs. Απλός ενεστώτας"],[0,7,1,"Συνεχής μέλλοντας"],[1,0,0,"Απλός αόριστος — κανονικά ρήματα"],[1,0,1,"Ανώμαλα ρήματα — Απλός αόριστος"],[1,0,2,"Άρνηση στο Απλός αόριστος"],[1,0,4,"Απλός αόριστος vs. Παρατατικός"],[1,5,0,"WILL vs. GOING TO vs. Συνεχής ενεστώτας"],[1,5,1,"Απλός ενεστώτας για δρομολόγια και προγράμματα"],[2,0,0,"Ενεστώτας τέλειος — σχηματισμός και χρήση"],[2,0,1,"Ενεστώτας τέλειος vs. Απλός αόριστος"],[2,0,2,"Ενεστώτας τέλειος συνεχής"],[2,0,3,"Ενεστώτας τέλειος vs. Ενεστώτας τέλειος συνεχής"],[2,1,0,"Υποθετικός λόγος τύπου 0"],[2,5,0,"Υπερσυντέλικος — σχηματισμός και χρήση"],[2,5,1,"Υπερσυντέλικος vs. Απλός αόριστος"],[2,5,2,"Συνεχής υπερσυντέλικος"]]},"bg":{"t":[[0,4,"Просто сегашно време"],[0,5,"Сегашно продължително време"],[1,0,"Просто минало време"],[2,0,"Сегашно перфектно време"],[2,5,"Предминало време"]],"i":[[0,4,0,"Просто сегашно време"],[0,4,1,"Въпроси и отрицания — Просто сегашно време"],[0,5,0,"Сегашно продължително време"],[0,5,1,"Сегашно продължително време срещу Simple"],[0,7,1,"Бъдеще продължително време"],[1,0,0,"Просто минало време — правилни глаголи"],[1,0,1,"Неправилни глаголи — Просто минало време"],[1,0,2,"Отрицания в Просто минало време"],[1,0,4,"Просто минало време срещу Минало продължително време"],[1,5,0,"WILL срещу GOING TO срещу Сегашно продължително време"],[1,5,1,"Просто сегашно време за разписания и графици"],[2,0,0,"Сегашно перфектно време — форма и употреба"],[2,0,1,"Сегашно перфектно време срещу Просто минало време"],[2,0,2,"Сегашно перфектно продължително време"],[2,0,3,"Сегашно перфектно време срещу Сегашно перфектно продължително време"],[2,5,0,"Предминало време — форма и употреба"],[2,5,1,"Предминало време срещу Просто минало време"],[2,5,2,"Предминало продължително време"]]},"hr":{"t":[[0,4,"Jednostavno sadašnje vrijeme"],[0,5,"Trajno sadašnje vrijeme"],[1,0,"Jednostavno prošlo vrijeme"],[2,0,"Sadašnje perfektno vrijeme"],[2,5,"Pretprošlo vrijeme"]],"i":[[0,4,0,"Jednostavno sadašnje vrijeme"],[0,4,1,"Pitanja i niječni oblici — Jednostavno sadašnje vrijeme"],[0,4,2,"Upitni dometci"],[0,5,0,"Trajno sadašnje vrijeme"],[0,5,1,"Trajno sadašnje vrijeme nasuprot Simple"],[0,7,1,"Trajno buduće vrijeme"],[1,0,0,"Jednostavno prošlo vrijeme — pravilni glagoli"],[1,0,1,"Nepravilni glagoli — Jednostavno prošlo vrijeme"],[1,0,2,"Niječni oblici u Jednostavno prošlo vrijeme"],[1,0,4,"Jednostavno prošlo vrijeme nasuprot Trajno prošlo vrijeme"],[1,5,0,"WILL nasuprot GOING TO nasuprot Trajno sadašnje vrijeme"],[1,5,1,"Jednostavno sadašnje vrijeme za rasporede i redove vožnje"],[2,0,0,"Sadašnje perfektno vrijeme — oblik i uporaba"],[2,0,1,"Sadašnje perfektno vrijeme nasuprot Jednostavno prošlo vrijeme"],[2,0,2,"Sadašnje perfektno trajno vrijeme"],[2,0,3,"Sadašnje perfektno vrijeme nasuprot Sadašnje perfektno trajno vrijeme"],[2,5,0,"Pretprošlo vrijeme — oblik i uporaba"],[2,5,1,"Pretprošlo vrijeme nasuprot Jednostavno prošlo vrijeme"],[2,5,2,"Pretprošlo trajno vrijeme"]]},"da":{"t":[[0,4,"Nutid"],[0,5,"Nutid kontinuerlig"],[1,0,"Datid"],[2,0,"Førnutid"],[2,5,"Fortid"]],"i":[[0,4,0,"Nutid"],[0,4,1,"Spørgsmål og benægtelser — Nutid"],[0,4,2,"Bekræftelsesspørgsmål"],[0,5,0,"Nutid kontinuerlig"],[0,5,1,"Nutid kontinuerlig kontra Simple"],[0,7,1,"Futurum kontinuerlig"],[1,0,0,"Datid — regelmæssige verber"],[1,0,1,"Uregelmæssige verber — Datid"],[1,0,2,"Benægtelser i Datid"],[1,0,4,"Datid kontra Datid kontinuerlig"],[1,5,0,"WILL kontra GOING TO kontra Nutid kontinuerlig"],[1,5,1,"Nutid til køreplaner og tidsplaner"],[2,0,0,"Førnutid — form og brug"],[2,0,1,"Førnutid kontra Datid"],[2,0,2,"Førnutid kontinuerlig"],[2,0,3,"Førnutid kontra Førnutid kontinuerlig"],[2,5,0,"Fortid — form og brug"],[2,5,1,"Fortid kontra Datid"],[2,5,2,"Fortid kontinuerlig"]]},"fi":{"t":[[0,4,"Preesens"],[0,5,"Jatkuva preesens"],[1,0,"Imperfekti"],[2,0,"Perfekti"],[2,5,"Pluskvamperfekti"],[5,5,"Varauksellinen ilmaisu"]],"i":[[0,4,0,"Preesens"],[0,4,1,"Kysymykset ja kieltolauseet — Preesens"],[0,4,2,"Vahvistuskysymykset"],[0,5,0,"Jatkuva preesens"],[0,5,1,"Jatkuva preesens vs. Preesens"],[0,7,1,"Jatkuva futuuri"],[1,0,0,"Imperfekti — säännölliset verbit"],[1,0,1,"Epäsäännölliset verbit — Imperfekti"],[1,0,2,"Imperfekti kieltolauseet"],[1,0,4,"Imperfekti vs. Jatkuva imperfekti"],[1,5,0,"WILL vs. GOING TO vs. Jatkuva preesens"],[1,5,1,"Preesens aikatauluissa ja ohjelmissa"],[2,0,0,"Perfekti — muoto ja käyttö"],[2,0,1,"Perfekti vs. Imperfekti"],[2,0,2,"Jatkuva perfekti"],[2,0,3,"Perfekti vs. Jatkuva perfekti"],[2,5,0,"Pluskvamperfekti — muoto ja käyttö"],[2,5,1,"Pluskvamperfekti vs. Imperfekti"],[2,5,2,"Jatkuva pluskvamperfekti"]]},"et":{"t":[[0,4,"Lihtolevik"],[0,5,"Kestev olevik"],[1,0,"Lihtminevik"],[2,0,"Täisminevik"],[2,5,"Enneminevik"],[5,5,"Väite pehmendamine"]],"i":[[0,0,0,"Tegusõna BE (am/is/are)"],[0,0,1,"Tegusõna HAVE (have/has)"],[0,4,0,"Lihtolevik"],[0,4,1,"Küsimused ja eitused — Lihtolevik"],[0,5,0,"Kestev olevik"],[0,5,1,"Kestev olevik vs. Lihtolevik"],[0,7,1,"Kestev tulevik"],[1,0,0,"Lihtminevik — regulaarsed verbid"],[1,0,1,"Ebaregulaarsed verbid — Lihtminevik"],[1,0,2,"Lihtminevik eitused"],[1,0,4,"Lihtminevik vs. Kestev minevik"],[1,5,0,"WILL vs. GOING TO vs. Kestev olevik"],[1,5,1,"Lihtolevik sõiduplaanide ja ajakavade jaoks"],[2,0,0,"Täisminevik — vorm ja kasutus"],[2,0,1,"Täisminevik vs. Lihtminevik"],[2,0,2,"Kestev täisminevik"],[2,0,3,"Täisminevik vs. Kestev täisminevik"],[2,5,0,"Enneminevik — vorm ja kasutus"],[2,5,1,"Enneminevik vs. Lihtminevik"],[2,5,2,"Kestev enneminevik"]]},"sl":{"t":[[0,4,"Preprosti sedanji čas"],[0,5,"Trajni sedanji čas"],[1,0,"Preprosti pretekli čas"],[2,0,"Sedanji dovršni čas"],[2,5,"Predpretekli čas"],[5,5,"Omiljenje trditev"]],"i":[[0,4,0,"Preprosti sedanji čas"],[0,4,1,"Vprašanja in zanikanja — Preprosti sedanji čas"],[0,5,0,"Trajni sedanji čas"],[0,5,1,"Trajni sedanji čas vs. Preprosti sedanji čas"],[0,7,1,"Trajni prihodnji čas"],[1,0,0,"Preprosti pretekli čas — pravilni glagoli"],[1,0,1,"Nepravilni glagoli — Preprosti pretekli čas"],[1,0,2,"Zanikanje v Preprosti pretekli čas"],[1,0,4,"Preprosti pretekli čas vs. Trajni pretekli čas"],[1,5,0,"WILL vs. GOING TO vs. Trajni sedanji čas"],[1,5,1,"Preprosti sedanji čas za vozne rede in urnike"],[2,0,0,"Sedanji dovršni čas — oblika in raba"],[2,0,1,"Sedanji dovršni čas vs. Preprosti pretekli čas"],[2,0,2,"Sedanji dovršni trajni čas"],[2,0,3,"Sedanji dovršni čas vs. Sedanji dovršni trajni čas"],[2,5,0,"Predpretekli čas — oblika in raba"],[2,5,1,"Predpretekli čas vs. Preprosti pretekli čas"],[2,5,2,"Predpretekli trajni čas"]]},"no":{"t":[[0,4,"Presens"],[0,5,"Presens progressiv"],[1,0,"Preteritum"],[2,0,"Presens perfektum"],[2,5,"Preteritum perfektum"]],"i":[[0,4,0,"Presens"],[0,4,1,"Spørsmål og nektelser — Presens"],[0,4,2,"Bekreftelsesspørsmål"],[0,5,0,"Presens progressiv"],[0,5,1,"Presens progressiv vs. Presens"],[0,7,1,"Futurum progressiv"],[1,0,0,"Preteritum — regelrette verb"],[1,0,1,"Uregelrette verb — Preteritum"],[1,0,2,"Nektelser i Preteritum"],[1,0,4,"Preteritum vs. Preteritum progressiv"],[1,5,0,"WILL vs. GOING TO vs. Presens progressiv"],[1,5,1,"Presens for rutetider og planer"],[2,0,0,"Presens perfektum — form og bruk"],[2,0,1,"Presens perfektum vs. Preteritum"],[2,0,2,"Presens perfektum progressiv"],[2,0,3,"Presens perfektum vs. Presens perfektum progressiv"],[2,1,0,"Betingelsessetning type 0"],[2,1,1,"Betingelsessetning type 1"],[2,1,2,"Betingelsessetning type 2"],[2,1,3,"Betingelsessetning type 3"],[2,5,0,"Preteritum perfektum — form og bruk"],[2,5,1,"Preteritum perfektum vs. Preteritum"],[2,5,2,"Preteritum perfektum progressiv"]]},"lv":{"t":[[0,4,"Vienkāršā tagadne"],[0,5,"Ilgstošā tagadne"],[1,0,"Vienkāršā pagātne"],[2,0,"Tagadnes perfekts"],[2,5,"Pirmspagātne"]],"i":[[0,4,0,"Vienkāršā tagadne"],[0,4,1,"Jautājumi un noliegumi — Vienkāršā tagadne"],[0,4,2,"Apstiprinājuma jautājumi"],[0,5,0,"Ilgstošā tagadne"],[0,5,1,"Ilgstošā tagadne pret Simple"],[0,7,1,"Ilgstošā nākotne"],[1,0,0,"Vienkāršā pagātne — regulārie darbības vārdi"],[1,0,1,"Neregulārie darbības vārdi — Vienkāršā pagātne"],[1,0,2,"Vienkāršā pagātne noliegums"],[1,0,4,"Vienkāršā pagātne pret Ilgstošā pagātne"],[1,5,0,"WILL pret GOING TO pret Ilgstošā tagadne"],[1,5,1,"Vienkāršā tagadne sarakstiem un grafikiem"],[2,0,0,"Tagadnes perfekts — veidošana un lietošana"],[2,0,1,"Tagadnes perfekts pret Vienkāršā pagātne"],[2,0,2,"Ilgstošais tagadnes perfekts"],[2,0,3,"Tagadnes perfekts pret Ilgstošais tagadnes perfekts"],[2,1,0,"0. tipa nosacījuma teikumi"],[2,1,1,"1. tipa nosacījuma teikumi"],[2,1,2,"2. tipa nosacījuma teikumi"],[2,1,3,"3. tipa nosacījuma teikumi"],[2,5,0,"Pirmspagātne — veidošana un lietošana"],[2,5,1,"Pirmspagātne pret Vienkāršā pagātne"],[2,5,2,"Ilgstošā pirmspagātne"]]},"lt":{"t":[[0,4,"Esamasis paprastasis laikas"],[0,5,"Esamasis tęstinis laikas"],[1,0,"Būtasis paprastasis laikas"],[2,0,"Esamasis tobulasis laikas"],[2,5,"Būtasis tobulasis laikas"]],"i":[[0,4,0,"Esamasis paprastasis laikas"],[0,4,1,"Klausimai ir neiginiai — Esamasis paprastasis laikas"],[0,4,2,"Patvirtinamieji klausimai"],[0,5,0,"Esamasis tęstinis laikas"],[0,5,1,"Esamasis tęstinis laikas ir Simple palyginimas"],[0,7,1,"Būsimasis tęstinis laikas"],[1,0,0,"Būtasis paprastasis laikas — taisyklingieji veiksmažodžiai"],[1,0,1,"Netaisyklingieji veiksmažodžiai — Būtasis paprastasis laikas"],[1,0,2,"Būtasis paprastasis laikas neiginiai"],[1,0,4,"Būtasis paprastasis laikas ir Būtasis tęstinis laikas palyginimas"],[1,5,0,"WILL, GOING TO ir Esamasis tęstinis laikas palyginimas"],[1,5,1,"Esamasis paprastasis laikas tvarkaraščiams ir grafikams"],[2,0,0,"Esamasis tobulasis laikas — forma ir vartojimas"],[2,0,1,"Esamasis tobulasis laikas ir Būtasis paprastasis laikas palyginimas"],[2,0,2,"Esamasis tobulasis tęstinis laikas"],[2,0,3,"Esamasis tobulasis laikas ir Esamasis tobulasis tęstinis laikas palyginimas"],[2,1,0,"0 tipo sąlygos sakiniai"],[2,1,1,"1 tipo sąlygos sakiniai"],[2,1,2,"2 tipo sąlygos sakiniai"],[2,1,3,"3 tipo sąlygos sakiniai"],[2,5,0,"Būtasis tobulasis laikas — forma ir vartojimas"],[2,5,1,"Būtasis tobulasis laikas ir Būtasis paprastasis laikas palyginimas"],[2,5,2,"Būtasis tobulasis tęstinis laikas"]]},"mt":{"t":[[0,4,"Preżent sempliċi"],[0,5,"Preżent kontinwu"],[1,0,"Passat sempliċi"],[2,0,"Preżent perfett"],[2,5,"Passat perfett"]],"i":[[0,4,0,"Preżent sempliċi"],[0,4,1,"Mistoqsijiet u negattivi — Preżent sempliċi"],[0,4,2,"Mistoqsijiet ta’ konferma"],[0,5,0,"Preżent kontinwu"],[0,5,1,"Preżent kontinwu vs. Preżent sempliċi"],[0,7,1,"Futur kontinwu"],[1,0,0,"Passat sempliċi — verbi regolari"],[1,0,1,"Verbi irregolari — Passat sempliċi"],[1,0,2,"Negattivi tal-Passat sempliċi"],[1,0,4,"Passat sempliċi vs. Passat kontinwu"],[1,5,0,"WILL vs. GOING TO vs. Preżent kontinwu"],[1,5,1,"Preżent sempliċi għal skedi u orarji"],[2,0,0,"Preżent perfett — forma u użu"],[2,0,1,"Preżent perfett vs. Passat sempliċi"],[2,0,2,"Preżent perfett kontinwu"],[2,0,3,"Preżent perfett vs. Preżent perfett kontinwu"],[2,1,0,"Kondizzjonali tat-tip 0"],[2,1,1,"Kondizzjonali tat-tip 1"],[2,1,2,"Kondizzjonali tat-tip 2"],[2,1,3,"Kondizzjonali tat-tip 3"],[2,5,0,"Passat perfett — forma u użu"],[2,5,1,"Passat perfett vs. Passat sempliċi"],[2,5,2,"Passat perfett kontinwu"]]},"bo":{"t":[[0,4,"ད་ལྟའི་སྤྱིར་བཏང་དུས།"],[0,5,"ད་ལྟའི་མུ་མཐུད་དུས།"],[1,0,"འདས་པའི་སྤྱིར་བཏང་དུས།"],[2,0,"ད་ལྟའི་ཚར་བའི་དུས།"],[2,5,"འདས་པའི་ཚར་བའི་དུས།"],[4,7,"ཚོད་དཔག་གི་ཚུལ།"],[5,0,"ལྡོག་སྒྲིག"],[5,5,"ངེས་མེད་ཀྱི་བརྗོད་ཚུལ།"]],"i":[[0,4,0,"ད་ལྟའི་སྤྱིར་བཏང་དུས།"],[0,4,1,"དྲི་བ་དང་དགག་ཚིག — ད་ལྟའི་སྤྱིར་བཏང་དུས།"],[0,4,2,"སླར་དྲིས་ཀྱི་དྲི་བ།"],[0,5,0,"ད་ལྟའི་མུ་མཐུད་དུས།"],[0,5,1,"ད་ལྟའི་མུ་མཐུད་དུས། vs. ད་ལྟའི་སྤྱིར་བཏང་དུས།"],[0,7,1,"མ་འོངས་པའི་མུ་མཐུད་དུས།"],[1,0,0,"འདས་པའི་སྤྱིར་བཏང་དུས། — ཆད་ལྡན་གྱི་བྱ་ཚིག"],[1,0,1,"ཆད་མེད་བྱ་ཚིག — འདས་པའི་སྤྱིར་བཏང་དུས།"],[1,0,2,"འདས་པའི་སྤྱིར་བཏང་དུས། གི་དགག་ཚིག"],[1,0,4,"འདས་པའི་སྤྱིར་བཏང་དུས། vs. འདས་པའི་མུ་མཐུད་དུས།"],[1,5,0,"WILL vs. GOING TO vs. ད་ལྟའི་མུ་མཐུད་དུས།"],[1,5,1,"དུས་ཚོད་རེའུ་མིག་གི་ཆེད་དུ་ ད་ལྟའི་སྤྱིར་བཏང་དུས།"],[2,0,0,"ད་ལྟའི་ཚར་བའི་དུས། — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།"],[2,0,1,"ད་ལྟའི་ཚར་བའི་དུས། vs. འདས་པའི་སྤྱིར་བཏང་དུས།"],[2,0,2,"ད་ལྟའི་ཚར་བའི་མུ་མཐུད་དུས།"],[2,0,3,"ད་ལྟའི་ཚར་བའི་དུས། vs. ད་ལྟའི་ཚར་བའི་མུ་མཐུད་དུས།"],[2,1,0,"ཆ་རྐྱེན་ཚིག་ཚན་རིགས་༠"],[2,1,1,"ཆ་རྐྱེན་ཚིག་ཚན་རིགས་༡"],[2,1,2,"ཆ་རྐྱེན་ཚིག་ཚན་རིགས་༢"],[2,1,3,"ཆ་རྐྱེན་ཚིག་ཚན་རིགས་༣"],[2,5,0,"འདས་པའི་ཚར་བའི་དུས། — བཟོ་ཚུལ་དང་སྤྱོད་ཚུལ།"],[2,5,1,"འདས་པའི་ཚར་བའི་དུས། vs. འདས་པའི་སྤྱིར་བཏང་དུས།"],[2,5,2,"འདས་པའི་ཚར་བའི་མུ་མཐུད་དུས།"]]}};
+  Object.keys(P).forEach(function(l){var tr=GRAMMAR_TRANSLATIONS[l];if(!tr)return;
+    P[l].t.forEach(function(x){if(tr.topics[x[0]])tr.topics[x[0]][x[1]]=x[2];});
+    P[l].i.forEach(function(x){if(tr.items[x[0]]&&tr.items[x[0]][x[1]])tr.items[x[0]][x[1]][x[2]]=x[3];});
+  });
+  var H={"de":["Für eine Geschichte tippe auf den zweiten Punkt","Für Dialoge tippe auf den ersten Punkt"],"fr":["Pour une histoire, touche le deuxième point","Pour des dialogues, touche le premier point"],"es":["Para una historia, toca el segundo punto","Para diálogos, toca el primer punto"],"it":["Per una storia, tocca il secondo punto","Per i dialoghi, tocca il primo punto"],"pt":["Para uma história, toque no segundo ponto","Para diálogos, toque no primeiro ponto"],"pl":["Aby dostać historię, dotknij drugiej kropki","Aby dostać dialogi, dotknij pierwszej kropki"],"cn":["想要故事，请点第二个圆点","想要对话，请点第一个圆点"],"jp":["物語にするには2つ目のドットをタップ","会話にするには1つ目のドットをタップ"],"kr":["이야기를 원하면 두 번째 점을 누르세요","대화를 원하면 첫 번째 점을 누르세요"],"sk":["Pre príbeh klepni na druhú bodku","Pre dialógy klepni na prvú bodku"],"nl":["Tik op de tweede stip voor een verhaal","Tik op de eerste stip voor dialogen"],"sv":["För en berättelse, tryck på den andra pricken","För dialoger, tryck på den första pricken"],"ru":["Для рассказа нажми на вторую точку","Для диалогов нажми на первую точку"],"tr":["Hikâye için ikinci noktaya dokun","Diyaloglar için ilk noktaya dokun"],"uk":["Для історії торкнись другої крапки","Для діалогів торкнись першої крапки"],"id":["Untuk cerita, ketuk titik kedua","Untuk dialog, ketuk titik pertama"],"ro":["Pentru o poveste, atinge al doilea punct","Pentru dialoguri, atinge primul punct"],"hu":["Történethez koppints a második pontra","Párbeszédekhez koppints az első pontra"],"el":["Για ιστορία, πάτα τη δεύτερη τελεία","Για διαλόγους, πάτα την πρώτη τελεία"],"bg":["За история докосни втората точка","За диалози докосни първата точка"],"hr":["Za priču dodirni drugu točku","Za dijaloge dodirni prvu točku"],"da":["For en historie, tryk på den anden prik","For dialoger, tryk på den første prik"],"fi":["Tarinaa varten napauta toista pistettä","Dialogeja varten napauta ensimmäistä pistettä"],"et":["Loo jaoks puuduta teist punkti","Dialoogide jaoks puuduta esimest punkti"],"sl":["Za zgodbo tapni drugo piko","Za dialoge tapni prvo piko"],"lv":["Stāstam pieskaries otrajam punktam","Dialogiem pieskaries pirmajam punktam"],"lt":["Istorijai bakstelėk antrą tašką","Dialogams bakstelėk pirmą tašką"],"mt":["Għal storja, taptap it-tieni punt","Għal djalogi, taptap l-ewwel punt"],"no":["For en fortelling, trykk på den andre prikken","For dialoger, trykk på den første prikken"],"bo":["གཏམ་རྒྱུད་དགོས་ན། ཚེག་གཉིས་པ་ལ་མནན།","ཚིག་གླེང་དགོས་ན། ཚེག་དང་པོ་ལ་མནན།"]};
+  Object.keys(H).forEach(function(l){var t=T[l];if(!t)return;
+    var p=String(t.intentPlaceholder||'').split('\n');if(p.length<2)return;
+    if(!t.intentPhDialog||t.intentPhDialog===T.en.intentPhDialog)t.intentPhDialog=p[0]+'\n'+H[l][0];
+    if(!t.intentPhStory||t.intentPhStory===T.en.intentPhStory)t.intentPhStory=p[1]+'\n'+H[l][1];
+  });
+})();
+
+// ── Sjednocení překladů podle češtiny: Future Perfect, „vs. Simple“, small talk, Phrasal verbs, MINI CONTEXTS ──
+(function(){
+  var TK={"dlTitleShort":{"lv":"MINIKONTEKSTI","lt":"MINIKONTEKSTAI","mt":"MINI-KUNTESTI","no":"MINIKONTEKSTER","bo":"སྐབས་དོན་ཆུང་ཆུང་།"},"exChip6":{"pl":"rozmowa towarzyska","bg":"лек разговор","hr":"neobvezan razgovor","da":"småsnak","fi":"rupattelu","et":"seltskonnavestlus","sl":"neformalni pogovor"},"lblVerb":{"ro":"⚡ Verbe frazale","el":"⚡ Ρηματικές φράσεις","bg":"⚡ Фразови глаголи","hr":"⚡ Frazalni glagoli","da":"⚡ Frasale verber"},"quickLevelPhrasalVerbs":{"ro":"verbe frazale","el":"ρηματικές φράσεις","bg":"фразови глаголи","da":"frasale verber"},"advVerbLabel":{"ro":"⚡ Verb frazal (indiciu)","el":"⚡ Ρηματική φράση (υπόδειξη)","bg":"⚡ Фразов глагол (подсказка)","da":"⚡ Frasalt verbum (hint)"}};
+  Object.keys(TK).forEach(function(k){Object.keys(TK[k]).forEach(function(l){if(T[l])T[l][k]=TK[k][l];});});
+  var VS={"bg":"Сегашно продължително време vs. Просто сегашно време","hr":"Trajno sadašnje vrijeme vs. Jednostavno sadašnje vrijeme","da":"Nutid kontinuerlig vs. Nutid","lv":"Ilgstošā tagadne vs. Vienkāršā tagadne","lt":"Esamasis tęstinis laikas vs. Esamasis paprastasis laikas"};
+  Object.keys(VS).forEach(function(l){var tr=GRAMMAR_TRANSLATIONS[l];if(tr&&tr.items[0]&&tr.items[0][5]&&/Simple/.test(tr.items[0][5][1]||''))tr.items[0][5][1]=VS[l];});
+  var FP={"de":["Futur II","Futur II Verlaufsform"],"pl":["Czas przyszły dokonany","Czas przyszły dokonany ciągły"],"nl":["Voltooid toekomende tijd","Voltooid toekomende tijd continu"],"sv":["Futurum perfekt","Futurum perfekt progressiv"],"ru":["Будущее совершённое время","Будущее совершённое длительное время"],"tr":["Tamamlanmış gelecek zaman","Tamamlanmış sürekli gelecek zaman"],"uk":["Майбутній доконаний час","Майбутній доконаний тривалий час"],"id":["Waktu depan sempurna","Waktu depan sempurna berlangsung"],"ro":["Viitor anterior","Viitor anterior continuu"],"hu":["Befejezett jövő idő","Folyamatos befejezett jövő idő"],"el":["Τετελεσμένος μέλλοντας","Συνεχής τετελεσμένος μέλλοντας"],"bg":["Бъдеще предварително време","Бъдеще предварително продължително време"],"hr":["Buduće perfektno vrijeme","Buduće perfektno trajno vrijeme"],"da":["Futurum perfektum","Futurum perfektum kontinuerlig"],"fi":["Futuurin perfekti","Jatkuva futuurin perfekti"],"sl":["Prihodnji dovršni čas","Prihodnji dovršni trajni čas"],"no":["Futurum perfektum","Futurum perfektum progressiv"],"et":["Täistulevik (Future Perfect Simple)","Kestev täistulevik (Future Perfect Continuous)"],"lv":["Nākotnes perfekts (Future Perfect Simple)","Ilgstošais nākotnes perfekts (Future Perfect Continuous)"],"lt":["Būsimasis tobulasis laikas (Future Perfect Simple)","Būsimasis tobulasis tęstinis laikas (Future Perfect Continuous)"],"mt":["Futur perfett (Future Perfect Simple)","Futur perfett kontinwu (Future Perfect Continuous)"],"bo":["མ་འོངས་པའི་ཚར་བའི་དུས། (Future Perfect Simple)","མ་འོངས་པའི་ཚར་བའི་མུ་མཐུད་དུས། (Future Perfect Continuous)"]};
+  Object.keys(FP).forEach(function(l){var tr=GRAMMAR_TRANSLATIONS[l];if(!tr||!tr.items[3]||!tr.items[3][6])return;
+    var a=tr.items[3][6];
+    if(typeof a[0]==='string'&&a[0].indexOf('Future Perfect Simple')===0)a[0]=a[0].replace('Future Perfect Simple',FP[l][0]);
+    if(typeof a[1]==='string'&&a[1].indexOf('Future Perfect Continuous')===0)a[1]=a[1].replace('Future Perfect Continuous',FP[l][1]);
+  });
+})();
+
+
 
 // Vrátí přeložená data pro buildGrammarMenu
 function getTranslatedGrammarData() {
@@ -11853,11 +11889,11 @@ function _buildStoryPrompt(situation, toName, fromName, storyTitle) {
     'C1-C2':'Level rules: varied sentence structures, rich vocabulary, idiomatic expressions and discourse markers, a natural style that never feels forced or academic.'
   })[lvl] || '';
   return 'Write a short story about this situation: ' + situation + '\n' +
-    'Language A (being learned): ' + toName + '. Language B (known): ' + fromName + '. Level: ' + lvl + '. Style: ' + selectedStyle + '.\n' +
+    'Language A (being learned): ' + toName + '. Language B (known): ' + fromName + '. Level: ' + lvl + '. Style: ' + _styleDef(selectedStyle) + '.\n' +
     'If the situation above is only a single word or short phrase (not a description of a situation), build the story around it: use it naturally in at least 3 different sentences of Language A, spread across the story (inflected forms are fine) and make the first flashcard from it; this overrides the flashcard rules below for that one card.\n' +
     'Length: about 26 sentences in Language A, about ' + _w[0] + ' words (Chinese/Japanese: about ' + _w[1] + ' characters). Language B is a faithful translation of the same length.\n' +
     (_lvlRules ? _lvlRules + '\n' : '') +
-    '7-9 short paragraphs of 3-4 sentences, a finished story with a clear ending; the last sentence must be complete.\n' +
+    '7-9 short paragraphs of 3-4 sentences, a finished story with a clear ending; the last sentence must be complete. Include 3-4 lines of direct speech in quotation marks, spread across the story.\n' +
     (selectedGrammar ? 'Grammar focus: ' + selectedGrammar.prompt + ' This grammar focus has priority over the level rules. Use it clearly in about 4-6 sentences of Language A, where it sounds natural (usually in the characters\' direct speech, thoughts or comments; the narration may stay in the simple past unless the focus is itself a narrative tense). Do not replace it with a similar structure or another tense of the same family. All other sentences stay at the chosen level. Do not explain the grammar and do not add grammar notes. Before answering, silently check that at least 4 sentences clearly contain the target structure and that it is used correctly; fix any that do not.\n' : '') +
     'Translation rule: Language B translates Language A sentence by sentence, faithfully: same subject, names and details. Never invent, rename or change a character; every character has ONE simple name (easy to decline in Language B) used consistently in both languages.\n' +
     (storyTitle ? 'Title: the very first line of your answer is exactly **' + storyTitle + '** (bold, nothing else on that line, no translation), then one blank line, then a short title of the story in Language A (the whole line in **bold**), directly below it its translation in Language B formatted exactly like the sentence translations below, then one blank line, then the story.\n' : '') +
@@ -11881,6 +11917,10 @@ var DM_PRESETS = {
   'by the way': { to: 'en', senses: [
     { fn: 'introduces a short side remark with a new fact unrelated to the topic so far. Never in turn 1, never the main news.', cz: 'mimochodem', minTurn: 3 }
   ] },
+  'however': { to: 'en', contrast: true, senses: [
+    { fn: 'sentence-initial "However, …": contrasts with the fact or opinion stated in the turn right before it, then adds the opposing point. Never the first turn.', cz: 'nicméně', minTurn: 2 },
+    { fn: 'inserted "…, however, …" (set off by commas inside the sentence): a contrasting point that qualifies the speaker\'s own statement.', cz: 'však', minTurn: 2 }
+  ] },
   'actually': { to: 'en', senses: [
     { fn: 'corrects an assumption stated in the turn right before it ("I thought …").', cz: 've skutečnosti' },
     { fn: 'adds a surprising or softening detail in a friendly way ("I\'ve actually never tried it").', cz: 'vlastně' }
@@ -11889,7 +11929,7 @@ var DM_PRESETS = {
 
 function _dmGcd(a, b) { return b ? _dmGcd(b, a % b) : a; }
 
-function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns) {
+function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples, miniCtx) {
   var preset = DM_PRESETS[(intent || '').toLowerCase().trim()];
   if (preset && !/^English/i.test(toName)) preset = null;           // presety jsou jen pro angličtinu jako cílový jazyk
   var useCz = preset && fromLang === 'cz';
@@ -11905,7 +11945,7 @@ function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns) {
     [3, 2, 1].some(function (c) { if (_dmGcd(c, m) === 1) { stride = c; return true; } });
     var turn = lo + ((i * stride) % m);
     var who = (turn % 2 === 1) ? 'first speaker' : 'second speaker';
-    rows.push('D' + (i + 1) + ': turn ' + turn + ' (' + who + ')' + (K ? ' | sense ' + ((i % K) + 1) : ''));
+    rows.push(miniCtx ? ('D' + (i + 1) + ': sentence 2' + (K ? ' | sense ' + ((i % K) + 1) : '')) : ('D' + (i + 1) + ': turn ' + turn + ' (' + who + ')' + (K ? ' | sense ' + ((i % K) + 1) : '')));
   }
 
   var out = 'WORD PLAN (fixed by the app, never change it):\n';
@@ -11915,19 +11955,29 @@ function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns) {
       out += 'Sense ' + (idx + 1) + ': ' + s.fn + (useCz ? ' Czech equivalent: "' + s.cz + '" (used ONLY for this sense).' : '') + '\n';
     });
     out += 'Never translate one sense with the equivalent of another. The first line lists exactly these equivalents.\n';
-    out += 'Dialogue N uses the sense named in the table below; the three example sentences use sense 1, 2, 3 in this order' + (K < 3 ? ' (start again at sense 1 when the senses run out)' : '') + '.\n';
+    out += 'Dialogue N uses the sense named in the table below; the ' + (nExamples || 3) + ' example sentences use sense 1, 2, 3 … in this order, one sentence per sense' + (K < (nExamples || 3) ? ' (start again at sense 1 only when there are fewer senses than sentences)' : '') + '.\n';
   } else {
-    out += 'Number the senses you chose in your internal step 1, 2, 3 … in the order of the first line (K = how many). Dialogue N is built around sense ((N-1) mod K)+1, so every listed sense is used in at least one dialogue; the three example sentences use senses 1, 2, 3 in this order (start again at sense 1 when the senses run out).\n';
+    out += 'Number the senses you chose in your internal step 1, 2, 3 … in the order of the first line (K = how many). ' + (totalDialogs >= 8 ? 'Sense 1 is the most frequent and gets about half of the dialogues: dialogue N is built around sense 1 when N is odd, and the even-numbered dialogues take senses 2, 3 \u2026 in turn, starting again at sense 2 (if K = 1 every dialogue uses sense 1), so every listed sense is used in at least one dialogue; ' : 'Dialogue N is built around sense ((N-1) mod K)+1, so every listed sense is used in at least one dialogue; ') + 'the ' + (nExamples || 3) + ' example sentences use senses 1, 2, 3 … in this order, one sentence per sense (start again at sense 1 only when there are fewer senses than sentences).\n';
   }
-  out += 'IF the target word is a discourse marker, put it in the dialogues exactly here (turn number and speaker are fixed; the sentence must fit that turn logically):\n' + rows.join('\n') + '\n';
-  out += 'The marker appears exactly once per dialogue, in that turn only, in its sense, with its trigger in the turn right before it. If it does not fit logically there, rewrite the turns before it, do not move the marker.';
+  out += 'ONLY IF the target word is a discourse marker (otherwise ignore this table and use no markers like "by the way"), put it in the dialogues exactly here (turn number and speaker are fixed; the sentence must fit that turn logically):\n' + rows.join('\n') + '\n';
+  if (preset && preset.contrast) {
+    out += 'The marker appears exactly once per dialogue, in that turn only, in its sense. It contrasts with or qualifies what was said just before it; every turn still answers the one before it. If it does not fit, rewrite the turns before it, never move the marker.';
+  } else {
+    out += 'The marker appears exactly once per dialogue, in that turn only, in its sense. The turn right before it is a short side remark on the same topic (an opinion or small detail), and the marker brings the speaker back to the main point; every turn still answers the one before it. If it does not fit, rewrite the turns before it, never move the marker. Put the marker at the start of its own sentence, after a separate sentence with the side remark (never joined by comma or semicolon), and never use it as a synonym of "but" or "however".';
+  }
+  if (miniCtx) {
+    out += '\n\nMINI-CONTEXT RULES FOR MARKERS: sentence 1 is the trigger, sentence 2 contains the marker. Sentence 1 is always a real side remark, obstacle, doubt or assumption about the same situation, never a neutral scene-setting fact, because a marker without a trigger is only filler. A sentence-initial marker (for example "Anyway, ...") starts sentence 2 and returns to the main point after the side remark in sentence 1. A clause-final marker (for example "... anyway") stands at the END of sentence 2 and never at its start; sentence 1 then states the obstacle or reason. Follow the position given in the description of the sense. If sentence 1 does not provide the required trigger, rewrite sentence 1, never move the marker.';
+    var _shapes = ['a question to someone', 'a decision', 'free', 'a reason', 'an offer or suggestion', 'a feeling or reaction', 'a request to someone', 'free', 'a condition (if ...)', 'a wish'];
+    out += '\n\nSENTENCE 2 SHAPES (not for discourse markers, where the marker table decides): sentence 2 of each item has the shape listed, which is its function and not a fixed wording; the target word keeps its sense and the tense follows the TENSE DISTRIBUTION: ' + _shapes.slice(0, totalDialogs).map(function (x, i) { return 'D' + (i + 1) + ' ' + x; }).join(', ') + '. \"free\" = shape of your choice, or as the CONTRAST ITEMS rule requires.';
+    out += '\n\nCONTRAST ITEMS (apply ONLY if the first line has ≠ and a partner word, otherwise ignore this paragraph): D3 and D8 are the contrast items (see the CONTRAST PARTNER rule).';
+  }
   return out;
 }
 
 function genGenerate() {
   // ── Hlavní vstup: záměr ──
   var intentEl = document.getElementById('practiceInput');
-  var intent   = intentEl ? intentEl.value.trim().toLowerCase() : '';
+  var intent   = intentEl ? intentEl.value.trim() : '';
 
   // Asist: sloveso / téma z rozšířeného režimu (volitelné)
   var assistVerb       = selectedVerb       || '';
@@ -12097,6 +12147,7 @@ function genGenerate() {
   var webLangName = GEN_NAMES[webLang] || webLang;
   var exTitle = (T[webLang] || T.cz).exTitle || T.en.exTitle;
   var dlTitle = (T[webLang] || T.cz).dlTitle || T.en.dlTitle;
+  var dlTitleShort = (T[webLang] || T.cz).dlTitleShort || T.en.dlTitleShort;
 
   // Sense-selection rule, scaled to CEFR level (which meanings of "intent" are in scope)
   var senseLevelRule =
@@ -12109,19 +12160,23 @@ function genGenerate() {
   // Odsazení překladů na mobilu (odrážka „- “). ChatGPT na mobilu odrážku nevykresluje, proto je zatím false. Překlad = kurzíva pod větou.
   var MOBILE_QUOTE_TRANSLATIONS = false;
   var useQuote = MOBILE_QUOTE_TRANSLATIONS && isMobileDevice() && currentAI === 'chatgpt';
-  var noSpk = HIDE_SPEAKER_LETTERS && (currentAI === 'chatgpt' || currentAI === 'copilot');
+  var miniCtx = (dialogLength === 'short');   // Krátké = mini-kontext ze 2 vět jednoho mluvčího (ne dialog)
+  var noSpk = miniCtx || (HIDE_SPEAKER_LETTERS && (currentAI === 'chatgpt' || currentAI === 'copilot'));
 
   // Délka dialogu: jediný zdroj pravdy = dialogLength
-  var nTurns = dialogLength === 'short' ? 3 : dialogLength === 'long' ? 9 : 5;
+  var nTurns = miniCtx ? 2 : dialogLength === 'long' ? 9 : 5;
+  var totalDialogs = nTurns >= 9 ? 5 : 10;   // 3 or 5 turns: 10 dialogues; 9 turns: 5 dialogues
+  var nExamples = nTurns >= 9 ? 5 : 3;       // example sentences: 3 or 5 (one per sense)
+  var exTense = nExamples === 3 ? '1 present / 1 past / 1 future' : '2 present / 2 past / 1 future';
   var turnPattern = [];
   for (var ti = 0; ti < nTurns; ti++) turnPattern.push(ti % 2 === 0 ? 'A' : 'B');
   turnPattern = turnPattern.join('–');
   var minOcc = nTurns >= 9 ? 3 : nTurns >= 5 ? 2 : 1;
-  var minDialogsWithWord = Math.ceil(totalDialogs * 0.8);
+  var minDialogsWithWord = miniCtx ? totalDialogs : Math.ceil(totalDialogs * 0.8);
   var nPresent = Math.round(totalDialogs * 0.4);
   var nPast = Math.round(totalDialogs * 0.3);
   var nFuture = totalDialogs - nPresent - nPast;
-  var styleName = (({'casual':'casual','formal':'formal','slang':'slang','humor':'humor'})[selectedStyle] || selectedStyle);
+  var styleName = _styleDef(selectedStyle);
 
   var P = [];
 
@@ -12139,38 +12194,66 @@ function genGenerate() {
     `Level: ${cefrLevel}\n` +
     `Style: ${styleName}\n` +
     `Number of dialogues: ${totalDialogs}\n` +
-    `Length: ${nTurns} turns: ${turnPattern}` +
-    (noSpk ? ` (A and B are only your internal names for the two speakers: never write the letters A or B as speaker labels in the output)` : ``)
+    (miniCtx
+      ? `Length: MINI-CONTEXT MODE. Each of the ${totalDialogs} items (still called dialogues below) is NOT a conversation. It is exactly ONE turn by one single speaker, made of 2 consecutive sentences: sentence 1 sets up a short everyday situation, sentence 2 follows from it and contains the target word. The turn is written as ONE target-language line containing both sentences, and directly below it ONE translation line containing both translated sentences. Never split an item into two target lines and two translation lines. Wherever this prompt mentions turns, speakers, speaker alternation, the first or second speaker or the genders of two speakers, apply it to this one block and this one speaker; the word plan below fixes the target word to sentence 2 in every item (ignore any instruction to vary the turn number or the speaker).`
+      : `Length: ${nTurns} turns: ${turnPattern}`) +
+    (noSpk && !miniCtx ? ` (A and B are only your internal names for the two speakers: never write the letters A or B as speaker labels in the output; odd-numbered turns are always speaker A, the woman, and even-numbered turns are always speaker B, the man, in every dialogue, so keep track of this internally for every turn)` : ``)
   );
 
   var occMin = nTurns >= 5 ? 2 : 1;
-  var occMax = nTurns >= 5 ? 3 : 2;
-  var idiomTurns = nTurns >= 9 ? 3 : nTurns >= 5 ? 2 : 1;
+  var occMax = miniCtx ? 1 : nTurns >= 9 ? 2 : nTurns >= 5 ? 3 : 2;
+  var idiomTurns = nTurns >= 5 ? 2 : 1;
   var enHint = /^English/i.test(toName) ? ' (in English, for example: sort out, take it easy, on my way home)' : '';
 
-  P.push(`INTERNAL DRAFTING STEP (mandatory, never shown): First decide the word type (verb, phrasal verb, noun, adjective, adverb, idiom, collocation, discourse marker or connecting phrase) and choose its 2–4 common everyday senses or functions (a word with one real sense gets exactly one). Give each sense ONE natural ${fromName} equivalent and use only these senses; each equivalent must translate this very word in this very function, never a different Language B word or a different function (for example, a marker of correction is never translated with the equivalent of a topic-shift marker). Never extend the word to new objects or particles by analogy, and if you are unsure a native speaker says it, do not use it. A noun has correct countability and articles, a verb with particles keeps its particle and natural word order (wherever Language B has such features). Then, for each dialogue, fix who the two speakers are and which facts each one owns: turn N+1 is said by the person addressed in turn N, only the owner of a fact says "I" about it, and if the next thing belongs to the speaker who just spoke, insert a reaction from the other speaker first. Then silently compose all example sentences and dialogues exactly as they will appear and check the draft: every sense used is on the first line, no listed sense is missing, the word occurs as required (for a discourse marker, fixed phrase or idiom count the occurrences in every dialogue: exactly one, and rewrite every dialogue with two or more; for other words not below the minimum, not above the maximum), no sentence is repeated, and every turn is something its speaker can logically say, answers the person addressed and refers to nothing not yet mentioned. Only then write the visible answer, starting with the first line.`);
+  var turnPlan = nTurns >= 9
+    ? 'plan one small story in which every turn has its own task: turn 1 need or problem; 2 the second speaker asks about a detail; 3 answer with a new fact; 4 offer or advice; 5 complication or objection; 6 the second speaker asks about timing or method; 7 answer and decision; 8 a new practical detail or advice; 9 short reaction or conclusion; no turn may only agree, thank or repeat;'
+    : 'plan one small story across all turns (need, offer, complication, solution, reaction) so no turn is filler;';
+  P.push(`INTERNAL DRAFTING STEP (mandatory, never shown): First decide the word type (verb, phrasal verb, noun, adjective, adverb, idiom, collocation, discourse marker or connecting phrase) and choose its common everyday senses or functions, most frequent first: at most 3 (only the most frequent everyday ones; never rare, figurative or fixed-expression senses), otherwise all of them (a word with one real sense gets exactly one). Give each sense ONE natural ${fromName} equivalent and use only these senses; each equivalent must translate this very word in this very function, never a different function (and a different Language B word only where the NOTE allows it). Never extend the word to new objects or particles by analogy, and if you are unsure a native speaker says it, do not use it. A noun has correct countability and articles, a verb with particles keeps its particle and natural word order (wherever Language B has such features). ${miniCtx ? `Then, for each item, plan one small everyday situation in which sentence 2 follows logically from sentence 1. ` : `Then, for each dialogue, fix who the two speakers are, their roles and which facts each one owns: the first speaker is the one with the situation or need and speaks the last turn, the second speaker reacts with comments and suggestions and asks one short question about the first speaker's situation, and these roles and the main action never swap; ${turnPlan} the speaker who needs something names what they want, the helper names what they give; turn N+1 is said by the person addressed in turn N, only the owner of a fact says "I" about it, and if the next thing belongs to the speaker who just spoke, insert a reaction from the other speaker first. `}Then silently compose all example sentences and dialogues exactly as they will appear and check the draft: every sense used is on the first line, no listed sense is missing, the word occurs exactly as the TARGET WORD RULES require, no sentence is repeated, and every turn is something its speaker can logically say, answers the person addressed and refers to nothing not yet mentioned. Only then write the visible answer, starting with the first line.`);
 
-  P.push(`LEVEL AND STYLE: The Level and Style given above apply to every sentence, turn and translation, including the vocabulary around the target word. Natural language means natural for that Style. In every dialogue at least ${idiomTurns} turn${idiomTurns > 1 ? 's' : ''} contain${idiomTurns > 1 ? '' : 's'} a common idiomatic or multi-word expression of Language B (such as a phrasal verb or fixed expression, where the language has them) or a natural spoken reaction (use the natural Language B equivalents of reactions like "Really?", "Honestly,", "Oh wow", never a literal word-by-word copy); avoid textbook-simple sentences below the given Level.`);
+  P.push(`LEVEL AND STYLE: The Level and Style given above apply to every sentence, turn and translation, including the vocabulary around the target word. In every dialogue at least ${idiomTurns} turn${idiomTurns > 1 ? 's' : ''} contain${idiomTurns > 1 ? '' : 's'} a common idiomatic or multi-word expression of Language B (such as a phrasal verb or fixed expression, where the language has them) or a natural spoken reaction (use the natural Language B equivalents of reactions like "Really?", "Honestly,", "Oh wow", never a literal word-by-word copy); avoid textbook-simple sentences below the given Level. Use one consistent regional variant and spelling for each language across the whole output.` +
+    (selectedStyle === 'humor' ? ` For Style humor, the style definition takes precedence over the idiom requirement above and over the rule for the last turn: idioms only where they fit the warm tone, natural reactions like "Oh no" or "Really?" are welcome, and the last turn may be a plain, friendly reaction.` : ''));
 
-  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** **${noSpk ? '' : ' (including the speaker letter)'}. Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers${useQuote ? ' (the only exception: the leading "- " of a translation line stays OUTSIDE the underscores, written exactly as - _translation_ and never as _- translation_)' : ''}. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error.` +
-    (needsTranslation ? `\nNOTE: "${intent}" may be given in any language. The target word is always its ${toName} form: on the first line, in the ${toName} (** lines), in the flashcards and in the quiz subtitle. If "${intent}" is not in ${toName}, translate it into ${toName} first and use only that translation everywhere; the equivalents after the dash and the _ lines are in ${fromName}. Never use the untranslated original where it does not belong.` : ''));
+  P.push(`TEXT EMPHASIS: Every target-language (Language B, ${toName}) line is wrapped completely in ** **${noSpk ? '' : ' (including the speaker letter)'}. Every source-language (Language A, ${fromName}) line is wrapped completely in _ _ (underscores, never single asterisks). Never leave part of a line outside the markers and never put a space just inside them${useQuote ? ' (the only exception: the leading "- " of a translation line stays OUTSIDE the underscores, written exactly as - _translation_ and never as _- translation_)' : ''}. Never use language-code prefixes (such as ${toLabel} or ${fromLabel}). Every ** line contains only ${toName}; every _ line contains only ${fromName}; a word from the wrong language in any line is a critical error. The only exception is the first line, whose languages and italics (single asterisks) are set in OUTPUT rule 1.` +
+    (needsTranslation ? `\nNOTE: "${intent}" may be given in any language. The target word is always its ${toName} form: in the ${toName} (** lines), in the flashcards and in the quiz subtitle. If "${intent}" is not in ${toName}, translate it into ${toName} first; where a literal translation would not be what a native speaker says in some sense or context, use the natural ${toName} word for that sense instead (list that sense on the first line); the _ lines are in ${fromName}. If "${intent}" is in ${fromName}, the ${fromName} lines and example sentences must contain exactly that word as entered, never a synonym or a different connector (for example never "nevertheless" for "however"). Apart from the first line, never use the untranslated original where it does not belong.` : ''));
 
   P.push(
     `OUTPUT, in this order:\n\n` +
-    `1) First line: the target word in capital letters in **bold**, then —, then the source-language equivalents in _underscore-italics_ (**TARGET WORD** — _equivalents_). Capitals only if the script has them; capitals are used only here and in dialogue labels. List only the source-language equivalents your finished draft actually uses (including distinct senses if the dialogues use them), the one most used in everyday spoken ${fromName} first (colloquial before formal), maximum 5, each with a different meaning; never repeat or rephrase one. Two forms of the same verb (imperfective and perfective) count as ONE equivalent: list only the more common. A single-meaning word or phrase gets exactly ONE equivalent: never add variants or extensions of it, and use that same equivalent in the translations. No label, no number.\n\n` +
-    `2) First a line with only --- (exactly like the --- before the dialogues: blank line before and after it, no trailing spaces; it separates the first line from the examples), then one line exactly **${exTitle}** (bold, nothing else on that line, copy it exactly, never translate or change it), then again a line with only --- (same rules: blank line before and after it, no trailing spaces). Then three example sentences. Each pair = target line, then ${useQuote ? 'a blank line, then' : 'directly below it'} the translation line, blank line between pairs; no speaker letters. Place the word in different positions in the sentence and, where the word has them, in different common senses. Situations must differ from all dialogues.\n\n` +
-    `3) First a line with only --- (blank line before and after it, no trailing spaces; it separates the examples from the dialogues), then once, above the first dialogue, one line exactly **${dlTitle}** (bold, nothing else on that line, copy it exactly, never translate or change it). Then ${totalDialogs} dialogues. Each dialogue is formatted exactly like this:\n\n` +
+    `1) First line: the word "${intent}" exactly as entered (only in capital letters), then —, then its equivalents. The word stays first, and each part follows the emphasis of its language: ${toName} in **bold**, ${fromName} in single-asterisk italics (so **WORD** — *equivalents* if the word is ${toName}, otherwise *WORD* — **equivalents**). The equivalents are in ${fromName} if "${intent}" is in ${toName}, otherwise in ${toName}. Capitals only if the script has them; capitals are used only here and in dialogue labels. List only the equivalents your finished draft actually uses (including distinct senses if the dialogues use them), the one most used in everyday speech first (colloquial before formal), maximum 3 (exception: for a discourse marker or connecting word the closest-meaning equivalent in the same register as the word comes first, so a formal word gets the formal equivalent first, for example however: nicméně before ale), each with a different meaning; never repeat or rephrase one. Two forms of the same verb (imperfective and perfective) count as ONE equivalent: list only the more common. A single-meaning word or phrase gets exactly ONE equivalent: never add variants or extensions of it, and use that same equivalent consistently in the dialogue lines and their translations. If the word forms a well-known learner confusion pair in ${toName} (e.g. lend/borrow, say/tell), end the first line with ≠ and the partner word, formatted exactly like the first part of the line: the partner word, then —, then its own single equivalent in the other language (for example **BORROW** — *půjčit si* ≠ **LEND** — *půjčit*), each part with the emphasis of its language; otherwise add nothing and never invent a partner. The partner is not an equivalent and is never listed with the senses: ${miniCtx ? 'it appears only in the contrast items fixed in the word plan' : 'it may appear only as a natural reply of the other speaker'}, while every dialogue is built around the target word and its sense. Keep the two verbs clearly apart in the ${fromName} translations too (e.g. Czech půjčit vs půjčit si). No label, no number.\n\n` +
+    `2) First a line with only --- (exactly like the --- before the dialogues: blank line before and after it, no trailing spaces; it separates the first line from the examples), then one line exactly **${exTitle}** (bold, nothing else on that line, copy it exactly, never translate or change it), then again a line with only --- (same rules: blank line before and after it, no trailing spaces). Then ${nExamples} example sentences. Each pair = target line, then ${useQuote ? 'a blank line, then' : 'directly below it'} the translation line, blank line between pairs; no speaker letters. Place the word in different positions in the sentence and, where the word has them, in different common senses. Situations must differ from all dialogues.\n\n` +
+    `3) First a line with only --- (blank line before and after it, no trailing spaces; it separates the examples from the dialogues), then once, above the first dialogue, one line exactly **${miniCtx ? dlTitleShort : dlTitle}** (bold, nothing else on that line, copy it exactly, never translate or change it). Then ${totalDialogs} dialogues. Each dialogue is formatted exactly like this:\n\n` +
     `---\n\n` +
-    `🧩 **N** · _SHORT LABEL IN CAPITALS_\n\n` +
-    `**${noSpk ? '' : 'A: '}target-language turn**\n` +
-    (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
-    `**${noSpk ? '' : 'B: '}target-language turn**\n` +
-    (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
-    `(and so on)`
+    `🧩 **N** · **SHORT LABEL IN CAPITALS** — _THE SAME LABEL IN CAPITALS_\n\n` +
+    (miniCtx
+      ? `**target-language line with both sentences**\n` + (useQuote ? `\n- _translation of both sentences_` : `_translation of both sentences_`) + `\n\n(that is the whole item)`
+      : `**${noSpk ? '' : 'A: '}target-language turn**\n` +
+        (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+        `**${noSpk ? '' : 'B: '}target-language turn**\n` +
+        (useQuote ? `\n- _translation of that turn_\n\n` : `_translation of that turn_\n\n`) +
+        `(and so on)`)
   );
 
+  var illTurn = function (who, t, tr) {
+    return '**' + (noSpk ? '' : who + ': ') + t + '**  \n' + (useQuote ? '\n- _' + tr + '_' : '_' + tr + '_') + '  ';
+  };
   P.push(
-    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words in ${fromName}, in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is ${useQuote ? 'a target line, then one blank line, then the translation line as a bullet' : 'exactly two consecutive lines (target line, then translation line, no blank line between)'}. ${noSpk ? 'No speaker letters, names or markers of any kind in front of the turns: every target line starts directly with the sentence itself. ' : 'The speaker letter appears only on the target line. '}The number of turns is exactly the one given in Length, ${noSpk ? 'alternating the two speakers, the first and last turn belonging to the same speaker' : 'alternating A and B, starting and ending with A'}; never use any fixed template. ` +
+    'FORMAT ILLUSTRATION (layout only, with a different word and in English and Czech: never copy its words, situations or sentences; your output uses ' + toName + ' in the ** lines, ' + fromName + ' in the _ lines and your own content):\n\n---\n\n🧩 1 · **CANCELLED TRIP** — _ZRUŠENÝ VÝLET_  \n\n' +
+    (miniCtx
+      ? illTurn('', 'The rain got worse this morning. So they had to cancel the trip.', 'Dnes ráno se déšť zhoršil. Museli proto výlet zrušit.')
+      : [
+          illTurn('A', 'Are we still going to the lake on Saturday?', 'Pořád jedeme v sobotu k jezeru?'),
+          illTurn('B', 'Haven\'t you heard? They cancelled the trip because of the rain.', 'Ty jsi to neslyšela? Výlet zrušili kvůli dešti.'),
+          illTurn('A', 'Oh no, I already bought the tickets!', 'Ale ne, vždyť jsem už koupila lístky!'),
+          illTurn('B', 'Don\'t worry, you can cancel them online.', 'Neboj, můžeš je zrušit online.'),
+          illTurn('A', 'Good idea. I\'ll do it right now.', 'Dobrý nápad. Udělám to hned teď.')
+        ].join('\n\n'))
+  );
+
+  var turnsRuleText = miniCtx
+    ? 'Each item has exactly ONE turn: one target line with two sentences by one single speaker, then its translation line with both translated sentences; no second speaker, no separate lines per sentence, never use any fixed template. '
+    : 'The number of turns is exactly the one given in Length, ' + (noSpk ? 'alternating the two speakers, the first and last turn belonging to the same speaker' : 'alternating A and B, starting and ending with A') + '; never use any fixed template. In at least two dialogues, the second speaker also asks a question or makes a suggestion of their own that moves the conversation on (about timing, details or a next step), and the first speaker answers it. ';
+
+  P.push(
+    `FORMAT RULES: Put a line with exactly --- before every 🧩 line, with a blank line before and after it (this --- line has no trailing spaces). The label is 2–3 words, first in ${toName} (bold), then the same label in ${fromName} (underscore-italics), in capitals if the script has them, and it must describe what that dialogue is really about; every label is different. Every 🧩 line starts with the dialogue number, exactly in the form 🧩 1 · LABEL — LABEL, never without the number. One blank line between the 🧩 line and the first turn, and one blank line between turns. A turn is ${useQuote ? 'a target line, then one blank line, then the translation line as a bullet' : 'exactly two consecutive lines (target line, then translation line, no blank line between)'}. ${noSpk ? 'No speaker letters, names or markers of any kind in front of the turns: every target line starts directly with the sentence itself. ' : 'The speaker letter appears only on the target line. '}${turnsRuleText}The target word and its partner keep their roles as defined above. ` +
     (useQuote
       ? `No other bullets, no numbering, no tables, no # or | symbols, no other Markdown. The ONLY exception: every translation line (in the example sentences and in the dialogues) starts with "- " (hyphen and space) directly before the opening underscore, exactly like this: - _translation_ (hyphen, space, underscore, text, underscore; no space after the first underscore). `
       : `No bullets, no numbering, no tables, no > or # or | symbols, no other Markdown. `) +
@@ -12179,68 +12262,68 @@ function genGenerate() {
 
   P.push(
     `CONTENT RULES:\n` +
-    `- Each dialogue is a different area of life (home, work, travel, health, money, school, hobbies, family, technology, shopping…) and also differs from the three examples. Never reuse a sentence.\n` +
-    `- Start from a real communicative situation, then write the sentences.\n` +
-    `- Every turn answers or builds on the previous turn. No mirrored turns ("too/also/as well" echoes), no unrelated facts.\n` +
-    `- Once an experience belongs to one speaker, that speaker keeps describing it in the first person.\n` +
-    `- Vary sentence openings and structures; do not build a dialogue from repeated question-answer pairs of the same pattern.\n` +
-    `- The last turn is a short, natural full-sentence reaction to the turn directly before it (a feeling, a decision or a question). Never a comment or summary, never a restatement of the speaker's own earlier line, and never starting with a vague evaluative opener (in English, "That sounds / That would / That could"; use the natural equivalent opener in Language B).\n` +
-    `- Keep ONE word per referent within a dialogue. Give each speaker one fixed gender and keep the ${fromName} verb endings consistent in every turn; never use both forms (no slashes, no brackets).\n` +
-    `- The translation of each turn has the same meaning and all the same details (names, numbers, nouns) as the line above it, in natural phrasing of its own language.\n` +
+    `- Each dialogue is a different area of life (home, work, travel, health, money, school, hobbies, family, technology, shopping…) and also differs from the example sentences. Never reuse a sentence.\n` +
+    (miniCtx ? `- Sentence 2 follows directly from sentence 1 (a consequence, a reaction, a decision or a contrast); both sentences are said by the same person, who may tell a past event in both.\n- Vary the structure of sentence 2: no sentence pattern (for example "I'll lend a hand with X") in more than 2 of the ${totalDialogs} items, and the items that use the same sense must differ in sentence opening and structure; do not follow a strict odd/even alternation of senses. Situations must differ from each other and from the example sentences.\n` : `- Start from a real communicative situation, then write the sentences.\n- Every turn answers or builds on the previous turn. No mirrored turns ("too/also/as well" echoes), no unrelated facts. A past event is told only by the first speaker; the second speaker was not there.\n`) +
+    `- Vary sentence openings and structures; each dialogue opens differently (request, offer, news, complaint); at most 2 dialogues contain a turn that starts with thanks, agreement or praise; use "I thought X, but Y" (or its equivalent) in at most two dialogues. Write real ${toName} speech: a speaker's whole thought stays in that speaker's turn, even if the turn gets longer, and no speaker ever says what belongs to the other, spoken reactions (like Oh no, Really?, Ha) in ${toName}, contractions where the language has them, no written or letter-like phrases.\n` +
+    (miniCtx ? `- Sentence 2 is a natural spoken sentence that contains the target word; it is never a summary or a restatement of sentence 1 and never starts with a vague evaluative opener.\n` : `- The last turn is a short, natural full-sentence reaction to the turn directly before it (a feeling, a decision or a question about it). Never a comment or summary, never plain thanks or praise, never a restatement of the speaker's own earlier line or plan, and never starting with a vague evaluative opener (in English, "That sounds / That would / That could"; use the natural equivalent opener in Language B).\n`) +
+    (miniCtx ? `- Keep ONE word per referent within an item. There is one speaker per item: keep the ${fromName} verb and adjective endings of that speaker consistent in both sentences, and never use both forms (no slashes, no brackets). Across the 10 items alternate between a woman and a man.\n` : `- Keep ONE word per referent within a dialogue. Give each speaker one fixed gender: the first speaker is always a woman and the second always a man, in every dialogue; keep the ${fromName} verb endings consistent in every turn, and every verb or adjective form, also when addressed to the other speaker, matches the gender of the person it refers to; never use both forms (no slashes, no brackets).\n`) +
+    `- The translation of each turn has the same meaning and all the same details (names, numbers, nouns) as the line above it, in natural phrasing of its own language; the sense and direction of the action never change (borrow is never translated as lend).\n` +
     `- Tense and aspect of every translation must match the source line; never change tense for variety.`
   );
 
   P.push(
     `TARGET WORD RULES:\n` +
-    `- DISCOURSE MARKERS AND CONNECTING WORDS (words that signal correction, contrast, topic shift, return to the point or attitude): the literal word appears EXACTLY ONCE in the ${toName} lines of every dialogue, never twice, never three times; this rule overrides every other count in this prompt. Use it in a different turn number and by a different speaker from dialogue to dialogue. Each is used only in its real function, fixed beforehand in the sense plan. Topic shift: it opens a short side remark with a new fact unrelated to the topic so far, never in turn 1, never the answer to the previous turn's question and never the main news. Correction or contrast: the turn directly before must contain an expectation, assumption or claim that the marker then corrects or contrasts with ("I thought X, but ..."); an answer to a neutral question is not a correction, so if the previous turn contains nothing to correct, rewrite the previous turn to contain the assumption or rewrite the turn without the marker. Return to the point or closure: it closes a digression or confirms the main point and never opens a new topic. Attitude or emphasis: only where a native speaker really stresses it. Never use the marker as a filler at the start of a reply. Never translate it with the equivalent of a different marker. In example sentences put it after a short first clause or sentence, never at the start of a bare sentence; for a correction or contrast marker the example sentence must itself contain the assumption being corrected in its first clause or sentence.\n` +
+    `- DISCOURSE MARKERS AND CONNECTING WORDS (words that signal correction, contrast, topic shift, return to the point or attitude): the literal word appears EXACTLY ONCE in the ${toName} lines of every dialogue (this overrides every other count in this prompt), in a different turn and by a different speaker from dialogue to dialogue, only in its real function fixed in the sense plan. Never twice in one dialogue, and no synonym or near-synonym connector of the same kind anywhere else in that dialogue's ${toName} lines. Before sending, count it in every dialogue: if it appears in two turns, rewrite the second one without it. Topic shift: it opens a short side remark with a new fact, never in turn 1, never as the answer to a question and never as the main news. Correction or contrast: the turn directly before must contain an expectation, assumption or claim that the marker corrects or contrasts with (\"I thought X, but ...\"); if it contains nothing to correct, rewrite that turn. Return to the point or closure: it closes a digression or confirms the main point and never opens a new topic. Attitude or emphasis: only where a native speaker really stresses it. Never use the marker as filler at the start of a reply or translate it with a different marker. In example sentences put it after a short first clause or sentence (for correction or contrast, that clause contains the assumption being corrected), never at the start of a bare sentence.\n` +
     `- FIXED PHRASES AND IDIOMS: exactly once per dialogue, in the ${toName} lines and in the translations.\n` +
-    `- ALL OTHER WORD TYPES: the literal target word (not a pronoun) appears in the ${toName} lines AND in the translations, in at least ${minDialogsWithWord} of the ${totalDialogs} dialogues, in different turns and ideally in both speakers' turns, at least ${occMin} and at most ${occMax} times per dialogue and never in more than two consecutive turns.\n` +
-    `- Sense selection: use common everyday senses ranked by real native-speaker frequency. Before each sentence ask: would a native speaker really choose this word here, or another word? If another word is preferred, rewrite or drop that use; never force the word in.`
+    `- ALL OTHER WORD TYPES: the literal target word (not a pronoun), or the natural ${toName} word for another sense allowed by the NOTE, appears in the ${toName} lines AND in the translations, in at least ${minDialogsWithWord} of the ${totalDialogs} dialogues, in different turns (never forced into a turn where its speaker would not naturally say it, and never in a side story told only to use the word: use it for the dialogue's main action), at least ${occMin} and at most ${occMax} times per dialogue and never in more than two consecutive turns.\n` +
+    `- Sense selection: use common everyday senses ranked by real native-speaker frequency. Before each sentence ask: would a native speaker really choose this word here, or another word? If another word is preferred, use that word (and list that sense on the first line) rather than a literal translation of the target word; never force the word in. Show every sense with the target word itself, never with a synonym, except for the contrast line below. If the target word is often confused with another word (e.g. lend/borrow), show the contrast once, naturally, in one dialogue line, never as an explanation.` +
+    (miniCtx ? `\n- CONTRAST PARTNER (only if the first line has ≠ and a partner word): in the CONTRAST ITEMS fixed in the word plan (D3 and D8) show the contrast inside the item: the partner word in one sentence and the target word in the other (for example "I borrowed a ladder from my neighbour. Now I'm going to lend it to my sister."), each used in its own correct sense. This is the only exception to the rule that the target word is in sentence 2: the partner may then stand in sentence 1, and the target word still appears exactly once in the item.` : ``)
   );
 
   if (selectedGrammar) {
     P.push(`Tenses: use naturally as required by the grammar focus.`);
     P.push(`GRAMMAR FOCUS - "${selectedGrammar.name}": ${selectedGrammar.prompt}\nUse it naturally in the ${toName} lines (never expect it in the ${fromName} lines) and never force it where natural usage needs another form. It appears in roughly half of the turns of each dialogue; the other turns use whatever form is natural. The grammar focus takes priority over the tense distribution. Do NOT add any explanation, summary or extra sentences about the grammar point.`);
   } else {
-    P.push(`TENSE DISTRIBUTION: sentences 1 present / 1 past / 1 future (in that order); dialogues ${nPresent} present / ${nPast} past / ${nFuture} future (in that order, by the main time frame of each dialogue).`);
+    P.push(`TENSE DISTRIBUTION: sentences ${exTense} (in that order); dialogues ${nPresent} present / ${nPast} past / ${nFuture} future (in that order, by the main time frame of each dialogue).`);
   }
 
   P.push(selectedGrammar
     ? `PRIORITY IF RULES CONFLICT: 1) correct format and correct language on every line, 2) the grammar focus, 3) natural collocations and a logical dialogue, 4) required occurrences of the target word, 5) everything else.`
     : `PRIORITY IF RULES CONFLICT: 1) correct format and correct language on every line, 2) natural collocations and a logical dialogue, 3) required occurrences of the target word, 4) everything else.`);
 
-  P.push(buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns));
+  P.push(buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples, miniCtx));
 
   P.push(
-    `FLASHCARDS (final step, after the last dialogue; directly before them a line with only ---, with a blank line before and after it): create INTERACTIVE FLASHCARDS (tap-to-flip) with the flashcards tool, never as plain text: exactly 12 cards (count them before sending) taken word for word from the dialogues and example sentences, in this order: ` +
-    `(1) 4 cards for the target word: the word itself plus 3 natural collocations of 2–5 words that contain it (one for each main sense on the first line); if it has no natural collocations (e.g. a connecting phrase), use 3 complete short sentences (max 8 words) from the dialogues instead; never a fragment that ends mid-sentence. FRONT = ${toName} expression, BACK = its ${fromName} meaning. ` +
-    `(2) the same 4 reversed: FRONT = a short ${toName} sentence from the dialogues with the expression replaced by ______ (the expression itself must not appear on the front; if the expression has a particle or several parts, the blank replaces ALL of them), followed by its ${fromName} meaning in brackets in italics; the front MUST contain ______; BACK = the missing expression. ` +
-    `(3) 4 chunks of 2–4 words from the dialogues that a learner at the given Level could not guess: multi-word verbs, fixed expressions or collocations typical of ${toName}${enHint}; never a full clause, never plain words, no repeats, wording exactly as in the dialogues. FRONT = ${toName}, BACK = ${fromName}. ` +
-    `Translate each card as used in the dialogue, not as a dictionary entry. ${toName} is always **bold** and ${fromName} always _underscore-italics_, on both sides of every card. ` +
-    `Only if the flashcards tool returns an error or is not available in this chat, write them as plain text: a line with only the emoji 🃏, then each card as 2 lines (front, back), one blank line between cards, no numbering, bullets or tables` + (useQuote ? ` and no "- "` : ``) + `. ` +
-    `Flashcards are exempt from the dialogue format. Before sending, count the cards: 4 + 4 + 4 = exactly 12, never 11 and never 13. Add one short sentence in ${webLangName} asking the learner to say or write the answer before looking at the other side and to mark ✓ only if it was correct. No other explanation.`
+    `FLASHCARDS (final step, after the last dialogue; directly before them a line with only ---, with a blank line before and after it): create INTERACTIVE FLASHCARDS (tap-to-flip) with the flashcards tool, never as plain text: exactly 10 cards (count them before sending), every card with both sides filled in, taken word for word from the dialogues and example sentences, in this order: ` +
+    `(1) 4 cards for the target word: the word itself plus 3 collocations of 2–5 words that contain it, one per main sense on the first line (if there are none, 3 short complete sentences from the dialogues). FRONT = ${toName} expression, BACK = its ${fromName} meaning. ` +
+    `(2) the 4 cards of (1) as fill-in cards: FRONT = a ${toName} sentence copied word for word from the dialogues, with the whole expression of one card of (1) replaced by ______, followed by its ${fromName} meaning in brackets in italics; the front MUST contain ______; BACK = exactly the words removed, always filled in; the four backs are four different expressions. If the expression appears inflected in the sentence (another ending, tense or form), replace that inflected form and put it on the BACK exactly as it appears there, never the dictionary form. Format illustration only, never copy its words: FRONT **Could you ______ for an hour?** _(translation)_, BACK **lend me your shears**. ` +
+    `(3) 2 chunks of 2–4 words copied word for word from the dialogues that a learner at the given Level could not guess (multi-word expressions typical of ${toName}${enHint}). FRONT = ${toName}, BACK = ${fromName}. ` +
+    `${toName} is always **bold** and ${fromName} always _underscore-italics_, on both sides of every card. ` +
+    `Always try the flashcards tool first. Only if the call really fails or the tool does not exist in this chat, write them as plain text (and then never mention tools, errors or availability anywhere in the answer, no apology and no comment): a line with only the emoji 🃏, then each card as 2 lines (front, back), one blank line between cards, no numbering, bullets or tables` + (useQuote ? ` and no "- "` : ``) + `. ` +
+    `Flashcards are exempt from the dialogue format. Before sending, count the cards: 4 + 4 + 2 = exactly 10, never 9 and never 11. Add one short sentence in ${webLangName} asking the learner to say or write the answer before looking at the other side and to mark ✓ only if it was correct. No other explanation.`
   );
 
   P.push(
-    `QUIZ (final step, after the flashcards; directly before it a line with only ---, with a blank line before and after it): create an INTERACTIVE MULTIPLE-CHOICE QUIZ with the quiz tool, never as plain text. ` +
-    `Title: "Mini test ${cefrLevel.replace('-', '–')}", subtitle: "Mini test: " followed by the target word in capital letters (the same target word as on the first line). ` +
-    `Exactly 10 questions (count them before sending). Each question = one sentence in ${fromName} followed by exactly 3 ${toName} options, only one of them correct. ` +
-    `Use only the words and phrases from this lesson. The wrong options must be plausible confusions of the same meaning (for example similar verbs, prepositions or word forms), never obvious nonsense. The correct option rotates between position 1, 2 and 3. ` +
+    `QUIZ (final step, after the flashcards; directly before it a line with only ---, with a blank line before and after it): create an INTERACTIVE MULTIPLE-CHOICE QUIZ with the quiz tool. Always call the quiz tool first; use the QUIZ FALLBACK at the end of this block only if the call really fails or the tool does not exist in this chat. ` +
+    `Title: "Mini test ${cefrLevel.replace('-', '–')}", subtitle: "Mini test: " followed by the target word in capital letters (its ${toName} form). ` +
+    `Exactly 10 questions (count them before sending). Each question = one sentence in ${fromName} followed by exactly 4 ${toName} options, only one of them correct. ` +
+    `Use only the words and phrases from this lesson. The wrong options must be plausible confusions of the same meaning (for example similar verbs, prepositions or word forms), never obvious nonsense and never a valid translation of the question: before sending, test every wrong option, and if it could also translate the question sentence correctly (for example a synonym or near-synonym of the correct answer), replace it with a clearly different item of the same word type that has another meaning or function. All options must be the same type of item as the correct one: if the correct option is a single word or short phrase, all options are single words or short phrases; if it is a sentence, all options are variants of that same sentence (for example other connectors or common mistranslations), never different sentences taken from the dialogues. Wrong options are grammatically correct, differ from the correct one in a single element, and never contradict tense, person or number cues in the question sentence. The correct option rotates between position 1, 2, 3 and 4. ` +
     `After each answer immediately show whether it was correct and a one-sentence explanation in ${webLangName}. Show a running counter of answered questions (for example 0/10) and, at the end, the score (for example 9/10) and a "Try again" button, all in ${webLangName}. ` +
-    `Only simple multiple choice: no true/false, no fill-in, no flashcards, no other question types.`
+    `Only simple multiple choice: no true/false, no fill-in, no flashcards, no other question types. ` +
+    `QUIZ FALLBACK (only if the quiz tool really is not available; never mention tools, errors or availability, no apology, no comment): this is the ONE place where you stop and wait for the learner, and "Output nothing else" and "everything at once" do not apply to it. Send only the title, the subtitle and question 1/10 (one ${fromName} sentence, then the options A) B) C) D), each on its own line, each option in ${toName}), ask the learner to answer with one letter, and stop. After each answer reply with ✅ or ❌, the correct option and a one-sentence explanation in ${webLangName}, then send the next question (2/10, 3/10 …). Never send two questions at once. Keep the score yourself; after question 10 show the final score (for example 9/10) and offer to try again. All question rules above stay the same.`
   );
 
   if (currentAI === 'chatgpt') {
     P.push(`Display format: Please use canvas for this response, applying the line-break rule (two trailing spaces) so every line renders correctly, but otherwise follow the formatting rules above exactly (no tables). Output text only, never an image or graphic.`);
   }
 
-  P.push(`FINAL CHECK before sending: the flashcards and the quiz must be real tool calls (interactive widgets), not text. If either one is written as text, replace it with the tool call. Also check that the target word on the first line is in ${toName}; if it is not, replace it with its ${toName} translation everywhere.`);
+  P.push(`FINAL CHECK before sending (rewrite anything that fails): (1) the flashcards and the quiz are real tool calls, not text (unless a tool really is not available: then flashcards as plain text and the quiz as the QUIZ FALLBACK, one question at a time); (2) the first line starts with "${intent}" exactly as entered, and the target word in the ${toName} lines, the flashcards and the quiz is in ${toName}; (3) every sentence containing the target word uses a sense listed on the first line, and its translation keeps the sense, direction and tense of the source line and uses exactly one of the equivalents from the first line (same lemma), never a different word; (4) ${miniCtx ? `every item has ONE speaker, sentence 2 follows logically from sentence 1, and the ${fromName} verb and adjective forms have the same gender in both sentences` : `each turn answers the one before it and adds something new (a turn that only agrees, thanks or repeats is never allowed), the speakers and their genders stay as defined above`}; (5) the counts are exact: ${nExamples} example sentences, ${totalDialogs} ${miniCtx ? 'items' : 'dialogues'}, 10 flashcards, 10 quiz questions.`);
   P.push(`Output nothing else.`);
 
   var prompt = P.join('\n\n') + '\n';
 
   // Uložit do Probíraných slov (jen pokud šlo o skutečně napsaný záměr, ne auto-placeholder)
-  if (!isAutoGeneratedIntent) genHistoryAdd(intent);
+  if (!isAutoGeneratedIntent) genHistoryAdd(intent.toLowerCase());
 
   // Spinner feedback
   var sendBtn = document.getElementById('genSendMainBtn');
@@ -12311,25 +12394,29 @@ function _chatgptPreviewFooter() {
 
 function genOpen(ai, promptText) {
   var enc = encodeURIComponent(promptText);
+  // ChatGPT: mezera jako + místo %20 (3 znaky) — odkaz je o ~7 000 znaků kratší; ověřeno na ChatGPT (?q=ahoj+svete)
+  var _encQ = function (t) { return encodeURIComponent(t).replace(/%20/g, '+'); };
+  var encQ = _encQ(promptText);
   var urls = {
     // Na začátek jen v URL přidáme krátký návod pro uživatele v jazyce rozhraní + poznámku pro model + prázdné řádky (nezlomitelná mezera).
     // Slouží k tomu, aby náhled na mobilu nezačínal „SYSTEM RULE“. Do schránky jde původní text.
-    chatgpt: 'https://chatgpt.com/?q=' + encodeURIComponent(_chatgptPreviewHeader() + promptText + _chatgptPreviewFooter()),
+    chatgpt: 'https://chatgpt.com/?q=' + _encQ(_chatgptPreviewHeader() + promptText + _chatgptPreviewFooter()),
     copilot: 'https://copilot.microsoft.com/?q=' + enc,
   };
   // Keep longer prompts in ChatGPT's prefilled URL where practical. If the URL
   // becomes too long, use the clipboard fallback rather than risk a broken link.
-  var LIMIT = 30000;
+  var LIMIT = 40000;
   var url = urls[ai] || urls.chatgpt;
   // Copilot nepodporuje předvyplnění promptu přes URL parametr ?q= jako ChatGPT,
   // proto pro něj prompt VŽDY zkopírujeme do schránky (nejen při překročení LIMIT).
   // U ChatGPT funguje ?q= spolehlivě na mobilu, ale na desktopu (laptop/PC) chceme
   // vždy zkopírovat prompt do schránky a nechat uživatele vložit Ctrl+V.
-  var _extra = (ai === 'chatgpt') ? encodeURIComponent(_chatgptPreviewHeader() + _chatgptPreviewFooter()).length : 0;
-  var needsClipboard = ((enc.length + _extra) > LIMIT) || (ai === 'copilot') || (ai === 'chatgpt' && !isMobileDevice());
+  var _extra = (ai === 'chatgpt') ? _encQ(_chatgptPreviewHeader() + _chatgptPreviewFooter()).length : 0;
+  var encLen = (ai === 'chatgpt') ? encQ.length : enc.length;
+  var needsClipboard = ((encLen + _extra) > LIMIT) || (ai === 'copilot') || (ai === 'chatgpt' && !isMobileDevice());
   if (needsClipboard) {
     var base = { chatgpt:'https://chatgpt.com/', copilot:'https://copilot.microsoft.com/' };
-    if (((enc.length + _extra) > LIMIT) || (ai === 'chatgpt' && !isMobileDevice())) url = base[ai] || base.chatgpt;
+    if (((encLen + _extra) > LIMIT) || (ai === 'chatgpt' && !isMobileDevice())) url = base[ai] || base.chatgpt;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(ai === 'chatgpt' ? (_chatgptPreviewHeader() + promptText + _chatgptPreviewFooter()) : promptText).catch(function(){});
     }
@@ -12604,7 +12691,7 @@ function vtGenerate(verb, level) {
   var toLang   = LANG_LIST.find(function(l){ return l.code === genToLangVal;   }) || {label:'English'};
 
   var dlMap = {
-    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA:' },
+    'short':  { label: 'Krátké (2 věty jednoho mluvčího: situace + věta s cílovým slovem)', exchanges: 'Věta 1 (situace):\nVěta 2 (s cílovým slovem):' },
     'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA:' },
     'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA:' }
   };
@@ -12635,6 +12722,7 @@ function vtGenerate(verb, level) {
     '- CÍLOVÉ SLOVESO "' + verb + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
     '- Má-li sloveso více významů/vazeb, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
     '- Překlad = význam celé věty v kontextu, ne slovo za slovo.\n' +
+    (dialogLength === 'short' ? '- U krátké délky jde o jednoho mluvčího a dvě věty: věta 2 přímo navazuje na větu 1 (následek, reakce, rozhodnutí) a obsahuje cílové sloveso; pravidla o replikách a druhém mluvčím zde neplatí.\n' : '') +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
@@ -12645,7 +12733,7 @@ function vtGeneratePhrasal(pv) {
   var toLang   = LANG_LIST.find(function(l){ return l.code === genToLangVal;   }) || {label:'English'};
 
   var dlMap = {
-    'short':  { label: 'Krátké (3 výměny: A–B–A)', exchanges: 'A:\nB:\nA:' },
+    'short':  { label: 'Krátké (2 věty jednoho mluvčího: situace + věta s cílovým slovem)', exchanges: 'Věta 1 (situace):\nVěta 2 (s cílovým slovem):' },
     'medium': { label: 'Delší (5 výměn: A–B–A–B–A)', exchanges: 'A:\nB:\nA:\nB:\nA:' },
     'long':   { label: 'Nejdelší (9 výměn)', exchanges: 'A:\nB:\nA:\nB:\nA:\nB:\nA:\nB:\nA:' }
   };
@@ -12676,6 +12764,7 @@ function vtGeneratePhrasal(pv) {
     '- CÍLOVÉ FRÁZOVÉ SLOVESO "' + pv + '": použij ho přirozeně a vícekrát, jen tam, kde by ho rodilý mluvčí skutečně použil — NIKDY mechanicky v každé větě/replice.\n' +
     '- Má-li více významů, rozprostři je napříč příklady, nepoužívej jeden fixní překlad.\n' +
     '- Překlad = význam celé věty v kontextu, ne slovo za slovo.\n' +
+    (dialogLength === 'short' ? '- U krátké délky jde o jednoho mluvčího a dvě věty: věta 2 přímo navazuje na větu 1 (následek, reakce, rozhodnutí) a obsahuje cílové sloveso; pravidla o replikách a druhém mluvčím zde neplatí.\n' : '') +
     '- Žádné tabulky, Markdown, extra komentáře.';
 
   genOpen(currentAI, prompt);
