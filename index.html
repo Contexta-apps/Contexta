@@ -11927,12 +11927,47 @@ var DM_PRESETS = {
   ] }
 };
 
+/* ═══════ SENSES – ověřené významy slov (statické JSON v data/senses/, bez AI a bez backendu) ═══════ */
+var _sensesState = {};   // písmeno -> objekt se slovy | 'loading' | 'fail'
+function _sensesKeys(intent) {
+  var k = (intent || '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/^to /, '');
+  if (!/^[a-z]+( [a-z]+)*$/.test(k)) return [];
+  return [k];   // jen přesná shoda (např. "come up with" není "come up")
+}
+function _sensesReady(intent) {
+  var keys = _sensesKeys(intent);
+  if (!keys.length) return true;
+  var st = _sensesState[keys[0].charAt(0)];
+  return !!st && st !== 'loading';
+}
+function _sensesFetch(intent, cb) {
+  var keys = _sensesKeys(intent);
+  if (!keys.length) { cb(); return; }
+  var L = keys[0].charAt(0);
+  if (_sensesState[L] === 'loading') return;
+  _sensesState[L] = 'loading';
+  fetch('data/senses/' + L + '.json')
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) { _sensesState[L] = d || 'fail'; })
+    .catch(function () { _sensesState[L] = 'fail'; })
+    .then(function () { cb(); });
+}
+function _sensesLookup(intent) {
+  var keys = _sensesKeys(intent);
+  for (var i = 0; i < keys.length; i++) {
+    var st = _sensesState[keys[i].charAt(0)];
+    if (st && typeof st === 'object' && st[keys[i]]) return st[keys[i]];
+  }
+  return null;
+}
+
 function _dmGcd(a, b) { return b ? _dmGcd(b, a % b) : a; }
 
 function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples, miniCtx) {
   var preset = DM_PRESETS[(intent || '').toLowerCase().trim()];
   if (preset && !/^English/i.test(toName)) preset = null;           // presety jsou jen pro angličtinu jako cílový jazyk
   var useCz = preset && fromLang === 'cz';
+  var dictSenses = (!preset && fromLang === 'en') ? _sensesLookup(intent) : null;
   var K = preset ? preset.senses.length : 0;
 
   // 1) turn schedule: never turn 1, never the last turn (final reaction), respects minTurn of each sense, consecutive dialogues differ
@@ -11957,6 +11992,11 @@ function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples
     out += 'Never translate one sense with the equivalent of another. The first line lists exactly these equivalents.\n';
     out += 'Dialogue N uses the sense named in the table below; the ' + (nExamples || 3) + ' example sentences use sense 1, 2, 3 … in this order, one sentence per sense' + (K < (nExamples || 3) ? ' (start again at sense 1 only when there are fewer senses than sentences)' : '') + '.\n';
   } else {
+    if (dictSenses) {
+      out += 'DICTIONARY SENSES (fixed by the app from WordNet and checked; they replace the sense choice in the INTERNAL DRAFTING STEP): use ONLY these senses, in this order, most frequent first, and no others:\n';
+      dictSenses.forEach(function (x, idx) { out += 'Sense ' + (idx + 1) + ': (' + x[0] + ') ' + x[1] + '\n'; });
+      out += 'Never use a sense that is not listed, even if the word has other meanings. Give each listed sense ONE natural equivalent on the first line.\n';
+    }
     out += 'Number the senses you chose in your internal step 1, 2, 3 … in the order of the first line (K = how many). ' + (totalDialogs >= 8 ? 'Sense 1 is the most frequent and gets about half of the dialogues: dialogue N is built around sense 1 when N is odd, and the even-numbered dialogues take senses 2, 3 \u2026 in turn, starting again at sense 2 (if K = 1 every dialogue uses sense 1), so every listed sense is used in at least one dialogue; ' : 'Dialogue N is built around sense ((N-1) mod K)+1, so every listed sense is used in at least one dialogue; ') + 'the ' + (nExamples || 3) + ' example sentences use senses 1, 2, 3 … in this order, one sentence per sense (start again at sense 1 only when there are fewer senses than sentences).\n';
   }
   out += 'ONLY IF the target word is a discourse marker (otherwise ignore this table and use no markers like "by the way"), put it in the dialogues exactly here (turn number and speaker are fixed; the sentence must fit that turn logically):\n' + rows.join('\n') + '\n';
@@ -11988,6 +12028,9 @@ function genGenerate() {
 
   var fromName = GEN_NAMES[fromLang] || fromLang;
   var toName   = GEN_NAMES[toLang]   || toLang;
+
+  // Významy slov: načti data/senses/<písmeno>.json a pak spusť generování znovu (jednou)
+  if (fromLang === 'en' && intent && !_sensesReady(intent)) { _sensesFetch(intent, genGenerate); return; }
 
   // Auto frázové sloveso: jen když je zdroj slov "verbs_*" a angličtina je v páru jazyků
   var wordSourceEl     = document.getElementById('wordSourceSelect');
