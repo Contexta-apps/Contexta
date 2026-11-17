@@ -11967,7 +11967,7 @@ function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples
   var preset = DM_PRESETS[(intent || '').toLowerCase().trim()];
   if (preset && !/^English/i.test(toName)) preset = null;           // presety jsou jen pro angličtinu jako cílový jazyk
   var useCz = preset && fromLang === 'cz';
-  var dictSenses = (!preset && fromLang === 'en') ? _sensesLookup(intent) : null;
+  var dictSenses = (!preset && (fromLang === 'en' || toName.indexOf('English') === 0)) ? _sensesLookup(intent) : null;
   var K = preset ? preset.senses.length : 0;
 
   // 1) turn schedule: never turn 1, never the last turn (final reaction), respects minTurn of each sense, consecutive dialogues differ
@@ -11993,7 +11993,7 @@ function buildWordPlan(intent, fromLang, toName, totalDialogs, nTurns, nExamples
     out += 'Dialogue N uses the sense named in the table below; the ' + (nExamples || 3) + ' example sentences use sense 1, 2, 3 … in this order, one sentence per sense' + (K < (nExamples || 3) ? ' (start again at sense 1 only when there are fewer senses than sentences)' : '') + '.\n';
   } else {
     if (dictSenses) {
-      out += 'DICTIONARY SENSES (fixed by the app from WordNet and checked; they replace the sense choice in the INTERNAL DRAFTING STEP): use ONLY these senses, in this order, most frequent first, and no others:\n';
+      out += (fromLang === 'en' ? '' : 'The following applies only if the target word is an English word; if it is a word of another language, ignore this block. ') + 'DICTIONARY SENSES (fixed by the app from WordNet and checked; they replace the sense choice in the INTERNAL DRAFTING STEP): use ONLY these senses, in this order, most frequent first, and no others:\n';
       dictSenses.forEach(function (x, idx) { out += 'Sense ' + (idx + 1) + ': (' + x[0] + ') ' + x[1] + '\n'; });
       out += 'Never use a sense that is not listed, even if the word has other meanings. Give each listed sense ONE natural equivalent on the first line. On the first line show each listed sense as a short explanatory phrase with its typical object, followed by up to two close alternatives of the same sense (for Czech, for example: podat myšlenku, sdělit, vyjádřit); for these dictionary senses this overrides the rule of exactly one equivalent. Never use an equivalent whose most common meaning is a different one (for example a verb that normally means physically handing something to someone) unless it is given with its object, and in the dialogues, flashcards, quiz and translations use only the equivalents listed on the first line.\n';
     }
@@ -12030,7 +12030,7 @@ function genGenerate() {
   var toName   = GEN_NAMES[toLang]   || toLang;
 
   // Významy slov: načti data/senses/<písmeno>.json a pak spusť generování znovu (jednou)
-  if (fromLang === 'en' && intent && !_sensesReady(intent)) { _sensesFetch(intent, genGenerate); return; }
+  if ((fromLang === 'en' || toLang === 'en') && intent && !_sensesReady(intent)) { _sensesFetch(intent, genGenerate); return; }
 
   // Auto frázové sloveso: jen když je zdroj slov "verbs_*" a angličtina je v páru jazyků
   var wordSourceEl     = document.getElementById('wordSourceSelect');
