@@ -1,0 +1,224 @@
+{
+ "get": [
+  [
+   "verb",
+   "receive something",
+   "typical: get + letter/message/gift/call. NOT for: becoming (see become sense).",
+   [
+    "I got a message from Tom this morning.",
+    "She got a lovely present for her birthday."
+   ]
+  ],
+  [
+   "verb",
+   "obtain or buy something",
+   "typical: get + object, where did you get it. NOT for: receiving unasked.",
+   [
+    "Where did you get that jacket?",
+    "I need to get some milk."
+   ]
+  ],
+  [
+   "verb",
+   "bring or fetch someone or something",
+   "typical: get + object, get sb sth. NOT for: buying.",
+   [
+    "Can you get my glasses from the kitchen?",
+    "I'll get you a glass of water."
+   ]
+  ],
+  [
+   "verb",
+   "arrive or reach a place or point",
+   "typical: get to/home/there/here. NOT for: obtaining things.",
+   [
+    "What time did you get home?",
+    "We got to the station late."
+   ]
+  ],
+  [
+   "verb",
+   "become (a state)",
+   "typical: get + adjective: tired, angry, dark, better, worse. NOT for: receiving.",
+   [
+    "It gets dark early in winter.",
+    "He got angry when he heard the news."
+   ]
+  ],
+  [
+   "verb",
+   "catch an illness",
+   "typical: get + flu/a cold/ill. NOT for: obtaining things.",
+   [
+    "I got flu last week.",
+    "She got a cold on holiday."
+   ]
+  ],
+  [
+   "verb",
+   "understand something",
+   "typical: get it, get the joke/point. NOT for: physical receiving.",
+   [
+    "I don't think she got the joke.",
+    "Sorry, I don't get it. Can you explain?"
+   ]
+  ],
+  [
+   "verb",
+   "make or persuade someone to do something, or have something done",
+   "typical: get sb to do sth, get sth done. NOT for: forcing by strength (see make).",
+   [
+    "I got my brother to help me move.",
+    "We need to get this report finished."
+   ]
+  ],
+  [
+   "verb",
+   "travel somewhere by a vehicle",
+   "typical: get a bus/train/taxi. NOT for: arriving at a point.",
+   [
+    "We'll get the 8:15 train.",
+    "I usually get a taxi home."
+   ]
+  ]
+ ],
+ "go": [
+  [
+   "verb",
+   "travel or move to a place",
+   "typical: go to/into/out/home/abroad. NOT for: leaving as a single action (see leave) or becoming.",
+   [
+    "We go to the gym every Monday.",
+    "She went to Spain last summer."
+   ]
+  ],
+  [
+   "verb",
+   "do an activity (go + -ing)",
+   "typical: go swimming/shopping/running/camping. NOT for: moving to a destination.",
+   [
+    "We went shopping on Saturday.",
+    "He goes running before work."
+   ]
+  ],
+  [
+   "verb",
+   "attend a place regularly or for an event",
+   "typical: go to school/work/church/a concert. NOT for: one-off travel.",
+   [
+    "The children go to school at eight.",
+    "I'm going to a concert tonight."
+   ]
+  ],
+  [
+   "verb",
+   "leave a place",
+   "typical: I must go now, time to go. NOT for: arriving.",
+   [
+    "I have to go now, my bus is here.",
+    "What time does the last train go?"
+   ]
+  ],
+  [
+   "verb",
+   "be going to: intend or be about to do something",
+   "typical: be going to + verb. NOT for: motion.",
+   [
+    "I'm going to call her tomorrow.",
+    "It's going to rain."
+   ]
+  ],
+  [
+   "verb",
+   "become, usually something negative",
+   "typical: go bad/wrong/mad/quiet/grey. NOT for: positive changes.",
+   [
+    "The milk has gone bad.",
+    "His hair is starting to go grey."
+   ]
+  ],
+  [
+   "verb",
+   "happen or develop in a certain way",
+   "typical: how did it go?, go well/badly. NOT for: travel.",
+   [
+    "How did the interview go?",
+    "Everything went well."
+   ]
+  ]
+ ],
+ "give": [
+  [
+   "verb",
+   "let someone have something as a present or by handing it over",
+   "typical: give + person + thing, give sth to sb. NOT for: selling.",
+   [
+    "She gave me a present.",
+    "Give him the key."
+   ]
+  ],
+  [
+   "verb",
+   "tell or provide information or help",
+   "typical: give advice/directions/instructions/an answer/details. NOT for: physical objects.",
+   [
+    "Can you give me directions to the station?",
+    "He gave us some useful advice."
+   ]
+  ],
+  [
+   "verb",
+   "do an action expressed by the noun",
+   "typical: give a smile/wave/push/hug/try/look. NOT for: physical gifts.",
+   [
+    "She gave me a big hug.",
+    "Give it a try."
+   ]
+  ],
+  [
+   "verb",
+   "make a speech, talk or performance",
+   "typical: give a talk/speech/lecture/concert. NOT for: gifts.",
+   [
+    "He gave a short speech at the wedding.",
+    "The band gave a concert in the park."
+   ]
+  ],
+  [
+   "verb",
+   "make someone feel or experience something",
+   "typical: give sb a shock/headache/surprise/chance. NOT for: objects.",
+   [
+    "The noise gave me a headache.",
+    "The news gave us a shock."
+   ]
+  ],
+  [
+   "verb",
+   "organize a party or social event",
+   "typical: give a party/dinner. NOT for: attending one.",
+   [
+    "They are giving a party on Saturday.",
+    "We gave a dinner for our neighbours."
+   ]
+  ],
+  [
+   "verb",
+   "pay an amount of money for something",
+   "typical: give + money + for sth. NOT for: gifts.",
+   [
+    "I'll give you ten euros for it.",
+    "They gave £700 for the old car."
+   ]
+  ],
+  [
+   "verb",
+   "allow an amount of time",
+   "typical: give sb time/a week/a few days. NOT for: giving objects.",
+   [
+    "Give me a few minutes to finish.",
+    "They gave us a week to decide."
+   ]
+  ]
+ ]
+}

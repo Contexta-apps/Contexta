@@ -1,0 +1,132 @@
+{
+ "well": [
+  [
+   "adverb",
+   "in a good, skilful or successful way",
+   "typical: verb + well: speak/play/sleep/do well. NOT for: describing a noun (use good).",
+   [
+    "She speaks English very well.",
+    "The plan worked well."
+   ]
+  ],
+  [
+   "adverb",
+   "thoroughly or completely",
+   "typical: mix/shake/read well, well aware, well known. NOT for: skill.",
+   [
+    "Mix the flour and butter well.",
+    "I'm well aware of the problem."
+   ]
+  ],
+  [
+   "adverb",
+   "also or in addition (as well, as well as)",
+   "typical: as well, as well as + noun. NOT for: skill.",
+   [
+    "Can I come as well?",
+    "She speaks French as well as German."
+   ]
+  ],
+  [
+   "adjective",
+   "healthy",
+   "typical: feel/look/be well, get well soon. NOT for: before a noun.",
+   [
+    "I don't feel well today.",
+    "Are you well?"
+   ]
+  ],
+  [
+   "interjection",
+   "spoken: used to pause, think or start a new part of a conversation",
+   "typical: Well, ... at the start of a sentence. NOT for: formal writing.",
+   [
+    "Well, let's begin.",
+    "Well, I'm not sure about that."
+   ]
+  ],
+  [
+   "interjection",
+   "spoken: used to express doubt, surprise or to accept a situation",
+   "typical: Well, ... / Oh well. NOT for: formal writing.",
+   [
+    "Well, I didn't think I'd see you here.",
+    "Oh well, it can't be helped."
+   ]
+  ],
+  [
+   "adverb",
+   "(may/might as well) no reason not to do something",
+   "typical: might as well + verb. NOT for: health.",
+   [
+    "We might as well go home.",
+    "You may as well wait here."
+   ]
+  ]
+ ],
+ "work": [
+  [
+   "verb",
+   "have a job and do it for pay",
+   "typical: work at/for/in + place/company. NOT for: machines.",
+   [
+    "She works at a bank.",
+    "He works for a small software company."
+   ]
+  ],
+  [
+   "verb",
+   "spend time and effort doing an activity or task",
+   "typical: work in the garden/on a project. NOT for: paid jobs only.",
+   [
+    "I'm working on my essay.",
+    "He worked in the garden all afternoon."
+   ]
+  ],
+  [
+   "verb",
+   "try hard over time to achieve something",
+   "typical: work hard/towards/to + verb. NOT for: machines.",
+   [
+    "They are working to improve the service.",
+    "She worked hard to pass her exams."
+   ]
+  ],
+  [
+   "verb",
+   "(of a machine or equipment) operate correctly",
+   "typical: thing + work, doesn't work. NOT for: people's jobs.",
+   [
+    "The printer doesn't work.",
+    "Does the lift work today?"
+   ]
+  ],
+  [
+   "verb",
+   "be effective or successful",
+   "typical: a plan/method/medicine works. NOT for: machines starting.",
+   [
+    "The plan worked perfectly.",
+    "This medicine works quickly."
+   ]
+  ],
+  [
+   "noun",
+   "a job or paid employment",
+   "typical: go to work, be out of work, look for work. NOT for: effort in general.",
+   [
+    "I go to work by bus.",
+    "He has been out of work for a year."
+   ]
+  ],
+  [
+   "noun",
+   "effort or tasks that need to be done",
+   "typical: a lot of work, hard work, homework. NOT for: employment.",
+   [
+    "I have a lot of work today.",
+    "It took a lot of hard work."
+   ]
+  ]
+ ]
+}

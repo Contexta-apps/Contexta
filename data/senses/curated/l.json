@@ -1,0 +1,235 @@
+{
+ "like": [
+  [
+   "verb",
+   "enjoy something or think it is nice or good",
+   "typical: like + noun/-ing: like music, like swimming. NOT for: wanting (see would like).",
+   [
+    "I like hot tea in the morning.",
+    "Do you like your new job?"
+   ]
+  ],
+  [
+   "verb",
+   "think a person is nice or have a friendly feeling towards them",
+   "typical: like + person. NOT for: romantic love.",
+   [
+    "I really like your sister.",
+    "He doesn't like his boss."
+   ]
+  ],
+  [
+   "verb",
+   "do something regularly or by preference",
+   "typical: like to + verb. NOT for: a single wish.",
+   [
+    "I like to get up early.",
+    "She likes to read before bed."
+   ]
+  ],
+  [
+   "verb",
+   "(would like) want something, or politely offer or ask",
+   "typical: would like + noun/to + verb. NOT for: general enjoyment.",
+   [
+    "I would like a coffee, please.",
+    "Would you like to come with us?"
+   ]
+  ],
+  [
+   "preposition",
+   "similar to, or in the same way as",
+   "typical: look/sound/taste/feel like + noun. NOT for: enjoyment.",
+   [
+    "He looks like his father.",
+    "It tastes like chicken."
+   ]
+  ],
+  [
+   "preposition",
+   "for example, such as",
+   "typical: noun + like + examples. NOT for: comparison of two things.",
+   [
+    "I enjoy sports like tennis and swimming.",
+    "She loves fruit like mangoes and pineapples."
+   ]
+  ]
+ ],
+ "last": [
+  [
+   "adjective",
+   "coming at the end, after all others",
+   "typical: the last bus/day/page/one. NOT for: most recent.",
+   [
+    "This is the last bus.",
+    "She was the last to arrive."
+   ]
+  ],
+  [
+   "adjective",
+   "most recent, just before now",
+   "typical: last week/year/night/time. NOT for: final in a series.",
+   [
+    "I saw him last week.",
+    "What did you do last night?"
+   ]
+  ],
+  [
+   "adverb",
+   "most recently, or at the end after everyone else",
+   "typical: when I last saw her, came last, last of all. NOT for: duration.",
+   [
+    "When did you last see him?",
+    "He finished last in the race."
+   ]
+  ],
+  [
+   "verb",
+   "continue for a period of time",
+   "typical: last + time expression. NOT for: final position.",
+   [
+    "The meeting lasted two hours.",
+    "The film lasts almost three hours."
+   ]
+  ],
+  [
+   "verb",
+   "continue in good condition, or be enough for a time",
+   "typical: won't last, last for + time. NOT for: events.",
+   [
+    "This good weather won't last.",
+    "Our supplies will last a week."
+   ]
+  ]
+ ],
+ "leave": [
+  [
+   "verb",
+   "go away from a place or person",
+   "typical: leave + place, leave for + place, leave at + time. NOT for: stopping a job (see next sense).",
+   [
+    "We leave at eight.",
+    "She left the office early."
+   ]
+  ],
+  [
+   "verb",
+   "let something stay where it is, often by accident",
+   "typical: leave + object + place/adjective. NOT for: departure.",
+   [
+    "I left my keys at home.",
+    "Leave the door open."
+   ]
+  ],
+  [
+   "verb",
+   "stop working at a job or going to a school or organization",
+   "typical: leave school/work/a job/the army. NOT for: temporary absence.",
+   [
+    "He left school at sixteen.",
+    "She left her job last month."
+   ]
+  ],
+  [
+   "verb",
+   "end a relationship and go away from your partner",
+   "typical: leave + husband/wife/partner. NOT for: leaving a place.",
+   [
+    "Martha left her husband last year.",
+    "He never believed she would leave him."
+   ]
+  ],
+  [
+   "verb",
+   "remain after the rest has been used or taken",
+   "typical: be left, there is/are + noun + left. NOT for: departure.",
+   [
+    "There are only two days left.",
+    "Is there any milk left?"
+   ]
+  ],
+  [
+   "verb",
+   "deliver or put a message for someone",
+   "typical: leave a message/note for sb. NOT for: departure.",
+   [
+    "Can I leave a message for Anna?",
+    "She left a note on the table."
+   ]
+  ],
+  [
+   "verb",
+   "let someone else decide or deal with something",
+   "typical: leave it to sb, leave sb to do sth. NOT for: departure.",
+   [
+    "I'll leave it to you to decide.",
+    "Leave the cooking to me."
+   ]
+  ],
+  [
+   "verb",
+   "delay doing something until later",
+   "typical: leave sth until later/tomorrow/the last minute. NOT for: forgetting objects.",
+   [
+    "Don't leave your homework until the last minute.",
+    "Let's leave this for today."
+   ]
+  ]
+ ],
+ "look": [
+  [
+   "verb",
+   "direct your eyes towards something to see it",
+   "typical: look at/out of/up/down. NOT for: seeming.",
+   [
+    "Look at this picture.",
+    "He looked out of the window."
+   ]
+  ],
+  [
+   "verb",
+   "seem or appear",
+   "typical: look + adjective, look like + noun. NOT for: using your eyes on purpose.",
+   [
+    "You look tired.",
+    "The house looks old."
+   ]
+  ],
+  [
+   "verb",
+   "try to find something",
+   "typical: look for + thing. NOT for: just seeing.",
+   [
+    "I'm looking for my keys.",
+    "She is looking for a new flat."
+   ]
+  ],
+  [
+   "verb",
+   "consider or examine something carefully",
+   "typical: look at the problem/situation/idea. NOT for: physical looking.",
+   [
+    "We need to look at all the options.",
+    "Let's look at the budget again."
+   ]
+  ],
+  [
+   "noun",
+   "an act of looking at something",
+   "typical: have/take a look (at sth). NOT for: appearance.",
+   [
+    "Take a look at this photo.",
+    "Can I have a quick look at your notes?"
+   ]
+  ],
+  [
+   "noun",
+   "(looks) the way someone or something appears",
+   "typical: good looks, by the looks of it. NOT for: an act of looking.",
+   [
+    "He has his father's good looks.",
+    "By the looks of it, it will rain."
+   ]
+  ]
+ ]
+}
