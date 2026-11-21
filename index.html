@@ -4311,7 +4311,7 @@ h1[data-t="heroH"] {
               </div>
               <div class="tree-item quicklevel-item" data-value="phrasal_verbs" data-translate="quickLevelPhrasalVerbs" onclick="qlSelectFixed('phrasal_verbs',this.textContent,this)">frázová slovesa</div>
               <div class="tree-item quicklevel-item" data-value="idioms" data-translate="quickLevelIdioms" onclick="qlSelectFixed('idioms',this.textContent,this)">idiomy</div>
-              <div class="tree-item quicklevel-item" data-value="discourse_markers" onclick="qlSelectFixed('discourse_markers',this.querySelector('[data-translate]').textContent,this)">
+              <div class="tree-item quicklevel-item" data-prefix="discourse_markers" onclick="qlSelectCategory('discourse_markers','Diskurzní konektory',this)">
                 <span style="display:flex;align-items:center;gap:6px;"><span data-translate="quickLevelDiscourseMarkers">diskurzní konektory</span><span class="ql-info" data-translate-title="quickLevelDiscourseMarkersInfo" title="slova a spojení propojující věty a myšlenky, např. however, in fact, on the other hand">i</span></span>
               </div>
             </div>
@@ -4489,6 +4489,14 @@ h1[data-t="heroH"] {
                     <option value="noun_phrases_b2">noun_phrases_b2</option>
                     <option value="noun_phrases_c1">noun_phrases_c1</option>
                     <option value="noun_phrases_c2">noun_phrases_c2</option>
+                  </optgroup>
+                  <optgroup label="Discourse markers">
+                    <option value="discourse_markers_a1">discourse_markers_a1</option>
+                    <option value="discourse_markers_a2">discourse_markers_a2</option>
+                    <option value="discourse_markers_b1">discourse_markers_b1</option>
+                    <option value="discourse_markers_b2">discourse_markers_b2</option>
+                    <option value="discourse_markers_c1">discourse_markers_c1</option>
+                    <option value="discourse_markers_c2">discourse_markers_c2</option>
                   </optgroup>
                   <optgroup label="Adjectives">
                     <option value="adjectives_a1">adjectives_a1</option>
@@ -12833,7 +12841,8 @@ var _enWordSet = null;
 var _enWordSetLoading = false;
 var EN_WORD_SET_CACHE_KEY = 'contexta_en_word_set_v1';
 var EN_WORD_SOURCES = ['A1','A2','B1','B2','C1','C2','top500','top1000','top3000',
-  'business','phrasal_verbs','idioms','discourse_markers','toefl','ielts',
+  'business','phrasal_verbs','idioms','toefl','ielts',
+  'discourse_markers_a1','discourse_markers_a2','discourse_markers_b1','discourse_markers_b2','discourse_markers_c1','discourse_markers_c2',
   'verbs_a1','verbs_a2','verbs_b1','verbs_b2','verbs_c1','verbs_c2',
   'collocations_a1','collocations_a2','collocations_b1','collocations_b2','collocations_c1','collocations_c2',
   'nouns_a1','nouns_a2','nouns_b1','nouns_b2','nouns_c1','nouns_c2',
