@@ -57,6 +57,46 @@
       ]
     ]
   ],
+  "open up": [
+    [
+      "verb",
+      "begin to talk openly about your feelings",
+      "typical: open up (to sb/about sth). NOT for: opening a door or box.",
+      [
+        "He finally opened up to me about his fears.",
+        "It takes time for some children to open up."
+      ]
+    ],
+    [
+      "verb",
+      "start a business or open a shop for customers",
+      "typical: open up a shop/an office; the café opens up at seven. NOT for: closing it.",
+      [
+        "They plan to open up a bakery in the old station.",
+        "The café opens up at seven."
+      ]
+    ],
+    [
+      "verb",
+      "make something possible or available",
+      "typical: open up chances/possibilities, open sth up. NOT for: closing options.",
+      [
+        "The new law will open up new markets.",
+        "A degree can open up many career options."
+      ]
+    ]
+  ],
+  "opt out": [
+    [
+      "verb",
+      "choose not to take part in something",
+      "typical: opt out (of sth), e.g. opt out of the plan. NOT for: choosing to join (use opt in).",
+      [
+        "Employees can opt out of the pension scheme.",
+        "Three schools opted out of the programme."
+      ]
+    ]
+  ],
   "or": [
     [
       "alternative",
@@ -140,6 +180,17 @@
         "He finished second overall in the tournament.",
         "The repairs will cost about two thousand euros overall.",
         "We spent four days on the project overall."
+      ]
+    ]
+  ],
+  "own up": [
+    [
+      "verb",
+      "admit that you did something wrong",
+      "typical: own up (to sth/to doing sth). NOT for: blaming someone else.",
+      [
+        "Nobody owned up to breaking the window.",
+        "He owned up and said sorry."
       ]
     ]
   ]

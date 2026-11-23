@@ -21,6 +21,55 @@
       ]
     ]
   ],
+  "act out": [
+    [
+      "verb",
+      "perform a story or situation with actions, like a short play",
+      "typical: act out a scene, act sth out; role-play and drama lessons. NOT for: pretending in order to trick someone.",
+      [
+        "The children acted out the story of the three bears.",
+        "In class we acted the dialogue out in pairs."
+      ]
+    ],
+    [
+      "verb",
+      "show strong feelings through bad behaviour instead of talking about them",
+      "typical: act out at school; children and teenagers. NOT for: performing in a play.",
+      [
+        "After the move, the little boy began to act out at school.",
+        "Some teenagers act out when they feel nobody listens to them."
+      ]
+    ]
+  ],
+  "add up": [
+    [
+      "verb",
+      "find the total of several numbers or amounts",
+      "typical: add up the bill, add sth up. NOT for: putting one more thing with others (use add).",
+      [
+        "Let's add up how much we spent on the trip.",
+        "He added the figures up twice to be sure."
+      ]
+    ],
+    [
+      "verb",
+      "make sense or seem logical",
+      "typical: usually negative, e.g. it doesn't add up. NOT for: calculating a total.",
+      [
+        "His explanation just doesn't add up.",
+        "The facts add up: someone inside the company helped."
+      ]
+    ],
+    [
+      "verb",
+      "slowly become a large amount",
+      "typical: small savings/costs add up, add up to sth. NOT for: giving the exact total of a bill.",
+      [
+        "Small savings add up over the years.",
+        "Those short calls really add up on the phone bill."
+      ]
+    ]
+  ],
   "admittedly": [
     [
       "concession",
@@ -54,6 +103,35 @@
         "We had dinner and went for a walk afterwards.",
         "The lecture was boring. Afterwards, we all went for coffee.",
         "Call me afterwards and tell me how it went."
+      ]
+    ]
+  ],
+  "agree with": [
+    [
+      "verb",
+      "have the same opinion as someone",
+      "typical: agree with sb/an idea. NOT for: saying yes to a plan or request (use agree to).",
+      [
+        "I agree with you completely.",
+        "Most people agree with the new rule."
+      ]
+    ],
+    [
+      "verb",
+      "be good for your body, usually about food or climate",
+      "typical: usually negative, e.g. the fish didn't agree with me. NOT for: having the same opinion.",
+      [
+        "Spicy food doesn't agree with me.",
+        "The hot climate never agreed with her."
+      ]
+    ],
+    [
+      "verb",
+      "match in grammar or in facts",
+      "typical: a verb agrees with its subject; two reports agree with each other. NOT for: people sharing an opinion.",
+      [
+        "In English, the verb must agree with the subject.",
+        "His story agrees with what the witness said."
       ]
     ]
   ],
@@ -167,6 +245,48 @@
       ]
     ]
   ],
+  "answer back": [
+    [
+      "verb",
+      "reply rudely to someone who has authority over you",
+      "typical: children answering back to parents or teachers. NOT for: giving a polite reply (use answer).",
+      [
+        "Don't answer back when your mother is talking to you.",
+        "He was sent out of class for answering the teacher back."
+      ]
+    ]
+  ],
+  "apply for": [
+    [
+      "verb",
+      "make a formal request for a job, place, visa or permit",
+      "typical: apply for a job/a loan/a visa. NOT for: using a rule or idea in practice (use apply to).",
+      [
+        "She applied for a job at the museum.",
+        "You must apply for a visa before you travel."
+      ]
+    ]
+  ],
+  "arrive at": [
+    [
+      "verb",
+      "reach a place at the end of a journey",
+      "typical: arrive at a station/airport/hotel; for a town or country use arrive in. NOT for: reaching a decision.",
+      [
+        "We arrived at the hotel just before midnight.",
+        "The train arrives at platform four at noon."
+      ]
+    ],
+    [
+      "verb",
+      "reach a decision, answer or agreement after thinking",
+      "typical: arrive at a decision/a conclusion/a figure. NOT for: reaching a place.",
+      [
+        "After long talks, they arrived at a compromise.",
+        "How did you arrive at that number?"
+      ]
+    ]
+  ],
   "as a result": [
     [
       "result",
@@ -208,6 +328,57 @@
         "As far as money is concerned, we're fine for now.",
         "As far as the schedule is concerned, nothing has changed.",
         "As far as food is concerned, the hotel has a lot to offer."
+      ]
+    ]
+  ],
+  "ask around": [
+    [
+      "verb",
+      "ask several different people for information or help",
+      "typical: informal, e.g. I'll ask around. NOT for: asking only one person.",
+      [
+        "I'll ask around and see if anyone has a spare ticket.",
+        "She asked around the office, but nobody had seen the keys."
+      ]
+    ]
+  ],
+  "ask for": [
+    [
+      "verb",
+      "say that you want something to be given to you",
+      "typical: ask for help/advice/the bill. NOT for: asking a question to get information (use ask).",
+      [
+        "She asked for a glass of water.",
+        "Don't be afraid to ask for help."
+      ]
+    ],
+    [
+      "verb",
+      "say that you want to speak to a particular person",
+      "typical: ask for the manager, ask for sb at reception. NOT for: asking a person a question.",
+      [
+        "When you arrive, ask for Mrs Novak at reception.",
+        "He phoned the office and asked for the manager."
+      ]
+    ],
+    [
+      "verb",
+      "behave in a way that is likely to cause trouble for yourself",
+      "typical: informal, ask for trouble, be asking for it. NOT for: politely requesting something.",
+      [
+        "Driving that fast in the rain is asking for trouble.",
+        "If you leave your bag there, you're asking for it."
+      ]
+    ]
+  ],
+  "ask out": [
+    [
+      "verb",
+      "invite someone to go on a date",
+      "typical: ask sb out, e.g. he asked her out. NOT for: inviting someone to a group event.",
+      [
+        "He finally asked her out after three months.",
+        "I was too shy to ask him out."
       ]
     ]
   ],

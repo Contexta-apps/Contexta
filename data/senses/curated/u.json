@@ -32,5 +32,36 @@
         "Don't call me before eight unless it's urgent."
       ]
     ]
+  ],
+  "use up": [
+    [
+      "verb",
+      "use all of something so that none is left",
+      "typical: use up the milk/your savings, use sth up. NOT for: using only a little.",
+      [
+        "Who used up all the hot water?",
+        "She used her savings up in six months."
+      ]
+    ]
+  ],
+  "usher in": [
+    [
+      "verb",
+      "mark the beginning of a new period or system",
+      "typical: usher in a new era/age/system. NOT for: ending something.",
+      [
+        "The invention ushered in a new age of travel.",
+        "The new president promised to usher in change."
+      ]
+    ],
+    [
+      "verb",
+      "show someone politely to a place",
+      "typical: usher sb in. NOT for: forcing someone to go.",
+      [
+        "A waiter ushered us in and gave us a table.",
+        "She ushered the guests in and offered them tea."
+      ]
+    ]
   ]
 }
