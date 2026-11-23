@@ -1,89 +1,146 @@
 {
- "open up": [
-  [
-   "verb",
-   "become available or possible (opportunities)",
-   "typical: opportunities open up, open sth up. NOT for: closing.",
-   [
-    "A whole new world opens up with a microscope.",
-    "The agreement opens up new possibilities."
-   ]
+  "on balance": [
+    [
+      "overall judgement",
+      "gives your opinion after weighing all the facts, good and bad",
+      "typical: neutral to formal, at the start of a sentence or between commas. NOT for: a quick first impression.",
+      [
+        "On balance, the second offer seems better.",
+        "It was, on balance, a good year for the company.",
+        "On balance, we think it's better to wait."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "make an area easier to reach or ready for use",
-   "typical: open up an area/market. NOT for: closing.",
-   [
-    "They opened up the region for tourism.",
-    "Roads opened up the valley."
-   ]
+  "on the contrary": [
+    [
+      "opposite",
+      "adds that the opposite of a negative statement is true",
+      "typical: after your own negative statement, e.g. It isn't X; on the contrary, it is Y. NOT for: a mild contrast between two different things (use 'by contrast').",
+      [
+        "The new system isn't slower; on the contrary, it's twice as fast.",
+        "Moving abroad wasn't a mistake. On the contrary, it was the best decision of my life.",
+        "He isn't lazy; on the contrary, he works harder than anyone."
+      ]
+    ],
+    [
+      "disagreement",
+      "strongly disagrees with what someone else has said or suggested",
+      "typical: spoken, at the start of a reply, also 'quite the contrary'. NOT for: agreeing with someone.",
+      [
+        "'Sorry, I'm probably boring you.' 'On the contrary, I find it fascinating.'",
+        "'Was the film a disaster?' 'Quite the contrary, it was brilliant.'",
+        "'You must hate living here.' 'On the contrary, I love it.'"
+      ]
+    ]
   ],
-  [
-   "verb",
-   "start talking more freely about your feelings",
-   "typical: open up (to sb). NOT for: hiding feelings.",
-   [
-    "He finally opened up to me about his fears.",
-    "She found it hard to open up."
-   ]
+  "on the one hand": [
+    [
+      "first point of two",
+      "introduces the first of two points that you want to weigh against each other",
+      "typical: in discussions and essays, followed later by 'on the other hand'; always 'on the one hand', not 'on one hand'. NOT for: a single point with nothing to compare it to.",
+      [
+        "On the one hand, working from home saves time; on the other hand, it can feel lonely.",
+        "On the one hand, I'd love to live abroad. On the other hand, I'd miss my family.",
+        "On the one hand, the course is expensive; however, it will help my career."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "unlock a building or start business (a shop)",
-   "typical: open (sth) up. NOT for: closing.",
-   [
-    "I open up at eight every morning.",
-    "She opened up the shop."
-   ]
+  "on the other hand": [
+    [
+      "second point",
+      "gives another fact or opinion that should be considered together with the one you have just given",
+      "typical: after 'on the one hand', after 'but', or at the start of a new sentence. NOT for: correcting a wrong idea (use 'on the contrary').",
+      [
+        "The job pays well. On the other hand, the hours are very long.",
+        "I'd like a bigger flat. On the other hand, I don't want a higher rent.",
+        "Living in the city is exciting; on the other hand, it is noisy and expensive."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "start shooting (open up on sb)",
-   "typical: open up (on sb). NOT for: ceasing fire.",
-   [
-    "The soldiers opened up on the enemy.",
-    "The guns opened up."
-   ]
+  "or": [
+    [
+      "alternative",
+      "shows a choice between two or more possibilities",
+      "typical: questions and lists, e.g. tea or coffee, walk or bus. NOT for: adding things together (use 'and').",
+      [
+        "Do you want to walk or take the bus?",
+        "You can pay by card or in cash.",
+        "Is the meeting on Monday or on Tuesday?"
+      ]
+    ],
+    [
+      "vague example",
+      "says that other similar things could also be named",
+      "typical: spoken, e.g. or something, or anything. NOT for: exact information or formal writing.",
+      [
+        "Shall we watch a film or something?",
+        "He didn't even smile or anything.",
+        "I think she works as a nurse or something."
+      ]
+    ],
+    [
+      "correction",
+      "corrects what you just said or makes it more exact",
+      "typical: or rather, or at least, or maybe. NOT for: offering a real choice.",
+      [
+        "We met in May, or rather at the end of April.",
+        "It took an hour, or at least it felt like one.",
+        "She's thirty, or maybe thirty-one; I never remember."
+      ]
+    ],
+    [
+      "warning",
+      "warns that something bad will happen if the first thing is not done",
+      "typical: after a command, also with 'or else'. NOT for: a neutral choice between two options.",
+      [
+        "Lock the door or someone might walk in.",
+        "Study tonight or you'll regret it tomorrow.",
+        "Be on time, or else we'll leave without you."
+      ]
+    ]
+  ],
+  "otherwise": [
+    [
+      "warning",
+      "says what bad thing will happen if the first thing is not done",
+      "typical: after an instruction or a necessary action, e.g. Book early, otherwise... NOT for: a neutral choice between two options (use 'or').",
+      [
+        "Check your bag, otherwise you might leave something behind.",
+        "Book early, otherwise there won't be any seats.",
+        "Take notes, otherwise you'll forget everything."
+      ]
+    ],
+    [
+      "what would have happened",
+      "says what would have happened if the first thing had not happened",
+      "typical: after a fact about the past, e.g. I took a map. Otherwise, I would have... NOT for: warnings about the future.",
+      [
+        "I took a map. Otherwise, I would have got lost in the old town.",
+        "She called a taxi. Otherwise, she would have missed her flight.",
+        "Luckily, the doctor came quickly; otherwise, it could have been serious."
+      ]
+    ]
+  ],
+  "overall": [
+    [
+      "general summary",
+      "gives a general judgement about the whole situation after looking at the details",
+      "typical: at the start of a sentence or after 'but', neutral. NOT for: a judgement based on one detail only.",
+      [
+        "Overall, the results were encouraging.",
+        "Overall, I enjoyed the course, although the exams were stressful.",
+        "The service was slow at times, but overall it was good."
+      ]
+    ],
+    [
+      "in total",
+      "says that something is true when everything is counted or included together",
+      "typical: at the end of a clause with numbers, positions or amounts. NOT for: giving a general opinion at the start of a sentence.",
+      [
+        "He finished second overall in the tournament.",
+        "The repairs will cost about two thousand euros overall.",
+        "We spent four days on the project overall."
+      ]
+    ]
   ]
- ],
- "opt out": [
-  [
-   "verb",
-   "avoid doing a duty",
-   "typical: opt out (of sth). NOT for: accepting.",
-   [
-    "You can't just opt out of all responsibility.",
-    "He opted out of the job."
-   ]
-  ],
-  [
-   "verb",
-   "decide not to be part of a group or system",
-   "typical: opt out (of sth). NOT for: joining.",
-   [
-    "Britain wants to opt out of the new rules.",
-    "She opted out of the scheme."
-   ]
-  ],
-  [
-   "verb",
-   "decide to manage its own money instead of being run by a local authority (a school or hospital in Britain)",
-   "typical: a school/hospital opts out. NOT for: staying in the system.",
-   [
-    "The school voted to opt out of local control.",
-    "Several hospitals opted out."
-   ]
-  ]
- ],
- "own up": [
-  [
-   "verb",
-   "admit that you have done something wrong",
-   "typical: own up (to sth/doing sth). NOT for: denying.",
-   [
-    "Come on, own up. Who broke it?",
-    "No one owned up to breaking the window."
-   ]
-  ]
- ]
 }

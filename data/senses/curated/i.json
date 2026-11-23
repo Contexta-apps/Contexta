@@ -1,0 +1,230 @@
+{
+  "if": [
+    [
+      "condition",
+      "introduces a possible situation and what follows from it",
+      "typical: if + present tense for the future, e.g. If you finish early... Also for general facts. NOT for: asking an indirect question (use 'whether').",
+      [
+        "If you finish early, you can leave.",
+        "We'll miss the train if we don't hurry.",
+        "If the door is locked, call me."
+      ]
+    ],
+    [
+      "polite request",
+      "makes a request, offer or suggestion sound more polite",
+      "typical: spoken, e.g. I was wondering if you could... NOT for: describing a real condition.",
+      [
+        "I was wondering if you could lend me a pen.",
+        "Do you mind if I sit here?",
+        "It would help if you could arrive early."
+      ]
+    ],
+    [
+      "advice",
+      "gives advice by imagining yourself in the other person's place",
+      "typical: spoken, e.g. If I were you, I'd... NOT for: talking about a real situation that you are in.",
+      [
+        "If I were you, I'd ask for a refund.",
+        "I'd take a coat if I were you.",
+        "If I were you, I'd call her today."
+      ]
+    ],
+    [
+      "feelings",
+      "says how you feel about a possible situation, often to apologise or show you are open to it",
+      "typical: spoken, e.g. I'm sorry if I upset you. NOT for: a real condition with a result (see 'condition').",
+      [
+        "I'm sorry if I woke you.",
+        "I'm happy if everyone enjoys the party.",
+        "She doesn't mind if people disagree with her."
+      ]
+    ],
+    [
+      "wish",
+      "expresses a strong wish, usually about something that cannot change",
+      "typical: if only + past form, e.g. If only I had more time! NOT for: a normal condition with a likely result.",
+      [
+        "If only I had more time!",
+        "If only it would stop raining!",
+        "If only she had called earlier."
+      ]
+    ]
+  ],
+  "in addition": [
+    [
+      "addition",
+      "adds one more piece of information to what you have just said",
+      "typical: formal writing and presentations, at the start of a sentence. NOT for: contrast, or everyday speech where 'also' or 'and' is more natural.",
+      [
+        "The course is cheap. In addition, it can be done online.",
+        "The company offers free lunch. In addition, staff get extra holiday days.",
+        "She speaks Czech and English. In addition, she is learning Polish."
+      ]
+    ]
+  ],
+  "in any case": [
+    [
+      "regardless",
+      "says that something will be true whatever happens",
+      "typical: spoken and written, at the start of a sentence or after 'but'. NOT for: a choice between two things.",
+      [
+        "I may be late, but in any case, start without me.",
+        "We might lose, but in any case, we'll have tried.",
+        "It will probably rain, but we're going in any case."
+      ]
+    ],
+    [
+      "extra reason",
+      "adds a further reason that makes the first point less important",
+      "typical: after a first reason, often with 'and' or at the start of a sentence. NOT for: contrasting two different facts.",
+      [
+        "I can't afford a new laptop, and in any case the old one still works.",
+        "He is too busy to help, and in any case he isn't good at it.",
+        "It's too late to call her now. In any case, I wouldn't know what to say."
+      ]
+    ]
+  ],
+  "in brief": [
+    [
+      "short summary",
+      "introduces a short summary of what you have said or are going to say",
+      "typical: at the start of a sentence or between commas, formal or neutral. NOT for: leaving out important details when the person needs them.",
+      [
+        "In brief, the plan is cheap but risky.",
+        "The results, in brief, show that the method works.",
+        "In brief: we need more time and more money."
+      ]
+    ]
+  ],
+  "in contrast": [
+    [
+      "contrast",
+      "introduces a second fact that is clearly different from the first one",
+      "typical: at the start of a sentence or between commas, writing and careful speech. NOT for: a surprising fact (use 'however').",
+      [
+        "The weekdays were quiet. In contrast, the weekends were very busy.",
+        "Sales fell in Europe. In contrast, they rose in Asia.",
+        "The first plan was simple. The second, in contrast, was very complicated."
+      ]
+    ],
+    [
+      "in contrast to or with",
+      "compares one thing directly with another by using 'to' or 'with'",
+      "typical: in contrast to/with + noun phrase, e.g. in contrast to last year. NOT for: connecting two full sentences (use 'in contrast,').",
+      [
+        "In contrast to last year, this summer has been cold.",
+        "In contrast with his brother, he is very quiet.",
+        "The new design looks modern in contrast to the old building."
+      ]
+    ]
+  ],
+  "in essence": [
+    [
+      "core point",
+      "says what the most basic and important part of something is",
+      "typical: neutral to formal, introducing the main idea of an argument or belief. NOT for: adding a detail or giving an example.",
+      [
+        "In essence, the contract gives us more control.",
+        "The argument is, in essence, that taxes should be lower.",
+        "In essence, nothing has changed since last year."
+      ]
+    ]
+  ],
+  "in light of": [
+    [
+      "in view of",
+      "says that you do or decide something after considering a particular fact or event",
+      "typical: formal; in British English usually 'in the light of', in American English 'in light of'. NOT for: talking about physical light.",
+      [
+        "In light of the new figures, we have changed our forecast.",
+        "The school closed early in the light of the storm warning.",
+        "In light of recent events, security has been increased."
+      ]
+    ]
+  ],
+  "in other words": [
+    [
+      "rephrasing",
+      "says the same idea again in different, usually simpler, words",
+      "typical: spoken and written, after a complicated or indirect statement. NOT for: adding a new point or giving an example.",
+      [
+        "The shop closes at six. In other words, we have only an hour.",
+        "He never answers my messages. In other words, he doesn't want to talk.",
+        "The plan failed; in other words, we must start again."
+      ]
+    ]
+  ],
+  "in particular": [
+    [
+      "highlighting",
+      "points to one person, thing or part that matters more than the others",
+      "typical: after a general statement, at the end of a clause or at the start of a sentence. NOT for: a general list of examples (use 'for example').",
+      [
+        "The museum is wonderful, and the medieval section in particular.",
+        "The city has many parks. In particular, the old garden is worth a visit.",
+        "Please be careful, in particular on the stairs."
+      ]
+    ]
+  ],
+  "in practice": [
+    [
+      "reality vs theory",
+      "says what really happens, as opposed to what should happen or what people expect",
+      "typical: often after a rule or plan, e.g. in theory..., but in practice... NOT for: a repeated activity to improve a skill (the noun 'practice').",
+      [
+        "The rule says everyone must wear a helmet, but in practice few people do.",
+        "On paper the system is simple; in practice it is confusing.",
+        "In practice, most students never use the library's online tools."
+      ]
+    ]
+  ],
+  "in the end": [
+    [
+      "final outcome",
+      "says what finally happened after a long time, a process or some doubt",
+      "typical: spoken and written, at the start or end of a clause. NOT for: the end of a place or period (use 'at the end of') or the last item in a list (use 'finally').",
+      [
+        "We argued for an hour, but in the end we agreed.",
+        "I thought about studying law, but in the end I became a teacher.",
+        "It was a long trip, but in the end we reached the village."
+      ]
+    ]
+  ],
+  "insofar as": [
+    [
+      "to the degree that",
+      "limits a statement by saying how far it is true",
+      "typical: formal, also written 'in so far as' or 'in as far as'. NOT for: distance (as in 'as far as the station').",
+      [
+        "The plan is acceptable insofar as it respects our budget.",
+        "Insofar as I can tell, the figures are correct.",
+        "She is guilty only insofar as she kept silent."
+      ]
+    ]
+  ],
+  "instead": [
+    [
+      "replacement",
+      "says what happens or is done in place of the thing you have just mentioned",
+      "typical: at the start of a sentence or at the end of a clause. NOT for: use before a noun (use 'instead of').",
+      [
+        "I didn't take the bus. Instead, I walked home.",
+        "She didn't reply to the email. Instead, she called him.",
+        "The cinema was closed, so we went to a café instead."
+      ]
+    ]
+  ],
+  "it follows that": [
+    [
+      "logical result",
+      "says that something must be true as a result of something else that is true",
+      "typical: formal arguments, often 'it does not follow that...'. NOT for: the order of events in time (use 'then' or 'after that').",
+      [
+        "If all students must attend, it follows that the room must be larger.",
+        "If the data are wrong, it follows that the conclusion is wrong too.",
+        "He owns the car, but it doesn't follow that he can drive it."
+      ]
+    ]
+  ]
+}

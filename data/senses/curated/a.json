@@ -1,173 +1,226 @@
 {
- "act out": [
-  [
-   "verb",
-   "perform an event by pretending to be the people in it",
-   "typical: act out a story/scene/scenario. NOT for: a regular acting job.",
-   [
-    "The children acted out the story of the birth.",
-    "We acted out the argument in class."
-   ]
+  "accordingly": [
+    [
+      "suitable response",
+      "shows that something is done in a way that fits the situation or what has just been said",
+      "typical: at the end of a clause, formal or neutral, e.g. act accordingly, adjust accordingly. NOT for: introducing a result at the start of a sentence (see the other function).",
+      [
+        "Please check the new rules and act accordingly.",
+        "If the weather changes, we will adjust the plan accordingly.",
+        "He was a guest, so we treated him accordingly."
+      ]
+    ],
+    [
+      "result",
+      "introduces something that happens because of what has just been said",
+      "typical: formal writing, at the start of a sentence or after a comma. NOT for: casual speech, where 'so' is more natural.",
+      [
+        "The old rules were unclear. Accordingly, the committee wrote new ones.",
+        "Demand fell sharply; accordingly, the company reduced its prices.",
+        "The data was incomplete. Accordingly, the study was repeated."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "show your feelings through your behaviour instead of words",
-   "typical: act out anger/fear/problems. NOT for: calmly talking about feelings.",
-   [
-    "The boy acts out his anger at school.",
-    "Stress can make teenagers act out."
-   ]
-  ]
- ],
- "add up": [
-  [
-   "verb",
-   "calculate the total of several numbers",
-   "typical: add up numbers/figures/the bill, add sth up. NOT for: subtracting.",
-   [
-    "I can add up in my head.",
-    "She added up the bill twice."
-   ]
+  "admittedly": [
+    [
+      "concession",
+      "admits that something is true, even though it goes against your main point",
+      "typical: neutral to formal, at the start of a sentence or in the middle. NOT for: apologising or confessing a mistake (use 'I admit').",
+      [
+        "The hotel was admittedly a bit noisy, but the staff were wonderful.",
+        "Admittedly, I haven't read the whole report, but I've seen the main figures.",
+        "She is, admittedly, not the most experienced candidate."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "make sense, as a set of facts or numbers (usually negative)",
-   "typical: things don't add up, the figures don't add up. NOT for: simple counting.",
-   [
-    "His story just doesn't add up.",
-    "These figures don't add up."
-   ]
+  "after that": [
+    [
+      "sequence",
+      "shows what happens next, after the event you have just mentioned",
+      "typical: telling a story or steps, e.g. We ate. After that, we left. NOT for: two things happening at the same time.",
+      [
+        "We watched the film. After that, we went for pizza.",
+        "He studied until six. After that, he was too tired to cook.",
+        "First she checked the map; after that, she started the car."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "slowly become a large amount",
-   "typical: it all adds up, small costs add up. NOT for: one big sum.",
-   [
-    "Small expenses add up over time.",
-    "It all adds up in the end."
-   ]
-  ]
- ],
- "agree with": [
-  [
-   "verb",
-   "have the same opinion as someone, or think something is right",
-   "typical: agree with sb, agree with a decision/idea. NOT for: accepting a plan or offer.",
-   [
-    "I agree with you completely.",
-    "I don't agree with hitting children."
-   ]
+  "afterwards": [
+    [
+      "later in time",
+      "shows that something happens after the event or time you have just mentioned",
+      "typical: at the end of a clause or at the start of a sentence, spoken and written (AmE also 'afterward'). NOT for: use before a noun (use 'after') or for 'at some later time from now' (use 'later').",
+      [
+        "We had dinner and went for a walk afterwards.",
+        "The lecture was boring. Afterwards, we all went for coffee.",
+        "Call me afterwards and tell me how it went."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "be good for your health (food or climate); usually negative",
-   "typical: food doesn't agree with sb. NOT for: opinions.",
-   [
-    "Spicy food doesn't agree with me.",
-    "The hot weather didn't agree with him."
-   ]
+  "all the same": [
+    [
+      "concession",
+      "says that something is still true or still done in spite of what you have just said",
+      "typical: spoken and written, at the start of a sentence or at the end of a clause, often after 'but'. NOT for: 'exactly the same' or 'all of one kind'.",
+      [
+        "I know it's expensive, but I'm buying it all the same.",
+        "The forecast was bad. All the same, we decided to go ahead with the picnic.",
+        "She disagreed with him, but she listened to him all the same."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "match a word in number or gender (grammar)",
-   "typical: a verb agrees with its subject. NOT for: people sharing opinions.",
-   [
-    "The verb must agree with the subject.",
-    "Adjectives agree with the noun in Czech."
-   ]
-  ]
- ],
- "answer back": [
-  [
-   "verb",
-   "reply rudely to someone you should obey",
-   "typical: answer back to a parent/teacher, answer sb back. NOT for: answering a question politely.",
-   [
-    "Don't answer me back, young man!",
-    "She was punished for answering back."
-   ]
-  ]
- ],
- "apply for": [
-  [
-   "verb",
-   "ask officially for a job, a place on a course or permission, usually by sending in a form or letter",
-   "typical: apply for a job/visa/loan/grant/place/permission, apply to sb for sth. NOT for: using something or spreading something on a surface.",
-   [
-    "She applied for a job at the local library.",
-    "You must apply for a work permit before you travel."
-   ]
-  ]
- ],
- "arrive at": [
-  [
-   "verb",
-   "reach a particular place at the end of a journey",
-   "typical: arrive at + a building/station/airport/hotel (arrive in + a city or country). NOT for: arriving at a conclusion (and not with 'to': not 'arrive to').",
-   [
-    "We arrived at the hotel just after nine.",
-    "The train arrives at platform four in ten minutes."
-   ]
+  "all things considered": [
+    [
+      "overall judgement",
+      "gives your final opinion after thinking about all the points",
+      "typical: at the start or end of a sentence, neutral. NOT for: judging after looking at only one factor.",
+      [
+        "All things considered, the trip was a success.",
+        "It rained twice, but all things considered, we had a good holiday.",
+        "All things considered, I think we should wait until spring."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "reach a decision, solution or agreement after thinking or talking about it for a long time",
-   "typical: arrive at a decision/solution/conclusion/compromise. NOT for: physical arrival at a place.",
-   [
-    "The committee arrived at a decision after three hours.",
-    "They finally arrived at a compromise that suited both sides."
-   ]
-  ]
- ],
- "ask around": [
-  [
-   "verb",
-   "ask several people for information or help",
-   "typical: ask around for a plumber/information. NOT for: asking one person.",
-   [
-    "I'll ask around and see if anyone knows.",
-    "He asked around for a good dentist."
-   ]
-  ]
- ],
- "ask for": [
-  [
-   "verb",
-   "say that you want or need something",
-   "typical: ask for help/advice/a glass of water. NOT for: asking a question.",
-   [
-    "She asked for a glass of water.",
-    "If you need help, just ask for it."
-   ]
+  "also": [
+    [
+      "addition",
+      "adds another fact or idea to what you have said",
+      "typical: before the main verb or after 'be', e.g. She also speaks French. NOT for: showing contrast; at the end of a sentence use 'too' or 'as well'.",
+      [
+        "She also speaks Italian.",
+        "The hotel is cheap, and it is also very clean.",
+        "He is also my neighbour."
+      ]
+    ],
+    [
+      "new point",
+      "starts a sentence to add one more point",
+      "typical: spoken, e.g. Also, it's cheaper. NOT for: written English, where it is better to use 'furthermore' or 'moreover' or to put 'also' before the main verb.",
+      [
+        "Also, the train is cheaper than the bus.",
+        "Also, don't forget to lock the door.",
+        "Also, we should check the opening hours."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "say that you want to speak to someone",
-   "typical: ask for sb at the door/the phone. NOT for: asking about someone.",
-   [
-    "Someone is at the door asking for Dad.",
-    "He called and asked for the manager."
-   ]
+  "alternatively": [
+    [
+      "another option",
+      "offers a different possibility that could be chosen instead",
+      "typical: neutral to formal, at the start of a sentence or after a semicolon. NOT for: adding a point (use 'also') or showing contrast (use 'however').",
+      [
+        "You can take the train; alternatively, you can go by bus.",
+        "We could meet at the café; alternatively, we could just talk online.",
+        "Add a little water. Alternatively, use milk for a creamier sauce."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "behave in a way that is likely to cause problems for you (informal)",
-   "typical: be asking for trouble. NOT for: getting what you wanted.",
-   [
-    "You're asking for trouble if you drive that fast.",
-    "He was asking for it."
-   ]
+  "and": [
+    [
+      "addition",
+      "joins words, phrases or ideas that belong together",
+      "typical: tea and toast, tired and hungry, two similar ideas in one sentence. NOT for: showing contrast (use 'but') or a choice (use 'or').",
+      [
+        "I packed a sandwich and an apple for the trip.",
+        "The room was quiet and very warm.",
+        "We talked about the plan and about the costs."
+      ]
+    ],
+    [
+      "sequence",
+      "shows that one action happens after another",
+      "typical: telling a story or giving steps, e.g. grab your bag and go. NOT for: actions that happen at the same time or in no fixed order.",
+      [
+        "She picked up her bag and walked out.",
+        "He read the note and put it in his pocket.",
+        "Open the app and tap the green button."
+      ]
+    ],
+    [
+      "result",
+      "shows that the second thing happens because of the first",
+      "typical: informal storytelling, e.g. forgot my keys and got locked out. NOT for: giving a reason before the result (use 'because').",
+      [
+        "I stayed up too late and overslept this morning.",
+        "He ignored the warning and burned his hand.",
+        "She skipped breakfast and felt dizzy by ten."
+      ]
+    ],
+    [
+      "new point",
+      "starts a sentence in speech to introduce a new statement, comment or question",
+      "typical: spoken, e.g. And what about you? NOT for: formal writing, where starting a sentence with 'and' is usually avoided.",
+      [
+        "And what did she say when you told her?",
+        "And one more thing: please bring your ID.",
+        "And who is going to pay for all this?"
+      ]
+    ],
+    [
+      "prompting",
+      "asks the other person to say more after they have just told you something",
+      "typical: spoken, as a short reply, e.g. And? NOT for: asking a yes/no question or continuing your own sentence.",
+      [
+        "'I called your office today.' 'And?' 'They said you were out.'",
+        "'We found the place.' 'And? Was it open?'",
+        "'She said yes.' 'And?' 'And she'll start in May.'"
+      ]
+    ]
+  ],
+  "as a result": [
+    [
+      "result",
+      "shows that what follows happens because of what you have just said",
+      "typical: at the start of a sentence or after a comma, mostly in writing and careful speech. NOT for: giving the cause (use 'because').",
+      [
+        "The road was closed. As a result, many people were late for work.",
+        "She practised every day and, as a result, her English improved quickly.",
+        "Prices went up last year. As a result, fewer people bought new cars."
+      ]
+    ],
+    [
+      "cause",
+      "gives the cause of something when it is followed by 'of' and a noun",
+      "typical: as a result of + noun, e.g. as a result of the storm. NOT for: introducing a new sentence about a result (use 'as a result,').",
+      [
+        "Many flights were cancelled as a result of the storm.",
+        "As a result of the new law, smoking is banned here.",
+        "He lost his job as a result of the merger."
+      ]
+    ]
+  ],
+  "as far as ... is concerned": [
+    [
+      "personal view",
+      "shows whose opinion you are giving, or whom something affects",
+      "typical: spoken, e.g. As far as I'm concerned, ... NOT for: facts that are true for everyone.",
+      [
+        "As far as I'm concerned, the case is closed.",
+        "As far as my sister is concerned, holidays mean beaches.",
+        "As far as the neighbours are concerned, the noise is a real problem."
+      ]
+    ],
+    [
+      "topic",
+      "says which subject you are talking about before you comment on it",
+      "typical: spoken and written, followed by a comment, also 'where ... is concerned'. NOT for: giving someone's opinion.",
+      [
+        "As far as money is concerned, we're fine for now.",
+        "As far as the schedule is concerned, nothing has changed.",
+        "As far as food is concerned, the hotel has a lot to offer."
+      ]
+    ]
+  ],
+  "at first": [
+    [
+      "earlier situation",
+      "describes how things were at the beginning, before they changed",
+      "typical: At first..., but later/now... NOT for: the first step in a list (use 'first') or something that finally happens (use 'at last').",
+      [
+        "At first, I couldn't understand the accent, but now it's easy.",
+        "At first the water felt very cold.",
+        "I didn't like her at first, but we became good friends."
+      ]
+    ]
   ]
- ],
- "ask out": [
-  [
-   "verb",
-   "invite someone to go on a date",
-   "typical: ask sb out, ask sb out to dinner. NOT for: inviting someone home.",
-   [
-    "He asked her out to dinner.",
-    "She was too shy to ask him out."
-   ]
-  ]
- ]
 }

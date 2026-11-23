@@ -1,24 +1,36 @@
 {
- "use up": [
-  [
-   "verb",
-   "use all of something",
-   "typical: use sth up. NOT for: saving.",
-   [
-    "She's used up all the hot water.",
-    "We've used up our savings."
-   ]
+  "ultimately": [
+    [
+      "final outcome",
+      "says what finally happens after a long process or many events",
+      "typical: neutral to formal, before a verb or adjective, e.g. ultimately approved. NOT for: the last item in a list (use 'finally').",
+      [
+        "After years of debate, the council ultimately approved the plan.",
+        "The talks were tense but ultimately productive.",
+        "She tried several jobs and ultimately became a pilot."
+      ]
+    ],
+    [
+      "bottom line",
+      "introduces the most basic point that matters after everything else is considered",
+      "typical: at the start of a sentence, writing and careful speech. NOT for: describing a result in time.",
+      [
+        "Ultimately, it's your choice, not mine.",
+        "Ultimately, a good school depends on its teachers.",
+        "Ultimately, all we want is a safe place to live."
+      ]
+    ]
+  ],
+  "unless": [
+    [
+      "exception condition",
+      "says that something will happen or be true if something else does not happen",
+      "typical: unless = 'if ... not', e.g. Unless you hurry... NOT for: imagined past situations (use 'if ... had not').",
+      [
+        "Unless you tell me the password, I can't help you.",
+        "The shop won't open unless the manager arrives.",
+        "Don't call me before eight unless it's urgent."
+      ]
+    ]
   ]
- ],
- "usher in": [
-  [
-   "verb",
-   "cause something new to start, or be at the start of something new",
-   "typical: usher in an era/a period/changes. NOT for: ending.",
-   [
-    "The discovery of oil ushered in an era of prosperity.",
-    "The reforms ushered in a new age."
-   ]
-  ]
- ]
 }

@@ -1,35 +1,74 @@
 {
- "narrow down": [
-  [
-   "verb",
-   "reduce the number of choices or things in a range",
-   "typical: narrow sth down (to sth). NOT for: expanding.",
-   [
-    "The police have narrowed down their list of suspects.",
-    "I've narrowed it down to two people."
-   ]
+  "namely": [
+    [
+      "exact identification",
+      "gives the exact names or details of what you have just mentioned in general terms",
+      "typical: formal or written, before a complete list or one exact item. NOT for: giving only some examples (use 'for example').",
+      [
+        "Only two countries were absent, namely Chile and Peru.",
+        "The course covers three skills, namely speaking, writing and listening.",
+        "There was one problem, namely the cost."
+      ]
+    ]
+  ],
+  "nevertheless": [
+    [
+      "concession",
+      "introduces something that is true in spite of what has just been said",
+      "typical: formal, at the start of a sentence or between commas. NOT for: a simple contrast with no surprise (use 'but').",
+      [
+        "The exam was hard. Nevertheless, everyone passed.",
+        "It was a risky plan. Nevertheless, the team decided to go ahead.",
+        "The route was long; we arrived, nevertheless, on time."
+      ]
+    ]
+  ],
+  "next": [
+    [
+      "next step",
+      "shows what happens or what you do immediately after the previous step",
+      "typical: instructions and stories, e.g. Next, add the sugar. NOT for: 'next to' (position) or 'next week' (time).",
+      [
+        "Next, pour in the milk and mix well.",
+        "Next, we visited the old castle.",
+        "What happens next?"
+      ]
+    ]
+  ],
+  "nonetheless": [
+    [
+      "concession",
+      "introduces something that is true in spite of what has just been said",
+      "typical: formal, at the start of a sentence, between commas or at the end of a clause. NOT for: a simple contrast with no surprise (use 'but').",
+      [
+        "The weather was awful. Nonetheless, the match went ahead.",
+        "The job pays badly, but I enjoy it nonetheless.",
+        "The results were disappointing. The team, nonetheless, stayed positive."
+      ]
+    ]
+  ],
+  "notably": [
+    [
+      "key example",
+      "picks out the most important or most obvious example from a group",
+      "typical: formal, between commas after a general noun. NOT for: giving a complete list (use 'namely') or any random example.",
+      [
+        "Several countries, notably Spain and Italy, reported record temperatures.",
+        "The book has many strengths, notably its clear style.",
+        "Some artists, notably Picasso, changed their style many times."
+      ]
+    ]
+  ],
+  "notwithstanding": [
+    [
+      "concession",
+      "shows that something is true or happens in spite of something else",
+      "typical: formal, before a noun phrase or after it, e.g. objections notwithstanding. NOT for: everyday speech (use 'despite' or 'in spite of').",
+      [
+        "Notwithstanding the bad weather, the festival went ahead.",
+        "The proposal was approved, objections notwithstanding.",
+        "Her age notwithstanding, she finished the marathon."
+      ]
+    ]
   ]
- ],
- "nod off": [
-  [
-   "verb",
-   "fall asleep, usually without meaning to",
-   "typical: nod off in front of sth. NOT for: staying awake.",
-   [
-    "I missed the film because I kept nodding off.",
-    "He nodded off in the meeting."
-   ]
-  ]
- ],
- "note down": [
-  [
-   "verb",
-   "write something down so you remember it",
-   "typical: note sth down. NOT for: remembering without writing.",
-   [
-    "Note down the main points for your essay.",
-    "She noted down his address."
-   ]
-  ]
- ]
 }
