@@ -1,4 +1,15 @@
 {
+ "tag along": [
+  [
+   "verb",
+   "go somewhere with someone, especially when they have not asked you",
+   "typical: tag along (with sb). NOT for: staying at home.",
+   [
+    "Kate tagged along with Mum and Vicky.",
+    "Can I tag along?"
+   ]
+  ]
+ ],
  "take": [
   [
    "verb",
@@ -43,17 +54,6 @@
    [
     "I take the bus to work.",
     "Take the second left after the bank."
-   ]
-  ]
- ],
- "tag along": [
-  [
-   "verb",
-   "go somewhere with someone, especially when they have not asked you",
-   "typical: tag along (with sb). NOT for: staying at home.",
-   [
-    "Kate tagged along with Mum and Vicky.",
-    "Can I tag along?"
    ]
   ]
  ],
@@ -892,6 +892,64 @@
    ]
   ]
  ],
+ "that is to say": [
+  [
+   "restating",
+   "explains what you mean in other words or more exactly",
+   "typical: formal, between commas. NOT for: giving examples (use 'for example').",
+   [
+    "He is a bachelor, that is to say, he has never married.",
+    "We leave on Friday, that is to say, in three days.",
+    "The firm is local, that is to say, it has no foreign offices."
+   ]
+  ]
+ ],
+ "that said": [
+  [
+   "concession",
+   "adds a contrasting point after something you have already said",
+   "typical: at the start of a sentence, spoken and written. NOT for: the meaning 'what was said'.",
+   [
+    "The film is long. That said, it is very good.",
+    "It is expensive. That said, it is worth the money.",
+    "I like him. That said, I wouldn't trust him with money."
+   ]
+  ]
+ ],
+ "then": [
+  [
+   "next in time",
+   "says what happens after something else",
+   "typical: then + verb, in stories and instructions. NOT for: 'than' in comparisons.",
+   [
+    "First we ate, then we went for a walk.",
+    "Mix the eggs, then add the flour.",
+    "He paused and then started speaking."
+   ]
+  ],
+  [
+   "in that case",
+   "shows what follows from a condition or a situation just mentioned",
+   "typical: if ..., (then) ... or at the end of a reply. NOT for: time order.",
+   [
+    "If you are tired, then go to bed.",
+    "You don't like it? Then don't buy it.",
+    "It's your decision, then."
+   ]
+  ]
+ ],
+ "therefore": [
+  [
+   "result",
+   "introduces a result or conclusion that follows logically from what you have just said",
+   "typical: formal, written, at the start of a sentence or after a semicolon. NOT for: giving the reason (use 'because').",
+   [
+    "The road was closed. Therefore, we took another route.",
+    "He lied; therefore, nobody trusts him.",
+    "The data are clear and therefore convincing."
+   ]
+  ]
+ ],
  "think about": [
   [
    "verb",
@@ -1110,6 +1168,18 @@
    ]
   ]
  ],
+ "thus": [
+  [
+   "result",
+   "introduces a result or conclusion, or means 'in this way'",
+   "typical: formal, written. NOT for: casual speech (use 'so').",
+   [
+    "Sales fell, and thus profits dropped.",
+    "The data are incomplete; thus, we cannot be sure.",
+    "He worked hard and thus passed the exam."
+   ]
+  ]
+ ],
  "tick off": [
   [
    "verb",
@@ -1263,6 +1333,66 @@
    [
     "All that walking tired me out.",
     "The kids tired themselves out."
+   ]
+  ]
+ ],
+ "to a large extent": [
+  [
+   "mostly",
+   "means mostly but not completely",
+   "typical: formal, in analysis or opinions. NOT for: physical size.",
+   [
+    "The project was successful to a large extent.",
+    "The decision depends to a large extent on money.",
+    "To a large extent, I agree with you."
+   ]
+  ]
+ ],
+ "to illustrate": [
+  [
+   "introducing an example",
+   "introduces an example that makes an idea clearer",
+   "typical: formal, at the start of a sentence. NOT for: a list of unrelated points.",
+   [
+    "To illustrate, consider a small shop with ten customers.",
+    "To illustrate this point, let me tell you a story.",
+    "To illustrate, imagine a simple budget."
+   ]
+  ]
+ ],
+ "to put it another way": [
+  [
+   "rephrasing",
+   "says the same thing again in different words so it is clearer",
+   "typical: spoken and written, after a hard or abstract statement. NOT for: adding a new point.",
+   [
+    "He is frugal. To put it another way, he hates spending money.",
+    "We lack time. To put it another way, we must hurry.",
+    "To put it another way, nobody is in charge."
+   ]
+  ]
+ ],
+ "to that end": [
+  [
+   "purpose",
+   "means for the purpose or aim just mentioned",
+   "typical: formal, at the start of a sentence. NOT for: the end of a story or event.",
+   [
+    "We want to cut costs. To that end, we are closing two offices.",
+    "She wanted to improve. To that end, she hired a coach.",
+    "To that end, the team met every week."
+   ]
+  ]
+ ],
+ "to this end": [
+  [
+   "purpose",
+   "means for the purpose or aim that you have just stated",
+   "typical: formal, at the start of a sentence. NOT for: the end of a story or event.",
+   [
+    "The company wants to grow. To this end, it is hiring new staff.",
+    "We aim to reduce waste. To this end, we have introduced recycling.",
+    "To this end, a new fund was created."
    ]
   ]
  ],

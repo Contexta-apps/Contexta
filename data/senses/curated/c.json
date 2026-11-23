@@ -55,145 +55,6 @@
    ]
   ]
  ],
- "come": [
-  [
-   "verb",
-   "move towards the speaker or the place being discussed",
-   "typical: come here/to + place/with me. NOT for: moving away (see go).",
-   [
-    "Come here, please.",
-    "Can you come to my party?"
-   ]
-  ],
-  [
-   "verb",
-   "go somewhere with someone",
-   "typical: come with us/along, come to dinner. NOT for: moving alone to the speaker.",
-   [
-    "Would you like to come with us?",
-    "He came along to the meeting."
-   ]
-  ],
-  [
-   "verb",
-   "travel to or from a place, or have as origin",
-   "typical: come from + place, come by car/train. NOT for: leaving a place.",
-   [
-    "She comes from Poland.",
-    "We came by train."
-   ]
-  ],
-  [
-   "verb",
-   "arrive, or happen at a certain time",
-   "typical: the bus/letter/summer comes. NOT for: people travelling.",
-   [
-    "A letter came this morning.",
-    "Christmas comes early this year."
-   ]
-  ],
-  [
-   "verb",
-   "reach a position or level",
-   "typical: come first/second/last, come to an end. NOT for: moving to a place.",
-   [
-    "She came first in the race.",
-    "The meeting came to an end."
-   ]
-  ],
-  [
-   "verb",
-   "be available or be sold in a certain form",
-   "typical: come in sizes/colours, come with + noun. NOT for: movement.",
-   [
-    "The shoes come in three sizes.",
-    "The phone comes with a charger."
-   ]
-  ],
-  [
-   "verb",
-   "gradually begin to feel or know something",
-   "typical: come to realize/understand/like. NOT for: sudden events.",
-   [
-    "I've come to like this town.",
-    "He came to realize his mistake."
-   ]
-  ],
-  [
-   "verb",
-   "become, usually by accident",
-   "typical: come loose/open/undone. NOT for: planned changes.",
-   [
-    "The knot came undone.",
-    "The door came open."
-   ]
-  ]
- ],
- "change": [
-  [
-   "verb",
-   "become different",
-   "typical: thing + change, change from X into Y. NOT for: replacing something.",
-   [
-    "The weather changed quickly.",
-    "Her life has changed a lot."
-   ]
-  ],
-  [
-   "verb",
-   "make someone or something different",
-   "typical: change + noun: plans, your mind, the law. NOT for: money.",
-   [
-    "She changed her plans.",
-    "He changed his mind about the job."
-   ]
-  ],
-  [
-   "verb",
-   "stop using or doing one thing and start another, or replace something",
-   "typical: change jobs/schools/a tyre/the sheets. NOT for: gradual development.",
-   [
-    "He changed jobs in May.",
-    "I need to change the batteries."
-   ]
-  ],
-  [
-   "verb",
-   "put on different clothes",
-   "typical: change + clothes/shirt, get changed. NOT for: replacing objects.",
-   [
-    "I need to change my shirt.",
-    "She got changed after work."
-   ]
-  ],
-  [
-   "verb",
-   "move from one train, bus or plane to another",
-   "typical: change trains/buses/planes, change at + place. NOT for: clothes.",
-   [
-    "We changed trains in Prague.",
-    "You have to change at the next station."
-   ]
-  ],
-  [
-   "noun",
-   "a difference or the process of becoming different",
-   "typical: a change in/of + noun, make a change. NOT for: money.",
-   [
-    "There has been a big change in the weather.",
-    "We need a change of plan."
-   ]
-  ],
-  [
-   "noun",
-   "coins or money returned after paying",
-   "typical: keep the change, small change. NOT for: differences.",
-   [
-    "Keep the change.",
-    "Do you have change for ten euros?"
-   ]
-  ]
- ],
  "call away": [
   [
    "verb",
@@ -769,6 +630,71 @@
    ]
   ]
  ],
+ "change": [
+  [
+   "verb",
+   "become different",
+   "typical: thing + change, change from X into Y. NOT for: replacing something.",
+   [
+    "The weather changed quickly.",
+    "Her life has changed a lot."
+   ]
+  ],
+  [
+   "verb",
+   "make someone or something different",
+   "typical: change + noun: plans, your mind, the law. NOT for: money.",
+   [
+    "She changed her plans.",
+    "He changed his mind about the job."
+   ]
+  ],
+  [
+   "verb",
+   "stop using or doing one thing and start another, or replace something",
+   "typical: change jobs/schools/a tyre/the sheets. NOT for: gradual development.",
+   [
+    "He changed jobs in May.",
+    "I need to change the batteries."
+   ]
+  ],
+  [
+   "verb",
+   "put on different clothes",
+   "typical: change + clothes/shirt, get changed. NOT for: replacing objects.",
+   [
+    "I need to change my shirt.",
+    "She got changed after work."
+   ]
+  ],
+  [
+   "verb",
+   "move from one train, bus or plane to another",
+   "typical: change trains/buses/planes, change at + place. NOT for: clothes.",
+   [
+    "We changed trains in Prague.",
+    "You have to change at the next station."
+   ]
+  ],
+  [
+   "noun",
+   "a difference or the process of becoming different",
+   "typical: a change in/of + noun, make a change. NOT for: money.",
+   [
+    "There has been a big change in the weather.",
+    "We need a change of plan."
+   ]
+  ],
+  [
+   "noun",
+   "coins or money returned after paying",
+   "typical: keep the change, small change. NOT for: differences.",
+   [
+    "Keep the change.",
+    "Do you have change for ten euros?"
+   ]
+  ]
+ ],
  "chase up": [
   [
    "verb",
@@ -1222,6 +1148,80 @@
    [
     "The days are closing in.",
     "Winter nights close in early."
+   ]
+  ]
+ ],
+ "come": [
+  [
+   "verb",
+   "move towards the speaker or the place being discussed",
+   "typical: come here/to + place/with me. NOT for: moving away (see go).",
+   [
+    "Come here, please.",
+    "Can you come to my party?"
+   ]
+  ],
+  [
+   "verb",
+   "go somewhere with someone",
+   "typical: come with us/along, come to dinner. NOT for: moving alone to the speaker.",
+   [
+    "Would you like to come with us?",
+    "He came along to the meeting."
+   ]
+  ],
+  [
+   "verb",
+   "travel to or from a place, or have as origin",
+   "typical: come from + place, come by car/train. NOT for: leaving a place.",
+   [
+    "She comes from Poland.",
+    "We came by train."
+   ]
+  ],
+  [
+   "verb",
+   "arrive, or happen at a certain time",
+   "typical: the bus/letter/summer comes. NOT for: people travelling.",
+   [
+    "A letter came this morning.",
+    "Christmas comes early this year."
+   ]
+  ],
+  [
+   "verb",
+   "reach a position or level",
+   "typical: come first/second/last, come to an end. NOT for: moving to a place.",
+   [
+    "She came first in the race.",
+    "The meeting came to an end."
+   ]
+  ],
+  [
+   "verb",
+   "be available or be sold in a certain form",
+   "typical: come in sizes/colours, come with + noun. NOT for: movement.",
+   [
+    "The shoes come in three sizes.",
+    "The phone comes with a charger."
+   ]
+  ],
+  [
+   "verb",
+   "gradually begin to feel or know something",
+   "typical: come to realize/understand/like. NOT for: sudden events.",
+   [
+    "I've come to like this town.",
+    "He came to realize his mistake."
+   ]
+  ],
+  [
+   "verb",
+   "become, usually by accident",
+   "typical: come loose/open/undone. NOT for: planned changes.",
+   [
+    "The knot came undone.",
+    "The door came open."
    ]
   ]
  ],
@@ -2130,6 +2130,18 @@
    ]
   ]
  ],
+ "consequently": [
+  [
+   "result",
+   "introduces what happened or follows as a result of what you have just said",
+   "typical: formal, at the start of a sentence or after a semicolon. NOT for: giving the reason (use 'because').",
+   [
+    "The factory closed. Consequently, hundreds of people lost their jobs.",
+    "He missed the bus and consequently arrived late.",
+    "Sales fell sharply; consequently, prices were cut."
+   ]
+  ]
+ ],
  "consist of": [
   [
    "verb",
@@ -2138,6 +2150,18 @@
    [
     "The meal consisted of three dishes.",
     "The audience consisted mainly of teenagers."
+   ]
+  ]
+ ],
+ "conversely": [
+  [
+   "opposite",
+   "introduces the opposite situation or the reverse of what you have just said",
+   "typical: formal, written. NOT for: showing a result (use 'consequently').",
+   [
+    "Some people work best in silence. Conversely, others need music.",
+    "High taxes reduce spending; conversely, low taxes can increase it.",
+    "Rain helps the farmers. Conversely, it ruins the tourist season."
    ]
   ]
  ],

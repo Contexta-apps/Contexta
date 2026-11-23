@@ -1,149 +1,13 @@
 {
- "show": [
+ "save for": [
   [
-   "verb",
-   "let someone see something",
-   "typical: show + person + thing, show sth to sb. NOT for: explaining how.",
+   "exception",
+   "means 'except for' and names the one thing that is not included",
+   "typical: formal or literary. NOT for: the verbs 'save' (keep money) or 'rescue'.",
    [
-    "Show me your passport.",
-    "She showed us the photos from her trip."
-   ]
-  ],
-  [
-   "verb",
-   "explain how to do something by doing it yourself",
-   "typical: show sb how to do sth. NOT for: only displaying an object.",
-   [
-    "She showed me how to use the machine.",
-    "Can you show him how it works?"
-   ]
-  ],
-  [
-   "verb",
-   "give information in a picture, map or figures",
-   "typical: map/graph/photo/figures + show + noun. NOT for: people explaining.",
-   [
-    "The map shows the main rivers of the region.",
-    "The figures show a rise in prices."
-   ]
-  ],
-  [
-   "verb",
-   "guide someone to a place",
-   "typical: show sb to/into/round + place. NOT for: pointing at objects.",
-   [
-    "Let me show you to your room.",
-    "He showed us around the castle."
-   ]
-  ],
-  [
-   "verb",
-   "(of a film or programme) be broadcast or presented",
-   "typical: be shown on TV/in cinemas. NOT for: people showing things.",
-   [
-    "The film is shown on television tonight.",
-    "The match was shown live."
-   ]
-  ],
-  [
-   "verb",
-   "be easy to see or notice",
-   "typical: it shows (on your face/clothes). NOT for: deliberate display.",
-   [
-    "Her happiness shows in her face.",
-    "The dirt doesn't show on dark clothes."
-   ]
-  ],
-  [
-   "noun",
-   "a television, radio or stage programme",
-   "typical: TV/radio/talk show, a show starts at eight. NOT for: exhibition of objects.",
-   [
-    "We watched a funny show last night.",
-    "The show starts at eight."
-   ]
-  ],
-  [
-   "noun",
-   "a public display or exhibition",
-   "typical: a fashion/flower/car show, a show of support. NOT for: entertainment programmes.",
-   [
-    "The art show opens on Friday.",
-    "Thousands came to the car show."
-   ]
-  ]
- ],
- "start": [
-  [
-   "verb",
-   "begin doing something",
-   "typical: start + -ing/to + verb, start + noun. NOT for: events starting by themselves.",
-   [
-    "He started learning Czech.",
-    "She started to cry."
-   ]
-  ],
-  [
-   "verb",
-   "(of an event or activity) begin to happen",
-   "typical: film/lesson/meeting/season starts. NOT for: people beginning an action.",
-   [
-    "The film starts at nine.",
-    "The meeting started late."
-   ]
-  ],
-  [
-   "verb",
-   "create or establish a business or organization",
-   "typical: start a business/company/club. NOT for: engines.",
-   [
-    "She started a small business last year.",
-    "They started a book club."
-   ]
-  ],
-  [
-   "verb",
-   "begin a new job or school",
-   "typical: start work/school/college/a job. NOT for: events.",
-   [
-    "I start my new job on Monday.",
-    "The children start school in September."
-   ]
-  ],
-  [
-   "verb",
-   "make an engine or machine begin to work, or begin to work",
-   "typical: start the car/engine, the car won't start. NOT for: events.",
-   [
-    "The car won't start.",
-    "Start the engine, please."
-   ]
-  ],
-  [
-   "verb",
-   "begin a journey",
-   "typical: start out/off, start for + place. NOT for: beginning an activity.",
-   [
-    "We'll start early to avoid traffic.",
-    "They started out at dawn."
-   ]
-  ],
-  [
-   "verb",
-   "deliberately cause something, often something bad",
-   "typical: start a fire/fight/argument/rumour. NOT for: neutral beginnings.",
-   [
-    "Don't start an argument.",
-    "Someone started a rumour about her."
-   ]
-  ],
-  [
-   "verb",
-   "(of prices or amounts) have a lowest value",
-   "typical: start at/from + amount. NOT for: events.",
-   [
-    "Rooms start at £25 a night.",
-    "Tickets start from ten euros."
+    "The room was empty save for a table.",
+    "Save for a few errors, the report was excellent.",
+    "Everyone was there save for Tom."
    ]
   ]
  ],
@@ -933,6 +797,80 @@
    ]
   ]
  ],
+ "show": [
+  [
+   "verb",
+   "let someone see something",
+   "typical: show + person + thing, show sth to sb. NOT for: explaining how.",
+   [
+    "Show me your passport.",
+    "She showed us the photos from her trip."
+   ]
+  ],
+  [
+   "verb",
+   "explain how to do something by doing it yourself",
+   "typical: show sb how to do sth. NOT for: only displaying an object.",
+   [
+    "She showed me how to use the machine.",
+    "Can you show him how it works?"
+   ]
+  ],
+  [
+   "verb",
+   "give information in a picture, map or figures",
+   "typical: map/graph/photo/figures + show + noun. NOT for: people explaining.",
+   [
+    "The map shows the main rivers of the region.",
+    "The figures show a rise in prices."
+   ]
+  ],
+  [
+   "verb",
+   "guide someone to a place",
+   "typical: show sb to/into/round + place. NOT for: pointing at objects.",
+   [
+    "Let me show you to your room.",
+    "He showed us around the castle."
+   ]
+  ],
+  [
+   "verb",
+   "(of a film or programme) be broadcast or presented",
+   "typical: be shown on TV/in cinemas. NOT for: people showing things.",
+   [
+    "The film is shown on television tonight.",
+    "The match was shown live."
+   ]
+  ],
+  [
+   "verb",
+   "be easy to see or notice",
+   "typical: it shows (on your face/clothes). NOT for: deliberate display.",
+   [
+    "Her happiness shows in her face.",
+    "The dirt doesn't show on dark clothes."
+   ]
+  ],
+  [
+   "noun",
+   "a television, radio or stage programme",
+   "typical: TV/radio/talk show, a show starts at eight. NOT for: exhibition of objects.",
+   [
+    "We watched a funny show last night.",
+    "The show starts at eight."
+   ]
+  ],
+  [
+   "noun",
+   "a public display or exhibition",
+   "typical: a fashion/flower/car show, a show of support. NOT for: entertainment programmes.",
+   [
+    "The art show opens on Friday.",
+    "Thousands came to the car show."
+   ]
+  ]
+ ],
  "show around": [
   [
    "verb",
@@ -1265,6 +1203,40 @@
    ]
   ]
  ],
+ "similarly": [
+  [
+   "same way",
+   "introduces something that is like what you have just said",
+   "typical: neutral to formal, at the start of a sentence. NOT for: contrast.",
+   [
+    "Cats need exercise. Similarly, dogs need regular walks.",
+    "The first group improved; similarly, the second did too.",
+    "Prices rose last year. Similarly, wages went up."
+   ]
+  ]
+ ],
+ "since": [
+  [
+   "from a past time until now",
+   "says that something started at a past time and still continues or is true",
+   "typical: since + point in time / clause, with the present perfect. NOT for: a length of time (use 'for').",
+   [
+    "I have lived here since 2019.",
+    "She has been ill since Monday.",
+    "We haven't met since we left school."
+   ]
+  ],
+  [
+   "reason already known",
+   "gives a reason that the listener already knows or accepts",
+   "typical: since + clause, usually at the start of a sentence. NOT for: a new, surprising reason (use 'because').",
+   [
+    "Since you are here, you can help me.",
+    "Since it is raining, we will stay inside.",
+    "Since he is busy, let's call tomorrow."
+   ]
+  ]
+ ],
  "sink in": [
   [
    "verb",
@@ -1571,6 +1543,28 @@
    ]
   ]
  ],
+ "so": [
+  [
+   "result",
+   "introduces what happens as a result of what you have just said",
+   "typical: spoken and written, joins two clauses. NOT for: giving a reason (use 'because').",
+   [
+    "It was raining, so we stayed at home.",
+    "I was tired, so I went to bed early.",
+    "She is ill, so she cannot come."
+   ]
+  ],
+  [
+   "purpose",
+   "shows the aim of an action in the form 'so that'",
+   "typical: so (that) + can/could/will/would. NOT for: a plain result.",
+   [
+    "Speak slowly so we can understand you.",
+    "I wrote it down so that I wouldn't forget.",
+    "He left early so he could catch the train."
+   ]
+  ]
+ ],
  "sober up": [
   [
    "verb",
@@ -1726,6 +1720,18 @@
    [
     "He is willing to speak up for women's rights.",
     "She spoke up for her friend."
+   ]
+  ]
+ ],
+ "specifically": [
+  [
+   "exactly or in particular",
+   "means in a precise way, or for one exact purpose",
+   "typical: neutral to formal, before a verb or noun. NOT for: saying something in general.",
+   [
+    "I asked for him specifically.",
+    "The course is designed specifically for beginners.",
+    "Specifically, we need three more people."
    ]
   ]
  ],
@@ -2129,6 +2135,80 @@
    [
     "It's time we stood up for our rights.",
     "Silvia can stand up for herself."
+   ]
+  ]
+ ],
+ "start": [
+  [
+   "verb",
+   "begin doing something",
+   "typical: start + -ing/to + verb, start + noun. NOT for: events starting by themselves.",
+   [
+    "He started learning Czech.",
+    "She started to cry."
+   ]
+  ],
+  [
+   "verb",
+   "(of an event or activity) begin to happen",
+   "typical: film/lesson/meeting/season starts. NOT for: people beginning an action.",
+   [
+    "The film starts at nine.",
+    "The meeting started late."
+   ]
+  ],
+  [
+   "verb",
+   "create or establish a business or organization",
+   "typical: start a business/company/club. NOT for: engines.",
+   [
+    "She started a small business last year.",
+    "They started a book club."
+   ]
+  ],
+  [
+   "verb",
+   "begin a new job or school",
+   "typical: start work/school/college/a job. NOT for: events.",
+   [
+    "I start my new job on Monday.",
+    "The children start school in September."
+   ]
+  ],
+  [
+   "verb",
+   "make an engine or machine begin to work, or begin to work",
+   "typical: start the car/engine, the car won't start. NOT for: events.",
+   [
+    "The car won't start.",
+    "Start the engine, please."
+   ]
+  ],
+  [
+   "verb",
+   "begin a journey",
+   "typical: start out/off, start for + place. NOT for: beginning an activity.",
+   [
+    "We'll start early to avoid traffic.",
+    "They started out at dawn."
+   ]
+  ],
+  [
+   "verb",
+   "deliberately cause something, often something bad",
+   "typical: start a fire/fight/argument/rumour. NOT for: neutral beginnings.",
+   [
+    "Don't start an argument.",
+    "Someone started a rumour about her."
+   ]
+  ],
+  [
+   "verb",
+   "(of prices or amounts) have a lowest value",
+   "typical: start at/from + amount. NOT for: events.",
+   [
+    "Rooms start at £25 a night.",
+    "Tickets start from ten euros."
    ]
   ]
  ],

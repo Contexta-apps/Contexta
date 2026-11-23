@@ -1,60 +1,4 @@
 {
- "feel": [
-  [
-   "verb",
-   "experience a physical feeling or emotion",
-   "typical: feel + adjective: tired, hungry, happy, fine, sad. NOT for: touching with hands.",
-   [
-    "I feel tired after the trip.",
-    "Do you still feel hungry?"
-   ]
-  ],
-  [
-   "verb",
-   "give a particular impression when touched or experienced",
-   "typical: thing + feel + adjective/like. NOT for: people's emotions.",
-   [
-    "This fabric feels soft.",
-    "The room felt cold and empty."
-   ]
-  ],
-  [
-   "verb",
-   "have an opinion or belief",
-   "typical: feel that + clause, feel strongly. NOT for: physical sensations.",
-   [
-    "I feel that we should wait.",
-    "Many parents feel strongly about this."
-   ]
-  ],
-  [
-   "verb",
-   "want to do something",
-   "typical: feel like + -ing, feel like + noun. NOT for: emotions in general.",
-   [
-    "I don't feel like going out tonight.",
-    "Do you feel like a coffee?"
-   ]
-  ],
-  [
-   "verb",
-   "touch something to learn about it",
-   "typical: feel + object (with your hands). NOT for: emotions.",
-   [
-    "Feel this fabric.",
-    "She felt his forehead to see if he was hot."
-   ]
-  ],
-  [
-   "verb",
-   "(spoken) feel free: used to say that someone is welcome to do something",
-   "typical: feel free to + verb. NOT for: emotions.",
-   [
-    "Feel free to ask me anything.",
-    "Please feel free to sit down."
-   ]
-  ]
- ],
  "face off": [
   [
    "verb",
@@ -389,6 +333,62 @@
    ]
   ]
  ],
+ "feel": [
+  [
+   "verb",
+   "experience a physical feeling or emotion",
+   "typical: feel + adjective: tired, hungry, happy, fine, sad. NOT for: touching with hands.",
+   [
+    "I feel tired after the trip.",
+    "Do you still feel hungry?"
+   ]
+  ],
+  [
+   "verb",
+   "give a particular impression when touched or experienced",
+   "typical: thing + feel + adjective/like. NOT for: people's emotions.",
+   [
+    "This fabric feels soft.",
+    "The room felt cold and empty."
+   ]
+  ],
+  [
+   "verb",
+   "have an opinion or belief",
+   "typical: feel that + clause, feel strongly. NOT for: physical sensations.",
+   [
+    "I feel that we should wait.",
+    "Many parents feel strongly about this."
+   ]
+  ],
+  [
+   "verb",
+   "want to do something",
+   "typical: feel like + -ing, feel like + noun. NOT for: emotions in general.",
+   [
+    "I don't feel like going out tonight.",
+    "Do you feel like a coffee?"
+   ]
+  ],
+  [
+   "verb",
+   "touch something to learn about it",
+   "typical: feel + object (with your hands). NOT for: emotions.",
+   [
+    "Feel this fabric.",
+    "She felt his forehead to see if he was hot."
+   ]
+  ],
+  [
+   "verb",
+   "(spoken) feel free: used to say that someone is welcome to do something",
+   "typical: feel free to + verb. NOT for: emotions.",
+   [
+    "Feel free to ask me anything.",
+    "Please feel free to sit down."
+   ]
+  ]
+ ],
  "feel like": [
   [
    "verb",
@@ -654,6 +654,28 @@
    ]
   ]
  ],
+ "finally": [
+  [
+   "last in a series",
+   "introduces the last point or step in a list or order",
+   "typical: finally, + sentence, in talks, instructions and writing. NOT for: the first step (use 'first').",
+   [
+    "First mix the flour, then add milk and, finally, the eggs.",
+    "Finally, I would like to thank everyone for coming.",
+    "Finally, check that all the doors are locked."
+   ]
+  ],
+  [
+   "after a long time",
+   "says that something happens at last after a delay or long wait",
+   "typical: before a verb, with relief or surprise. NOT for: listing points in order.",
+   [
+    "The bus finally arrived after forty minutes.",
+    "She finally finished her thesis.",
+    "We finally found a flat we could afford."
+   ]
+  ]
+ ],
  "find out": [
   [
    "verb",
@@ -760,6 +782,18 @@
    [
     "He fired up the engine.",
     "Let's fire up the grill."
+   ]
+  ]
+ ],
+ "first": [
+  [
+   "first point in order",
+   "introduces the first point or step in a series",
+   "typical: first, ... then ... (finally). NOT for: 'at first' meaning in the beginning.",
+   [
+    "First, we need to decide on a date.",
+    "First, open the file and read the instructions.",
+    "First, I want to explain the problem."
    ]
   ]
  ],
@@ -937,6 +971,54 @@
    ]
   ]
  ],
+ "for example": [
+  [
+   "example",
+   "introduces a specific case that shows what you mean",
+   "typical: at the start or in the middle of a sentence, between commas. NOT for: saying the same thing again in other words (use 'in other words').",
+   [
+    "Many countries, for example Spain, have long summers.",
+    "I enjoy sport. For example, I play football every week.",
+    "Some jobs are stressful; nursing, for example."
+   ]
+  ]
+ ],
+ "for instance": [
+  [
+   "example",
+   "introduces a specific case that shows what you mean",
+   "typical: neutral, between commas or at the start of a sentence. NOT for: restating the idea (use 'in other words').",
+   [
+    "Cities have problems. For instance, traffic is a big issue.",
+    "There are other options, for instance renting a car.",
+    "Some words are tricky, for instance 'thorough'."
+   ]
+  ]
+ ],
+ "for that matter": [
+  [
+   "adding a stronger case",
+   "adds a further case that is just as true or even more so",
+   "typical: spoken, often at the end of a sentence. NOT for: starting a new topic.",
+   [
+    "I don't like cities, or any big crowd for that matter.",
+    "He never calls, or writes, for that matter.",
+    "You could ask me, or anyone else here, for that matter."
+   ]
+  ]
+ ],
+ "for the most part": [
+  [
+   "mostly",
+   "means in most cases or mainly, though not completely",
+   "typical: neutral, at the start or end of a sentence. NOT for: a long period of time.",
+   [
+    "For the most part, the staff are friendly.",
+    "The reviews were, for the most part, positive.",
+    "The roads are good for the most part."
+   ]
+  ]
+ ],
  "freak out": [
   [
    "verb",
@@ -965,6 +1047,18 @@
    [
     "I'd just freeze up.",
     "He froze up in the interview."
+   ]
+  ]
+ ],
+ "furthermore": [
+  [
+   "addition",
+   "adds a further point that supports what you are saying",
+   "typical: formal, written, at the start of a sentence. NOT for: contrasting (use 'however').",
+   [
+    "The plan is cheap. Furthermore, it is easy to carry out.",
+    "The report is late; furthermore, it contains errors.",
+    "The software is free and, furthermore, it works offline."
    ]
   ]
  ]

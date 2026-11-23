@@ -175,6 +175,18 @@
    ]
   ]
  ],
+ "be that as it may": [
+  [
+   "concession",
+   "accepts that something is true, but says it does not change your main point",
+   "typical: formal, at the start of a sentence, after someone else's argument. NOT for: casual talk (use 'even so').",
+   [
+    "The price is high. Be that as it may, we have no other choice.",
+    "You may be right. Be that as it may, I still disagree with the plan.",
+    "Be that as it may, the deadline cannot move."
+   ]
+  ]
+ ],
  "bear with": [
   [
    "verb",
@@ -212,6 +224,30 @@
    [
     "Don't beat yourself up about it.",
     "She beat herself up over the mistake."
+   ]
+  ]
+ ],
+ "because": [
+  [
+   "reason",
+   "introduces the reason why something happens or is done",
+   "typical: because + clause, often answering 'why'. NOT for: before a noun on its own (use 'because of').",
+   [
+    "I stayed at home because it was raining.",
+    "She was late because the train was delayed.",
+    "We left early because we were tired."
+   ]
+  ]
+ ],
+ "before": [
+  [
+   "earlier in time",
+   "shows that one thing happens earlier than another",
+   "typical: before + clause, noun or -ing: before lunch, before leaving. NOT for: 'in front of' a place (use 'in front of').",
+   [
+    "Wash your hands before you eat.",
+    "We arrived before the others.",
+    "Think before speaking."
    ]
   ]
  ],
@@ -1494,6 +1530,18 @@
    ]
   ]
  ],
+ "but": [
+  [
+   "contrast",
+   "joins two ideas where the second is different from or unexpected after the first",
+   "typical: between two clauses, spoken and written. NOT for: meaning 'except' (use 'except').",
+   [
+    "I like the flat, but it is too expensive.",
+    "He is small but very strong.",
+    "We wanted to go, but it was raining."
+   ]
+  ]
+ ],
  "butt in": [
   [
    "verb",
@@ -1542,6 +1590,42 @@
    [
     "Developers bought up most of the land.",
     "Fans bought up all the tickets in an hour."
+   ]
+  ]
+ ],
+ "by comparison": [
+  [
+   "comparison",
+   "shows how something looks when set beside the thing just mentioned",
+   "typical: neutral to formal, at the start of a sentence. NOT for: a sharp opposite (use 'by contrast').",
+   [
+    "Last year's results were weak. By comparison, this year looks good.",
+    "Prices in the city are high. By comparison, the village is cheap.",
+    "Our old car was noisy; by comparison, the new one is silent."
+   ]
+  ]
+ ],
+ "by contrast": [
+  [
+   "sharp difference",
+   "introduces something very different from what you have just mentioned",
+   "typical: formal or written, at the start of a sentence. NOT for: only a small difference.",
+   [
+    "The north is rainy. By contrast, the south is dry and sunny.",
+    "Sales fell in Europe. By contrast, they rose in Asia.",
+    "My brother loves crowds; I, by contrast, prefer quiet places."
+   ]
+  ]
+ ],
+ "by the same token": [
+  [
+   "same reasoning",
+   "says that the same argument also applies to something else",
+   "typical: formal, in an argument or discussion. NOT for: adding an unrelated point (use 'also').",
+   [
+    "If we praise good work, by the same token we should address poor work.",
+    "Customers expect quality; by the same token, they expect fair prices.",
+    "You can't blame him for failing, and by the same token you can't praise him for luck."
    ]
   ]
  ]

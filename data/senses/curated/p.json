@@ -1,181 +1,4 @@
 {
- "point": [
-  [
-   "noun",
-   "an idea or fact that someone makes in a discussion",
-   "typical: make/see/take a point, a good point. NOT for: sharp end or score.",
-   [
-    "That's a good point.",
-    "I see your point."
-   ]
-  ],
-  [
-   "noun",
-   "the main idea or most important fact",
-   "typical: the point is..., get/miss the point. NOT for: purpose.",
-   [
-    "The point is that we have no time.",
-    "You're missing the point."
-   ]
-  ],
-  [
-   "noun",
-   "the purpose or use of something",
-   "typical: no point in + -ing, what's the point of...? NOT for: ideas in a debate.",
-   [
-    "There's no point in waiting.",
-    "What's the point of this rule?"
-   ]
-  ],
-  [
-   "noun",
-   "a particular moment or stage in time or in a process",
-   "typical: at this point, at some point, up to a point. NOT for: places on a map.",
-   [
-    "At this point, we had no choice.",
-    "I'll call you at some point tomorrow."
-   ]
-  ],
-  [
-   "noun",
-   "a unit of score in a game or test",
-   "typical: score/win/lose a point. NOT for: ideas.",
-   [
-    "She scored ten points in the game.",
-    "We lost by two points."
-   ]
-  ],
-  [
-   "verb",
-   "show direction or draw attention using your finger",
-   "typical: point at/to/towards + thing. NOT for: ideas or purpose.",
-   [
-    "He pointed at the door.",
-    "Point to the correct picture."
-   ]
-  ]
- ],
- "play": [
-  [
-   "verb",
-   "take part in a game or sport",
-   "typical: play + football/chess/cards, play for + team. NOT for: music.",
-   [
-    "They play football on Sundays.",
-    "Do you play chess?"
-   ]
-  ],
-  [
-   "verb",
-   "make music with an instrument, or make a recording or device produce sound",
-   "typical: play the piano/guitar, play a song/CD. NOT for: games.",
-   [
-    "She plays the piano.",
-    "Play that song again."
-   ]
-  ],
-  [
-   "verb",
-   "perform a part in a film, play or show",
-   "typical: play a role/part/character. NOT for: sports.",
-   [
-    "He plays the main character in the film.",
-    "She played Juliet at school."
-   ]
-  ],
-  [
-   "verb",
-   "(of children) do things for fun",
-   "typical: children play in the garden/with toys. NOT for: organized sports.",
-   [
-    "The children are playing in the garden.",
-    "The kids play with their toys."
-   ]
-  ],
-  [
-   "verb",
-   "have an effect or role in something",
-   "typical: play a part/role in sth, play an important role. NOT for: acting.",
-   [
-    "Education plays an important role in society.",
-    "Luck played a big part in his success."
-   ]
-  ],
-  [
-   "noun",
-   "a story written to be performed by actors in a theatre",
-   "typical: a play by Shakespeare, go to a play. NOT for: games.",
-   [
-    "We saw a play by Chekhov.",
-    "The school play is next week."
-   ]
-  ],
-  [
-   "noun",
-   "activity done for fun, especially by children",
-   "typical: children's play, at play. NOT for: theatre.",
-   [
-    "Play is important to a child's development.",
-    "The children were at play in the yard."
-   ]
-  ]
- ],
- "put": [
-  [
-   "verb",
-   "move something to a place or position",
-   "typical: put + object + on/in/at + place. NOT for: phrasal meanings like put off, put up.",
-   [
-    "Put the bag on the table.",
-    "She put the milk in the fridge."
-   ]
-  ],
-  [
-   "verb",
-   "cause someone or something to be in a state or situation",
-   "typical: put sb in a good mood/danger, put sth in order. NOT for: placing objects.",
-   [
-    "The news put me in a bad mood.",
-    "Don't put yourself in danger."
-   ]
-  ],
-  [
-   "verb",
-   "write or print something somewhere",
-   "typical: put your name on a list, put it in writing. NOT for: speaking.",
-   [
-    "Put your name at the top of the page.",
-    "Please put your signature here."
-   ]
-  ],
-  [
-   "verb",
-   "express something in words",
-   "typical: put it simply/mildly/another way. NOT for: placing objects.",
-   [
-    "Let me put it simply.",
-    "How would you put that in English?"
-   ]
-  ],
-  [
-   "verb",
-   "suggest or ask something formally",
-   "typical: put a question/proposal/idea to sb. NOT for: placing objects.",
-   [
-    "She put a question to the speaker.",
-    "They put a proposal to the board."
-   ]
-  ],
-  [
-   "verb",
-   "consider something to have a particular value or importance",
-   "typical: put sth above/before sth, put emphasis on sth. NOT for: physical placing.",
-   [
-    "He puts his family before his career.",
-    "The company puts great emphasis on safety."
-   ]
-  ]
- ],
  "pack in": [
   [
    "verb",
@@ -728,6 +551,71 @@
    ]
   ]
  ],
+ "play": [
+  [
+   "verb",
+   "take part in a game or sport",
+   "typical: play + football/chess/cards, play for + team. NOT for: music.",
+   [
+    "They play football on Sundays.",
+    "Do you play chess?"
+   ]
+  ],
+  [
+   "verb",
+   "make music with an instrument, or make a recording or device produce sound",
+   "typical: play the piano/guitar, play a song/CD. NOT for: games.",
+   [
+    "She plays the piano.",
+    "Play that song again."
+   ]
+  ],
+  [
+   "verb",
+   "perform a part in a film, play or show",
+   "typical: play a role/part/character. NOT for: sports.",
+   [
+    "He plays the main character in the film.",
+    "She played Juliet at school."
+   ]
+  ],
+  [
+   "verb",
+   "(of children) do things for fun",
+   "typical: children play in the garden/with toys. NOT for: organized sports.",
+   [
+    "The children are playing in the garden.",
+    "The kids play with their toys."
+   ]
+  ],
+  [
+   "verb",
+   "have an effect or role in something",
+   "typical: play a part/role in sth, play an important role. NOT for: acting.",
+   [
+    "Education plays an important role in society.",
+    "Luck played a big part in his success."
+   ]
+  ],
+  [
+   "noun",
+   "a story written to be performed by actors in a theatre",
+   "typical: a play by Shakespeare, go to a play. NOT for: games.",
+   [
+    "We saw a play by Chekhov.",
+    "The school play is next week."
+   ]
+  ],
+  [
+   "noun",
+   "activity done for fun, especially by children",
+   "typical: children's play, at play. NOT for: theatre.",
+   [
+    "Play is important to a child's development.",
+    "The children were at play in the yard."
+   ]
+  ]
+ ],
  "play along": [
   [
    "verb",
@@ -825,6 +713,62 @@
    [
     "Hang on, it's not plugged in.",
     "Plug the printer in."
+   ]
+  ]
+ ],
+ "point": [
+  [
+   "noun",
+   "an idea or fact that someone makes in a discussion",
+   "typical: make/see/take a point, a good point. NOT for: sharp end or score.",
+   [
+    "That's a good point.",
+    "I see your point."
+   ]
+  ],
+  [
+   "noun",
+   "the main idea or most important fact",
+   "typical: the point is..., get/miss the point. NOT for: purpose.",
+   [
+    "The point is that we have no time.",
+    "You're missing the point."
+   ]
+  ],
+  [
+   "noun",
+   "the purpose or use of something",
+   "typical: no point in + -ing, what's the point of...? NOT for: ideas in a debate.",
+   [
+    "There's no point in waiting.",
+    "What's the point of this rule?"
+   ]
+  ],
+  [
+   "noun",
+   "a particular moment or stage in time or in a process",
+   "typical: at this point, at some point, up to a point. NOT for: places on a map.",
+   [
+    "At this point, we had no choice.",
+    "I'll call you at some point tomorrow."
+   ]
+  ],
+  [
+   "noun",
+   "a unit of score in a game or test",
+   "typical: score/win/lose a point. NOT for: ideas.",
+   [
+    "She scored ten points in the game.",
+    "We lost by two points."
+   ]
+  ],
+  [
+   "verb",
+   "show direction or draw attention using your finger",
+   "typical: point at/to/towards + thing. NOT for: ideas or purpose.",
+   [
+    "He pointed at the door.",
+    "Point to the correct picture."
    ]
   ]
  ],
@@ -989,6 +933,18 @@
    [
     "Let's just press on.",
     "Shall we press on with the minutes?"
+   ]
+  ]
+ ],
+ "provided that": [
+  [
+   "condition",
+   "means 'only if' and states the condition that must be met",
+   "typical: provided that + clause. NOT for: unlikely or imagined situations (use 'if').",
+   [
+    "You can borrow the car provided that you drive carefully.",
+    "We will go provided that the weather is good.",
+    "Provided that you pay on time, there is no problem."
    ]
   ]
  ],
@@ -1384,6 +1340,62 @@
    [
     "Nixon pushed on with the programme.",
     "Let's push on with the work."
+   ]
+  ]
+ ],
+ "put": [
+  [
+   "verb",
+   "move something to a place or position",
+   "typical: put + object + on/in/at + place. NOT for: phrasal meanings like put off, put up.",
+   [
+    "Put the bag on the table.",
+    "She put the milk in the fridge."
+   ]
+  ],
+  [
+   "verb",
+   "cause someone or something to be in a state or situation",
+   "typical: put sb in a good mood/danger, put sth in order. NOT for: placing objects.",
+   [
+    "The news put me in a bad mood.",
+    "Don't put yourself in danger."
+   ]
+  ],
+  [
+   "verb",
+   "write or print something somewhere",
+   "typical: put your name on a list, put it in writing. NOT for: speaking.",
+   [
+    "Put your name at the top of the page.",
+    "Please put your signature here."
+   ]
+  ],
+  [
+   "verb",
+   "express something in words",
+   "typical: put it simply/mildly/another way. NOT for: placing objects.",
+   [
+    "Let me put it simply.",
+    "How would you put that in English?"
+   ]
+  ],
+  [
+   "verb",
+   "suggest or ask something formally",
+   "typical: put a question/proposal/idea to sb. NOT for: placing objects.",
+   [
+    "She put a question to the speaker.",
+    "They put a proposal to the board."
+   ]
+  ],
+  [
+   "verb",
+   "consider something to have a particular value or importance",
+   "typical: put sth above/before sth, put emphasis on sth. NOT for: physical placing.",
+   [
+    "He puts his family before his career.",
+    "The company puts great emphasis on safety."
    ]
   ]
  ],
