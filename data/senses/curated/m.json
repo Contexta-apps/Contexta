@@ -1,790 +1,691 @@
 {
- "make": [
-  [
-   "verb",
-   "produce or create something",
-   "typical: make + noun: a cake, a table, a noise. NOT for: forcing (see make sb do).",
-   [
-    "She makes great soup.",
-    "They made a table from old wood."
-   ]
+  "make": [
+    [
+      "verb",
+      "produce or create something",
+      "typical: make + noun: a cake, a table, a noise. NOT for: forcing (see make sb do).",
+      [
+        "She makes great soup.",
+        "They made a table from old wood."
+      ]
+    ],
+    [
+      "verb",
+      "prepare food or drink",
+      "typical: make coffee/dinner/a sandwich. NOT for: buying ready-made food.",
+      [
+        "I'll make some tea.",
+        "He made lunch for everyone."
+      ]
+    ],
+    [
+      "verb",
+      "do an action expressed by the noun",
+      "typical: make a decision/call/mistake/plan/suggestion. NOT for: housework (use do).",
+      [
+        "I need to make a phone call.",
+        "He made a mistake."
+      ]
+    ],
+    [
+      "verb",
+      "force or cause someone to do or feel something",
+      "typical: make + person + verb/adjective. NOT for: allowing.",
+      [
+        "The film made me cry.",
+        "Her boss made her redo the report."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "prepare food or drink",
-   "typical: make coffee/dinner/a sandwich. NOT for: buying ready-made food.",
-   [
-    "I'll make some tea.",
-    "He made lunch for everyone."
-   ]
+  "make do": [
+    [
+      "verb",
+      "manage with what you have although it is not ideal",
+      "typical: make do (with sth), make do without. NOT for: getting what you want.",
+      [
+        "We have to make do with a small flat.",
+        "There's no milk, so we'll make do."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "do an action expressed by the noun",
-   "typical: make a decision/call/mistake/plan/suggestion. NOT for: housework (use do).",
-   [
-    "I need to make a phone call.",
-    "He made a mistake."
-   ]
+  "make for": [
+    [
+      "verb",
+      "go in the direction of a place",
+      "typical: make for home/the exit. NOT for: leaving it.",
+      [
+        "I think it's time we made for home.",
+        "They made for the door."
+      ]
+    ],
+    [
+      "verb",
+      "cause or help to produce a result",
+      "typical: make for a great game/good results. NOT for: preventing.",
+      [
+        "Both teams are on good form, which should make for a great game.",
+        "Short meetings make for better work."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "force or cause someone to do or feel something",
-   "typical: make + person + verb/adjective. NOT for: allowing.",
-   [
-    "The film made me cry.",
-    "Her boss made her redo the report."
-   ]
+  "make fun of": [
+    [
+      "verb",
+      "laugh at someone in an unkind way",
+      "typical: make fun of sb/sth. NOT for: praising.",
+      [
+        "The other kids make fun of his accent.",
+        "Don't make fun of her."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "succeed in getting somewhere in time, or succeed in general",
-   "typical: make it. NOT for: producing things.",
-   [
-    "We just made it to the airport.",
-    "I can't make it to the meeting tonight."
-   ]
+  "make into": [
+    [
+      "verb",
+      "change something into a different form or purpose",
+      "typical: make sth into sth. NOT for: keeping it.",
+      [
+        "We can make your room into a study.",
+        "They made the barn into a house."
+      ]
+    ],
+    [
+      "verb",
+      "change someone's position or character",
+      "typical: make sb into sth. NOT for: leaving unchanged.",
+      [
+        "The film made her into a star overnight.",
+        "Fame made him into a monster."
+      ]
+    ]
+  ],
+  "make off": [
+    [
+      "verb",
+      "leave quickly, especially to escape",
+      "typical: make off (with sth). NOT for: staying.",
+      [
+        "The men made off as police arrived.",
+        "A car made off down the road."
+      ]
+    ]
+  ],
+  "make out": [
+    [
+      "verb",
+      "just manage to see or hear something",
+      "typical: make sth out, can't make out what he said. NOT for: understanding reasons.",
+      [
+        "I could just make out a dark shape.",
+        "I couldn't make out what he was saying."
+      ]
+    ],
+    [
+      "verb",
+      "understand something, especially why it happened",
+      "typical: make out what/how/why. NOT for: seeing something.",
+      [
+        "I can't make out why she left.",
+        "As far as I can make out, he is not married."
+      ]
+    ],
+    [
+      "verb",
+      "understand someone's character and behaviour",
+      "typical: can't make sb out. NOT for: hearing something.",
+      [
+        "Stuart is a strange guy - I can't make him out.",
+        "I can't make my boss out at all."
+      ]
+    ],
+    [
+      "verb",
+      "write something such as a cheque, list or bill",
+      "typical: make out a cheque/list/will. NOT for: understanding.",
+      [
+        "She was making out a list of guests.",
+        "Make the cheque out to 'Grays Ltd'."
+      ]
+    ]
+  ],
+  "make over": [
+    [
+      "verb",
+      "officially give money or property to someone else",
+      "typical: make sth over (to sb). NOT for: keeping.",
+      [
+        "He made over the estate to his son.",
+        "She made her house over to her sister."
+      ]
+    ],
+    [
+      "verb",
+      "change someone or something so it looks different or has a new use",
+      "typical: make sb/sth over. NOT for: keeping the same.",
+      [
+        "She made herself over for the film role.",
+        "They made the room over."
+      ]
+    ]
+  ],
+  "make up": [
+    [
+      "verb",
+      "combine to form something; be the parts of something",
+      "typical: be made up of sth, make up a part/percentage. NOT for: inventing something.",
+      [
+        "Women make up a small part of the group.",
+        "The team is made up of ten students."
+      ]
+    ],
+    [
+      "verb",
+      "invent a story, excuse or lie",
+      "typical: make up a story/excuse/lie, make sth up. NOT for: forming a group.",
+      [
+        "I think they're making the whole thing up.",
+        "He made up an excuse for being late."
+      ]
+    ],
+    [
+      "verb",
+      "put make-up on someone's face",
+      "typical: be made up, make sb up. NOT for: putting make-up on yourself.",
+      [
+        "They made him up as an old man.",
+        "The actress was made up for the scene."
+      ]
+    ],
+    [
+      "verb",
+      "become friends again after a quarrel",
+      "typical: make up with sb, kiss and make up. NOT for: inventing.",
+      [
+        "They argued but soon made up.",
+        "She made up with her sister."
+      ]
+    ]
+  ],
+  "make up for": [
+    [
+      "verb",
+      "make a bad situation better or replace what was lost",
+      "typical: make up for sth, make up for lost time. NOT for: worsening.",
+      [
+        "The team will want to make up for a poor start.",
+        "I don't eat breakfast but I make up for it at lunch."
+      ]
+    ],
+    [
+      "verb",
+      "have so much of one quality that a lack of another does not matter",
+      "typical: sth makes up for sth. NOT for: lacking both.",
+      [
+        "His enthusiasm makes up for his lack of skill.",
+        "Her charm makes up for it."
+      ]
+    ]
+  ],
+  "mark down": [
+    [
+      "verb",
+      "reduce the price of something",
+      "typical: mark sth down (by sth). NOT for: raising prices.",
+      [
+        "All coats are marked down by 30%.",
+        "The shop marked down winter stock."
+      ]
+    ],
+    [
+      "verb",
+      "give a lower score to a student or piece of work",
+      "typical: mark sb/sth down. NOT for: marking up.",
+      [
+        "The teacher marked me down for spelling.",
+        "He was marked down for late work."
+      ]
+    ],
+    [
+      "verb",
+      "consider someone to be a particular type (BrE)",
+      "typical: mark sb down as sth. NOT for: ignoring.",
+      [
+        "I marked him down as a future star.",
+        "They marked her down as a troublemaker."
+      ]
+    ]
+  ],
+  "mark up": [
+    [
+      "verb",
+      "increase the price of something so you can make a profit",
+      "typical: mark sth up (by sth). NOT for: reducing prices.",
+      [
+        "Shops mark up goods by 100%.",
+        "The price was marked up."
+      ]
+    ],
+    [
+      "verb",
+      "write notes or corrections on a document",
+      "typical: mark sth up. NOT for: leaving clean.",
+      [
+        "The editor marked up the text.",
+        "She marked up the draft."
+      ]
+    ]
+  ],
+  "mean": [
+    [
+      "verb",
+      "have or express a particular meaning",
+      "typical: mean + noun/clause; word or sign + mean. NOT for: intention.",
+      [
+        "What does this word mean?",
+        "A red light means stop."
+      ]
+    ],
+    [
+      "verb",
+      "say something with a particular intention (often to check understanding)",
+      "typical: what you mean / do you mean / if you know what I mean. NOT for: word meanings in a dictionary sense.",
+      [
+        "I know what you mean.",
+        "Do you mean you've changed your mind?"
+      ]
+    ],
+    [
+      "verb",
+      "intend to do something",
+      "typical: mean to + verb. NOT for: word meanings.",
+      [
+        "I didn't mean to upset you.",
+        "She meant to call you yesterday."
+      ]
+    ]
+  ],
+  "meanwhile": [
+    [
+      "at the same time",
+      "says that something else is happening during the same time",
+      "typical: neutral, at the start of a sentence. NOT for: 'later' (use 'afterwards').",
+      [
+        "Prepare the sauce. Meanwhile, boil the pasta.",
+        "He was shopping; meanwhile, the children were at school.",
+        "The talks continue. Meanwhile, prices keep rising."
+      ]
+    ]
+  ],
+  "meet": [
+    [
+      "verb",
+      "see someone by arrangement",
+      "typical: meet + person, meet at + place/time. NOT for: chance encounters.",
+      [
+        "Let's meet at the cafe at eight.",
+        "I'll meet you outside the theatre."
+      ]
+    ],
+    [
+      "verb",
+      "see someone by chance",
+      "typical: meet + person unexpectedly. NOT for: planned meetings.",
+      [
+        "I met an old friend in the street.",
+        "You'll never guess who I met on the bus."
+      ]
+    ],
+    [
+      "verb",
+      "see and talk to someone for the first time",
+      "typical: nice/pleased to meet you, meet + new person. NOT for: seeing again.",
+      [
+        "I met my husband at university.",
+        "Nice to meet you."
+      ]
+    ],
+    [
+      "verb",
+      "satisfy a need, demand, requirement or standard",
+      "typical: meet requirements/needs/demands/standards. NOT for: people.",
+      [
+        "The product meets all safety rules.",
+        "The school tries to meet the needs of every child."
+      ]
+    ]
+  ],
+  "mess around": [
+    [
+      "verb",
+      "spend time lazily, doing things slowly without a plan (informal)",
+      "typical: mess around (on sth), mess about (BrE). NOT for: working hard.",
+      [
+        "He spent his holiday messing around on the farm.",
+        "We just messed around at home."
+      ]
+    ],
+    [
+      "verb",
+      "behave in a silly way when you should be serious",
+      "typical: mess around, Stop messing around!. NOT for: paying attention.",
+      [
+        "Stop messing around and get ready for school.",
+        "The kids were messing around in class."
+      ]
+    ],
+    [
+      "verb",
+      "cause problems for someone, especially by changing plans (BrE)",
+      "typical: mess sb around. NOT for: being clear.",
+      [
+        "The airline messed us around.",
+        "Don't mess me around."
+      ]
+    ],
+    [
+      "verb",
+      "touch or play with something carelessly",
+      "typical: mess around with sth. NOT for: using properly.",
+      [
+        "Don't mess around with the wires.",
+        "He messed around with my phone."
+      ]
+    ]
+  ],
+  "mess up": [
+    [
+      "verb",
+      "spoil or ruin something, especially something important",
+      "typical: mess sth up. NOT for: improving.",
+      [
+        "I don't want some idiot to mess it up.",
+        "She felt she'd messed up her whole life."
+      ]
+    ],
+    [
+      "verb",
+      "make something dirty or untidy",
+      "typical: mess sth up. NOT for: tidying.",
+      [
+        "Who messed up the kitchen?",
+        "The wind messed up my hair."
+      ]
+    ],
+    [
+      "verb",
+      "make a mistake and do something badly",
+      "typical: mess up (sth). NOT for: succeeding.",
+      [
+        "I think I messed up the interview.",
+        "He messed up and lost his job."
+      ]
+    ],
+    [
+      "verb",
+      "cause someone serious emotional problems, or injure them badly (informal)",
+      "typical: mess sb up, be messed up. NOT for: helping.",
+      [
+        "His parents' divorce really messed him up.",
+        "The crash messed her up badly."
+      ]
+    ]
+  ],
+  "miss out": [
+    [
+      "verb",
+      "not have the chance to do something you would enjoy",
+      "typical: miss out (on sth). NOT for: taking part.",
+      [
+        "Some children miss out because their parents can't pay.",
+        "Don't miss out on the fun!"
+      ]
+    ],
+    [
+      "verb",
+      "not include someone or something (BrE)",
+      "typical: miss sb/sth out. NOT for: including.",
+      [
+        "Make sure you don't miss any details out.",
+        "She missed out the last paragraph."
+      ]
+    ]
+  ],
+  "mix up": [
+    [
+      "verb",
+      "think a person or thing is another one by mistake",
+      "typical: mix sb/sth up (with sb/sth). NOT for: telling apart.",
+      [
+        "I always mix him up with his brother.",
+        "I must have got the times mixed up."
+      ]
+    ],
+    [
+      "verb",
+      "change the order of things so they are no longer arranged",
+      "typical: mix sth up. NOT for: sorting.",
+      [
+        "Someone has mixed up my papers.",
+        "The cards got mixed up."
+      ]
+    ],
+    [
+      "verb",
+      "make someone confused (be mixed up)",
+      "typical: be mixed up. NOT for: being clear.",
+      [
+        "I'm all mixed up about it.",
+        "She felt mixed up."
+      ]
+    ],
+    [
+      "verb",
+      "be involved in something bad (be mixed up in sth)",
+      "typical: be mixed up in/with sth. NOT for: staying out.",
+      [
+        "He got mixed up in a fraud.",
+        "She is mixed up with criminals."
+      ]
+    ]
+  ],
+  "mop up": [
+    [
+      "verb",
+      "remove liquid with a mop or cloth",
+      "typical: mop sth up. NOT for: spilling.",
+      [
+        "Mop the sauce up with your bread.",
+        "He mopped up the spilt milk."
+      ]
+    ],
+    [
+      "verb",
+      "deal with what remains of a problem or enemy",
+      "typical: mop up opposition/the rest. NOT for: starting.",
+      [
+        "Soldiers were sent to mop up resistance.",
+        "They mopped up the last of the work."
+      ]
+    ]
+  ],
+  "more specifically": [
+    [
+      "narrowing down",
+      "gives more exact detail about what you have just said",
+      "typical: neutral to formal, after a general statement. NOT for: introducing a new topic.",
+      [
+        "I work in IT, more specifically in cyber security.",
+        "We need help, more specifically with design.",
+        "The problem is technical. More specifically, it is a software error."
+      ]
+    ]
+  ],
+  "moreover": [
+    [
+      "addition",
+      "adds an extra point that strengthens the argument",
+      "typical: formal, written, at the start of a sentence. NOT for: contrast (use 'however').",
+      [
+        "The idea is cheap. Moreover, it is easy to test.",
+        "The hotel is clean; moreover, the staff are friendly.",
+        "He is experienced and, moreover, very honest."
+      ]
+    ]
+  ],
+  "move away": [
+    [
+      "verb",
+      "go to live in a different area",
+      "typical: move away (from + place). NOT for: moving in.",
+      [
+        "My best friend moved away when I was ten.",
+        "They moved away from the city."
+      ]
+    ],
+    [
+      "verb",
+      "go further from someone or something",
+      "typical: move away (from sb/sth). NOT for: approaching.",
+      [
+        "He moved away from the window.",
+        "She moved away from him."
+      ]
+    ]
+  ],
+  "move in": [
+    [
+      "verb",
+      "start living in a new home",
+      "typical: move in, move into sth, move in on Monday. NOT for: leaving a home.",
+      [
+        "When are you moving in?",
+        "They moved into a smaller house."
+      ]
+    ],
+    [
+      "verb",
+      "start living with someone in the same home",
+      "typical: move in with sb. NOT for: living alone.",
+      [
+        "Steve is moving in with her.",
+        "They moved in together last year."
+      ]
+    ],
+    [
+      "verb",
+      "start to get involved in and control something others controlled",
+      "typical: big firms/investors move in (on sth). NOT for: leaving a place.",
+      [
+        "Big firms moved in and raised prices.",
+        "Investors moved in on the market."
+      ]
+    ],
+    [
+      "verb",
+      "go towards a place or people to attack or take control",
+      "typical: move in on sb/sth. NOT for: moving house.",
+      [
+        "Police moved in on the demonstrators.",
+        "Troops moved in on the city."
+      ]
+    ]
+  ],
+  "move on": [
+    [
+      "verb",
+      "leave one place and go to another",
+      "typical: move on to the next town, move on. NOT for: staying.",
+      [
+        "After a week we moved on to the next village.",
+        "The police told the crowd to move on."
+      ]
+    ],
+    [
+      "verb",
+      "start a new activity or topic",
+      "typical: move on to sth. NOT for: continuing the same topic.",
+      [
+        "Let's move on to the next question.",
+        "After lunch we moved on to the second chapter."
+      ]
+    ],
+    [
+      "verb",
+      "stop thinking about the past and start a new stage of life",
+      "typical: move on with your life. NOT for: staying in the past.",
+      [
+        "It is time to forget him and move on.",
+        "She found a new job and moved on."
+      ]
+    ]
+  ],
+  "move out": [
+    [
+      "verb",
+      "leave the home where you live to live somewhere else",
+      "typical: move out, move out of + place. NOT for: moving in.",
+      [
+        "He moved out and they divorced a year later.",
+        "They moved out of London when he was little."
+      ]
+    ],
+    [
+      "verb",
+      "leave a place (soldiers) or leave (AmE spoken)",
+      "typical: troops move out, ready to move out?. NOT for: moving into a place.",
+      [
+        "The troops moved out at dawn.",
+        "Are you ready to move out?"
+      ]
+    ]
+  ],
+  "move over": [
+    [
+      "verb",
+      "change your position to make room for someone",
+      "typical: move over (a little). NOT for: staying.",
+      [
+        "Move over a little so I can get in.",
+        "Move over, please."
+      ]
+    ],
+    [
+      "verb",
+      "start using a different system or doing different work",
+      "typical: move over (to sth). NOT for: staying.",
+      [
+        "Most firms have moved over to computers.",
+        "The school moved over to a new method."
+      ]
+    ],
+    [
+      "verb",
+      "change jobs, especially within the same field",
+      "typical: move over (from sth). NOT for: staying.",
+      [
+        "The new publisher moved over from another company.",
+        "She moved over to the BBC."
+      ]
+    ],
+    [
+      "verb",
+      "used humorously to say that something new is becoming more popular than something older",
+      "typical: Move over + name/thing. NOT for: praising the old.",
+      [
+        "Move over, vinyl: streaming is here.",
+        "Move over, CDs!"
+      ]
+    ]
+  ],
+  "muddle through": [
+    [
+      "verb",
+      "succeed in doing something with difficulty or not very well",
+      "typical: muddle through (sth). NOT for: planning well.",
+      [
+        "I managed to muddle through the questions.",
+        "The team muddled through another season."
+      ]
+    ]
   ]
- ],
- "make do": [
-  [
-   "verb",
-   "manage with what you have although it is not ideal",
-   "typical: make do (with sth), make do without. NOT for: getting what you want.",
-   [
-    "We have to make do with a small flat.",
-    "There's no milk, so we'll make do."
-   ]
-  ]
- ],
- "make for": [
-  [
-   "verb",
-   "go in the direction of a place",
-   "typical: make for home/the exit. NOT for: leaving it.",
-   [
-    "I think it's time we made for home.",
-    "They made for the door."
-   ]
-  ],
-  [
-   "verb",
-   "cause or help to produce a result",
-   "typical: make for a great game/good results. NOT for: preventing.",
-   [
-    "Both teams are on good form, which should make for a great game.",
-    "Short meetings make for better work."
-   ]
-  ]
- ],
- "make fun of": [
-  [
-   "verb",
-   "laugh at someone in an unkind way",
-   "typical: make fun of sb/sth. NOT for: praising.",
-   [
-    "The other kids make fun of his accent.",
-    "Don't make fun of her."
-   ]
-  ]
- ],
- "make into": [
-  [
-   "verb",
-   "change something into a different form or purpose",
-   "typical: make sth into sth. NOT for: keeping it.",
-   [
-    "We can make your room into a study.",
-    "They made the barn into a house."
-   ]
-  ],
-  [
-   "verb",
-   "change someone's position or character",
-   "typical: make sb into sth. NOT for: leaving unchanged.",
-   [
-    "The film made her into a star overnight.",
-    "Fame made him into a monster."
-   ]
-  ]
- ],
- "make off": [
-  [
-   "verb",
-   "leave quickly, especially to escape",
-   "typical: make off (with sth). NOT for: staying.",
-   [
-    "The men made off as police arrived.",
-    "A car made off down the road."
-   ]
-  ]
- ],
- "make out": [
-  [
-   "verb",
-   "just manage to see or hear something",
-   "typical: make sth out, can't make out what he said. NOT for: understanding reasons.",
-   [
-    "I could just make out a dark shape.",
-    "I couldn't make out what he was saying."
-   ]
-  ],
-  [
-   "verb",
-   "understand something, especially why it happened",
-   "typical: make out what/how/why. NOT for: seeing something.",
-   [
-    "I can't make out why she left.",
-    "As far as I can make out, he is not married."
-   ]
-  ],
-  [
-   "verb",
-   "understand someone's character and behaviour",
-   "typical: can't make sb out. NOT for: hearing something.",
-   [
-    "Stuart is a strange guy - I can't make him out.",
-    "I can't make my boss out at all."
-   ]
-  ],
-  [
-   "verb",
-   "write something such as a cheque, list or bill",
-   "typical: make out a cheque/list/will. NOT for: understanding.",
-   [
-    "She was making out a list of guests.",
-    "Make the cheque out to 'Grays Ltd'."
-   ]
-  ],
-  [
-   "verb",
-   "say that something is true when it is not",
-   "typical: make out (that) ..., make sb out to be sth. NOT for: telling the truth.",
-   [
-    "He makes me out to be an idiot.",
-    "She made out that she was ill."
-   ]
-  ],
-  [
-   "verb",
-   "find good reasons to support an idea or request",
-   "typical: make out a case for sth. NOT for: pretending.",
-   [
-    "We made out a case for hiring another assistant.",
-    "He made out a strong case for change."
-   ]
-  ],
-  [
-   "verb",
-   "manage or succeed in a particular way (especially AmE)",
-   "typical: how did you make out?. NOT for: seeing or hearing.",
-   [
-    "How did you make out at the interview?",
-    "She made out fine in her new job."
-   ]
-  ]
- ],
- "make over": [
-  [
-   "verb",
-   "officially give money or property to someone else",
-   "typical: make sth over (to sb). NOT for: keeping.",
-   [
-    "He made over the estate to his son.",
-    "She made her house over to her sister."
-   ]
-  ],
-  [
-   "verb",
-   "change someone or something so it looks different or has a new use",
-   "typical: make sb/sth over. NOT for: keeping the same.",
-   [
-    "She made herself over for the film role.",
-    "They made the room over."
-   ]
-  ]
- ],
- "make up": [
-  [
-   "verb",
-   "combine to form something; be the parts of something",
-   "typical: be made up of sth, make up a part/percentage. NOT for: inventing something.",
-   [
-    "Women make up a small part of the group.",
-    "The team is made up of ten students."
-   ]
-  ],
-  [
-   "verb",
-   "invent a story, excuse or lie",
-   "typical: make up a story/excuse/lie, make sth up. NOT for: forming a group.",
-   [
-    "I think they're making the whole thing up.",
-    "He made up an excuse for being late."
-   ]
-  ],
-  [
-   "verb",
-   "create something new by thinking, such as a song or a game",
-   "typical: make up a song/game/rules. NOT for: telling lies.",
-   [
-    "Nick made up a song about them.",
-    "The children made up a new game."
-   ]
-  ],
-  [
-   "verb",
-   "prepare something by mixing or putting parts together",
-   "typical: make up a bed/a bottle/a prescription. NOT for: inventing.",
-   [
-    "Can you make up a bed on the sofa?",
-    "The pharmacist made up the medicine."
-   ]
-  ],
-  [
-   "verb",
-   "put make-up on someone's face",
-   "typical: be made up, make sb up. NOT for: putting make-up on yourself.",
-   [
-    "They made him up as an old man.",
-    "The actress was made up for the scene."
-   ]
-  ],
-  [
-   "verb",
-   "add to an amount to reach the level needed",
-   "typical: make up the rest/difference. NOT for: forming parts of a whole.",
-   [
-    "My parents made up the rest of the money.",
-    "Who will make up the difference?"
-   ]
-  ],
-  [
-   "verb",
-   "become friends again after a quarrel",
-   "typical: make up with sb, kiss and make up. NOT for: inventing.",
-   [
-    "They argued but soon made up.",
-    "She made up with her sister."
-   ]
-  ]
- ],
- "make up for": [
-  [
-   "verb",
-   "make a bad situation better or replace what was lost",
-   "typical: make up for sth, make up for lost time. NOT for: worsening.",
-   [
-    "The team will want to make up for a poor start.",
-    "I don't eat breakfast but I make up for it at lunch."
-   ]
-  ],
-  [
-   "verb",
-   "have so much of one quality that a lack of another does not matter",
-   "typical: sth makes up for sth. NOT for: lacking both.",
-   [
-    "His enthusiasm makes up for his lack of skill.",
-    "Her charm makes up for it."
-   ]
-  ]
- ],
- "mark down": [
-  [
-   "verb",
-   "reduce the price of something",
-   "typical: mark sth down (by sth). NOT for: raising prices.",
-   [
-    "All coats are marked down by 30%.",
-    "The shop marked down winter stock."
-   ]
-  ],
-  [
-   "verb",
-   "give a lower score to a student or piece of work",
-   "typical: mark sb/sth down. NOT for: marking up.",
-   [
-    "The teacher marked me down for spelling.",
-    "He was marked down for late work."
-   ]
-  ],
-  [
-   "verb",
-   "consider someone to be a particular type (BrE)",
-   "typical: mark sb down as sth. NOT for: ignoring.",
-   [
-    "I marked him down as a future star.",
-    "They marked her down as a troublemaker."
-   ]
-  ]
- ],
- "mark up": [
-  [
-   "verb",
-   "increase the price of something so you can make a profit",
-   "typical: mark sth up (by sth). NOT for: reducing prices.",
-   [
-    "Shops mark up goods by 100%.",
-    "The price was marked up."
-   ]
-  ],
-  [
-   "verb",
-   "write notes or corrections on a document",
-   "typical: mark sth up. NOT for: leaving clean.",
-   [
-    "The editor marked up the text.",
-    "She marked up the draft."
-   ]
-  ]
- ],
- "mean": [
-  [
-   "verb",
-   "have or express a particular meaning",
-   "typical: mean + noun/clause; word or sign + mean. NOT for: intention.",
-   [
-    "What does this word mean?",
-    "A red light means stop."
-   ]
-  ],
-  [
-   "verb",
-   "say something with a particular intention (often to check understanding)",
-   "typical: what you mean / do you mean / if you know what I mean. NOT for: word meanings in a dictionary sense.",
-   [
-    "I know what you mean.",
-    "Do you mean you've changed your mind?"
-   ]
-  ],
-  [
-   "verb",
-   "intend to do something",
-   "typical: mean to + verb. NOT for: word meanings.",
-   [
-    "I didn't mean to upset you.",
-    "She meant to call you yesterday."
-   ]
-  ]
- ],
- "meanwhile": [
-  [
-   "at the same time",
-   "says that something else is happening during the same time",
-   "typical: neutral, at the start of a sentence. NOT for: 'later' (use 'afterwards').",
-   [
-    "Prepare the sauce. Meanwhile, boil the pasta.",
-    "He was shopping; meanwhile, the children were at school.",
-    "The talks continue. Meanwhile, prices keep rising."
-   ]
-  ]
- ],
- "meet": [
-  [
-   "verb",
-   "see someone by arrangement",
-   "typical: meet + person, meet at + place/time. NOT for: chance encounters.",
-   [
-    "Let's meet at the cafe at eight.",
-    "I'll meet you outside the theatre."
-   ]
-  ],
-  [
-   "verb",
-   "see someone by chance",
-   "typical: meet + person unexpectedly. NOT for: planned meetings.",
-   [
-    "I met an old friend in the street.",
-    "You'll never guess who I met on the bus."
-   ]
-  ],
-  [
-   "verb",
-   "see and talk to someone for the first time",
-   "typical: nice/pleased to meet you, meet + new person. NOT for: seeing again.",
-   [
-    "I met my husband at university.",
-    "Nice to meet you."
-   ]
-  ],
-  [
-   "verb",
-   "wait for someone at an airport, station or stop",
-   "typical: meet + person at the airport/station. NOT for: general meetings.",
-   [
-    "I'll meet you off the plane.",
-    "Can you meet her at the station?"
-   ]
-  ],
-  [
-   "verb",
-   "come together for a discussion or event",
-   "typical: the committee/team/group meets, meet to discuss. NOT for: two people greeting.",
-   [
-    "The committee meets once a month.",
-    "The two groups will meet next week."
-   ]
-  ],
-  [
-   "verb",
-   "satisfy a need, demand, requirement or standard",
-   "typical: meet requirements/needs/demands/standards. NOT for: people.",
-   [
-    "The product meets all safety rules.",
-    "The school tries to meet the needs of every child."
-   ]
-  ],
-  [
-   "verb",
-   "reach or achieve a deadline or target",
-   "typical: meet a deadline/target/goal. NOT for: people.",
-   [
-    "We must meet the deadline.",
-    "The company met its sales targets."
-   ]
-  ],
-  [
-   "verb",
-   "join or touch at a point (of roads, lines or rivers)",
-   "typical: roads/lines/rivers meet. NOT for: people.",
-   [
-    "The two roads meet near the village.",
-    "The river meets the sea here."
-   ]
-  ]
- ],
- "mess around": [
-  [
-   "verb",
-   "spend time lazily, doing things slowly without a plan (informal)",
-   "typical: mess around (on sth), mess about (BrE). NOT for: working hard.",
-   [
-    "He spent his holiday messing around on the farm.",
-    "We just messed around at home."
-   ]
-  ],
-  [
-   "verb",
-   "behave in a silly way when you should be serious",
-   "typical: mess around, Stop messing around!. NOT for: paying attention.",
-   [
-    "Stop messing around and get ready for school.",
-    "The kids were messing around in class."
-   ]
-  ],
-  [
-   "verb",
-   "cause problems for someone, especially by changing plans (BrE)",
-   "typical: mess sb around. NOT for: being clear.",
-   [
-    "The airline messed us around.",
-    "Don't mess me around."
-   ]
-  ],
-  [
-   "verb",
-   "touch or play with something carelessly",
-   "typical: mess around with sth. NOT for: using properly.",
-   [
-    "Don't mess around with the wires.",
-    "He messed around with my phone."
-   ]
-  ]
- ],
- "mess up": [
-  [
-   "verb",
-   "spoil or ruin something, especially something important",
-   "typical: mess sth up. NOT for: improving.",
-   [
-    "I don't want some idiot to mess it up.",
-    "She felt she'd messed up her whole life."
-   ]
-  ],
-  [
-   "verb",
-   "make something dirty or untidy",
-   "typical: mess sth up. NOT for: tidying.",
-   [
-    "Who messed up the kitchen?",
-    "The wind messed up my hair."
-   ]
-  ],
-  [
-   "verb",
-   "make a mistake and do something badly",
-   "typical: mess up (sth). NOT for: succeeding.",
-   [
-    "I think I messed up the interview.",
-    "He messed up and lost his job."
-   ]
-  ],
-  [
-   "verb",
-   "cause someone serious emotional problems, or injure them badly (informal)",
-   "typical: mess sb up, be messed up. NOT for: helping.",
-   [
-    "His parents' divorce really messed him up.",
-    "The crash messed her up badly."
-   ]
-  ]
- ],
- "miss out": [
-  [
-   "verb",
-   "not have the chance to do something you would enjoy",
-   "typical: miss out (on sth). NOT for: taking part.",
-   [
-    "Some children miss out because their parents can't pay.",
-    "Don't miss out on the fun!"
-   ]
-  ],
-  [
-   "verb",
-   "not include someone or something (BrE)",
-   "typical: miss sb/sth out. NOT for: including.",
-   [
-    "Make sure you don't miss any details out.",
-    "She missed out the last paragraph."
-   ]
-  ]
- ],
- "mix up": [
-  [
-   "verb",
-   "think a person or thing is another one by mistake",
-   "typical: mix sb/sth up (with sb/sth). NOT for: telling apart.",
-   [
-    "I always mix him up with his brother.",
-    "I must have got the times mixed up."
-   ]
-  ],
-  [
-   "verb",
-   "change the order of things so they are no longer arranged",
-   "typical: mix sth up. NOT for: sorting.",
-   [
-    "Someone has mixed up my papers.",
-    "The cards got mixed up."
-   ]
-  ],
-  [
-   "verb",
-   "make someone confused (be mixed up)",
-   "typical: be mixed up. NOT for: being clear.",
-   [
-    "I'm all mixed up about it.",
-    "She felt mixed up."
-   ]
-  ],
-  [
-   "verb",
-   "be involved in something bad (be mixed up in sth)",
-   "typical: be mixed up in/with sth. NOT for: staying out.",
-   [
-    "He got mixed up in a fraud.",
-    "She is mixed up with criminals."
-   ]
-  ]
- ],
- "mop up": [
-  [
-   "verb",
-   "remove liquid with a mop or cloth",
-   "typical: mop sth up. NOT for: spilling.",
-   [
-    "Mop the sauce up with your bread.",
-    "He mopped up the spilt milk."
-   ]
-  ],
-  [
-   "verb",
-   "deal with what remains of a problem or enemy",
-   "typical: mop up opposition/the rest. NOT for: starting.",
-   [
-    "Soldiers were sent to mop up resistance.",
-    "They mopped up the last of the work."
-   ]
-  ]
- ],
- "more specifically": [
-  [
-   "narrowing down",
-   "gives more exact detail about what you have just said",
-   "typical: neutral to formal, after a general statement. NOT for: introducing a new topic.",
-   [
-    "I work in IT, more specifically in cyber security.",
-    "We need help, more specifically with design.",
-    "The problem is technical. More specifically, it is a software error."
-   ]
-  ]
- ],
- "moreover": [
-  [
-   "addition",
-   "adds an extra point that strengthens the argument",
-   "typical: formal, written, at the start of a sentence. NOT for: contrast (use 'however').",
-   [
-    "The idea is cheap. Moreover, it is easy to test.",
-    "The hotel is clean; moreover, the staff are friendly.",
-    "He is experienced and, moreover, very honest."
-   ]
-  ]
- ],
- "move away": [
-  [
-   "verb",
-   "go to live in a different area",
-   "typical: move away (from + place). NOT for: moving in.",
-   [
-    "My best friend moved away when I was ten.",
-    "They moved away from the city."
-   ]
-  ],
-  [
-   "verb",
-   "go further from someone or something",
-   "typical: move away (from sb/sth). NOT for: approaching.",
-   [
-    "He moved away from the window.",
-    "She moved away from him."
-   ]
-  ]
- ],
- "move in": [
-  [
-   "verb",
-   "start living in a new home",
-   "typical: move in, move into sth, move in on Monday. NOT for: leaving a home.",
-   [
-    "When are you moving in?",
-    "They moved into a smaller house."
-   ]
-  ],
-  [
-   "verb",
-   "start living with someone in the same home",
-   "typical: move in with sb. NOT for: living alone.",
-   [
-    "Steve is moving in with her.",
-    "They moved in together last year."
-   ]
-  ],
-  [
-   "verb",
-   "start to get involved in and control something others controlled",
-   "typical: big firms/investors move in (on sth). NOT for: leaving a place.",
-   [
-    "Big firms moved in and raised prices.",
-    "Investors moved in on the market."
-   ]
-  ],
-  [
-   "verb",
-   "go towards a place or people to attack or take control",
-   "typical: move in on sb/sth. NOT for: moving house.",
-   [
-    "Police moved in on the demonstrators.",
-    "Troops moved in on the city."
-   ]
-  ]
- ],
- "move on": [
-  [
-   "verb",
-   "leave one place and go to another",
-   "typical: move on to the next town, move on. NOT for: staying.",
-   [
-    "After a week we moved on to the next village.",
-    "The police told the crowd to move on."
-   ]
-  ],
-  [
-   "verb",
-   "start a new activity or topic",
-   "typical: move on to sth. NOT for: continuing the same topic.",
-   [
-    "Let's move on to the next question.",
-    "After lunch we moved on to the second chapter."
-   ]
-  ],
-  [
-   "verb",
-   "stop thinking about the past and start a new stage of life",
-   "typical: move on with your life. NOT for: staying in the past.",
-   [
-    "It is time to forget him and move on.",
-    "She found a new job and moved on."
-   ]
-  ]
- ],
- "move out": [
-  [
-   "verb",
-   "leave the home where you live to live somewhere else",
-   "typical: move out, move out of + place. NOT for: moving in.",
-   [
-    "He moved out and they divorced a year later.",
-    "They moved out of London when he was little."
-   ]
-  ],
-  [
-   "verb",
-   "leave a place (soldiers) or leave (AmE spoken)",
-   "typical: troops move out, ready to move out?. NOT for: moving into a place.",
-   [
-    "The troops moved out at dawn.",
-    "Are you ready to move out?"
-   ]
-  ]
- ],
- "move over": [
-  [
-   "verb",
-   "change your position to make room for someone",
-   "typical: move over (a little). NOT for: staying.",
-   [
-    "Move over a little so I can get in.",
-    "Move over, please."
-   ]
-  ],
-  [
-   "verb",
-   "start using a different system or doing different work",
-   "typical: move over (to sth). NOT for: staying.",
-   [
-    "Most firms have moved over to computers.",
-    "The school moved over to a new method."
-   ]
-  ],
-  [
-   "verb",
-   "change jobs, especially within the same field",
-   "typical: move over (from sth). NOT for: staying.",
-   [
-    "The new publisher moved over from another company.",
-    "She moved over to the BBC."
-   ]
-  ],
-  [
-   "verb",
-   "used humorously to say that something new is becoming more popular than something older",
-   "typical: Move over + name/thing. NOT for: praising the old.",
-   [
-    "Move over, vinyl: streaming is here.",
-    "Move over, CDs!"
-   ]
-  ]
- ],
- "muddle through": [
-  [
-   "verb",
-   "succeed in doing something with difficulty or not very well",
-   "typical: muddle through (sth). NOT for: planning well.",
-   [
-    "I managed to muddle through the questions.",
-    "The team muddled through another season."
-   ]
-  ]
- ]
 }

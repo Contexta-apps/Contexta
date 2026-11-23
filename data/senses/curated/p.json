@@ -1,2075 +1,1805 @@
 {
- "pack in": [
-  [
-   "verb",
-   "stop doing something (BrE informal)",
-   "typical: pack sth in, pack it in. NOT for: continuing.",
-   [
-    "I packed in my job last month.",
-    "Pack it in, you two!"
-   ]
-  ],
-  [
-   "verb",
-   "fit a lot of things or people into a small space or time",
-   "typical: pack sth/sb in. NOT for: leaving room.",
-   [
-    "The cinema packs in 500 people.",
-    "She packs in a lot on a Sunday."
-   ]
-  ],
-  [
-   "verb",
-   "attract a large audience",
-   "typical: pack in the crowds. NOT for: emptying.",
-   [
-    "The show packs in crowds every night.",
-    "The film packed them in."
-   ]
+  "pack in": [
+    [
+      "verb",
+      "stop doing something (BrE informal)",
+      "typical: pack sth in, pack it in. NOT for: continuing.",
+      [
+        "I packed in my job last month.",
+        "Pack it in, you two!"
+      ]
+    ],
+    [
+      "verb",
+      "fit a lot of things or people into a small space or time",
+      "typical: pack sth/sb in. NOT for: leaving room.",
+      [
+        "The cinema packs in 500 people.",
+        "She packs in a lot on a Sunday."
+      ]
+    ],
+    [
+      "verb",
+      "attract a large audience",
+      "typical: pack in the crowds. NOT for: emptying.",
+      [
+        "The show packs in crowds every night.",
+        "The film packed them in."
+      ]
+    ]
+  ],
+  "pack up": [
+    [
+      "verb",
+      "put things into cases or bags ready for a trip",
+      "typical: pack (sth) up, pack your things. NOT for: unpacking.",
+      [
+        "Kelly packed her things up before breakfast.",
+        "Have you finished packing up yet?"
+      ]
+    ],
+    [
+      "verb",
+      "put something into a box or container so that it can be moved, sold or stored",
+      "typical: pack sth up (in/into sth). NOT for: unpacking.",
+      [
+        "The mushrooms are packed up in small boxes.",
+        "She packed up the books in a crate."
+      ]
+    ],
+    [
+      "verb",
+      "stop working (a machine) (BrE informal)",
+      "typical: a machine packs up. NOT for: working.",
+      [
+        "The old washing machine packed up.",
+        "My computer's packed up."
+      ]
+    ]
+  ],
+  "pair up": [
+    [
+      "verb",
+      "become friends and start a romantic relationship (BrE)",
+      "typical: pair up (with sb). NOT for: splitting up.",
+      [
+        "We learned later that he and Tanya had paired up.",
+        "They paired up soon after meeting."
+      ]
+    ],
+    [
+      "verb",
+      "work together or put two people together to do something",
+      "typical: pair up (with sb), pair sb up. NOT for: working alone.",
+      [
+        "You can pair up with another student for the task.",
+        "The teacher paired up writers and artists."
+      ]
+    ],
+    [
+      "verb",
+      "come together to breed (animals)",
+      "typical: animals pair up. NOT for: staying apart.",
+      [
+        "Swans pair up for life.",
+        "The birds pair up in spring."
+      ]
+    ]
+  ],
+  "pan out": [
+    [
+      "verb",
+      "happen or develop in a particular way",
+      "typical: pan out well/badly, see how things pan out. NOT for: failing at once.",
+      [
+        "We'll have to see how things pan out.",
+        "The plan didn't pan out."
+      ]
+    ]
+  ],
+  "part with": [
+    [
+      "verb",
+      "give something to someone although you do not want to",
+      "typical: part with sth, part with money. NOT for: keeping.",
+      [
+        "I'm reluctant to part with any of the kittens.",
+        "He hates to part with his money."
+      ]
+    ]
+  ],
+  "pass away": [
+    [
+      "verb",
+      "die (a polite way to say it)",
+      "typical: sb passes away. NOT for: living.",
+      [
+        "Her grandmother passed away last year.",
+        "He passed away peacefully."
+      ]
+    ]
+  ],
+  "pass by": [
+    [
+      "verb",
+      "go past a person, place or vehicle",
+      "typical: pass by (sb/sth). NOT for: stopping.",
+      [
+        "They all waved as they passed by.",
+        "Will you be passing by the supermarket?"
+      ]
+    ],
+    [
+      "verb",
+      "happen without you being involved or noticing",
+      "typical: life passes sb by. NOT for: being involved.",
+      [
+        "She felt life was passing her by.",
+        "Opportunities passed him by."
+      ]
+    ]
+  ],
+  "pass down": [
+    [
+      "verb",
+      "give or teach something to younger people or people who live after you",
+      "typical: pass sth down (from sb) to sb. NOT for: keeping.",
+      [
+        "The tradition has been passed down for generations.",
+        "Skills are passed down to children."
+      ]
+    ]
+  ],
+  "pass on": [
+    [
+      "verb",
+      "give something to someone else after you have received it",
+      "typical: pass sth on (to sb). NOT for: keeping.",
+      [
+        "Please pass the message on to him.",
+        "I'll pass this on to my sister."
+      ]
+    ],
+    [
+      "verb",
+      "give an illness to another person",
+      "typical: pass sth on (to sb). NOT for: catching.",
+      [
+        "She passed her cold on to me.",
+        "The virus is passed on by touch."
+      ]
+    ],
+    [
+      "verb",
+      "not take an opportunity (informal)",
+      "typical: pass on sth. NOT for: accepting.",
+      [
+        "I'll pass on dessert.",
+        "He passed on the job offer."
+      ]
+    ],
+    [
+      "verb",
+      "die (a polite way to say it)",
+      "typical: pass on. NOT for: living.",
+      [
+        "His uncle passed on last spring.",
+        "She passed on peacefully."
+      ]
+    ]
+  ],
+  "pass out": [
+    [
+      "verb",
+      "become unconscious",
+      "typical: pass out. NOT for: waking.",
+      [
+        "I nearly passed out when I saw the blood.",
+        "He passed out in the heat."
+      ]
+    ],
+    [
+      "verb",
+      "give something to everyone in a group",
+      "typical: pass sth out. NOT for: collecting.",
+      [
+        "She passed out the exam papers.",
+        "The teacher passed out books."
+      ]
+    ],
+    [
+      "verb",
+      "finish a course at a military school or police college (BrE)",
+      "typical: pass out. NOT for: starting.",
+      [
+        "He passed out from Sandhurst.",
+        "The recruits passed out in June."
+      ]
+    ]
+  ],
+  "pass up": [
+    [
+      "verb",
+      "not use a chance or an opportunity",
+      "typical: pass sth up, pass up a chance/offer. NOT for: grabbing.",
+      [
+        "Don't pass up the chance to go to university.",
+        "He passed up the offer."
+      ]
+    ]
+  ],
+  "patch up": [
+    [
+      "verb",
+      "end an argument to stay friendly with someone",
+      "typical: patch things up (with sb), patch up differences. NOT for: quarrelling.",
+      [
+        "Try to patch up your differences before he leaves.",
+        "He went back to patch things up with his wife."
+      ]
+    ],
+    [
+      "verb",
+      "repair a hole by covering it with something",
+      "typical: patch sth up. NOT for: replacing completely.",
+      [
+        "We'll have to patch up the hole in the roof.",
+        "She patched up the old jeans."
+      ]
+    ],
+    [
+      "verb",
+      "give quick and basic medical treatment",
+      "typical: patch sb up. NOT for: fully curing.",
+      [
+        "The medic patched him up and sent him back.",
+        "The doctor patched up his arm."
+      ]
+    ]
+  ],
+  "pay back": [
+    [
+      "verb",
+      "give someone the money you owe them",
+      "typical: pay sb/sth back. NOT for: borrowing.",
+      [
+        "I'll pay you back on Friday.",
+        "We're paying back the loan over 15 years."
+      ]
+    ],
+    [
+      "verb",
+      "make someone suffer for something unpleasant they did",
+      "typical: pay sb back (for sth). NOT for: forgiving.",
+      [
+        "I'll pay Jenny back for what she did.",
+        "He wanted to pay them back."
+      ]
+    ]
+  ],
+  "pay for": [
+    [
+      "verb",
+      "give money in exchange for something",
+      "typical: pay for sth, pay for lunch. NOT for: getting free.",
+      [
+        "Who paid for the tickets?",
+        "I'll pay for the meal."
+      ]
+    ],
+    [
+      "verb",
+      "suffer because of something wrong you did",
+      "typical: pay for a mistake. NOT for: escaping punishment.",
+      [
+        "You'll pay for this!",
+        "He paid for his mistakes."
+      ]
+    ]
+  ],
+  "pay off": [
+    [
+      "verb",
+      "give all the money that you owe",
+      "typical: pay sth off, pay off a debt/mortgage. NOT for: borrowing.",
+      [
+        "I'll pay off all my debts first.",
+        "He finally paid his overdraft off."
+      ]
+    ],
+    [
+      "verb",
+      "be successful or have a good result",
+      "typical: effort/risk pays off. NOT for: failing.",
+      [
+        "Teamwork paid off.",
+        "The gamble paid off."
+      ]
+    ],
+    [
+      "verb",
+      "pay workers and tell them they no longer have a job (BrE)",
+      "typical: pay sb off. NOT for: hiring.",
+      [
+        "Two hundred workers have been paid off.",
+        "The firm paid off the crew."
+      ]
+    ],
+    [
+      "verb",
+      "pay someone to stop them causing trouble or telling a secret",
+      "typical: pay sb off. NOT for: reporting.",
+      [
+        "He tried to pay the witness off.",
+        "They paid off the blackmailer."
+      ]
+    ]
+  ],
+  "pay up": [
+    [
+      "verb",
+      "pay money you owe, especially when you do not want to or are late",
+      "typical: pay up. NOT for: refusing.",
+      [
+        "She refused to pay up.",
+        "Come on, pay up!"
+      ]
+    ]
+  ],
+  "phase out": [
+    [
+      "verb",
+      "gradually stop using or providing something",
+      "typical: phase sth out. NOT for: introducing.",
+      [
+        "The subsidy will be phased out next year.",
+        "They phased out the old model."
+      ]
+    ]
+  ],
+  "pick at": [
+    [
+      "verb",
+      "eat only small amounts of food because you are not hungry",
+      "typical: pick at sth, pick at your food. NOT for: eating eagerly.",
+      [
+        "Paige could only pick at her meal.",
+        "He picked at his dinner."
+      ]
+    ],
+    [
+      "verb",
+      "touch something many times with your fingers",
+      "typical: pick at sth. NOT for: leaving alone.",
+      [
+        "She was picking at her skirt.",
+        "Don't pick at the scab."
+      ]
+    ]
+  ],
+  "pick out": [
+    [
+      "verb",
+      "choose someone or something from a group",
+      "typical: pick out a dress/a gift/a winner. NOT for: finding by sight.",
+      [
+        "She picked out a navy blue dress.",
+        "The judges picked his story out as the best."
+      ]
+    ],
+    [
+      "verb",
+      "recognize someone or something among others",
+      "typical: pick sb out of a crowd/a line-up. NOT for: choosing.",
+      [
+        "She picked out her father across the room.",
+        "He picked her voice out from the noise."
+      ]
+    ],
+    [
+      "verb",
+      "see something not very clearly",
+      "typical: pick out a shape/letters/lights. NOT for: choosing a gift.",
+      [
+        "I could just pick out a few letters on the stone.",
+        "We could pick out lights in the distance."
+      ]
+    ],
+    [
+      "verb",
+      "play a tune slowly or with difficulty",
+      "typical: pick out a tune/a melody. NOT for: fast playing.",
+      [
+        "He sat at the piano and picked out a simple tune.",
+        "She picked out the melody on a guitar."
+      ]
+    ]
+  ],
+  "pick up": [
+    [
+      "verb",
+      "lift someone or something from a surface",
+      "typical: pick sth/sb up, pick up the phone. NOT for: collecting someone by car.",
+      [
+        "She picked up the letter and read it.",
+        "He picked the child up and hugged her."
+      ]
+    ],
+    [
+      "verb",
+      "go and collect a person or thing",
+      "typical: pick sb up at the station, pick up the kids/mail. NOT for: lifting something from the floor.",
+      [
+        "I'll pick you up at seven.",
+        "Can you pick up my parcel from the post office?"
+      ]
+    ],
+    [
+      "verb",
+      "learn something by watching or listening, without formal study",
+      "typical: pick up a language/a few words/tips. NOT for: learning in class.",
+      [
+        "She picked up some Greek on holiday.",
+        "He picked up the rules by watching."
+      ]
+    ],
+    [
+      "verb",
+      "get better or increase",
+      "typical: business/sales/the economy/the wind picks up. NOT for: learning or lifting.",
+      [
+        "Sales picked up in the spring.",
+        "The wind began to pick up."
+      ]
+    ]
+  ],
+  "pig out": [
+    [
+      "verb",
+      "eat a lot of food all at once (informal)",
+      "typical: pig out (on sth). NOT for: dieting.",
+      [
+        "I found Sam pigging out on pizza.",
+        "We pigged out at the party."
+      ]
+    ]
+  ],
+  "pile up": [
+    [
+      "verb",
+      "form a large heap or amount",
+      "typical: pile up, pile sth up. NOT for: clearing.",
+      [
+        "Dirty dishes piled up in the sink.",
+        "She piled up the books on the desk."
+      ]
+    ],
+    [
+      "verb",
+      "increase in amount over time (work, debt or problems)",
+      "typical: work/bills/debts pile up. NOT for: falling.",
+      [
+        "Letters piled up while I was away.",
+        "Their debts are piling up."
+      ]
+    ]
+  ],
+  "pin down": [
+    [
+      "verb",
+      "make someone give clear details or a definite decision",
+      "typical: pin sb down (to sth). NOT for: letting vague.",
+      [
+        "Did you manage to pin him down to a date?",
+        "He's impossible to pin down."
+      ]
+    ],
+    [
+      "verb",
+      "understand or describe something exactly",
+      "typical: hard to pin down. NOT for: guessing.",
+      [
+        "The flavour was hard to pin down.",
+        "I can't pin down what's wrong."
+      ]
+    ],
+    [
+      "verb",
+      "trap someone so they cannot move (be pinned down)",
+      "typical: be pinned down (by sth). NOT for: escaping.",
+      [
+        "The soldiers were pinned down by gunfire.",
+        "He pinned him down."
+      ]
+    ]
+  ],
+  "plan on": [
+    [
+      "verb",
+      "intend or expect to do something",
+      "typical: plan on doing sth. NOT for: being unprepared.",
+      [
+        "I plan on leaving early.",
+        "We hadn't planned on so many guests."
+      ]
+    ]
+  ],
+  "play": [
+    [
+      "verb",
+      "take part in a game or sport",
+      "typical: play + football/chess/cards, play for + team. NOT for: music.",
+      [
+        "They play football on Sundays.",
+        "Do you play chess?"
+      ]
+    ],
+    [
+      "verb",
+      "make music with an instrument, or make a recording or device produce sound",
+      "typical: play the piano/guitar, play a song/CD. NOT for: games.",
+      [
+        "She plays the piano.",
+        "Play that song again."
+      ]
+    ],
+    [
+      "verb",
+      "perform a part in a film, play or show",
+      "typical: play a role/part/character. NOT for: sports.",
+      [
+        "He plays the main character in the film.",
+        "She played Juliet at school."
+      ]
+    ],
+    [
+      "verb",
+      "have an effect or role in something",
+      "typical: play a part/role in sth, play an important role. NOT for: acting.",
+      [
+        "Education plays an important role in society.",
+        "Luck played a big part in his success."
+      ]
+    ]
+  ],
+  "play along": [
+    [
+      "verb",
+      "pretend to agree to do what someone wants",
+      "typical: play along (with sb/sth). NOT for: refusing.",
+      [
+        "She felt she had to play along or lose her job.",
+        "I decided to play along with him."
+      ]
+    ],
+    [
+      "verb",
+      "tell someone something untrue because you need their help (BrE)",
+      "typical: play sb along. NOT for: telling the truth.",
+      [
+        "He played her along for months.",
+        "Don't play me along."
+      ]
+    ]
+  ],
+  "play around": [
+    [
+      "verb",
+      "have a sexual relationship with someone who is not your usual partner",
+      "typical: play around (with sb). NOT for: being faithful.",
+      [
+        "Wasn't she playing around with another man?",
+        "He'd been playing around for years."
+      ]
+    ],
+    [
+      "verb",
+      "try doing something in different ways to see what works",
+      "typical: play around with sth. NOT for: following a plan.",
+      [
+        "Play around with the ingredients if you like.",
+        "Let's play around with the layout."
+      ]
+    ],
+    [
+      "verb",
+      "spend time in a silly way (play about BrE)",
+      "typical: play around. NOT for: working.",
+      [
+        "Stop playing around and listen.",
+        "The kids were playing around."
+      ]
+    ]
+  ],
+  "play down": [
+    [
+      "verb",
+      "try to make something seem less important than it really is",
+      "typical: play sth down, play down the seriousness. NOT for: exaggerating.",
+      [
+        "Management has played down the possibility of job losses.",
+        "He tried to play down the event."
+      ]
+    ]
+  ],
+  "play up": [
+    [
+      "verb",
+      "emphasize something, sometimes more than it deserves",
+      "typical: play sth up. NOT for: downplaying.",
+      [
+        "Play up your strongest arguments in the opening.",
+        "The press played up the story."
+      ]
+    ],
+    [
+      "verb",
+      "behave badly (children, BrE informal)",
+      "typical: play (sb) up. NOT for: behaving.",
+      [
+        "Jordan's been playing up in school.",
+        "I hope the kids don't play you up."
+      ]
+    ],
+    [
+      "verb",
+      "cause problems or hurt you (BrE informal)",
+      "typical: my back/car is playing up. NOT for: working well.",
+      [
+        "My knee is playing up again.",
+        "The car has been playing up."
+      ]
+    ]
+  ],
+  "plug in": [
+    [
+      "verb",
+      "connect a piece of equipment to the electricity supply",
+      "typical: plug sth in, plug in a lamp/charger. NOT for: unplugging.",
+      [
+        "Hang on, it's not plugged in.",
+        "Plug the printer in."
+      ]
+    ]
+  ],
+  "point": [
+    [
+      "noun",
+      "an idea or fact that someone makes in a discussion",
+      "typical: make/see/take a point, a good point. NOT for: sharp end or score.",
+      [
+        "That's a good point.",
+        "I see your point."
+      ]
+    ],
+    [
+      "noun",
+      "the main idea or most important fact",
+      "typical: the point is..., get/miss the point. NOT for: purpose.",
+      [
+        "The point is that we have no time.",
+        "You're missing the point."
+      ]
+    ],
+    [
+      "noun",
+      "the purpose or use of something",
+      "typical: no point in + -ing, what's the point of...? NOT for: ideas in a debate.",
+      [
+        "There's no point in waiting.",
+        "What's the point of this rule?"
+      ]
+    ],
+    [
+      "verb",
+      "show direction or draw attention using your finger",
+      "typical: point at/to/towards + thing. NOT for: ideas or purpose.",
+      [
+        "He pointed at the door.",
+        "Point to the correct picture."
+      ]
+    ]
+  ],
+  "point at": [
+    [
+      "verb",
+      "show someone something by holding out your finger or arm toward it",
+      "typical: point (sth) at sb/sth. NOT for: looking.",
+      [
+        "She pointed at the picture.",
+        "He pointed a gun at me."
+      ]
+    ]
+  ],
+  "point out": [
+    [
+      "verb",
+      "tell someone something they did not know or had not thought about",
+      "typical: point out that..., point sth out to sb. NOT for: showing with a finger.",
+      [
+        "He pointed out my mistakes.",
+        "Thank you for pointing this out to me."
+      ]
+    ],
+    [
+      "verb",
+      "show something to someone by pointing at it",
+      "typical: point sb/sth out to sb. NOT for: giving information.",
+      [
+        "She pointed out two birds on the water.",
+        "I'll point him out to you."
+      ]
+    ]
+  ],
+  "point to": [
+    [
+      "verb",
+      "mention something because you think it is important",
+      "typical: point to sth. NOT for: hiding.",
+      [
+        "Many politicians have pointed to the need for a constitution.",
+        "He pointed to the figures."
+      ]
+    ],
+    [
+      "verb",
+      "show something with your finger",
+      "typical: point to sth. NOT for: looking.",
+      [
+        "She pointed to the door.",
+        "Point to the correct picture."
+      ]
+    ],
+    [
+      "verb",
+      "be a sign that something is true or likely",
+      "typical: evidence points to sth. NOT for: contradicting.",
+      [
+        "All the evidence points to a mistake.",
+        "The signs point to a recovery."
+      ]
+    ]
+  ],
+  "polish off": [
+    [
+      "verb",
+      "finish something quickly, especially food (informal)",
+      "typical: polish sth off. NOT for: leaving.",
+      [
+        "He polished off the whole pizza.",
+        "She polished off the report."
+      ]
+    ]
+  ],
+  "pop in": [
+    [
+      "verb",
+      "visit somewhere for a short time (informal)",
+      "typical: pop in (for a minute). NOT for: planned long visits.",
+      [
+        "I'll pop in on my way home.",
+        "She popped in to say hello."
+      ]
+    ]
+  ],
+  "pop out": [
+    [
+      "verb",
+      "go out for a short time (informal)",
+      "typical: pop out (to the shop). NOT for: staying.",
+      [
+        "I'll just pop out to the shop.",
+        "He popped out for a coffee."
+      ]
+    ],
+    [
+      "verb",
+      "come out suddenly (words or objects)",
+      "typical: words pop out. NOT for: thinking first.",
+      [
+        "I didn't mean to say it; it just popped out.",
+        "A toy popped out of the box."
+      ]
+    ]
+  ],
+  "pop up": [
+    [
+      "verb",
+      "appear, sometimes unexpectedly",
+      "typical: pop up (on a screen), keep popping up. NOT for: vanishing.",
+      [
+        "Click here and a list will pop up.",
+        "Her name keeps popping up in the news."
+      ]
+    ]
+  ],
+  "pour out": [
+    [
+      "verb",
+      "tell someone all your thoughts or feelings, especially when unhappy",
+      "typical: pour sth out, pour out your heart. NOT for: keeping secret.",
+      [
+        "She poured out all her troubles to him.",
+        "He poured his heart out."
+      ]
+    ],
+    [
+      "verb",
+      "flow out quickly in large amounts",
+      "typical: pour out (of sth). NOT for: dripping.",
+      [
+        "Smoke poured out of the building.",
+        "People poured out of the stadium."
+      ]
+    ],
+    [
+      "verb",
+      "serve a drink by pouring it into cups",
+      "typical: pour sth out. NOT for: drinking.",
+      [
+        "She poured out the tea.",
+        "He poured out two glasses."
+      ]
+    ]
+  ],
+  "power down": [
+    [
+      "verb",
+      "switch a machine off or make it use less power",
+      "typical: power sth down. NOT for: powering up.",
+      [
+        "Power down the computer before you leave.",
+        "The plant powered down at midnight."
+      ]
+    ]
+  ],
+  "press on": [
+    [
+      "verb",
+      "continue doing something in a determined way",
+      "typical: press on (with sth), press ahead. NOT for: stopping.",
+      [
+        "Let's just press on.",
+        "Shall we press on with the minutes?"
+      ]
+    ]
+  ],
+  "provided that": [
+    [
+      "condition",
+      "means 'only if' and states the condition that must be met",
+      "typical: provided that + clause. NOT for: unlikely or imagined situations (use 'if').",
+      [
+        "You can borrow the car provided that you drive carefully.",
+        "We will go provided that the weather is good.",
+        "Provided that you pay on time, there is no problem."
+      ]
+    ]
+  ],
+  "pull ahead": [
+    [
+      "verb",
+      "move in front of another vehicle or runner by going faster",
+      "typical: pull ahead (of sb). NOT for: falling behind.",
+      [
+        "Schumacher pulled ahead of Montoya at the first corner.",
+        "The cyclist pulled ahead of the group."
+      ]
+    ],
+    [
+      "verb",
+      "become more successful than others",
+      "typical: pull ahead (of sb). NOT for: falling behind.",
+      [
+        "The company pulled ahead of its rivals.",
+        "She pulled ahead in the polls."
+      ]
+    ]
+  ],
+  "pull apart": [
+    [
+      "verb",
+      "separate something into pieces",
+      "typical: pull sth apart. NOT for: joining.",
+      [
+        "Pull the meat apart with two forks.",
+        "He pulled the toy apart."
+      ]
+    ],
+    [
+      "verb",
+      "damage the relationship between people in a group",
+      "typical: pull sb apart. NOT for: bringing together.",
+      [
+        "His drinking pulled the family apart.",
+        "Money pulled them apart."
+      ]
+    ],
+    [
+      "verb",
+      "examine or criticize something very carefully",
+      "typical: pull sth apart. NOT for: praising.",
+      [
+        "The committee pulled each proposal apart.",
+        "Critics pulled the film apart."
+      ]
+    ],
+    [
+      "verb",
+      "separate two people or animals that are fighting",
+      "typical: pull sb/sth apart. NOT for: starting a fight.",
+      [
+        "The guards pulled the fighters apart.",
+        "He pulled the dogs apart."
+      ]
+    ]
+  ],
+  "pull away": [
+    [
+      "verb",
+      "start to move away (a vehicle)",
+      "typical: pull away (from sth). NOT for: arriving.",
+      [
+        "The bus pulled away from the stop.",
+        "The car pulled away slowly."
+      ]
+    ],
+    [
+      "verb",
+      "move yourself or something away from someone who is holding it",
+      "typical: pull away (from sb). NOT for: holding on.",
+      [
+        "She pulled away from his grip.",
+        "He pulled his hand away."
+      ]
+    ],
+    [
+      "verb",
+      "get ahead of others in a race or competition",
+      "typical: pull away (from sb). NOT for: catching up.",
+      [
+        "He pulled away from the other runners.",
+        "The leaders pulled away."
+      ]
+    ]
+  ],
+  "pull back": [
+    [
+      "verb",
+      "decide not to do or be involved in something",
+      "typical: pull back (from sth). NOT for: going ahead.",
+      [
+        "He pulled back from financing the film.",
+        "The firm pulled back at the last moment."
+      ]
+    ],
+    [
+      "verb",
+      "withdraw from a dangerous place, or make others withdraw",
+      "typical: pull back, pull sb back. NOT for: advancing.",
+      [
+        "Troops pulled back from the border.",
+        "They pulled back their forces."
+      ]
+    ],
+    [
+      "verb",
+      "move backwards or draw something back",
+      "typical: pull (sth) back. NOT for: pushing forward.",
+      [
+        "She pulled back the curtain.",
+        "He pulled back from the edge."
+      ]
+    ],
+    [
+      "verb",
+      "score a goal or point after losing (a team, BrE)",
+      "typical: pull a goal back. NOT for: going further behind.",
+      [
+        "United pulled a goal back before half-time.",
+        "They pulled two points back."
+      ]
+    ]
+  ],
+  "pull down": [
+    [
+      "verb",
+      "destroy a building",
+      "typical: pull sth down. NOT for: building.",
+      [
+        "My old school was pulled down.",
+        "They pulled down the wall."
+      ]
+    ],
+    [
+      "verb",
+      "earn a particular amount of money",
+      "typical: pull down sth (a salary). NOT for: losing.",
+      [
+        "She pulls down £80,000 a year.",
+        "He pulled down a high salary."
+      ]
+    ],
+    [
+      "verb",
+      "make someone less successful, happy or healthy",
+      "typical: pull sb down. NOT for: lifting up.",
+      [
+        "Her problems really pulled her down.",
+        "The illness pulled him down."
+      ]
+    ],
+    [
+      "verb",
+      "open a menu on a computer by clicking on it",
+      "typical: pull down a menu. NOT for: closing.",
+      [
+        "Pull down the 'File' menu.",
+        "Use the pull-down list."
+      ]
+    ]
+  ],
+  "pull off": [
+    [
+      "verb",
+      "succeed in doing something difficult (informal)",
+      "typical: pull sth off, pull off a win/trick. NOT for: failing.",
+      [
+        "The goalkeeper pulled off six great saves.",
+        "They pulled off a surprise win."
+      ]
+    ],
+    [
+      "verb",
+      "drive off a road to stop",
+      "typical: pull off (the road). NOT for: joining a road.",
+      [
+        "We pulled off the road to get food.",
+        "He pulled off at the next exit."
+      ]
+    ],
+    [
+      "verb",
+      "remove something with force",
+      "typical: pull sth off. NOT for: putting on.",
+      [
+        "She pulled off her gloves.",
+        "He pulled the label off."
+      ]
+    ]
+  ],
+  "pull out": [
+    [
+      "verb",
+      "drive onto a road, or move to a different part to overtake",
+      "typical: pull out (in front of sb), pull out to overtake. NOT for: pulling in.",
+      [
+        "Don't pull out! Something's coming.",
+        "I pulled out to overtake a bus."
+      ]
+    ],
+    [
+      "verb",
+      "stop doing something or being involved",
+      "typical: pull out (of sth). NOT for: joining.",
+      [
+        "Two companies pulled out of the deal.",
+        "He pulled out of the race."
+      ]
+    ],
+    [
+      "verb",
+      "withdraw soldiers or forces from a place",
+      "typical: pull sb/sth out (of sth). NOT for: sending in.",
+      [
+        "The army pulled out of the city.",
+        "They pulled their troops out."
+      ]
+    ],
+    [
+      "verb",
+      "take something out by pulling it",
+      "typical: pull sth out (of sth). NOT for: pushing in.",
+      [
+        "He pulled a gun out of his pocket.",
+        "She pulled out a tooth."
+      ]
+    ]
+  ],
+  "pull over": [
+    [
+      "verb",
+      "drive to the side of the road and stop, or make someone do so",
+      "typical: pull (sb/sth) over. NOT for: driving on.",
+      [
+        "He signalled for me to pull over.",
+        "A cop pulled him over."
+      ]
+    ]
+  ],
+  "pull through": [
+    [
+      "verb",
+      "stay alive after being very ill or injured",
+      "typical: pull through. NOT for: dying.",
+      [
+        "His injuries are severe, but he'll pull through.",
+        "She pulled through the operation."
+      ]
+    ],
+    [
+      "verb",
+      "help someone survive or succeed in difficulty",
+      "typical: pull sb through. NOT for: abandoning.",
+      [
+        "Her support pulled him through.",
+        "The nurse pulled her through."
+      ]
+    ]
+  ],
+  "pull together": [
+    [
+      "verb",
+      "work together to achieve something",
+      "typical: pull together. NOT for: working alone.",
+      [
+        "If we all pull together, we'll finish on time.",
+        "The team pulled together."
+      ]
+    ],
+    [
+      "verb",
+      "make yourself calm and controlled",
+      "typical: pull yourself together. NOT for: losing control.",
+      [
+        "With an effort Mary pulled herself together.",
+        "Pull yourself together!"
+      ]
+    ],
+    [
+      "verb",
+      "organize something more effectively",
+      "typical: pull sth together. NOT for: dispersing.",
+      [
+        "We need to pull the plan together.",
+        "She pulled the report together."
+      ]
+    ]
+  ],
+  "pull up": [
+    [
+      "verb",
+      "stop a vehicle",
+      "typical: pull up (in front of sth). NOT for: driving on.",
+      [
+        "He pulled up in front of the gates.",
+        "The taxi pulled up."
+      ]
+    ],
+    [
+      "verb",
+      "bring a chair close to sit next to someone",
+      "typical: pull up a chair. NOT for: pushing away.",
+      [
+        "Pull up a chair and join us.",
+        "He pulled up a stool."
+      ]
+    ],
+    [
+      "verb",
+      "stop someone who is doing something wrong (especially BrE)",
+      "typical: pull sb up (on sth). NOT for: allowing.",
+      [
+        "I had to pull her up on her lateness.",
+        "He pulled him up for rudeness."
+      ]
+    ],
+    [
+      "verb",
+      "remove a plant from the ground",
+      "typical: pull sth up. NOT for: planting.",
+      [
+        "He pulled up the weeds.",
+        "She pulled up the carrots."
+      ]
+    ]
+  ],
+  "pump up": [
+    [
+      "verb",
+      "fill something with air using a pump",
+      "typical: pump sth up. NOT for: letting air out.",
+      [
+        "Pump up your tyres.",
+        "He pumped up the ball."
+      ]
+    ],
+    [
+      "verb",
+      "increase the volume or make something stronger",
+      "typical: pump sth up. NOT for: reducing.",
+      [
+        "Pump up the volume!",
+        "They pumped up the music."
+      ]
+    ],
+    [
+      "verb",
+      "make someone excited or energetic (informal)",
+      "typical: pump sb up, be pumped up. NOT for: relaxing.",
+      [
+        "The coach pumped the team up.",
+        "I'm pumped up for the game."
+      ]
+    ]
+  ],
+  "push on": [
+    [
+      "verb",
+      "continue travelling, especially after a rest",
+      "typical: push on (to + place). NOT for: stopping.",
+      [
+        "We decided to push on a little further.",
+        "They pushed on to the next town."
+      ]
+    ],
+    [
+      "verb",
+      "continue doing an activity",
+      "typical: push on (with sth). NOT for: stopping.",
+      [
+        "Nixon pushed on with the programme.",
+        "Let's push on with the work."
+      ]
+    ]
+  ],
+  "put": [
+    [
+      "verb",
+      "move something to a place or position",
+      "typical: put + object + on/in/at + place. NOT for: phrasal meanings like put off, put up.",
+      [
+        "Put the bag on the table.",
+        "She put the milk in the fridge."
+      ]
+    ],
+    [
+      "verb",
+      "cause someone or something to be in a state or situation",
+      "typical: put sb in a good mood/danger, put sth in order. NOT for: placing objects.",
+      [
+        "The news put me in a bad mood.",
+        "Don't put yourself in danger."
+      ]
+    ],
+    [
+      "verb",
+      "write or print something somewhere",
+      "typical: put your name on a list, put it in writing. NOT for: speaking.",
+      [
+        "Put your name at the top of the page.",
+        "Please put your signature here."
+      ]
+    ],
+    [
+      "verb",
+      "express something in words",
+      "typical: put it simply/mildly/another way. NOT for: placing objects.",
+      [
+        "Let me put it simply.",
+        "How would you put that in English?"
+      ]
+    ]
+  ],
+  "put across": [
+    [
+      "verb",
+      "explain your ideas in a way people understand",
+      "typical: put sth across, put across a point. NOT for: confusing.",
+      [
+        "He was trying to put across a serious point.",
+        "She put the idea across well."
+      ]
+    ],
+    [
+      "verb",
+      "express yourself clearly (BrE)",
+      "typical: put yourself across. NOT for: being unclear.",
+      [
+        "Sue isn't good at putting herself across.",
+        "He puts himself across well."
+      ]
+    ],
+    [
+      "verb",
+      "sing, play or act in a convincing way",
+      "typical: put a song across. NOT for: mumbling.",
+      [
+        "She puts a song across brilliantly.",
+        "He put the role across."
+      ]
+    ]
+  ],
+  "put aside": [
+    [
+      "verb",
+      "try to stop thinking about a problem or disagreement",
+      "typical: put sth aside, put aside your pride. NOT for: dwelling.",
+      [
+        "You must put aside your pride and apologise.",
+        "They put aside their differences."
+      ]
+    ],
+    [
+      "verb",
+      "save money regularly for a purpose",
+      "typical: put sth aside (for sth). NOT for: spending.",
+      [
+        "She put £30 a week aside for food.",
+        "We put some money aside."
+      ]
+    ],
+    [
+      "verb",
+      "put down something so you can do something else",
+      "typical: put sth aside. NOT for: continuing.",
+      [
+        "He put his book aside.",
+        "She put aside her work."
+      ]
+    ]
+  ],
+  "put away": [
+    [
+      "verb",
+      "put something in the place where it is usually kept",
+      "typical: put sth away. NOT for: getting out.",
+      [
+        "He put his toys away every night.",
+        "Put the dishes away."
+      ]
+    ],
+    [
+      "verb",
+      "put someone in prison or a mental hospital (informal)",
+      "typical: put sb away. NOT for: freeing.",
+      [
+        "The judge put him away for ten years.",
+        "They put the thief away."
+      ]
+    ],
+    [
+      "verb",
+      "eat or drink a lot (informal)",
+      "typical: put sth away. NOT for: leaving.",
+      [
+        "He put away three pints.",
+        "She puts away a lot of food."
+      ]
+    ],
+    [
+      "verb",
+      "score a goal or point (informal)",
+      "typical: put the ball away. NOT for: missing.",
+      [
+        "He put the ball away.",
+        "She put away the winning shot."
+      ]
+    ]
+  ],
+  "put back": [
+    [
+      "verb",
+      "return someone or something to the place or situation they were in before",
+      "typical: put sth back, put sth back on the shelf. NOT for: delaying an event.",
+      [
+        "Please put the book back on the shelf.",
+        "He put the milk back in the fridge."
+      ]
+    ],
+    [
+      "verb",
+      "arrange for an event to happen at a later time",
+      "typical: put back a meeting, be put back to Friday. NOT for: returning an object.",
+      [
+        "The meeting was put back to Friday.",
+        "They put back the opening to next week."
+      ]
+    ],
+    [
+      "verb",
+      "delay a process or plan by a period of time",
+      "typical: put back the date by two weeks. NOT for: moving one event to a new date.",
+      [
+        "The fire put back the building work by two months.",
+        "Bad weather could put back the launch by a few weeks."
+      ]
+    ],
+    [
+      "verb",
+      "make someone or something have something they had before",
+      "typical: put a smile back on sb's face. NOT for: moving objects.",
+      [
+        "The good news put a smile back on her face.",
+        "The new coach put some energy back into the team."
+      ]
+    ]
+  ],
+  "put behind": [
+    [
+      "verb",
+      "try to forget an unpleasant event and think about the future",
+      "typical: put sth behind you. NOT for: dwelling.",
+      [
+        "She put the guilt behind her.",
+        "It's time to put the past behind you."
+      ]
+    ]
+  ],
+  "put by": [
+    [
+      "verb",
+      "save money regularly to use later",
+      "typical: put sth by (for sth). NOT for: spending.",
+      [
+        "We're putting a little by each month for a new car.",
+        "She put money by for the future."
+      ]
+    ]
+  ],
+  "put down": [
+    [
+      "verb",
+      "place something or someone you are holding onto a surface",
+      "typical: put sth/sb down. NOT for: picking up.",
+      [
+        "Put those heavy bags down for a minute.",
+        "She put the baby down gently."
+      ]
+    ],
+    [
+      "verb",
+      "criticize someone so they feel stupid",
+      "typical: put sb down, put yourself down. NOT for: praising.",
+      [
+        "I hate the way he puts me down.",
+        "Stop putting yourself down."
+      ]
+    ],
+    [
+      "verb",
+      "write something down on paper or a list",
+      "typical: put down your name/address/a number. NOT for: reading.",
+      [
+        "Put down your name and address.",
+        "She put down her phone number."
+      ]
+    ],
+    [
+      "verb",
+      "stop a revolt by force",
+      "typical: put down a revolt/rebellion/riot. NOT for: starting one.",
+      [
+        "The army put down the uprising.",
+        "Police put down the riot."
+      ]
+    ]
+  ],
+  "put forward": [
+    [
+      "verb",
+      "suggest a plan, proposal or idea for others to consider",
+      "typical: put sth forward. NOT for: withdrawing.",
+      [
+        "They put forward a number of suggestions.",
+        "He put forward a new idea."
+      ]
+    ],
+    [
+      "verb",
+      "formally suggest someone for a job or position",
+      "typical: put sb forward (for sth). NOT for: excluding.",
+      [
+        "Her name was put forward for the role.",
+        "He was put forward as a candidate."
+      ]
+    ],
+    [
+      "verb",
+      "arrange for an event to happen sooner (BrE)",
+      "typical: put sth forward. NOT for: delaying.",
+      [
+        "The meeting was put forward a week.",
+        "They put the date forward."
+      ]
+    ],
+    [
+      "verb",
+      "change a clock to a later time",
+      "typical: put the clock forward. NOT for: back.",
+      [
+        "Put the clocks forward one hour.",
+        "We put our watches forward."
+      ]
+    ]
+  ],
+  "put in": [
+    [
+      "verb",
+      "fix equipment in place so that it can be used",
+      "typical: put in a bathroom/heating/a new kitchen. NOT for: taking things out.",
+      [
+        "We had a new bathroom put in.",
+        "They put in a new heating system."
+      ]
+    ],
+    [
+      "verb",
+      "spend time or energy on a job",
+      "typical: put in effort/hours/work. NOT for: wasting time.",
+      [
+        "She put in a lot of hard work.",
+        "He puts in long hours at the office."
+      ]
+    ],
+    [
+      "verb",
+      "interrupt a conversation to say something",
+      "typical: put in a word, 'I'm sixteen too,' she put in. NOT for: saying nothing.",
+      [
+        "'I'm sixteen too,' she put in.",
+        "Let me just put in a word here."
+      ]
+    ],
+    [
+      "verb",
+      "make an official request or claim",
+      "typical: put in a claim/an order/an application. NOT for: accepting requests.",
+      [
+        "We must put in an order by tonight.",
+        "She put in for a pay rise."
+      ]
+    ]
+  ],
+  "put off": [
+    [
+      "verb",
+      "delay something until a later time",
+      "typical: put off a decision/a meeting/doing sth. NOT for: cancelling it.",
+      [
+        "They put off the wedding until June.",
+        "Don't put off going to the dentist."
+      ]
+    ],
+    [
+      "verb",
+      "make someone dislike something or lose interest",
+      "typical: put sb off (sth/doing sth). NOT for: delaying.",
+      [
+        "The smell put me off my food.",
+        "Bad reviews put people off the film."
+      ]
+    ],
+    [
+      "verb",
+      "distract someone so they cannot concentrate",
+      "typical: put sb off (their game/work). NOT for: making someone dislike.",
+      [
+        "Stop talking, you'll put me off.",
+        "The noise put the speaker off."
+      ]
+    ],
+    [
+      "verb",
+      "make someone leave a bus or train (BrE)",
+      "typical: put sb off (at a stop). NOT for: delaying.",
+      [
+        "The driver put him off at the next stop.",
+        "They were put off the train for having no ticket."
+      ]
+    ]
+  ],
+  "put on": [
+    [
+      "verb",
+      "place clothes, shoes, make-up or glasses on your body",
+      "typical: put on a coat/shoes/make-up/sun cream. NOT for: switching on a machine.",
+      [
+        "Put on your coat, it's cold.",
+        "She put on some lipstick."
+      ]
+    ],
+    [
+      "verb",
+      "switch on a device, or start playing music or a film",
+      "typical: put the light/TV/kettle on, put a CD on. NOT for: dressing.",
+      [
+        "Put the kettle on, please.",
+        "He put on some music."
+      ]
+    ],
+    [
+      "verb",
+      "increase in weight",
+      "typical: put on weight/two kilos. NOT for: adding clothes.",
+      [
+        "I've put on a few kilos this winter.",
+        "She had put on weight since last year."
+      ]
+    ],
+    [
+      "verb",
+      "organize or present a show, event or exhibition",
+      "typical: put on a play/concert/exhibition. NOT for: wearing something.",
+      [
+        "The students put on a play at the end of term.",
+        "The museum put on a new exhibition."
+      ]
+    ]
+  ],
+  "put out": [
+    [
+      "verb",
+      "make a fire stop burning",
+      "typical: put out a fire/a cigarette. NOT for: lighting.",
+      [
+        "Firefighters put out the fire.",
+        "He put out his cigarette."
+      ]
+    ],
+    [
+      "verb",
+      "make a light stop working",
+      "typical: put the light out. NOT for: switching on.",
+      [
+        "Put the light out before you go to bed.",
+        "She put out the candles."
+      ]
+    ],
+    [
+      "verb",
+      "feel upset or offended",
+      "typical: be/feel put out. NOT for: happy.",
+      [
+        "We were put out at not being invited.",
+        "She felt a little put out."
+      ]
+    ],
+    [
+      "verb",
+      "cause extra work or trouble for someone",
+      "typical: put sb out. NOT for: helping.",
+      [
+        "I hope it won't put you out.",
+        "I don't want to put you out."
+      ]
+    ]
+  ],
+  "put over": [
+    [
+      "verb",
+      "succeed in telling others your ideas or feelings (BrE)",
+      "typical: put sth over. NOT for: confusing.",
+      [
+        "The advert puts over the message clearly.",
+        "She put her view over well."
+      ]
+    ],
+    [
+      "verb",
+      "deceive someone (put one over on sb, informal)",
+      "typical: put one over on sb. NOT for: telling the truth.",
+      [
+        "Nobody could put one over on him.",
+        "They tried to put one over on us."
+      ]
+    ]
+  ],
+  "put through": [
+    [
+      "verb",
+      "connect someone on the telephone",
+      "typical: put sb through (to sb). NOT for: cutting off.",
+      [
+        "Could you put me through to Eddie?",
+        "I'll put you through."
+      ]
+    ],
+    [
+      "verb",
+      "pay for someone to go to school or university",
+      "typical: put sb through college. NOT for: refusing.",
+      [
+        "His parents put him through university.",
+        "She put herself through school."
+      ]
+    ],
+    [
+      "verb",
+      "make someone experience something unpleasant",
+      "typical: put sb through sth. NOT for: sparing.",
+      [
+        "I'm sorry I put you through that.",
+        "They put her through a lot."
+      ]
+    ],
+    [
+      "verb",
+      "get a plan or law officially approved",
+      "typical: put sth through. NOT for: blocking.",
+      [
+        "The government put the bill through.",
+        "They put through the new rules."
+      ]
+    ]
+  ],
+  "put together": [
+    [
+      "verb",
+      "prepare or produce something by collecting pieces",
+      "typical: put sth together. NOT for: taking apart.",
+      [
+        "It took all morning to put the proposal together.",
+        "He put together a team."
+      ]
+    ],
+    [
+      "verb",
+      "join parts to make something",
+      "typical: put sth together. NOT for: dismantling.",
+      [
+        "I put the shelves together.",
+        "She put the model together."
+      ]
+    ]
+  ],
+  "put up": [
+    [
+      "verb",
+      "build or fix something in place",
+      "typical: put up a fence/tent/building. NOT for: taking something down.",
+      [
+        "They're putting up new office blocks.",
+        "We put up the tent before dark."
+      ]
+    ],
+    [
+      "verb",
+      "fix something on a wall or surface for people to see",
+      "typical: put up a poster/notice/picture. NOT for: building walls.",
+      [
+        "She put up a notice in the hall.",
+        "He put up some shelves in the kitchen."
+      ]
+    ],
+    [
+      "verb",
+      "raise something, such as your hand or a price",
+      "typical: put up your hand/prices/taxes. NOT for: lowering.",
+      [
+        "The shop put up its prices again.",
+        "Put up your hand if you know."
+      ]
+    ],
+    [
+      "verb",
+      "let someone stay in your home for a short time",
+      "typical: put sb up for the night. NOT for: building something.",
+      [
+        "We can put you up for the weekend.",
+        "A friend put me up while I looked for a flat."
+      ]
+    ]
+  ],
+  "put up with": [
+    [
+      "verb",
+      "accept an unpleasant situation or person without complaining",
+      "typical: put up with sb/sth. NOT for: complaining.",
+      [
+        "She put up with his temper.",
+        "I can't put up with the noise."
+      ]
+    ]
   ]
- ],
- "pack up": [
-  [
-   "verb",
-   "put things into cases or bags ready for a trip",
-   "typical: pack (sth) up, pack your things. NOT for: unpacking.",
-   [
-    "Kelly packed her things up before breakfast.",
-    "Have you finished packing up yet?"
-   ]
-  ],
-  [
-   "verb",
-   "put something into a box or container so that it can be moved, sold or stored",
-   "typical: pack sth up (in/into sth). NOT for: unpacking.",
-   [
-    "The mushrooms are packed up in small boxes.",
-    "She packed up the books in a crate."
-   ]
-  ],
-  [
-   "verb",
-   "stop working (a machine) (BrE informal)",
-   "typical: a machine packs up. NOT for: working.",
-   [
-    "The old washing machine packed up.",
-    "My computer's packed up."
-   ]
-  ]
- ],
- "pair up": [
-  [
-   "verb",
-   "become friends and start a romantic relationship (BrE)",
-   "typical: pair up (with sb). NOT for: splitting up.",
-   [
-    "We learned later that he and Tanya had paired up.",
-    "They paired up soon after meeting."
-   ]
-  ],
-  [
-   "verb",
-   "work together or put two people together to do something",
-   "typical: pair up (with sb), pair sb up. NOT for: working alone.",
-   [
-    "You can pair up with another student for the task.",
-    "The teacher paired up writers and artists."
-   ]
-  ],
-  [
-   "verb",
-   "come together to breed (animals)",
-   "typical: animals pair up. NOT for: staying apart.",
-   [
-    "Swans pair up for life.",
-    "The birds pair up in spring."
-   ]
-  ]
- ],
- "pan out": [
-  [
-   "verb",
-   "happen or develop in a particular way",
-   "typical: pan out well/badly, see how things pan out. NOT for: failing at once.",
-   [
-    "We'll have to see how things pan out.",
-    "The plan didn't pan out."
-   ]
-  ]
- ],
- "part with": [
-  [
-   "verb",
-   "give something to someone although you do not want to",
-   "typical: part with sth, part with money. NOT for: keeping.",
-   [
-    "I'm reluctant to part with any of the kittens.",
-    "He hates to part with his money."
-   ]
-  ]
- ],
- "pass away": [
-  [
-   "verb",
-   "die (a polite way to say it)",
-   "typical: sb passes away. NOT for: living.",
-   [
-    "Her grandmother passed away last year.",
-    "He passed away peacefully."
-   ]
-  ]
- ],
- "pass by": [
-  [
-   "verb",
-   "go past a person, place or vehicle",
-   "typical: pass by (sb/sth). NOT for: stopping.",
-   [
-    "They all waved as they passed by.",
-    "Will you be passing by the supermarket?"
-   ]
-  ],
-  [
-   "verb",
-   "happen without you being involved or noticing",
-   "typical: life passes sb by. NOT for: being involved.",
-   [
-    "She felt life was passing her by.",
-    "Opportunities passed him by."
-   ]
-  ]
- ],
- "pass down": [
-  [
-   "verb",
-   "give or teach something to younger people or people who live after you",
-   "typical: pass sth down (from sb) to sb. NOT for: keeping.",
-   [
-    "The tradition has been passed down for generations.",
-    "Skills are passed down to children."
-   ]
-  ]
- ],
- "pass on": [
-  [
-   "verb",
-   "give something to someone else after you have received it",
-   "typical: pass sth on (to sb). NOT for: keeping.",
-   [
-    "Please pass the message on to him.",
-    "I'll pass this on to my sister."
-   ]
-  ],
-  [
-   "verb",
-   "give an illness to another person",
-   "typical: pass sth on (to sb). NOT for: catching.",
-   [
-    "She passed her cold on to me.",
-    "The virus is passed on by touch."
-   ]
-  ],
-  [
-   "verb",
-   "not take an opportunity (informal)",
-   "typical: pass on sth. NOT for: accepting.",
-   [
-    "I'll pass on dessert.",
-    "He passed on the job offer."
-   ]
-  ],
-  [
-   "verb",
-   "die (a polite way to say it)",
-   "typical: pass on. NOT for: living.",
-   [
-    "His uncle passed on last spring.",
-    "She passed on peacefully."
-   ]
-  ]
- ],
- "pass out": [
-  [
-   "verb",
-   "become unconscious",
-   "typical: pass out. NOT for: waking.",
-   [
-    "I nearly passed out when I saw the blood.",
-    "He passed out in the heat."
-   ]
-  ],
-  [
-   "verb",
-   "give something to everyone in a group",
-   "typical: pass sth out. NOT for: collecting.",
-   [
-    "She passed out the exam papers.",
-    "The teacher passed out books."
-   ]
-  ],
-  [
-   "verb",
-   "finish a course at a military school or police college (BrE)",
-   "typical: pass out. NOT for: starting.",
-   [
-    "He passed out from Sandhurst.",
-    "The recruits passed out in June."
-   ]
-  ]
- ],
- "pass up": [
-  [
-   "verb",
-   "not use a chance or an opportunity",
-   "typical: pass sth up, pass up a chance/offer. NOT for: grabbing.",
-   [
-    "Don't pass up the chance to go to university.",
-    "He passed up the offer."
-   ]
-  ]
- ],
- "patch up": [
-  [
-   "verb",
-   "end an argument to stay friendly with someone",
-   "typical: patch things up (with sb), patch up differences. NOT for: quarrelling.",
-   [
-    "Try to patch up your differences before he leaves.",
-    "He went back to patch things up with his wife."
-   ]
-  ],
-  [
-   "verb",
-   "repair a hole by covering it with something",
-   "typical: patch sth up. NOT for: replacing completely.",
-   [
-    "We'll have to patch up the hole in the roof.",
-    "She patched up the old jeans."
-   ]
-  ],
-  [
-   "verb",
-   "give quick and basic medical treatment",
-   "typical: patch sb up. NOT for: fully curing.",
-   [
-    "The medic patched him up and sent him back.",
-    "The doctor patched up his arm."
-   ]
-  ]
- ],
- "pay back": [
-  [
-   "verb",
-   "give someone the money you owe them",
-   "typical: pay sb/sth back. NOT for: borrowing.",
-   [
-    "I'll pay you back on Friday.",
-    "We're paying back the loan over 15 years."
-   ]
-  ],
-  [
-   "verb",
-   "make someone suffer for something unpleasant they did",
-   "typical: pay sb back (for sth). NOT for: forgiving.",
-   [
-    "I'll pay Jenny back for what she did.",
-    "He wanted to pay them back."
-   ]
-  ]
- ],
- "pay for": [
-  [
-   "verb",
-   "give money in exchange for something",
-   "typical: pay for sth, pay for lunch. NOT for: getting free.",
-   [
-    "Who paid for the tickets?",
-    "I'll pay for the meal."
-   ]
-  ],
-  [
-   "verb",
-   "suffer because of something wrong you did",
-   "typical: pay for a mistake. NOT for: escaping punishment.",
-   [
-    "You'll pay for this!",
-    "He paid for his mistakes."
-   ]
-  ]
- ],
- "pay off": [
-  [
-   "verb",
-   "give all the money that you owe",
-   "typical: pay sth off, pay off a debt/mortgage. NOT for: borrowing.",
-   [
-    "I'll pay off all my debts first.",
-    "He finally paid his overdraft off."
-   ]
-  ],
-  [
-   "verb",
-   "be successful or have a good result",
-   "typical: effort/risk pays off. NOT for: failing.",
-   [
-    "Teamwork paid off.",
-    "The gamble paid off."
-   ]
-  ],
-  [
-   "verb",
-   "pay workers and tell them they no longer have a job (BrE)",
-   "typical: pay sb off. NOT for: hiring.",
-   [
-    "Two hundred workers have been paid off.",
-    "The firm paid off the crew."
-   ]
-  ],
-  [
-   "verb",
-   "pay someone to stop them causing trouble or telling a secret",
-   "typical: pay sb off. NOT for: reporting.",
-   [
-    "He tried to pay the witness off.",
-    "They paid off the blackmailer."
-   ]
-  ]
- ],
- "pay up": [
-  [
-   "verb",
-   "pay money you owe, especially when you do not want to or are late",
-   "typical: pay up. NOT for: refusing.",
-   [
-    "She refused to pay up.",
-    "Come on, pay up!"
-   ]
-  ]
- ],
- "phase out": [
-  [
-   "verb",
-   "gradually stop using or providing something",
-   "typical: phase sth out. NOT for: introducing.",
-   [
-    "The subsidy will be phased out next year.",
-    "They phased out the old model."
-   ]
-  ]
- ],
- "pick at": [
-  [
-   "verb",
-   "eat only small amounts of food because you are not hungry",
-   "typical: pick at sth, pick at your food. NOT for: eating eagerly.",
-   [
-    "Paige could only pick at her meal.",
-    "He picked at his dinner."
-   ]
-  ],
-  [
-   "verb",
-   "touch something many times with your fingers",
-   "typical: pick at sth. NOT for: leaving alone.",
-   [
-    "She was picking at her skirt.",
-    "Don't pick at the scab."
-   ]
-  ]
- ],
- "pick out": [
-  [
-   "verb",
-   "choose someone or something from a group",
-   "typical: pick out a dress/a gift/a winner. NOT for: finding by sight.",
-   [
-    "She picked out a navy blue dress.",
-    "The judges picked his story out as the best."
-   ]
-  ],
-  [
-   "verb",
-   "recognize someone or something among others",
-   "typical: pick sb out of a crowd/a line-up. NOT for: choosing.",
-   [
-    "She picked out her father across the room.",
-    "He picked her voice out from the noise."
-   ]
-  ],
-  [
-   "verb",
-   "see something not very clearly",
-   "typical: pick out a shape/letters/lights. NOT for: choosing a gift.",
-   [
-    "I could just pick out a few letters on the stone.",
-    "We could pick out lights in the distance."
-   ]
-  ],
-  [
-   "verb",
-   "play a tune slowly or with difficulty",
-   "typical: pick out a tune/a melody. NOT for: fast playing.",
-   [
-    "He sat at the piano and picked out a simple tune.",
-    "She picked out the melody on a guitar."
-   ]
-  ]
- ],
- "pick up": [
-  [
-   "verb",
-   "lift someone or something from a surface",
-   "typical: pick sth/sb up, pick up the phone. NOT for: collecting someone by car.",
-   [
-    "She picked up the letter and read it.",
-    "He picked the child up and hugged her."
-   ]
-  ],
-  [
-   "verb",
-   "get up from the ground after you have fallen",
-   "typical: pick yourself up. NOT for: staying down.",
-   [
-    "Carol picked herself up and brushed the dirt off her coat.",
-    "He fell but picked himself up quickly."
-   ]
-  ],
-  [
-   "verb",
-   "go and collect a person or thing",
-   "typical: pick sb up at the station, pick up the kids/mail. NOT for: lifting something from the floor.",
-   [
-    "I'll pick you up at seven.",
-    "Can you pick up my parcel from the post office?"
-   ]
-  ],
-  [
-   "verb",
-   "learn something by watching or listening, without formal study",
-   "typical: pick up a language/a few words/tips. NOT for: learning in class.",
-   [
-    "She picked up some Greek on holiday.",
-    "He picked up the rules by watching."
-   ]
-  ],
-  [
-   "verb",
-   "get or buy something, or catch an illness (informal)",
-   "typical: pick up a bargain/a prize/a virus/a cold. NOT for: lifting or collecting.",
-   [
-    "I picked up a newspaper on my way home.",
-    "She picked up a cold on the plane."
-   ]
-  ],
-  [
-   "verb",
-   "get better or increase",
-   "typical: business/sales/the economy/the wind picks up. NOT for: learning or lifting.",
-   [
-    "Sales picked up in the spring.",
-    "The wind began to pick up."
-   ]
-  ],
-  [
-   "verb",
-   "make a room or place tidy (AmE)",
-   "typical: pick up your room/the house. NOT for: collecting people.",
-   [
-    "Pick up your room before dinner.",
-    "We picked up the house before the guests came."
-   ]
-  ]
- ],
- "pig out": [
-  [
-   "verb",
-   "eat a lot of food all at once (informal)",
-   "typical: pig out (on sth). NOT for: dieting.",
-   [
-    "I found Sam pigging out on pizza.",
-    "We pigged out at the party."
-   ]
-  ]
- ],
- "pile up": [
-  [
-   "verb",
-   "form a large heap or amount",
-   "typical: pile up, pile sth up. NOT for: clearing.",
-   [
-    "Dirty dishes piled up in the sink.",
-    "She piled up the books on the desk."
-   ]
-  ],
-  [
-   "verb",
-   "increase in amount over time (work, debt or problems)",
-   "typical: work/bills/debts pile up. NOT for: falling.",
-   [
-    "Letters piled up while I was away.",
-    "Their debts are piling up."
-   ]
-  ]
- ],
- "pin down": [
-  [
-   "verb",
-   "make someone give clear details or a definite decision",
-   "typical: pin sb down (to sth). NOT for: letting vague.",
-   [
-    "Did you manage to pin him down to a date?",
-    "He's impossible to pin down."
-   ]
-  ],
-  [
-   "verb",
-   "understand or describe something exactly",
-   "typical: hard to pin down. NOT for: guessing.",
-   [
-    "The flavour was hard to pin down.",
-    "I can't pin down what's wrong."
-   ]
-  ],
-  [
-   "verb",
-   "trap someone so they cannot move (be pinned down)",
-   "typical: be pinned down (by sth). NOT for: escaping.",
-   [
-    "The soldiers were pinned down by gunfire.",
-    "He pinned him down."
-   ]
-  ]
- ],
- "plan on": [
-  [
-   "verb",
-   "intend or expect to do something",
-   "typical: plan on doing sth. NOT for: being unprepared.",
-   [
-    "I plan on leaving early.",
-    "We hadn't planned on so many guests."
-   ]
-  ]
- ],
- "play": [
-  [
-   "verb",
-   "take part in a game or sport",
-   "typical: play + football/chess/cards, play for + team. NOT for: music.",
-   [
-    "They play football on Sundays.",
-    "Do you play chess?"
-   ]
-  ],
-  [
-   "verb",
-   "make music with an instrument, or make a recording or device produce sound",
-   "typical: play the piano/guitar, play a song/CD. NOT for: games.",
-   [
-    "She plays the piano.",
-    "Play that song again."
-   ]
-  ],
-  [
-   "verb",
-   "perform a part in a film, play or show",
-   "typical: play a role/part/character. NOT for: sports.",
-   [
-    "He plays the main character in the film.",
-    "She played Juliet at school."
-   ]
-  ],
-  [
-   "verb",
-   "(of children) do things for fun",
-   "typical: children play in the garden/with toys. NOT for: organized sports.",
-   [
-    "The children are playing in the garden.",
-    "The kids play with their toys."
-   ]
-  ],
-  [
-   "verb",
-   "have an effect or role in something",
-   "typical: play a part/role in sth, play an important role. NOT for: acting.",
-   [
-    "Education plays an important role in society.",
-    "Luck played a big part in his success."
-   ]
-  ],
-  [
-   "noun",
-   "a story written to be performed by actors in a theatre",
-   "typical: a play by Shakespeare, go to a play. NOT for: games.",
-   [
-    "We saw a play by Chekhov.",
-    "The school play is next week."
-   ]
-  ],
-  [
-   "noun",
-   "activity done for fun, especially by children",
-   "typical: children's play, at play. NOT for: theatre.",
-   [
-    "Play is important to a child's development.",
-    "The children were at play in the yard."
-   ]
-  ]
- ],
- "play along": [
-  [
-   "verb",
-   "pretend to agree to do what someone wants",
-   "typical: play along (with sb/sth). NOT for: refusing.",
-   [
-    "She felt she had to play along or lose her job.",
-    "I decided to play along with him."
-   ]
-  ],
-  [
-   "verb",
-   "tell someone something untrue because you need their help (BrE)",
-   "typical: play sb along. NOT for: telling the truth.",
-   [
-    "He played her along for months.",
-    "Don't play me along."
-   ]
-  ]
- ],
- "play around": [
-  [
-   "verb",
-   "have a sexual relationship with someone who is not your usual partner",
-   "typical: play around (with sb). NOT for: being faithful.",
-   [
-    "Wasn't she playing around with another man?",
-    "He'd been playing around for years."
-   ]
-  ],
-  [
-   "verb",
-   "try doing something in different ways to see what works",
-   "typical: play around with sth. NOT for: following a plan.",
-   [
-    "Play around with the ingredients if you like.",
-    "Let's play around with the layout."
-   ]
-  ],
-  [
-   "verb",
-   "spend time in a silly way (play about BrE)",
-   "typical: play around. NOT for: working.",
-   [
-    "Stop playing around and listen.",
-    "The kids were playing around."
-   ]
-  ]
- ],
- "play down": [
-  [
-   "verb",
-   "try to make something seem less important than it really is",
-   "typical: play sth down, play down the seriousness. NOT for: exaggerating.",
-   [
-    "Management has played down the possibility of job losses.",
-    "He tried to play down the event."
-   ]
-  ]
- ],
- "play up": [
-  [
-   "verb",
-   "emphasize something, sometimes more than it deserves",
-   "typical: play sth up. NOT for: downplaying.",
-   [
-    "Play up your strongest arguments in the opening.",
-    "The press played up the story."
-   ]
-  ],
-  [
-   "verb",
-   "behave badly (children, BrE informal)",
-   "typical: play (sb) up. NOT for: behaving.",
-   [
-    "Jordan's been playing up in school.",
-    "I hope the kids don't play you up."
-   ]
-  ],
-  [
-   "verb",
-   "cause problems or hurt you (BrE informal)",
-   "typical: my back/car is playing up. NOT for: working well.",
-   [
-    "My knee is playing up again.",
-    "The car has been playing up."
-   ]
-  ]
- ],
- "plug in": [
-  [
-   "verb",
-   "connect a piece of equipment to the electricity supply",
-   "typical: plug sth in, plug in a lamp/charger. NOT for: unplugging.",
-   [
-    "Hang on, it's not plugged in.",
-    "Plug the printer in."
-   ]
-  ]
- ],
- "point": [
-  [
-   "noun",
-   "an idea or fact that someone makes in a discussion",
-   "typical: make/see/take a point, a good point. NOT for: sharp end or score.",
-   [
-    "That's a good point.",
-    "I see your point."
-   ]
-  ],
-  [
-   "noun",
-   "the main idea or most important fact",
-   "typical: the point is..., get/miss the point. NOT for: purpose.",
-   [
-    "The point is that we have no time.",
-    "You're missing the point."
-   ]
-  ],
-  [
-   "noun",
-   "the purpose or use of something",
-   "typical: no point in + -ing, what's the point of...? NOT for: ideas in a debate.",
-   [
-    "There's no point in waiting.",
-    "What's the point of this rule?"
-   ]
-  ],
-  [
-   "noun",
-   "a particular moment or stage in time or in a process",
-   "typical: at this point, at some point, up to a point. NOT for: places on a map.",
-   [
-    "At this point, we had no choice.",
-    "I'll call you at some point tomorrow."
-   ]
-  ],
-  [
-   "noun",
-   "a unit of score in a game or test",
-   "typical: score/win/lose a point. NOT for: ideas.",
-   [
-    "She scored ten points in the game.",
-    "We lost by two points."
-   ]
-  ],
-  [
-   "verb",
-   "show direction or draw attention using your finger",
-   "typical: point at/to/towards + thing. NOT for: ideas or purpose.",
-   [
-    "He pointed at the door.",
-    "Point to the correct picture."
-   ]
-  ]
- ],
- "point at": [
-  [
-   "verb",
-   "show someone something by holding out your finger or arm toward it",
-   "typical: point (sth) at sb/sth. NOT for: looking.",
-   [
-    "She pointed at the picture.",
-    "He pointed a gun at me."
-   ]
-  ]
- ],
- "point out": [
-  [
-   "verb",
-   "tell someone something they did not know or had not thought about",
-   "typical: point out that..., point sth out to sb. NOT for: showing with a finger.",
-   [
-    "He pointed out my mistakes.",
-    "Thank you for pointing this out to me."
-   ]
-  ],
-  [
-   "verb",
-   "show something to someone by pointing at it",
-   "typical: point sb/sth out to sb. NOT for: giving information.",
-   [
-    "She pointed out two birds on the water.",
-    "I'll point him out to you."
-   ]
-  ]
- ],
- "point to": [
-  [
-   "verb",
-   "mention something because you think it is important",
-   "typical: point to sth. NOT for: hiding.",
-   [
-    "Many politicians have pointed to the need for a constitution.",
-    "He pointed to the figures."
-   ]
-  ],
-  [
-   "verb",
-   "show something with your finger",
-   "typical: point to sth. NOT for: looking.",
-   [
-    "She pointed to the door.",
-    "Point to the correct picture."
-   ]
-  ],
-  [
-   "verb",
-   "be a sign that something is true or likely",
-   "typical: evidence points to sth. NOT for: contradicting.",
-   [
-    "All the evidence points to a mistake.",
-    "The signs point to a recovery."
-   ]
-  ]
- ],
- "polish off": [
-  [
-   "verb",
-   "finish something quickly, especially food (informal)",
-   "typical: polish sth off. NOT for: leaving.",
-   [
-    "He polished off the whole pizza.",
-    "She polished off the report."
-   ]
-  ]
- ],
- "pop in": [
-  [
-   "verb",
-   "visit somewhere for a short time (informal)",
-   "typical: pop in (for a minute). NOT for: planned long visits.",
-   [
-    "I'll pop in on my way home.",
-    "She popped in to say hello."
-   ]
-  ]
- ],
- "pop out": [
-  [
-   "verb",
-   "go out for a short time (informal)",
-   "typical: pop out (to the shop). NOT for: staying.",
-   [
-    "I'll just pop out to the shop.",
-    "He popped out for a coffee."
-   ]
-  ],
-  [
-   "verb",
-   "come out suddenly (words or objects)",
-   "typical: words pop out. NOT for: thinking first.",
-   [
-    "I didn't mean to say it; it just popped out.",
-    "A toy popped out of the box."
-   ]
-  ]
- ],
- "pop up": [
-  [
-   "verb",
-   "appear, sometimes unexpectedly",
-   "typical: pop up (on a screen), keep popping up. NOT for: vanishing.",
-   [
-    "Click here and a list will pop up.",
-    "Her name keeps popping up in the news."
-   ]
-  ]
- ],
- "pour out": [
-  [
-   "verb",
-   "tell someone all your thoughts or feelings, especially when unhappy",
-   "typical: pour sth out, pour out your heart. NOT for: keeping secret.",
-   [
-    "She poured out all her troubles to him.",
-    "He poured his heart out."
-   ]
-  ],
-  [
-   "verb",
-   "flow out quickly in large amounts",
-   "typical: pour out (of sth). NOT for: dripping.",
-   [
-    "Smoke poured out of the building.",
-    "People poured out of the stadium."
-   ]
-  ],
-  [
-   "verb",
-   "serve a drink by pouring it into cups",
-   "typical: pour sth out. NOT for: drinking.",
-   [
-    "She poured out the tea.",
-    "He poured out two glasses."
-   ]
-  ]
- ],
- "power down": [
-  [
-   "verb",
-   "switch a machine off or make it use less power",
-   "typical: power sth down. NOT for: powering up.",
-   [
-    "Power down the computer before you leave.",
-    "The plant powered down at midnight."
-   ]
-  ]
- ],
- "press on": [
-  [
-   "verb",
-   "continue doing something in a determined way",
-   "typical: press on (with sth), press ahead. NOT for: stopping.",
-   [
-    "Let's just press on.",
-    "Shall we press on with the minutes?"
-   ]
-  ]
- ],
- "provided that": [
-  [
-   "condition",
-   "means 'only if' and states the condition that must be met",
-   "typical: provided that + clause. NOT for: unlikely or imagined situations (use 'if').",
-   [
-    "You can borrow the car provided that you drive carefully.",
-    "We will go provided that the weather is good.",
-    "Provided that you pay on time, there is no problem."
-   ]
-  ]
- ],
- "pull ahead": [
-  [
-   "verb",
-   "move in front of another vehicle or runner by going faster",
-   "typical: pull ahead (of sb). NOT for: falling behind.",
-   [
-    "Schumacher pulled ahead of Montoya at the first corner.",
-    "The cyclist pulled ahead of the group."
-   ]
-  ],
-  [
-   "verb",
-   "become more successful than others",
-   "typical: pull ahead (of sb). NOT for: falling behind.",
-   [
-    "The company pulled ahead of its rivals.",
-    "She pulled ahead in the polls."
-   ]
-  ]
- ],
- "pull apart": [
-  [
-   "verb",
-   "separate something into pieces",
-   "typical: pull sth apart. NOT for: joining.",
-   [
-    "Pull the meat apart with two forks.",
-    "He pulled the toy apart."
-   ]
-  ],
-  [
-   "verb",
-   "damage the relationship between people in a group",
-   "typical: pull sb apart. NOT for: bringing together.",
-   [
-    "His drinking pulled the family apart.",
-    "Money pulled them apart."
-   ]
-  ],
-  [
-   "verb",
-   "examine or criticize something very carefully",
-   "typical: pull sth apart. NOT for: praising.",
-   [
-    "The committee pulled each proposal apart.",
-    "Critics pulled the film apart."
-   ]
-  ],
-  [
-   "verb",
-   "separate two people or animals that are fighting",
-   "typical: pull sb/sth apart. NOT for: starting a fight.",
-   [
-    "The guards pulled the fighters apart.",
-    "He pulled the dogs apart."
-   ]
-  ],
-  [
-   "verb",
-   "break into pieces (something that is stuck together)",
-   "typical: sth pulls apart. NOT for: joining.",
-   [
-    "The old toy pulled apart in my hands.",
-    "The two halves pull apart easily."
-   ]
-  ]
- ],
- "pull away": [
-  [
-   "verb",
-   "start to move away (a vehicle)",
-   "typical: pull away (from sth). NOT for: arriving.",
-   [
-    "The bus pulled away from the stop.",
-    "The car pulled away slowly."
-   ]
-  ],
-  [
-   "verb",
-   "move yourself or something away from someone who is holding it",
-   "typical: pull away (from sb). NOT for: holding on.",
-   [
-    "She pulled away from his grip.",
-    "He pulled his hand away."
-   ]
-  ],
-  [
-   "verb",
-   "get ahead of others in a race or competition",
-   "typical: pull away (from sb). NOT for: catching up.",
-   [
-    "He pulled away from the other runners.",
-    "The leaders pulled away."
-   ]
-  ]
- ],
- "pull back": [
-  [
-   "verb",
-   "decide not to do or be involved in something",
-   "typical: pull back (from sth). NOT for: going ahead.",
-   [
-    "He pulled back from financing the film.",
-    "The firm pulled back at the last moment."
-   ]
-  ],
-  [
-   "verb",
-   "withdraw from a dangerous place, or make others withdraw",
-   "typical: pull back, pull sb back. NOT for: advancing.",
-   [
-    "Troops pulled back from the border.",
-    "They pulled back their forces."
-   ]
-  ],
-  [
-   "verb",
-   "move backwards or draw something back",
-   "typical: pull (sth) back. NOT for: pushing forward.",
-   [
-    "She pulled back the curtain.",
-    "He pulled back from the edge."
-   ]
-  ],
-  [
-   "verb",
-   "score a goal or point after losing (a team, BrE)",
-   "typical: pull a goal back. NOT for: going further behind.",
-   [
-    "United pulled a goal back before half-time.",
-    "They pulled two points back."
-   ]
-  ]
- ],
- "pull down": [
-  [
-   "verb",
-   "destroy a building",
-   "typical: pull sth down. NOT for: building.",
-   [
-    "My old school was pulled down.",
-    "They pulled down the wall."
-   ]
-  ],
-  [
-   "verb",
-   "earn a particular amount of money",
-   "typical: pull down sth (a salary). NOT for: losing.",
-   [
-    "She pulls down £80,000 a year.",
-    "He pulled down a high salary."
-   ]
-  ],
-  [
-   "verb",
-   "make someone less successful, happy or healthy",
-   "typical: pull sb down. NOT for: lifting up.",
-   [
-    "Her problems really pulled her down.",
-    "The illness pulled him down."
-   ]
-  ],
-  [
-   "verb",
-   "open a menu on a computer by clicking on it",
-   "typical: pull down a menu. NOT for: closing.",
-   [
-    "Pull down the 'File' menu.",
-    "Use the pull-down list."
-   ]
-  ]
- ],
- "pull off": [
-  [
-   "verb",
-   "succeed in doing something difficult (informal)",
-   "typical: pull sth off, pull off a win/trick. NOT for: failing.",
-   [
-    "The goalkeeper pulled off six great saves.",
-    "They pulled off a surprise win."
-   ]
-  ],
-  [
-   "verb",
-   "drive off a road to stop",
-   "typical: pull off (the road). NOT for: joining a road.",
-   [
-    "We pulled off the road to get food.",
-    "He pulled off at the next exit."
-   ]
-  ],
-  [
-   "verb",
-   "remove something with force",
-   "typical: pull sth off. NOT for: putting on.",
-   [
-    "She pulled off her gloves.",
-    "He pulled the label off."
-   ]
-  ]
- ],
- "pull out": [
-  [
-   "verb",
-   "drive onto a road, or move to a different part to overtake",
-   "typical: pull out (in front of sb), pull out to overtake. NOT for: pulling in.",
-   [
-    "Don't pull out! Something's coming.",
-    "I pulled out to overtake a bus."
-   ]
-  ],
-  [
-   "verb",
-   "leave a station (a train)",
-   "typical: a train pulls out. NOT for: pulling in.",
-   [
-    "The train pulled out of the station.",
-    "The bus pulled out at nine."
-   ]
-  ],
-  [
-   "verb",
-   "stop doing something or being involved",
-   "typical: pull out (of sth). NOT for: joining.",
-   [
-    "Two companies pulled out of the deal.",
-    "He pulled out of the race."
-   ]
-  ],
-  [
-   "verb",
-   "withdraw soldiers or forces from a place",
-   "typical: pull sb/sth out (of sth). NOT for: sending in.",
-   [
-    "The army pulled out of the city.",
-    "They pulled their troops out."
-   ]
-  ],
-  [
-   "verb",
-   "take something out by pulling it",
-   "typical: pull sth out (of sth). NOT for: pushing in.",
-   [
-    "He pulled a gun out of his pocket.",
-    "She pulled out a tooth."
-   ]
-  ]
- ],
- "pull over": [
-  [
-   "verb",
-   "drive to the side of the road and stop, or make someone do so",
-   "typical: pull (sb/sth) over. NOT for: driving on.",
-   [
-    "He signalled for me to pull over.",
-    "A cop pulled him over."
-   ]
-  ]
- ],
- "pull through": [
-  [
-   "verb",
-   "stay alive after being very ill or injured",
-   "typical: pull through. NOT for: dying.",
-   [
-    "His injuries are severe, but he'll pull through.",
-    "She pulled through the operation."
-   ]
-  ],
-  [
-   "verb",
-   "help someone survive or succeed in difficulty",
-   "typical: pull sb through. NOT for: abandoning.",
-   [
-    "Her support pulled him through.",
-    "The nurse pulled her through."
-   ]
-  ]
- ],
- "pull together": [
-  [
-   "verb",
-   "work together to achieve something",
-   "typical: pull together. NOT for: working alone.",
-   [
-    "If we all pull together, we'll finish on time.",
-    "The team pulled together."
-   ]
-  ],
-  [
-   "verb",
-   "make yourself calm and controlled",
-   "typical: pull yourself together. NOT for: losing control.",
-   [
-    "With an effort Mary pulled herself together.",
-    "Pull yourself together!"
-   ]
-  ],
-  [
-   "verb",
-   "organize something more effectively",
-   "typical: pull sth together. NOT for: dispersing.",
-   [
-    "We need to pull the plan together.",
-    "She pulled the report together."
-   ]
-  ]
- ],
- "pull up": [
-  [
-   "verb",
-   "stop a vehicle",
-   "typical: pull up (in front of sth). NOT for: driving on.",
-   [
-    "He pulled up in front of the gates.",
-    "The taxi pulled up."
-   ]
-  ],
-  [
-   "verb",
-   "bring a chair close to sit next to someone",
-   "typical: pull up a chair. NOT for: pushing away.",
-   [
-    "Pull up a chair and join us.",
-    "He pulled up a stool."
-   ]
-  ],
-  [
-   "verb",
-   "stop someone who is doing something wrong (especially BrE)",
-   "typical: pull sb up (on sth). NOT for: allowing.",
-   [
-    "I had to pull her up on her lateness.",
-    "He pulled him up for rudeness."
-   ]
-  ],
-  [
-   "verb",
-   "remove a plant from the ground",
-   "typical: pull sth up. NOT for: planting.",
-   [
-    "He pulled up the weeds.",
-    "She pulled up the carrots."
-   ]
-  ]
- ],
- "pump up": [
-  [
-   "verb",
-   "fill something with air using a pump",
-   "typical: pump sth up. NOT for: letting air out.",
-   [
-    "Pump up your tyres.",
-    "He pumped up the ball."
-   ]
-  ],
-  [
-   "verb",
-   "increase the volume or make something stronger",
-   "typical: pump sth up. NOT for: reducing.",
-   [
-    "Pump up the volume!",
-    "They pumped up the music."
-   ]
-  ],
-  [
-   "verb",
-   "make someone excited or energetic (informal)",
-   "typical: pump sb up, be pumped up. NOT for: relaxing.",
-   [
-    "The coach pumped the team up.",
-    "I'm pumped up for the game."
-   ]
-  ]
- ],
- "push on": [
-  [
-   "verb",
-   "continue travelling, especially after a rest",
-   "typical: push on (to + place). NOT for: stopping.",
-   [
-    "We decided to push on a little further.",
-    "They pushed on to the next town."
-   ]
-  ],
-  [
-   "verb",
-   "continue doing an activity",
-   "typical: push on (with sth). NOT for: stopping.",
-   [
-    "Nixon pushed on with the programme.",
-    "Let's push on with the work."
-   ]
-  ]
- ],
- "put": [
-  [
-   "verb",
-   "move something to a place or position",
-   "typical: put + object + on/in/at + place. NOT for: phrasal meanings like put off, put up.",
-   [
-    "Put the bag on the table.",
-    "She put the milk in the fridge."
-   ]
-  ],
-  [
-   "verb",
-   "cause someone or something to be in a state or situation",
-   "typical: put sb in a good mood/danger, put sth in order. NOT for: placing objects.",
-   [
-    "The news put me in a bad mood.",
-    "Don't put yourself in danger."
-   ]
-  ],
-  [
-   "verb",
-   "write or print something somewhere",
-   "typical: put your name on a list, put it in writing. NOT for: speaking.",
-   [
-    "Put your name at the top of the page.",
-    "Please put your signature here."
-   ]
-  ],
-  [
-   "verb",
-   "express something in words",
-   "typical: put it simply/mildly/another way. NOT for: placing objects.",
-   [
-    "Let me put it simply.",
-    "How would you put that in English?"
-   ]
-  ],
-  [
-   "verb",
-   "suggest or ask something formally",
-   "typical: put a question/proposal/idea to sb. NOT for: placing objects.",
-   [
-    "She put a question to the speaker.",
-    "They put a proposal to the board."
-   ]
-  ],
-  [
-   "verb",
-   "consider something to have a particular value or importance",
-   "typical: put sth above/before sth, put emphasis on sth. NOT for: physical placing.",
-   [
-    "He puts his family before his career.",
-    "The company puts great emphasis on safety."
-   ]
-  ]
- ],
- "put across": [
-  [
-   "verb",
-   "explain your ideas in a way people understand",
-   "typical: put sth across, put across a point. NOT for: confusing.",
-   [
-    "He was trying to put across a serious point.",
-    "She put the idea across well."
-   ]
-  ],
-  [
-   "verb",
-   "express yourself clearly (BrE)",
-   "typical: put yourself across. NOT for: being unclear.",
-   [
-    "Sue isn't good at putting herself across.",
-    "He puts himself across well."
-   ]
-  ],
-  [
-   "verb",
-   "sing, play or act in a convincing way",
-   "typical: put a song across. NOT for: mumbling.",
-   [
-    "She puts a song across brilliantly.",
-    "He put the role across."
-   ]
-  ]
- ],
- "put aside": [
-  [
-   "verb",
-   "try to stop thinking about a problem or disagreement",
-   "typical: put sth aside, put aside your pride. NOT for: dwelling.",
-   [
-    "You must put aside your pride and apologise.",
-    "They put aside their differences."
-   ]
-  ],
-  [
-   "verb",
-   "save money regularly for a purpose",
-   "typical: put sth aside (for sth). NOT for: spending.",
-   [
-    "She put £30 a week aside for food.",
-    "We put some money aside."
-   ]
-  ],
-  [
-   "verb",
-   "put down something so you can do something else",
-   "typical: put sth aside. NOT for: continuing.",
-   [
-    "He put his book aside.",
-    "She put aside her work."
-   ]
-  ]
- ],
- "put away": [
-  [
-   "verb",
-   "put something in the place where it is usually kept",
-   "typical: put sth away. NOT for: getting out.",
-   [
-    "He put his toys away every night.",
-    "Put the dishes away."
-   ]
-  ],
-  [
-   "verb",
-   "put someone in prison or a mental hospital (informal)",
-   "typical: put sb away. NOT for: freeing.",
-   [
-    "The judge put him away for ten years.",
-    "They put the thief away."
-   ]
-  ],
-  [
-   "verb",
-   "eat or drink a lot (informal)",
-   "typical: put sth away. NOT for: leaving.",
-   [
-    "He put away three pints.",
-    "She puts away a lot of food."
-   ]
-  ],
-  [
-   "verb",
-   "score a goal or point (informal)",
-   "typical: put the ball away. NOT for: missing.",
-   [
-    "He put the ball away.",
-    "She put away the winning shot."
-   ]
-  ],
-  [
-   "verb",
-   "defeat an opponent in a sports competition (AmE informal)",
-   "typical: put the game away. NOT for: losing.",
-   [
-    "Two plays later, Smith scored to put the game away.",
-    "They put the match away in the third quarter."
-   ]
-  ]
- ],
- "put back": [
-  [
-   "verb",
-   "return someone or something to the place or situation they were in before",
-   "typical: put sth back, put sth back on the shelf. NOT for: delaying an event.",
-   [
-    "Please put the book back on the shelf.",
-    "He put the milk back in the fridge."
-   ]
-  ],
-  [
-   "verb",
-   "arrange for an event to happen at a later time",
-   "typical: put back a meeting, be put back to Friday. NOT for: returning an object.",
-   [
-    "The meeting was put back to Friday.",
-    "They put back the opening to next week."
-   ]
-  ],
-  [
-   "verb",
-   "delay a process or plan by a period of time",
-   "typical: put back the date by two weeks. NOT for: moving one event to a new date.",
-   [
-    "The fire put back the building work by two months.",
-    "Bad weather could put back the launch by a few weeks."
-   ]
-  ],
-  [
-   "verb",
-   "make someone or something have something they had before",
-   "typical: put a smile back on sb's face. NOT for: moving objects.",
-   [
-    "The good news put a smile back on her face.",
-    "The new coach put some energy back into the team."
-   ]
-  ],
-  [
-   "verb",
-   "move a clock to show an earlier time (British English)",
-   "typical: put the clocks back. NOT for: moving a clock forward.",
-   [
-    "Remember to put the clocks back tonight.",
-    "He put his watch back by one hour."
-   ]
-  ]
- ],
- "put behind": [
-  [
-   "verb",
-   "try to forget an unpleasant event and think about the future",
-   "typical: put sth behind you. NOT for: dwelling.",
-   [
-    "She put the guilt behind her.",
-    "It's time to put the past behind you."
-   ]
-  ]
- ],
- "put by": [
-  [
-   "verb",
-   "save money regularly to use later",
-   "typical: put sth by (for sth). NOT for: spending.",
-   [
-    "We're putting a little by each month for a new car.",
-    "She put money by for the future."
-   ]
-  ]
- ],
- "put down": [
-  [
-   "verb",
-   "place something or someone you are holding onto a surface",
-   "typical: put sth/sb down. NOT for: picking up.",
-   [
-    "Put those heavy bags down for a minute.",
-    "She put the baby down gently."
-   ]
-  ],
-  [
-   "verb",
-   "criticize someone so they feel stupid",
-   "typical: put sb down, put yourself down. NOT for: praising.",
-   [
-    "I hate the way he puts me down.",
-    "Stop putting yourself down."
-   ]
-  ],
-  [
-   "verb",
-   "write something down on paper or a list",
-   "typical: put down your name/address/a number. NOT for: reading.",
-   [
-    "Put down your name and address.",
-    "She put down her phone number."
-   ]
-  ],
-  [
-   "verb",
-   "stop a revolt by force",
-   "typical: put down a revolt/rebellion/riot. NOT for: starting one.",
-   [
-    "The army put down the uprising.",
-    "Police put down the riot."
-   ]
-  ],
-  [
-   "verb",
-   "pay part of the total cost so you can pay the rest later",
-   "typical: put down a deposit. NOT for: paying the whole price.",
-   [
-    "They put down a deposit on the house.",
-    "He put £500 down on the car."
-   ]
-  ],
-  [
-   "verb",
-   "put a baby in its bed",
-   "typical: put sb down (for a nap). NOT for: holding a baby.",
-   [
-    "We put Amy down at six every evening.",
-    "I'll put the baby down for a nap."
-   ]
-  ],
-  [
-   "verb",
-   "kill an animal painlessly because it is old or ill (BrE)",
-   "typical: put a dog/horse down. NOT for: hurting an animal.",
-   [
-    "The vet had to put the old dog down.",
-    "They put the sick horse down."
-   ]
-  ]
- ],
- "put forward": [
-  [
-   "verb",
-   "suggest a plan, proposal or idea for others to consider",
-   "typical: put sth forward. NOT for: withdrawing.",
-   [
-    "They put forward a number of suggestions.",
-    "He put forward a new idea."
-   ]
-  ],
-  [
-   "verb",
-   "formally suggest someone for a job or position",
-   "typical: put sb forward (for sth). NOT for: excluding.",
-   [
-    "Her name was put forward for the role.",
-    "He was put forward as a candidate."
-   ]
-  ],
-  [
-   "verb",
-   "arrange for an event to happen sooner (BrE)",
-   "typical: put sth forward. NOT for: delaying.",
-   [
-    "The meeting was put forward a week.",
-    "They put the date forward."
-   ]
-  ],
-  [
-   "verb",
-   "change a clock to a later time",
-   "typical: put the clock forward. NOT for: back.",
-   [
-    "Put the clocks forward one hour.",
-    "We put our watches forward."
-   ]
-  ]
- ],
- "put in": [
-  [
-   "verb",
-   "fix equipment in place so that it can be used",
-   "typical: put in a bathroom/heating/a new kitchen. NOT for: taking things out.",
-   [
-    "We had a new bathroom put in.",
-    "They put in a new heating system."
-   ]
-  ],
-  [
-   "verb",
-   "spend time or energy on a job",
-   "typical: put in effort/hours/work. NOT for: wasting time.",
-   [
-    "She put in a lot of hard work.",
-    "He puts in long hours at the office."
-   ]
-  ],
-  [
-   "verb",
-   "interrupt a conversation to say something",
-   "typical: put in a word, 'I'm sixteen too,' she put in. NOT for: saying nothing.",
-   [
-    "'I'm sixteen too,' she put in.",
-    "Let me just put in a word here."
-   ]
-  ],
-  [
-   "verb",
-   "make an official request or claim",
-   "typical: put in a claim/an order/an application. NOT for: accepting requests.",
-   [
-    "We must put in an order by tonight.",
-    "She put in for a pay rise."
-   ]
-  ],
-  [
-   "verb",
-   "do something in a particular way, especially a performance",
-   "typical: put in a great performance/an appearance. NOT for: private activities.",
-   [
-    "He put in a brilliant performance.",
-    "The prime minister put in an appearance at the party."
-   ]
-  ]
- ],
- "put off": [
-  [
-   "verb",
-   "delay something until a later time",
-   "typical: put off a decision/a meeting/doing sth. NOT for: cancelling it.",
-   [
-    "They put off the wedding until June.",
-    "Don't put off going to the dentist."
-   ]
-  ],
-  [
-   "verb",
-   "make someone dislike something or lose interest",
-   "typical: put sb off (sth/doing sth). NOT for: delaying.",
-   [
-    "The smell put me off my food.",
-    "Bad reviews put people off the film."
-   ]
-  ],
-  [
-   "verb",
-   "distract someone so they cannot concentrate",
-   "typical: put sb off (their game/work). NOT for: making someone dislike.",
-   [
-    "Stop talking, you'll put me off.",
-    "The noise put the speaker off."
-   ]
-  ],
-  [
-   "verb",
-   "make someone leave a bus or train (BrE)",
-   "typical: put sb off (at a stop). NOT for: delaying.",
-   [
-    "The driver put him off at the next stop.",
-    "They were put off the train for having no ticket."
-   ]
-  ]
- ],
- "put on": [
-  [
-   "verb",
-   "place clothes, shoes, make-up or glasses on your body",
-   "typical: put on a coat/shoes/make-up/sun cream. NOT for: switching on a machine.",
-   [
-    "Put on your coat, it's cold.",
-    "She put on some lipstick."
-   ]
-  ],
-  [
-   "verb",
-   "switch on a device, or start playing music or a film",
-   "typical: put the light/TV/kettle on, put a CD on. NOT for: dressing.",
-   [
-    "Put the kettle on, please.",
-    "He put on some music."
-   ]
-  ],
-  [
-   "verb",
-   "increase in weight",
-   "typical: put on weight/two kilos. NOT for: adding clothes.",
-   [
-    "I've put on a few kilos this winter.",
-    "She had put on weight since last year."
-   ]
-  ],
-  [
-   "verb",
-   "organize or present a show, event or exhibition",
-   "typical: put on a play/concert/exhibition. NOT for: wearing something.",
-   [
-    "The students put on a play at the end of term.",
-    "The museum put on a new exhibition."
-   ]
-  ],
-  [
-   "verb",
-   "pretend to have a feeling or way of speaking",
-   "typical: put on an act/an accent/a show. NOT for: real feelings.",
-   [
-    "She put on a brave smile.",
-    "He put on a fake accent to impress them."
-   ]
-  ],
-  [
-   "verb",
-   "provide an extra bus, train or service",
-   "typical: put on extra trains/buses. NOT for: starting a show.",
-   [
-    "The railway put on extra trains for the match.",
-    "They put on a special bus for the festival."
-   ]
-  ],
-  [
-   "verb",
-   "add an amount, cost or tax to something",
-   "typical: put sth on the price/bill. NOT for: gaining weight.",
-   [
-    "The government put 5p on a pack of cigarettes.",
-    "The hotel put a charge on the bill."
-   ]
-  ],
-  [
-   "verb",
-   "bet money on something",
-   "typical: put money on a horse/a team. NOT for: investing in a business.",
-   [
-    "He put £20 on the favourite.",
-    "She put money on England to win."
-   ]
-  ],
-  [
-   "verb",
-   "put cream, make-up or lotion on your skin",
-   "typical: put sth on (your skin/face). NOT for: taking off.",
-   [
-    "I put sun cream on before going out.",
-    "She put some lipstick on."
-   ]
-  ],
-  [
-   "verb",
-   "do something that affects or influences someone or something",
-   "typical: put a limit/pressure/a tax on sth. NOT for: removing.",
-   [
-    "The government put a limit on imports.",
-    "Pat was putting pressure on him to leave."
-   ]
-  ]
- ],
- "put out": [
-  [
-   "verb",
-   "make a fire stop burning",
-   "typical: put out a fire/a cigarette. NOT for: lighting.",
-   [
-    "Firefighters put out the fire.",
-    "He put out his cigarette."
-   ]
-  ],
-  [
-   "verb",
-   "make a light stop working",
-   "typical: put the light out. NOT for: switching on.",
-   [
-    "Put the light out before you go to bed.",
-    "She put out the candles."
-   ]
-  ],
-  [
-   "verb",
-   "place things where people can find and use them",
-   "typical: put out cups/food/chairs. NOT for: hiding.",
-   [
-    "She put out the cups and plates.",
-    "He put out some chairs for guests."
-   ]
-  ],
-  [
-   "verb",
-   "feel upset or offended",
-   "typical: be/feel put out. NOT for: happy.",
-   [
-    "We were put out at not being invited.",
-    "She felt a little put out."
-   ]
-  ],
-  [
-   "verb",
-   "cause extra work or trouble for someone",
-   "typical: put sb out. NOT for: helping.",
-   [
-    "I hope it won't put you out.",
-    "I don't want to put you out."
-   ]
-  ],
-  [
-   "verb",
-   "make an effort to help someone",
-   "typical: put yourself out (for sb). NOT for: relaxing.",
-   [
-    "They put themselves out to entertain her.",
-    "She put herself out for her guests."
-   ]
-  ],
-  [
-   "verb",
-   "take something outside your home and leave it there",
-   "typical: put the rubbish/cat out. NOT for: bringing inside.",
-   [
-    "Remember to put the cat out.",
-    "He put the rubbish out."
-   ]
-  ],
-  [
-   "verb",
-   "publish or release something such as a statement or report",
-   "typical: put out a statement/a book. NOT for: private use.",
-   [
-    "The company put out a statement.",
-    "The group put out a new album."
-   ]
-  ]
- ],
- "put over": [
-  [
-   "verb",
-   "succeed in telling others your ideas or feelings (BrE)",
-   "typical: put sth over. NOT for: confusing.",
-   [
-    "The advert puts over the message clearly.",
-    "She put her view over well."
-   ]
-  ],
-  [
-   "verb",
-   "deceive someone (put one over on sb, informal)",
-   "typical: put one over on sb. NOT for: telling the truth.",
-   [
-    "Nobody could put one over on him.",
-    "They tried to put one over on us."
-   ]
-  ]
- ],
- "put through": [
-  [
-   "verb",
-   "connect someone on the telephone",
-   "typical: put sb through (to sb). NOT for: cutting off.",
-   [
-    "Could you put me through to Eddie?",
-    "I'll put you through."
-   ]
-  ],
-  [
-   "verb",
-   "pay for someone to go to school or university",
-   "typical: put sb through college. NOT for: refusing.",
-   [
-    "His parents put him through university.",
-    "She put herself through school."
-   ]
-  ],
-  [
-   "verb",
-   "make someone experience something unpleasant",
-   "typical: put sb through sth. NOT for: sparing.",
-   [
-    "I'm sorry I put you through that.",
-    "They put her through a lot."
-   ]
-  ],
-  [
-   "verb",
-   "get a plan or law officially approved",
-   "typical: put sth through. NOT for: blocking.",
-   [
-    "The government put the bill through.",
-    "They put through the new rules."
-   ]
-  ]
- ],
- "put together": [
-  [
-   "verb",
-   "prepare or produce something by collecting pieces",
-   "typical: put sth together. NOT for: taking apart.",
-   [
-    "It took all morning to put the proposal together.",
-    "He put together a team."
-   ]
-  ],
-  [
-   "verb",
-   "join parts to make something",
-   "typical: put sth together. NOT for: dismantling.",
-   [
-    "I put the shelves together.",
-    "She put the model together."
-   ]
-  ]
- ],
- "put up": [
-  [
-   "verb",
-   "build or fix something in place",
-   "typical: put up a fence/tent/building. NOT for: taking something down.",
-   [
-    "They're putting up new office blocks.",
-    "We put up the tent before dark."
-   ]
-  ],
-  [
-   "verb",
-   "fix something on a wall or surface for people to see",
-   "typical: put up a poster/notice/picture. NOT for: building walls.",
-   [
-    "She put up a notice in the hall.",
-    "He put up some shelves in the kitchen."
-   ]
-  ],
-  [
-   "verb",
-   "raise something, such as your hand or a price",
-   "typical: put up your hand/prices/taxes. NOT for: lowering.",
-   [
-    "The shop put up its prices again.",
-    "Put up your hand if you know."
-   ]
-  ],
-  [
-   "verb",
-   "let someone stay in your home for a short time",
-   "typical: put sb up for the night. NOT for: building something.",
-   [
-    "We can put you up for the weekend.",
-    "A friend put me up while I looked for a flat."
-   ]
-  ],
-  [
-   "verb",
-   "show or try hard against someone or something",
-   "typical: put up a fight/resistance/an argument. NOT for: giving up.",
-   [
-    "The team put up a good fight.",
-    "He put up little resistance."
-   ]
-  ],
-  [
-   "verb",
-   "provide money for a plan or a project",
-   "typical: put up money/the cash/a reward. NOT for: receiving money.",
-   [
-    "A bank put up the money for the project.",
-    "The family put up a reward."
-   ]
-  ]
- ],
- "put up with": [
-  [
-   "verb",
-   "accept an unpleasant situation or person without complaining",
-   "typical: put up with sb/sth. NOT for: complaining.",
-   [
-    "She put up with his temper.",
-    "I can't put up with the noise."
-   ]
-  ]
- ]
 }

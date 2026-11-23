@@ -1,1622 +1,1487 @@
 {
- "lash out": [
-  [
-   "verb",
-   "suddenly speak angrily to someone or criticize them angrily",
-   "typical: lash out (at sb). NOT for: staying calm.",
-   [
-    "Olson lashed out at the media.",
-    "She lashed out at her critics."
-   ]
+  "lash out": [
+    [
+      "verb",
+      "suddenly speak angrily to someone or criticize them angrily",
+      "typical: lash out (at sb). NOT for: staying calm.",
+      [
+        "Olson lashed out at the media.",
+        "She lashed out at her critics."
+      ]
+    ],
+    [
+      "verb",
+      "try to hit someone with violent uncontrolled movements",
+      "typical: lash out (at sb). NOT for: holding back.",
+      [
+        "She would lash out at other children.",
+        "He lashed out with his fists."
+      ]
+    ],
+    [
+      "verb",
+      "spend a lot of money on something (BrE informal)",
+      "typical: lash out on sth. NOT for: saving.",
+      [
+        "We lashed out on a new car.",
+        "I lashed out on a holiday."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "try to hit someone with violent uncontrolled movements",
-   "typical: lash out (at sb). NOT for: holding back.",
-   [
-    "She would lash out at other children.",
-    "He lashed out with his fists."
-   ]
+  "last": [
+    [
+      "adjective",
+      "coming at the end, after all others",
+      "typical: the last bus/day/page/one. NOT for: most recent.",
+      [
+        "This is the last bus.",
+        "She was the last to arrive."
+      ]
+    ],
+    [
+      "adjective",
+      "most recent, just before now",
+      "typical: last week/year/night/time. NOT for: final in a series.",
+      [
+        "I saw him last week.",
+        "What did you do last night?"
+      ]
+    ],
+    [
+      "verb",
+      "continue for a period of time",
+      "typical: last + time expression. NOT for: final position.",
+      [
+        "The meeting lasted two hours.",
+        "The film lasts almost three hours."
+      ]
+    ],
+    [
+      "verb",
+      "continue in good condition, or be enough for a time",
+      "typical: won't last, last for + time. NOT for: events.",
+      [
+        "This good weather won't last.",
+        "Our supplies will last a week."
+      ]
+    ]
   ],
-  [
-   "verb",
-   "spend a lot of money on something (BrE informal)",
-   "typical: lash out on sth. NOT for: saving.",
-   [
-    "We lashed out on a new car.",
-    "I lashed out on a holiday."
-   ]
+  "laugh at": [
+    [
+      "verb",
+      "make unkind remarks about someone because you think they are stupid",
+      "typical: laugh at sb. NOT for: laughing with.",
+      [
+        "I'm afraid the other kids will laugh at me.",
+        "Don't laugh at him."
+      ]
+    ],
+    [
+      "verb",
+      "find something funny",
+      "typical: laugh at sth. NOT for: being offended.",
+      [
+        "We laughed at the joke.",
+        "He laughed at the film."
+      ]
+    ],
+    [
+      "verb",
+      "seem not to care about something that worries most people",
+      "typical: laugh at danger/a sentence. NOT for: being scared.",
+      [
+        "Young offenders just laugh at this sentence.",
+        "He laughed at danger."
+      ]
+    ]
+  ],
+  "laugh off": [
+    [
+      "verb",
+      "pretend something is less serious than it is by joking about it",
+      "typical: laugh sth off. NOT for: taking seriously.",
+      [
+        "Knox laughed off rumours.",
+        "She laughed off the criticism."
+      ]
+    ]
+  ],
+  "lay down": [
+    [
+      "verb",
+      "put something down on a surface",
+      "typical: lay sth down. NOT for: picking up.",
+      [
+        "He laid the baby down on the bed.",
+        "She laid down her pen."
+      ]
+    ],
+    [
+      "verb",
+      "officially state a rule or principle",
+      "typical: lay down a rule/law/condition. NOT for: breaking.",
+      [
+        "The rules are laid down in the contract.",
+        "The law lays down strict limits."
+      ]
+    ],
+    [
+      "verb",
+      "give up something, such as weapons",
+      "typical: lay down your arms/life. NOT for: fighting.",
+      [
+        "The rebels laid down their arms.",
+        "He laid down his life for his country."
+      ]
+    ]
+  ],
+  "lay off": [
+    [
+      "verb",
+      "stop employing someone because there is no work for them",
+      "typical: lay sb off, be laid off. NOT for: hiring.",
+      [
+        "The company laid off 250 workers.",
+        "Millions have been laid off."
+      ]
+    ],
+    [
+      "verb",
+      "stop using or doing something (informal)",
+      "typical: lay off (sth/doing sth). NOT for: continuing.",
+      [
+        "I think you'd better lay off alcohol.",
+        "I had to lay off running."
+      ]
+    ],
+    [
+      "verb",
+      "stop annoying or criticizing someone (informal)",
+      "typical: lay off (sb), Lay off!. NOT for: bullying.",
+      [
+        "Lay off him; he's trying.",
+        "I wish you'd lay off me."
+      ]
+    ],
+    [
+      "verb",
+      "pass the ball to a teammate in a game such as football",
+      "typical: lay the ball off (to sb). NOT for: keeping it.",
+      [
+        "He laid the ball off to the winger.",
+        "She laid it off neatly."
+      ]
+    ]
+  ],
+  "lay out": [
+    [
+      "verb",
+      "spread something out so it can be seen",
+      "typical: lay sth out. NOT for: folding.",
+      [
+        "Lay the map out on the table.",
+        "She laid out the clothes."
+      ]
+    ],
+    [
+      "verb",
+      "arrange or plan a building, town or garden",
+      "typical: lay sth out. NOT for: demolishing.",
+      [
+        "The garden is laid out in a formal pattern.",
+        "The town was laid out in squares."
+      ]
+    ],
+    [
+      "verb",
+      "explain something clearly",
+      "typical: lay sth out. NOT for: hiding.",
+      [
+        "The costs are laid out in a booklet.",
+        "He laid out his plan."
+      ]
+    ],
+    [
+      "verb",
+      "spend a lot of money (informal)",
+      "typical: lay out money (on sth). NOT for: saving.",
+      [
+        "We laid out £500 on a camera.",
+        "They laid out a lot for the wedding."
+      ]
+    ]
+  ],
+  "lead on": [
+    [
+      "verb",
+      "deceive someone, especially into thinking you are interested in them",
+      "typical: lead sb on. NOT for: telling the truth.",
+      [
+        "He never meant anything; he just led her on.",
+        "Don't lead him on."
+      ]
+    ],
+    [
+      "verb",
+      "go first and show the way",
+      "typical: lead on. NOT for: following.",
+      [
+        "Lead on, we'll follow.",
+        "You lead on; I'll follow you."
+      ]
+    ]
+  ],
+  "lead to": [
+    [
+      "verb",
+      "cause something to happen",
+      "typical: lead to a problem/war/discovery. NOT for: preventing.",
+      [
+        "The mistake led to a big loss.",
+        "Smoking leads to cancer."
+      ]
+    ],
+    [
+      "verb",
+      "go towards a place (a road or a path)",
+      "typical: a road/path leads to a place. NOT for: leaving.",
+      [
+        "This road leads to the town.",
+        "The path leads to the beach."
+      ]
+    ]
+  ],
+  "lead up to": [
+    [
+      "verb",
+      "come before an event or cause it, as a series of events or a period",
+      "typical: the weeks/events leading up to sth. NOT for: events after.",
+      [
+        "The events leading up to his dismissal were strange.",
+        "The weeks that led up to the wedding were busy."
+      ]
+    ],
+    [
+      "verb",
+      "gradually introduce a surprising or embarrassing subject in conversation",
+      "typical: what is sb leading up to?. NOT for: avoiding a topic.",
+      [
+        "She guessed what he was leading up to.",
+        "He led up to the news slowly."
+      ]
+    ]
+  ],
+  "lean on": [
+    [
+      "verb",
+      "depend on someone for support, especially in difficult times",
+      "typical: lean on sb (for sth). NOT for: being independent.",
+      [
+        "The couple lean on each other for support.",
+        "You can lean on me."
+      ]
+    ],
+    [
+      "verb",
+      "try to influence someone by threatening them (informal)",
+      "typical: lean on sb. NOT for: asking nicely.",
+      [
+        "He won't pay unless you lean on him.",
+        "They leaned on the witness."
+      ]
+    ],
+    [
+      "verb",
+      "rest your weight against something",
+      "typical: lean on a wall/table. NOT for: standing straight.",
+      [
+        "He leaned on the counter.",
+        "She leaned on the gate."
+      ]
+    ]
+  ],
+  "leave": [
+    [
+      "verb",
+      "go away from a place or person",
+      "typical: leave + place, leave for + place, leave at + time. NOT for: stopping a job (see next sense).",
+      [
+        "We leave at eight.",
+        "She left the office early."
+      ]
+    ],
+    [
+      "verb",
+      "let something stay where it is, often by accident",
+      "typical: leave + object + place/adjective. NOT for: departure.",
+      [
+        "I left my keys at home.",
+        "Leave the door open."
+      ]
+    ],
+    [
+      "verb",
+      "stop working at a job or going to a school or organization",
+      "typical: leave school/work/a job/the army. NOT for: temporary absence.",
+      [
+        "He left school at sixteen.",
+        "She left her job last month."
+      ]
+    ],
+    [
+      "verb",
+      "let someone else decide or deal with something",
+      "typical: leave it to sb, leave sb to do sth. NOT for: departure.",
+      [
+        "I'll leave it to you to decide.",
+        "Leave the cooking to me."
+      ]
+    ]
+  ],
+  "leave behind": [
+    [
+      "verb",
+      "not take someone or something with you",
+      "typical: leave sb/sth behind. NOT for: taking with you.",
+      [
+        "I think I left my wallet behind.",
+        "He left the children behind with their mother."
+      ]
+    ],
+    [
+      "verb",
+      "progress faster than other people or countries",
+      "typical: be/get left behind. NOT for: keeping up.",
+      [
+        "A child with poor eyesight may be left behind.",
+        "Poor countries are left behind."
+      ]
+    ],
+    [
+      "verb",
+      "go faster than someone and go ahead of them",
+      "typical: leave sb behind. NOT for: staying with.",
+      [
+        "She ran faster and left the others behind.",
+        "The leaders left the rest behind."
+      ]
+    ],
+    [
+      "verb",
+      "have something remain after you die or go (a trace)",
+      "typical: leave sth behind. NOT for: taking everything.",
+      [
+        "The storm left behind a lot of damage.",
+        "He left behind a wife and two kids."
+      ]
+    ]
+  ],
+  "leave off": [
+    [
+      "verb",
+      "stop doing something",
+      "typical: leave off (doing sth), pick up where you left off. NOT for: starting.",
+      [
+        "Barry took up the story where Justine left off.",
+        "Will you leave off nagging?"
+      ]
+    ],
+    [
+      "verb",
+      "not include something in a list or document",
+      "typical: leave sb/sth off (sth). NOT for: adding.",
+      [
+        "Why was her name left off the list?",
+        "Don't leave off the date."
+      ]
+    ]
+  ],
+  "leave out": [
+    [
+      "verb",
+      "not include someone or something",
+      "typical: leave sb/sth out (of sth). NOT for: including.",
+      [
+        "She was careful not to leave anything out.",
+        "Kidd has been left out of the team."
+      ]
+    ],
+    [
+      "verb",
+      "feel not accepted or welcome (be left out)",
+      "typical: be/feel left out. NOT for: being included.",
+      [
+        "New fathers often feel left out.",
+        "She felt left out at school."
+      ]
+    ],
+    [
+      "verb",
+      "used to tell someone to stop lying or pretending (BrE spoken)",
+      "typical: Leave it out!. NOT for: believing.",
+      [
+        "Oh, leave it out! I don't believe you.",
+        "Leave it out, mate."
+      ]
+    ]
+  ],
+  "lest": [
+    [
+      "preventing something bad",
+      "means in order to prevent something bad from happening",
+      "typical: formal or literary, lest + should / base verb. NOT for: everyday purposes (use 'so that').",
+      [
+        "He spoke quietly lest anyone should hear.",
+        "She hurried lest she miss the train.",
+        "Check the figures twice, lest we make a mistake."
+      ]
+    ]
+  ],
+  "let down": [
+    [
+      "verb",
+      "disappoint someone by not doing what they trust you to do",
+      "typical: let sb down, let the side down. NOT for: keeping a promise.",
+      [
+        "She had been let down badly in the past.",
+        "I felt I had let my fans down."
+      ]
+    ],
+    [
+      "verb",
+      "make something less successful or effective",
+      "typical: let sth down. NOT for: improving.",
+      [
+        "His judgement rarely lets him down.",
+        "Poor lighting lets the room down."
+      ]
+    ],
+    [
+      "verb",
+      "lower someone or something to a lower position",
+      "typical: let sb/sth down (from sth). NOT for: lifting.",
+      [
+        "They let the rope down.",
+        "He let the child down gently."
+      ]
+    ],
+    [
+      "verb",
+      "release air from a tyre",
+      "typical: let a tyre down. NOT for: pumping up.",
+      [
+        "Someone let my tyres down.",
+        "He let the air down."
+      ]
+    ]
+  ],
+  "let go": [
+    [
+      "verb",
+      "stop holding something or someone",
+      "typical: let go (of sb/sth). NOT for: grabbing.",
+      [
+        "Let go of my arm!",
+        "He let go of the rope."
+      ]
+    ],
+    [
+      "verb",
+      "stop having a feeling or an idea",
+      "typical: let go (of sth). NOT for: clinging.",
+      [
+        "You have to let go of the past.",
+        "She can't let go of her anger."
+      ]
+    ],
+    [
+      "verb",
+      "allow someone to leave, or stop employing them",
+      "typical: let sb go. NOT for: keeping.",
+      [
+        "The police let him go.",
+        "The firm let fifty people go."
+      ]
+    ]
+  ],
+  "let in": [
+    [
+      "verb",
+      "allow someone or something to enter",
+      "typical: let sb/sth in. NOT for: keeping out.",
+      [
+        "Let the cat in.",
+        "The curtains don't let any light in."
+      ]
+    ],
+    [
+      "verb",
+      "tell someone something secret (let sb in on sth)",
+      "typical: let sb in on a secret. NOT for: hiding.",
+      [
+        "Would someone let me in on the joke?",
+        "He let us in on the secret."
+      ]
+    ]
+  ],
+  "let off": [
+    [
+      "verb",
+      "make a bomb or firework explode",
+      "typical: let off a bomb/fireworks. NOT for: defusing.",
+      [
+        "Terrorists let off a bomb in the city centre.",
+        "Boys let off fireworks."
+      ]
+    ],
+    [
+      "verb",
+      "not punish someone, or give them a small punishment",
+      "typical: let sb off (with sth). NOT for: punishing.",
+      [
+        "The judge let him off with a fine.",
+        "She was let off with a warning."
+      ]
+    ],
+    [
+      "verb",
+      "allow someone to leave a bus or vehicle",
+      "typical: let sb off. NOT for: taking on.",
+      [
+        "The driver let us off at the corner.",
+        "Please let me off here."
+      ]
+    ],
+    [
+      "verb",
+      "tell someone they do not have to do something",
+      "typical: let sb off (doing sth). NOT for: forcing.",
+      [
+        "The teacher let us off homework.",
+        "He let her off the dishes."
+      ]
+    ]
+  ],
+  "let on": [
+    [
+      "verb",
+      "tell someone a secret, or show that you know something (informal)",
+      "typical: let on (that) ..., don't let on. NOT for: keeping quiet.",
+      [
+        "Don't let on that I told you.",
+        "He never let on how he found out."
+      ]
+    ]
+  ],
+  "let out": [
+    [
+      "verb",
+      "suddenly make a loud sound",
+      "typical: let out a scream/cry/roar. NOT for: staying silent.",
+      [
+        "He let out a cry of disbelief.",
+        "She let out a loud laugh."
+      ]
+    ],
+    [
+      "verb",
+      "make a piece of clothing wider or looser",
+      "typical: let sth out. NOT for: taking in.",
+      [
+        "I had to let my trousers out.",
+        "She let the dress out."
+      ]
+    ],
+    [
+      "verb",
+      "let someone or something leave a place",
+      "typical: let sb/sth out. NOT for: keeping in.",
+      [
+        "Let the dog out.",
+        "They let the prisoners out."
+      ]
+    ],
+    [
+      "verb",
+      "allow people to know a secret",
+      "typical: let sth out. NOT for: hiding.",
+      [
+        "Who let the news out?",
+        "She let out the truth."
+      ]
+    ]
+  ],
+  "level with": [
+    [
+      "verb",
+      "speak honestly to someone after hiding unpleasant facts (informal)",
+      "typical: level with sb. NOT for: lying.",
+      [
+        "She decided to level with him.",
+        "I'll level with you: it's bad."
+      ]
+    ]
+  ],
+  "lie around": [
+    [
+      "verb",
+      "be left in an untidy place (things)",
+      "typical: things lie around, leave sth lying around. NOT for: being tidy.",
+      [
+        "Don't leave your shoes lying around.",
+        "Papers lay around the room."
+      ]
+    ],
+    [
+      "verb",
+      "spend time lying down and doing nothing",
+      "typical: lie around (all day). NOT for: working.",
+      [
+        "I felt lazy just lying around.",
+        "We lay around on the beach."
+      ]
+    ]
+  ],
+  "lie down": [
+    [
+      "verb",
+      "put your body flat on a bed or the floor",
+      "typical: lie down (on sth). NOT for: standing up.",
+      [
+        "Just lie down on the bed.",
+        "I need to lie down."
+      ]
+    ],
+    [
+      "verb",
+      "accept bad treatment without complaining",
+      "typical: take sth lying down. NOT for: fighting back.",
+      [
+        "I'm not going to take this lying down.",
+        "She won't take it lying down."
+      ]
+    ]
+  ],
+  "lie in": [
+    [
+      "verb",
+      "stay in bed in the morning longer than usual (BrE)",
+      "typical: have a lie-in, lie in on Sunday. NOT for: getting up early.",
+      [
+        "I like to lie in on Sundays.",
+        "We lay in until ten."
+      ]
+    ]
+  ],
+  "light up": [
+    [
+      "verb",
+      "give light to a place, or shine light on something",
+      "typical: light sth up, be lit up. NOT for: darkening.",
+      [
+        "The flames lit up the sky.",
+        "The fountain is lit up at night."
+      ]
+    ],
+    [
+      "verb",
+      "become bright with light or colour",
+      "typical: light up. NOT for: going dark.",
+      [
+        "At night the harbour lights up.",
+        "The screen lit up."
+      ]
+    ],
+    [
+      "verb",
+      "show pleasure or excitement (a face or eyes)",
+      "typical: sb's face lights up. NOT for: looking sad.",
+      [
+        "His eyes lit up with laughter.",
+        "Her face lit up when she saw him."
+      ]
+    ],
+    [
+      "verb",
+      "start smoking a cigarette (informal)",
+      "typical: light up (a cigarette). NOT for: giving up smoking.",
+      [
+        "He lit up a cigarette.",
+        "Outside, the smokers lit up."
+      ]
+    ]
+  ],
+  "lighten up": [
+    [
+      "verb",
+      "become less serious or worried (informal)",
+      "typical: lighten up!. NOT for: worrying.",
+      [
+        "Lighten up; it's only a joke.",
+        "He needs to lighten up."
+      ]
+    ],
+    [
+      "verb",
+      "become brighter, or make something brighter",
+      "typical: lighten sth up. NOT for: darkening.",
+      [
+        "Flowers lighten up the room.",
+        "The sky lightened up."
+      ]
+    ]
+  ],
+  "like": [
+    [
+      "verb",
+      "enjoy something or think it is nice or good",
+      "typical: like + noun/-ing: like music, like swimming. NOT for: wanting (see would like).",
+      [
+        "I like hot tea in the morning.",
+        "Do you like your new job?"
+      ]
+    ],
+    [
+      "verb",
+      "think a person is nice or have a friendly feeling towards them",
+      "typical: like + person. NOT for: romantic love.",
+      [
+        "I really like your sister.",
+        "He doesn't like his boss."
+      ]
+    ],
+    [
+      "verb",
+      "(would like) want something, or politely offer or ask",
+      "typical: would like + noun/to + verb. NOT for: general enjoyment.",
+      [
+        "I would like a coffee, please.",
+        "Would you like to come with us?"
+      ]
+    ],
+    [
+      "preposition",
+      "similar to, or in the same way as",
+      "typical: look/sound/taste/feel like + noun. NOT for: enjoyment.",
+      [
+        "He looks like his father.",
+        "It tastes like chicken."
+      ]
+    ]
+  ],
+  "likewise": [
+    [
+      "same as this",
+      "says that the same is true for something else or that you do the same",
+      "typical: formal, or as a short reply: 'Likewise.' NOT for: contrast.",
+      [
+        "He voted for change; his sister did likewise.",
+        "Nice to meet you. – Likewise.",
+        "Treat others well, and they will likewise treat you well."
+      ]
+    ]
+  ],
+  "line up": [
+    [
+      "verb",
+      "stand in a row or line, or make people do so",
+      "typical: line up, line sb up. NOT for: scattering.",
+      [
+        "Line up, everybody!",
+        "He lined us up in the corridor."
+      ]
+    ],
+    [
+      "verb",
+      "arrange things in a row",
+      "typical: line sth up. NOT for: jumbling.",
+      [
+        "She lined the bottles up on the shelf.",
+        "He lined up the cups."
+      ]
+    ],
+    [
+      "verb",
+      "move something into the correct position",
+      "typical: line sth up (with sth). NOT for: misaligning.",
+      [
+        "The windows should line up with the door.",
+        "Line the holes up."
+      ]
+    ],
+    [
+      "verb",
+      "arrange an event or arrange for someone to be available",
+      "typical: line sth/sb up. NOT for: cancelling.",
+      [
+        "I've lined up an interview for you.",
+        "We lined up a speaker."
+      ]
+    ]
+  ],
+  "linger on": [
+    [
+      "verb",
+      "continue to exist or be noticeable for longer than is usual or desirable",
+      "typical: a taste/problem/tax lingers on. NOT for: disappearing quickly.",
+      [
+        "The taste lingered on in my mouth.",
+        "The tax will linger on until April."
+      ]
+    ],
+    [
+      "verb",
+      "stay somewhere a little longer because you do not want to leave",
+      "typical: linger on (over sth). NOT for: hurrying away.",
+      [
+        "They lingered over coffee and missed the last bus.",
+        "I could happily have lingered on at the lake."
+      ]
+    ],
+    [
+      "verb",
+      "continue looking at or dealing with something for longer than is usual or desirable",
+      "typical: linger on/over sth. NOT for: passing quickly.",
+      [
+        "Mike let his eyes linger on her face.",
+        "There's no need to linger over this stage."
+      ]
+    ]
+  ],
+  "listen to": [
+    [
+      "verb",
+      "pay attention to a sound or a person speaking",
+      "typical: listen to sb/sth. NOT for: ignoring.",
+      [
+        "Listen to me carefully.",
+        "I listen to music every day."
+      ]
+    ],
+    [
+      "verb",
+      "follow someone's advice or take it seriously",
+      "typical: listen to sb/advice. NOT for: ignoring.",
+      [
+        "She never listens to her parents.",
+        "You should listen to your doctor."
+      ]
+    ]
+  ],
+  "live on": [
+    [
+      "verb",
+      "continue to exist",
+      "typical: live on. NOT for: dying.",
+      [
+        "Alice's memory will live on.",
+        "His music lives on."
+      ]
+    ],
+    [
+      "verb",
+      "have a particular amount of money to live",
+      "typical: live on + amount/benefits. NOT for: being rich.",
+      [
+        "How do they live on £55 a week?",
+        "Many families live on benefits."
+      ]
+    ],
+    [
+      "verb",
+      "eat a lot of a particular food",
+      "typical: live on sth. NOT for: avoiding it.",
+      [
+        "They live on bread and potatoes.",
+        "He lives on fish."
+      ]
+    ]
+  ],
+  "live through": [
+    [
+      "verb",
+      "experience difficult or dangerous conditions",
+      "typical: live through a war/a crisis. NOT for: avoiding.",
+      [
+        "The generation that lived through the war.",
+        "It was hard to describe what she had lived through."
+      ]
+    ]
+  ],
+  "live up to": [
+    [
+      "verb",
+      "do as well as expected, or do what you promised",
+      "typical: live up to expectations/a promise/a reputation. NOT for: disappointing.",
+      [
+        "The film lived up to my expectations.",
+        "He failed to live up to his promise."
+      ]
+    ]
+  ],
+  "lock in": [
+    [
+      "verb",
+      "prevent someone from leaving a room by locking the door",
+      "typical: lock sb in, lock yourself in. NOT for: letting out.",
+      [
+        "She locked herself in.",
+        "They locked the director in his office."
+      ]
+    ],
+    [
+      "verb",
+      "make something so that it cannot change (a price or agreement)",
+      "typical: lock sth in. NOT for: changing.",
+      [
+        "Sell now to lock in some of the gains.",
+        "Lock in a low interest rate."
+      ]
+    ],
+    [
+      "verb",
+      "keep taste or liquid inside something",
+      "typical: lock sth in. NOT for: losing.",
+      [
+        "The method locks in the flavour.",
+        "The film locks in moisture."
+      ]
+    ]
+  ],
+  "lock out": [
+    [
+      "verb",
+      "keep someone out of a place by locking the door",
+      "typical: lock sb out, lock yourself out (of sth). NOT for: letting in.",
+      [
+        "I locked myself out of the house!",
+        "She locked him out."
+      ]
+    ],
+    [
+      "verb",
+      "not allow workers to go to work during a dispute (employers)",
+      "typical: lock workers out. NOT for: hiring.",
+      [
+        "The management locked the workers out.",
+        "Employers locked out 5,000 staff."
+      ]
+    ]
+  ],
+  "lock up": [
+    [
+      "verb",
+      "make a building safe by locking the doors, especially at night",
+      "typical: lock up (the shop/the warehouse). NOT for: opening.",
+      [
+        "I'll leave you to lock up.",
+        "Don't forget to lock up the warehouse."
+      ]
+    ],
+    [
+      "verb",
+      "put something in a safe place and lock it",
+      "typical: lock sth up. NOT for: leaving out.",
+      [
+        "She locked the jewels up in a safe.",
+        "Lock up your valuables."
+      ]
+    ],
+    [
+      "verb",
+      "put someone in prison",
+      "typical: lock sb up, be locked up. NOT for: freeing.",
+      [
+        "Rapists should be locked up.",
+        "He was locked up for ten years."
+      ]
+    ],
+    [
+      "verb",
+      "have money tied up so you cannot use it (be locked up)",
+      "typical: be locked up (in sth). NOT for: spending.",
+      [
+        "Their savings are locked up in property.",
+        "Most of the money is locked up."
+      ]
+    ]
+  ],
+  "log in": [
+    [
+      "verb",
+      "do what is necessary to start using a computer system",
+      "typical: log in (to sth), log in with a password. NOT for: logging out.",
+      [
+        "You need to log in to your account.",
+        "Log in with your username."
+      ]
+    ]
+  ],
+  "log on": [
+    [
+      "verb",
+      "do what is necessary to start using a computer system",
+      "typical: log on (to sth). NOT for: logging off.",
+      [
+        "You need to log on to your home page.",
+        "She logged on to the network."
+      ]
+    ]
+  ],
+  "log out": [
+    [
+      "verb",
+      "stop using a computer system by giving it an instruction",
+      "typical: log out (of sth). NOT for: logging in.",
+      [
+        "Remember to log out when you finish.",
+        "He logged out of his email."
+      ]
+    ]
+  ],
+  "look": [
+    [
+      "verb",
+      "direct your eyes towards something to see it",
+      "typical: look at/out of/up/down. NOT for: seeming.",
+      [
+        "Look at this picture.",
+        "He looked out of the window."
+      ]
+    ],
+    [
+      "verb",
+      "seem or appear",
+      "typical: look + adjective, look like + noun. NOT for: using your eyes on purpose.",
+      [
+        "You look tired.",
+        "The house looks old."
+      ]
+    ],
+    [
+      "verb",
+      "try to find something",
+      "typical: look for + thing. NOT for: just seeing.",
+      [
+        "I'm looking for my keys.",
+        "She is looking for a new flat."
+      ]
+    ],
+    [
+      "verb",
+      "consider or examine something carefully",
+      "typical: look at the problem/situation/idea. NOT for: physical looking.",
+      [
+        "We need to look at all the options.",
+        "Let's look at the budget again."
+      ]
+    ]
+  ],
+  "look after": [
+    [
+      "verb",
+      "take care of someone by helping them or keeping them safe",
+      "typical: look after sb/sth (BrE). NOT for: neglecting.",
+      [
+        "I'll look after the kids tomorrow.",
+        "The horse had been well looked after."
+      ]
+    ],
+    [
+      "verb",
+      "be responsible for dealing with something",
+      "typical: look after the business/the accounts. NOT for: leaving it to others.",
+      [
+        "I'm leaving you to look after the business.",
+        "She looks after all the bookings."
+      ]
+    ],
+    [
+      "verb",
+      "used when saying goodbye to someone in a friendly way (spoken, BrE)",
+      "typical: look after yourself. NOT for: saying hello.",
+      [
+        "Bye, then. Look after yourself!",
+        "Look after yourself, won't you?"
+      ]
+    ],
+    [
+      "verb",
+      "be able to take care of yourself without help",
+      "typical: can look after yourself. NOT for: needing help.",
+      [
+        "Don't worry about me; I can look after myself.",
+        "She's old enough to look after herself."
+      ]
+    ]
+  ],
+  "look ahead": [
+    [
+      "verb",
+      "think about and plan for what might happen in the future",
+      "typical: look ahead (to sth). NOT for: looking back.",
+      [
+        "Looking ahead, we must expect big changes.",
+        "We need to look ahead."
+      ]
+    ],
+    [
+      "verb",
+      "look in front of you",
+      "typical: look ahead (of you). NOT for: looking behind.",
+      [
+        "He looked ahead and saw a bridge.",
+        "Look ahead and keep driving."
+      ]
+    ]
+  ],
+  "look around": [
+    [
+      "verb",
+      "try to find something by searching",
+      "typical: look around for a job/a flat. NOT for: looking at things in a place.",
+      [
+        "Jason is looking around for a new job.",
+        "We're looking around for a cheaper flat."
+      ]
+    ],
+    [
+      "verb",
+      "look at what is in a place, especially while walking",
+      "typical: look around a castle/the shops/the town. NOT for: searching for something.",
+      [
+        "Do we have to pay to look around the castle?",
+        "Let's look around the shops."
+      ]
+    ]
+  ],
+  "look at": [
+    [
+      "verb",
+      "turn your eyes towards someone or something so you can see them",
+      "typical: look at sb/sth. NOT for: looking away.",
+      [
+        "The twins looked at each other and smiled.",
+        "Look at that rainbow!"
+      ]
+    ],
+    [
+      "verb",
+      "read or examine something quickly to form an opinion",
+      "typical: look at a report/a document. NOT for: reading carefully.",
+      [
+        "I haven't had time to look at the report yet.",
+        "Can you look at my essay?"
+      ]
+    ],
+    [
+      "verb",
+      "examine something to find out what is wrong",
+      "typical: look at a problem/injury. NOT for: ignoring.",
+      [
+        "You should get the doctor to look at that cut.",
+        "Can you look at my computer?"
+      ]
+    ],
+    [
+      "verb",
+      "consider a subject or problem carefully",
+      "typical: look at the evidence/the facts. NOT for: ignoring.",
+      [
+        "We need to look at all the options.",
+        "Let's look at the facts."
+      ]
+    ]
+  ],
+  "look away": [
+    [
+      "verb",
+      "turn your eyes in another direction so you do not see something",
+      "typical: look away (from sb/sth). NOT for: staring.",
+      [
+        "He looked away, embarrassed.",
+        "She couldn't look away from the screen."
+      ]
+    ]
+  ],
+  "look back": [
+    [
+      "verb",
+      "think about things that happened in the past",
+      "typical: look back on sth, look back at sth. NOT for: looking behind you.",
+      [
+        "I often look back on my school years with pleasure.",
+        "Looking back, I should have said no."
+      ]
+    ],
+    [
+      "verb",
+      "turn your head to see what is behind you",
+      "typical: look back over your shoulder. NOT for: remembering the past.",
+      [
+        "She looked back and saw the dog running after her.",
+        "Don't look back, just keep walking."
+      ]
+    ],
+    [
+      "verb",
+      "become more and more successful after a particular success",
+      "typical: never look back. NOT for: failing.",
+      [
+        "After winning the scholarship he never looked back.",
+        "Once the band got a hit, they never looked back."
+      ]
+    ]
+  ],
+  "look back on": [
+    [
+      "verb",
+      "think about a time in the past",
+      "typical: look back on sth (with pleasure/regret). NOT for: looking forward.",
+      [
+        "I look back on those days with pleasure.",
+        "She looked back on her youth fondly."
+      ]
+    ]
+  ],
+  "look down on": [
+    [
+      "verb",
+      "think you are better than someone else",
+      "typical: look down on sb/sth. NOT for: admiring.",
+      [
+        "Mr Garcia looks down on anyone without a degree.",
+        "Don't look down on manual workers."
+      ]
+    ]
+  ],
+  "look for": [
+    [
+      "verb",
+      "try to find someone or something",
+      "typical: look for a job/keys/a flat, look for sb. NOT for: expecting or hoping for a quality.",
+      [
+        "I'm looking for my keys.",
+        "She is looking for a new flat."
+      ]
+    ],
+    [
+      "verb",
+      "want or expect to find a particular quality or result",
+      "typical: look for honesty/experience/a sign of sth. NOT for: searching for a lost object.",
+      [
+        "We look for experience in every candidate.",
+        "Employers look for good communication skills."
+      ]
+    ],
+    [
+      "verb",
+      "behave in a way that is likely to cause problems or violence (informal)",
+      "typical: be looking for trouble. NOT for: staying out of trouble.",
+      [
+        "That group looks like they're looking for trouble.",
+        "Don't go in there looking for trouble."
+      ]
+    ]
+  ],
+  "look forward to": [
+    [
+      "verb",
+      "be excited and pleased about something that is going to happen",
+      "typical: look forward to sth/doing sth. NOT for: dreading.",
+      [
+        "I'm really looking forward to our holiday.",
+        "She is looking forward to meeting you."
+      ]
+    ]
+  ],
+  "look into": [
+    [
+      "verb",
+      "try to find out the truth about a problem or crime",
+      "typical: look into sth, investigate. NOT for: ignoring.",
+      [
+        "Police are looking into the disappearance.",
+        "I'll look into it."
+      ]
+    ],
+    [
+      "verb",
+      "look inside something",
+      "typical: look into a box/mirror. NOT for: looking outside.",
+      [
+        "He looked into the mirror.",
+        "She looked into his eyes."
+      ]
+    ]
+  ],
+  "look on": [
+    [
+      "verb",
+      "watch something happening without taking part",
+      "typical: look on (in silence). NOT for: helping.",
+      [
+        "Only one man helped; the rest looked on.",
+        "Crowds looked on in horror."
+      ]
+    ],
+    [
+      "verb",
+      "consider someone or something in a particular way",
+      "typical: look on sb/sth as sth. NOT for: ignoring.",
+      [
+        "I look on him as a good friend.",
+        "Strangers are looked upon with suspicion."
+      ]
+    ]
+  ],
+  "look out": [
+    [
+      "verb",
+      "used to warn someone of danger",
+      "typical: Look out!, look out for the car. NOT for: searching for something.",
+      [
+        "Look out! There's a car coming!",
+        "Look out, the floor is wet."
+      ]
+    ],
+    [
+      "verb",
+      "look through a window or from a place towards the outside",
+      "typical: look out of/through the window. NOT for: giving a warning.",
+      [
+        "She looked out of the window at the rain.",
+        "We looked out over the sea."
+      ]
+    ],
+    [
+      "verb",
+      "search for something and take it out (BrE)",
+      "typical: look sth out. NOT for: looking for danger.",
+      [
+        "I'll look out some old books for you.",
+        "She looked out her winter clothes."
+      ]
+    ]
+  ],
+  "look over": [
+    [
+      "verb",
+      "examine something or someone quickly",
+      "typical: look sth/sb over. NOT for: studying.",
+      [
+        "Do you have time to look these samples over?",
+        "She looked the house over."
+      ]
+    ],
+    [
+      "verb",
+      "look at something from above or across it",
+      "typical: look over a wall/shoulder. NOT for: looking under.",
+      [
+        "He looked over the fence.",
+        "She looked over her shoulder."
+      ]
+    ]
+  ],
+  "look round": [
+    [
+      "verb",
+      "try to find something by searching (BrE variant of look around)",
+      "typical: look round for sth. NOT for: looking at one thing.",
+      [
+        "He is looking round for a new job.",
+        "We looked round for a cheaper flat."
+      ]
+    ],
+    [
+      "verb",
+      "look at what is in a place, especially while walking (BrE)",
+      "typical: look round a house/the shops/a museum. NOT for: searching for something.",
+      [
+        "Let's look round the shops.",
+        "We looked round the museum for an hour."
+      ]
+    ]
+  ],
+  "look through": [
+    [
+      "verb",
+      "search among papers, drawers or pockets",
+      "typical: look through sth. NOT for: finding at once.",
+      [
+        "I've looked through all my papers.",
+        "He looked through his bag."
+      ]
+    ],
+    [
+      "verb",
+      "read or check something quickly",
+      "typical: look through a report/a book. NOT for: studying.",
+      [
+        "I looked through the report.",
+        "She looked through the file."
+      ]
+    ],
+    [
+      "verb",
+      "not notice someone or pretend not to see them",
+      "typical: look right/straight through sb. NOT for: greeting.",
+      [
+        "Fiona looked straight through me.",
+        "He looked right through her."
+      ]
+    ]
+  ],
+  "look up": [
+    [
+      "verb",
+      "improve, used about a situation",
+      "typical: things/prospects are looking up. NOT for: searching for information.",
+      [
+        "Now that summer is here, things are looking up.",
+        "Business is finally looking up."
+      ]
+    ],
+    [
+      "verb",
+      "find information in a book, list or on a computer",
+      "typical: look up a word/number/time, look sth up. NOT for: visiting someone.",
+      [
+        "Look the word up in your dictionary.",
+        "I'll look up the train times."
+      ]
+    ],
+    [
+      "verb",
+      "visit someone you know, especially when you are in their area",
+      "typical: look sb up. NOT for: searching for information.",
+      [
+        "Look me up when you come to Atlanta.",
+        "She looked up an old friend while in town."
+      ]
+    ]
+  ],
+  "look up to": [
+    [
+      "verb",
+      "admire or respect someone",
+      "typical: look up to sb. NOT for: looking down on.",
+      [
+        "I've always looked up to Bill for his courage.",
+        "Children look up to their parents."
+      ]
+    ]
+  ],
+  "luck out": [
+    [
+      "verb",
+      "be lucky (AmE informal)",
+      "typical: luck out (on sth). NOT for: being unlucky.",
+      [
+        "We really lucked out and got a parking space.",
+        "She lucked out in the draw."
+      ]
+    ]
   ]
- ],
- "last": [
-  [
-   "adjective",
-   "coming at the end, after all others",
-   "typical: the last bus/day/page/one. NOT for: most recent.",
-   [
-    "This is the last bus.",
-    "She was the last to arrive."
-   ]
-  ],
-  [
-   "adjective",
-   "most recent, just before now",
-   "typical: last week/year/night/time. NOT for: final in a series.",
-   [
-    "I saw him last week.",
-    "What did you do last night?"
-   ]
-  ],
-  [
-   "adverb",
-   "most recently, or at the end after everyone else",
-   "typical: when I last saw her, came last, last of all. NOT for: duration.",
-   [
-    "When did you last see him?",
-    "He finished last in the race."
-   ]
-  ],
-  [
-   "verb",
-   "continue for a period of time",
-   "typical: last + time expression. NOT for: final position.",
-   [
-    "The meeting lasted two hours.",
-    "The film lasts almost three hours."
-   ]
-  ],
-  [
-   "verb",
-   "continue in good condition, or be enough for a time",
-   "typical: won't last, last for + time. NOT for: events.",
-   [
-    "This good weather won't last.",
-    "Our supplies will last a week."
-   ]
-  ]
- ],
- "laugh at": [
-  [
-   "verb",
-   "make unkind remarks about someone because you think they are stupid",
-   "typical: laugh at sb. NOT for: laughing with.",
-   [
-    "I'm afraid the other kids will laugh at me.",
-    "Don't laugh at him."
-   ]
-  ],
-  [
-   "verb",
-   "find something funny",
-   "typical: laugh at sth. NOT for: being offended.",
-   [
-    "We laughed at the joke.",
-    "He laughed at the film."
-   ]
-  ],
-  [
-   "verb",
-   "seem not to care about something that worries most people",
-   "typical: laugh at danger/a sentence. NOT for: being scared.",
-   [
-    "Young offenders just laugh at this sentence.",
-    "He laughed at danger."
-   ]
-  ]
- ],
- "laugh off": [
-  [
-   "verb",
-   "pretend something is less serious than it is by joking about it",
-   "typical: laugh sth off. NOT for: taking seriously.",
-   [
-    "Knox laughed off rumours.",
-    "She laughed off the criticism."
-   ]
-  ]
- ],
- "lay down": [
-  [
-   "verb",
-   "put something down on a surface",
-   "typical: lay sth down. NOT for: picking up.",
-   [
-    "He laid the baby down on the bed.",
-    "She laid down her pen."
-   ]
-  ],
-  [
-   "verb",
-   "officially state a rule or principle",
-   "typical: lay down a rule/law/condition. NOT for: breaking.",
-   [
-    "The rules are laid down in the contract.",
-    "The law lays down strict limits."
-   ]
-  ],
-  [
-   "verb",
-   "give up something, such as weapons",
-   "typical: lay down your arms/life. NOT for: fighting.",
-   [
-    "The rebels laid down their arms.",
-    "He laid down his life for his country."
-   ]
-  ]
- ],
- "lay off": [
-  [
-   "verb",
-   "stop employing someone because there is no work for them",
-   "typical: lay sb off, be laid off. NOT for: hiring.",
-   [
-    "The company laid off 250 workers.",
-    "Millions have been laid off."
-   ]
-  ],
-  [
-   "verb",
-   "stop using or doing something (informal)",
-   "typical: lay off (sth/doing sth). NOT for: continuing.",
-   [
-    "I think you'd better lay off alcohol.",
-    "I had to lay off running."
-   ]
-  ],
-  [
-   "verb",
-   "stop annoying or criticizing someone (informal)",
-   "typical: lay off (sb), Lay off!. NOT for: bullying.",
-   [
-    "Lay off him; he's trying.",
-    "I wish you'd lay off me."
-   ]
-  ],
-  [
-   "verb",
-   "pass the ball to a teammate in a game such as football",
-   "typical: lay the ball off (to sb). NOT for: keeping it.",
-   [
-    "He laid the ball off to the winger.",
-    "She laid it off neatly."
-   ]
-  ]
- ],
- "lay out": [
-  [
-   "verb",
-   "spread something out so it can be seen",
-   "typical: lay sth out. NOT for: folding.",
-   [
-    "Lay the map out on the table.",
-    "She laid out the clothes."
-   ]
-  ],
-  [
-   "verb",
-   "arrange or plan a building, town or garden",
-   "typical: lay sth out. NOT for: demolishing.",
-   [
-    "The garden is laid out in a formal pattern.",
-    "The town was laid out in squares."
-   ]
-  ],
-  [
-   "verb",
-   "explain something clearly",
-   "typical: lay sth out. NOT for: hiding.",
-   [
-    "The costs are laid out in a booklet.",
-    "He laid out his plan."
-   ]
-  ],
-  [
-   "verb",
-   "spend a lot of money (informal)",
-   "typical: lay out money (on sth). NOT for: saving.",
-   [
-    "We laid out £500 on a camera.",
-    "They laid out a lot for the wedding."
-   ]
-  ],
-  [
-   "verb",
-   "hit someone so hard that they fall down unconscious (informal)",
-   "typical: lay sb out. NOT for: helping up.",
-   [
-    "One punch laid him out.",
-    "He was laid out cold."
-   ]
-  ]
- ],
- "lead on": [
-  [
-   "verb",
-   "deceive someone, especially into thinking you are interested in them",
-   "typical: lead sb on. NOT for: telling the truth.",
-   [
-    "He never meant anything; he just led her on.",
-    "Don't lead him on."
-   ]
-  ],
-  [
-   "verb",
-   "go first and show the way",
-   "typical: lead on. NOT for: following.",
-   [
-    "Lead on, we'll follow.",
-    "You lead on; I'll follow you."
-   ]
-  ]
- ],
- "lead to": [
-  [
-   "verb",
-   "cause something to happen",
-   "typical: lead to a problem/war/discovery. NOT for: preventing.",
-   [
-    "The mistake led to a big loss.",
-    "Smoking leads to cancer."
-   ]
-  ],
-  [
-   "verb",
-   "go towards a place (a road or a path)",
-   "typical: a road/path leads to a place. NOT for: leaving.",
-   [
-    "This road leads to the town.",
-    "The path leads to the beach."
-   ]
-  ]
- ],
- "lead up to": [
-  [
-   "verb",
-   "come before an event or cause it, as a series of events or a period",
-   "typical: the weeks/events leading up to sth. NOT for: events after.",
-   [
-    "The events leading up to his dismissal were strange.",
-    "The weeks that led up to the wedding were busy."
-   ]
-  ],
-  [
-   "verb",
-   "gradually introduce a surprising or embarrassing subject in conversation",
-   "typical: what is sb leading up to?. NOT for: avoiding a topic.",
-   [
-    "She guessed what he was leading up to.",
-    "He led up to the news slowly."
-   ]
-  ]
- ],
- "lean on": [
-  [
-   "verb",
-   "depend on someone for support, especially in difficult times",
-   "typical: lean on sb (for sth). NOT for: being independent.",
-   [
-    "The couple lean on each other for support.",
-    "You can lean on me."
-   ]
-  ],
-  [
-   "verb",
-   "try to influence someone by threatening them (informal)",
-   "typical: lean on sb. NOT for: asking nicely.",
-   [
-    "He won't pay unless you lean on him.",
-    "They leaned on the witness."
-   ]
-  ],
-  [
-   "verb",
-   "rest your weight against something",
-   "typical: lean on a wall/table. NOT for: standing straight.",
-   [
-    "He leaned on the counter.",
-    "She leaned on the gate."
-   ]
-  ]
- ],
- "leave": [
-  [
-   "verb",
-   "go away from a place or person",
-   "typical: leave + place, leave for + place, leave at + time. NOT for: stopping a job (see next sense).",
-   [
-    "We leave at eight.",
-    "She left the office early."
-   ]
-  ],
-  [
-   "verb",
-   "let something stay where it is, often by accident",
-   "typical: leave + object + place/adjective. NOT for: departure.",
-   [
-    "I left my keys at home.",
-    "Leave the door open."
-   ]
-  ],
-  [
-   "verb",
-   "stop working at a job or going to a school or organization",
-   "typical: leave school/work/a job/the army. NOT for: temporary absence.",
-   [
-    "He left school at sixteen.",
-    "She left her job last month."
-   ]
-  ],
-  [
-   "verb",
-   "end a relationship and go away from your partner",
-   "typical: leave + husband/wife/partner. NOT for: leaving a place.",
-   [
-    "Martha left her husband last year.",
-    "He never believed she would leave him."
-   ]
-  ],
-  [
-   "verb",
-   "remain after the rest has been used or taken",
-   "typical: be left, there is/are + noun + left. NOT for: departure.",
-   [
-    "There are only two days left.",
-    "Is there any milk left?"
-   ]
-  ],
-  [
-   "verb",
-   "deliver or put a message for someone",
-   "typical: leave a message/note for sb. NOT for: departure.",
-   [
-    "Can I leave a message for Anna?",
-    "She left a note on the table."
-   ]
-  ],
-  [
-   "verb",
-   "let someone else decide or deal with something",
-   "typical: leave it to sb, leave sb to do sth. NOT for: departure.",
-   [
-    "I'll leave it to you to decide.",
-    "Leave the cooking to me."
-   ]
-  ],
-  [
-   "verb",
-   "delay doing something until later",
-   "typical: leave sth until later/tomorrow/the last minute. NOT for: forgetting objects.",
-   [
-    "Don't leave your homework until the last minute.",
-    "Let's leave this for today."
-   ]
-  ]
- ],
- "leave behind": [
-  [
-   "verb",
-   "not take someone or something with you",
-   "typical: leave sb/sth behind. NOT for: taking with you.",
-   [
-    "I think I left my wallet behind.",
-    "He left the children behind with their mother."
-   ]
-  ],
-  [
-   "verb",
-   "progress faster than other people or countries",
-   "typical: be/get left behind. NOT for: keeping up.",
-   [
-    "A child with poor eyesight may be left behind.",
-    "Poor countries are left behind."
-   ]
-  ],
-  [
-   "verb",
-   "go faster than someone and go ahead of them",
-   "typical: leave sb behind. NOT for: staying with.",
-   [
-    "She ran faster and left the others behind.",
-    "The leaders left the rest behind."
-   ]
-  ],
-  [
-   "verb",
-   "have something remain after you die or go (a trace)",
-   "typical: leave sth behind. NOT for: taking everything.",
-   [
-    "The storm left behind a lot of damage.",
-    "He left behind a wife and two kids."
-   ]
-  ],
-  [
-   "verb",
-   "permanently stop being involved with a person, place or situation",
-   "typical: leave sth behind (you). NOT for: returning.",
-   [
-    "It's time to leave the past behind.",
-    "She left her old life behind."
-   ]
-  ]
- ],
- "leave off": [
-  [
-   "verb",
-   "stop doing something",
-   "typical: leave off (doing sth), pick up where you left off. NOT for: starting.",
-   [
-    "Barry took up the story where Justine left off.",
-    "Will you leave off nagging?"
-   ]
-  ],
-  [
-   "verb",
-   "not include something in a list or document",
-   "typical: leave sb/sth off (sth). NOT for: adding.",
-   [
-    "Why was her name left off the list?",
-    "Don't leave off the date."
-   ]
-  ]
- ],
- "leave out": [
-  [
-   "verb",
-   "not include someone or something",
-   "typical: leave sb/sth out (of sth). NOT for: including.",
-   [
-    "She was careful not to leave anything out.",
-    "Kidd has been left out of the team."
-   ]
-  ],
-  [
-   "verb",
-   "feel not accepted or welcome (be left out)",
-   "typical: be/feel left out. NOT for: being included.",
-   [
-    "New fathers often feel left out.",
-    "She felt left out at school."
-   ]
-  ],
-  [
-   "verb",
-   "used to tell someone to stop lying or pretending (BrE spoken)",
-   "typical: Leave it out!. NOT for: believing.",
-   [
-    "Oh, leave it out! I don't believe you.",
-    "Leave it out, mate."
-   ]
-  ]
- ],
- "lest": [
-  [
-   "preventing something bad",
-   "means in order to prevent something bad from happening",
-   "typical: formal or literary, lest + should / base verb. NOT for: everyday purposes (use 'so that').",
-   [
-    "He spoke quietly lest anyone should hear.",
-    "She hurried lest she miss the train.",
-    "Check the figures twice, lest we make a mistake."
-   ]
-  ]
- ],
- "let down": [
-  [
-   "verb",
-   "disappoint someone by not doing what they trust you to do",
-   "typical: let sb down, let the side down. NOT for: keeping a promise.",
-   [
-    "She had been let down badly in the past.",
-    "I felt I had let my fans down."
-   ]
-  ],
-  [
-   "verb",
-   "make something less successful or effective",
-   "typical: let sth down. NOT for: improving.",
-   [
-    "His judgement rarely lets him down.",
-    "Poor lighting lets the room down."
-   ]
-  ],
-  [
-   "verb",
-   "lower someone or something to a lower position",
-   "typical: let sb/sth down (from sth). NOT for: lifting.",
-   [
-    "They let the rope down.",
-    "He let the child down gently."
-   ]
-  ],
-  [
-   "verb",
-   "release air from a tyre",
-   "typical: let a tyre down. NOT for: pumping up.",
-   [
-    "Someone let my tyres down.",
-    "He let the air down."
-   ]
-  ],
-  [
-   "verb",
-   "make a piece of clothing longer by unfastening the hem",
-   "typical: let a hem down. NOT for: shortening.",
-   [
-    "She let the hem down.",
-    "The skirt can be let down."
-   ]
-  ],
-  [
-   "verb",
-   "relax and enjoy yourself (informal)",
-   "typical: let your hair down. NOT for: staying formal.",
-   [
-    "Everyone let their hair down at the party.",
-    "It's good to let your hair down sometimes."
-   ]
-  ]
- ],
- "let go": [
-  [
-   "verb",
-   "stop holding something or someone",
-   "typical: let go (of sb/sth). NOT for: grabbing.",
-   [
-    "Let go of my arm!",
-    "He let go of the rope."
-   ]
-  ],
-  [
-   "verb",
-   "stop having a feeling or an idea",
-   "typical: let go (of sth). NOT for: clinging.",
-   [
-    "You have to let go of the past.",
-    "She can't let go of her anger."
-   ]
-  ],
-  [
-   "verb",
-   "allow someone to leave, or stop employing them",
-   "typical: let sb go. NOT for: keeping.",
-   [
-    "The police let him go.",
-    "The firm let fifty people go."
-   ]
-  ]
- ],
- "let in": [
-  [
-   "verb",
-   "allow someone or something to enter",
-   "typical: let sb/sth in. NOT for: keeping out.",
-   [
-    "Let the cat in.",
-    "The curtains don't let any light in."
-   ]
-  ],
-  [
-   "verb",
-   "tell someone something secret (let sb in on sth)",
-   "typical: let sb in on a secret. NOT for: hiding.",
-   [
-    "Would someone let me in on the joke?",
-    "He let us in on the secret."
-   ]
-  ]
- ],
- "let off": [
-  [
-   "verb",
-   "make a bomb or firework explode",
-   "typical: let off a bomb/fireworks. NOT for: defusing.",
-   [
-    "Terrorists let off a bomb in the city centre.",
-    "Boys let off fireworks."
-   ]
-  ],
-  [
-   "verb",
-   "not punish someone, or give them a small punishment",
-   "typical: let sb off (with sth). NOT for: punishing.",
-   [
-    "The judge let him off with a fine.",
-    "She was let off with a warning."
-   ]
-  ],
-  [
-   "verb",
-   "allow someone to leave a bus or vehicle",
-   "typical: let sb off. NOT for: taking on.",
-   [
-    "The driver let us off at the corner.",
-    "Please let me off here."
-   ]
-  ],
-  [
-   "verb",
-   "tell someone they do not have to do something",
-   "typical: let sb off (doing sth). NOT for: forcing.",
-   [
-    "The teacher let us off homework.",
-    "He let her off the dishes."
-   ]
-  ]
- ],
- "let on": [
-  [
-   "verb",
-   "tell someone a secret, or show that you know something (informal)",
-   "typical: let on (that) ..., don't let on. NOT for: keeping quiet.",
-   [
-    "Don't let on that I told you.",
-    "He never let on how he found out."
-   ]
-  ]
- ],
- "let out": [
-  [
-   "verb",
-   "suddenly make a loud sound",
-   "typical: let out a scream/cry/roar. NOT for: staying silent.",
-   [
-    "He let out a cry of disbelief.",
-    "She let out a loud laugh."
-   ]
-  ],
-  [
-   "verb",
-   "make a piece of clothing wider or looser",
-   "typical: let sth out. NOT for: taking in.",
-   [
-    "I had to let my trousers out.",
-    "She let the dress out."
-   ]
-  ],
-  [
-   "verb",
-   "let someone or something leave a place",
-   "typical: let sb/sth out. NOT for: keeping in.",
-   [
-    "Let the dog out.",
-    "They let the prisoners out."
-   ]
-  ],
-  [
-   "verb",
-   "allow people to leave school, work or a show (AmE)",
-   "typical: school lets out. NOT for: starting.",
-   [
-    "School lets out at three.",
-    "The theatre let out late."
-   ]
-  ],
-  [
-   "verb",
-   "allow people to know a secret",
-   "typical: let sth out. NOT for: hiding.",
-   [
-    "Who let the news out?",
-    "She let out the truth."
-   ]
-  ],
-  [
-   "verb",
-   "charge someone money for the use of a room or building (BrE)",
-   "typical: let sth out (to sb). NOT for: renting from someone.",
-   [
-    "We're letting out our son's old room to a student.",
-    "The house is let out to tourists."
-   ]
-  ]
- ],
- "level with": [
-  [
-   "verb",
-   "speak honestly to someone after hiding unpleasant facts (informal)",
-   "typical: level with sb. NOT for: lying.",
-   [
-    "She decided to level with him.",
-    "I'll level with you: it's bad."
-   ]
-  ]
- ],
- "lie around": [
-  [
-   "verb",
-   "be left in an untidy place (things)",
-   "typical: things lie around, leave sth lying around. NOT for: being tidy.",
-   [
-    "Don't leave your shoes lying around.",
-    "Papers lay around the room."
-   ]
-  ],
-  [
-   "verb",
-   "spend time lying down and doing nothing",
-   "typical: lie around (all day). NOT for: working.",
-   [
-    "I felt lazy just lying around.",
-    "We lay around on the beach."
-   ]
-  ]
- ],
- "lie down": [
-  [
-   "verb",
-   "put your body flat on a bed or the floor",
-   "typical: lie down (on sth). NOT for: standing up.",
-   [
-    "Just lie down on the bed.",
-    "I need to lie down."
-   ]
-  ],
-  [
-   "verb",
-   "accept bad treatment without complaining",
-   "typical: take sth lying down. NOT for: fighting back.",
-   [
-    "I'm not going to take this lying down.",
-    "She won't take it lying down."
-   ]
-  ]
- ],
- "lie in": [
-  [
-   "verb",
-   "stay in bed in the morning longer than usual (BrE)",
-   "typical: have a lie-in, lie in on Sunday. NOT for: getting up early.",
-   [
-    "I like to lie in on Sundays.",
-    "We lay in until ten."
-   ]
-  ]
- ],
- "light up": [
-  [
-   "verb",
-   "give light to a place, or shine light on something",
-   "typical: light sth up, be lit up. NOT for: darkening.",
-   [
-    "The flames lit up the sky.",
-    "The fountain is lit up at night."
-   ]
-  ],
-  [
-   "verb",
-   "become bright with light or colour",
-   "typical: light up. NOT for: going dark.",
-   [
-    "At night the harbour lights up.",
-    "The screen lit up."
-   ]
-  ],
-  [
-   "verb",
-   "show pleasure or excitement (a face or eyes)",
-   "typical: sb's face lights up. NOT for: looking sad.",
-   [
-    "His eyes lit up with laughter.",
-    "Her face lit up when she saw him."
-   ]
-  ],
-  [
-   "verb",
-   "start smoking a cigarette (informal)",
-   "typical: light up (a cigarette). NOT for: giving up smoking.",
-   [
-    "He lit up a cigarette.",
-    "Outside, the smokers lit up."
-   ]
-  ]
- ],
- "lighten up": [
-  [
-   "verb",
-   "become less serious or worried (informal)",
-   "typical: lighten up!. NOT for: worrying.",
-   [
-    "Lighten up; it's only a joke.",
-    "He needs to lighten up."
-   ]
-  ],
-  [
-   "verb",
-   "become brighter, or make something brighter",
-   "typical: lighten sth up. NOT for: darkening.",
-   [
-    "Flowers lighten up the room.",
-    "The sky lightened up."
-   ]
-  ]
- ],
- "like": [
-  [
-   "verb",
-   "enjoy something or think it is nice or good",
-   "typical: like + noun/-ing: like music, like swimming. NOT for: wanting (see would like).",
-   [
-    "I like hot tea in the morning.",
-    "Do you like your new job?"
-   ]
-  ],
-  [
-   "verb",
-   "think a person is nice or have a friendly feeling towards them",
-   "typical: like + person. NOT for: romantic love.",
-   [
-    "I really like your sister.",
-    "He doesn't like his boss."
-   ]
-  ],
-  [
-   "verb",
-   "do something regularly or by preference",
-   "typical: like to + verb. NOT for: a single wish.",
-   [
-    "I like to get up early.",
-    "She likes to read before bed."
-   ]
-  ],
-  [
-   "verb",
-   "(would like) want something, or politely offer or ask",
-   "typical: would like + noun/to + verb. NOT for: general enjoyment.",
-   [
-    "I would like a coffee, please.",
-    "Would you like to come with us?"
-   ]
-  ],
-  [
-   "preposition",
-   "similar to, or in the same way as",
-   "typical: look/sound/taste/feel like + noun. NOT for: enjoyment.",
-   [
-    "He looks like his father.",
-    "It tastes like chicken."
-   ]
-  ],
-  [
-   "preposition",
-   "for example, such as",
-   "typical: noun + like + examples. NOT for: comparison of two things.",
-   [
-    "I enjoy sports like tennis and swimming.",
-    "She loves fruit like mangoes and pineapples."
-   ]
-  ]
- ],
- "likewise": [
-  [
-   "same as this",
-   "says that the same is true for something else or that you do the same",
-   "typical: formal, or as a short reply: 'Likewise.' NOT for: contrast.",
-   [
-    "He voted for change; his sister did likewise.",
-    "Nice to meet you. – Likewise.",
-    "Treat others well, and they will likewise treat you well."
-   ]
-  ]
- ],
- "line up": [
-  [
-   "verb",
-   "stand in a row or line, or make people do so",
-   "typical: line up, line sb up. NOT for: scattering.",
-   [
-    "Line up, everybody!",
-    "He lined us up in the corridor."
-   ]
-  ],
-  [
-   "verb",
-   "arrange things in a row",
-   "typical: line sth up. NOT for: jumbling.",
-   [
-    "She lined the bottles up on the shelf.",
-    "He lined up the cups."
-   ]
-  ],
-  [
-   "verb",
-   "move something into the correct position",
-   "typical: line sth up (with sth). NOT for: misaligning.",
-   [
-    "The windows should line up with the door.",
-    "Line the holes up."
-   ]
-  ],
-  [
-   "verb",
-   "arrange an event or arrange for someone to be available",
-   "typical: line sth/sb up. NOT for: cancelling.",
-   [
-    "I've lined up an interview for you.",
-    "We lined up a speaker."
-   ]
-  ]
- ],
- "linger on": [
-  [
-   "verb",
-   "continue to exist or be noticeable for longer than is usual or desirable",
-   "typical: a taste/problem/tax lingers on. NOT for: disappearing quickly.",
-   [
-    "The taste lingered on in my mouth.",
-    "The tax will linger on until April."
-   ]
-  ],
-  [
-   "verb",
-   "stay somewhere a little longer because you do not want to leave",
-   "typical: linger on (over sth). NOT for: hurrying away.",
-   [
-    "They lingered over coffee and missed the last bus.",
-    "I could happily have lingered on at the lake."
-   ]
-  ],
-  [
-   "verb",
-   "continue looking at or dealing with something for longer than is usual or desirable",
-   "typical: linger on/over sth. NOT for: passing quickly.",
-   [
-    "Mike let his eyes linger on her face.",
-    "There's no need to linger over this stage."
-   ]
-  ]
- ],
- "listen to": [
-  [
-   "verb",
-   "pay attention to a sound or a person speaking",
-   "typical: listen to sb/sth. NOT for: ignoring.",
-   [
-    "Listen to me carefully.",
-    "I listen to music every day."
-   ]
-  ],
-  [
-   "verb",
-   "follow someone's advice or take it seriously",
-   "typical: listen to sb/advice. NOT for: ignoring.",
-   [
-    "She never listens to her parents.",
-    "You should listen to your doctor."
-   ]
-  ]
- ],
- "live on": [
-  [
-   "verb",
-   "continue to exist",
-   "typical: live on. NOT for: dying.",
-   [
-    "Alice's memory will live on.",
-    "His music lives on."
-   ]
-  ],
-  [
-   "verb",
-   "have a particular amount of money to live",
-   "typical: live on + amount/benefits. NOT for: being rich.",
-   [
-    "How do they live on £55 a week?",
-    "Many families live on benefits."
-   ]
-  ],
-  [
-   "verb",
-   "eat a lot of a particular food",
-   "typical: live on sth. NOT for: avoiding it.",
-   [
-    "They live on bread and potatoes.",
-    "He lives on fish."
-   ]
-  ]
- ],
- "live through": [
-  [
-   "verb",
-   "experience difficult or dangerous conditions",
-   "typical: live through a war/a crisis. NOT for: avoiding.",
-   [
-    "The generation that lived through the war.",
-    "It was hard to describe what she had lived through."
-   ]
-  ]
- ],
- "live up to": [
-  [
-   "verb",
-   "do as well as expected, or do what you promised",
-   "typical: live up to expectations/a promise/a reputation. NOT for: disappointing.",
-   [
-    "The film lived up to my expectations.",
-    "He failed to live up to his promise."
-   ]
-  ]
- ],
- "lock in": [
-  [
-   "verb",
-   "prevent someone from leaving a room by locking the door",
-   "typical: lock sb in, lock yourself in. NOT for: letting out.",
-   [
-    "She locked herself in.",
-    "They locked the director in his office."
-   ]
-  ],
-  [
-   "verb",
-   "make something so that it cannot change (a price or agreement)",
-   "typical: lock sth in. NOT for: changing.",
-   [
-    "Sell now to lock in some of the gains.",
-    "Lock in a low interest rate."
-   ]
-  ],
-  [
-   "verb",
-   "keep taste or liquid inside something",
-   "typical: lock sth in. NOT for: losing.",
-   [
-    "The method locks in the flavour.",
-    "The film locks in moisture."
-   ]
-  ]
- ],
- "lock out": [
-  [
-   "verb",
-   "keep someone out of a place by locking the door",
-   "typical: lock sb out, lock yourself out (of sth). NOT for: letting in.",
-   [
-    "I locked myself out of the house!",
-    "She locked him out."
-   ]
-  ],
-  [
-   "verb",
-   "not allow workers to go to work during a dispute (employers)",
-   "typical: lock workers out. NOT for: hiring.",
-   [
-    "The management locked the workers out.",
-    "Employers locked out 5,000 staff."
-   ]
-  ]
- ],
- "lock up": [
-  [
-   "verb",
-   "make a building safe by locking the doors, especially at night",
-   "typical: lock up (the shop/the warehouse). NOT for: opening.",
-   [
-    "I'll leave you to lock up.",
-    "Don't forget to lock up the warehouse."
-   ]
-  ],
-  [
-   "verb",
-   "put something in a safe place and lock it",
-   "typical: lock sth up. NOT for: leaving out.",
-   [
-    "She locked the jewels up in a safe.",
-    "Lock up your valuables."
-   ]
-  ],
-  [
-   "verb",
-   "put someone in prison",
-   "typical: lock sb up, be locked up. NOT for: freeing.",
-   [
-    "Rapists should be locked up.",
-    "He was locked up for ten years."
-   ]
-  ],
-  [
-   "verb",
-   "have money tied up so you cannot use it (be locked up)",
-   "typical: be locked up (in sth). NOT for: spending.",
-   [
-    "Their savings are locked up in property.",
-    "Most of the money is locked up."
-   ]
-  ]
- ],
- "log in": [
-  [
-   "verb",
-   "do what is necessary to start using a computer system",
-   "typical: log in (to sth), log in with a password. NOT for: logging out.",
-   [
-    "You need to log in to your account.",
-    "Log in with your username."
-   ]
-  ]
- ],
- "log on": [
-  [
-   "verb",
-   "do what is necessary to start using a computer system",
-   "typical: log on (to sth). NOT for: logging off.",
-   [
-    "You need to log on to your home page.",
-    "She logged on to the network."
-   ]
-  ]
- ],
- "log out": [
-  [
-   "verb",
-   "stop using a computer system by giving it an instruction",
-   "typical: log out (of sth). NOT for: logging in.",
-   [
-    "Remember to log out when you finish.",
-    "He logged out of his email."
-   ]
-  ]
- ],
- "look": [
-  [
-   "verb",
-   "direct your eyes towards something to see it",
-   "typical: look at/out of/up/down. NOT for: seeming.",
-   [
-    "Look at this picture.",
-    "He looked out of the window."
-   ]
-  ],
-  [
-   "verb",
-   "seem or appear",
-   "typical: look + adjective, look like + noun. NOT for: using your eyes on purpose.",
-   [
-    "You look tired.",
-    "The house looks old."
-   ]
-  ],
-  [
-   "verb",
-   "try to find something",
-   "typical: look for + thing. NOT for: just seeing.",
-   [
-    "I'm looking for my keys.",
-    "She is looking for a new flat."
-   ]
-  ],
-  [
-   "verb",
-   "consider or examine something carefully",
-   "typical: look at the problem/situation/idea. NOT for: physical looking.",
-   [
-    "We need to look at all the options.",
-    "Let's look at the budget again."
-   ]
-  ],
-  [
-   "noun",
-   "an act of looking at something",
-   "typical: have/take a look (at sth). NOT for: appearance.",
-   [
-    "Take a look at this photo.",
-    "Can I have a quick look at your notes?"
-   ]
-  ],
-  [
-   "noun",
-   "(looks) the way someone or something appears",
-   "typical: good looks, by the looks of it. NOT for: an act of looking.",
-   [
-    "He has his father's good looks.",
-    "By the looks of it, it will rain."
-   ]
-  ]
- ],
- "look after": [
-  [
-   "verb",
-   "take care of someone by helping them or keeping them safe",
-   "typical: look after sb/sth (BrE). NOT for: neglecting.",
-   [
-    "I'll look after the kids tomorrow.",
-    "The horse had been well looked after."
-   ]
-  ],
-  [
-   "verb",
-   "be responsible for dealing with something",
-   "typical: look after the business/the accounts. NOT for: leaving it to others.",
-   [
-    "I'm leaving you to look after the business.",
-    "She looks after all the bookings."
-   ]
-  ],
-  [
-   "verb",
-   "used when saying goodbye to someone in a friendly way (spoken, BrE)",
-   "typical: look after yourself. NOT for: saying hello.",
-   [
-    "Bye, then. Look after yourself!",
-    "Look after yourself, won't you?"
-   ]
-  ],
-  [
-   "verb",
-   "be able to take care of yourself without help",
-   "typical: can look after yourself. NOT for: needing help.",
-   [
-    "Don't worry about me; I can look after myself.",
-    "She's old enough to look after herself."
-   ]
-  ]
- ],
- "look ahead": [
-  [
-   "verb",
-   "think about and plan for what might happen in the future",
-   "typical: look ahead (to sth). NOT for: looking back.",
-   [
-    "Looking ahead, we must expect big changes.",
-    "We need to look ahead."
-   ]
-  ],
-  [
-   "verb",
-   "look in front of you",
-   "typical: look ahead (of you). NOT for: looking behind.",
-   [
-    "He looked ahead and saw a bridge.",
-    "Look ahead and keep driving."
-   ]
-  ]
- ],
- "look around": [
-  [
-   "verb",
-   "try to find something by searching",
-   "typical: look around for a job/a flat. NOT for: looking at things in a place.",
-   [
-    "Jason is looking around for a new job.",
-    "We're looking around for a cheaper flat."
-   ]
-  ],
-  [
-   "verb",
-   "look at what is in a place, especially while walking",
-   "typical: look around a castle/the shops/the town. NOT for: searching for something.",
-   [
-    "Do we have to pay to look around the castle?",
-    "Let's look around the shops."
-   ]
-  ]
- ],
- "look at": [
-  [
-   "verb",
-   "turn your eyes towards someone or something so you can see them",
-   "typical: look at sb/sth. NOT for: looking away.",
-   [
-    "The twins looked at each other and smiled.",
-    "Look at that rainbow!"
-   ]
-  ],
-  [
-   "verb",
-   "read or examine something quickly to form an opinion",
-   "typical: look at a report/a document. NOT for: reading carefully.",
-   [
-    "I haven't had time to look at the report yet.",
-    "Can you look at my essay?"
-   ]
-  ],
-  [
-   "verb",
-   "examine something to find out what is wrong",
-   "typical: look at a problem/injury. NOT for: ignoring.",
-   [
-    "You should get the doctor to look at that cut.",
-    "Can you look at my computer?"
-   ]
-  ],
-  [
-   "verb",
-   "consider a subject or problem carefully",
-   "typical: look at the evidence/the facts. NOT for: ignoring.",
-   [
-    "We need to look at all the options.",
-    "Let's look at the facts."
-   ]
-  ]
- ],
- "look away": [
-  [
-   "verb",
-   "turn your eyes in another direction so you do not see something",
-   "typical: look away (from sb/sth). NOT for: staring.",
-   [
-    "He looked away, embarrassed.",
-    "She couldn't look away from the screen."
-   ]
-  ]
- ],
- "look back": [
-  [
-   "verb",
-   "think about things that happened in the past",
-   "typical: look back on sth, look back at sth. NOT for: looking behind you.",
-   [
-    "I often look back on my school years with pleasure.",
-    "Looking back, I should have said no."
-   ]
-  ],
-  [
-   "verb",
-   "turn your head to see what is behind you",
-   "typical: look back over your shoulder. NOT for: remembering the past.",
-   [
-    "She looked back and saw the dog running after her.",
-    "Don't look back, just keep walking."
-   ]
-  ],
-  [
-   "verb",
-   "become more and more successful after a particular success",
-   "typical: never look back. NOT for: failing.",
-   [
-    "After winning the scholarship he never looked back.",
-    "Once the band got a hit, they never looked back."
-   ]
-  ]
- ],
- "look back on": [
-  [
-   "verb",
-   "think about a time in the past",
-   "typical: look back on sth (with pleasure/regret). NOT for: looking forward.",
-   [
-    "I look back on those days with pleasure.",
-    "She looked back on her youth fondly."
-   ]
-  ]
- ],
- "look down on": [
-  [
-   "verb",
-   "think you are better than someone else",
-   "typical: look down on sb/sth. NOT for: admiring.",
-   [
-    "Mr Garcia looks down on anyone without a degree.",
-    "Don't look down on manual workers."
-   ]
-  ]
- ],
- "look for": [
-  [
-   "verb",
-   "try to find someone or something",
-   "typical: look for a job/keys/a flat, look for sb. NOT for: expecting or hoping for a quality.",
-   [
-    "I'm looking for my keys.",
-    "She is looking for a new flat."
-   ]
-  ],
-  [
-   "verb",
-   "want or expect to find a particular quality or result",
-   "typical: look for honesty/experience/a sign of sth. NOT for: searching for a lost object.",
-   [
-    "We look for experience in every candidate.",
-    "Employers look for good communication skills."
-   ]
-  ],
-  [
-   "verb",
-   "behave in a way that is likely to cause problems or violence (informal)",
-   "typical: be looking for trouble. NOT for: staying out of trouble.",
-   [
-    "That group looks like they're looking for trouble.",
-    "Don't go in there looking for trouble."
-   ]
-  ]
- ],
- "look forward to": [
-  [
-   "verb",
-   "be excited and pleased about something that is going to happen",
-   "typical: look forward to sth/doing sth. NOT for: dreading.",
-   [
-    "I'm really looking forward to our holiday.",
-    "She is looking forward to meeting you."
-   ]
-  ]
- ],
- "look into": [
-  [
-   "verb",
-   "try to find out the truth about a problem or crime",
-   "typical: look into sth, investigate. NOT for: ignoring.",
-   [
-    "Police are looking into the disappearance.",
-    "I'll look into it."
-   ]
-  ],
-  [
-   "verb",
-   "look inside something",
-   "typical: look into a box/mirror. NOT for: looking outside.",
-   [
-    "He looked into the mirror.",
-    "She looked into his eyes."
-   ]
-  ]
- ],
- "look on": [
-  [
-   "verb",
-   "watch something happening without taking part",
-   "typical: look on (in silence). NOT for: helping.",
-   [
-    "Only one man helped; the rest looked on.",
-    "Crowds looked on in horror."
-   ]
-  ],
-  [
-   "verb",
-   "consider someone or something in a particular way",
-   "typical: look on sb/sth as sth. NOT for: ignoring.",
-   [
-    "I look on him as a good friend.",
-    "Strangers are looked upon with suspicion."
-   ]
-  ]
- ],
- "look out": [
-  [
-   "verb",
-   "used to warn someone of danger",
-   "typical: Look out!, look out for the car. NOT for: searching for something.",
-   [
-    "Look out! There's a car coming!",
-    "Look out, the floor is wet."
-   ]
-  ],
-  [
-   "verb",
-   "look through a window or from a place towards the outside",
-   "typical: look out of/through the window. NOT for: giving a warning.",
-   [
-    "She looked out of the window at the rain.",
-    "We looked out over the sea."
-   ]
-  ],
-  [
-   "verb",
-   "search for something and take it out (BrE)",
-   "typical: look sth out. NOT for: looking for danger.",
-   [
-    "I'll look out some old books for you.",
-    "She looked out her winter clothes."
-   ]
-  ]
- ],
- "look over": [
-  [
-   "verb",
-   "examine something or someone quickly",
-   "typical: look sth/sb over. NOT for: studying.",
-   [
-    "Do you have time to look these samples over?",
-    "She looked the house over."
-   ]
-  ],
-  [
-   "verb",
-   "look at something from above or across it",
-   "typical: look over a wall/shoulder. NOT for: looking under.",
-   [
-    "He looked over the fence.",
-    "She looked over her shoulder."
-   ]
-  ]
- ],
- "look round": [
-  [
-   "verb",
-   "try to find something by searching (BrE variant of look around)",
-   "typical: look round for sth. NOT for: looking at one thing.",
-   [
-    "He is looking round for a new job.",
-    "We looked round for a cheaper flat."
-   ]
-  ],
-  [
-   "verb",
-   "look at what is in a place, especially while walking (BrE)",
-   "typical: look round a house/the shops/a museum. NOT for: searching for something.",
-   [
-    "Let's look round the shops.",
-    "We looked round the museum for an hour."
-   ]
-  ]
- ],
- "look through": [
-  [
-   "verb",
-   "search among papers, drawers or pockets",
-   "typical: look through sth. NOT for: finding at once.",
-   [
-    "I've looked through all my papers.",
-    "He looked through his bag."
-   ]
-  ],
-  [
-   "verb",
-   "read or check something quickly",
-   "typical: look through a report/a book. NOT for: studying.",
-   [
-    "I looked through the report.",
-    "She looked through the file."
-   ]
-  ],
-  [
-   "verb",
-   "not notice someone or pretend not to see them",
-   "typical: look right/straight through sb. NOT for: greeting.",
-   [
-    "Fiona looked straight through me.",
-    "He looked right through her."
-   ]
-  ]
- ],
- "look up": [
-  [
-   "verb",
-   "improve, used about a situation",
-   "typical: things/prospects are looking up. NOT for: searching for information.",
-   [
-    "Now that summer is here, things are looking up.",
-    "Business is finally looking up."
-   ]
-  ],
-  [
-   "verb",
-   "find information in a book, list or on a computer",
-   "typical: look up a word/number/time, look sth up. NOT for: visiting someone.",
-   [
-    "Look the word up in your dictionary.",
-    "I'll look up the train times."
-   ]
-  ],
-  [
-   "verb",
-   "visit someone you know, especially when you are in their area",
-   "typical: look sb up. NOT for: searching for information.",
-   [
-    "Look me up when you come to Atlanta.",
-    "She looked up an old friend while in town."
-   ]
-  ]
- ],
- "look up to": [
-  [
-   "verb",
-   "admire or respect someone",
-   "typical: look up to sb. NOT for: looking down on.",
-   [
-    "I've always looked up to Bill for his courage.",
-    "Children look up to their parents."
-   ]
-  ]
- ],
- "luck out": [
-  [
-   "verb",
-   "be lucky (AmE informal)",
-   "typical: luck out (on sth). NOT for: being unlucky.",
-   [
-    "We really lucked out and got a parking space.",
-    "She lucked out in the draw."
-   ]
-  ]
- ]
 }

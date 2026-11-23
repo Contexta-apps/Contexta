@@ -1,1065 +1,1020 @@
 {
- "face off": [
-  [
-   "verb",
-   "fight, argue or compete with someone (AmE)",
-   "typical: face off against/with sb. NOT for: cooperating.",
-   [
-    "The candidates will face off in a debate.",
-    "The two teams face off on Friday."
-   ]
+  "face off": [
+    [
+      "verb",
+      "fight, argue or compete with someone (AmE)",
+      "typical: face off against/with sb. NOT for: cooperating.",
+      [
+        "The candidates will face off in a debate.",
+        "The two teams face off on Friday."
+      ]
+    ]
+  ],
+  "face up to": [
+    [
+      "verb",
+      "accept and deal with a difficult fact or problem",
+      "typical: face up to the truth/a problem/reality. NOT for: avoiding.",
+      [
+        "You must face up to the fact he's guilty.",
+        "She had to face up to her mistakes."
+      ]
+    ]
+  ],
+  "fade away": [
+    [
+      "verb",
+      "gradually disappear (hopes, feelings, sounds)",
+      "typical: hopes/memories/sounds fade away. NOT for: growing stronger.",
+      [
+        "Hopes of a peace settlement began to fade away.",
+        "The music slowly faded away."
+      ]
+    ],
+    [
+      "verb",
+      "become weaker physically, especially so that you become very ill or die",
+      "typical: sb fades away. NOT for: recovering.",
+      [
+        "The old man faded away in his last months.",
+        "She watched her mother fade away."
+      ]
+    ]
+  ],
+  "fade out": [
+    [
+      "verb",
+      "slowly disappear or become quieter",
+      "typical: a sound/picture fades out. NOT for: growing louder.",
+      [
+        "The song fades out at the end.",
+        "The picture faded out."
+      ]
+    ],
+    [
+      "verb",
+      "make a sound or picture slowly disappear",
+      "typical: fade sth out. NOT for: fading it in.",
+      [
+        "He faded out the music.",
+        "The editor faded out the scene."
+      ]
+    ]
+  ],
+  "fall apart": [
+    [
+      "verb",
+      "stop being effective or successful (a plan, relationship or system)",
+      "typical: plans/a marriage falls apart. NOT for: working well.",
+      [
+        "Their plans fell apart.",
+        "The health service is falling apart."
+      ]
+    ],
+    [
+      "verb",
+      "be in very bad condition",
+      "typical: be falling apart. NOT for: being new.",
+      [
+        "His old bike was falling apart.",
+        "The house is falling apart."
+      ]
+    ],
+    [
+      "verb",
+      "break into pieces",
+      "typical: fall apart in your hands. NOT for: staying whole.",
+      [
+        "The book fell apart in my hands.",
+        "The cake fell apart."
+      ]
+    ],
+    [
+      "verb",
+      "be unable to deal with problems emotionally",
+      "typical: fall apart (after sth). NOT for: coping.",
+      [
+        "She fell apart after the divorce.",
+        "Don't fall apart now."
+      ]
+    ]
+  ],
+  "fall back on": [
+    [
+      "verb",
+      "use something or depend on someone when other things fail",
+      "typical: have sb/sth to fall back on. NOT for: depending first.",
+      [
+        "She has no relatives to fall back on.",
+        "They fell back on the law."
+      ]
+    ]
+  ],
+  "fall behind": [
+    [
+      "verb",
+      "go more slowly than others so that they get ahead",
+      "typical: fall behind (sb). NOT for: catching up.",
+      [
+        "She hurt her ankle and fell behind the others.",
+        "He fell behind in the race."
+      ]
+    ],
+    [
+      "verb",
+      "become less successful than others",
+      "typical: fall behind (sb/sth) in sth. NOT for: making progress.",
+      [
+        "Jenny fell behind educationally.",
+        "Companies that don't change fall behind."
+      ]
+    ],
+    [
+      "verb",
+      "not do something by the time you should",
+      "typical: fall behind with payments/work. NOT for: paying on time.",
+      [
+        "He fell behind with the rent.",
+        "We've fallen behind schedule."
+      ]
+    ]
+  ],
+  "fall down": [
+    [
+      "verb",
+      "fall to the ground from standing",
+      "typical: fall down the stairs/in the street. NOT for: stay standing.",
+      [
+        "The child fell down and cried.",
+        "He fell down the stairs."
+      ]
+    ],
+    [
+      "verb",
+      "be in very bad condition (a building)",
+      "typical: be falling down. NOT for: being repaired.",
+      [
+        "The bridge is falling down.",
+        "The old barn is falling down."
+      ]
+    ],
+    [
+      "verb",
+      "fail because of a particular reason or in a particular way",
+      "typical: fall down on sth, that's where it falls down. NOT for: succeeding.",
+      [
+        "That's where the argument falls down.",
+        "He is falling down on the job."
+      ]
+    ]
+  ],
+  "fall for": [
+    [
+      "verb",
+      "be tricked into believing something false (informal)",
+      "typical: fall for a trick/story/lie. NOT for: seeing through.",
+      [
+        "He's too smart to fall for that trick.",
+        "I fell for his story."
+      ]
+    ],
+    [
+      "verb",
+      "start to love someone",
+      "typical: fall for sb. NOT for: falling out of love.",
+      [
+        "She fell for Lucy at the fairground.",
+        "He fell for her at once."
+      ]
+    ],
+    [
+      "verb",
+      "like a place or thing immediately",
+      "typical: fall for sth. NOT for: disliking.",
+      [
+        "I fell for the town at once.",
+        "They fell for the house."
+      ]
+    ]
+  ],
+  "fall in": [
+    [
+      "verb",
+      "fall inwards (a roof or ceiling)",
+      "typical: the roof falls in. NOT for: standing.",
+      [
+        "The roof fell in.",
+        "The ceiling fell in during the storm."
+      ]
+    ],
+    [
+      "verb",
+      "start walking in a line behind someone",
+      "typical: fall in (behind sb). NOT for: falling out.",
+      [
+        "His men fell in behind him.",
+        "The soldiers fell in."
+      ]
+    ]
+  ],
+  "fall off": [
+    [
+      "verb",
+      "become separated from the main part",
+      "typical: a handle/button falls off. NOT for: staying attached.",
+      [
+        "The door handle keeps falling off.",
+        "A button fell off her jacket."
+      ]
+    ],
+    [
+      "verb",
+      "decrease in amount, rate or quality",
+      "typical: sales/numbers fall off. NOT for: rising.",
+      [
+        "Audience figures fell off.",
+        "Sales fell off in winter."
+      ]
+    ],
+    [
+      "verb",
+      "fall down from something such as a bike or horse",
+      "typical: fall off a bike/chair/wall. NOT for: getting on.",
+      [
+        "He fell off his bike.",
+        "The child fell off the wall."
+      ]
+    ],
+    [
+      "verb",
+      "be very surprised (spoken)",
+      "typical: nearly/almost fall off your chair. NOT for: being bored.",
+      [
+        "I nearly fell off my chair when I saw my brother on stage.",
+        "She almost fell off her chair at the news."
+      ]
+    ]
+  ],
+  "fall out": [
+    [
+      "verb",
+      "have a quarrel with someone",
+      "typical: fall out with sb (over sth). NOT for: making up.",
+      [
+        "Carrie's always falling out with people.",
+        "They fell out over money."
+      ]
+    ],
+    [
+      "verb",
+      "no longer be attached (a tooth or hair)",
+      "typical: hair/a tooth falls out. NOT for: growing.",
+      [
+        "The drug made her hair fall out.",
+        "His tooth fell out."
+      ]
+    ],
+    [
+      "verb",
+      "stop standing in line and move away (soldiers)",
+      "typical: fall out. NOT for: falling in.",
+      [
+        "The soldiers fell out.",
+        "'Fall out!' shouted the officer."
+      ]
+    ]
+  ],
+  "fall over": [
+    [
+      "verb",
+      "fall onto the ground from an upright position",
+      "typical: fall over, fall over sth. NOT for: staying up.",
+      [
+        "Tommy fell over and cut his knee.",
+        "Her bike fell over."
+      ]
+    ],
+    [
+      "verb",
+      "hit your foot on something and fall (fall over sth)",
+      "typical: fall over the dog/a step. NOT for: walking safely.",
+      [
+        "She fell over the dog.",
+        "He fell over a rope."
+      ]
+    ],
+    [
+      "verb",
+      "be very eager to do something (fall over yourself)",
+      "typical: fall over yourself to do sth. NOT for: ignoring.",
+      [
+        "People fell over themselves to help.",
+        "He fell over himself to please her."
+      ]
+    ]
+  ],
+  "fall through": [
+    [
+      "verb",
+      "not be completed successfully (a plan, sale or agreement)",
+      "typical: a deal/plan falls through. NOT for: going ahead.",
+      [
+        "The deal fell through.",
+        "Our holiday plans fell through."
+      ]
+    ]
+  ],
+  "feel": [
+    [
+      "verb",
+      "experience a physical feeling or emotion",
+      "typical: feel + adjective: tired, hungry, happy, fine, sad. NOT for: touching with hands.",
+      [
+        "I feel tired after the trip.",
+        "Do you still feel hungry?"
+      ]
+    ],
+    [
+      "verb",
+      "give a particular impression when touched or experienced",
+      "typical: thing + feel + adjective/like. NOT for: people's emotions.",
+      [
+        "This fabric feels soft.",
+        "The room felt cold and empty."
+      ]
+    ],
+    [
+      "verb",
+      "have an opinion or belief",
+      "typical: feel that + clause, feel strongly. NOT for: physical sensations.",
+      [
+        "I feel that we should wait.",
+        "Many parents feel strongly about this."
+      ]
+    ],
+    [
+      "verb",
+      "want to do something",
+      "typical: feel like + -ing, feel like + noun. NOT for: emotions in general.",
+      [
+        "I don't feel like going out tonight.",
+        "Do you feel like a coffee?"
+      ]
+    ]
+  ],
+  "feel like": [
+    [
+      "verb",
+      "want to do or have something",
+      "typical: feel like + -ing/noun, I don't feel like it. NOT for: being sure.",
+      [
+        "I don't feel like going out tonight.",
+        "Do you feel like a coffee?"
+      ]
+    ],
+    [
+      "verb",
+      "seem similar to something when touched or experienced",
+      "typical: feel like + noun. NOT for: wanting something.",
+      [
+        "This feels like silk.",
+        "It feels like winter today."
+      ]
+    ]
+  ],
+  "feel up to": [
+    [
+      "verb",
+      "have the strength or energy to do something (usually in questions or negatives)",
+      "typical: feel up to doing sth, don't feel up to it. NOT for: wanting.",
+      [
+        "I just didn't feel up to going.",
+        "Do you feel up to a walk?"
+      ]
+    ]
+  ],
+  "fend off": [
+    [
+      "verb",
+      "defend yourself against someone attacking you",
+      "typical: fend sb off. NOT for: attacking.",
+      [
+        "She fended her attacker off with her arm.",
+        "He fended off the dog."
+      ]
+    ],
+    [
+      "verb",
+      "avoid something difficult (questions, competition or a takeover)",
+      "typical: fend off questions/criticism/a bid. NOT for: welcoming.",
+      [
+        "She uses her secretary to fend off calls.",
+        "The firm fended off a takeover bid."
+      ]
+    ]
+  ],
+  "fight back": [
+    [
+      "verb",
+      "work hard to oppose something, especially when losing",
+      "typical: fight back (against sth). NOT for: giving up.",
+      [
+        "United fought back and scored.",
+        "She fought back against the cancer."
+      ]
+    ],
+    [
+      "verb",
+      "use violence or arguments against someone who attacked you",
+      "typical: fight back. NOT for: surrendering.",
+      [
+        "The rebels are fighting back.",
+        "If he hits you, fight back."
+      ]
+    ],
+    [
+      "verb",
+      "try hard not to show a feeling",
+      "typical: fight back tears/anger. NOT for: showing feelings.",
+      [
+        "She fought back her tears.",
+        "He fought back a smile."
+      ]
+    ]
+  ],
+  "fight off": [
+    [
+      "verb",
+      "defend yourself successfully against an attack",
+      "typical: fight sb/sth off. NOT for: giving in.",
+      [
+        "He fought off the robbers.",
+        "Troops fought off the attack."
+      ]
+    ],
+    [
+      "verb",
+      "successfully resist an illness or a feeling",
+      "typical: fight off a cold/sleep/an infection. NOT for: catching an illness.",
+      [
+        "I'm fighting off a cold.",
+        "She fought off sleep."
+      ]
+    ]
+  ],
+  "figure out": [
+    [
+      "verb",
+      "find the answer to a problem by thinking",
+      "typical: figure sth out, figure out how/what/why. NOT for: being told the answer.",
+      [
+        "Can you figure out how to do it?",
+        "We'll figure something out."
+      ]
+    ],
+    [
+      "verb",
+      "understand why someone behaves in a certain way",
+      "typical: figure sb out. NOT for: knowing someone.",
+      [
+        "I just can't figure her out.",
+        "I can't figure him out."
+      ]
+    ]
+  ],
+  "file away": [
+    [
+      "verb",
+      "put documents into a file or storage place",
+      "typical: file sth away. NOT for: taking out.",
+      [
+        "She filed the letters away.",
+        "He filed away the receipts."
+      ]
+    ]
+  ],
+  "fill in": [
+    [
+      "verb",
+      "write information on a form or document",
+      "typical: fill in a form/card/name. NOT for: reading it.",
+      [
+        "Fill in your boarding card.",
+        "Please fill in the form."
+      ]
+    ],
+    [
+      "verb",
+      "tell someone about recent events",
+      "typical: fill sb in (on sth). NOT for: hiding things.",
+      [
+        "Fill me in on what's happened.",
+        "I'll fill you in later."
+      ]
+    ],
+    [
+      "verb",
+      "fill a hole or space so it is level",
+      "typical: fill sth in. NOT for: digging.",
+      [
+        "They filled in the hole.",
+        "Fill in the cracks with paste."
+      ]
+    ],
+    [
+      "verb",
+      "do a job for someone for a short time (fill in for sb)",
+      "typical: fill in (for sb). NOT for: a permanent job.",
+      [
+        "I'm filling in for Sam today.",
+        "He filled in while she was away."
+      ]
+    ]
+  ],
+  "fill in for": [
+    [
+      "verb",
+      "do someone's job for a short time while they are away",
+      "typical: fill in for sb. NOT for: replacing permanently.",
+      [
+        "I'm filling in for Sam today.",
+        "She filled in for the teacher."
+      ]
+    ]
+  ],
+  "fill out": [
+    [
+      "verb",
+      "write all the information needed on a form",
+      "typical: fill out a form/an application. NOT for: reading.",
+      [
+        "Please fill out this form.",
+        "He filled out the application."
+      ]
+    ],
+    [
+      "verb",
+      "become slightly fatter (adult or young body)",
+      "typical: fill out, a body fills out. NOT for: losing weight.",
+      [
+        "Eric has filled out around the waist.",
+        "Her body began to fill out."
+      ]
+    ],
+    [
+      "verb",
+      "grow into an adult-looking body (a young person)",
+      "typical: a young person's body fills out. NOT for: staying childlike.",
+      [
+        "At puberty, a girl's body begins to fill out.",
+        "He has started to fill out and look like a man."
+      ]
+    ],
+    [
+      "verb",
+      "add more details to make something complete",
+      "typical: fill sth out. NOT for: cutting things.",
+      [
+        "Fill out the report with some data.",
+        "He filled out his story."
+      ]
+    ]
+  ],
+  "fill up": [
+    [
+      "verb",
+      "become full, or make a container full",
+      "typical: fill up (with sth), fill sth up. NOT for: emptying.",
+      [
+        "Her eyes filled up with tears.",
+        "Shall I fill the car up?"
+      ]
+    ],
+    [
+      "verb",
+      "eat so much that you cannot eat more (informal)",
+      "typical: fill yourself up with/on sth. NOT for: feeling hungry.",
+      [
+        "Don't fill up on cookies.",
+        "He filled up on pie."
+      ]
+    ],
+    [
+      "verb",
+      "make you feel you have eaten a lot (food)",
+      "typical: food fills you up. NOT for: hunger.",
+      [
+        "Bread fills you up fast.",
+        "The soup really filled me up."
+      ]
+    ]
+  ],
+  "finally": [
+    [
+      "last in a series",
+      "introduces the last point or step in a list or order",
+      "typical: finally, + sentence, in talks, instructions and writing. NOT for: the first step (use 'first').",
+      [
+        "First mix the flour, then add milk and, finally, the eggs.",
+        "Finally, I would like to thank everyone for coming.",
+        "Finally, check that all the doors are locked."
+      ]
+    ],
+    [
+      "after a long time",
+      "says that something happens at last after a delay or long wait",
+      "typical: before a verb, with relief or surprise. NOT for: listing points in order.",
+      [
+        "The bus finally arrived after forty minutes.",
+        "She finally finished her thesis.",
+        "We finally found a flat we could afford."
+      ]
+    ]
+  ],
+  "find out": [
+    [
+      "verb",
+      "get information by looking for it or by chance",
+      "typical: find out what/how/if/that, find out about sth. NOT for: looking for a lost object.",
+      [
+        "Did you find out how much it costs?",
+        "I need to find out more about the course."
+      ]
+    ],
+    [
+      "verb",
+      "discover that someone has done something dishonest or illegal",
+      "typical: get found out, find sb out. NOT for: discovering facts.",
+      [
+        "What happens if we get found out?",
+        "He was found out after a week."
+      ]
+    ]
+  ],
+  "find out about": [
+    [
+      "verb",
+      "discover facts about someone or something",
+      "typical: find out about sb/sth. NOT for: knowing already.",
+      [
+        "I need to find out about the course.",
+        "She found out about the plan."
+      ]
+    ]
+  ],
+  "finish off": [
+    [
+      "verb",
+      "complete the last part of something",
+      "typical: finish sth off. NOT for: starting.",
+      [
+        "It'll take me two hours to finish this off.",
+        "She finished off the report."
+      ]
+    ],
+    [
+      "verb",
+      "use or eat all of something",
+      "typical: finish sth off (the cake). NOT for: leaving some.",
+      [
+        "Who finished off the cake?",
+        "He finished off the bottle."
+      ]
+    ],
+    [
+      "verb",
+      "complete an event or performance with a final action",
+      "typical: finish off with sth. NOT for: beginning.",
+      [
+        "We'll finish off with a new song.",
+        "They finished off with a toast."
+      ]
+    ],
+    [
+      "verb",
+      "kill or defeat someone completely (informal)",
+      "typical: finish sb off. NOT for: helping.",
+      [
+        "The blow finished him off.",
+        "The last attack finished off the enemy."
+      ]
+    ]
+  ],
+  "finish up": [
+    [
+      "verb",
+      "be in a place or situation in the end (BrE informal)",
+      "typical: finish up in/as/doing sth. NOT for: planned trips.",
+      [
+        "We finished up in Rome.",
+        "He finished up in prison."
+      ]
+    ],
+    [
+      "verb",
+      "eat or use all of something",
+      "typical: finish up your dinner. NOT for: wasting.",
+      [
+        "Finish up your soup.",
+        "Finish up and go to bed."
+      ]
+    ]
+  ],
+  "fire up": [
+    [
+      "verb",
+      "make someone very excited, interested or angry",
+      "typical: be fired up (about sth). NOT for: calming.",
+      [
+        "She got fired up about small things.",
+        "The coach fired up the team."
+      ]
+    ],
+    [
+      "verb",
+      "start an engine or machine",
+      "typical: fire up a computer/engine/grill. NOT for: switching off.",
+      [
+        "He fired up the engine.",
+        "Let's fire up the grill."
+      ]
+    ]
+  ],
+  "first": [
+    [
+      "first point in order",
+      "introduces the first point or step in a series",
+      "typical: first, ... then ... (finally). NOT for: 'at first' meaning in the beginning.",
+      [
+        "First, we need to decide on a date.",
+        "First, open the file and read the instructions.",
+        "First, I want to explain the problem."
+      ]
+    ]
+  ],
+  "fit in": [
+    [
+      "verb",
+      "be accepted by a group",
+      "typical: fit in (with sb), fit in at school. NOT for: standing out.",
+      [
+        "I never really fitted in at school.",
+        "She fits in well with the team."
+      ]
+    ],
+    [
+      "verb",
+      "manage to do or see someone despite being busy",
+      "typical: fit sb/sth in. NOT for: cancelling.",
+      [
+        "The doctor can fit me in at 4:30.",
+        "I wanted to fit in a swim."
+      ]
+    ],
+    [
+      "verb",
+      "be small enough to go into a space",
+      "typical: fit in the car/box. NOT for: not fitting.",
+      [
+        "Will it all fit in the car?",
+        "The bag won't fit in the locker."
+      ]
+    ],
+    [
+      "verb",
+      "match or be suitable for a plan or situation",
+      "typical: fit in with sth. NOT for: contradicting.",
+      [
+        "Does that fit in with your plans?",
+        "The idea fits in well."
+      ]
+    ]
+  ],
+  "fix up": [
+    [
+      "verb",
+      "arrange a meeting or an event",
+      "typical: fix sth up, fix up a time/interview. NOT for: cancelling.",
+      [
+        "I fixed up an interview with him.",
+        "We'll fix up a time."
+      ]
+    ],
+    [
+      "verb",
+      "decorate or repair a room or building",
+      "typical: fix up a room/house. NOT for: wrecking.",
+      [
+        "We fixed up the guest room.",
+        "He fixed up an old house."
+      ]
+    ],
+    [
+      "verb",
+      "provide someone with something they need",
+      "typical: fix sb up with sth. NOT for: taking away.",
+      [
+        "Can you fix me up with a bed for the night?",
+        "She fixed him up with a job."
+      ]
+    ],
+    [
+      "verb",
+      "find a romantic partner for someone",
+      "typical: fix sb up with sb. NOT for: avoiding matchmaking.",
+      [
+        "My friend fixed me up with a date.",
+        "They fixed her up with a colleague."
+      ]
+    ]
+  ],
+  "flare up": [
+    [
+      "verb",
+      "suddenly start burning more strongly, or start again (fire or illness)",
+      "typical: a fire/illness/pain flares up. NOT for: dying down.",
+      [
+        "His back pain flared up again.",
+        "The fire flared up."
+      ]
+    ],
+    [
+      "verb",
+      "suddenly become angry or violent (a situation)",
+      "typical: violence/anger/tempers flare up. NOT for: calming.",
+      [
+        "Tempers flared up at the meeting.",
+        "Fighting flared up again."
+      ]
+    ],
+    [
+      "verb",
+      "suddenly become worse (a disease or injury)",
+      "typical: an illness/injury flares up. NOT for: recovering.",
+      [
+        "His old knee injury flared up again.",
+        "The skin disease flares up in winter."
+      ]
+    ]
+  ],
+  "flip out": [
+    [
+      "verb",
+      "suddenly become very angry or upset, or lose control (informal)",
+      "typical: flip out about/over sth. NOT for: staying calm.",
+      [
+        "She flipped out when she saw the mess.",
+        "He flipped out over the news."
+      ]
+    ]
+  ],
+  "follow up": [
+    [
+      "verb",
+      "find out more about something and take action if necessary",
+      "typical: follow sth up, a follow-up. NOT for: ignoring.",
+      [
+        "Police follow up each report.",
+        "I'll follow up on that."
+      ]
+    ],
+    [
+      "verb",
+      "do something extra to make something more successful",
+      "typical: follow sth up with sth. NOT for: stopping.",
+      [
+        "Follow up your email with a phone call.",
+        "The test was followed up by others."
+      ]
+    ]
+  ],
+  "fool around": [
+    [
+      "verb",
+      "waste time behaving in a silly way",
+      "typical: fool around (in class). NOT for: working.",
+      [
+        "He fooled around in class.",
+        "Stop fooling around!"
+      ]
+    ],
+    [
+      "verb",
+      "behave carelessly or dangerously with something",
+      "typical: fool around with sth. NOT for: being careful.",
+      [
+        "Someone's been fooling around with the wires.",
+        "Don't fool around with fire."
+      ]
+    ],
+    [
+      "verb",
+      "spend time doing something you enjoy that has no particular purpose (AmE)",
+      "typical: just fool around (in the yard). NOT for: working seriously.",
+      [
+        "The boys were out in the yard, just fooling around.",
+        "We fooled around on the beach all day."
+      ]
+    ],
+    [
+      "verb",
+      "have casual romantic or sexual relationships (informal)",
+      "typical: fool around with sb. NOT for: being faithful.",
+      [
+        "He was fooling around with another woman.",
+        "They fooled around at university."
+      ]
+    ]
+  ],
+  "for example": [
+    [
+      "example",
+      "introduces a specific case that shows what you mean",
+      "typical: at the start or in the middle of a sentence, between commas. NOT for: saying the same thing again in other words (use 'in other words').",
+      [
+        "Many countries, for example Spain, have long summers.",
+        "I enjoy sport. For example, I play football every week.",
+        "Some jobs are stressful; nursing, for example."
+      ]
+    ]
+  ],
+  "for instance": [
+    [
+      "example",
+      "introduces a specific case that shows what you mean",
+      "typical: neutral, between commas or at the start of a sentence. NOT for: restating the idea (use 'in other words').",
+      [
+        "Cities have problems. For instance, traffic is a big issue.",
+        "There are other options, for instance renting a car.",
+        "Some words are tricky, for instance 'thorough'."
+      ]
+    ]
+  ],
+  "for that matter": [
+    [
+      "adding a stronger case",
+      "adds a further case that is just as true or even more so",
+      "typical: spoken, often at the end of a sentence. NOT for: starting a new topic.",
+      [
+        "I don't like cities, or any big crowd for that matter.",
+        "He never calls, or writes, for that matter.",
+        "You could ask me, or anyone else here, for that matter."
+      ]
+    ]
+  ],
+  "for the most part": [
+    [
+      "mostly",
+      "means in most cases or mainly, though not completely",
+      "typical: neutral, at the start or end of a sentence. NOT for: a long period of time.",
+      [
+        "For the most part, the staff are friendly.",
+        "The reviews were, for the most part, positive.",
+        "The roads are good for the most part."
+      ]
+    ]
+  ],
+  "freak out": [
+    [
+      "verb",
+      "become very anxious, upset or afraid, or make someone so (informal)",
+      "typical: freak out, freak sb out. NOT for: staying calm.",
+      [
+        "People freaked out at the news.",
+        "The whole idea freaked me out."
+      ]
+    ]
+  ],
+  "freeze up": [
+    [
+      "verb",
+      "become solid with cold so that it stops working (a pipe or engine)",
+      "typical: pipes/an engine freeze up. NOT for: thawing.",
+      [
+        "The pipes froze up.",
+        "The lock froze up."
+      ]
+    ],
+    [
+      "verb",
+      "suddenly be unable to speak or act",
+      "typical: freeze up (on stage). NOT for: speaking easily.",
+      [
+        "I'd just freeze up.",
+        "He froze up in the interview."
+      ]
+    ]
+  ],
+  "furthermore": [
+    [
+      "addition",
+      "adds a further point that supports what you are saying",
+      "typical: formal, written, at the start of a sentence. NOT for: contrasting (use 'however').",
+      [
+        "The plan is cheap. Furthermore, it is easy to carry out.",
+        "The report is late; furthermore, it contains errors.",
+        "The software is free and, furthermore, it works offline."
+      ]
+    ]
   ]
- ],
- "face up to": [
-  [
-   "verb",
-   "accept and deal with a difficult fact or problem",
-   "typical: face up to the truth/a problem/reality. NOT for: avoiding.",
-   [
-    "You must face up to the fact he's guilty.",
-    "She had to face up to her mistakes."
-   ]
-  ]
- ],
- "fade away": [
-  [
-   "verb",
-   "gradually disappear (hopes, feelings, sounds)",
-   "typical: hopes/memories/sounds fade away. NOT for: growing stronger.",
-   [
-    "Hopes of a peace settlement began to fade away.",
-    "The music slowly faded away."
-   ]
-  ],
-  [
-   "verb",
-   "become weaker physically, especially so that you become very ill or die",
-   "typical: sb fades away. NOT for: recovering.",
-   [
-    "The old man faded away in his last months.",
-    "She watched her mother fade away."
-   ]
-  ]
- ],
- "fade out": [
-  [
-   "verb",
-   "slowly disappear or become quieter",
-   "typical: a sound/picture fades out. NOT for: growing louder.",
-   [
-    "The song fades out at the end.",
-    "The picture faded out."
-   ]
-  ],
-  [
-   "verb",
-   "make a sound or picture slowly disappear",
-   "typical: fade sth out. NOT for: fading it in.",
-   [
-    "He faded out the music.",
-    "The editor faded out the scene."
-   ]
-  ]
- ],
- "fall apart": [
-  [
-   "verb",
-   "stop being effective or successful (a plan, relationship or system)",
-   "typical: plans/a marriage falls apart. NOT for: working well.",
-   [
-    "Their plans fell apart.",
-    "The health service is falling apart."
-   ]
-  ],
-  [
-   "verb",
-   "be in very bad condition",
-   "typical: be falling apart. NOT for: being new.",
-   [
-    "His old bike was falling apart.",
-    "The house is falling apart."
-   ]
-  ],
-  [
-   "verb",
-   "break into pieces",
-   "typical: fall apart in your hands. NOT for: staying whole.",
-   [
-    "The book fell apart in my hands.",
-    "The cake fell apart."
-   ]
-  ],
-  [
-   "verb",
-   "be unable to deal with problems emotionally",
-   "typical: fall apart (after sth). NOT for: coping.",
-   [
-    "She fell apart after the divorce.",
-    "Don't fall apart now."
-   ]
-  ],
-  [
-   "verb",
-   "suffer something very bad and serious that changes your life completely",
-   "typical: sb's world/life falls apart. NOT for: things improving.",
-   [
-    "Her whole world fell apart when her husband died.",
-    "His life fell apart after the accident."
-   ]
-  ]
- ],
- "fall back on": [
-  [
-   "verb",
-   "use something or depend on someone when other things fail",
-   "typical: have sb/sth to fall back on. NOT for: depending first.",
-   [
-    "She has no relatives to fall back on.",
-    "They fell back on the law."
-   ]
-  ]
- ],
- "fall behind": [
-  [
-   "verb",
-   "go more slowly than others so that they get ahead",
-   "typical: fall behind (sb). NOT for: catching up.",
-   [
-    "She hurt her ankle and fell behind the others.",
-    "He fell behind in the race."
-   ]
-  ],
-  [
-   "verb",
-   "become less successful than others",
-   "typical: fall behind (sb/sth) in sth. NOT for: making progress.",
-   [
-    "Jenny fell behind educationally.",
-    "Companies that don't change fall behind."
-   ]
-  ],
-  [
-   "verb",
-   "not do something by the time you should",
-   "typical: fall behind with payments/work. NOT for: paying on time.",
-   [
-    "He fell behind with the rent.",
-    "We've fallen behind schedule."
-   ]
-  ]
- ],
- "fall down": [
-  [
-   "verb",
-   "fall to the ground from standing",
-   "typical: fall down the stairs/in the street. NOT for: stay standing.",
-   [
-    "The child fell down and cried.",
-    "He fell down the stairs."
-   ]
-  ],
-  [
-   "verb",
-   "be in very bad condition (a building)",
-   "typical: be falling down. NOT for: being repaired.",
-   [
-    "The bridge is falling down.",
-    "The old barn is falling down."
-   ]
-  ],
-  [
-   "verb",
-   "fail because of a particular reason or in a particular way",
-   "typical: fall down on sth, that's where it falls down. NOT for: succeeding.",
-   [
-    "That's where the argument falls down.",
-    "He is falling down on the job."
-   ]
-  ]
- ],
- "fall for": [
-  [
-   "verb",
-   "be tricked into believing something false (informal)",
-   "typical: fall for a trick/story/lie. NOT for: seeing through.",
-   [
-    "He's too smart to fall for that trick.",
-    "I fell for his story."
-   ]
-  ],
-  [
-   "verb",
-   "start to love someone",
-   "typical: fall for sb. NOT for: falling out of love.",
-   [
-    "She fell for Lucy at the fairground.",
-    "He fell for her at once."
-   ]
-  ],
-  [
-   "verb",
-   "like a place or thing immediately",
-   "typical: fall for sth. NOT for: disliking.",
-   [
-    "I fell for the town at once.",
-    "They fell for the house."
-   ]
-  ]
- ],
- "fall in": [
-  [
-   "verb",
-   "fall inwards (a roof or ceiling)",
-   "typical: the roof falls in. NOT for: standing.",
-   [
-    "The roof fell in.",
-    "The ceiling fell in during the storm."
-   ]
-  ],
-  [
-   "verb",
-   "start walking in a line behind someone",
-   "typical: fall in (behind sb). NOT for: falling out.",
-   [
-    "His men fell in behind him.",
-    "The soldiers fell in."
-   ]
-  ]
- ],
- "fall off": [
-  [
-   "verb",
-   "become separated from the main part",
-   "typical: a handle/button falls off. NOT for: staying attached.",
-   [
-    "The door handle keeps falling off.",
-    "A button fell off her jacket."
-   ]
-  ],
-  [
-   "verb",
-   "decrease in amount, rate or quality",
-   "typical: sales/numbers fall off. NOT for: rising.",
-   [
-    "Audience figures fell off.",
-    "Sales fell off in winter."
-   ]
-  ],
-  [
-   "verb",
-   "fall down from something such as a bike or horse",
-   "typical: fall off a bike/chair/wall. NOT for: getting on.",
-   [
-    "He fell off his bike.",
-    "The child fell off the wall."
-   ]
-  ],
-  [
-   "verb",
-   "be very surprised (spoken)",
-   "typical: nearly/almost fall off your chair. NOT for: being bored.",
-   [
-    "I nearly fell off my chair when I saw my brother on stage.",
-    "She almost fell off her chair at the news."
-   ]
-  ]
- ],
- "fall out": [
-  [
-   "verb",
-   "have a quarrel with someone",
-   "typical: fall out with sb (over sth). NOT for: making up.",
-   [
-    "Carrie's always falling out with people.",
-    "They fell out over money."
-   ]
-  ],
-  [
-   "verb",
-   "no longer be attached (a tooth or hair)",
-   "typical: hair/a tooth falls out. NOT for: growing.",
-   [
-    "The drug made her hair fall out.",
-    "His tooth fell out."
-   ]
-  ],
-  [
-   "verb",
-   "stop standing in line and move away (soldiers)",
-   "typical: fall out. NOT for: falling in.",
-   [
-    "The soldiers fell out.",
-    "'Fall out!' shouted the officer."
-   ]
-  ]
- ],
- "fall over": [
-  [
-   "verb",
-   "fall onto the ground from an upright position",
-   "typical: fall over, fall over sth. NOT for: staying up.",
-   [
-    "Tommy fell over and cut his knee.",
-    "Her bike fell over."
-   ]
-  ],
-  [
-   "verb",
-   "hit your foot on something and fall (fall over sth)",
-   "typical: fall over the dog/a step. NOT for: walking safely.",
-   [
-    "She fell over the dog.",
-    "He fell over a rope."
-   ]
-  ],
-  [
-   "verb",
-   "be very eager to do something (fall over yourself)",
-   "typical: fall over yourself to do sth. NOT for: ignoring.",
-   [
-    "People fell over themselves to help.",
-    "He fell over himself to please her."
-   ]
-  ]
- ],
- "fall through": [
-  [
-   "verb",
-   "not be completed successfully (a plan, sale or agreement)",
-   "typical: a deal/plan falls through. NOT for: going ahead.",
-   [
-    "The deal fell through.",
-    "Our holiday plans fell through."
-   ]
-  ]
- ],
- "feel": [
-  [
-   "verb",
-   "experience a physical feeling or emotion",
-   "typical: feel + adjective: tired, hungry, happy, fine, sad. NOT for: touching with hands.",
-   [
-    "I feel tired after the trip.",
-    "Do you still feel hungry?"
-   ]
-  ],
-  [
-   "verb",
-   "give a particular impression when touched or experienced",
-   "typical: thing + feel + adjective/like. NOT for: people's emotions.",
-   [
-    "This fabric feels soft.",
-    "The room felt cold and empty."
-   ]
-  ],
-  [
-   "verb",
-   "have an opinion or belief",
-   "typical: feel that + clause, feel strongly. NOT for: physical sensations.",
-   [
-    "I feel that we should wait.",
-    "Many parents feel strongly about this."
-   ]
-  ],
-  [
-   "verb",
-   "want to do something",
-   "typical: feel like + -ing, feel like + noun. NOT for: emotions in general.",
-   [
-    "I don't feel like going out tonight.",
-    "Do you feel like a coffee?"
-   ]
-  ],
-  [
-   "verb",
-   "touch something to learn about it",
-   "typical: feel + object (with your hands). NOT for: emotions.",
-   [
-    "Feel this fabric.",
-    "She felt his forehead to see if he was hot."
-   ]
-  ],
-  [
-   "verb",
-   "(spoken) feel free: used to say that someone is welcome to do something",
-   "typical: feel free to + verb. NOT for: emotions.",
-   [
-    "Feel free to ask me anything.",
-    "Please feel free to sit down."
-   ]
-  ]
- ],
- "feel like": [
-  [
-   "verb",
-   "want to do or have something",
-   "typical: feel like + -ing/noun, I don't feel like it. NOT for: being sure.",
-   [
-    "I don't feel like going out tonight.",
-    "Do you feel like a coffee?"
-   ]
-  ],
-  [
-   "verb",
-   "seem similar to something when touched or experienced",
-   "typical: feel like + noun. NOT for: wanting something.",
-   [
-    "This feels like silk.",
-    "It feels like winter today."
-   ]
-  ]
- ],
- "feel up to": [
-  [
-   "verb",
-   "have the strength or energy to do something (usually in questions or negatives)",
-   "typical: feel up to doing sth, don't feel up to it. NOT for: wanting.",
-   [
-    "I just didn't feel up to going.",
-    "Do you feel up to a walk?"
-   ]
-  ]
- ],
- "fend off": [
-  [
-   "verb",
-   "defend yourself against someone attacking you",
-   "typical: fend sb off. NOT for: attacking.",
-   [
-    "She fended her attacker off with her arm.",
-    "He fended off the dog."
-   ]
-  ],
-  [
-   "verb",
-   "avoid something difficult (questions, competition or a takeover)",
-   "typical: fend off questions/criticism/a bid. NOT for: welcoming.",
-   [
-    "She uses her secretary to fend off calls.",
-    "The firm fended off a takeover bid."
-   ]
-  ]
- ],
- "fight back": [
-  [
-   "verb",
-   "work hard to oppose something, especially when losing",
-   "typical: fight back (against sth). NOT for: giving up.",
-   [
-    "United fought back and scored.",
-    "She fought back against the cancer."
-   ]
-  ],
-  [
-   "verb",
-   "use violence or arguments against someone who attacked you",
-   "typical: fight back. NOT for: surrendering.",
-   [
-    "The rebels are fighting back.",
-    "If he hits you, fight back."
-   ]
-  ],
-  [
-   "verb",
-   "try hard not to show a feeling",
-   "typical: fight back tears/anger. NOT for: showing feelings.",
-   [
-    "She fought back her tears.",
-    "He fought back a smile."
-   ]
-  ]
- ],
- "fight off": [
-  [
-   "verb",
-   "defend yourself successfully against an attack",
-   "typical: fight sb/sth off. NOT for: giving in.",
-   [
-    "He fought off the robbers.",
-    "Troops fought off the attack."
-   ]
-  ],
-  [
-   "verb",
-   "successfully resist an illness or a feeling",
-   "typical: fight off a cold/sleep/an infection. NOT for: catching an illness.",
-   [
-    "I'm fighting off a cold.",
-    "She fought off sleep."
-   ]
-  ]
- ],
- "figure out": [
-  [
-   "verb",
-   "find the answer to a problem by thinking",
-   "typical: figure sth out, figure out how/what/why. NOT for: being told the answer.",
-   [
-    "Can you figure out how to do it?",
-    "We'll figure something out."
-   ]
-  ],
-  [
-   "verb",
-   "understand why someone behaves in a certain way",
-   "typical: figure sb out. NOT for: knowing someone.",
-   [
-    "I just can't figure her out.",
-    "I can't figure him out."
-   ]
-  ]
- ],
- "file away": [
-  [
-   "verb",
-   "put documents into a file or storage place",
-   "typical: file sth away. NOT for: taking out.",
-   [
-    "She filed the letters away.",
-    "He filed away the receipts."
-   ]
-  ]
- ],
- "fill in": [
-  [
-   "verb",
-   "write information on a form or document",
-   "typical: fill in a form/card/name. NOT for: reading it.",
-   [
-    "Fill in your boarding card.",
-    "Please fill in the form."
-   ]
-  ],
-  [
-   "verb",
-   "tell someone about recent events",
-   "typical: fill sb in (on sth). NOT for: hiding things.",
-   [
-    "Fill me in on what's happened.",
-    "I'll fill you in later."
-   ]
-  ],
-  [
-   "verb",
-   "fill a hole or space so it is level",
-   "typical: fill sth in. NOT for: digging.",
-   [
-    "They filled in the hole.",
-    "Fill in the cracks with paste."
-   ]
-  ],
-  [
-   "verb",
-   "do a job for someone for a short time (fill in for sb)",
-   "typical: fill in (for sb). NOT for: a permanent job.",
-   [
-    "I'm filling in for Sam today.",
-    "He filled in while she was away."
-   ]
-  ],
-  [
-   "verb",
-   "use time while waiting",
-   "typical: fill in time/an hour. NOT for: wasting a day.",
-   [
-    "I filled in an hour reading.",
-    "We filled in time at a café."
-   ]
-  ],
-  [
-   "verb",
-   "colour or paint the space inside a shape or outline",
-   "typical: fill sth in. NOT for: leaving blank.",
-   [
-    "The children filled in the pictures with crayons.",
-    "She filled in the letters with red ink."
-   ]
-  ]
- ],
- "fill in for": [
-  [
-   "verb",
-   "do someone's job for a short time while they are away",
-   "typical: fill in for sb. NOT for: replacing permanently.",
-   [
-    "I'm filling in for Sam today.",
-    "She filled in for the teacher."
-   ]
-  ]
- ],
- "fill out": [
-  [
-   "verb",
-   "write all the information needed on a form",
-   "typical: fill out a form/an application. NOT for: reading.",
-   [
-    "Please fill out this form.",
-    "He filled out the application."
-   ]
-  ],
-  [
-   "verb",
-   "become slightly fatter (adult or young body)",
-   "typical: fill out, a body fills out. NOT for: losing weight.",
-   [
-    "Eric has filled out around the waist.",
-    "Her body began to fill out."
-   ]
-  ],
-  [
-   "verb",
-   "grow into an adult-looking body (a young person)",
-   "typical: a young person's body fills out. NOT for: staying childlike.",
-   [
-    "At puberty, a girl's body begins to fill out.",
-    "He has started to fill out and look like a man."
-   ]
-  ],
-  [
-   "verb",
-   "add more details to make something complete",
-   "typical: fill sth out. NOT for: cutting things.",
-   [
-    "Fill out the report with some data.",
-    "He filled out his story."
-   ]
-  ]
- ],
- "fill up": [
-  [
-   "verb",
-   "become full, or make a container full",
-   "typical: fill up (with sth), fill sth up. NOT for: emptying.",
-   [
-    "Her eyes filled up with tears.",
-    "Shall I fill the car up?"
-   ]
-  ],
-  [
-   "verb",
-   "eat so much that you cannot eat more (informal)",
-   "typical: fill yourself up with/on sth. NOT for: feeling hungry.",
-   [
-    "Don't fill up on cookies.",
-    "He filled up on pie."
-   ]
-  ],
-  [
-   "verb",
-   "make you feel you have eaten a lot (food)",
-   "typical: food fills you up. NOT for: hunger.",
-   [
-    "Bread fills you up fast.",
-    "The soup really filled me up."
-   ]
-  ]
- ],
- "finally": [
-  [
-   "last in a series",
-   "introduces the last point or step in a list or order",
-   "typical: finally, + sentence, in talks, instructions and writing. NOT for: the first step (use 'first').",
-   [
-    "First mix the flour, then add milk and, finally, the eggs.",
-    "Finally, I would like to thank everyone for coming.",
-    "Finally, check that all the doors are locked."
-   ]
-  ],
-  [
-   "after a long time",
-   "says that something happens at last after a delay or long wait",
-   "typical: before a verb, with relief or surprise. NOT for: listing points in order.",
-   [
-    "The bus finally arrived after forty minutes.",
-    "She finally finished her thesis.",
-    "We finally found a flat we could afford."
-   ]
-  ]
- ],
- "find out": [
-  [
-   "verb",
-   "get information by looking for it or by chance",
-   "typical: find out what/how/if/that, find out about sth. NOT for: looking for a lost object.",
-   [
-    "Did you find out how much it costs?",
-    "I need to find out more about the course."
-   ]
-  ],
-  [
-   "verb",
-   "discover that someone has done something dishonest or illegal",
-   "typical: get found out, find sb out. NOT for: discovering facts.",
-   [
-    "What happens if we get found out?",
-    "He was found out after a week."
-   ]
-  ]
- ],
- "find out about": [
-  [
-   "verb",
-   "discover facts about someone or something",
-   "typical: find out about sb/sth. NOT for: knowing already.",
-   [
-    "I need to find out about the course.",
-    "She found out about the plan."
-   ]
-  ]
- ],
- "finish off": [
-  [
-   "verb",
-   "complete the last part of something",
-   "typical: finish sth off. NOT for: starting.",
-   [
-    "It'll take me two hours to finish this off.",
-    "She finished off the report."
-   ]
-  ],
-  [
-   "verb",
-   "use or eat all of something",
-   "typical: finish sth off (the cake). NOT for: leaving some.",
-   [
-    "Who finished off the cake?",
-    "He finished off the bottle."
-   ]
-  ],
-  [
-   "verb",
-   "complete an event or performance with a final action",
-   "typical: finish off with sth. NOT for: beginning.",
-   [
-    "We'll finish off with a new song.",
-    "They finished off with a toast."
-   ]
-  ],
-  [
-   "verb",
-   "kill or defeat someone completely (informal)",
-   "typical: finish sb off. NOT for: helping.",
-   [
-    "The blow finished him off.",
-    "The last attack finished off the enemy."
-   ]
-  ]
- ],
- "finish up": [
-  [
-   "verb",
-   "be in a place or situation in the end (BrE informal)",
-   "typical: finish up in/as/doing sth. NOT for: planned trips.",
-   [
-    "We finished up in Rome.",
-    "He finished up in prison."
-   ]
-  ],
-  [
-   "verb",
-   "eat or use all of something",
-   "typical: finish up your dinner. NOT for: wasting.",
-   [
-    "Finish up your soup.",
-    "Finish up and go to bed."
-   ]
-  ]
- ],
- "fire up": [
-  [
-   "verb",
-   "make someone very excited, interested or angry",
-   "typical: be fired up (about sth). NOT for: calming.",
-   [
-    "She got fired up about small things.",
-    "The coach fired up the team."
-   ]
-  ],
-  [
-   "verb",
-   "start an engine or machine",
-   "typical: fire up a computer/engine/grill. NOT for: switching off.",
-   [
-    "He fired up the engine.",
-    "Let's fire up the grill."
-   ]
-  ]
- ],
- "first": [
-  [
-   "first point in order",
-   "introduces the first point or step in a series",
-   "typical: first, ... then ... (finally). NOT for: 'at first' meaning in the beginning.",
-   [
-    "First, we need to decide on a date.",
-    "First, open the file and read the instructions.",
-    "First, I want to explain the problem."
-   ]
-  ]
- ],
- "fit in": [
-  [
-   "verb",
-   "be accepted by a group",
-   "typical: fit in (with sb), fit in at school. NOT for: standing out.",
-   [
-    "I never really fitted in at school.",
-    "She fits in well with the team."
-   ]
-  ],
-  [
-   "verb",
-   "manage to do or see someone despite being busy",
-   "typical: fit sb/sth in. NOT for: cancelling.",
-   [
-    "The doctor can fit me in at 4:30.",
-    "I wanted to fit in a swim."
-   ]
-  ],
-  [
-   "verb",
-   "be small enough to go into a space",
-   "typical: fit in the car/box. NOT for: not fitting.",
-   [
-    "Will it all fit in the car?",
-    "The bag won't fit in the locker."
-   ]
-  ],
-  [
-   "verb",
-   "match or be suitable for a plan or situation",
-   "typical: fit in with sth. NOT for: contradicting.",
-   [
-    "Does that fit in with your plans?",
-    "The idea fits in well."
-   ]
-  ]
- ],
- "fix up": [
-  [
-   "verb",
-   "arrange a meeting or an event",
-   "typical: fix sth up, fix up a time/interview. NOT for: cancelling.",
-   [
-    "I fixed up an interview with him.",
-    "We'll fix up a time."
-   ]
-  ],
-  [
-   "verb",
-   "decorate or repair a room or building",
-   "typical: fix up a room/house. NOT for: wrecking.",
-   [
-    "We fixed up the guest room.",
-    "He fixed up an old house."
-   ]
-  ],
-  [
-   "verb",
-   "provide someone with something they need",
-   "typical: fix sb up with sth. NOT for: taking away.",
-   [
-    "Can you fix me up with a bed for the night?",
-    "She fixed him up with a job."
-   ]
-  ],
-  [
-   "verb",
-   "find a romantic partner for someone",
-   "typical: fix sb up with sb. NOT for: avoiding matchmaking.",
-   [
-    "My friend fixed me up with a date.",
-    "They fixed her up with a colleague."
-   ]
-  ]
- ],
- "flare up": [
-  [
-   "verb",
-   "suddenly start burning more strongly, or start again (fire or illness)",
-   "typical: a fire/illness/pain flares up. NOT for: dying down.",
-   [
-    "His back pain flared up again.",
-    "The fire flared up."
-   ]
-  ],
-  [
-   "verb",
-   "suddenly become angry or violent (a situation)",
-   "typical: violence/anger/tempers flare up. NOT for: calming.",
-   [
-    "Tempers flared up at the meeting.",
-    "Fighting flared up again."
-   ]
-  ],
-  [
-   "verb",
-   "suddenly become worse (a disease or injury)",
-   "typical: an illness/injury flares up. NOT for: recovering.",
-   [
-    "His old knee injury flared up again.",
-    "The skin disease flares up in winter."
-   ]
-  ]
- ],
- "flip out": [
-  [
-   "verb",
-   "suddenly become very angry or upset, or lose control (informal)",
-   "typical: flip out about/over sth. NOT for: staying calm.",
-   [
-    "She flipped out when she saw the mess.",
-    "He flipped out over the news."
-   ]
-  ]
- ],
- "follow up": [
-  [
-   "verb",
-   "find out more about something and take action if necessary",
-   "typical: follow sth up, a follow-up. NOT for: ignoring.",
-   [
-    "Police follow up each report.",
-    "I'll follow up on that."
-   ]
-  ],
-  [
-   "verb",
-   "do something extra to make something more successful",
-   "typical: follow sth up with sth. NOT for: stopping.",
-   [
-    "Follow up your email with a phone call.",
-    "The test was followed up by others."
-   ]
-  ]
- ],
- "fool around": [
-  [
-   "verb",
-   "waste time behaving in a silly way",
-   "typical: fool around (in class). NOT for: working.",
-   [
-    "He fooled around in class.",
-    "Stop fooling around!"
-   ]
-  ],
-  [
-   "verb",
-   "behave carelessly or dangerously with something",
-   "typical: fool around with sth. NOT for: being careful.",
-   [
-    "Someone's been fooling around with the wires.",
-    "Don't fool around with fire."
-   ]
-  ],
-  [
-   "verb",
-   "spend time doing something you enjoy that has no particular purpose (AmE)",
-   "typical: just fool around (in the yard). NOT for: working seriously.",
-   [
-    "The boys were out in the yard, just fooling around.",
-    "We fooled around on the beach all day."
-   ]
-  ],
-  [
-   "verb",
-   "have casual romantic or sexual relationships (informal)",
-   "typical: fool around with sb. NOT for: being faithful.",
-   [
-    "He was fooling around with another woman.",
-    "They fooled around at university."
-   ]
-  ]
- ],
- "for example": [
-  [
-   "example",
-   "introduces a specific case that shows what you mean",
-   "typical: at the start or in the middle of a sentence, between commas. NOT for: saying the same thing again in other words (use 'in other words').",
-   [
-    "Many countries, for example Spain, have long summers.",
-    "I enjoy sport. For example, I play football every week.",
-    "Some jobs are stressful; nursing, for example."
-   ]
-  ]
- ],
- "for instance": [
-  [
-   "example",
-   "introduces a specific case that shows what you mean",
-   "typical: neutral, between commas or at the start of a sentence. NOT for: restating the idea (use 'in other words').",
-   [
-    "Cities have problems. For instance, traffic is a big issue.",
-    "There are other options, for instance renting a car.",
-    "Some words are tricky, for instance 'thorough'."
-   ]
-  ]
- ],
- "for that matter": [
-  [
-   "adding a stronger case",
-   "adds a further case that is just as true or even more so",
-   "typical: spoken, often at the end of a sentence. NOT for: starting a new topic.",
-   [
-    "I don't like cities, or any big crowd for that matter.",
-    "He never calls, or writes, for that matter.",
-    "You could ask me, or anyone else here, for that matter."
-   ]
-  ]
- ],
- "for the most part": [
-  [
-   "mostly",
-   "means in most cases or mainly, though not completely",
-   "typical: neutral, at the start or end of a sentence. NOT for: a long period of time.",
-   [
-    "For the most part, the staff are friendly.",
-    "The reviews were, for the most part, positive.",
-    "The roads are good for the most part."
-   ]
-  ]
- ],
- "freak out": [
-  [
-   "verb",
-   "become very anxious, upset or afraid, or make someone so (informal)",
-   "typical: freak out, freak sb out. NOT for: staying calm.",
-   [
-    "People freaked out at the news.",
-    "The whole idea freaked me out."
-   ]
-  ]
- ],
- "freeze up": [
-  [
-   "verb",
-   "become solid with cold so that it stops working (a pipe or engine)",
-   "typical: pipes/an engine freeze up. NOT for: thawing.",
-   [
-    "The pipes froze up.",
-    "The lock froze up."
-   ]
-  ],
-  [
-   "verb",
-   "suddenly be unable to speak or act",
-   "typical: freeze up (on stage). NOT for: speaking easily.",
-   [
-    "I'd just freeze up.",
-    "He froze up in the interview."
-   ]
-  ]
- ],
- "furthermore": [
-  [
-   "addition",
-   "adds a further point that supports what you are saying",
-   "typical: formal, written, at the start of a sentence. NOT for: contrasting (use 'however').",
-   [
-    "The plan is cheap. Furthermore, it is easy to carry out.",
-    "The report is late; furthermore, it contains errors.",
-    "The software is free and, furthermore, it works offline."
-   ]
-  ]
- ]
 }

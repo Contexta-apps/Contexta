@@ -233,16 +233,6 @@
         "And one more thing: please bring your ID.",
         "And who is going to pay for all this?"
       ]
-    ],
-    [
-      "prompting",
-      "asks the other person to say more after they have just told you something",
-      "typical: spoken, as a short reply, e.g. And? NOT for: asking a yes/no question or continuing your own sentence.",
-      [
-        "'I called your office today.' 'And?' 'They said you were out.'",
-        "'We found the place.' 'And? Was it open?'",
-        "'She said yes.' 'And?' 'And she'll start in May.'"
-      ]
     ]
   ],
   "answer back": [
